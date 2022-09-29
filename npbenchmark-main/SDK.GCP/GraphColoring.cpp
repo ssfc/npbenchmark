@@ -1,6 +1,7 @@
 #include "GraphColoring.h"
 
 #include <random>
+#include <fstream>
 #include <iostream>
 #include <set>
 
@@ -240,6 +241,12 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
 }
 
 
+void Graph::save_vertex_color() // save color of each vertex; 
+{
+    ofstream outFile("solution.txt");
+    // the important part
+    for (const auto &e : solution) outFile << e << "\n";
+}
 
 
 
