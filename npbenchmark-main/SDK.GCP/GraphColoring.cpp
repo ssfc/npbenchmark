@@ -273,6 +273,11 @@ public:
 		{ 
 			output[n] = rand(input.colorNum); 
 		}
+
+		Graph g_test;
+		g_test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
+
+
 		//                                                                           |
 		//      [ use the random number generator initialized by the given seed ]----+
 
