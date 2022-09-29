@@ -275,13 +275,15 @@ public:
 		// sample solver: assign colors randomly (the solution can be infeasible).
 
 		//                      +----[ exit before timeout ]
-		//                      |
+		//       
+		
+		/*               |
 		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) 
 		{ 
 			output[n] = rand(input.colorNum); 
 		}
+		*/
 
-        
 		Graph g_test;
 		g_test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
 
