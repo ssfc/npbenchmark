@@ -30,6 +30,7 @@ private:
 public:   
 	void initialize_graph(int input_num_vertex, int input_num_edge, int input_num_color); // initialize variables; 
     void print_graph(); // print adjacent matrix of graph; 
+	int get_solution(int i); // return i's element of solution;
 	void add_edge(int head, int tail);  // function to add an edge to graph; 
 
     int compute_conflict(vector<int> sol); 
@@ -72,6 +73,12 @@ void Graph::print_graph()
         }
         cerr<<endl;
     }
+}
+
+
+int Graph::get_solution(int i)
+{
+	return solution[i]; 
 }
 
 
@@ -286,7 +293,14 @@ public:
 		// g_test.print_graph();
 
 		g_test.tabucol();
-		g_test.save_vertex_color();
+		
+		// g_test.save_vertex_color();
+
+		for(int i=0;i<input.nodeNum;i++)
+		{
+			output[i] = g_test.get_solution(i);
+		}
+
 
         /*
 	    int num_vertex; // num of vertices; 
