@@ -7,6 +7,76 @@
 using namespace std;
 
 
+int generate_random_integer(int lower, int upper)
+{
+    random_device rd; // obtain a random number from hardware
+    mt19937 gen(rd()); // seed the generator
+    uniform_int_distribution<> distr(lower, upper); // define the range 
+
+    return distr(gen);
+}
+
+
+class Graph
+{
+private: 
+	int num_vertex; // num of vertices; 
+    int num_edge; // num of edges; 
+    int num_color; // num of colors;    
+	vector<vector<int> > adjacent; 
+    vector<int> solution; 
+    vector<vector<int>> tabu_tenure_table; 
+public:   
+	void initialize_graph(int input_num_vertex, int input_num_edge, int input_num_color); // initialize variables; 
+    void print_graph(); // print adjacent matrix of graph; 
+	void add_edge(int head, int tail);  // function to add an edge to graph; 
+
+    int compute_conflict(vector<int> sol); 
+    void update_tabu_tenure_table(); 
+	bool tabucol(int max_walks, int max_iterations); // do tabucol for graph; 
+
+    void save_vertex_color(); 
+};
+
+
+void Graph::initialize_graph(int input_num_vertex, int input_num_edge, int input_num_color) 
+{
+    num_vertex = input_num_vertex; 
+    num_edge = input_num_edge;
+//        num_color = input_num_color;
+    num_color = 70;
+
+    adjacent.resize(num_vertex); // initialize adjacent matrix; 
+    for(int i=0;i<adjacent.size();i++)
+    {
+        adjacent[i].resize(num_vertex);
+    }
+
+    solution.resize(num_vertex); // initialize solution; 
+    for(int i=0;i<solution.size();i++)
+    {
+        solution[i] = -1;
+    }
+}
+
+
+void Graph::print_graph() 
+{
+    cout<<"graph: "<<num_vertex<<" "<<num_edge<<" "<<num_color<<endl;
+    for(int i=0;i<adjacent.size();i++)
+    {
+        for(int j=0;j<adjacent[i].size();j++)
+        {
+            cout<<adjacent[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
+
+
+
 namespace szx {
 
 class Solver {
