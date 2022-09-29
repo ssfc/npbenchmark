@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Llya4RS3Jh7LHJDVl+pG0VubyGQtfJcGpEztZGqw3LNBeCSKTsg8+KvGRsznL/5k1bYAP1lz1Et6j4wZRuWIxQ==",
+  "dgSpecHash": "mDE2OWJ5ls0z0OGPz5JMG4LkR7vrFIUVI3J48V1eohKzYzTDfi7XnEJjUcdx7e9YuROiJAsgtEYF+n0d4tXg8g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\take_\\Downloads\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
+  "projectFilePath": "C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\take_\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\take_\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
@@ -14,11 +14,7 @@
     "C:\\Users\\take_\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\take_\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512",
     "C:\\Users\\take_\\.nuget\\packages\\system.security.cryptography.pkcs\\4.7.0\\system.security.cryptography.pkcs.4.7.0.nupkg.sha512",
-    "C:\\Users\\take_\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512",
-    "C:\\Users\\take_\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.24\\microsoft.netcore.app.host.win-x64.3.1.24.nupkg.sha512",
-    "C:\\Users\\take_\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\take_\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\take_\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+    "C:\\Users\\take_\\.nuget\\packages\\system.text.encoding.codepages\\5.0.0\\system.text.encoding.codepages.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

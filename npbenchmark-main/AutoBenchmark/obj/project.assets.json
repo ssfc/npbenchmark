@@ -533,11 +533,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\take_\\Downloads\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
+      "projectUniqueName": "C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
       "projectName": "AutoBenchmark",
-      "projectPath": "C:\\Users\\take_\\Downloads\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
+      "projectPath": "C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\AutoBenchmark\\AutoBenchmark.csproj",
       "packagesPath": "C:\\Users\\take_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\take_\\Downloads\\npbenchmark-main\\AutoBenchmark\\obj\\",
+      "outputPath": "C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\AutoBenchmark\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\take_\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -589,24 +589,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.10, 3.1.10]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.24, 3.1.24]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.1.0, 3.1.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
