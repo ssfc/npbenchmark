@@ -63,14 +63,14 @@ void Graph::initialize_graph(int input_num_vertex, int input_num_edge, int input
 
 void Graph::print_graph() 
 {
-    cout<<"graph: "<<num_vertex<<" "<<num_edge<<" "<<num_color<<endl;
+    cerr<<"graph: "<<num_vertex<<" "<<num_edge<<" "<<num_color<<endl;
     for(int i=0;i<adjacent.size();i++)
     {
         for(int j=0;j<adjacent[i].size();j++)
         {
-            cout<<adjacent[i][j]<<" ";
+            cerr<<adjacent[i][j]<<" ";
         }
-        cout<<endl;
+        cerr<<endl;
     }
 }
 
@@ -195,14 +195,14 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
                     if(tabu_tenure_table[vertex_changed][new_color] > 0)  
                     {
                         tabu_tenure_table[vertex_changed][solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-                        cout<<"satisfy aspiration, tabu released: "<<current_num_conflict<<"->"<<new_num_conflict<<endl; 
-                        cout<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
+                        cerr<<"satisfy aspiration, tabu released: "<<current_num_conflict<<"->"<<new_num_conflict<<endl; 
+                        cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
                         break; 
                     }
                     else 
                     {
                         tabu_tenure_table[vertex_changed][solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-                        cout<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
+                        cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
                         break; 
                     }
                 }
@@ -211,12 +211,12 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
                     if(tabu_tenure_table[vertex_changed][new_color] > 0)
                     {
                         // tabu move does not satisfy aspiration; 
-                        cout<<"although better, not better than aspiration, tabu forbidden"<<endl;
+                        cerr<<"although better, not better than aspiration, tabu forbidden"<<endl;
                     }
                     else
                     {
                         tabu_tenure_table[vertex_changed][solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-                        cout<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
+                        cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
                         break; 
                     }
                 }
@@ -230,12 +230,12 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
     if(current_num_conflict != 0)
         return false;
     else
-        cout<<"find answer for color number "<<num_color<<": "<<endl;
+        cerr<<"find answer for color number "<<num_color<<": "<<endl;
         for(int i=0;i<num_vertex;i++)
         {
-            cout<<i<<"->"<<solution[i]<<" ";            
+            cerr<<i<<"->"<<solution[i]<<" ";            
         }
-        cout<<endl;
+        cerr<<endl;
         
         return true;
 }
@@ -274,6 +274,7 @@ public:
 			output[n] = rand(input.colorNum); 
 		}
 
+        
 		Graph g_test;
 		g_test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
 
@@ -282,8 +283,58 @@ public:
 			g_test.add_edge(input.edges[i][0], input.edges[i][1]);
 		}
 
+		// g_test.print_graph();
+
 		g_test.tabucol();
-        g_test.save_vertex_color();
+		
+
+        /*
+	    int num_vertex; // num of vertices; 
+        int num_edge; // num of edges; 
+        int num_color; // num of colors;    
+	    vector<vector<int> > adjacent; 
+        vector<int> solution; 
+        vector<vector<int>> tabu_tenure_table; 
+
+        // initialize graph; 
+		num_vertex = input.nodeNum; 
+		num_edge = input.edgeNum;
+		num_color = input.colorNum;
+		// num_color = 70;
+
+		adjacent.resize(num_vertex); // initialize adjacent matrix; 
+		for(int i=0;i<adjacent.size();i++)
+		{
+			adjacent[i].resize(num_vertex);
+		}
+
+		solution.resize(num_vertex); // initialize solution; 
+		for(int i=0;i<solution.size();i++)
+		{
+			solution[i] = -1;
+		}
+
+        // add edge; 
+		for(int i=0;i<input.edgeNum;i++)
+		{
+			adjacent[input.edges[i][0]][input.edges[i][1]] = 1;
+			adjacent[input.edges[i][1]][input.edges[i][0]] = 1;
+		}
+
+		cerr<<"graph: "<<num_vertex<<" "<<num_edge<<" "<<num_color<<endl;
+		for(int i=0;i<adjacent.size();i++)
+		{
+			for(int j=0;j<adjacent[i].size();j++)
+			{
+				cerr<<adjacent[i][j]<<" ";
+			}
+			cerr<<endl;
+		}
+        */
+
+		
+
+
 
 
 		//                                                                           |
