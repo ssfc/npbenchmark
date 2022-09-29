@@ -27,7 +27,10 @@ public:
 
 		//                      +----[ exit before timeout ]
 		//                      |
-		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) { output[n] = rand(input.colorNum); }
+		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) 
+		{ 
+			output[n] = rand(input.colorNum); 
+		}
 		//                                                                           |
 		//      [ use the random number generator initialized by the given seed ]----+
 
