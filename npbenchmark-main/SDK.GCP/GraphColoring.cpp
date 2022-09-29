@@ -277,6 +277,14 @@ public:
 		Graph g_test;
 		g_test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
 
+		for(int i=0;i<input.edgeNum;i++)
+		{
+			g_test.add_edge(input.edges[i][0], input.edges[i][1]);
+		}
+
+		g_test.tabucol();
+        g_test.save_vertex_color();
+
 
 		//                                                                           |
 		//      [ use the random number generator initialized by the given seed ]----+
