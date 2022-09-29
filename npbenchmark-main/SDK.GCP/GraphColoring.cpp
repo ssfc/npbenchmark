@@ -249,8 +249,6 @@ void Graph::save_vertex_color() // save color of each vertex;
 }
 
 
-
-
 namespace szx {
 
 class Solver {
