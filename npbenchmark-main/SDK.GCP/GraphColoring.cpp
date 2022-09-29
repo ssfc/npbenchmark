@@ -286,7 +286,7 @@ public:
 		// g_test.print_graph();
 
 		g_test.tabucol();
-		
+		g_test.save_vertex_color();
 
         /*
 	    int num_vertex; // num of vertices; 
