@@ -12,6 +12,10 @@ int generate_random_integer(int lower, int upper)
 {
     random_device rd; // obtain a random number from hardware
     mt19937 gen(rd()); // seed the generator
+
+	// mt19937 pseudoRandNumGen;
+	// void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
+
     uniform_int_distribution<> distr(lower, upper); // define the range 
 
     return distr(gen);
