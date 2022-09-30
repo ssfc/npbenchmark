@@ -294,7 +294,7 @@ public:
 
 		// g_test.print_graph();
 
-		g_test.tabucol();
+		g_test.tabucol(50, 10000000);
 		
 		// g_test.save_vertex_color();
 
@@ -302,55 +302,6 @@ public:
 		{
 			output[i] = g_test.get_solution(i);
 		}
-
-
-        /*
-	    int num_vertex; // num of vertices; 
-        int num_edge; // num of edges; 
-        int num_color; // num of colors;    
-	    vector<vector<int> > adjacent; 
-        vector<int> solution; 
-        vector<vector<int>> tabu_tenure_table; 
-
-        // initialize graph; 
-		num_vertex = input.nodeNum; 
-		num_edge = input.edgeNum;
-		num_color = input.colorNum;
-		// num_color = 70;
-
-		adjacent.resize(num_vertex); // initialize adjacent matrix; 
-		for(int i=0;i<adjacent.size();i++)
-		{
-			adjacent[i].resize(num_vertex);
-		}
-
-		solution.resize(num_vertex); // initialize solution; 
-		for(int i=0;i<solution.size();i++)
-		{
-			solution[i] = -1;
-		}
-
-        // add edge; 
-		for(int i=0;i<input.edgeNum;i++)
-		{
-			adjacent[input.edges[i][0]][input.edges[i][1]] = 1;
-			adjacent[input.edges[i][1]][input.edges[i][0]] = 1;
-		}
-
-		cerr<<"graph: "<<num_vertex<<" "<<num_edge<<" "<<num_color<<endl;
-		for(int i=0;i<adjacent.size();i++)
-		{
-			for(int j=0;j<adjacent[i].size();j++)
-			{
-				cerr<<adjacent[i][j]<<" ";
-			}
-			cerr<<endl;
-		}
-        */
-
-		
-
-
 
 
 		//                                                                           |
