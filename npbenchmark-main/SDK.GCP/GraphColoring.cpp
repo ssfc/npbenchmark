@@ -39,7 +39,7 @@ public:
 
     int compute_conflict(vector<int> sol); 
     void update_tabu_tenure_table(); 
-	bool tabucol(int max_walks, int max_iterations); // do tabucol for graph; 
+	bool tabucol(int max_walks, int max_iterations, std::function<bool()> isTimeout); // do tabucol for graph; 
 
     void save_vertex_color(); 
 };
@@ -126,7 +126,7 @@ void Graph::update_tabu_tenure_table()
 }
 
 
-bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000) 
+bool Graph::tabucol(int max_walks, int max_iterations, std::function<bool()> isTimeout) 
 {     
     tabu_tenure_table.resize(num_vertex);
     for(int i=0;i<tabu_tenure_table.size();i++)
@@ -146,7 +146,7 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
     int aspiration_criterion = num_vertex; 
     
     int current_num_conflict; 
-    for(int iteration=0; iteration<max_iterations;iteration++)
+    for(int iteration=0; !isTimeout(); iteration++)
     {
         // Count vertex pairs (i,j) which are adjacent and have the same color; 
         set<int> set_conflict_vertex;
@@ -298,8 +298,9 @@ public:
 
 		// g_test.print_graph();
 
-		// g_test.tabucol(50, 10000000);
+		g_test.tabucol(50, 10000000, isTimeout);
 
+        /*
 		int max_walks = 50; 
 		int max_iterations = 10000000;
 
@@ -426,6 +427,8 @@ public:
 		{
 			output[i] = g_test.get_solution(i);
 		}
+
+        */
 	}
 };
 
