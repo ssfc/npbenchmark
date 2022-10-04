@@ -414,6 +414,8 @@ public:
 			g_test.update_tabu_tenure_table(); 
 		}
 
+        */
+
 		cerr<<"find answer for color number "<<g_test.num_color<<": "<<endl;
 		for(int i=0;i<g_test.num_vertex;i++)
 		{
@@ -428,7 +430,6 @@ public:
 			output[i] = g_test.get_solution(i);
 		}
 
-        */
 	}
 };
 
