@@ -321,7 +321,7 @@ public:
 		int aspiration_criterion = g_test.num_vertex; 
 		
 		int current_num_conflict; 
-		for(int iteration=0; !isTimeout();iteration++)
+		for(int iteration=0; !isTimeout(); iteration++)
 		{
 			// Count vertex pairs (i,j) which are adjacent and have the same color; 
 			set<int> set_conflict_vertex;
