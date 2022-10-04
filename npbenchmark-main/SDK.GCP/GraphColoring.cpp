@@ -428,20 +428,6 @@ public:
 		}
 
 
-		//                                                                           |
-		//      [ use the random number generator initialized by the given seed ]----+
-
-		// TODO: the following code in this function is for illustration only and can be deleted.
-		// print some information for debugging.
-
-		
-		cerr << "node Num: " << input.nodeNum << endl;
-		cerr << "edge Num: " << input.edgeNum << endl;
-		cerr << "color Num: " << input.colorNum << endl;
-		cerr << "first edge: "<< input.edges[0][0] << " " << input.edges[0][1] << endl; 
-		cerr << "second edge: "<< input.edges[1][0] << " " << input.edges[1][1] << endl; 
-
-
 		/*
 		cerr << "node\tcolor" << endl;
 		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) { cerr << n << '\t' << output[n] << endl; }
