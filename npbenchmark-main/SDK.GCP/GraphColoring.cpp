@@ -39,7 +39,7 @@ public:
 
     int compute_conflict(vector<int> sol); 
     void update_tabu_tenure_table(); 
-	bool tabucol(int max_walks, int max_iterations, std::function<bool()> isTimeout); // do tabucol for graph; 
+	bool tabucol(int max_walks, std::function<bool()> isTimeout); // do tabucol for graph; 
 
     void save_vertex_color(); 
 };
@@ -126,7 +126,7 @@ void Graph::update_tabu_tenure_table()
 }
 
 
-bool Graph::tabucol(int max_walks, int max_iterations, std::function<bool()> isTimeout) 
+bool Graph::tabucol(int max_walks, std::function<bool()> isTimeout) 
 {     
     tabu_tenure_table.resize(num_vertex);
     for(int i=0;i<tabu_tenure_table.size();i++)
@@ -298,7 +298,7 @@ public:
 
 		// g_test.print_graph();
 
-		g_test.tabucol(50, 10000000, isTimeout);
+		g_test.tabucol(50, isTimeout);
 
 		cerr<<"find answer for color number "<<g_test.num_color<<": "<<endl;
 		for(int i=0;i<g_test.num_vertex;i++)

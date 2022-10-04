@@ -39,7 +39,7 @@ public:
 
     int compute_conflict(vector<int> sol); 
     void update_tabu_tenure_table(); 
-	bool tabucol(int max_walks, int max_iterations); // do tabucol for graph; 
+	bool tabucol(int max_walks, std::function<bool()> isTimeout); // do tabucol for graph; 
 
     void save_vertex_color(); 
 };
@@ -126,7 +126,7 @@ void Graph::update_tabu_tenure_table()
 }
 
 
-bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000) 
+bool Graph::tabucol(int max_walks, std::function<bool()> isTimeout) 
 {     
     tabu_tenure_table.resize(num_vertex);
     for(int i=0;i<tabu_tenure_table.size();i++)
@@ -146,7 +146,7 @@ bool Graph::tabucol(int max_walks = 50, int max_iterations = 10000000)
     int aspiration_criterion = num_vertex; 
     
     int current_num_conflict; 
-    for(int iteration=0; iteration<max_iterations;iteration++)
+    for(int iteration=0; !isTimeout(); iteration++)
     {
         // Count vertex pairs (i,j) which are adjacent and have the same color; 
         set<int> set_conflict_vertex;
@@ -298,120 +298,7 @@ public:
 
 		// g_test.print_graph();
 
-		// g_test.tabucol(50, 10000000);
-
-		int max_walks = 50; 
-		int max_iterations = 10000000;
-
-		g_test.tabu_tenure_table.resize(g_test.num_vertex);
-		for(int i=0;i<g_test.tabu_tenure_table.size();i++)
-		{
-			g_test.tabu_tenure_table[i].resize(g_test.num_color); 
-		}
-
-		// initialize each vertex with random color;    
-	//        cout<<"initial color of each vertex: ";
-		for(int i=0;i<g_test.solution.size();i++)
-		{            
-			g_test.solution[i] = generate_random_integer(0, g_test.num_color-1);     
-	//            cout<<solution[i]<<' ';        
-		}
-	//        cout<<endl;
-
-		int aspiration_criterion = g_test.num_vertex; 
-		
-		int current_num_conflict; 
-		for(int iteration=0; !isTimeout();iteration++)
-		{
-			// Count vertex pairs (i,j) which are adjacent and have the same color; 
-			set<int> set_conflict_vertex;
-			current_num_conflict = 0; 
-			for(int i=0;i<g_test.num_vertex;i++)
-			{
-				for(int j=i+1;j<g_test.num_vertex;j++)
-				{
-					if(g_test.adjacent[i][j] == 1 && g_test.solution[i] == g_test.solution[j]) // vertices belongs to one edge have same color; 
-					{
-						set_conflict_vertex.insert(i);
-						set_conflict_vertex.insert(j);
-						current_num_conflict++; 
-					}
-				}
-			}          
-
-			if(current_num_conflict == 0) // Found a solution.
-			{
-				break; 
-			}  
-
-			// convert conflict vertex from set to vector; 
-			vector<int> vector_conflict_vertex(set_conflict_vertex.begin(), set_conflict_vertex.end());
-			vector<int> new_solution(g_test.num_vertex, -1);
-			int vertex_changed_idx; 
-			int vertex_changed; 
-			int new_color; 
-
-			for(int step=0; step<max_walks; step++)
-			{
-	//            cout<<"step: "<<step<<endl; 
-				// Choose a random vertex to change; 
-				vertex_changed_idx = generate_random_integer(0, vector_conflict_vertex.size()-1); 
-				vertex_changed = vector_conflict_vertex[vertex_changed_idx];
-
-				// Choose a new color; 
-				int new_color = generate_random_integer(0, g_test.num_color-1);
-				while(g_test.solution[vertex_changed] == new_color)
-				{
-					new_color = generate_random_integer(0, g_test.num_color-1);
-				}
-
-				// Create a neighbor solution; 
-				new_solution = g_test.solution;
-				new_solution[vertex_changed] = new_color; 
-
-				// Count adjacent pairs with the same color in the new solution.
-				int new_num_conflict = g_test.compute_conflict(new_solution); 
-				if(new_num_conflict < current_num_conflict)  // found an improved solution
-				{                    
-					if(new_num_conflict < aspiration_criterion)  // better than aspiration; 
-					{
-						aspiration_criterion = new_num_conflict; 
-						
-						// permit tabu move if it is better than previous best; 
-						if(g_test.tabu_tenure_table[vertex_changed][new_color] > 0)  
-						{
-							g_test.tabu_tenure_table[vertex_changed][g_test.solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-							cerr<<"satisfy aspiration, tabu released: "<<current_num_conflict<<"->"<<new_num_conflict<<endl; 
-							cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
-							break; 
-						}
-						else 
-						{
-							g_test.tabu_tenure_table[vertex_changed][g_test.solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-							cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
-							break; 
-						}
-					}
-					else // not better than aspiration; 
-					{                      
-						if(g_test.tabu_tenure_table[vertex_changed][new_color] > 0)
-						{
-							// tabu move does not satisfy aspiration; 
-							cerr<<"although better, not better than aspiration, tabu forbidden"<<endl;
-						}
-						else
-						{
-							g_test.tabu_tenure_table[vertex_changed][g_test.solution[vertex_changed]] = current_num_conflict + generate_random_integer(1,10); 
-							cerr<<"Iteration "<<iteration<<": "<<current_num_conflict<<"->"<<new_num_conflict<<endl;
-							break; 
-						}
-					}
-				}
-			}
-			
-			g_test.solution = new_solution; 
-			g_test.update_tabu_tenure_table(); 
-		}
+		g_test.tabucol(50, isTimeout);
 
 		cerr<<"find answer for color number "<<g_test.num_color<<": "<<endl;
 		for(int i=0;i<g_test.num_vertex;i++)
@@ -427,25 +314,6 @@ public:
 			output[i] = g_test.get_solution(i);
 		}
 
-
-		//                                                                           |
-		//      [ use the random number generator initialized by the given seed ]----+
-
-		// TODO: the following code in this function is for illustration only and can be deleted.
-		// print some information for debugging.
-
-		
-		cerr << "node Num: " << input.nodeNum << endl;
-		cerr << "edge Num: " << input.edgeNum << endl;
-		cerr << "color Num: " << input.colorNum << endl;
-		cerr << "first edge: "<< input.edges[0][0] << " " << input.edges[0][1] << endl; 
-		cerr << "second edge: "<< input.edges[1][0] << " " << input.edges[1][1] << endl; 
-
-
-		/*
-		cerr << "node\tcolor" << endl;
-		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) { cerr << n << '\t' << output[n] << endl; }
-		*/
 	}
 };
 
