@@ -426,12 +426,6 @@ public:
 		{
 			output[i] = g_test.get_solution(i);
 		}
-
-
-		/*
-		cerr << "node\tcolor" << endl;
-		for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n) { cerr << n << '\t' << output[n] << endl; }
-		*/
 	}
 };
 
