@@ -1,13 +1,1 @@
-﻿  GraphColoring.cpp
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(56,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(62,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(72,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(74,22): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(99,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(101,25): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(132,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(139,18): warning C4018: “<”: 有符号/无符号不匹配
-C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\GraphColoring.cpp(177,13): warning C4101: “new_color”: 未引用的局部变量
-  Main.cpp
-  正在生成代码...
-  SDK.GCP.vcxproj -> C:\wamp64\www\npbenchmark\npbenchmark-main\Debug\SDK.GCP.exe
+﻿  tabu.cpp

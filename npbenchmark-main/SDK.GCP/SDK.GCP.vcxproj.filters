@@ -24,6 +24,9 @@
     <ClCompile Include="test_rand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tabu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphColoring.h">
