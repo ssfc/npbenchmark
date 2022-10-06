@@ -39,11 +39,14 @@ void split(const string& src, const string& delim, vector<string>& dest)
 }
 
 //初始化图
-void init_graph() {
-    try {
+void init_graph() 
+{
+    try 
+    {
         g = new int* [N];//初始化图
         v_edge = new int[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) 
+        {
             g[i] = new int[N];
             v_edge[i] = 0;
         }
@@ -52,14 +55,16 @@ void init_graph() {
             for (int j = 0; j < N; j++)
                 g[i][j] = 0;
     }
-    catch (const bad_alloc& e) {
+    catch (const bad_alloc& e) 
+    {
         std::cout << "图内存分配失败" << e.what() << endl;
         init_graph();//分配失败重新分配
     }
 }
 
 //读取文件数据，创建图
-void create_graph() {
+void create_graph() 
+{
     ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC125.1.col.txt", ios::in);
     vector<string> data;
     string delim(" ");
@@ -75,7 +80,8 @@ void create_graph() {
         while (!infile.fail())
         {
             getline(infile, textline);
-            if (start && textline.find("e", 0) != string::npos) {
+            if (start && textline.find("e", 0) != string::npos) 
+            {
                 split(textline, delim, data);
                 v1 = stoi(data[1]) - 1;
                 v2 = stoi(data[2]) - 1;
@@ -85,8 +91,10 @@ void create_graph() {
                 g[v2][tmp - 1] = v1;
 
             }
-            else {
-                if (textline.find("p edge", 0) != string::npos) {
+            else 
+            {
+                if (textline.find("p edge", 0) != string::npos) 
+                {
                     split(textline, delim, data);
                     N = stoi(data[2]);
                     init_graph();
@@ -116,36 +124,44 @@ int iter;//迭代次数
 
 //初始化内存分配
 
-void initalloc() {
-    try {
+void initalloc() 
+{
+    try 
+    {
         solution = new int[N];
         adj_color_table = new int* [N];
         tabutenure = new int* [N];
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++) 
+        {
             adj_color_table[i] = new int[K];
             tabutenure[i] = new int[K];
         }
 
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < K; j++) {
+        for (int i = 0; i < N; i++) 
+        {
+            for (int j = 0; j < K; j++) 
+            {
                 adj_color_table[i][j] = 0;
                 tabutenure[i][j] = 0;
             }
         }
     }
-    catch (const bad_alloc& e) {
+    catch (const bad_alloc& e) 
+    {
         std::cout << "初始化内存分配失败:" << e.what() << endl;
         initalloc();
     }
 }
 
 //释放内存
-void delete_alloc() {
-    for (int i = 0; i < N; i++) {
-        delete[]tabutenure[i];
-        delete[]adj_color_table[i];
-        delete[]g[i];
+void delete_alloc() 
+{
+    for (int i = 0; i < N; i++) 
+    {
+        delete[] tabutenure[i];
+        delete[] adj_color_table[i];
+        delete[] g[i];
     }
     delete[] solution;
     delete[] tabutenure;
@@ -154,7 +170,8 @@ void delete_alloc() {
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int numofcolor) {
+void initialization(int numofcolor) 
+{
     K = numofcolor;
     f = 0;
     initalloc();//初始化内存分配
@@ -164,11 +181,13 @@ void initialization(int numofcolor) {
     int* h_graph;
     int adj_color;
     int c_color;
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) 
+    {
         num_edge = v_edge[i];
         h_graph = g[i];
         c_color = solution[i];
-        for (int u = 0; u < num_edge; u++) {
+        for (int u = 0; u < num_edge; u++) 
+        {
             adj_color = solution[h_graph[u]];
             if (c_color == adj_color) f++;
             adj_color_table[i][adj_color]++;//初始化邻接颜色表
@@ -184,7 +203,8 @@ int equ_delt[2000][2];//非禁忌相同delt值
 int equ_tabudelt[2000][2];//禁忌相同delt值
 
 //找最佳禁忌或者非禁忌移动
-void findmove() {
+void findmove() 
+{
     delt = 10000;//初始为最大整数
     int tmp;//临时变量
     int tabu_delt = 10000;
@@ -194,19 +214,27 @@ void findmove() {
     int* h_color;//邻接颜色表行首指针
     int* h_tabu;//禁忌表行首指针
     int c_color_table;//当前结点颜色表的值
-    for (int i = 0; i < N; i++) {//11.3
+
+    for (int i = 0; i < N; i++) 
+    {//11.3
         c_color = solution[i];//6.1%
         h_color = adj_color_table[i];
         c_color_table = h_color[c_color];
-        if (h_color[c_color] > 0) {//17.6
+        if (h_color[c_color] > 0) 
+        {//17.6
             h_tabu = tabutenure[i];
-            for (int j = 0; j < K; j++) {
-                if (c_color != j) {//cpu流水线
+            for (int j = 0; j < K; j++) 
+            {
+                if (c_color != j) 
+                {//cpu流水线
                     //非禁忌移动
                     tmp = h_color[j] - c_color_table;
-                    if (h_tabu[j] <= iter) {//22.6
-                        if (tmp <= delt) {//分支预判惩罚 6.0
-                            if (tmp < delt) {
+                    if (h_tabu[j] <= iter) 
+                    {//22.6
+                        if (tmp <= delt) 
+                        {//分支预判惩罚 6.0
+                            if (tmp < delt) 
+                            {
                                 count = 0;
                                 delt = tmp;
                             }
@@ -215,12 +243,16 @@ void findmove() {
                             equ_delt[count - 1][1] = j;
                         }
                     }
-                    else {//禁忌移动
-                        if (tmp <= tabu_delt) {//6.0
-                            if (tmp < tabu_delt) {
+                    else 
+                    {//禁忌移动
+                        if (tmp <= tabu_delt) 
+                        {//6.0
+                            if (tmp < tabu_delt) 
+                            {
                                 tabu_delt = tmp;
                                 tabu_count = 0;
                             }
+
                             tabu_count++;
                             equ_tabudelt[tabu_count - 1][0] = i;
                             equ_tabudelt[tabu_count - 1][1] = j;
@@ -231,13 +263,15 @@ void findmove() {
         }
     }
     tmp = 0;
-    if (tabu_delt < A && tabu_delt < delt) {
+    if (tabu_delt < A && tabu_delt < delt) 
+    {
         delt = tabu_delt;
         tmp = rand() % tabu_count;//相等delt随机选择
         node = equ_tabudelt[tmp][0];
         color = equ_tabudelt[tmp][1];
     }
-    else {
+    else 
+    {
         tmp = rand() % count;//相等delt随机选择
         node = equ_delt[tmp][0];
         color = equ_delt[tmp][1];
@@ -246,7 +280,8 @@ void findmove() {
 
 
 //更新值
-void makemove() {
+void makemove() 
+{
     f = delt + f;//更新冲突值
     if (f < best_f) best_f = f;//更新历史最好冲突
     int old_color = solution[node];
@@ -255,7 +290,9 @@ void makemove() {
     int* h_graph = g[node];
     int num_edge = v_edge[node];
     int tmp;
-    for (int i = 0; i < num_edge; i++) {//更新邻接颜色表
+
+    for (int i = 0; i < num_edge; i++) 
+    {//更新邻接颜色表
         tmp = h_graph[i];
         adj_color_table[tmp][old_color]--;
         adj_color_table[tmp][color]++;
@@ -263,7 +300,8 @@ void makemove() {
 }
 
 //禁忌搜索
-void tabusearch() {
+void tabusearch() 
+{
     create_graph();
     int numofcolor = 13;
     ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
@@ -275,7 +313,8 @@ void tabusearch() {
         initialization(numofcolor);
         start_time = clock();
         iter = 0;
-        while (f > 0) {
+        while (f > 0) 
+        {
             iter++;
             cout << "iter: " << iter << endl; 
             if ((iter % 100000) == 0) ofile << iter << " " << f << " " << K << " " << delt << " " << best_f << endl;
@@ -287,8 +326,7 @@ void tabusearch() {
         cout << "成功,迭代次数" << iter << "  迭代时间(s)" << elapsed_time << "迭代频率" << double(iter / elapsed_time) << endl;
         std::cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
 
-        // print solutions; 
-        cout << "solution:"; 
+        // save solutions; 
         for (int i = 0;i < N;i++)
         {
             ofile << solution[i] << endl;
@@ -300,7 +338,8 @@ void tabusearch() {
 }
 
 
-int main() {
+int main() 
+{
     tabusearch();
     system("pause");
     return 0;
