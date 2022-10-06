@@ -57,7 +57,7 @@ void init_graph()
     }
     catch (const bad_alloc& e) 
     {
-        std::cout << "图内存分配失败" << e.what() << endl;
+        cout << "图内存分配失败" << e.what() << endl;
         init_graph();//分配失败重新分配
     }
 }
@@ -149,7 +149,7 @@ void initalloc()
     }
     catch (const bad_alloc& e) 
     {
-        std::cout << "初始化内存分配失败:" << e.what() << endl;
+        cout << "初始化内存分配失败:" << e.what() << endl;
         initalloc();
     }
 }
@@ -195,7 +195,7 @@ void initialization(int numofcolor)
     }
     f = f / 2;
     best_f = f;
-    std::cout << "init number of confilcts:" << f << endl;
+    cout << "init number of confilcts:" << f << endl;
 }
 
 
@@ -324,7 +324,7 @@ void tabusearch()
         end_time = clock();
         elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
         cout << "成功,迭代次数" << iter << "  迭代时间(s)" << elapsed_time << "迭代频率" << double(iter / elapsed_time) << endl;
-        std::cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
+        cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
 
         // save solutions; 
         for (int i = 0;i < N;i++)
