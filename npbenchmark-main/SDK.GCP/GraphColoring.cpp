@@ -10,6 +10,7 @@ using namespace std;
 
 int generate_random_integer(int lower, int upper)
 {
+    /*
     random_device rd; // obtain a random number from hardware
     mt19937 gen(rd()); // seed the generator
 
@@ -18,7 +19,11 @@ int generate_random_integer(int lower, int upper)
 
     uniform_int_distribution<> distr(lower, upper); // define the range 
 
-    return distr(gen);
+    */
+
+    int result = (rand() % (upper - lower + 1)) + lower;
+
+    return result;
 }
 
 
