@@ -1,10 +1,6 @@
-﻿/*
-禁忌搜索解决图着色问题
-update-time: 9:35 2018/1/23
-*/
-/*
-禁忌搜索解决图着色问题
-*/
+﻿// Thanks: https://github.com/chenfengkg/tabucol/blob/master/tabu.cpp
+//禁忌搜索解决图着色问题
+
 #include<time.h>
 #include<fstream>
 #include<stdlib.h>
@@ -107,7 +103,7 @@ void create_graph() {
 
 //---
 //禁忌算法
-int* sol;//结点对应颜色
+int* solution;//结点对应颜色
 int f;//冲突值
 int** tabutenure;//禁忌表
 int** adj_color_table;//邻接颜色表
@@ -122,7 +118,7 @@ int iter;//迭代次数
 
 void initalloc() {
     try {
-        sol = new int[N];
+        solution = new int[N];
         adj_color_table = new int* [N];
         tabutenure = new int* [N];
 
@@ -151,10 +147,10 @@ void delete_alloc() {
         delete[]adj_color_table[i];
         delete[]g[i];
     }
-    delete[]sol;
-    delete[]tabutenure;
-    delete[]adj_color_table;
-    delete[]g;
+    delete[] solution;
+    delete[] tabutenure;
+    delete[] adj_color_table;
+    delete[] g;
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
@@ -163,7 +159,7 @@ void initialization(int numofcolor) {
     f = 0;
     initalloc();//初始化内存分配
     for (int i = 0; i < N; i++)
-        sol[i] = rand() % K;//初始化颜色
+        solution[i] = rand() % K;//初始化颜色
     int num_edge;
     int* h_graph;
     int adj_color;
@@ -171,9 +167,9 @@ void initialization(int numofcolor) {
     for (int i = 0; i < N; i++) {
         num_edge = v_edge[i];
         h_graph = g[i];
-        c_color = sol[i];
+        c_color = solution[i];
         for (int u = 0; u < num_edge; u++) {
-            adj_color = sol[h_graph[u]];
+            adj_color = solution[h_graph[u]];
             if (c_color == adj_color) f++;
             adj_color_table[i][adj_color]++;//初始化邻接颜色表
         }
@@ -199,7 +195,7 @@ void findmove() {
     int* h_tabu;//禁忌表行首指针
     int c_color_table;//当前结点颜色表的值
     for (int i = 0; i < N; i++) {//11.3
-        c_color = sol[i];//6.1%
+        c_color = solution[i];//6.1%
         h_color = adj_color_table[i];
         c_color_table = h_color[c_color];
         if (h_color[c_color] > 0) {//17.6
@@ -253,8 +249,8 @@ void findmove() {
 void makemove() {
     f = delt + f;//更新冲突值
     if (f < best_f) best_f = f;//更新历史最好冲突
-    int old_color = sol[node];
-    sol[node] = color;
+    int old_color = solution[node];
+    solution[node] = color;
     tabutenure[node][old_color] = iter + f + rand() % 10 + 1;//更新禁忌表
     int* h_graph = g[node];
     int num_edge = v_edge[node];
@@ -295,7 +291,7 @@ void tabusearch() {
         cout << "solution:"; 
         for (int i = 0;i < N;i++)
         {
-            ofile << sol[i] << endl;
+            ofile << solution[i] << endl;
         }
 
 
