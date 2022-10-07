@@ -17,6 +17,21 @@ int** g;//邻接图
 int* v_edge;//每个顶点的边数
 
 //---
+//禁忌算法
+int* solution;//结点对应颜色
+int f;//冲突值
+int** tabutenure;//禁忌表
+int** adj_color_table;//邻接颜色表
+int K;//颜色数量
+int delt;//移动增量
+int best_f;//历史最好的冲突值
+int node;//每次移动的结点
+int color;//每次移动的颜色
+int iter;//迭代次数
+
+//初始化内存分配
+
+//---
 //读取图
 
 //按空格切分每行
@@ -100,6 +115,7 @@ void create_graph()
             {
                 // split(textline, delim, data);
                 N = stoi(data[0]);
+                K = stoi(data[2]);
                 init_graph();
                 start = true;
             }
@@ -111,20 +127,7 @@ void create_graph()
 }
 
 
-//---
-//禁忌算法
-int* solution;//结点对应颜色
-int f;//冲突值
-int** tabutenure;//禁忌表
-int** adj_color_table;//邻接颜色表
-int K;//颜色数量
-int delt;//移动增量
-int best_f;//历史最好的冲突值
-int node;//每次移动的结点
-int color;//每次移动的颜色
-int iter;//迭代次数
 
-//初始化内存分配
 
 void initalloc() 
 {
@@ -172,9 +175,8 @@ void delete_alloc()
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int numofcolor) 
+void initialization() 
 {
-    K = numofcolor;
     f = 0;
     initalloc();//初始化内存分配
     for (int i = 0; i < N; i++)
@@ -306,14 +308,12 @@ void makemove()
 void tabusearch() 
 {
     create_graph();
-    int numofcolor = 13;
     ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
     double start_time, end_time;
     double elapsed_time;
-
-    numofcolor = 5; 
+ 
     srand(clock());
-    initialization(numofcolor);
+    initialization();
     start_time = clock();
     iter = 0;
     while (f > 0) 
