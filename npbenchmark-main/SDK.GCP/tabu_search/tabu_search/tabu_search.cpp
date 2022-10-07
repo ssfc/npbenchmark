@@ -65,7 +65,8 @@ void init_graph()
 //读取文件数据，创建图
 void create_graph() 
 {
-    ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC125.1.col.txt", ios::in);
+    // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC125.1.col.txt", ios::in);
+    ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0125.1.txt", ios::in);
     vector<string> data;
     string delim(" ");
     string textline;
@@ -80,26 +81,27 @@ void create_graph()
         while (!infile.fail())
         {
             getline(infile, textline);
-            if (start && textline.find("e", 0) != string::npos) 
+
+            split(textline, delim, data); 
+            // if (start && textline.find("e", 0) != string::npos) 
+            if (data.size() == 2)
             {
-                split(textline, delim, data);
-                v1 = stoi(data[1]) - 1;
-                v2 = stoi(data[2]) - 1;
+                // split(textline, delim, data);
+                v1 = stoi(data[0]);
+                v2 = stoi(data[1]);
+
                 tmp = ++v_edge[v1];
                 g[v1][tmp - 1] = v2;
                 tmp = ++v_edge[v2];
                 g[v2][tmp - 1] = v1;
 
             }
-            else 
+            else if(data.size() == 3)
             {
-                if (textline.find("p edge", 0) != string::npos) 
-                {
-                    split(textline, delim, data);
-                    N = stoi(data[2]);
-                    init_graph();
-                    start = true;
-                }
+                // split(textline, delim, data);
+                N = stoi(data[0]);
+                init_graph();
+                start = true;
             }
         }
     }
@@ -309,7 +311,7 @@ void tabusearch()
     double start_time, end_time;
     double elapsed_time;
 
-    numofcolor = 10; 
+    numofcolor = 5; 
     srand(clock());
     initialization(numofcolor);
     start_time = clock();
