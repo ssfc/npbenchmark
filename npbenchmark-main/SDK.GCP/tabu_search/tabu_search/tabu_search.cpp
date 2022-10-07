@@ -262,6 +262,7 @@ void findmove()
             }
         }
     }
+
     tmp = 0;
     if (tabu_delt < A && tabu_delt < delt) 
     {
@@ -307,33 +308,31 @@ void tabusearch()
     ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
     double start_time, end_time;
     double elapsed_time;
-    while (cin >> numofcolor)
+
+    numofcolor = 10; 
+    srand(clock());
+    initialization(numofcolor);
+    start_time = clock();
+    iter = 0;
+    while (f > 0) 
     {
-        srand(clock());
-        initialization(numofcolor);
-        start_time = clock();
-        iter = 0;
-        while (f > 0) 
-        {
-            iter++;
-            cout << "iter: " << iter << endl; 
-            if ((iter % 100000) == 0) ofile << iter << " " << f << " " << K << " " << delt << " " << best_f << endl;
-            findmove();
-            makemove();
-        }
-        end_time = clock();
-        elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
-        cout << "成功,迭代次数" << iter << "  迭代时间(s)" << elapsed_time << "迭代频率" << double(iter / elapsed_time) << endl;
-        cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
-
-        // save solutions; 
-        for (int i = 0;i < N;i++)
-        {
-            ofile << solution[i] << endl;
-        }
-
-
+        iter++;
+        cout << "iter: " << iter << endl; 
+        if ((iter % 100000) == 0) ofile << iter << " " << f << " " << K << " " << delt << " " << best_f << endl;
+        findmove();
+        makemove();
     }
+    end_time = clock();
+    elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
+    cout << "成功,迭代次数" << iter << "  迭代时间(s)" << elapsed_time << "迭代频率" << double(iter / elapsed_time) << endl;
+    cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
+
+    // save solutions; 
+    for (int i = 0;i < N;i++)
+    {
+        ofile << solution[i] << endl;
+    }
+
     ofile.close();
 }
 
@@ -341,7 +340,6 @@ void tabusearch()
 int main() 
 {
     tabusearch();
-    system("pause");
     return 0;
 }
 
