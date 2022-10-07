@@ -18,16 +18,16 @@ int* v_edge; // number of edge of each vertex;
 
 //---
 //禁忌算法
-int* solution;//结点对应颜色
-int f;//冲突值
-int** tabutenure;//禁忌表
-int** adj_color_table;//邻接颜色表
-int num_color;//颜色数量
-int delt;//移动增量
-int best_f;//历史最好的冲突值
-int node;//每次移动的结点
-int color;//每次移动的颜色
-int iter;//迭代次数
+int* solution; //结点对应颜色
+int conflict; //冲突值
+int** tabutenure; //禁忌表
+int** adj_color_table; //邻接颜色表
+int num_color; //颜色数量
+int delta; //移动增量
+int best_conflict; //历史最好的冲突值
+int node; //每次移动的结点
+int color; //每次移动的颜色
+int iter; //迭代次数
 
 //初始化内存分配
 
@@ -178,7 +178,7 @@ void delete_alloc()
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
 void initialization() 
 {
-    f = 0;
+    conflict = 0;
     initalloc();//初始化内存分配
     for (int i = 0; i < num_vertex; i++)
         solution[i] = rand() % num_color;//初始化颜色
@@ -194,28 +194,28 @@ void initialization()
         for (int u = 0; u < num_edge; u++) 
         {
             adj_color = solution[h_graph[u]];
-            if (c_color == adj_color) f++;
+            if (c_color == adj_color) conflict++;
             adj_color_table[i][adj_color]++;//初始化邻接颜色表
         }
     }
 
-    f = f / 2;
-    best_f = f;
-    cout << "init number of confilcts:" << f << endl;
+    conflict = conflict / 2;
+    best_conflict = conflict;
+    cout << "init number of confilcts:" << conflict << endl;
 }
 
 
-int equ_delt[2000][2];//非禁忌相同delt值
-int equ_tabudelt[2000][2];//禁忌相同delt值
+int equ_delta[2000][2];//非禁忌相同delta值
+int equ_tabudelta[2000][2];//禁忌相同delta值
 
 //找最佳禁忌或者非禁忌移动
 void findmove() 
 {
-    delt = 10000;//初始为最大整数
+    delta = 10000;//初始为最大整数
     int tmp;//临时变量
-    int tabu_delt = 10000;
+    int tabu_delta = 10000;
     int count = 0, tabu_count = 0;
-    int A = best_f - f;
+    int A = best_conflict - conflict;
     int c_color;//当前结点颜色
     int* h_color;//邻接颜色表行首指针
     int* h_tabu;//禁忌表行首指针
@@ -237,31 +237,31 @@ void findmove()
                     tmp = h_color[j] - c_color_table;
                     if (h_tabu[j] <= iter) 
                     {//22.6
-                        if (tmp <= delt) 
+                        if (tmp <= delta) 
                         {//分支预判惩罚 6.0
-                            if (tmp < delt) 
+                            if (tmp < delta) 
                             {
                                 count = 0;
-                                delt = tmp;
+                                delta = tmp;
                             }
                             count++;
-                            equ_delt[count - 1][0] = i;
-                            equ_delt[count - 1][1] = j;
+                            equ_delta[count - 1][0] = i;
+                            equ_delta[count - 1][1] = j;
                         }
                     }
                     else 
                     {//禁忌移动
-                        if (tmp <= tabu_delt) 
+                        if (tmp <= tabu_delta) 
                         {//6.0
-                            if (tmp < tabu_delt) 
+                            if (tmp < tabu_delta) 
                             {
-                                tabu_delt = tmp;
+                                tabu_delta = tmp;
                                 tabu_count = 0;
                             }
 
                             tabu_count++;
-                            equ_tabudelt[tabu_count - 1][0] = i;
-                            equ_tabudelt[tabu_count - 1][1] = j;
+                            equ_tabudelta[tabu_count - 1][0] = i;
+                            equ_tabudelta[tabu_count - 1][1] = j;
                         }
                     }
                 }
@@ -270,18 +270,18 @@ void findmove()
     }
 
     tmp = 0;
-    if (tabu_delt < A && tabu_delt < delt) 
+    if (tabu_delta < A && tabu_delta < delta) 
     {
-        delt = tabu_delt;
-        tmp = rand() % tabu_count;//相等delt随机选择
-        node = equ_tabudelt[tmp][0];
-        color = equ_tabudelt[tmp][1];
+        delta = tabu_delta;
+        tmp = rand() % tabu_count;//相等delta随机选择
+        node = equ_tabudelta[tmp][0];
+        color = equ_tabudelta[tmp][1];
     }
     else 
     {
-        tmp = rand() % count;//相等delt随机选择
-        node = equ_delt[tmp][0];
-        color = equ_delt[tmp][1];
+        tmp = rand() % count;//相等delta随机选择
+        node = equ_delta[tmp][0];
+        color = equ_delta[tmp][1];
     }
 }
 
@@ -289,11 +289,14 @@ void findmove()
 //更新值
 void makemove() 
 {
-    f = delt + f;//更新冲突值
-    if (f < best_f) best_f = f;//更新历史最好冲突
+    conflict = delta + conflict;//更新冲突值
+
+    if (conflict < best_conflict) 
+        best_conflict = conflict;//更新历史最好冲突
+
     int old_color = solution[node];
     solution[node] = color;
-    tabutenure[node][old_color] = iter + f + rand() % 10 + 1;//更新禁忌表
+    tabutenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
     int* h_graph = adj_list[node];
     int num_edge = v_edge[node];
     int tmp;
@@ -318,12 +321,12 @@ void tabusearch()
     initialization();
     start_time = clock();
     iter = 0;
-    while (f > 0) 
+    while (conflict > 0) 
     {
         iter++;
         cout << "iter: " << iter << endl; 
         if ((iter % 100000) == 0) 
-            ofile << iter << " " << f << " " << num_color << " " << delt << " " << best_f << endl;
+            ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
         findmove();
         makemove();
     }
