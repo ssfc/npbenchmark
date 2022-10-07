@@ -1,4 +1,5 @@
-﻿// Thanks: https://github.com/chenfengkg/tabucol/blob/master/tabu.cpp
+﻿// Code: https://github.com/chenfengkg/tabucol/blob/master/tabu.cpp
+// Blog: https://codeleading.com/article/96523487065/ 
 //禁忌搜索解决图着色问题
 
 #include<time.h>
@@ -11,8 +12,7 @@
 #include<iostream>
 using namespace std;
 
-int maxC = 60;//最大颜色
-int N;//图的顶点数目
+int num_vertex;//图的顶点数目
 int** g;//邻接图
 int* v_edge;//每个顶点的边数
 
@@ -22,7 +22,7 @@ int* solution;//结点对应颜色
 int f;//冲突值
 int** tabutenure;//禁忌表
 int** adj_color_table;//邻接颜色表
-int K;//颜色数量
+int num_color;//颜色数量
 int delt;//移动增量
 int best_f;//历史最好的冲突值
 int node;//每次移动的结点
@@ -58,16 +58,16 @@ void init_graph()
 {
     try 
     {
-        g = new int* [N];//初始化图
-        v_edge = new int[N];
-        for (int i = 0; i < N; i++) 
+        g = new int* [num_vertex];//初始化图
+        v_edge = new int[num_vertex];
+        for (int i = 0; i < num_vertex; i++) 
         {
-            g[i] = new int[N];
+            g[i] = new int[num_vertex];
             v_edge[i] = 0;
         }
 
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < N; j++)
+        for (int i = 0; i < num_vertex; i++)
+            for (int j = 0; j < num_vertex; j++)
                 g[i][j] = 0;
     }
     catch (const bad_alloc& e) 
@@ -114,8 +114,8 @@ void create_graph()
             else if(data.size() == 3)
             {
                 // split(textline, delim, data);
-                N = stoi(data[0]);
-                K = stoi(data[2]);
+                num_vertex = stoi(data[0]);
+                num_color = stoi(data[2]);
                 init_graph();
                 start = true;
             }
@@ -133,19 +133,19 @@ void initalloc()
 {
     try 
     {
-        solution = new int[N];
-        adj_color_table = new int* [N];
-        tabutenure = new int* [N];
+        solution = new int[num_vertex];
+        adj_color_table = new int* [num_vertex];
+        tabutenure = new int* [num_vertex];
 
-        for (int i = 0; i < N; i++) 
+        for (int i = 0; i < num_vertex; i++) 
         {
-            adj_color_table[i] = new int[K];
-            tabutenure[i] = new int[K];
+            adj_color_table[i] = new int[num_color];
+            tabutenure[i] = new int[num_color];
         }
 
-        for (int i = 0; i < N; i++) 
+        for (int i = 0; i < num_vertex; i++) 
         {
-            for (int j = 0; j < K; j++) 
+            for (int j = 0; j < num_color; j++) 
             {
                 adj_color_table[i][j] = 0;
                 tabutenure[i][j] = 0;
@@ -162,7 +162,7 @@ void initalloc()
 //释放内存
 void delete_alloc() 
 {
-    for (int i = 0; i < N; i++) 
+    for (int i = 0; i < num_vertex; i++) 
     {
         delete[] tabutenure[i];
         delete[] adj_color_table[i];
@@ -179,13 +179,13 @@ void initialization()
 {
     f = 0;
     initalloc();//初始化内存分配
-    for (int i = 0; i < N; i++)
-        solution[i] = rand() % K;//初始化颜色
+    for (int i = 0; i < num_vertex; i++)
+        solution[i] = rand() % num_color;//初始化颜色
     int num_edge;
     int* h_graph;
     int adj_color;
     int c_color;
-    for (int i = 0; i < N; i++) 
+    for (int i = 0; i < num_vertex; i++) 
     {
         num_edge = v_edge[i];
         h_graph = g[i];
@@ -197,6 +197,7 @@ void initialization()
             adj_color_table[i][adj_color]++;//初始化邻接颜色表
         }
     }
+
     f = f / 2;
     best_f = f;
     cout << "init number of confilcts:" << f << endl;
@@ -219,7 +220,7 @@ void findmove()
     int* h_tabu;//禁忌表行首指针
     int c_color_table;//当前结点颜色表的值
 
-    for (int i = 0; i < N; i++) 
+    for (int i = 0; i < num_vertex; i++) 
     {//11.3
         c_color = solution[i];//6.1%
         h_color = adj_color_table[i];
@@ -227,7 +228,7 @@ void findmove()
         if (h_color[c_color] > 0) 
         {//17.6
             h_tabu = tabutenure[i];
-            for (int j = 0; j < K; j++) 
+            for (int j = 0; j < num_color; j++) 
             {
                 if (c_color != j) 
                 {//cpu流水线
@@ -320,7 +321,8 @@ void tabusearch()
     {
         iter++;
         cout << "iter: " << iter << endl; 
-        if ((iter % 100000) == 0) ofile << iter << " " << f << " " << K << " " << delt << " " << best_f << endl;
+        if ((iter % 100000) == 0) 
+            ofile << iter << " " << f << " " << num_color << " " << delt << " " << best_f << endl;
         findmove();
         makemove();
     }
@@ -330,7 +332,7 @@ void tabusearch()
     cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
 
     // save solutions; 
-    for (int i = 0;i < N;i++)
+    for (int i = 0;i < num_vertex; i++)
     {
         ofile << solution[i] << endl;
     }
