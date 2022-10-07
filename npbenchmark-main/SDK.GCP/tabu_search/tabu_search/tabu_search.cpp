@@ -81,8 +81,8 @@ void init_graph()
 //读取文件数据，创建图
 void create_graph() 
 {
-    // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC125.1.col.txt", ios::in);
-    ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0125.1.txt", ios::in);
+    // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0125.1.txt", ios::in);
+    ifstream infile("./data/DSJC0125.1.txt", ios::in);
     vector<string> data;
     string delim(" ");
     string textline;
@@ -313,7 +313,8 @@ void makemove()
 void tabusearch() 
 {
     create_graph();
-    ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
+    // ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
+    ofstream ofile("total_O3.txt", ios::out);
     double start_time, end_time;
     double elapsed_time;
  
@@ -330,10 +331,11 @@ void tabusearch()
         findmove();
         makemove();
     }
+
     end_time = clock();
     elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
-    cout << "成功,迭代次数" << iter << "  迭代时间(s)" << elapsed_time << "迭代频率" << double(iter / elapsed_time) << endl;
-    cout << "success,iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
+
+    cout << "success, iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
 
     // save solutions; 
     for (int i = 0;i < num_vertex; i++)
