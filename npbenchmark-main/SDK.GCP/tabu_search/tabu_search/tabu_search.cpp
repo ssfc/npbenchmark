@@ -14,13 +14,13 @@ using namespace std;
 
 int num_vertex; // number of vertex in the graph; 
 int** adj_list; // adjacency list; 
-int* v_edge; // number of edge of each vertex; 
+int* vertex_edge; // number of edge of each vertex; 
 
 //---
 //禁忌算法
 int* solution; //结点对应颜色
 int conflict; //冲突值
-int** tabutenure; //禁忌表
+int** tabu_tenure; //禁忌表
 int** adj_color_table; //邻接颜色表
 int num_color; //颜色数量
 int delta; //移动增量
@@ -59,12 +59,12 @@ void init_graph()
     try 
     {
         adj_list = new int* [num_vertex];//初始化图
-        v_edge = new int[num_vertex];
+        vertex_edge = new int[num_vertex];
 
         for (int i = 0; i < num_vertex; i++) 
         {
             adj_list[i] = new int[num_vertex];
-            v_edge[i] = 0;
+            vertex_edge[i] = 0;
         }
 
         for (int i = 0; i < num_vertex; i++)
@@ -81,8 +81,8 @@ void init_graph()
 //读取文件数据，创建图
 void create_graph() 
 {
-    // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0125.1.txt", ios::in);
-    ifstream infile("./data/DSJC0125.1.txt", ios::in);
+    // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0500.1.txt", ios::in);
+    ifstream infile("./data/DSJC0500.1.txt", ios::in);
     vector<string> data;
     string delim(" ");
     string textline;
@@ -99,22 +99,19 @@ void create_graph()
             getline(infile, textline);
 
             split(textline, delim, data); 
-            // if (start && textline.find("e", 0) != string::npos) 
+             
             if (data.size() == 2)
             {
-                // split(textline, delim, data);
                 v1 = stoi(data[0]);
                 v2 = stoi(data[1]);
 
-                tmp = ++v_edge[v1];
+                tmp = ++vertex_edge[v1];
                 adj_list[v1][tmp - 1] = v2;
-                tmp = ++v_edge[v2];
+                tmp = ++vertex_edge[v2];
                 adj_list[v2][tmp - 1] = v1;
-
             }
             else if(data.size() == 3)
             {
-                // split(textline, delim, data);
                 num_vertex = stoi(data[0]);
                 num_color = stoi(data[2]);
                 init_graph();
@@ -136,12 +133,12 @@ void initalloc()
     {
         solution = new int[num_vertex];
         adj_color_table = new int* [num_vertex];
-        tabutenure = new int* [num_vertex];
+        tabu_tenure = new int* [num_vertex];
 
         for (int i = 0; i < num_vertex; i++) 
         {
             adj_color_table[i] = new int[num_color];
-            tabutenure[i] = new int[num_color];
+            tabu_tenure[i] = new int[num_color];
         }
 
         for (int i = 0; i < num_vertex; i++) 
@@ -149,7 +146,7 @@ void initalloc()
             for (int j = 0; j < num_color; j++) 
             {
                 adj_color_table[i][j] = 0;
-                tabutenure[i][j] = 0;
+                tabu_tenure[i][j] = 0;
             }
         }
     }
@@ -165,12 +162,12 @@ void delete_alloc()
 {
     for (int i = 0; i < num_vertex; i++) 
     {
-        delete[] tabutenure[i];
+        delete[] tabu_tenure[i];
         delete[] adj_color_table[i];
         delete[] adj_list[i];
     }
     delete[] solution;
-    delete[] tabutenure;
+    delete[] tabu_tenure;
     delete[] adj_color_table;
     delete[] adj_list;
 }
@@ -188,7 +185,7 @@ void initialization()
     int c_color;
     for (int i = 0; i < num_vertex; i++) 
     {
-        num_edge = v_edge[i];
+        num_edge = vertex_edge[i];
         h_graph = adj_list[i];
         c_color = solution[i];
         for (int u = 0; u < num_edge; u++) 
@@ -209,7 +206,7 @@ int equ_delta[2000][2];//非禁忌相同delta值
 int equ_tabudelta[2000][2];//禁忌相同delta值
 
 //找最佳禁忌或者非禁忌移动
-void findmove() 
+void find_move() 
 {
     delta = 10000;//初始为最大整数
     int tmp;//临时变量
@@ -228,7 +225,7 @@ void findmove()
         c_color_table = h_color[c_color];
         if (h_color[c_color] > 0) 
         {//17.6
-            h_tabu = tabutenure[i];
+            h_tabu = tabu_tenure[i];
             for (int j = 0; j < num_color; j++) 
             {
                 if (c_color != j) 
@@ -287,7 +284,7 @@ void findmove()
 
 
 //更新值
-void makemove() 
+void make_move() 
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -296,9 +293,9 @@ void makemove()
 
     int old_color = solution[node];
     solution[node] = color;
-    tabutenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
+    tabu_tenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
     int* h_graph = adj_list[node];
-    int num_edge = v_edge[node];
+    int num_edge = vertex_edge[node];
     int tmp;
 
     for (int i = 0; i < num_edge; i++) 
@@ -310,7 +307,7 @@ void makemove()
 }
 
 //禁忌搜索
-void tabusearch() 
+void tabu_search(int seed) 
 {
     create_graph();
     // ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
@@ -318,24 +315,26 @@ void tabusearch()
     double start_time, end_time;
     double elapsed_time;
  
-    srand(clock());
+    // srand(clock());
+    srand(seed);
+
     initialization();
     start_time = clock();
     iter = 0;
     while (conflict > 0) 
     {
         iter++;
-        cout << "iter: " << iter << endl; 
+        // cout << "iter: " << iter << endl; 
         if ((iter % 100000) == 0) 
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-        findmove();
-        makemove();
+        find_move();
+        make_move();
     }
 
     end_time = clock();
     elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
 
-    cout << "success, iterations:" << iter << "  elapsed_time(s):" << elapsed_time << "frequency:" << double(iter / elapsed_time) << endl;
+    cout << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time << " frequency:" << double(iter / elapsed_time) << endl;
 
     // save solutions; 
     for (int i = 0;i < num_vertex; i++)
@@ -349,7 +348,8 @@ void tabusearch()
 
 int main() 
 {
-    tabusearch();
+    int seed = 2; 
+    tabu_search(seed);
     return 0;
 }
 
