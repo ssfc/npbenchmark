@@ -12,9 +12,9 @@
 #include<iostream>
 using namespace std;
 
-int num_vertex;//图的顶点数目
-int** g;//邻接图
-int* v_edge;//每个顶点的边数
+int num_vertex; // number of vertex in the graph; 
+int** adj_list; // adjacency list; 
+int* v_edge; // number of edge of each vertex; 
 
 //---
 //禁忌算法
@@ -58,17 +58,18 @@ void init_graph()
 {
     try 
     {
-        g = new int* [num_vertex];//初始化图
+        adj_list = new int* [num_vertex];//初始化图
         v_edge = new int[num_vertex];
+
         for (int i = 0; i < num_vertex; i++) 
         {
-            g[i] = new int[num_vertex];
+            adj_list[i] = new int[num_vertex];
             v_edge[i] = 0;
         }
 
         for (int i = 0; i < num_vertex; i++)
             for (int j = 0; j < num_vertex; j++)
-                g[i][j] = 0;
+                adj_list[i][j] = 0;
     }
     catch (const bad_alloc& e) 
     {
@@ -106,9 +107,9 @@ void create_graph()
                 v2 = stoi(data[1]);
 
                 tmp = ++v_edge[v1];
-                g[v1][tmp - 1] = v2;
+                adj_list[v1][tmp - 1] = v2;
                 tmp = ++v_edge[v2];
-                g[v2][tmp - 1] = v1;
+                adj_list[v2][tmp - 1] = v1;
 
             }
             else if(data.size() == 3)
@@ -166,12 +167,12 @@ void delete_alloc()
     {
         delete[] tabutenure[i];
         delete[] adj_color_table[i];
-        delete[] g[i];
+        delete[] adj_list[i];
     }
     delete[] solution;
     delete[] tabutenure;
     delete[] adj_color_table;
-    delete[] g;
+    delete[] adj_list;
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
@@ -188,7 +189,7 @@ void initialization()
     for (int i = 0; i < num_vertex; i++) 
     {
         num_edge = v_edge[i];
-        h_graph = g[i];
+        h_graph = adj_list[i];
         c_color = solution[i];
         for (int u = 0; u < num_edge; u++) 
         {
@@ -293,7 +294,7 @@ void makemove()
     int old_color = solution[node];
     solution[node] = color;
     tabutenure[node][old_color] = iter + f + rand() % 10 + 1;//更新禁忌表
-    int* h_graph = g[node];
+    int* h_graph = adj_list[node];
     int num_edge = v_edge[node];
     int tmp;
 
