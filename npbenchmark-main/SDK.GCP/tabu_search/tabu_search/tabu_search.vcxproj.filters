@@ -18,5 +18,8 @@
     <ClCompile Include="tabu_search.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="origin.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
