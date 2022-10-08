@@ -13,7 +13,7 @@
 using namespace std;
 
 
-int** adj_list; // adjacency list; 
+int** adj_list; // adjacency list of graph; 
 int* vertex_edge; // number of edge of each vertex; 
 
 //---
@@ -50,7 +50,7 @@ void split(const string& src, const string& delim, vector<string>& dest)
 }
 
 // 初始化图
-void init_graph(int num_vertex) 
+void init_graph(int &num_vertex) 
 {
     try 
     {
@@ -75,7 +75,7 @@ void init_graph(int num_vertex)
 }
 
 //读取文件数据，创建图
-void create_graph(string path, int& num_vertex, int& num_color) 
+void create_graph(string path, int &num_vertex, int &num_color) 
 {
     // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0500.1.txt", ios::in);
     // ifstream infile("./data/DSJC0250.5.txt", ios::in);
@@ -123,7 +123,7 @@ void create_graph(string path, int& num_vertex, int& num_color)
 }
 
 // 分配内存; 
-void initalloc(int num_vertex, int num_color, int* solution)
+void initalloc(int &num_vertex, int &num_color, int* &solution)
 {
     try 
     {
@@ -154,7 +154,7 @@ void initalloc(int num_vertex, int num_color, int* solution)
 }
 
 // 释放内存
-void delete_alloc(int num_vertex, int* solution)
+void delete_alloc(int &num_vertex, int* &solution)
 {
     for (int i = 0; i < num_vertex; i++) 
     {
@@ -169,15 +169,15 @@ void delete_alloc(int num_vertex, int* solution)
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int num_vertex, int num_color, int* solution)
+void initialization(int &num_vertex, int &num_color, int* &solution)
 {
     conflict = 0;
     initalloc(num_vertex, num_color, solution);//初始化内存分配
 
     cout << "num_vertex: " << num_vertex << endl;
-    cout << "num_color" << num_color << endl;
+    cout << "num_color: " << num_color << endl;
 
-    /*
+    
     for (int i = 0; i < num_vertex; i++)
         solution[i] = rand() % num_color;//初始化颜色
     int num_edge;
@@ -200,11 +200,11 @@ void initialization(int num_vertex, int num_color, int* solution)
     conflict = conflict / 2;
     best_conflict = conflict;
     cout << "init number of confilcts:" << conflict << endl;
-    */
+    
 }
 
 //找最佳禁忌或者非禁忌移动
-void find_move(int num_vertex, int num_color, int* solution)
+void find_move(int &num_vertex, int &num_color, int* &solution)
 {
     delta = 10000;//初始为最大整数
     int tmp;//临时变量
@@ -281,7 +281,7 @@ void find_move(int num_vertex, int num_color, int* solution)
 }
 
 // 更新值
-void make_move(int num_vertex, int* solution)
+void make_move(int &num_vertex, int* &solution)
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -304,7 +304,7 @@ void make_move(int num_vertex, int* solution)
 }
 
 // 禁忌搜索
-void tabu_search(int seed, string path, int* solution)
+void tabu_search(int seed, string path, int* &solution)
 {
     int num_vertex; 
     int num_color; //颜色数量 
@@ -321,7 +321,7 @@ void tabu_search(int seed, string path, int* solution)
 
     initialization(num_vertex, num_color, solution);
 
-    /*
+    
     start_time = clock();
     iter = 0;
     while (conflict > 0) 
@@ -346,16 +346,7 @@ void tabu_search(int seed, string path, int* solution)
     }
 
     ofile.close();
-    */
-}
-
-void test_alloc(int* &solution)
-{
-    solution = new int[3];
-    solution[0] = 7;
-    solution[1] = 8;
-    solution[2] = 9;
-    // cout << "solution 0: " << solution[0] << endl;
+    
 }
 
 
@@ -363,13 +354,10 @@ int main()
 {
     int seed = 2; 
 
-    int num_vertex; // number of vertex in the graph; 
+    int num_vertex = 0; // number of vertex in the graph; 
+    int* solution = nullptr; // color of each vertex; 
 
-    int* solution = nullptr; //结点对应颜色
-    test_alloc(solution);
-    cout << solution[0];
-
-    // tabu_search(seed, "./data/DSJC0250.9.txt", solution);
+    tabu_search(seed, "./data/DSJC0250.9.txt", solution);
 
     return 0;
 }
