@@ -18,7 +18,6 @@ int* vertex_edge; // number of edge of each vertex;
 
 //---
 //禁忌算法
-int* solution; //结点对应颜色
 int conflict; //冲突值
 int** tabu_tenure; //禁忌表
 int** adj_color_table; //邻接颜色表
@@ -124,7 +123,7 @@ void create_graph(string path, int& num_vertex, int& num_color)
 }
 
 // 分配内存; 
-void initalloc(int num_vertex, int num_color) 
+void initalloc(int num_vertex, int num_color, int* solution)
 {
     try 
     {
@@ -150,12 +149,12 @@ void initalloc(int num_vertex, int num_color)
     catch (const bad_alloc& e) 
     {
         cout << "初始化内存分配失败:" << e.what() << endl;
-        initalloc(num_vertex, num_color);
+        initalloc(num_vertex, num_color, solution);
     }
 }
 
 // 释放内存
-void delete_alloc(int num_vertex) 
+void delete_alloc(int num_vertex, int* solution)
 {
     for (int i = 0; i < num_vertex; i++) 
     {
@@ -170,10 +169,15 @@ void delete_alloc(int num_vertex)
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int num_vertex, int num_color) 
+void initialization(int num_vertex, int num_color, int* solution)
 {
     conflict = 0;
-    initalloc(num_vertex, num_color);//初始化内存分配
+    initalloc(num_vertex, num_color, solution);//初始化内存分配
+
+    cout << "num_vertex: " << num_vertex << endl;
+    cout << "num_color" << num_color << endl;
+
+    /*
     for (int i = 0; i < num_vertex; i++)
         solution[i] = rand() % num_color;//初始化颜色
     int num_edge;
@@ -196,10 +200,11 @@ void initialization(int num_vertex, int num_color)
     conflict = conflict / 2;
     best_conflict = conflict;
     cout << "init number of confilcts:" << conflict << endl;
+    */
 }
 
 //找最佳禁忌或者非禁忌移动
-void find_move(int num_vertex, int num_color) 
+void find_move(int num_vertex, int num_color, int* solution)
 {
     delta = 10000;//初始为最大整数
     int tmp;//临时变量
@@ -276,7 +281,7 @@ void find_move(int num_vertex, int num_color)
 }
 
 // 更新值
-void make_move(int num_vertex) 
+void make_move(int num_vertex, int* solution)
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -299,7 +304,7 @@ void make_move(int num_vertex)
 }
 
 // 禁忌搜索
-void tabu_search(int seed, string path) 
+void tabu_search(int seed, string path, int* solution)
 {
     int num_vertex; 
     int num_color; //颜色数量 
@@ -314,7 +319,9 @@ void tabu_search(int seed, string path)
     // srand(clock());
     srand(seed);
 
-    initialization(num_vertex, num_color);
+    initialization(num_vertex, num_color, solution);
+
+    /*
     start_time = clock();
     iter = 0;
     while (conflict > 0) 
@@ -323,8 +330,8 @@ void tabu_search(int seed, string path)
         // cout << "iter: " << iter << endl; 
         if ((iter % 100000) == 0) 
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-        find_move(num_vertex, num_color);
-        make_move(num_vertex);
+        find_move(num_vertex, num_color, solution);
+        make_move(num_vertex, solution);
     }
 
     end_time = clock();
@@ -339,6 +346,16 @@ void tabu_search(int seed, string path)
     }
 
     ofile.close();
+    */
+}
+
+void test_alloc(int* &solution)
+{
+    solution = new int[3];
+    solution[0] = 7;
+    solution[1] = 8;
+    solution[2] = 9;
+    // cout << "solution 0: " << solution[0] << endl;
 }
 
 
@@ -348,8 +365,11 @@ int main()
 
     int num_vertex; // number of vertex in the graph; 
 
+    int* solution = nullptr; //结点对应颜色
+    test_alloc(solution);
+    cout << solution[0];
 
-    tabu_search(seed, "./data/DSJC0250.9.txt");
+    // tabu_search(seed, "./data/DSJC0250.9.txt", solution);
 
     return 0;
 }
