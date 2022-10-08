@@ -42,10 +42,10 @@ public:
     void create_graph(string path);
     void initalloc();
     void delete_alloc();
-    void initialization();
+    void initialization(int seed);
     void find_move();
     void make_move();
-    void tabu_search(int seed, string path);
+    void tabu_search();
 };
 
 // class: 按空格切分每行
@@ -87,7 +87,7 @@ void Graph::init_graph()
     }
     catch (const bad_alloc& e)
     {
-        cout << "图内存分配失败" << e.what() << endl;
+        cerr << "图内存分配失败" << e.what() << endl;
         init_graph();//分配失败重新分配
     }
 }
@@ -106,7 +106,7 @@ void Graph::create_graph(string path)
     int v1, v2;
     int tmp;
 
-    cout << "Start reading graph..." << endl;
+    cerr << "Start reading graph..." << endl;
 
     if (infile.good())
     {
@@ -137,7 +137,7 @@ void Graph::create_graph(string path)
     }
     infile.close();
 
-    cout << "Finish reading graph." << endl;
+    cerr << "Finish reading graph." << endl;
 }
 
 // class: 分配内存; 
@@ -166,7 +166,7 @@ void Graph::initalloc()
     }
     catch (const bad_alloc& e)
     {
-        cout << "初始化内存分配失败:" << e.what() << endl;
+        cerr << "初始化内存分配失败:" << e.what() << endl;
         initalloc();
     }
 }
@@ -187,12 +187,15 @@ void Graph::delete_alloc()
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void Graph::initialization()
+void Graph::initialization(int seed)
 {
     conflict = 0;
     initalloc();//初始化内存分配
+
+    srand(seed); 
     for (int i = 0; i < num_vertex; i++)
         solution[i] = rand() % num_color;//初始化颜色
+
     int num_edge;
     int* h_graph;
     int adj_color;
@@ -212,7 +215,7 @@ void Graph::initialization()
 
     conflict = conflict / 2;
     best_conflict = conflict;
-    cout << "init number of confilcts:" << conflict << endl;
+    cerr << "init number of confilcts:" << conflict << endl;
 }
 
 // class: 找最佳禁忌或者非禁忌移动
@@ -316,24 +319,18 @@ void Graph::make_move()
 }
 
 // class: 禁忌搜索
-void Graph::tabu_search(int seed, string path)
+void Graph::tabu_search()
 {
-    create_graph(path);
-    // ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
     ofstream ofile("total_O3.txt", ios::out);
     double start_time, end_time;
     double elapsed_time;
 
-    // srand(clock());
-    srand(seed);
-
-    initialization();
     start_time = clock();
     iter = 0;
     while (conflict > 0)
     {
         iter++;
-        // cout << "iter: " << iter << endl; 
+        // cerr << "iter: " << iter << endl; 
         if ((iter % 100000) == 0)
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
         find_move();
@@ -343,7 +340,7 @@ void Graph::tabu_search(int seed, string path)
     end_time = clock();
     elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
 
-    cout << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time << " frequency:" << double(iter / elapsed_time) << endl;
+    cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time << " frequency:" << double(iter / elapsed_time) << endl;
 
     // save solutions; 
     for (int i = 0;i < num_vertex; i++)
@@ -360,7 +357,9 @@ int main()
     int seed = 2;
 
     Graph test;
-    test.tabu_search(seed, "./data/DSJC0250.9.txt");
+    test.create_graph("./data/DSJC0250.9.txt");
+    test.initialization(seed);
+    test.tabu_search();
  
     return 0;
 }
