@@ -12,13 +12,6 @@
 #include<iostream>
 using namespace std;
 
-
-//---
-//禁忌算法
-int conflict; //冲突值
-int** tabu_tenure; //禁忌表
-int** adj_color_table; //邻接颜色表
-int delta; //移动增量
 int best_conflict; //历史最好的冲突值
 int node; //每次移动的结点
 int color; //每次移动的颜色
@@ -47,7 +40,7 @@ void split(const string& src, const string& delim, vector<string>& dest)
 }
 
 // 初始化图
-void init_graph(int &num_vertex, int** &adj_list, int* &vertex_edge)
+void init_graph(int& num_vertex, int**& adj_list, int*& vertex_edge)
 {
     try 
     {
@@ -72,7 +65,7 @@ void init_graph(int &num_vertex, int** &adj_list, int* &vertex_edge)
 }
 
 //读取文件数据，创建图
-void create_graph(string path, int &num_vertex, int &num_color, int**& adj_list, int* &vertex_edge)
+void create_graph(string path, int& num_vertex, int& num_color, int**& adj_list, int*& vertex_edge)
 {
     // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0500.1.txt", ios::in);
     // ifstream infile("./data/DSJC0250.5.txt", ios::in);
@@ -120,7 +113,7 @@ void create_graph(string path, int &num_vertex, int &num_color, int**& adj_list,
 }
 
 // 分配内存; 
-void initalloc(int &num_vertex, int &num_color, int* &solution)
+void initalloc(int& num_vertex, int& num_color, int*& solution, int**& adj_color_table, int**& tabu_tenure)
 {
     try 
     {
@@ -146,12 +139,12 @@ void initalloc(int &num_vertex, int &num_color, int* &solution)
     catch (const bad_alloc& e) 
     {
         cout << "初始化内存分配失败:" << e.what() << endl;
-        initalloc(num_vertex, num_color, solution);
+        initalloc(num_vertex, num_color, solution, adj_color_table, tabu_tenure);
     }
 }
 
 // 释放内存
-void delete_alloc(int &num_vertex, int* &solution, int**& adj_list)
+void delete_alloc(int& num_vertex, int*& solution, int**& adj_list, int**& adj_color_table, int**& tabu_tenure)
 {
     for (int i = 0; i < num_vertex; i++) 
     {
@@ -166,10 +159,10 @@ void delete_alloc(int &num_vertex, int* &solution, int**& adj_list)
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int &num_vertex, int &num_color, int**& adj_list, int* &vertex_edge, int* &solution)
+void initialization(int& num_vertex, int& num_color, int**& adj_list, int**& adj_color_table, int*& vertex_edge, int*& solution, int& conflict, int**& tabu_tenure)
 {
     conflict = 0;
-    initalloc(num_vertex, num_color, solution);//初始化内存分配
+    initalloc(num_vertex, num_color, solution, adj_color_table, tabu_tenure);//初始化内存分配
 
     cout << "num_vertex: " << num_vertex << endl;
     cout << "num_color: " << num_color << endl;
@@ -201,7 +194,7 @@ void initialization(int &num_vertex, int &num_color, int**& adj_list, int* &vert
 }
 
 //找最佳禁忌或者非禁忌移动
-void find_move(int &num_vertex, int &num_color, int* &solution)
+void find_move(int& num_vertex, int& num_color, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure)
 {
     delta = 10000;//初始为最大整数
     int tmp;//临时变量
@@ -278,7 +271,7 @@ void find_move(int &num_vertex, int &num_color, int* &solution)
 }
 
 // 更新值
-void make_move(int &num_vertex, int**& adj_list, int* &vertex_edge, int* &solution)
+void make_move(int& num_vertex, int**& adj_list, int*& vertex_edge, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure)
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -308,7 +301,12 @@ void tabu_search(int seed, string path)
 
     int** adj_list; // adjacency list of graph; 
     int* vertex_edge; // number of edge of each vertex; 
+
     int* solution; // color of each vertex; 
+    int** adj_color_table; //邻接颜色表
+    int conflict; //冲突值
+    int delta; //移动增量
+    int** tabu_tenure; //禁忌表
 
     create_graph(path, num_vertex, num_color, adj_list, vertex_edge);
 
@@ -320,7 +318,7 @@ void tabu_search(int seed, string path)
     // srand(clock());
     srand(seed);
 
-    initialization(num_vertex, num_color, adj_list, vertex_edge, solution);
+    initialization(num_vertex, num_color, adj_list, adj_color_table, vertex_edge, solution, conflict, tabu_tenure);
 
     
     start_time = clock();
@@ -331,8 +329,8 @@ void tabu_search(int seed, string path)
         // cout << "iter: " << iter << endl; 
         if ((iter % 100000) == 0) 
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-        find_move(num_vertex, num_color, solution);
-        make_move(num_vertex, adj_list, vertex_edge, solution);
+        find_move(num_vertex, num_color, solution, adj_color_table, conflict, delta, tabu_tenure);
+        make_move(num_vertex, adj_list, vertex_edge, solution, adj_color_table, conflict, delta, tabu_tenure);
     }
 
     end_time = clock();
