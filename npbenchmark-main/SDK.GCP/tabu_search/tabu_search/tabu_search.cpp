@@ -15,7 +15,6 @@ using namespace std;
 int best_conflict; //历史最好的冲突值
 int node; //每次移动的结点
 int color; //每次移动的颜色
-int iter; //迭代次数
 int equ_delta[2000][2];//非禁忌相同delta值
 int equ_tabudelta[2000][2];//禁忌相同delta值
 
@@ -194,7 +193,7 @@ void initialization(int& num_vertex, int& num_color, int**& adj_list, int**& adj
 }
 
 //找最佳禁忌或者非禁忌移动
-void find_move(int& num_vertex, int& num_color, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure)
+void find_move(int& num_vertex, int& num_color, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure, int &iter)
 {
     delta = 10000;//初始为最大整数
     int tmp;//临时变量
@@ -271,7 +270,7 @@ void find_move(int& num_vertex, int& num_color, int*& solution, int**& adj_color
 }
 
 // 更新值
-void make_move(int& num_vertex, int**& adj_list, int*& vertex_edge, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure)
+void make_move(int& num_vertex, int**& adj_list, int*& vertex_edge, int*& solution, int**& adj_color_table, int& conflict, int& delta, int**& tabu_tenure, int &iter)
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -322,15 +321,15 @@ void tabu_search(int seed, string path)
 
     
     start_time = clock();
-    iter = 0;
+    int iter; //迭代次数
     while (conflict > 0) 
     {
         iter++;
         // cout << "iter: " << iter << endl; 
         if ((iter % 100000) == 0) 
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-        find_move(num_vertex, num_color, solution, adj_color_table, conflict, delta, tabu_tenure);
-        make_move(num_vertex, adj_list, vertex_edge, solution, adj_color_table, conflict, delta, tabu_tenure);
+        find_move(num_vertex, num_color, solution, adj_color_table, conflict, delta, tabu_tenure, iter);
+        make_move(num_vertex, adj_list, vertex_edge, solution, adj_color_table, conflict, delta, tabu_tenure, iter);
     }
 
     end_time = clock();
