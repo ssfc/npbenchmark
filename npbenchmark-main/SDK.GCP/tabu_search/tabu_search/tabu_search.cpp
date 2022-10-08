@@ -352,7 +352,7 @@ int main()
 {
     int seed = 2; 
 
-    tabu_search(seed, "./data/DSJC0250.9.txt");
+    tabu_search(seed, "./data/DSJC0500.5.txt");
 
     return 0;
 }
