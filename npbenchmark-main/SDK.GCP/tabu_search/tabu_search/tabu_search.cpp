@@ -13,9 +13,6 @@
 using namespace std;
 
 
-
-int* vertex_edge; // number of edge of each vertex; 
-
 //---
 //禁忌算法
 int conflict; //冲突值
@@ -50,7 +47,7 @@ void split(const string& src, const string& delim, vector<string>& dest)
 }
 
 // 初始化图
-void init_graph(int &num_vertex, int** &adj_list)
+void init_graph(int &num_vertex, int** &adj_list, int* &vertex_edge)
 {
     try 
     {
@@ -70,12 +67,12 @@ void init_graph(int &num_vertex, int** &adj_list)
     catch (const bad_alloc& e) 
     {
         cout << "图内存分配失败" << e.what() << endl;
-        init_graph(num_vertex, adj_list);//分配失败重新分配
+        init_graph(num_vertex, adj_list, vertex_edge);//分配失败重新分配
     }
 }
 
 //读取文件数据，创建图
-void create_graph(string path, int &num_vertex, int &num_color, int**& adj_list)
+void create_graph(string path, int &num_vertex, int &num_color, int**& adj_list, int* &vertex_edge)
 {
     // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0500.1.txt", ios::in);
     // ifstream infile("./data/DSJC0250.5.txt", ios::in);
@@ -112,7 +109,7 @@ void create_graph(string path, int &num_vertex, int &num_color, int**& adj_list)
             {
                 num_vertex = stoi(data[0]);
                 num_color = stoi(data[2]);
-                init_graph(num_vertex, adj_list);
+                init_graph(num_vertex, adj_list, vertex_edge);
                 start = true;
             }
         }
@@ -169,7 +166,7 @@ void delete_alloc(int &num_vertex, int* &solution, int**& adj_list)
 }
 
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void initialization(int &num_vertex, int &num_color, int**& adj_list, int* &solution)
+void initialization(int &num_vertex, int &num_color, int**& adj_list, int* &vertex_edge, int* &solution)
 {
     conflict = 0;
     initalloc(num_vertex, num_color, solution);//初始化内存分配
@@ -281,7 +278,7 @@ void find_move(int &num_vertex, int &num_color, int* &solution)
 }
 
 // 更新值
-void make_move(int &num_vertex, int**& adj_list, int* &solution)
+void make_move(int &num_vertex, int**& adj_list, int* &vertex_edge, int* &solution)
 {
     conflict = delta + conflict;//更新冲突值
 
@@ -304,12 +301,16 @@ void make_move(int &num_vertex, int**& adj_list, int* &solution)
 }
 
 // 禁忌搜索
-void tabu_search(int seed, string path, int**& adj_list, int* &solution)
+void tabu_search(int seed, string path)
 {
     int num_vertex; 
     int num_color; //颜色数量 
 
-    create_graph(path, num_vertex, num_color, adj_list);
+    int** adj_list; // adjacency list of graph; 
+    int* vertex_edge; // number of edge of each vertex; 
+    int* solution; // color of each vertex; 
+
+    create_graph(path, num_vertex, num_color, adj_list, vertex_edge);
 
     // ofstream ofile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\total_O3.txt", ios::out);
     ofstream ofile("total_O3.txt", ios::out);
@@ -319,7 +320,7 @@ void tabu_search(int seed, string path, int**& adj_list, int* &solution)
     // srand(clock());
     srand(seed);
 
-    initialization(num_vertex, num_color, adj_list, solution);
+    initialization(num_vertex, num_color, adj_list, vertex_edge, solution);
 
     
     start_time = clock();
@@ -331,7 +332,7 @@ void tabu_search(int seed, string path, int**& adj_list, int* &solution)
         if ((iter % 100000) == 0) 
             ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
         find_move(num_vertex, num_color, solution);
-        make_move(num_vertex, adj_list, solution);
+        make_move(num_vertex, adj_list, vertex_edge, solution);
     }
 
     end_time = clock();
@@ -354,11 +355,7 @@ int main()
 {
     int seed = 2; 
 
-    int num_vertex = 0; // number of vertex in the graph; 
-    int** adj_list; // adjacency list of graph; 
-    int* solution = nullptr; // color of each vertex; 
-
-    tabu_search(seed, "./data/DSJC0250.9.txt", adj_list, solution);
+    tabu_search(seed, "./data/DSJC0250.9.txt");
 
     return 0;
 }
