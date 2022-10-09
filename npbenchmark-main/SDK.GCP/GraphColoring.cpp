@@ -45,6 +45,8 @@ public:
     void initalloc();
     void delete_alloc();
     void initialization(int seed);
+
+    void print_graph(); // print adjacent list of graph; 
     void find_move();
     void make_move();
     void tabu_search();
@@ -198,6 +200,13 @@ void Graph::initialization(int seed)
     for (int i = 0; i < num_vertex; i++)
         solution[i] = rand() % num_color;//初始化颜色
 
+    /*
+    cerr << "initial solution: ";
+    for (int i = 0; i < num_vertex; i++)
+        cerr << solution[i] << " ";
+    cerr << endl;
+    */
+
     int num_edge;
     int* h_graph;
     int adj_color;
@@ -218,6 +227,20 @@ void Graph::initialization(int seed)
     conflict = conflict / 2;
     best_conflict = conflict;
     cerr << "init number of confilcts:" << conflict << endl;
+}
+
+// class: print adjacency list of graph;
+void Graph::print_graph()
+{
+    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        for (int j = 0;j < vertex_edge[i];j++)
+        {
+            cerr << adj_list[i][j] << " ";
+        }
+        cerr << endl;
+    }
 }
 
 // class: 找最佳禁忌或者非禁忌移动
@@ -403,12 +426,15 @@ public:
             test.adj_list[v2][tmp - 1] = v1;
         }
 
-        cerr << "Finish creating graph." << endl;
+        // cerr << "Finish creating graph." << endl;
         
 
         // test.create_graph("./data/DSJC0250.9.txt");
 
+        // test.print_graph();
+
         test.initialization(seed);
+
         test.tabu_search();
 
         /*
