@@ -357,7 +357,9 @@ int main()
     int seed = 2;
 
     Graph test;
-    test.create_graph("./data/DSJC0250.9.txt");
+    // test.create_graph("./data/DSJC0250.9.txt");
+    test.create_graph("./data/chvatal.txt");
+
     test.initialization(seed);
     test.tabu_search();
  
