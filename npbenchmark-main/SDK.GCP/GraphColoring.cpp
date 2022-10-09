@@ -1,17 +1,15 @@
 #include "GraphColoring.h"
 
-#include <random>
+#include <climits>
 #include <fstream>
 #include <iostream>
+#include <random>
 #include <set>
-#include<time.h>
-#include<fstream>
-#include<stdlib.h>
-#include<stack>
-#include<vector>
-#include<climits>
-#include<string>
-#include<iostream>
+#include <stack>
+#include <stdlib.h>
+#include <string>
+#include <time.h>
+#include <vector>
 
 using namespace std;
 
@@ -428,7 +426,6 @@ public:
 
         // cerr << "Finish creating graph." << endl;
         
-
         // test.create_graph("./data/DSJC0250.9.txt");
 
         // test.print_graph();
@@ -436,6 +433,11 @@ public:
         test.initialization(seed);
 
         test.tabu_search();
+
+        for (int i = 0;i < input.nodeNum;i++)
+        {
+            output[i] = test.solution[i];
+        }
 
         /*
 		test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
