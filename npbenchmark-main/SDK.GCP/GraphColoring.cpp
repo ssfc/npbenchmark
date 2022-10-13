@@ -47,9 +47,9 @@ namespace szx {
         void initialization(int seed, NodeColors& output);
 
         void print_graph(); // print adjacent list of graph; 
-        void find_move();
-        void make_move();
-        void tabu_search();
+        void find_move(NodeColors& output);
+        void make_move(NodeColors& output);
+        void tabu_search(NodeColors& output);
     };
 
     // class: 按空格切分每行
@@ -198,7 +198,7 @@ namespace szx {
 
         srand(seed);
         for (int i = 0; i < num_vertex; i++)
-            solution[i] = rand() % num_color;//初始化颜色
+            output[i] = rand() % num_color;//初始化颜色
 
         /*
         cerr << "initial solution: ";
@@ -215,10 +215,15 @@ namespace szx {
         {
             num_edge = vertex_edge[i];
             h_graph = adj_list[i];
-            c_color = solution[i];
+
+            c_color = output[i];
+
+            // c_color = solution[i];
             for (int u = 0; u < num_edge; u++)
             {
-                adj_color = solution[h_graph[u]];
+                adj_color = output[h_graph[u]];
+
+                // adj_color = solution[h_graph[u]];
                 if (c_color == adj_color) conflict++;
                 adj_color_table[i][adj_color]++;//初始化邻接颜色表
             }
@@ -244,7 +249,7 @@ namespace szx {
     }
 
     // class: 找最佳禁忌或者非禁忌移动
-    void Graph::find_move()
+    void Graph::find_move(NodeColors& output)
     {
         delta = 10000;//初始为最大整数
         int tmp;//临时变量
@@ -258,7 +263,9 @@ namespace szx {
 
         for (int i = 0; i < num_vertex; i++)
         {//11.3
-            c_color = solution[i];//6.1%
+            c_color = output[i];//6.1%
+
+            // c_color = solution[i];//6.1%
             h_color = adj_color_table[i];
             c_color_table = h_color[c_color];
             if (h_color[c_color] > 0)
@@ -321,15 +328,15 @@ namespace szx {
     }
 
     // class: 更新值
-    void Graph::make_move()
+    void Graph::make_move(NodeColors& output)
     {
         conflict = delta + conflict;//更新冲突值
 
         if (conflict < best_conflict)
             best_conflict = conflict;//更新历史最好冲突
 
-        int old_color = solution[node];
-        solution[node] = color;
+        int old_color = output[node];
+        output[node] = color;
         tabu_tenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
         int* h_graph = adj_list[node];
         int num_edge = vertex_edge[node];
@@ -344,7 +351,7 @@ namespace szx {
     }
 
     // class: 禁忌搜索
-    void Graph::tabu_search()
+    void Graph::tabu_search(NodeColors& output)
     {
         ofstream ofile("total_O3.txt", ios::out);
         double start_time, end_time;
@@ -358,8 +365,8 @@ namespace szx {
             // cerr << "iter: " << iter << endl; 
             if ((iter % 100000) == 0)
                 ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-            find_move();
-            make_move();
+            find_move(output);
+            make_move(output);
         }
 
         end_time = clock();
@@ -370,7 +377,7 @@ namespace szx {
         // save solutions; 
         for (int i = 0;i < num_vertex; i++)
         {
-            ofile << solution[i] << endl;
+            ofile << output[i] << endl;
         }
 
         ofile.close();
@@ -430,12 +437,14 @@ public:
 
         test.initialization(seed, output);
 
-        test.tabu_search();
+        test.tabu_search(output);
 
+        /*
         for (int i = 0;i < input.nodeNum;i++)
         {
             output[i] = test.solution[i];
         }
+        */
 
         /*
 		test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
