@@ -44,12 +44,12 @@ namespace szx {
         void create_graph(string path);
         void initalloc();
         void delete_alloc();
-        void initialization(int seed, NodeColors& output);
+        void initialization(int seed);
 
         void print_graph(); // print adjacent list of graph; 
-        void find_move(NodeColors& output);
-        void make_move(NodeColors& output);
-        void tabu_search(NodeColors& output);
+        void find_move();
+        void make_move();
+        void tabu_search();
     };
 
     // class: 按空格切分每行
@@ -191,14 +191,14 @@ namespace szx {
     }
 
     //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-    void Graph::initialization(int seed, NodeColors& output)
+    void Graph::initialization(int seed)
     {
         conflict = 0;
         initalloc();//初始化内存分配
 
         srand(seed);
         for (int i = 0; i < num_vertex; i++)
-            output[i] = rand() % num_color;//初始化颜色
+            solution[i] = rand() % num_color;//初始化颜色
 
         /*
         cerr << "initial solution: ";
@@ -215,15 +215,10 @@ namespace szx {
         {
             num_edge = vertex_edge[i];
             h_graph = adj_list[i];
-
-            c_color = output[i];
-
-            // c_color = solution[i];
+            c_color = solution[i];
             for (int u = 0; u < num_edge; u++)
             {
-                adj_color = output[h_graph[u]];
-
-                // adj_color = solution[h_graph[u]];
+                adj_color = solution[h_graph[u]];
                 if (c_color == adj_color) conflict++;
                 adj_color_table[i][adj_color]++;//初始化邻接颜色表
             }
@@ -249,7 +244,7 @@ namespace szx {
     }
 
     // class: 找最佳禁忌或者非禁忌移动
-    void Graph::find_move(NodeColors& output)
+    void Graph::find_move()
     {
         delta = 10000;//初始为最大整数
         int tmp;//临时变量
@@ -263,9 +258,7 @@ namespace szx {
 
         for (int i = 0; i < num_vertex; i++)
         {//11.3
-            c_color = output[i];//6.1%
-
-            // c_color = solution[i];//6.1%
+            c_color = solution[i];//6.1%
             h_color = adj_color_table[i];
             c_color_table = h_color[c_color];
             if (h_color[c_color] > 0)
@@ -328,15 +321,15 @@ namespace szx {
     }
 
     // class: 更新值
-    void Graph::make_move(NodeColors& output)
+    void Graph::make_move()
     {
         conflict = delta + conflict;//更新冲突值
 
         if (conflict < best_conflict)
             best_conflict = conflict;//更新历史最好冲突
 
-        int old_color = output[node];
-        output[node] = color;
+        int old_color = solution[node];
+        solution[node] = color;
         tabu_tenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
         int* h_graph = adj_list[node];
         int num_edge = vertex_edge[node];
@@ -351,7 +344,7 @@ namespace szx {
     }
 
     // class: 禁忌搜索
-    void Graph::tabu_search(NodeColors& output)
+    void Graph::tabu_search()
     {
         ofstream ofile("total_O3.txt", ios::out);
         double start_time, end_time;
@@ -365,8 +358,8 @@ namespace szx {
             // cerr << "iter: " << iter << endl; 
             if ((iter % 100000) == 0)
                 ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
-            find_move(output);
-            make_move(output);
+            find_move();
+            make_move();
         }
 
         end_time = clock();
@@ -377,7 +370,7 @@ namespace szx {
         // save solutions; 
         for (int i = 0;i < num_vertex; i++)
         {
-            ofile << output[i] << endl;
+            ofile << solution[i] << endl;
         }
 
         ofile.close();
@@ -414,9 +407,9 @@ public:
         // create graph; 
         int v1, v2;
         int tmp;
-        test.num_vertex = input.nodeNum; 
-        test.num_color = input.colorNum; 
-        test.init_graph(); 
+        test.num_vertex = input.nodeNum;
+        test.num_color = input.colorNum;
+        test.init_graph();
 
         for (int i = 0;i < input.edgeNum; i++)
         {
@@ -430,47 +423,40 @@ public:
         }
 
         // cerr << "Finish creating graph." << endl;
-        
+
         // test.create_graph("./data/DSJC0250.9.txt");
 
         // test.print_graph();
 
-        test.initialization(seed, output);
+        test.initialization(seed);
 
-        test.tabu_search(output);
+        test.tabu_search();
 
-        /*
         for (int i = 0;i < input.nodeNum;i++)
         {
             output[i] = test.solution[i];
         }
-        */
 
         /*
-		test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
+        test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
+        for(int i=0;i<input.edgeNum;i++)
+        {
+            test.add_edge(input.edges[i][0], input.edges[i][1]);
+        }
+        // g_test.print_graph();
+        test.tabucol(50, isTimeout);
+        cerr<<"find answer for color number "<<test.num_color<<": "<<endl;
+        for(int i=0;i<test.num_vertex;i++)
+        {
+            cerr<<i<<"->"<<g_test.solution[i]<<" ";
+        }
+        cerr<<endl;
 
-		for(int i=0;i<input.edgeNum;i++)
-		{
-			test.add_edge(input.edges[i][0], input.edges[i][1]);
-		}
-
-		// g_test.print_graph();
-
-		test.tabucol(50, isTimeout);
-
-		cerr<<"find answer for color number "<<test.num_color<<": "<<endl;
-		for(int i=0;i<test.num_vertex;i++)
-		{
-			cerr<<i<<"->"<<g_test.solution[i]<<" ";            
-		}
-		cerr<<endl;
-		
-		// g_test.save_vertex_color();
-
-		for(int i=0;i<input.nodeNum;i++)
-		{
-			output[i] = test.get_solution(i);
-		}
+        // g_test.save_vertex_color();
+        for(int i=0;i<input.nodeNum;i++)
+        {
+            output[i] = test.get_solution(i);
+        }
         */
 
 	}
