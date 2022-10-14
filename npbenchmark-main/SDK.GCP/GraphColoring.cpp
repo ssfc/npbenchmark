@@ -104,9 +104,6 @@ namespace szx {
         vector<string> data;
         string delim(" ");
         string textline;
-        bool start = false;
-        int v1, v2;
-        int tmp;
 
         cerr << "Start reading graph..." << endl;
 
@@ -120,10 +117,10 @@ namespace szx {
 
                 if (data.size() == 2)
                 {
-                    v1 = stoi(data[0]);
-                    v2 = stoi(data[1]);
+                    int v1 = stoi(data[0]);
+                    int v2 = stoi(data[1]);
 
-                    tmp = ++vertex_edge[v1];
+                    int tmp = ++vertex_edge[v1];
                     adj_list[v1][tmp - 1] = v2;
                     tmp = ++vertex_edge[v2];
                     adj_list[v2][tmp - 1] = v1;
@@ -133,7 +130,6 @@ namespace szx {
                     num_vertex = stoi(data[0]);
                     num_color = stoi(data[2]);
                     init_graph();
-                    start = true;
                 }
             }
         }
@@ -205,13 +201,12 @@ namespace szx {
         cerr << endl;
         */
 
-        int num_edge;
         int* h_graph;
         int adj_color;
 
         for (int i = 0; i < num_vertex; i++)
         {
-            num_edge = vertex_edge[i];
+            int num_edge = vertex_edge[i];
             h_graph = adj_list[i];
             int this_vertex_color = solution[i];
             for (int u = 0; u < num_edge; u++)
@@ -245,7 +240,6 @@ namespace szx {
     void Graph::find_move()
     {
         delta = 10000; //初始为最大整数
-        int tmp; //临时变量
         int tabu_delta = 10000;
         int count = 0, tabu_count = 0;
         int A = best_conflict - conflict;
@@ -266,7 +260,7 @@ namespace szx {
                     if (this_vertex_color != j)
                     {//cpu流水线
                         //非禁忌移动
-                        tmp = h_color[j] - c_color_table;
+                        int tmp = h_color[j] - c_color_table;
                         if (h_tabu[j] <= iter)
                         {//22.6
                             if (tmp <= delta)
@@ -301,17 +295,16 @@ namespace szx {
             }
         }
 
-        tmp = 0;
         if (tabu_delta < A && tabu_delta < delta)
         {
             delta = tabu_delta;
-            tmp = rand() % tabu_count;//相等delta随机选择
+            int tmp = rand() % tabu_count;//相等delta随机选择
             node = equ_tabudelta[tmp][0];
             color = equ_tabudelta[tmp][1];
         }
         else
         {
-            tmp = rand() % count;//相等delta随机选择
+            int tmp = rand() % count;//相等delta随机选择
             node = equ_delta[tmp][0];
             color = equ_delta[tmp][1];
         }
@@ -328,13 +321,13 @@ namespace szx {
         int old_color = solution[node];
         solution[node] = color;
         tabu_tenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
+
         int* h_graph = adj_list[node];
         int num_edge = vertex_edge[node];
-        int tmp;
 
         for (int i = 0; i < num_edge; i++)
         {//更新邻接颜色表
-            tmp = h_graph[i];
+            int tmp = h_graph[i];
             adj_color_table[tmp][old_color]--;
             adj_color_table[tmp][color]++;
         }
