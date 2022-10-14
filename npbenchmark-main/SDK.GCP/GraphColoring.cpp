@@ -19,6 +19,7 @@ namespace szx {
     {
     public:
         int num_vertex; // number of vertex in the graph; 
+        int num_color; //颜色数量
         int** adj_list; // adjacency list; 
         int* vertex_edge; // number of edge of each vertex; 
 
@@ -26,9 +27,10 @@ namespace szx {
         //禁忌算法
         int* solution; //结点对应颜色
         int conflict; //冲突值
+
         int** tabu_tenure; //禁忌表
-        int** adj_color_table; //邻接颜色表
-        int num_color; //颜色数量
+        int** adjacent_color_table; // first dim is num vertex, second dim is num color; 
+
         int delta; //移动增量
         int best_conflict; //历史最好的冲突值
         int node_moved; //每次移动的结点
@@ -81,12 +83,12 @@ namespace szx {
         try
         {
             solution = new int[num_vertex];
-            adj_color_table = new int* [num_vertex];
+            adjacent_color_table = new int* [num_vertex];
             tabu_tenure = new int* [num_vertex];
 
             for (int i = 0; i < num_vertex; i++)
             {
-                adj_color_table[i] = new int[num_color];
+                adjacent_color_table[i] = new int[num_color];
                 tabu_tenure[i] = new int[num_color];
             }
 
@@ -94,7 +96,7 @@ namespace szx {
             {
                 for (int j = 0; j < num_color; j++)
                 {
-                    adj_color_table[i][j] = 0;
+                    adjacent_color_table[i][j] = 0;
                     tabu_tenure[i][j] = 0;
                 }
             }
@@ -112,12 +114,12 @@ namespace szx {
         for (int i = 0; i < num_vertex; i++)
         {
             delete[] tabu_tenure[i];
-            delete[] adj_color_table[i];
+            delete[] adjacent_color_table[i];
             delete[] adj_list[i];
         }
         delete[] solution;
         delete[] tabu_tenure;
-        delete[] adj_color_table;
+        delete[] adjacent_color_table;
         delete[] adj_list;
     }
 
@@ -146,15 +148,19 @@ namespace szx {
             int num_edge = vertex_edge[i];
             h_graph = adj_list[i];
             int this_vertex_color = solution[i];
+
             for (int u = 0; u < num_edge; u++)
             {
                 adj_color = solution[h_graph[u]];
-                if (this_vertex_color == adj_color) conflict++;
-                adj_color_table[i][adj_color]++;//初始化邻接颜色表
+
+                if (this_vertex_color == adj_color) 
+                    conflict++;
+
+                adjacent_color_table[i][adj_color]++; //初始化邻接颜色表
             }
         }
 
-        conflict = conflict / 2;
+        conflict = conflict / 2; 
         best_conflict = conflict;
         cerr << "init number of confilcts:" << conflict << endl;
     }
@@ -176,9 +182,10 @@ namespace szx {
     // class: 找最佳禁忌或者非禁忌移动
     void Graph::find_move()
     {
-        delta = 10000; //初始为最大整数
-        int tabu_delta = 10000;
+        delta = INT_MAX; 
+        int tabu_delta = INT_MAX;
         int count = 0, tabu_count = 0;
+
         int A = best_conflict - conflict;
 
         int* h_color; //邻接颜色表行首指针
@@ -187,9 +194,9 @@ namespace szx {
         int c_color_table; //当前结点颜色表的值
 
         for (int i = 0; i < num_vertex; i++)
-        {//11.3
-            int this_vertex_color = solution[i];//6.1%
-            h_color = adj_color_table[i];
+        {
+            int this_vertex_color = solution[i];
+            h_color = adjacent_color_table[i];
             c_color_table = h_color[this_vertex_color];
             if (h_color[this_vertex_color] > 0)
             {//17.6
@@ -201,7 +208,7 @@ namespace szx {
                         //非禁忌移动
                         int tmp = h_color[j] - c_color_table;
                         if (h_tabu[j] <= iter)
-                        {//22.6
+                        {
                             if (tmp <= delta)
                             {//分支预判惩罚 6.0
                                 if (tmp < delta)
@@ -267,8 +274,8 @@ namespace szx {
         for (int i = 0; i < num_edge; i++)
         {//更新邻接颜色表
             int tmp = h_graph[i];
-            adj_color_table[tmp][old_color]--;
-            adj_color_table[tmp][color_moved]++;
+            adjacent_color_table[tmp][old_color]--;
+            adjacent_color_table[tmp][color_moved]++;
         }
     }
 
@@ -285,8 +292,6 @@ namespace szx {
         {
             iter++;
             // cerr << "iter: " << iter << endl; 
-            if ((iter % 100000) == 0)
-                ofile << iter << " " << conflict << " " << num_color << " " << delta << " " << best_conflict << endl;
             find_move();
             make_move();
         }
