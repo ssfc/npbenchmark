@@ -99,8 +99,6 @@ namespace szx {
     //读取文件数据，创建图
     void Graph::create_graph(string path)
     {
-        // ifstream infile("C:\\wamp64\\www\\npbenchmark\\npbenchmark-main\\SDK.GCP\\tabu_search\\data\\DSJC0500.1.txt", ios::in);
-        // ifstream infile("./data/DSJC0500.1.txt", ios::in);
         ifstream infile(path, ios::in);
 
         vector<string> data;
@@ -210,16 +208,16 @@ namespace szx {
         int num_edge;
         int* h_graph;
         int adj_color;
-        int c_color;
+
         for (int i = 0; i < num_vertex; i++)
         {
             num_edge = vertex_edge[i];
             h_graph = adj_list[i];
-            c_color = solution[i];
+            int this_vertex_color = solution[i];
             for (int u = 0; u < num_edge; u++)
             {
                 adj_color = solution[h_graph[u]];
-                if (c_color == adj_color) conflict++;
+                if (this_vertex_color == adj_color) conflict++;
                 adj_color_table[i][adj_color]++;//初始化邻接颜色表
             }
         }
@@ -246,27 +244,26 @@ namespace szx {
     // class: 找最佳禁忌或者非禁忌移动
     void Graph::find_move()
     {
-        delta = 10000;//初始为最大整数
-        int tmp;//临时变量
+        delta = 10000; //初始为最大整数
+        int tmp; //临时变量
         int tabu_delta = 10000;
         int count = 0, tabu_count = 0;
         int A = best_conflict - conflict;
-        int c_color;//当前结点颜色
-        int* h_color;//邻接颜色表行首指针
-        int* h_tabu;//禁忌表行首指针
-        int c_color_table;//当前结点颜色表的值
+        int* h_color; //邻接颜色表行首指针
+        int* h_tabu; //禁忌表行首指针
+        int c_color_table; //当前结点颜色表的值
 
         for (int i = 0; i < num_vertex; i++)
         {//11.3
-            c_color = solution[i];//6.1%
+            int this_vertex_color = solution[i];//6.1%
             h_color = adj_color_table[i];
-            c_color_table = h_color[c_color];
-            if (h_color[c_color] > 0)
+            c_color_table = h_color[this_vertex_color];
+            if (h_color[this_vertex_color] > 0)
             {//17.6
                 h_tabu = tabu_tenure[i];
                 for (int j = 0; j < num_color; j++)
                 {
-                    if (c_color != j)
+                    if (this_vertex_color != j)
                     {//cpu流水线
                         //非禁忌移动
                         tmp = h_color[j] - c_color_table;
@@ -437,27 +434,7 @@ public:
             output[i] = test.solution[i];
         }
 
-        /*
-        test.initialize_graph(input.nodeNum, input.edgeNum, input.colorNum);
-        for(int i=0;i<input.edgeNum;i++)
-        {
-            test.add_edge(input.edges[i][0], input.edges[i][1]);
-        }
-        // g_test.print_graph();
-        test.tabucol(50, isTimeout);
-        cerr<<"find answer for color number "<<test.num_color<<": "<<endl;
-        for(int i=0;i<test.num_vertex;i++)
-        {
-            cerr<<i<<"->"<<g_test.solution[i]<<" ";
-        }
-        cerr<<endl;
-
-        // g_test.save_vertex_color();
-        for(int i=0;i<input.nodeNum;i++)
-        {
-            output[i] = test.get_solution(i);
-        }
-        */
+        test.delete_alloc();
 
 	}
 };
