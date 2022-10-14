@@ -39,9 +39,7 @@ namespace szx {
         int equ_tabudelta[2000][2];//禁忌相同delta值
 
     public:
-        void split(const string& src, const string& delim, vector<string>& dest);
         void init_graph();
-        void create_graph(string path);
         void initalloc();
         void delete_alloc();
         void initialization(int seed);
@@ -51,25 +49,6 @@ namespace szx {
         void make_move();
         void tabu_search();
     };
-
-    // class: 按空格切分每行
-    void Graph::split(const string& src, const string& delim, vector<string>& dest)
-    {
-        dest.clear();
-        string str = src;
-        string::size_type start = 0, index;
-        string substr;
-        index = str.find(delim, start);    //在str中查找(起始：start) delim的任意字符的第一次出现的位置  
-        while (index != string::npos)
-        {
-            substr = str.substr(start, index - start);
-            dest.push_back(substr);
-            start = index + 1;
-            index = str.find(delim, start);    //在str中查找(起始：index) 第一个不属于delim的字符出现的位置  
-        }
-        substr = str.substr(start, index);
-        dest.push_back(substr);
-    }
 
     // class: 初始化图
     void Graph::init_graph()
@@ -94,48 +73,6 @@ namespace szx {
             cerr << "图内存分配失败" << e.what() << endl;
             init_graph();//分配失败重新分配
         }
-    }
-
-    //读取文件数据，创建图
-    void Graph::create_graph(string path)
-    {
-        ifstream infile(path, ios::in);
-
-        vector<string> data;
-        string delim(" ");
-        string textline;
-
-        cerr << "Start reading graph..." << endl;
-
-        if (infile.good())
-        {
-            while (!infile.fail())
-            {
-                getline(infile, textline);
-
-                split(textline, delim, data);
-
-                if (data.size() == 2)
-                {
-                    int v1 = stoi(data[0]);
-                    int v2 = stoi(data[1]);
-
-                    int tmp = ++vertex_edge[v1];
-                    adj_list[v1][tmp - 1] = v2;
-                    tmp = ++vertex_edge[v2];
-                    adj_list[v2][tmp - 1] = v1;
-                }
-                else if (data.size() == 3)
-                {
-                    num_vertex = stoi(data[0]);
-                    num_color = stoi(data[2]);
-                    init_graph();
-                }
-            }
-        }
-        infile.close();
-
-        cerr << "Finish reading graph." << endl;
     }
 
     // class: 分配内存; 
@@ -413,8 +350,6 @@ public:
         }
 
         // cerr << "Finish creating graph." << endl;
-
-        // test.create_graph("./data/DSJC0250.9.txt");
 
         // test.print_graph();
 
