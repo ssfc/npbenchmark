@@ -31,12 +31,12 @@ namespace szx {
         int num_color; //颜色数量
         int delta; //移动增量
         int best_conflict; //历史最好的冲突值
-        int node; //每次移动的结点
-        int color; //每次移动的颜色
+        int node_moved; //每次移动的结点
+        int color_moved; //每次移动的颜色
         int iter; //迭代次数
 
-        int equ_delta[2000][2];//非禁忌相同delta值
-        int equ_tabudelta[2000][2];//禁忌相同delta值
+        int equ_delta[2000][2]; //非禁忌相同delta值
+        int equ_tabu_delta[2000][2]; //禁忌相同delta值
 
     public:
         void init_graph();
@@ -180,8 +180,10 @@ namespace szx {
         int tabu_delta = 10000;
         int count = 0, tabu_count = 0;
         int A = best_conflict - conflict;
+
         int* h_color; //邻接颜色表行首指针
         int* h_tabu; //禁忌表行首指针
+
         int c_color_table; //当前结点颜色表的值
 
         for (int i = 0; i < num_vertex; i++)
@@ -223,8 +225,8 @@ namespace szx {
                                 }
 
                                 tabu_count++;
-                                equ_tabudelta[tabu_count - 1][0] = i;
-                                equ_tabudelta[tabu_count - 1][1] = j;
+                                equ_tabu_delta[tabu_count - 1][0] = i;
+                                equ_tabu_delta[tabu_count - 1][1] = j;
                             }
                         }
                     }
@@ -236,14 +238,14 @@ namespace szx {
         {
             delta = tabu_delta;
             int tmp = rand() % tabu_count;//相等delta随机选择
-            node = equ_tabudelta[tmp][0];
-            color = equ_tabudelta[tmp][1];
+            node_moved = equ_tabu_delta[tmp][0];
+            color_moved = equ_tabu_delta[tmp][1];
         }
         else
         {
             int tmp = rand() % count;//相等delta随机选择
-            node = equ_delta[tmp][0];
-            color = equ_delta[tmp][1];
+            node_moved = equ_delta[tmp][0];
+            color_moved = equ_delta[tmp][1];
         }
     }
 
@@ -255,18 +257,18 @@ namespace szx {
         if (conflict < best_conflict)
             best_conflict = conflict;//更新历史最好冲突
 
-        int old_color = solution[node];
-        solution[node] = color;
-        tabu_tenure[node][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
+        int old_color = solution[node_moved];
+        solution[node_moved] = color_moved;
+        tabu_tenure[node_moved][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
 
-        int* h_graph = adj_list[node];
-        int num_edge = vertex_edge[node];
+        int* h_graph = adj_list[node_moved];
+        int num_edge = vertex_edge[node_moved];
 
         for (int i = 0; i < num_edge; i++)
         {//更新邻接颜色表
             int tmp = h_graph[i];
             adj_color_table[tmp][old_color]--;
-            adj_color_table[tmp][color]++;
+            adj_color_table[tmp][color_moved]++;
         }
     }
 
