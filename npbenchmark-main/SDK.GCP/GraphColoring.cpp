@@ -277,10 +277,12 @@ namespace szx {
 
         for (int i = 0; i < vertex_edge[node_moved]; i++)
         {//更新邻接颜色表
-            int adj_list_node_moved_i = adj_list_node_moved[i];
+            int adj_list_node_moved_i = adj_list_node_moved[i]; 
 
-            adj_color_table[adj_list_node_moved_i][old_color]--;
-            adj_color_table[adj_list_node_moved_i][color_moved]++;
+            int* adj_color_table_adj_list_node_moved_i = adj_color_table[adj_list_node_moved_i];
+
+            adj_color_table_adj_list_node_moved_i[old_color]--;
+            adj_color_table_adj_list_node_moved_i[color_moved]++;
         }
     }
 
