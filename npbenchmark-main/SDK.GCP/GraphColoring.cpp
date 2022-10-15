@@ -42,7 +42,7 @@ namespace szx {
 
     public:
         void init_graph();
-        void initalloc();
+        void alloc_memory();
         void delete_alloc();
         void initialization(int seed);
 
@@ -82,8 +82,8 @@ namespace szx {
         }
     }
 
-    // class: 分配内存; 
-    void Graph::initalloc()
+    // class: allocate memory; 
+    void Graph::alloc_memory()
     {
         try
         {
@@ -112,11 +112,11 @@ namespace szx {
         catch (const bad_alloc& e)
         {
             cerr << "初始化内存分配失败:" << e.what() << endl;
-            initalloc();
+            alloc_memory();
         }
     }
 
-    // 释放内存
+    // free the memory; 
     void Graph::delete_alloc()
     {
         for (int i = 0; i < num_vertex; i++)
@@ -135,7 +135,7 @@ namespace szx {
     void Graph::initialization(int seed)
     {
         conflict = 0;
-        initalloc();//初始化内存分配
+        alloc_memory();//初始化内存分配
 
         srand(seed);
         for (int i = 0; i < num_vertex; i++)
@@ -163,7 +163,7 @@ namespace szx {
                 if (this_vertex_color == adj_color) 
                     conflict++;
 
-                adj_color_table_i[adj_color]++; //初始化邻接颜色表
+                adj_color_table_i[adj_color]++; // initialize adjacent color table; 
             }
         }
 
@@ -187,7 +187,7 @@ namespace szx {
         }
     }
 
-    // class: 找最佳禁忌或者非禁忌移动
+    // class: find best move (tabu or not tabu); 
     void Graph::find_move()
     {
         delta = INT_MAX; 
@@ -201,7 +201,8 @@ namespace szx {
         {
             int this_vertex_color = solution[i];
 
-            int* adj_color_table_i = adj_color_table[i];
+            // use one-dimensional array to save addressing time; 
+            int* adj_color_table_i = adj_color_table[i]; 
             int* tabu_tenure_table_i = tabu_tenure_table[i]; 
 
             if (adj_color_table_i[this_vertex_color] > 0)
@@ -221,9 +222,11 @@ namespace szx {
                                     count = 0;
                                     delta = tmp;
                                 }
+                                
+                                equ_delta[count][0] = i;
+                                equ_delta[count][1] = j;
+
                                 count++;
-                                equ_delta[count - 1][0] = i;
-                                equ_delta[count - 1][1] = j;
                             }
                         }
                         else
@@ -236,9 +239,10 @@ namespace szx {
                                     tabu_count = 0;
                                 }
 
+                                equ_tabu_delta[tabu_count][0] = i;
+                                equ_tabu_delta[tabu_count][1] = j;
+
                                 tabu_count++;
-                                equ_tabu_delta[tabu_count - 1][0] = i;
-                                equ_tabu_delta[tabu_count - 1][1] = j;
                             }
                         }
                     }
@@ -264,19 +268,20 @@ namespace szx {
     // class: 更新值
     void Graph::make_move()
     {
-        conflict = delta + conflict;//更新冲突值
+        conflict = delta + conflict; // update value of conflict; 
 
         if (conflict < best_conflict)
-            best_conflict = conflict;//更新历史最好冲突
+            best_conflict = conflict; // update minimum conflict of history; 
 
         int old_color = solution[node_moved];
         solution[node_moved] = color_moved;
-        tabu_tenure_table[node_moved][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
+        tabu_tenure_table[node_moved][old_color] = iter + conflict + rand() % 10 + 1; //更新禁忌表
 
         int* adj_list_node_moved = adj_list[node_moved];
 
+        // update adjacent color table; 
         for (int i = 0; i < vertex_edge[node_moved]; i++)
-        {//更新邻接颜色表
+        {
             int adj_list_node_moved_i = adj_list_node_moved[i]; 
 
             int* adj_color_table_adj_list_node_moved_i = adj_color_table[adj_list_node_moved_i];
@@ -286,7 +291,7 @@ namespace szx {
         }
     }
 
-    // class: 禁忌搜索
+    // class: tabu search; 
     void Graph::tabu_search()
     {
         ofstream ofile("total_O3.txt", ios::out);
