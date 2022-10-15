@@ -29,7 +29,7 @@ namespace szx {
         int conflict; //冲突值
 
         int** tabu_tenure_table; //禁忌表
-        int** adjacent_color_table; // first dim is num vertex, second dim is num color; 
+        int** adj_color_table; // first dim is num vertex, second dim is num color; 
 
         int delta; //移动增量
         int best_conflict; //历史最好的冲突值
@@ -83,12 +83,12 @@ namespace szx {
         try
         {
             solution = new int[num_vertex];
-            adjacent_color_table = new int* [num_vertex];
+            adj_color_table = new int* [num_vertex];
             tabu_tenure_table = new int* [num_vertex];
 
             for (int i = 0; i < num_vertex; i++)
             {
-                adjacent_color_table[i] = new int[num_color];
+                adj_color_table[i] = new int[num_color];
                 tabu_tenure_table[i] = new int[num_color];
             }
 
@@ -96,7 +96,7 @@ namespace szx {
             {
                 for (int j = 0; j < num_color; j++)
                 {
-                    adjacent_color_table[i][j] = 0;
+                    adj_color_table[i][j] = 0;
                     tabu_tenure_table[i][j] = 0;
                 }
             }
@@ -114,12 +114,12 @@ namespace szx {
         for (int i = 0; i < num_vertex; i++)
         {
             delete[] tabu_tenure_table[i];
-            delete[] adjacent_color_table[i];
+            delete[] adj_color_table[i];
             delete[] adj_list[i];
         }
         delete[] solution;
         delete[] tabu_tenure_table;
-        delete[] adjacent_color_table;
+        delete[] adj_color_table;
         delete[] adj_list;
     }
 
@@ -140,23 +140,19 @@ namespace szx {
         cerr << endl;
         */
 
-        int* h_graph;
-        int adj_color;
-
         for (int i = 0; i < num_vertex; i++)
         {
             int num_edge = vertex_edge[i];
-            h_graph = adj_list[i];
             int this_vertex_color = solution[i];
 
-            for (int u = 0; u < num_edge; u++)
+            for (int j = 0; j < num_edge; j++)
             {
-                adj_color = solution[h_graph[u]];
+                int adj_color = solution[adj_list[i][j]];
 
                 if (this_vertex_color == adj_color) 
                     conflict++;
 
-                adjacent_color_table[i][adj_color]++; //初始化邻接颜色表
+                adj_color_table[i][adj_color]++; //初始化邻接颜色表
             }
         }
 
@@ -194,7 +190,7 @@ namespace szx {
         for (int i = 0; i < num_vertex; i++)
         {
             int this_vertex_color = solution[i];
-            int* h_color = adjacent_color_table[i];
+            int* h_color = adj_color_table[i];
             c_color_table = h_color[this_vertex_color];
             if (h_color[this_vertex_color] > 0)
             {//17.6
@@ -267,13 +263,12 @@ namespace szx {
         tabu_tenure_table[node_moved][old_color] = iter + conflict + rand() % 10 + 1;//更新禁忌表
 
         int* h_graph = adj_list[node_moved];
-        int num_edge = vertex_edge[node_moved];
 
-        for (int i = 0; i < num_edge; i++)
+        for (int i = 0; i < vertex_edge[node_moved]; i++)
         {//更新邻接颜色表
             int tmp = h_graph[i];
-            adjacent_color_table[tmp][old_color]--;
-            adjacent_color_table[tmp][color_moved]++;
+            adj_color_table[tmp][old_color]--;
+            adj_color_table[tmp][color_moved]++;
         }
     }
 
