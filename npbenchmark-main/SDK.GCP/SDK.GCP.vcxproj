@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>%PROTOBUF_HOME%\include;%GUROBI_HOME%\include;%ZLIB_HOME%\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,9 +149,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GraphColoring.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="tabu.cpp" />
-    <ClCompile Include="test_rand.cpp" />
+    <ClCompile Include="Main.cpp">
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreaded</RuntimeLibrary>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphColoring.h" />
