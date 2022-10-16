@@ -42,8 +42,8 @@ namespace szx {
 
     public:
         void init_graph();
-        void alloc_memory();
-        void delete_alloc();
+        void allocate_memory();
+        void free_memory();
         void initialization(int seed);
 
         void print_graph(); // print adjacent list of graph; 
@@ -83,7 +83,7 @@ namespace szx {
     }
 
     // class: allocate memory; 
-    void Graph::alloc_memory()
+    void Graph::allocate_memory()
     {
         try
         {
@@ -112,12 +112,12 @@ namespace szx {
         catch (const bad_alloc& e)
         {
             cerr << "初始化内存分配失败:" << e.what() << endl;
-            alloc_memory();
+            allocate_memory();
         }
     }
 
     // free the memory; 
-    void Graph::delete_alloc()
+    void Graph::free_memory()
     {
         for (int i = 0; i < num_vertex; i++)
         {
@@ -135,7 +135,7 @@ namespace szx {
     void Graph::initialization(int seed)
     {
         conflict = 0;
-        alloc_memory();//初始化内存分配
+        allocate_memory(); //初始化内存分配
 
         srand(seed);
         for (int i = 0; i < num_vertex; i++)
@@ -381,7 +381,7 @@ public:
             output[i] = test.solution[i];
         }
 
-        test.delete_alloc();
+        test.free_memory();
 
 	}
 };
