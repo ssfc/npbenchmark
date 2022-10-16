@@ -19,23 +19,21 @@ namespace szx {
     {
     public:
         int num_vertex; // number of vertex in the graph; 
-        int num_color; //颜色数量
+        int num_color; // number of color in the graph; 
         int** adj_list; // adjacency list; 
         int* vertex_edge; // number of edge of each vertex; 
 
-        //---
-        //禁忌算法
-        int* solution; //结点对应颜色
-        int conflict; //冲突值
+        int* solution; // color of each vertex; 
+        int conflict; 
 
-        int** tabu_tenure_table; //禁忌表
+        int** tabu_tenure_table; 
         int** adj_color_table; // first dim is num vertex, second dim is num color; 
 
-        int delta; //移动增量
-        int best_conflict; //历史最好的冲突值
-        int node_moved; //每次移动的结点
+        int delta; // 移动增量
+        int best_conflict; // 历史最好的冲突值
+        int node_moved; // 每次移动的结点
         int color_moved; //每次移动的颜色
-        int iter; //迭代次数
+        int iter;
 
         int equ_delta[2000][2]; //非禁忌相同delta值
         int equ_tabu_delta[2000][2]; //禁忌相同delta值
@@ -197,22 +195,22 @@ namespace szx {
 
         int A = best_conflict - conflict;
 
-        for (int i = 0; i < num_vertex; i++)
+        for (int i = 0; i < num_vertex; i++) // i is vertex; 
         {
-            int this_vertex_color = solution[i];
+            int solution_i = solution[i]; // solution_i is color; 
 
             // use one-dimensional array to save addressing time; 
             int* adj_color_table_i = adj_color_table[i]; 
             int* tabu_tenure_table_i = tabu_tenure_table[i]; 
 
-            if (adj_color_table_i[this_vertex_color] > 0)
-            {//17.6
-                for (int j = 0; j < num_color; j++)
+            if (adj_color_table_i[solution_i] > 0) // if vertex i overlap its neighbor's color; 
+            {
+                for (int j = 0; j < num_color; j++) // j is color; 
                 {
-                    if (this_vertex_color != j)
+                    if (solution_i != j) // find a new color; 
                     {//cpu流水线
                         //非禁忌移动
-                        int tmp = adj_color_table_i[j] - adj_color_table_i[this_vertex_color];
+                        int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i];
                         if (tabu_tenure_table_i[j] <= iter)
                         {
                             if (tmp <= delta)
@@ -253,15 +251,15 @@ namespace szx {
         if (tabu_delta < A && tabu_delta < delta)
         {
             delta = tabu_delta;
-            int tmp = rand() % tabu_count;//相等delta随机选择
-            node_moved = equ_tabu_delta[tmp][0];
-            color_moved = equ_tabu_delta[tmp][1];
+            int rand_select = rand() % tabu_count; // 相等tabu_delta随机选择
+            node_moved = equ_tabu_delta[rand_select][0];
+            color_moved = equ_tabu_delta[rand_select][1];
         }
         else
         {
-            int tmp = rand() % count;//相等delta随机选择
-            node_moved = equ_delta[tmp][0];
-            color_moved = equ_delta[tmp][1];
+            int rand_select = rand() % count; // 相等delta随机选择
+            node_moved = equ_delta[rand_select][0];
+            color_moved = equ_delta[rand_select][1];
         }
     }
 
