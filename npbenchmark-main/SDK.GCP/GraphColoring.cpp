@@ -48,12 +48,12 @@ namespace szx {
         void tabu_search();
     };
 
-    // class: 初始化图
+    // class: initialize graph;
     void Graph::init_graph()
     {
         try
         {
-            adj_list = new int* [num_vertex];//初始化图
+            adj_list = new int* [num_vertex];
             vertex_edge = new int[num_vertex];
 
             for (int i = 0; i < num_vertex; i++)
