@@ -1,14 +1,12 @@
 #include "GraphColoring.h"
 
 #include <climits>
+#include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <random>
-#include <set>
-#include <stack>
-#include <stdlib.h>
 #include <string>
-#include <time.h>
 #include <vector>
 
 using namespace std;
