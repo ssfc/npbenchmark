@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <random>
+#include <tabucol.h>
 #include <string>
 #include <vector>
 
@@ -39,7 +40,7 @@ namespace szx {
     public:
         void init_graph();
         void allocate_memory();
-        void free_memory();
+        void free_memory() const;
         void initialization(int seed);
 
         void print_graph(); // print adjacent list of graph; 
@@ -113,7 +114,7 @@ namespace szx {
     }
 
     // free the memory; 
-    void Graph::free_memory()
+    void Graph::free_memory() const
     {
         for (int i = 0; i < num_vertex; i++)
         {
