@@ -12,9 +12,9 @@
 
 using namespace std;
 
-namespace szx {
-
-    class Solver {
+namespace szx
+{
+    class Solver{
         // random number generator.
         mt19937 pseudoRandNumGen;
         void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
