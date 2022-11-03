@@ -75,7 +75,6 @@ namespace szx {
         catch (const bad_alloc& e)
         {
             cerr << "图内存分配失败" << e.what() << endl;
-            init_graph();//分配失败重新分配
         }
     }
 
@@ -109,7 +108,6 @@ namespace szx {
         catch (const bad_alloc& e)
         {
             cerr << "初始化内存分配失败:" << e.what() << endl;
-            allocate_memory();
         }
     }
 
