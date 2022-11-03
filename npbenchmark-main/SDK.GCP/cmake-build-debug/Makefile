@@ -176,6 +176,30 @@ Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
+tabucol.obj: tabucol.cpp.obj
+.PHONY : tabucol.obj
+
+# target to build an object file
+tabucol.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/tabucol.cpp.obj
+.PHONY : tabucol.cpp.obj
+
+tabucol.i: tabucol.cpp.i
+.PHONY : tabucol.i
+
+# target to preprocess a source file
+tabucol.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/tabucol.cpp.i
+.PHONY : tabucol.cpp.i
+
+tabucol.s: tabucol.cpp.s
+.PHONY : tabucol.s
+
+# target to generate assembly for a file
+tabucol.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/tabucol.cpp.s
+.PHONY : tabucol.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... Main.obj
 	@echo ... Main.i
 	@echo ... Main.s
+	@echo ... tabucol.obj
+	@echo ... tabucol.i
+	@echo ... tabucol.s
 .PHONY : help
 
 

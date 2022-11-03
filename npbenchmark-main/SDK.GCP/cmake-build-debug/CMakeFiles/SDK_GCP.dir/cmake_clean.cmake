@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SDK_GCP.dir/GraphColoring.cpp.obj.d"
   "CMakeFiles/SDK_GCP.dir/Main.cpp.obj"
   "CMakeFiles/SDK_GCP.dir/Main.cpp.obj.d"
+  "CMakeFiles/SDK_GCP.dir/tabucol.cpp.obj"
+  "CMakeFiles/SDK_GCP.dir/tabucol.cpp.obj.d"
   "SDK_GCP.exe"
   "SDK_GCP.exe.manifest"
   "SDK_GCP.pdb"
