@@ -43,7 +43,7 @@ namespace szx {
         void free_memory() const;
         void initialization(int seed);
 
-        void print_graph(); // print adjacent list of graph; 
+        void print_graph() const; // print adjacent list of graph;
         void find_move();
         void make_move();
         void tabu_search();
@@ -170,7 +170,7 @@ namespace szx {
     }
 
     // class: print adjacency list of graph;
-    void Graph::print_graph()
+    void Graph::print_graph() const
     {
         cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
         for (int i = 0; i < num_vertex; i++)
