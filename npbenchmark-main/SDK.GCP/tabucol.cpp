@@ -42,14 +42,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
                 adj_list_i[j] = 0;
             }
         }
-    }
-    catch (const bad_alloc& e)
-    {
-        cerr << "图内存分配失败" << e.what() << endl;
-    }
 
-    try
-    {
         solution = new int[num_vertex];
         adj_color_table = new int* [num_vertex];
         tabu_tenure_table = new int* [num_vertex];
@@ -97,7 +90,7 @@ void Graph::free_memory() const
 void Graph::initialization(int seed)
 {
     conflict = 0;
-    
+
     initRand(seed);
     for (int i = 0; i < num_vertex; i++)
         solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
