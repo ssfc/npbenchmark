@@ -47,11 +47,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
     {
         cerr << "图内存分配失败" << e.what() << endl;
     }
-}
 
-// class: allocate memory;
-void Graph::allocate_memory()
-{
     try
     {
         solution = new int[num_vertex];
@@ -101,9 +97,7 @@ void Graph::free_memory() const
 void Graph::initialization(int seed)
 {
     conflict = 0;
-    allocate_memory(); //初始化内存分配
-
-    // srand(seed);
+    
     initRand(seed);
     for (int i = 0; i < num_vertex; i++)
         solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
