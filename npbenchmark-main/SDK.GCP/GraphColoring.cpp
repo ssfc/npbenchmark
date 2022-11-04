@@ -40,13 +40,11 @@ namespace szx
             }
             */
 
-            Graph test;
+            Graph test(input.nodeNum, input.colorNum);
 
             // create graph;
             int v1, v2;
             int tmp;
-            test.num_vertex = input.nodeNum;
-            test.num_color = input.colorNum;
             test.init_graph();
 
             for (int i = 0;i < input.edgeNum; i++)
