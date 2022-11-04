@@ -45,7 +45,6 @@ namespace szx
             // create graph;
             int v1, v2;
             int tmp;
-            test.init_graph();
 
             for (int i = 0;i < input.edgeNum; i++)
             {

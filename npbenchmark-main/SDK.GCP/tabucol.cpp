@@ -22,11 +22,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-}
 
-// class: initialize graph;
-void Graph::init_graph()
-{
     try
     {
         adj_list = new int* [num_vertex];
