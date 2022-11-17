@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "chenfeng_tabu",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "chenfeng_tabu::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chenfeng_tabu-Debug-d321b9625e2087ca11b7.json",
+					"name" : "chenfeng_tabu",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/chenfeng_tabu/cmake-build-debug",
+		"source" : "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/chenfeng_tabu"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

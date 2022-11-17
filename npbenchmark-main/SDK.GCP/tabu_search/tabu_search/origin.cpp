@@ -349,7 +349,7 @@ int main()
     int num_vertex; // number of vertex in the graph; 
 
 
-    tabu_search(seed, "./data/DSJC0250.9.txt");
+    tabu_search(seed, "./data/DSJC0500.5.txt");
 
     return 0;
 }

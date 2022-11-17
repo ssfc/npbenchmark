@@ -479,8 +479,7 @@ CMakeFiles/SDK_GCP.dir/tabucol.cpp.obj: ../tabucol.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numeric \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_numeric.h \
-  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit \
-  ../tabucol.h
+  C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit
 
 
 C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h:
