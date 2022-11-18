@@ -9,7 +9,7 @@
 9. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
 10. CoCoThink: NOT use global parameters; (2022年11月18日)
 11. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
-12. Test the running time of CoCoThink; 
+12. Test the running time of CoCoThink: DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
 13. 
 14. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
 15. Grasssleeve: use global parameters; No response on windows platform; 
