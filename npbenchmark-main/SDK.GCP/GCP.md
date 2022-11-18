@@ -15,20 +15,21 @@
 15. Test the running time of CoCoThink: 
 16. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
 17. DSJC250.9.col is 84698 iterations, 1.34207 seconds; 
-18. DSJC500.5.col is 54756380 iterations, 1180.34 seconds; far worse than me; 
-19. 
-20. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-21. Grasssleeve: use global parameters; No response on windows platform; 
-22. 
-23. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-24. jokerpwn: NOT use global parameters; 
-25. 
-26. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-27. KailinLi: NOT use global parameters; 
-28. 
-29. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-30. RyleeRuiYe: use global parameters; 
-31. 
-32. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-33. yuanFang1: use global parameters; 
-34. 
+18. DSJC500.5.col is 54 756 380 iterations, 1180.34 seconds; 
+19. My DSJC0500.5.txt is 223 680 573 iterations, 502.478 seconds; 
+20. 
+21. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
+22. Grasssleeve: use global parameters; No response on windows platform; 
+23. 
+24. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
+25. jokerpwn: NOT use global parameters; 
+26. 
+27. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+28. KailinLi: NOT use global parameters; 
+29. 
+30. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+31. RyleeRuiYe: use global parameters; 
+32. 
+33. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+34. yuanFang1: use global parameters; 
+35. 
