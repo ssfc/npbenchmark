@@ -1,3 +1,0 @@
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/RyleeRuiYe/cmake-build-debug/CMakeFiles/RyleeRuiYe.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/RyleeRuiYe/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/RyleeRuiYe/cmake-build-debug/CMakeFiles/rebuild_cache.dir

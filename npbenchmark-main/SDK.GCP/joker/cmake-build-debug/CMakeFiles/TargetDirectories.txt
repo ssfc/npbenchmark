@@ -1,3 +1,0 @@
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/joker/cmake-build-debug/CMakeFiles/joker.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/joker/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/joker/cmake-build-debug/CMakeFiles/rebuild_cache.dir
