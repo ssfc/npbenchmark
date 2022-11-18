@@ -2,14 +2,21 @@
 2. Search "DSJC500.5.col site:github.com" in google and we can find many sample answers; (2022年11月17日)
 3. Sample of albnner: https://github.com/albnner/SmartLab 
 4. albnner: also use global parameters; 
-5. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
-6. chenfengkg: use global parameters; 
-7. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
-8. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem
-9. Grasssleeve: No response on windows platform; 
-10. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-11. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-12. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring
-13. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-14. 
+5. 
+6. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
+7. chenfengkg: use global parameters; 
+8. 
+9. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
+10. 
+11. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
+12. Grasssleeve: No response on windows platform; 
+13. 
+14. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
 15. 
+16. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+17. 
+18. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+19. 
+20. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+21. 
+22. 
