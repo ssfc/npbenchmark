@@ -19,7 +19,8 @@
 19. KailinLi: NOT use global parameters; 
 20. 
 21. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-22. 
-23. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-24. 
-25. 
+22. RyleeRuiYe: use global parameters; 
+23. 
+24. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+25. yuanFang1: use global parameters; 
+26. 
