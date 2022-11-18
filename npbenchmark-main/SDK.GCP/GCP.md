@@ -13,11 +13,12 @@
 13. Grasssleeve: use global parameters; No response on windows platform; 
 14. 
 15. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-16. 
-17. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-18. 
-19. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-20. 
-21. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-22. 
+16. jokerpwn: NOT use global parameters; 
+17. 
+18. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+19. 
+20. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+21. 
+22. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
 23. 
+24. 
