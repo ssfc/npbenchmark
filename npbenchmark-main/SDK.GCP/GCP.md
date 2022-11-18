@@ -1,7 +1,7 @@
 1. 一个vertex改变颜色只会改变与它相邻vertex的相邻edge的冲突值，不会改变不与它相邻的vertex和edge的冲突值，这是因为一个vertex是通过星形的edge嵌入到graph中。因此只需计算这个vertex周边冲突值的变化，即可得出整张graph冲突值的变化。(2022年10月21日)
 2. Search "DSJC500.5.col site:github.com" in google and we can find many sample answers; (2022年11月17日)
 3. Old version of dataset can be seen at: https://github.com/albnner/SmartLab/tree/master/Tabucol_GPH it starts with SOURCE: David Johnson (dsj@research.att.com) 
-4. Dataset 125.5 has 17 colors, 250.9 has 72 colors, 500.5 has 49 colors; 
+4. Dataset 125.5 has 17 colors, 250.9 has 72 colors, 500.5 has 49 colors; (2022年11月18日)
 5. 
 6. Sample of albnner: https://github.com/albnner/SmartLab 
 7. albnner: use global parameters; 
