@@ -16,9 +16,10 @@
 16. jokerpwn: NOT use global parameters; 
 17. 
 18. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-19. 
-20. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-21. 
-22. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-23. 
+19. KailinLi: NOT use global parameters; 
+20. 
+21. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+22. 
+23. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
 24. 
+25. 
