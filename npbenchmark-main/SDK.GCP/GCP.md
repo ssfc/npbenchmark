@@ -12,20 +12,22 @@
 12. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
 13. CoCoThink: NOT use global parameters; (2022年11月18日)
 14. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
-15. Test the running time of CoCoThink: DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
-16. 
-17. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-18. Grasssleeve: use global parameters; No response on windows platform; 
-19. 
-20. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-21. jokerpwn: NOT use global parameters; 
-22. 
-23. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-24. KailinLi: NOT use global parameters; 
-25. 
-26. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-27. RyleeRuiYe: use global parameters; 
-28. 
-29. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-30. yuanFang1: use global parameters; 
-31. 
+15. Test the running time of CoCoThink: 
+16. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
+17. DSJC250.9.col is 
+18. 
+19. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
+20. Grasssleeve: use global parameters; No response on windows platform; 
+21. 
+22. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
+23. jokerpwn: NOT use global parameters; 
+24. 
+25. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+26. KailinLi: NOT use global parameters; 
+27. 
+28. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+29. RyleeRuiYe: use global parameters; 
+30. 
+31. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+32. yuanFang1: use global parameters; 
+33. 
