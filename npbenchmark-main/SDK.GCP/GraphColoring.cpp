@@ -63,7 +63,14 @@ namespace szx
 
             test.initialization(seed);
 
+            double start_time = clock();
+
             test.tabu_search();
+
+            double end_time = clock();
+            double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+            cerr << "success, iterations: " << test.iter << " elapsed_time(s): " << elapsed_time
+                 << " frequency:" << double(test.iter / elapsed_time) << endl;
 
             for (int i = 0;i < input.nodeNum;i++)
             {
