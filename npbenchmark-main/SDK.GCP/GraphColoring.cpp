@@ -77,6 +77,41 @@ namespace szx
                 output[i] = test.solution[i];
             }
 
+            // generate all results;
+            for(seed=0;seed<5;seed++)
+            {
+                Graph test(input.nodeNum, input.colorNum);
+
+                // create graph;
+                int v1, v2;
+                int tmp;
+
+                for (int i = 0;i < input.edgeNum; i++)
+                {
+                    v1 = input.edges[i][0];
+                    v2 = input.edges[i][1];
+
+                    tmp = ++test.vertex_edge[v1];
+                    test.adj_list[v1][tmp - 1] = v2;
+                    tmp = ++test.vertex_edge[v2];
+                    test.adj_list[v2][tmp - 1] = v1;
+                }
+
+                test.initialization(seed);
+
+                start_time = clock();
+
+                test.tabu_search();
+
+                end_time = clock();
+                elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+                cerr << "success, iterations: " << test.iter << " elapsed_time(s): " << elapsed_time
+                     << " frequency:" << test.iter / elapsed_time << endl;
+
+            }
+
+
+
             test.free_memory();
 
         }
