@@ -31,8 +31,6 @@ public:
 
 public:
     Graph(int num_vertex, int num_color);
-    void init_graph();
-    void allocate_memory();
     void free_memory() const;
     void initialization(int seed);
 
