@@ -119,9 +119,17 @@ namespace szx
                      << " frequency:" << frequency << endl;
 
                 Record this_record = {iterations: this_graph.iter, elapsed_time: elapsed_time, frequency: frequency};
+                seed_record.push_back(this_record);
 
                 this_graph.free_memory();
             }
+
+            for(int i=0;i<seed_record.size();i++)
+            {
+                cerr<<seed_record[i].iterations<<" "<<seed_record[i].elapsed_time<<" "<<seed_record[i].frequency<<endl;
+            }
+            cerr<<endl;
+
         }
     };
 
