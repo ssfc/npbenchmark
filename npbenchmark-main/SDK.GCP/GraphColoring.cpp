@@ -86,17 +86,17 @@ namespace szx
 
                 // create graph;
                 int vertex_1, vertex_2;
-                int tmp;
+                int temp;
 
                 for (int i = 0;i < input.edgeNum; i++)
                 {
                     vertex_1 = input.edges[i][0];
                     vertex_2 = input.edges[i][1];
 
-                    tmp = ++test.vertex_edge[vertex_1];
-                    test.adj_list[vertex_1][tmp - 1] = vertex_2;
-                    tmp = ++test.vertex_edge[vertex_2];
-                    test.adj_list[vertex_2][tmp - 1] = vertex_1;
+                    temp = ++test.vertex_edge[vertex_1];
+                    test.adj_list[vertex_1][temp - 1] = vertex_2;
+                    temp = ++test.vertex_edge[vertex_2];
+                    test.adj_list[vertex_2][temp - 1] = vertex_1;
                 }
 
                 test.initialization(seed);
