@@ -82,7 +82,7 @@ namespace szx
             // generate all results;
             for(seed=0;seed<5;seed++)
             {
-                Graph test(input.nodeNum, input.colorNum);
+                Graph this_graph(input.nodeNum, input.colorNum);
 
                 // create graph;
                 int vertex_1, vertex_2;
@@ -93,24 +93,24 @@ namespace szx
                     vertex_1 = input.edges[i][0];
                     vertex_2 = input.edges[i][1];
 
-                    temp = ++test.vertex_edge[vertex_1];
-                    test.adj_list[vertex_1][temp - 1] = vertex_2;
-                    temp = ++test.vertex_edge[vertex_2];
-                    test.adj_list[vertex_2][temp - 1] = vertex_1;
+                    temp = ++this_graph.vertex_edge[vertex_1];
+                    this_graph.adj_list[vertex_1][temp - 1] = vertex_2;
+                    temp = ++this_graph.vertex_edge[vertex_2];
+                    this_graph.adj_list[vertex_2][temp - 1] = vertex_1;
                 }
 
-                test.initialization(seed);
+                this_graph.initialization(seed);
 
                 start_time = clock();
 
-                test.tabu_search();
+                this_graph.tabu_search();
 
                 end_time = clock();
                 elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
-                cerr << "success, iterations: " << test.iter << " elapsed_time(s): " << elapsed_time
-                     << " frequency:" << test.iter / elapsed_time << endl;
+                cerr << "success, iterations: " << this_graph.iter << " elapsed_time(s): " << elapsed_time
+                     << " frequency:" << this_graph.iter / elapsed_time << endl;
 
-                test.free_memory();
+                this_graph.free_memory();
             }
         }
     };
