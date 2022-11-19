@@ -13,9 +13,16 @@
 
 using namespace std;
 
-// class: initialize graph;
-void Graph::init_graph()
+// random number generator.
+mt19937 pseudoRandNumGen;
+void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
+
+// constructor;
+Graph::Graph(int input_num_vertex, int input_num_color)
 {
+    num_vertex = input_num_vertex;
+    num_color = input_num_color;
+
     try
     {
         adj_list = new int* [num_vertex];
@@ -35,18 +42,7 @@ void Graph::init_graph()
                 adj_list_i[j] = 0;
             }
         }
-    }
-    catch (const bad_alloc& e)
-    {
-        cerr << "图内存分配失败" << e.what() << endl;
-    }
-}
 
-// class: allocate memory;
-void Graph::allocate_memory()
-{
-    try
-    {
         solution = new int[num_vertex];
         adj_color_table = new int* [num_vertex];
         tabu_tenure_table = new int* [num_vertex];
@@ -94,11 +90,12 @@ void Graph::free_memory() const
 void Graph::initialization(int seed)
 {
     conflict = 0;
-    allocate_memory(); //初始化内存分配
 
-    srand(seed);
+    // initRand(seed);
+    initRand(6);
+    
     for (int i = 0; i < num_vertex; i++)
-        solution[i] = rand() % num_color;//初始化颜色
+        solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
     /*
     cerr << "initial solution: ";
@@ -212,13 +209,13 @@ void Graph::find_move()
     if (tabu_delta < A && tabu_delta < delta)
     {
         delta = tabu_delta;
-        int rand_select = rand() % tabu_count; // 相等tabu_delta随机选择
+        int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
         node_moved = equ_tabu_delta[rand_select][0];
         color_moved = equ_tabu_delta[rand_select][1];
     }
     else
     {
-        int rand_select = rand() % count; // 相等delta随机选择
+        int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
         node_moved = equ_delta[rand_select][0];
         color_moved = equ_delta[rand_select][1];
     }
@@ -234,7 +231,7 @@ void Graph::make_move()
 
     int old_color = solution[node_moved];
     solution[node_moved] = color_moved;
-    tabu_tenure_table[node_moved][old_color] = iter + conflict + rand() % 10 + 1; //更新禁忌表
+    tabu_tenure_table[node_moved][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     int* adj_list_node_moved = adj_list[node_moved];
 
