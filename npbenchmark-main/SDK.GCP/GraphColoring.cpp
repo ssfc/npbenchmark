@@ -78,6 +78,15 @@ namespace szx
 
             test_graph.free_memory();
 
+            struct Record
+            {
+                int iterations;
+                double elapsed_time;
+                double frequency;
+            }; 
+
+            vector<Record> seed_record;
+
             // generate all results;
             for(seed=0;seed<5;seed++)
             {
