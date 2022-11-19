@@ -92,8 +92,8 @@ void Graph::initialization(int seed)
     conflict = 0;
 
     // initRand(seed);
-    initRand(6);
-    
+    initRand(3);
+
     for (int i = 0; i < num_vertex; i++)
         solution[i] = pseudoRandNumGen() % num_color;//³õÊ¼»¯ÑÕÉ«
 
