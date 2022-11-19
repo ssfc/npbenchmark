@@ -2,49 +2,62 @@
 2. Search "DSJC500.5.col site:github.com" in google and we can find many sample answers; (2022年11月17日)
 3. Old version of dataset can be seen at: https://github.com/albnner/SmartLab/tree/master/Tabucol_GPH it starts with SOURCE: David Johnson (dsj@research.att.com) 
 4. Dataset 125.5 has 17 colors, 250.9 has 72 colors, 500.5 has 49 colors; (2022年11月18日)
-5. My DSJC0500.1.txt is 91 729 575 iterations, 76.669 seconds (seed 2);
-6. My DSJC0500.1.txt is 119 326 345 iterations, 96.6285 seconds (seed 3); 
-7. My DSJC0500.1.txt is 78 869 859 iterations, 64.7048 seconds (seed 4); 
-8. My DSJC0500.1.txt is 258 364 945 iterations, 212.171 seconds (seed 5); 
-9. My DSJC0500.1.txt is 312 726 838 iterations, 256.678 seconds (seed 6); 
-10. My DSJC0500.1.txt is 32 209 388 iterations, 28.5888 seconds (seed 7);
-11. 
-12. My DSJC0500.5.txt is 223 680 573 iterations, 502.478 seconds (seed 2); 
-13. My DSJC0500.5.txt is 176 934 040 iterations, 374.859 seconds (seed 3); 
-14. My DSJC0500.5.txt is 97 163 848 iterations, 205.569 seconds (seed 4); 
-15. My DSJC0500.5.txt is 46 633 598 iterations, 99.9977 seconds (seed 5); 
-16. My DSJC0500.5.txt is 12 541 308 iterations, 28.7255 seconds (seed 6); 
-17. My DSJC0500.5.txt is 32 686 148 iterations, 71.1719 seconds (seed 7); 
-18. 
-19. Sample of albnner: https://github.com/albnner/SmartLab 
-20. albnner: use global parameters; 
-21. 
-22. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
-23. chenfengkg: use global parameters; 
-24. 
-25. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
-26. CoCoThink: NOT use global parameters; (2022年11月18日)
-27. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
-28. Test the running time of CoCoThink: 
-29. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
-30. DSJC250.9.col is 84698 iterations, 1.34207 seconds; 
-31. DSJC500.5.col is 54 756 380 iterations, 1180.34 seconds; 
-32. DSJC500.5.col is 48 212 914 iterations, 1033.54 seconds; (replace rand with pseudoRandNumGen) 
-33. 
-34. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
-35. 
-36. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-37. Grasssleeve: use global parameters; No response on windows platform; 
-38. 
-39. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-40. jokerpwn: NOT use global parameters; 
-41. 
-42. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-43. KailinLi: NOT use global parameters; 
-44. 
-45. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-46. RyleeRuiYe: use global parameters; 
-47. 
-48. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-49. yuanFang1: use global parameters; 
-50. 
+5. Our running speed is fast enough, the task now is escape local minimum; 
+6. My DSJC0500.1.txt is 123 604 301 iterations, 100.438 seconds (seed 1);
+7. My DSJC0500.1.txt is 91 729 575 iterations, 76.669 seconds (seed 2);
+8. My DSJC0500.1.txt is 119 326 345 iterations, 96.6285 seconds (seed 3); 
+9. My DSJC0500.1.txt is 78 869 859 iterations, 64.7048 seconds (seed 4); 
+10. My DSJC0500.1.txt is 258 364 945 iterations, 212.171 seconds (seed 5); 
+11. My DSJC0500.1.txt is 312 726 838 iterations, 256.678 seconds (seed 6); 
+12. My DSJC0500.1.txt is 32 209 388 iterations, 28.5888 seconds (seed 7); 
+13. My DSJC0500.1.txt is 107 452 109 iterations, 88.9919 seconds (seed 8); 
+14. My DSJC0500.1.txt is 107 452 109 iterations, 88.9919 seconds (seed 8); 
+15. My DSJC0500.1.txt is 417 779 635 iterations, 321.543 seconds (seed 9); 
+16. My DSJC0500.1.txt is 28 009 744 iterations, 23.5991 seconds (seed 10); 
+17. 
+18. My DSJC0500.5.txt is 267 474 167 iterations, 565.158 seconds (seed 1); 
+19. My DSJC0500.5.txt is 223 680 573 iterations, 502.478 seconds (seed 2); 
+20. My DSJC0500.5.txt is 176 934 040 iterations, 374.859 seconds (seed 3); 
+21. My DSJC0500.5.txt is 97 163 848 iterations, 205.569 seconds (seed 4); 
+22. My DSJC0500.5.txt is 46 633 598 iterations, 99.9977 seconds (seed 5); 
+23. My DSJC0500.5.txt is 12 541 308 iterations, 28.7255 seconds (seed 6); 
+24. My DSJC0500.5.txt is 32 686 148 iterations, 71.1719 seconds (seed 7); 
+25. My DSJC0500.5.txt is 36 928 629 iterations, 78.049 seconds (seed 8); 
+26. My DSJC0500.5.txt is 8 581 771 iterations, 18.1217 seconds (seed 9); 
+27. My DSJC0500.5.txt is 39 288 630 iterations, 84.2613 seconds (seed 10); 
+28. 
+29. 
+30. My problem is the great variance of result; (2022年11月19日)
+31. 
+32. Sample of albnner: https://github.com/albnner/SmartLab 
+33. albnner: use global parameters; 
+34. 
+35. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
+36. chenfengkg: use global parameters; 
+37. 
+38. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
+39. CoCoThink: NOT use global parameters; (2022年11月18日)
+40. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
+41. Test the running time of CoCoThink: 
+42. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
+43. DSJC250.9.col is 84698 iterations, 1.34207 seconds; 
+44. DSJC500.5.col is 54 756 380 iterations, 1180.34 seconds; 
+45. DSJC500.5.col is 48 212 914 iterations, 1033.54 seconds; (replace rand with pseudoRandNumGen) 
+46. 
+47. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
+48. 
+49. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
+50. Grasssleeve: use global parameters; No response on windows platform; 
+51. 
+52. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
+53. jokerpwn: NOT use global parameters; 
+54. 
+55. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+56. KailinLi: NOT use global parameters; 
+57. 
+58. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+59. RyleeRuiYe: use global parameters; 
+60. 
+61. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+62. yuanFang1: use global parameters; 
+63. 
