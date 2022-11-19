@@ -83,7 +83,7 @@ namespace szx
                 int iterations;
                 double elapsed_time;
                 double frequency;
-            }; 
+            };
 
             vector<Record> seed_record;
 
@@ -114,8 +114,11 @@ namespace szx
 
                 end_time = clock();
                 elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+                double frequency = this_graph.iter / elapsed_time;
                 cerr << "success, iterations: " << this_graph.iter << " elapsed_time(s): " << elapsed_time
-                     << " frequency:" << this_graph.iter / elapsed_time << endl;
+                     << " frequency:" << frequency << endl;
+
+                Record this_record = {iterations: this_graph.iter, elapsed_time: elapsed_time, frequency: frequency};
 
                 this_graph.free_memory();
             }
