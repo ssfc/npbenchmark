@@ -251,10 +251,7 @@ void Graph::make_move()
 void Graph::tabu_search()
 {
     ofstream ofile("total_O3.txt", ios::out);
-    double start_time, end_time;
-    double elapsed_time;
 
-    start_time = clock();
     iter = 0;
     while (conflict > 0)
     {
@@ -263,11 +260,6 @@ void Graph::tabu_search()
         find_move();
         make_move();
     }
-
-    end_time = clock();
-    elapsed_time = (double(end_time - start_time)) / CLOCKS_PER_SEC;
-
-    cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time << " frequency:" << double(iter / elapsed_time) << endl;
 
     // save solutions;
     for (int i = 0;i < num_vertex; i++)
