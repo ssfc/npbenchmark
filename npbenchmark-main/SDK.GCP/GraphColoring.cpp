@@ -110,6 +110,7 @@ namespace szx
                 cerr << "success, iterations: " << test.iter << " elapsed_time(s): " << elapsed_time
                      << " frequency:" << test.iter / elapsed_time << endl;
 
+                test.free_memory();
             }
         }
     };
