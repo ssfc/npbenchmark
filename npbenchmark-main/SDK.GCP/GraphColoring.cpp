@@ -43,13 +43,12 @@ namespace szx
             Graph test_graph(input.nodeNum, input.colorNum);
 
             // create graph;
-            int v1, v2;
             int tmp;
 
             for (int i = 0;i < input.edgeNum; i++)
             {
-                v1 = input.edges[i][0];
-                v2 = input.edges[i][1];
+                int v1 = input.edges[i][0];
+                int v2 = input.edges[i][1];
 
                 tmp = ++test_graph.vertex_edge[v1];
                 test_graph.adj_list[v1][tmp - 1] = v2;
