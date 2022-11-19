@@ -118,7 +118,7 @@ namespace szx
                 cerr << "success, iterations: " << this_graph.iter << " elapsed_time(s): " << elapsed_time
                      << " frequency:" << frequency << endl;
 
-                Record this_record = {iterations: this_graph.iter, elapsed_time: elapsed_time, frequency: frequency};
+                Record this_record = {.iterations =  this_graph.iter, .elapsed_time =  elapsed_time, .frequency =  frequency};
                 seed_record.push_back(this_record);
 
                 this_graph.free_memory();
