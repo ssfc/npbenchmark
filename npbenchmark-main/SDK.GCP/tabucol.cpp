@@ -250,8 +250,6 @@ void Graph::make_move()
 // class: tabu search;
 void Graph::tabu_search()
 {
-    ofstream ofile("total_O3.txt", ios::out);
-
     iter = 0;
     while (conflict > 0)
     {
@@ -260,12 +258,4 @@ void Graph::tabu_search()
         find_move();
         make_move();
     }
-
-    // save solutions;
-    for (int i = 0;i < num_vertex; i++)
-    {
-        ofile << solution[i] << endl;
-    }
-
-    ofile.close();
 }
