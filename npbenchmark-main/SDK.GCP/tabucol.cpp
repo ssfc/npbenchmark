@@ -3,12 +3,9 @@
 //
 #include "tabucol.h"
 #include <climits>
-#include <cstdlib>
-#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <random>
-#include <string>
 #include <vector>
 
 using namespace std;
@@ -22,6 +19,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
+    conflict = 0;
 
     try
     {
@@ -89,8 +87,6 @@ void Graph::free_memory() const
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
 void Graph::initialization(int seed)
 {
-    conflict = 0;
-
     initRand(seed);
     // initRand(7);
 
