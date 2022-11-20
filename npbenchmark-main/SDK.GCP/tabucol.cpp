@@ -19,6 +19,8 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
+    initRand(seed);
+
     conflict = 0;
 
     try
@@ -42,6 +44,9 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
         }
 
         solution = new unsigned int[num_vertex];
+        for (int i = 0; i < num_vertex; i++)
+            solution[i] = pseudoRandNumGen() % num_color;//³õÊ¼»¯ÑÕÉ«
+
         adj_color_table = new int* [num_vertex];
         tabu_tenure_table = new unsigned int* [num_vertex];
 
@@ -106,7 +111,7 @@ void Graph::initialization(int seed)
 
     conflict = conflict / 2;
     best_conflict = conflict;
-    cerr << "init number of confilcts:" << conflict << endl;
+    cerr << "initial number of confilcts:" << conflict << endl;
 }
 
 // free the memory;
