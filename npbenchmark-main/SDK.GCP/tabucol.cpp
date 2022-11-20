@@ -68,7 +68,7 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
             }
         }
 
-        
+
     }
     catch (const bad_alloc& e)
     {
