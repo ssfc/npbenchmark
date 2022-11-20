@@ -67,6 +67,8 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
                 tabu_tenure_table_i[j] = 0;
             }
         }
+
+        
     }
     catch (const bad_alloc& e)
     {
