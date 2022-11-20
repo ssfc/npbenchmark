@@ -17,7 +17,7 @@ public:
     unsigned int* solution; // color of each vertex;
     unsigned int conflict;
 
-    int** tabu_tenure_table;
+    unsigned int** tabu_tenure_table;
     int** adj_color_table; // first dim is num vertex, second dim is num color;
 
     int delta; // ÒÆ¶¯ÔöÁ¿

@@ -45,18 +45,18 @@ Graph::Graph(int input_num_vertex, int input_num_color)
 
         solution = new unsigned int[num_vertex];
         adj_color_table = new int* [num_vertex];
-        tabu_tenure_table = new int* [num_vertex];
+        tabu_tenure_table = new unsigned int* [num_vertex];
 
         for (int i = 0; i < num_vertex; i++)
         {
             adj_color_table[i] = new int[num_color];
-            tabu_tenure_table[i] = new int[num_color];
+            tabu_tenure_table[i] = new unsigned int[num_color];
         }
 
         for (int i = 0; i < num_vertex; i++)
         {
             int* adj_color_table_i = adj_color_table[i];
-            int* tabu_tenure_table_i = tabu_tenure_table[i];
+            unsigned int* tabu_tenure_table_i = tabu_tenure_table[i];
 
             for (int j = 0; j < num_color; j++)
             {
@@ -159,7 +159,7 @@ void Graph::find_move()
 
         // use one-dimensional array to save addressing time;
         int* adj_color_table_i = adj_color_table[i];
-        int* tabu_tenure_table_i = tabu_tenure_table[i];
+        unsigned int* tabu_tenure_table_i = tabu_tenure_table[i];
 
         if (adj_color_table_i[solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
