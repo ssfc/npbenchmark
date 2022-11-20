@@ -67,7 +67,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
     }
     catch (const bad_alloc& e)
     {
-        cerr << "初始化内存分配失败:" << e.what() << endl;
+        cerr << "初始化内存分配失败:" << endl;
     }
 }
 
