@@ -15,7 +15,7 @@ mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 // constructor;
-Graph::Graph(int input_num_vertex, int input_num_color)
+Graph::Graph(int input_num_vertex, int input_num_color, int seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;

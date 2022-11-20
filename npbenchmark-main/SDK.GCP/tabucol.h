@@ -30,7 +30,7 @@ public:
     int equ_tabu_delta[2000][2]; //½û¼ÉÏàÍ¬deltaÖµ
 
 public:
-    Graph(int num_vertex, int num_color);
+    Graph(int num_vertex, int num_color, int seed);
     void free_memory() const;
     void initialization(int seed);
 
