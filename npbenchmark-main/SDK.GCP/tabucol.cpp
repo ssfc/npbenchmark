@@ -69,21 +69,6 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
     }
 }
 
-// free the memory;
-void Graph::free_memory() const
-{
-    for (int i = 0; i < num_vertex; i++)
-    {
-        delete[] tabu_tenure_table[i];
-        delete[] adj_color_table[i];
-        delete[] adj_list[i];
-    }
-    delete[] solution;
-    delete[] tabu_tenure_table;
-    delete[] adj_color_table;
-    delete[] adj_list;
-}
-
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
 void Graph::initialization(int seed)
 {
@@ -122,6 +107,21 @@ void Graph::initialization(int seed)
     conflict = conflict / 2;
     best_conflict = conflict;
     cerr << "init number of confilcts:" << conflict << endl;
+}
+
+// free the memory;
+void Graph::free_memory() const
+{
+    for (int i = 0; i < num_vertex; i++)
+    {
+        delete[] tabu_tenure_table[i];
+        delete[] adj_color_table[i];
+        delete[] adj_list[i];
+    }
+    delete[] solution;
+    delete[] tabu_tenure_table;
+    delete[] adj_color_table;
+    delete[] adj_list;
 }
 
 // class: print adjacency list of graph;
