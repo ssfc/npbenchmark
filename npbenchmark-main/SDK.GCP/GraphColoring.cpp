@@ -80,7 +80,7 @@ namespace szx
 
             struct Record
             {
-                int iterations;
+                unsigned int iterations;
                 double elapsed_time;
                 double frequency;
             };

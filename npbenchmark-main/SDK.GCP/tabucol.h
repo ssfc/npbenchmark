@@ -14,17 +14,17 @@ public:
     int** adj_list; // adjacency list;
     int* vertex_edge; // number of edge of each vertex;
 
-    int* solution; // color of each vertex;
-    int conflict;
+    unsigned int* solution; // color of each vertex;
+    unsigned int conflict;
 
     int** tabu_tenure_table;
     int** adj_color_table; // first dim is num vertex, second dim is num color;
 
     int delta; // 移动增量
-    int best_conflict; // 历史最好的冲突值
+    unsigned int best_conflict; // 历史最好的冲突值
     int node_moved; // 每次移动的结点
     int color_moved; //每次移动的颜色
-    int iter;
+    unsigned int iter;
 
     int equ_delta[2000][2]; //非禁忌相同delta值
     int equ_tabu_delta[2000][2]; //禁忌相同delta值

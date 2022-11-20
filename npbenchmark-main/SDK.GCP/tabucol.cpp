@@ -43,7 +43,7 @@ Graph::Graph(int input_num_vertex, int input_num_color)
             }
         }
 
-        solution = new int[num_vertex];
+        solution = new unsigned int[num_vertex];
         adj_color_table = new int* [num_vertex];
         tabu_tenure_table = new int* [num_vertex];
 
@@ -107,14 +107,14 @@ void Graph::initialization(int seed)
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge[i];
-        int this_vertex_color = solution[i];
+        unsigned int this_vertex_color = solution[i];
 
         int* adj_color_table_i = adj_color_table[i];
         int* adj_list_i = adj_list[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            int adj_color = solution[adj_list_i[j]];
+            unsigned int adj_color = solution[adj_list_i[j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -155,7 +155,7 @@ void Graph::find_move()
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        int solution_i = solution[i]; // solution_i is color;
+        unsigned int solution_i = solution[i]; // solution_i is color;
 
         // use one-dimensional array to save addressing time;
         int* adj_color_table_i = adj_color_table[i];
@@ -209,13 +209,13 @@ void Graph::find_move()
     if (tabu_delta < A && tabu_delta < delta)
     {
         delta = tabu_delta;
-        int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
         node_moved = equ_tabu_delta[rand_select][0];
         color_moved = equ_tabu_delta[rand_select][1];
     }
     else
     {
-        int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
         node_moved = equ_delta[rand_select][0];
         color_moved = equ_delta[rand_select][1];
     }
@@ -229,7 +229,7 @@ void Graph::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    int old_color = solution[node_moved];
+    unsigned int old_color = solution[node_moved];
     solution[node_moved] = color_moved;
     tabu_tenure_table[node_moved][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
