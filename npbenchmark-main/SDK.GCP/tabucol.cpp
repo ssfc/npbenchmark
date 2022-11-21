@@ -88,7 +88,7 @@ Graph::Graph(GraphColoring& input, int seed)
             }
         }
 
-        // add edge information to class; 
+        // add edge information from dataset to class;
         int tmp;
 
         for (int i = 0;i < input.edgeNum; i++)
