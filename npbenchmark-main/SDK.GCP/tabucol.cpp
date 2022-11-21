@@ -15,7 +15,7 @@ mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 // constructor;
-Graph::Graph(int input_num_vertex, int input_num_color, int seed)
+Graph::Graph(GraphColoring& input, int input_num_vertex, int input_num_color, int seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
@@ -68,6 +68,48 @@ Graph::Graph(int input_num_vertex, int input_num_color, int seed)
             }
         }
 
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int num_edge = vertex_edge[i];
+            unsigned int this_vertex_color = solution[i];
+
+            int* adj_color_table_i = adj_color_table[i];
+            int* adj_list_i = adj_list[i];
+
+            for (int j = 0; j < num_edge; j++)
+            {
+                unsigned int adj_color = solution[adj_list_i[j]];
+
+                if (this_vertex_color == adj_color)
+                    conflict++;
+
+                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+            }
+        }
+
+        /////////////////////////////////////////////////////////
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int num_edge = vertex_edge[i];
+            unsigned int this_vertex_color = solution[i];
+
+            int* adj_color_table_i = adj_color_table[i];
+            int* adj_list_i = adj_list[i];
+
+            for (int j = 0; j < num_edge; j++)
+            {
+                unsigned int adj_color = solution[adj_list_i[j]];
+
+                if (this_vertex_color == adj_color)
+                    conflict++;
+
+                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+            }
+        }
+
+        conflict = conflict / 2;
+        best_conflict = conflict;
+        cerr << "initial number of confilcts:" << conflict << endl;
 
     }
     catch (const bad_alloc& e)

@@ -5,6 +5,8 @@
 #ifndef SDK_GCP_TABUCOL_H
 #define SDK_GCP_TABUCOL_H
 
+# include "GraphColoring.h"
+using namespace szx;
 
 class Graph
 {
@@ -30,7 +32,7 @@ public:
     int equ_tabu_delta[2000][2]; //Ω˚º…œ‡Õ¨delta÷µ
 
 public:
-    Graph(int num_vertex, int num_color, int seed);
+    Graph(GraphColoring& input, int num_vertex, int num_color, int seed);
     void free_memory() const;
     void initialization(int seed);
 
