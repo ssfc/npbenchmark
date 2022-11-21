@@ -279,3 +279,10 @@ void Graph::tabu_search()
         make_move();
     }
 }
+
+// get solution;
+unsigned int Graph::get_solution(int i)
+{
+    return solution[i];
+}
+

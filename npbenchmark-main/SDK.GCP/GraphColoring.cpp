@@ -73,7 +73,7 @@ namespace szx
 
             for (int i = 0;i < input.nodeNum;i++)
             {
-                output[i] = test_graph.solution[i];
+                output[i] = test_graph.get_solution(i);
             }
 
             test_graph.free_memory();

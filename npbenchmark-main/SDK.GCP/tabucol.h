@@ -35,10 +35,12 @@ public:
     Graph(GraphColoring& input, int seed);
     void free_memory() const;
 
-    void print_graph() const; // print adjacent list of graph;
     void find_move();
     void make_move();
     void tabu_search();
+
+    void print_graph() const; // print adjacent list of graph;
+    unsigned int get_solution(int i);
 };
 
 #endif //SDK_GCP_TABUCOL_H
