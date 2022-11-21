@@ -37,7 +37,7 @@ public:
 
     void find_move();
     void make_move();
-    void tabu_search();
+    unsigned int tabu_search();
 
     void print_graph() const; // print adjacent list of graph;
     unsigned int get_solution(int i);
