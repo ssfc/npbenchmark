@@ -25,6 +25,7 @@ Graph::Graph(GraphColoring& input, int seed)
 
     try
     {
+        // allocate memory to all variables;
         adj_list = new int* [num_vertex];
         vertex_edge = new int[num_vertex];
 
@@ -87,7 +88,7 @@ Graph::Graph(GraphColoring& input, int seed)
             }
         }
 
-        /////////////////////////////////////////////////////////
+        // add edge information to class; 
         int tmp;
 
         for (int i = 0;i < input.edgeNum; i++)
@@ -101,6 +102,7 @@ Graph::Graph(GraphColoring& input, int seed)
             adj_list[v2][tmp - 1] = v1;
         }
 
+        // compute initial conflict;
         for (int i = 0; i < num_vertex; i++)
         {
             int num_edge = vertex_edge[i];
