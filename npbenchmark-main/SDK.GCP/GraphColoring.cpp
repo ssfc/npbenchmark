@@ -64,12 +64,12 @@ namespace szx
 
             double start_time = clock();
 
-            test_graph.tabu_search();
+            unsigned int test_iterations = test_graph.tabu_search();
 
             double end_time = clock();
             double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
-            cerr << "success, iterations: " << test_graph.iter << " elapsed_time(s): " << elapsed_time
-                 << " frequency:" << test_graph.iter / elapsed_time << endl;
+            cerr << "success, iterations: " << test_iterations << " elapsed_time(s): " << elapsed_time
+                 << " frequency:" << test_iterations / elapsed_time << endl;
 
             for (int i = 0;i < input.nodeNum;i++)
             {
@@ -94,15 +94,15 @@ namespace szx
 
                 start_time = clock();
 
-                this_graph.tabu_search();
+                unsigned int this_iterations = this_graph.tabu_search();
 
                 end_time = clock();
                 elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
-                double frequency = this_graph.iter / elapsed_time;
-                cerr << "success, iterations: " << this_graph.iter << " elapsed_time(s): " << elapsed_time
+                double frequency = this_iterations / elapsed_time;
+                cerr << "success, iterations: " << this_iterations << " elapsed_time(s): " << elapsed_time
                      << " frequency:" << frequency << endl;
 
-                Record this_record = {.iterations =  this_graph.iter, .elapsed_time =  elapsed_time, .frequency =  frequency};
+                Record this_record = {.iterations =  this_iterations, .elapsed_time =  elapsed_time, .frequency =  frequency};
                 seed_record.push_back(this_record);
 
                 this_graph.free_memory();

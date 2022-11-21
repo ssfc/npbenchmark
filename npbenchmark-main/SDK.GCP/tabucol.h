@@ -10,7 +10,7 @@ using namespace szx;
 
 class Graph
 {
-public:
+private:
     int num_vertex; // number of vertex in the graph;
     int num_color; // number of color in the graph;
     int** adj_list; // adjacency list;
