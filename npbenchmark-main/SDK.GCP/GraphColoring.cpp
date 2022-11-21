@@ -43,6 +43,7 @@ namespace szx
             Graph test_graph(input, seed);
 
             // create graph;
+            /*
             int tmp;
 
             for (int i = 0;i < input.edgeNum; i++)
@@ -55,6 +56,7 @@ namespace szx
                 tmp = ++test_graph.vertex_edge[v2];
                 test_graph.adj_list[v2][tmp - 1] = v1;
             }
+             */
 
             // cerr << "Finish creating graph." << endl;
 
@@ -92,19 +94,7 @@ namespace szx
             {
                 Graph this_graph(input, seed);
 
-                // create graph;
-                int temp;
 
-                for (int i = 0;i < input.edgeNum; i++)
-                {
-                    int vertex_1 = input.edges[i][0];
-                    int vertex_2 = input.edges[i][1];
-
-                    temp = ++this_graph.vertex_edge[vertex_1];
-                    this_graph.adj_list[vertex_1][temp - 1] = vertex_2;
-                    temp = ++this_graph.vertex_edge[vertex_2];
-                    this_graph.adj_list[vertex_2][temp - 1] = vertex_1;
-                }
 
                 this_graph.initialization(seed);
 

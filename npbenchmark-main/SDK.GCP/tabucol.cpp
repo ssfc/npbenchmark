@@ -88,6 +88,19 @@ Graph::Graph(GraphColoring& input, int seed)
         }
 
         /////////////////////////////////////////////////////////
+        int tmp;
+
+        for (int i = 0;i < input.edgeNum; i++)
+        {
+            int v1 = input.edges[i][0];
+            int v2 = input.edges[i][1];
+
+            tmp = ++vertex_edge[v1];
+            adj_list[v1][tmp - 1] = v2;
+            tmp = ++vertex_edge[v2];
+            adj_list[v2][tmp - 1] = v1;
+        }
+
         for (int i = 0; i < num_vertex; i++)
         {
             int num_edge = vertex_edge[i];
@@ -121,41 +134,7 @@ Graph::Graph(GraphColoring& input, int seed)
 //初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
 void Graph::initialization(int seed)
 {
-    initRand(seed);
-    // initRand(7);
 
-    for (int i = 0; i < num_vertex; i++)
-        solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
-
-    /*
-    cerr << "initial solution: ";
-    for (int i = 0; i < num_vertex; i++)
-        cerr << solution[i] << " ";
-    cerr << endl;
-    */
-
-    for (int i = 0; i < num_vertex; i++)
-    {
-        int num_edge = vertex_edge[i];
-        unsigned int this_vertex_color = solution[i];
-
-        int* adj_color_table_i = adj_color_table[i];
-        int* adj_list_i = adj_list[i];
-
-        for (int j = 0; j < num_edge; j++)
-        {
-            unsigned int adj_color = solution[adj_list_i[j]];
-
-            if (this_vertex_color == adj_color)
-                conflict++;
-
-            adj_color_table_i[adj_color]++; // initialize adjacent color table;
-        }
-    }
-
-    conflict = conflict / 2;
-    best_conflict = conflict;
-    cerr << "initial number of confilcts:" << conflict << endl;
 }
 
 // free the memory;
