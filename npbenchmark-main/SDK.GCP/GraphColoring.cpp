@@ -40,7 +40,7 @@ namespace szx
             }
             */
 
-            Graph test_graph(input, input.nodeNum, input.colorNum, seed);
+            Graph test_graph(input, seed);
 
             // create graph;
             int tmp;
@@ -90,7 +90,7 @@ namespace szx
             // generate all results;
             for(seed=0;seed<5;seed++)
             {
-                Graph this_graph(input, input.nodeNum, input.colorNum, seed);
+                Graph this_graph(input, seed);
 
                 // create graph;
                 int temp;

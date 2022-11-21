@@ -32,7 +32,7 @@ public:
     int equ_tabu_delta[2000][2]; //Ω˚º…œ‡Õ¨delta÷µ
 
 public:
-    Graph(GraphColoring& input, int num_vertex, int num_color, int seed);
+    Graph(GraphColoring& input, int seed);
     void free_memory() const;
     void initialization(int seed);
 
