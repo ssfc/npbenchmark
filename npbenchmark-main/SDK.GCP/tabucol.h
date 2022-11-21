@@ -34,7 +34,6 @@ public:
 public:
     Graph(GraphColoring& input, int seed);
     void free_memory() const;
-    void initialization(int seed);
 
     void print_graph() const; // print adjacent list of graph;
     void find_move();

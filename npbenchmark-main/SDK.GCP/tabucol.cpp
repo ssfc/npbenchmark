@@ -131,12 +131,6 @@ Graph::Graph(GraphColoring& input, int seed)
     }
 }
 
-//初始化，分组顶点颜色，计算初始冲突值，初始化邻接颜色表
-void Graph::initialization(int seed)
-{
-
-}
-
 // free the memory;
 void Graph::free_memory() const
 {

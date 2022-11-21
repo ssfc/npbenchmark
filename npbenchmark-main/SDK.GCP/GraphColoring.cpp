@@ -62,8 +62,6 @@ namespace szx
 
             // test.print_graph();
 
-            test_graph.initialization(seed);
-
             double start_time = clock();
 
             test_graph.tabu_search();
@@ -93,10 +91,6 @@ namespace szx
             for(seed=0;seed<5;seed++)
             {
                 Graph this_graph(input, seed);
-
-
-
-                this_graph.initialization(seed);
 
                 start_time = clock();
 
