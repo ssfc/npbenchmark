@@ -43,23 +43,7 @@ namespace szx
             Graph test_graph(input, seed);
 
             // create graph;
-            /*
-            int tmp;
-
-            for (int i = 0;i < input.edgeNum; i++)
-            {
-                int v1 = input.edges[i][0];
-                int v2 = input.edges[i][1];
-
-                tmp = ++test_graph.vertex_edge[v1];
-                test_graph.adj_list[v1][tmp - 1] = v2;
-                tmp = ++test_graph.vertex_edge[v2];
-                test_graph.adj_list[v2][tmp - 1] = v1;
-            }
-             */
-
             // cerr << "Finish creating graph." << endl;
-
             // test.print_graph();
 
             double start_time = clock();
