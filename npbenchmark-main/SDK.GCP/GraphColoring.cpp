@@ -98,11 +98,19 @@ namespace szx
             myfile << "| seed | iterations | elapsed_time | frequency | \n";
             myfile << "| ---- | ---- | ---- | ---- | \n";
 
+            vector<double> collection_iterations;
+            vector<double> collection_elapsed_time;
+            vector<double> collection_frequency;
+
             for(int i=0;i<seed_record.size();i++)
             {
                 cerr<<seed_record[i].iterations<<" "<<seed_record[i].elapsed_time<<" "<<seed_record[i].frequency<<endl;
                 myfile << "|" << i << "|" << seed_record[i].iterations << "|" << seed_record[i].elapsed_time
                        << "|" <<seed_record[i].frequency << "| \n";
+
+                collection_iterations.push_back(seed_record[i].iterations);
+                collection_elapsed_time.push_back(seed_record[i].elapsed_time);
+                collection_frequency.push_back(seed_record[i].frequency); 
             }
             cerr<<endl;
 
