@@ -108,9 +108,16 @@ namespace szx
                 this_graph.free_memory();
             }
 
-            for(auto & i : seed_record)
+            ofstream myfile;
+            myfile.open ("seed_record.md");
+            myfile << "| seed | iterations | elapsed_time | frequency | \n";
+            myfile << "| ---- | ---- | ---- | ---- | \n";
+
+            for(int i=0;i<seed_record.size();i++)
             {
-                cerr<<i.iterations<<" "<<i.elapsed_time<<" "<<i.frequency<<endl;
+                cerr<<seed_record[i].iterations<<" "<<seed_record[i].elapsed_time<<" "<<seed_record[i].frequency<<endl;
+                myfile << "|" << i << "|" << seed_record[i].iterations << "|" << seed_record[i].elapsed_time
+                       << "|" <<seed_record[i].frequency << "| \n";
             }
             cerr<<endl;
 
