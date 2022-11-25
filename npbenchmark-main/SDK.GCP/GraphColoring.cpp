@@ -119,7 +119,7 @@ namespace szx
             cerr << "mean iterations: " << mean_iterations <<endl;
 
             double sum_elapsed_time = accumulate(collection_elapsed_time.begin(), collection_elapsed_time.end(), 0.0);
-            double mean_elapsed_time = sum_elapsed_time / double(seed_record.size());
+            double mean_elapsed_time = sum_elapsed_time / double (seed_record.size());
             cerr << "mean elapsed_time: " << mean_elapsed_time <<endl;
 
             double sum_frequency = accumulate(seed_record.begin(), seed_record.end(), 0.0,
