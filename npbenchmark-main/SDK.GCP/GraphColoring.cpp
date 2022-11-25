@@ -6,6 +6,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <numeric>
 #include <random>
 #include <string>
 #include <vector>
@@ -104,6 +105,21 @@ namespace szx
                        << "|" <<seed_record[i].frequency << "| \n";
             }
             cerr<<endl;
+
+            double sum_iterations = accumulate(seed_record.begin(), seed_record.end(), 0.0,
+                                               bind(plus<double>(), placeholders::_1, bind(&Record::iterations, placeholders::_2)));
+            double mean_iterations = sum_iterations / seed_record.size();
+            cerr << "mean iterations: " << mean_iterations <<endl;
+
+            double sum_elapsed_time = accumulate(seed_record.begin(), seed_record.end(), 0.0,
+                                               bind(plus<double>(), placeholders::_1, bind(&Record::elapsed_time, placeholders::_2)));
+            double mean_elapsed_time = sum_elapsed_time / seed_record.size();
+            cerr << "mean elapsed_time: " << mean_elapsed_time <<endl;
+
+            double sum_frequency = accumulate(seed_record.begin(), seed_record.end(), 0.0,
+                                                 bind(plus<double>(), placeholders::_1, bind(&Record::frequency, placeholders::_2)));
+            double mean_frequency = sum_frequency / seed_record.size();
+            cerr << "mean frequency: " << mean_frequency <<endl;
 
         }
     };
