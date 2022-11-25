@@ -122,9 +122,8 @@ namespace szx
             double mean_elapsed_time = sum_elapsed_time / double (seed_record.size());
             cerr << "mean elapsed_time: " << mean_elapsed_time <<endl;
 
-            double sum_frequency = accumulate(seed_record.begin(), seed_record.end(), 0.0,
-                                                 bind(plus<double>(), placeholders::_1, bind(&Record::frequency, placeholders::_2)));
-            double mean_frequency = sum_frequency / seed_record.size();
+            double sum_frequency = accumulate(collection_frequency.begin(), collection_frequency.end(), 0.0);
+            double mean_frequency = sum_frequency / double (seed_record.size());
             cerr << "mean frequency: " << mean_frequency <<endl;
 
         }
