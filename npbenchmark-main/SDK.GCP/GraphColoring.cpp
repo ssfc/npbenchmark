@@ -137,6 +137,9 @@ namespace szx
             double square_sum_frequency = inner_product(collection_frequency.begin(), collection_frequency.end(), collection_frequency.begin(), 0.0);
             double stdev_frequency = sqrt(square_sum_frequency / seed_record.size() - mean_frequency * mean_frequency);
             cerr << "stdev frequency: " << stdev_frequency <<endl;
+
+            myfile << "|Mean|" << mean_iterations << "|" << mean_elapsed_time << "|" << mean_frequency << "| \n";
+            myfile << "|Stdev|" << stdev_iterations << "|" << stdev_elapsed_time << "|" << stdev_frequency << "| \n";
         }
     };
 
