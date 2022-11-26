@@ -134,7 +134,7 @@ Graph::Graph(GraphColoring& input, int seed)
 }
 
 // free the memory;
-void Graph::free_memory() const
+Graph::~Graph()
 {
     for (int i = 0; i < num_vertex; i++)
     {

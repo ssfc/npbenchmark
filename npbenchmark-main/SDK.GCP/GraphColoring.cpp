@@ -61,8 +61,6 @@ namespace szx
                 output[i] = test_graph.get_solution(i);
             }
 
-            test_graph.free_memory();
-
             struct Record
             {
                 unsigned int iterations;
@@ -92,7 +90,6 @@ namespace szx
                 Record this_record = {.iterations =  this_iterations, .elapsed_time =  elapsed_time, .frequency =  frequency};
                 seed_record.push_back(this_record);
 
-                this_graph.free_memory();
             }
 
             ofstream myfile;

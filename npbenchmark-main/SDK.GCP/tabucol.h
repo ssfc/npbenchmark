@@ -33,7 +33,7 @@ private:
 
 public:
     Graph(GraphColoring& input, int seed);
-    void free_memory() const;
+    ~Graph();
 
     void find_move();
     void make_move();
