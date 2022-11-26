@@ -73,9 +73,11 @@ namespace szx
             vector<Record> seed_record;
 
             // generate all results;
-            for(seed=0;seed<5;seed++)
+            for(int i=0;i<=seed;i++)
             {
-                Graph this_graph(input, seed);
+                cerr << "current seed:" << i << endl;
+
+                Graph this_graph(input, i);
 
                 start_time = clock();
 
@@ -119,7 +121,7 @@ namespace szx
             cerr << "mean iterations: " << mean_iterations <<endl;
 
             double square_sum_iterations = inner_product(collection_iterations.begin(), collection_iterations.end(), collection_iterations.begin(), 0.0);
-            double stdev_iterations = sqrt(square_sum_iterations / seed_record.size() - mean_iterations * mean_iterations);
+            double stdev_iterations = sqrt(square_sum_iterations / double (seed_record.size()) - mean_iterations * mean_iterations);
             cerr << "stdev iterations: " << stdev_iterations <<endl;
 
             double sum_elapsed_time = accumulate(collection_elapsed_time.begin(), collection_elapsed_time.end(), 0.0);
@@ -127,7 +129,7 @@ namespace szx
             cerr << "mean elapsed_time: " << mean_elapsed_time <<endl;
 
             double square_sum_elapsed_time = inner_product(collection_elapsed_time.begin(), collection_elapsed_time.end(), collection_elapsed_time.begin(), 0.0);
-            double stdev_elapsed_time = sqrt(square_sum_elapsed_time / seed_record.size() - mean_elapsed_time * mean_elapsed_time);
+            double stdev_elapsed_time = sqrt(square_sum_elapsed_time / double (seed_record.size()) - mean_elapsed_time * mean_elapsed_time);
             cerr << "stdev elapsed_time: " << stdev_elapsed_time <<endl;
 
             double sum_frequency = accumulate(collection_frequency.begin(), collection_frequency.end(), 0.0);
@@ -135,7 +137,7 @@ namespace szx
             cerr << "mean frequency: " << mean_frequency <<endl;
 
             double square_sum_frequency = inner_product(collection_frequency.begin(), collection_frequency.end(), collection_frequency.begin(), 0.0);
-            double stdev_frequency = sqrt(square_sum_frequency / seed_record.size() - mean_frequency * mean_frequency);
+            double stdev_frequency = sqrt(square_sum_frequency / double (seed_record.size()) - mean_frequency * mean_frequency);
             cerr << "stdev frequency: " << stdev_frequency <<endl;
 
             myfile << "|Mean|" << mean_iterations << "|" << mean_elapsed_time << "|" << mean_frequency << "| \n";
