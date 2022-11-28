@@ -61,7 +61,7 @@ namespace szx
                 output[i] = test_graph.get_solution(i);
             }
 
-            bool is_multiple_seed = true; 
+            bool is_multiple_seed = true;
 
             struct Record
             {
