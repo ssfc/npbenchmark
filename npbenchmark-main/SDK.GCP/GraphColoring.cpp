@@ -61,6 +61,7 @@ namespace szx
                 output[i] = test_graph.get_solution(i);
             }
 
+            /*
             bool is_multiple_seed = true;
 
             struct Record
@@ -141,6 +142,8 @@ namespace szx
 
             myfile << "|Mean|" << mean_iterations << "|" << mean_elapsed_time << "|" << mean_frequency << "| \n";
             myfile << "|Stdev|" << stdev_iterations << "|" << stdev_elapsed_time << "|" << stdev_frequency << "| \n";
+
+             */
 
         }
     };
