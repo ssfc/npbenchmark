@@ -6,6 +6,11 @@ g++ -static-libgcc -static-libstdc++ tabucol.cpp GraphColoring.cpp Main.cpp -O3
 
 for (( i=1; i<=5; i++ ))
 do
-    echo "Welcome $i times"
+    echo "Random seed: $i "
     ./a.out 999999 "$i" <./data/DSJC0250.9.txt > sln.250.9.txt
 done
+
+
+
+
+
