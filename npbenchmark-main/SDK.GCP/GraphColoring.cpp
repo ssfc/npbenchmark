@@ -61,6 +61,8 @@ namespace szx
                 output[i] = test_graph.get_solution(i);
             }
 
+            bool is_multiple_seed = true; 
+
             struct Record
             {
                 unsigned int iterations;
@@ -104,7 +106,7 @@ namespace szx
             for(int i=0;i<seed_record.size();i++)
             {
                 cerr<<seed_record[i].iterations<<" "<<seed_record[i].elapsed_time<<" "<<seed_record[i].frequency<<endl;
-                myfile << "|" << i << "|" << seed_record[i].iterations << "|" << seed_record[i].elapsed_time
+                myfile << "|" << i+1 << "|" << seed_record[i].iterations << "|" << seed_record[i].elapsed_time
                        << "|" <<seed_record[i].frequency << "| \n";
 
                 collection_iterations.push_back(seed_record[i].iterations);
@@ -139,6 +141,7 @@ namespace szx
 
             myfile << "|Mean|" << mean_iterations << "|" << mean_elapsed_time << "|" << mean_frequency << "| \n";
             myfile << "|Stdev|" << stdev_iterations << "|" << stdev_elapsed_time << "|" << stdev_frequency << "| \n";
+
         }
     };
 
