@@ -71,7 +71,7 @@ namespace szx
             vector<Record> seed_record;
 
             // generate all results;
-            for(int i=0;i<=seed;i++)
+            for(int i=1;i<=seed;i++)
             {
                 cerr << "current seed:" << i << endl;
 
