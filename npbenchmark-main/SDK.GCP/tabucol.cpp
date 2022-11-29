@@ -15,10 +15,10 @@ mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 // constructor;
-Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, GraphColoring& input, int seed)
+Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<Edge>& input_edges, int seed)
 {
-    num_vertex = input.nodeNum;
-    num_color = input.colorNum;
+    num_vertex = input_num_vertex;
+    num_color = input_num_color;
     initRand(seed);
 
     conflict = 0;
@@ -91,10 +91,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, Grap
         // add edge information from dataset to class;
         int tmp;
 
-        for (int i = 0;i < input.edgeNum; i++)
+        for (int i = 0;i < input_edge_num; i++)
         {
-            int v1 = input.edges[i][0];
-            int v2 = input.edges[i][1];
+            int v1 = input_edges[i][0];
+            int v2 = input_edges[i][1];
 
             tmp = ++vertex_edge[v1];
             adj_list[v1][tmp - 1] = v2;

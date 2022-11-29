@@ -6,6 +6,9 @@
 #define SDK_GCP_TABUCOL_H
 
 # include "GraphColoring.h"
+# include <vector>
+
+using namespace std;
 using namespace szx;
 
 class Graph
@@ -32,7 +35,7 @@ private:
     int equ_tabu_delta[2000][2]; //½û¼ÉÏàÍ¬deltaÖµ
 
 public:
-    Graph(int input_num_vertex, int input_edge_num, int input_num_color, GraphColoring& input, int seed);
+    Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<Edge>& input_edges, int seed);
     ~Graph();
 
     void find_move();
