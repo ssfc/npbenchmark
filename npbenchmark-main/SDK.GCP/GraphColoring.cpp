@@ -41,7 +41,7 @@ namespace szx
             }
             */
 
-            Graph test_graph(input, seed);
+            Graph test_graph(input.nodeNum, input.colorNum, input, seed);
 
             // create graph;
             // cerr << "Finish creating graph." << endl;

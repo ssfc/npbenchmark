@@ -32,7 +32,7 @@ private:
     int equ_tabu_delta[2000][2]; //½û¼ÉÏàÍ¬deltaÖµ
 
 public:
-    Graph(GraphColoring& input, int seed);
+    Graph(int input_num_vertex, int input_num_color, GraphColoring& input, int seed);
     ~Graph();
 
     void find_move();
