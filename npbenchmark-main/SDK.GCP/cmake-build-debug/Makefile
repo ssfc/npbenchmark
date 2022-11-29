@@ -176,6 +176,30 @@ Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
+my_main.obj: my_main.cpp.obj
+.PHONY : my_main.obj
+
+# target to build an object file
+my_main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/my_main.cpp.obj
+.PHONY : my_main.cpp.obj
+
+my_main.i: my_main.cpp.i
+.PHONY : my_main.i
+
+# target to preprocess a source file
+my_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/my_main.cpp.i
+.PHONY : my_main.cpp.i
+
+my_main.s: my_main.cpp.s
+.PHONY : my_main.s
+
+# target to generate assembly for a file
+my_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/my_main.cpp.s
+.PHONY : my_main.cpp.s
+
 tabucol.obj: tabucol.cpp.obj
 .PHONY : tabucol.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... Main.obj
 	@echo ... Main.i
 	@echo ... Main.s
+	@echo ... my_main.obj
+	@echo ... my_main.i
+	@echo ... my_main.s
 	@echo ... tabucol.obj
 	@echo ... tabucol.i
 	@echo ... tabucol.s

@@ -93,6 +93,9 @@
 		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/Main.cpp">
 			<Option target="SDK_GCP"/>
 		</Unit>
+		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/my_main.cpp">
+			<Option target="SDK_GCP"/>
+		</Unit>
 		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/tabucol.cpp">
 			<Option target="SDK_GCP"/>
 		</Unit>
