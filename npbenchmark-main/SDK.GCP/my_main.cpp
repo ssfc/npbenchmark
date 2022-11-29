@@ -7,7 +7,10 @@ using namespace std;
 
 int main()
 {
-    cout << "my main test" << endl;
+    cout << "start allocating static array" << endl;
+    int equ_delta[2000][2];
+    cout << "finish allocating static array" << endl;
+
     return 0;
 }
 
