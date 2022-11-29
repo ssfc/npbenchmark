@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <random>
-#include <vector>
 
 using namespace std;
 
@@ -15,7 +14,7 @@ mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 // constructor;
-Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<Edge>& input_edges, int seed)
+Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
