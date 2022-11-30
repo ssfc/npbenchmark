@@ -34,6 +34,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             vertex_edge[i] = 0;
         }
 
+        // the reason to use adj_list_i is to accelerate; 
         for (int i = 0; i < num_vertex; i++)
         {
             int* adj_list_i = adj_list[i];
