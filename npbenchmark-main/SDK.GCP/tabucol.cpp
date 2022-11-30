@@ -59,13 +59,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             tabu_tenure_table[i] = new unsigned int[num_color];
         }
 
-        // allocate memory to equ_delta; 
-        equ_delta = new int* [2000];
-        for(int i=0;i<2000;i++)
-        {
-            equ_delta[i] = new int[2];
-        }
-
+        // allocate initial value to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
         for (int i = 0; i < num_vertex; i++)
         {
             int* adj_color_table_i = adj_color_table[i];
@@ -76,6 +70,13 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
                 adj_color_table_i[j] = 0;
                 tabu_tenure_table_i[j] = 0;
             }
+        }
+
+        // allocate memory to equ_delta;
+        equ_delta = new int* [2000];
+        for(int i=0;i<2000;i++)
+        {
+            equ_delta[i] = new int[2]; 
         }
 
         for (int i = 0; i < num_vertex; i++)
