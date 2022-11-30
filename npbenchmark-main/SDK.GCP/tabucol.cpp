@@ -24,7 +24,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 
     try
     {
-        // allocate memory to all variables;
+        // allocate memory to adjacent list (num_vertex * num_color) and vertex edge (num_vertex);
         adj_list = new int* [num_vertex];
         vertex_edge = new int[num_vertex];
 
