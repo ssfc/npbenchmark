@@ -47,7 +47,7 @@ namespace szx
             // create graph;
             // cerr << "Finish creating graph." << endl;
             // test.print_graph();
-            
+
             double start_time = clock();
 
             unsigned int test_iterations = test_graph.tabu_search();
