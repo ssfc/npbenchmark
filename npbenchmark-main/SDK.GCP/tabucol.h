@@ -24,7 +24,7 @@ private:
     unsigned int* solution; // color of each vertex; dimension, num_vertex;
     unsigned int conflict;
 
-    unsigned int** tabu_tenure_table; // dimension, num_vertex * num_color;
+    unsigned int** tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     int** adj_color_table; // first dim is num vertex, second dim is num color;
 
     int delta; // ÒÆ¶¯ÔöÁ¿
