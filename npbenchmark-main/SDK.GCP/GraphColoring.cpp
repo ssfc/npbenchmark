@@ -34,14 +34,12 @@ namespace szx
             //                      +----[ exit before timeout ]
             //
 
-
+            /*
             for (NodeId n = 0; !isTimeout() && (n < input.nodeNum); ++n)
             {
                 output[n] = rand(input.colorNum);
             }
-            
-
-
+            */
 
 
             Graph test_graph(input.nodeNum, input.edgeNum, input.colorNum, input.edges, seed);
@@ -49,9 +47,7 @@ namespace szx
             // create graph;
             // cerr << "Finish creating graph." << endl;
             // test.print_graph();
-
-            /*
-
+            
             double start_time = clock();
 
             unsigned int test_iterations = test_graph.tabu_search();
@@ -65,8 +61,6 @@ namespace szx
             {
                 output[i] = test_graph.get_solution(i);
             }
-
-            */
 
 
             /*
