@@ -59,6 +59,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             tabu_tenure_table[i] = new unsigned int[num_color];
         }
 
+        // allocate memory to equ_delta; 
         equ_delta = new int* [2000];
         for(int i=0;i<2000;i++)
         {
