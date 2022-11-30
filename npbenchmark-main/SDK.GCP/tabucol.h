@@ -15,7 +15,10 @@ class Graph
 private:
     int num_vertex; // number of vertex in the graph;
     int num_color; // number of color in the graph;
-    int** adj_list; // adjacency list; dimension, num_vertex * each_vertex_num_edge;
+
+    int** adj_list; // adjacency list; dimension num_vertex * num_vertex;
+    // each row is 11...1000, the number of 1 is the number of vertex adjacent to it; 
+
     int* vertex_edge; // number of edge of each vertex;
 
     unsigned int* solution; // color of each vertex;
