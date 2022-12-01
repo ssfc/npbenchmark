@@ -79,6 +79,12 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             equ_delta[i] = new int[2];
         }
 
+        equ_tabu_delta = new int* [2000];
+        for(int i=0;i<2000;i++)
+        {
+            equ_tabu_delta[i] = new int[2];
+        }
+
         for (int i = 0; i < num_vertex; i++)
         {
             int num_edge = vertex_edge[i];

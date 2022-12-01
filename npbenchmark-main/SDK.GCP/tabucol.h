@@ -34,7 +34,7 @@ private:
     unsigned int iter;
 
     int** equ_delta; //非禁忌相同delta值
-    int equ_tabu_delta[2000][2]; //禁忌相同delta值
+    int** equ_tabu_delta; //禁忌相同delta值
 
 public:
     Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed);
