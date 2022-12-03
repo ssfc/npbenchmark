@@ -17,5 +17,6 @@
 17. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
 18. 
 19. Interface of SDK PCP: 
-20. Function in main.cpp; loadinput load nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-21. 
+20. Function in main.cpp: loadinput load nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+21. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+22.  
