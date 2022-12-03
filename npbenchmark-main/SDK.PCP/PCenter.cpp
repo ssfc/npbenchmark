@@ -43,6 +43,10 @@ public:
 		// print some information for debugging.
 		cerr << input.nodeNum << '\t' << input.centerNum << endl;
 		for (NodeId n = 0; !isTimeout() && (n < input.centerNum); ++n) { cerr << n << '\t' << output[n] << endl; }
+
+
+
+        
 	}
 
 	void reduceRadius(PCenter& input, Nodes nodesWithDrop) {
