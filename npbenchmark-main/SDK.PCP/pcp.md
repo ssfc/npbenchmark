@@ -19,5 +19,5 @@
 19. Interface of SDK PCP: 
 20. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
 21. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-22. 
-23.  
+22. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+23. 
