@@ -19,7 +19,7 @@
 19. 0 (节点0是中心) 
 20. 2 (节点2是中心) 
 21. 评估函数: 当前未覆盖节点的数目, 需要最小化; 类似于机器学习中的损失函数; 
-22. 贪心算法: 迭代地选择一个候选中心, 该中心能覆盖最多的未覆盖节点; 
+22. Page 14, 贪心算法: 迭代地选择一个候选中心, 该中心能覆盖最多的未覆盖节点; 
 23. 
 24. 
 25. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
