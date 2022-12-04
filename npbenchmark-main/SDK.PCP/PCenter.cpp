@@ -42,6 +42,10 @@ public:
         if(input.nodesWithDrops.size()==0)
         {
             set<int> covered;
+            while(covered.size() != input.nodeNum)
+            {
+                
+            }
 
         }
 
