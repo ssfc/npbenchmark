@@ -39,14 +39,17 @@ public:
 		//                                                                             |
 		//        [ use the random number generator initialized by the given seed ]----+
 
+        
+
+
+
+
+
+
 		// TODO: the following code in this function is for illustration only and can be deleted.
 		// print some information for debugging.
 		cerr << input.nodeNum << '\t' << input.centerNum << endl;
 		for (NodeId n = 0; !isTimeout() && (n < input.centerNum); ++n) { cerr << n << '\t' << output[n] << endl; }
-
-
-
-        
 	}
 
 	void reduceRadius(PCenter& input, Nodes nodesWithDrop) {
