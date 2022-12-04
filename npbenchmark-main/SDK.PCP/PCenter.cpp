@@ -1,8 +1,8 @@
-#include "PCenter.h"
+# include "PCenter.h"
 
-#include <random>
-#include <iostream>
-
+# include <random>
+# include <iostream>
+# include <set>
 
 using namespace std;
 
@@ -39,11 +39,11 @@ public:
 		//                                                                             |
 		//        [ use the random number generator initialized by the given seed ]----+
 
-        
+        if(input.nodesWithDrops.size()==0)
+        {
+            set<int> covered;
 
-
-
-
+        }
 
 
 		// TODO: the following code in this function is for illustration only and can be deleted.
