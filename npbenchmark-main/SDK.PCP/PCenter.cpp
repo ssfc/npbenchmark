@@ -42,7 +42,13 @@ public:
         if(input.nodesWithDrops.size()==0)
         {
             set<int> covered; // points already covered by set;
-            set<int> uncovered; // points has not been covered by set; 
+            set<int> uncovered; // points has not been covered by set;
+
+            for(int i=0;i<input.nodeNum;i++)
+            {
+                uncovered.insert(i);
+            }
+
             for(int i=0;i<1;i++) // do one iteration;
             {
                 for(int j=0;j<1;j++) // consider only one set;
