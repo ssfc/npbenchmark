@@ -3,7 +3,6 @@
 # include <algorithm>
 # include <random>
 # include <iostream>
-# include <set>
 
 using namespace std;
 
@@ -42,12 +41,12 @@ public:
 
         if(input.nodesWithDrops.size()==0)
         {
-            set<int> covered; // points already covered by set;
-            set<int> uncovered; // points has not been covered by set;
+            vector<int> covered; // points already covered by set;
+            vector<int> uncovered; // points has not been covered by set;
 
             for(int i=0;i<input.nodeNum;i++)
             {
-                uncovered.insert(i);
+                uncovered.push_back(i);
             }
 
             cerr << "The elements in initial uncovered are: ";
