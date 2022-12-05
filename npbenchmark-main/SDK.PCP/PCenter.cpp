@@ -66,7 +66,7 @@ public:
 
             for(int i=0;i<1;i++) // do one iteration;
             {
-                for(int j=0;j<1;j++) // consider only one set;
+                for(int j=0;j<input.nodeNum;j++) // consider only one set;
                 {
                     cerr << "The elements in first set are: ";
                     for (auto it = input.coverages[0].begin(); it != input.coverages[0].end(); it++)
