@@ -73,6 +73,15 @@ public:
                         cerr << *it << " ";
                     cerr << endl;
 
+                    vector<int> this_intersection;
+                    set_intersection(uncovered.begin(),uncovered.end(),
+                                     input.coverages[j].begin(),input.coverages[j].end(),
+                                     back_inserter(this_intersection));
+
+                    cerr << "The elements in j="<<j<<" are: ";
+                    for (auto it = this_intersection.begin(); it != this_intersection.end(); it++)
+                        cerr << *it << " ";
+                    cerr << endl;
 
                 }
             }
