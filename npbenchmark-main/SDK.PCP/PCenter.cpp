@@ -66,6 +66,8 @@ public:
 
             for(int i=0;i<1;i++) // do one iteration;
             {
+                int max_overlap_size = 0;
+                int max_overlap_index = 0;
                 for(int j=0;j<input.nodeNum;j++) // consider only one set;
                 {
                     cerr << "The elements in first set are: ";
@@ -83,7 +85,18 @@ public:
                         cerr << *it << " ";
                     cerr << endl;
 
+                    cerr<<"this_intersection_size: "<<this_intersection.size()<<endl;
+
+                    if(this_intersection.size() > max_overlap_size)
+                    {
+                        cerr<<"hello"<<endl;
+                        max_overlap_size = this_intersection.size();
+                        max_overlap_index = j;
+                    }
+
                 }
+                cerr << "max_overlap_size: " << max_overlap_size <<endl;
+                cerr << "max_overlap_index: " << max_overlap_index <<endl;
             }
 
         }
