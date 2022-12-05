@@ -89,7 +89,6 @@ public:
 
                     if(this_intersection.size() > max_overlap_size)
                     {
-                        cerr<<"hello"<<endl;
                         max_overlap_size = this_intersection.size();
                         max_overlap_index = j;
                     }
