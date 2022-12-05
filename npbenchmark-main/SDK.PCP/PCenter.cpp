@@ -49,7 +49,7 @@ public:
                 uncovered.insert(i);
             }
 
-            cerr << "The elements in set are: ";
+            cerr << "The elements in initial uncovered are: ";
             for (auto it = uncovered.begin(); it != uncovered.end(); it++)
                 cerr << *it << " ";
             cerr << endl;
@@ -58,6 +58,10 @@ public:
             {
                 for(int j=0;j<1;j++) // consider only one set;
                 {
+                    cerr << "The elements in first set are: ";
+                    for (auto it = input.coverages[0].begin(); it != input.coverages[0].end(); it++)
+                        cerr << *it << " ";
+                    cerr << endl;
 
                 }
             }
