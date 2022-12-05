@@ -49,6 +49,11 @@ public:
                 uncovered.insert(i);
             }
 
+            cerr << "The elements in set are: ";
+            for (auto it = uncovered.begin(); it != uncovered.end(); it++)
+                cerr << *it << " ";
+            cerr << endl;
+
             for(int i=0;i<1;i++) // do one iteration;
             {
                 for(int j=0;j<1;j++) // consider only one set;
