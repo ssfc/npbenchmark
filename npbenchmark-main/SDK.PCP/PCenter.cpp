@@ -1,5 +1,6 @@
 # include "PCenter.h"
 
+# include <algorithm>
 # include <random>
 # include <iostream>
 # include <set>
@@ -54,6 +55,16 @@ public:
                 cerr << *it << " ";
             cerr << endl;
 
+            vector<int> intersection_result;
+            set_intersection(input.coverages[0].begin(),input.coverages[0].end(),
+                             input.coverages[1].begin(),input.coverages[1].end(),
+                             back_inserter(intersection_result));
+
+            cerr << "The elements in intersection set are: ";
+            for (auto it = intersection_result.begin(); it != intersection_result.end(); it++)
+                cerr << *it << " ";
+            cerr << endl;
+
             for(int i=0;i<1;i++) // do one iteration;
             {
                 for(int j=0;j<1;j++) // consider only one set;
@@ -62,6 +73,7 @@ public:
                     for (auto it = input.coverages[0].begin(); it != input.coverages[0].end(); it++)
                         cerr << *it << " ";
                     cerr << endl;
+
 
                 }
             }
