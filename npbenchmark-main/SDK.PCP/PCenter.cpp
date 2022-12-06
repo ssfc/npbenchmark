@@ -96,8 +96,19 @@ public:
                 }
                 cerr << "max_overlap_size: " << max_overlap_size <<endl;
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
-            }
 
+                vector<int> union_result;
+                set_union(covered.begin(),covered.end(),
+                          input.coverages[max_overlap_index].begin(),input.coverages[max_overlap_index].end(),
+                          back_inserter(union_result));
+
+                cerr << "The results of union "<<max_overlap_index<<" are: ";
+                for (auto it = union_result.begin(); it != union_result.end(); it++)
+                    cerr << *it << " ";
+                cerr << endl;
+
+                
+            }
         }
 
 
