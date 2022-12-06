@@ -66,8 +66,9 @@ public:
             cerr << endl;
             */
 
-            for(int i=0;i<2;i++) // do one iteration;
+            for(int i=0;covered.size()!=input.nodeNum;i++) // do one iteration;
             {
+                cerr<<"iteration: "<<i<<endl;
                 int max_overlap_size = 0;
                 int max_overlap_index = 0;
                 for(int j=0;j<input.nodeNum;j++) // consider only one set;
