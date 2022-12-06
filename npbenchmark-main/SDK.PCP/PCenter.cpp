@@ -55,7 +55,7 @@ public:
                 uncovered.push_back(i);
             }
 
-            /* // test whether union two sets is correct or not; 
+            /* // test whether union two sets is correct or not;
             vector<int> test_merge;
             set_union(input.coverages[59].begin(),input.coverages[59].end(),
                              input.coverages[12].begin(),input.coverages[12].end(),
