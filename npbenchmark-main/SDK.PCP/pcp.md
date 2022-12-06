@@ -19,14 +19,19 @@
 19. 输出 P 个用空白字符 (建议使用换行符) 分隔的整数, 分别表示挑选出的 P 个中心 (集合). 
 20. 0 (节点0是中心) 
 21. 2 (节点2是中心) 
-22. 评估函数: 当前未覆盖节点的数目, 需要最小化; 类似于机器学习中的损失函数; 
-23. Page 14, 贪心算法: 迭代地选择一个候选中心, 该中心能覆盖最多的未覆盖节点; 
-24. 
-25. 
-26. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
-27. 
-28. Interface of SDK PCP: 
-29. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-30. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-31. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+22. Illustration of slides: 
+23. 评估函数: 当前未覆盖节点的数目, 需要最小化; 类似于机器学习中的损失函数; 
+24. Page 14, 贪心算法: 迭代地选择一个候选中心, 该中心能覆盖最多的未覆盖节点; 
+25. C, 所有中心集合; 
+26. V, 所有节点集合; 
+27. Ci, 表示在当前覆盖半径内能够服务节点𝑖的一组候选中心集合; 
+28. Vj, 表示在当前覆盖半径内候选中心𝑗可以服务的节点集合, Vj={i∈𝑉│j∈Ci}。
+29. 
+30. 
+31. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
 32. 
+33. Interface of SDK PCP: 
+34. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+35. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+36. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+37. 
