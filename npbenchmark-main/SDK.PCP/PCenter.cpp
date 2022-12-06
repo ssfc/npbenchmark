@@ -41,28 +41,19 @@ public:
 
         if(input.nodesWithDrops.size()==0)
         {
+            vector<int> universe; // all points;
             vector<int> covered; // points already covered by set;
             vector<int> uncovered; // points has not been covered by set;
 
             for(int i=0;i<input.nodeNum;i++)
             {
-                uncovered.push_back(i);
+                universe.push_back(i);
             }
 
-            cerr << "The elements in initial uncovered are: ";
-            for (int & it : uncovered)
-                cerr << it << " ";
-            cerr << endl;
-
-            vector<int> intersection_result;
-            set_intersection(input.coverages[0].begin(),input.coverages[0].end(),
-                             input.coverages[1].begin(),input.coverages[1].end(),
-                             back_inserter(intersection_result));
-
-            cerr << "The elements in intersection set are: ";
-            for (int & it : intersection_result)
-                cerr << it << " ";
-            cerr << endl;
+            for(int i=0;i<input.nodeNum;i++)
+            {
+                uncovered.push_back(i);
+            }
 
             for(int i=0;i<1;i++) // do one iteration;
             {
@@ -70,30 +61,18 @@ public:
                 int max_overlap_index = 0;
                 for(int j=0;j<input.nodeNum;j++) // consider only one set;
                 {
-                    cerr << "The elements in first set are: ";
-                    for (int & it : input.coverages[0])
-                        cerr << it << " ";
-                    cerr << endl;
-
                     vector<int> this_intersection;
                     set_intersection(uncovered.begin(),uncovered.end(),
                                      input.coverages[j].begin(),input.coverages[j].end(),
                                      back_inserter(this_intersection));
-
-                    cerr << "The elements in j="<<j<<" are: ";
-                    for (int & it : this_intersection)
-                        cerr << it << " ";
-                    cerr << endl;
-
-                    cerr<<"this_intersection_size: "<<this_intersection.size()<<endl;
 
                     if(this_intersection.size() > max_overlap_size)
                     {
                         max_overlap_size = this_intersection.size();
                         max_overlap_index = j;
                     }
-
                 }
+
                 cerr << "max_overlap_size: " << max_overlap_size <<endl;
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
 
@@ -114,6 +93,17 @@ public:
                     cerr << it << " ";
                 cerr << endl;
 
+                vector<int> difference_result;
+                set_difference(universe.begin(),universe.end(),
+                          covered.begin(),covered.end(),
+                          back_inserter(difference_result));
+
+                cerr << "Uncover after union are: ";
+                for (int & it : difference_result)
+                    cerr << it << " ";
+                cerr << endl;
+
+                uncovered.assign(difference_result.begin(), difference_result.end());
 
             }
         }
