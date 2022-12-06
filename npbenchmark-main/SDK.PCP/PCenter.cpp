@@ -55,6 +55,7 @@ public:
                 uncovered.push_back(i);
             }
 
+            /* // test whether union two sets is correct or not; 
             vector<int> test_merge;
             set_union(input.coverages[59].begin(),input.coverages[59].end(),
                              input.coverages[12].begin(),input.coverages[12].end(),
@@ -63,6 +64,7 @@ public:
             for (int & it : test_merge)
                 cerr << it << " ";
             cerr << endl;
+            */
 
             for(int i=0;i<2;i++) // do one iteration;
             {
