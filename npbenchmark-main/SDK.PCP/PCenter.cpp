@@ -55,7 +55,16 @@ public:
                 uncovered.push_back(i);
             }
 
-            for(int i=0;i<1;i++) // do one iteration;
+            vector<int> test_merge;
+            set_union(input.coverages[59].begin(),input.coverages[59].end(),
+                             input.coverages[12].begin(),input.coverages[12].end(),
+                             back_inserter(test_merge));
+            cerr << "Test merge size (" <<test_merge.size()<<"): ";
+            for (int & it : test_merge)
+                cerr << it << " ";
+            cerr << endl;
+
+            for(int i=0;i<2;i++) // do one iteration;
             {
                 int max_overlap_size = 0;
                 int max_overlap_index = 0;
@@ -73,7 +82,6 @@ public:
                     }
                 }
 
-                cerr << "max_overlap_size: " << max_overlap_size <<endl;
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
 
                 vector<int> union_result;
@@ -88,7 +96,7 @@ public:
 
                 covered.assign(union_result.begin(), union_result.end());
 
-                cerr << "Cover after union are: ";
+                cerr << "Cover after union size (" << covered.size() << "): ";
                 for (int & it : union_result)
                     cerr << it << " ";
                 cerr << endl;
