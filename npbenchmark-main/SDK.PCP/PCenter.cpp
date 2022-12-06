@@ -44,6 +44,7 @@ public:
             vector<int> universe; // all points;
             vector<int> covered; // points already covered by set;
             vector<int> uncovered; // points has not been covered by set;
+            vector<int> selected; // service points selected;
 
             for(int i=0;i<input.nodeNum;i++)
             {
@@ -87,6 +88,7 @@ public:
 
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
 
+                selected.push_back(max_overlap_index);
                 vector<int> union_result;
                 set_union(covered.begin(),covered.end(),
                           input.coverages[max_overlap_index].begin(),input.coverages[max_overlap_index].end(),
@@ -117,6 +119,12 @@ public:
                 uncovered.assign(difference_result.begin(), difference_result.end());
 
             }
+
+            cerr << "Point selected are: ";
+            for (int & it : selected)
+                cerr << it << " ";
+            cerr << endl;
+
         }
 
 
