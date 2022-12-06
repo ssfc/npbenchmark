@@ -50,8 +50,8 @@ public:
             }
 
             cerr << "The elements in initial uncovered are: ";
-            for (auto it = uncovered.begin(); it != uncovered.end(); it++)
-                cerr << *it << " ";
+            for (int & it : uncovered)
+                cerr << it << " ";
             cerr << endl;
 
             vector<int> intersection_result;
@@ -60,8 +60,8 @@ public:
                              back_inserter(intersection_result));
 
             cerr << "The elements in intersection set are: ";
-            for (auto it = intersection_result.begin(); it != intersection_result.end(); it++)
-                cerr << *it << " ";
+            for (int & it : intersection_result)
+                cerr << it << " ";
             cerr << endl;
 
             for(int i=0;i<1;i++) // do one iteration;
@@ -71,8 +71,8 @@ public:
                 for(int j=0;j<input.nodeNum;j++) // consider only one set;
                 {
                     cerr << "The elements in first set are: ";
-                    for (auto it = input.coverages[0].begin(); it != input.coverages[0].end(); it++)
-                        cerr << *it << " ";
+                    for (int & it : input.coverages[0])
+                        cerr << it << " ";
                     cerr << endl;
 
                     vector<int> this_intersection;
@@ -81,8 +81,8 @@ public:
                                      back_inserter(this_intersection));
 
                     cerr << "The elements in j="<<j<<" are: ";
-                    for (auto it = this_intersection.begin(); it != this_intersection.end(); it++)
-                        cerr << *it << " ";
+                    for (int & it : this_intersection)
+                        cerr << it << " ";
                     cerr << endl;
 
                     cerr<<"this_intersection_size: "<<this_intersection.size()<<endl;
@@ -103,11 +103,18 @@ public:
                           back_inserter(union_result));
 
                 cerr << "The results of union "<<max_overlap_index<<" are: ";
-                for (auto it = union_result.begin(); it != union_result.end(); it++)
-                    cerr << *it << " ";
+                for (int & it : union_result)
+                    cerr << it << " ";
                 cerr << endl;
 
-                
+                covered.assign(union_result.begin(), union_result.end());
+
+                cerr << "Cover after union are: ";
+                for (int & it : union_result)
+                    cerr << it << " ";
+                cerr << endl;
+
+
             }
         }
 
