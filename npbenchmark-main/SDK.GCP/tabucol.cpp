@@ -73,10 +73,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         }
 
         // allocate memory to equ_delta;
-        equ_delta = new int* [2000];
+        equal_delta = new int* [2000];
         for(int i=0;i<2000;i++)
         {
-            equ_delta[i] = new int[2];
+            equal_delta[i] = new int[2];
         }
 
         // allocate memory to equ_tabu_delta;
@@ -216,8 +216,8 @@ void Graph::find_move()
                                 delta = tmp;
                             }
 
-                            equ_delta[count][0] = i;
-                            equ_delta[count][1] = j;
+                            equal_delta[count][0] = i;
+                            equal_delta[count][1] = j;
 
                             count++;
                         }
@@ -253,8 +253,8 @@ void Graph::find_move()
     else
     {
         unsigned int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
-        node_moved = equ_delta[rand_select][0];
-        color_moved = equ_delta[rand_select][1];
+        node_moved = equal_delta[rand_select][0];
+        color_moved = equal_delta[rand_select][1];
     }
 }
 

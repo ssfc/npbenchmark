@@ -33,7 +33,7 @@ private:
     int color_moved; //每次移动的颜色
     unsigned int iter;
 
-    int** equ_delta; //非禁忌相同delta值
+    int** equal_delta; //非禁忌相同delta值
     int** equ_tabu_delta; //禁忌相同delta值
 
 public:
