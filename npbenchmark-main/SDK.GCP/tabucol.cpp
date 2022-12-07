@@ -106,17 +106,16 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         }
 
         // add edge information from dataset to class;
-        int tmp;
-
         for (int i = 0;i < input_edge_num; i++)
         {
             int v1 = input_edges[i][0];
             int v2 = input_edges[i][1];
 
-            tmp = ++vertex_edge_num[v1];
-            adj_list[v1][tmp - 1] = v2;
-            tmp = ++vertex_edge_num[v2];
-            adj_list[v2][tmp - 1] = v1;
+            adj_list[v1][vertex_edge_num[v1]] = v2;
+            ++vertex_edge_num[v1];
+
+            adj_list[v2][vertex_edge_num[v2]] = v1;
+            ++vertex_edge_num[v2];
         }
 
         // compute initial conflict;
