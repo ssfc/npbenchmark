@@ -208,14 +208,18 @@ void Graph::find_move()
                     int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i];
                     if (tabu_tenure_table_i[j] <= iter)
                     {
-                        if (tmp <= delta)
+                        if (tmp < delta)
                         {//·ÖÖ§Ô¤ÅÐ³Í·£ 6.0
-                            if (tmp < delta)
-                            {
-                                count = 0;
-                                delta = tmp;
-                            }
+                            count = 0;
+                            delta = tmp;
 
+                            equal_nontabu_delta[count][0] = i; // i is vertex;
+                            equal_nontabu_delta[count][1] = j; // j is color;
+
+                            count++;
+                        }
+                        else if (tmp == delta)
+                        {
                             equal_nontabu_delta[count][0] = i; // i is vertex;
                             equal_nontabu_delta[count][1] = j; // j is color;
 
@@ -233,7 +237,7 @@ void Graph::find_move()
                             }
 
                             equal_tabu_delta[tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[tabu_count][1] = j; // j is color; 
+                            equal_tabu_delta[tabu_count][1] = j; // j is color;
 
                             tabu_count++;
                         }
