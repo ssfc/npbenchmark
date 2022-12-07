@@ -26,12 +26,12 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     {
         // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
         adj_list = new int* [num_vertex];
-        vertex_edge = new int[num_vertex];
+        vertex_edge_num = new int[num_vertex];
 
         for (int i = 0; i < num_vertex; i++)
         {
             adj_list[i] = new int[num_vertex];
-            vertex_edge[i] = 0;
+            vertex_edge_num[i] = 0;
         }
 
         // the reason to use adj_list_i is to accelerate;
@@ -88,7 +88,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 
         for (int i = 0; i < num_vertex; i++)
         {
-            int num_edge = vertex_edge[i];
+            int num_edge = vertex_edge_num[i];
             unsigned int this_vertex_color = solution[i];
 
             int* adj_color_table_i = adj_color_table[i];
@@ -113,16 +113,16 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             int v1 = input_edges[i][0];
             int v2 = input_edges[i][1];
 
-            tmp = ++vertex_edge[v1];
+            tmp = ++vertex_edge_num[v1];
             adj_list[v1][tmp - 1] = v2;
-            tmp = ++vertex_edge[v2];
+            tmp = ++vertex_edge_num[v2];
             adj_list[v2][tmp - 1] = v1;
         }
 
         // compute initial conflict;
         for (int i = 0; i < num_vertex; i++)
         {
-            int num_edge = vertex_edge[i];
+            int num_edge = vertex_edge_num[i];
             unsigned int this_vertex_color = solution[i];
 
             int* adj_color_table_i = adj_color_table[i];
@@ -172,7 +172,7 @@ void Graph::print_graph() const
     for (int i = 0; i < num_vertex; i++)
     {
         int* adj_list_i = adj_list[i];
-        for (int j = 0;j < vertex_edge[i];j++)
+        for (int j = 0;j < vertex_edge_num[i];j++)
         {
             cerr << adj_list_i[j] << " ";
         }
@@ -283,7 +283,7 @@ void Graph::make_move()
     int* adj_list_node_moved = adj_list[node_moved];
 
     // update adjacent color table;
-    for (int i = 0; i < vertex_edge[node_moved]; i++)
+    for (int i = 0; i < vertex_edge_num[node_moved]; i++)
     {
         int adj_list_node_moved_i = adj_list_node_moved[i];
 
