@@ -255,12 +255,14 @@ void Graph::find_move()
     {
         delta = tabu_delta;
         unsigned int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
+        // cerr << "random select tabu: " << rand_select << endl;
         node_moved = equal_tabu_delta[rand_select][0];
         color_moved = equal_tabu_delta[rand_select][1];
     }
     else
     {
         unsigned int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
+        // cerr << "random select nontabu: " << rand_select << endl;
         node_moved = equal_nontabu_delta[rand_select][0];
         color_moved = equal_nontabu_delta[rand_select][1];
     }
