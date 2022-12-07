@@ -35,11 +35,14 @@ CMAKE_CODEBLOCKS_EXECUTABLE:FILEPATH=CMAKE_CODEBLOCKS_EXECUTABLE-NOTFOUND
 // Enter e.g. -j<some_number> to get parallel builds
 CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=
 
+//Enable colored diagnostics throughout.
+CMAKE_COLOR_DIAGNOSTICS:BOOL=ON
+
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/g++.exe
+CMAKE_CXX_COMPILER:STRING=C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -68,7 +71,7 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc.exe
+CMAKE_C_COMPILER:STRING=C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -113,6 +116,9 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
+
+//Value Computed by CMake.
+CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/cmake-build-debug/CMakeFiles/pkgRedirects
 
 //Convert GNU import libraries to MS format (requires Visual Studio)
 CMAKE_GNUtoMS:BOOL=OFF
@@ -267,7 +273,7 @@ CMAKE_CACHEFILE_DIR:INTERNAL=c:/wamp64/www/npbenchmark/npbenchmark-main/SDK.GCP/
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=23
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=24
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
@@ -391,7 +397,7 @@ CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/share/cmake-3.23
+CMAKE_ROOT:INTERNAL=C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/share/cmake-3.24
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -420,4 +426,6 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//linker supports push/pop state
+_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 
