@@ -216,8 +216,8 @@ void Graph::find_move()
                                 delta = tmp;
                             }
 
-                            equal_nontabu_delta[count][0] = i;
-                            equal_nontabu_delta[count][1] = j;
+                            equal_nontabu_delta[count][0] = i; // i is vertex;
+                            equal_nontabu_delta[count][1] = j; // j is color; 
 
                             count++;
                         }
