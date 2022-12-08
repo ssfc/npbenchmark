@@ -112,10 +112,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             int v2 = input_edges[i][1];
 
             adj_list[v1][vertex_edge_num[v1]] = v2;
-            ++vertex_edge_num[v1];
+            vertex_edge_num[v1]++;
 
             adj_list[v2][vertex_edge_num[v2]] = v1;
-            ++vertex_edge_num[v2];
+            vertex_edge_num[v2]++;
         }
 
         // compute initial conflict;
@@ -203,7 +203,7 @@ void Graph::find_move()
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i];
+                    int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
                     if (tabu_tenure_table_i[j] <= iter) //非禁忌移动;
                     {
                         if (tmp < delta)
