@@ -45,6 +45,8 @@ public:
             vector<int> covered; // points already covered by set;
             vector<int> uncovered; // points has not been covered by set;
             vector<int> selected; // centers selected;
+            int equal_delta[2000]; //非禁忌相同delta值
+            int count = 0;
 
             for(int i=0;i<input.nodeNum;i++)
             {
@@ -83,7 +85,11 @@ public:
                     {
                         max_overlap_size = this_intersection.size();
                         max_overlap_index = j;
+
+                        count = 0;
+                        equal_delta[count] = j; // j is index of center;
                     }
+                    
                 }
 
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
