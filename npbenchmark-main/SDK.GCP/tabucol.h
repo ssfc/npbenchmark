@@ -27,7 +27,7 @@ private:
     unsigned int** tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     int** adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
-    int delta; // 移动增量
+    int min_delta; // 移动增量
     unsigned int best_conflict; // 历史最好的冲突值
     int node_moved; // 每次移动的结点
     int color_moved; //每次移动的颜色

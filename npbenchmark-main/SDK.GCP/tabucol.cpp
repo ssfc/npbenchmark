@@ -182,7 +182,7 @@ void Graph::print_graph() const
 // class: find best move (tabu or not tabu);
 void Graph::find_move()
 {
-    delta = INT_MAX;
+    min_delta = INT_MAX;
     int tabu_delta = INT_MAX;
     int count = 0;
     int tabu_count = 0;
@@ -206,17 +206,17 @@ void Graph::find_move()
                     int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
                     if (tabu_tenure_table_i[j] <= iter) //非禁忌移动;
                     {
-                        if (tmp < delta)
+                        if (tmp < min_delta)
                         {//分支预判惩罚 6.0
                             count = 0;
-                            delta = tmp;
+                            min_delta = tmp;
 
                             equal_nontabu_delta[count][0] = i; // i is vertex;
                             equal_nontabu_delta[count][1] = j; // j is color;
 
                             count++;
                         }
-                        else if (tmp == delta)
+                        else if (tmp == min_delta)
                         {
                             equal_nontabu_delta[count][0] = i; // i is vertex;
                             equal_nontabu_delta[count][1] = j; // j is color;
@@ -250,9 +250,9 @@ void Graph::find_move()
         }
     }
 
-    if (tabu_delta < A && tabu_delta < delta)
+    if (tabu_delta < A && tabu_delta < min_delta)
     {
-        delta = tabu_delta;
+        min_delta = tabu_delta;
         unsigned int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
         // cerr << "random select tabu: " << rand_select << endl;
         node_moved = equal_tabu_delta[rand_select][0];
@@ -270,7 +270,7 @@ void Graph::find_move()
 // class: 更新值
 void Graph::make_move()
 {
-    conflict = delta + conflict; // update value of conflict;
+    conflict = min_delta + conflict; // update value of conflict;
 
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
