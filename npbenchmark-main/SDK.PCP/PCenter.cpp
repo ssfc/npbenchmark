@@ -44,7 +44,7 @@ public:
             vector<int> universe; // all points;
             vector<int> covered; // points already covered by set;
             vector<int> uncovered; // points has not been covered by set;
-            vector<int> selected; // service points selected;
+            vector<int> selected; // centers selected;
 
             for(int i=0;i<input.nodeNum;i++)
             {
@@ -67,7 +67,7 @@ public:
             cerr << endl;
             */
 
-            for(int i=0;covered.size()!=input.nodeNum;i++) // do one iteration;
+            for(int i=0; selected.size()<input.centerNum && covered.size()!=input.nodeNum; i++) // do one iteration;
             {
                 cerr<<"iteration: "<<i<<endl;
                 int max_overlap_size = 0;
