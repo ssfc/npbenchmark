@@ -185,7 +185,7 @@ void Graph::find_move()
     min_delta = INT_MAX;
     int tabu_delta = INT_MAX;
     int equal_nontabu_count = 0;
-    int tabu_count = 0;
+    int equal_tabu_count = 0;
 
     int A = best_conflict - conflict;
 
@@ -229,19 +229,19 @@ void Graph::find_move()
                         if (tmp < tabu_delta)
                         {//6.0
                             tabu_delta = tmp;
-                            tabu_count = 0;
+                            equal_tabu_count = 0;
 
-                            equal_tabu_delta[tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[tabu_count][1] = j; // j is color;
+                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
 
-                            tabu_count++;
+                            equal_tabu_count++;
                         }
                         else if(tmp == tabu_delta)
                         {
-                            equal_tabu_delta[tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[tabu_count][1] = j; // j is color;
+                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
 
-                            tabu_count++;
+                            equal_tabu_count++;
                         }
 
                     }
@@ -253,7 +253,7 @@ void Graph::find_move()
     if (tabu_delta < A && tabu_delta < min_delta)
     {
         min_delta = tabu_delta;
-        unsigned int rand_select = pseudoRandNumGen() % tabu_count; // 相等tabu_delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
         // cerr << "random select tabu: " << rand_select << endl;
         node_moved = equal_tabu_delta[rand_select][0];
         color_moved = equal_tabu_delta[rand_select][1];
