@@ -13,9 +13,10 @@ using namespace std;
 mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
-PCP_Local_Search::PCP_Local_Search(int input_center_num, int input_num_color, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+PCP_Local_Search::PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
-
+    num_node = input_nodeNum;
+    num_center = input_centerNum;
 }
 
 PCP_Local_Search::~PCP_Local_Search()
@@ -23,7 +24,7 @@ PCP_Local_Search::~PCP_Local_Search()
 
 }
 
-void PCP_Local_Search::local_search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Local_Search::local_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
     initRand(seed); // initialize random generator;
 
@@ -36,22 +37,22 @@ void PCP_Local_Search::local_search(int input_nodeNum, int input_centerNum, vect
         int equal_delta[2000]; //非禁忌相同delta值
         int equal_count = 0;
 
-        for(int i=0;i<input_nodeNum;i++)
+        for(int i=0;i<num_node;i++)
         {
             universe.push_back(i);
         }
 
-        for(int i=0;i<input_nodeNum;i++)
+        for(int i=0;i<num_node;i++)
         {
             uncovered.push_back(i);
         }
 
-        for(int i=0; selected.size()<input_centerNum && covered.size()!=input_nodeNum; i++) // do one iteration;
+        for(int i=0; selected.size()<num_center && covered.size()!=num_node; i++) // do one iteration;
         {
             cerr<<"iteration: "<<i<<endl;
             int max_overlap_size = 0;
             int max_overlap_index = 0;
-            for(int j=0;j<input_nodeNum;j++) // consider only one set;
+            for(int j=0;j<num_node;j++) // consider only one set;
             {
                 vector<int> this_intersection;
                 set_intersection(uncovered.begin(),uncovered.end(),
