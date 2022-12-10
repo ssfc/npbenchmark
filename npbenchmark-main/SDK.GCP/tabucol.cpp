@@ -184,7 +184,7 @@ void Graph::find_move()
 {
     min_delta = INT_MAX;
     int tabu_delta = INT_MAX;
-    int count = 0;
+    int equal_nontabu_count = 0;
     int tabu_count = 0;
 
     int A = best_conflict - conflict;
@@ -208,20 +208,20 @@ void Graph::find_move()
                     {
                         if (tmp < min_delta)
                         {//分支预判惩罚 6.0
-                            count = 0;
+                            equal_nontabu_count = 0;
                             min_delta = tmp;
 
-                            equal_nontabu_delta[count][0] = i; // i is vertex;
-                            equal_nontabu_delta[count][1] = j; // j is color;
+                            equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
 
-                            count++;
+                            equal_nontabu_count++;
                         }
                         else if (tmp == min_delta)
                         {
-                            equal_nontabu_delta[count][0] = i; // i is vertex;
-                            equal_nontabu_delta[count][1] = j; // j is color;
+                            equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
 
-                            count++;
+                            equal_nontabu_count++;
                         }
                     }
                     else // 禁忌移动;
@@ -260,7 +260,7 @@ void Graph::find_move()
     }
     else
     {
-        unsigned int rand_select = pseudoRandNumGen() % count; // 相等delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // 相等delta随机选择
         // cerr << "random select nontabu: " << rand_select << endl;
         node_moved = equal_nontabu_delta[rand_select][0];
         color_moved = equal_nontabu_delta[rand_select][1];
