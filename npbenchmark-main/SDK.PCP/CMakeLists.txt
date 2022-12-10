@@ -9,4 +9,4 @@ include_directories(.)
 add_executable(SDK_PCP
         Main.cpp
         PCenter.cpp
-        PCenter.h)
+        PCenter.h pcp_greedy.h pcp_greedy.cpp)

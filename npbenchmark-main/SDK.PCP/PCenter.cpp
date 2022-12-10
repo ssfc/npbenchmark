@@ -71,6 +71,7 @@ public:
             cerr << endl;
             */
 
+
             for(int i=0; selected.size()<input.centerNum && covered.size()!=input.nodeNum; i++) // do one iteration;
             {
                 cerr<<"iteration: "<<i<<endl;
