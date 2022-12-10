@@ -23,7 +23,7 @@ PCP_Local_Search::~PCP_Local_Search()
 
 }
 
-void PCP_Local_Search::greedy_find(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Local_Search::local_search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
     initRand(seed); // initialize random generator;
 
