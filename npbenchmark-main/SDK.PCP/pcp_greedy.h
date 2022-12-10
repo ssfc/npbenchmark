@@ -12,10 +12,10 @@ using namespace std;
 class PCP_Greedy
 {
 public:
-    PCP_Greedy(int input_center_num, int input_num_color, vector<vector<int>>& input_coverages, int seed);
+    PCP_Greedy(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, int seed);
     ~PCP_Greedy();
 
-    void greedy_find(int input_center_num, int input_num_color, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
+    void greedy_find(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
 };
 
 #endif //SDK_PCP_PCP_GREEDY_H
