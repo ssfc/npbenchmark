@@ -13,9 +13,9 @@ PCP_Greedy::~PCP_Greedy()
 
 }
 
-void PCP_Greedy::greedy_find(int input_center_num, int input_num_color, vector<vector<int>> &input_coverages, int seed)
+void PCP_Greedy::greedy_find(int input_center_num, int input_num_color, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
-    
+
 }
 
 
