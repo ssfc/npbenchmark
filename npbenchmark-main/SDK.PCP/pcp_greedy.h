@@ -5,4 +5,9 @@
 #ifndef SDK_PCP_PCP_GREEDY_H
 #define SDK_PCP_PCP_GREEDY_H
 
+class PCP_Greedy
+{
+    
+};
+
 #endif //SDK_PCP_PCP_GREEDY_H
