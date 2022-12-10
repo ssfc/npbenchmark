@@ -104,6 +104,7 @@ public:
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
                 int rand_select = pseudoRandNumGen() % count; // 相等tabu_delta随机选择
                 cerr << "random select: " << rand_select <<endl;
+                cerr << "random select index: " << equal_delta[rand_select] <<endl;
 
                 selected.push_back(max_overlap_index);
                 vector<int> union_result;
