@@ -9,11 +9,11 @@
 
 using namespace std;
 
-class PCP_Greedy
+class PCP_Local_Search
 {
 public:
-    PCP_Greedy(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
-    ~PCP_Greedy();
+    PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
+    ~PCP_Local_Search();
 
     void greedy_find(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
 };
