@@ -88,9 +88,16 @@ public:
 
                         count = 0;
                         equal_delta[count] = j; // j is index of center;
+                        count++;
                     }
-                    
+                    else if(this_intersection.size() == max_overlap_size)
+                    {
+                        equal_delta[count] = j; // j is index of center;
+                        count++;
+                    }
                 }
+
+                cerr << "equal count: " << count << endl;
 
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
 
