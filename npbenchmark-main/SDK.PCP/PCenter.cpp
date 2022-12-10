@@ -48,7 +48,7 @@ public:
             vector<int> uncovered; // points has not been covered by set;
             vector<int> selected; // centers selected;
             int equal_delta[2000]; //非禁忌相同delta值
-            int count = 0;
+            int equal_count = 0;
 
             for(int i=0;i<input.nodeNum;i++)
             {
@@ -88,21 +88,21 @@ public:
                         max_overlap_size = this_intersection.size();
                         max_overlap_index = j;
 
-                        count = 0;
-                        equal_delta[count] = j; // j is index of center;
-                        count++;
+                        equal_count = 0;
+                        equal_delta[equal_count] = j; // j is index of center;
+                        equal_count++;
                     }
                     else if(this_intersection.size() == max_overlap_size)
                     {
-                        equal_delta[count] = j; // j is index of center;
-                        count++;
+                        equal_delta[equal_count] = j; // j is index of center;
+                        equal_count++;
                     }
                 }
 
-                cerr << "equal count: " << count << endl;
+                cerr << "equal count: " << equal_count << endl;
 
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
-                int rand_select = pseudoRandNumGen() % count; // 相等tabu_delta随机选择
+                int rand_select = pseudoRandNumGen() % equal_count; // 相等tabu_delta随机选择
                 cerr << "random select: " << rand_select <<endl;
                 cerr << "random select index: " << equal_delta[rand_select] <<endl;
 
