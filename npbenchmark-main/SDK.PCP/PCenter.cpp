@@ -39,6 +39,8 @@ public:
 		//                                                                             |
 		//        [ use the random number generator initialized by the given seed ]----+
 
+        initRand(seed); // initialize random generator;
+
         if(input.nodesWithDrops.size()==0)
         {
             vector<int> universe; // all points;
@@ -100,6 +102,8 @@ public:
                 cerr << "equal count: " << count << endl;
 
                 cerr << "max_overlap_index: " << max_overlap_index <<endl;
+                int rand_select = pseudoRandNumGen() % count; // 相等tabu_delta随机选择
+                cerr << "random select: " << rand_select <<endl;
 
                 selected.push_back(max_overlap_index);
                 vector<int> union_result;
