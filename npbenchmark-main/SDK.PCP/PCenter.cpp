@@ -71,7 +71,7 @@ public:
             cerr << endl;
             */
 
-
+            /* // pcp solved by greedy;
             for(int i=0; selected.size()<input.centerNum && covered.size()!=input.nodeNum; i++) // do one iteration;
             {
                 cerr<<"iteration: "<<i<<endl;
@@ -145,6 +145,8 @@ public:
             cerr << endl;
 
         }
+             */
+
 
 
 		// TODO: the following code in this function is for illustration only and can be deleted.
