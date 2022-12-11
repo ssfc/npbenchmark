@@ -39,6 +39,11 @@ PCP_Local_Search::~PCP_Local_Search()
 
 }
 
+void PCP_Local_Search::swap_center(int center_out, int center_in)
+{
+
+}
+
 void PCP_Local_Search::local_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
     if(input_nodesWithDrops.size()==0)
