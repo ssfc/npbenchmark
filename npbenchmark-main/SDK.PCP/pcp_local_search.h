@@ -14,6 +14,8 @@ class PCP_Local_Search
 private:
     int num_node;
     int num_center;
+    vector<vector<int>> center_coverages;
+    vector<vector<int>> nodes_with_drops;
 
     unsigned int* solution; // index of selected center; dimension, num_center;
 public:
