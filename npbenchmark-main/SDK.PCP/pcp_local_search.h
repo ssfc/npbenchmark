@@ -12,6 +12,7 @@ using namespace std;
 class PCP_Local_Search
 {
 private: // member variables.
+    int seed;
     int num_node;
     int num_center;
     vector<vector<int>> center_coverages;
@@ -23,11 +24,11 @@ private: // member variables.
     vector<int> uncovered; // points has not been covered by set;
 
 public: // member functions.
-    PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
+    PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Local_Search();
 
     void swap_center(int center_out, int center_in);
-    void local_search(int seed);
+    void local_search();
 };
 
 

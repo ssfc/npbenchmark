@@ -46,7 +46,7 @@ public:
 
         // 2: local search method;
         PCP_Local_Search test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-        test_graph.local_search(seed);
+        test_graph.local_search();
 
 
 		// TODO: the following code in this function is for illustration only and can be deleted.
