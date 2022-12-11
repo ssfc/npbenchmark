@@ -19,6 +19,13 @@ PCP_Local_Search::PCP_Local_Search(int input_nodeNum, int input_centerNum, vecto
 
     num_node = input_nodeNum;
     num_center = input_centerNum;
+    center_coverages.resize(input_coverages.size());
+    nodes_with_drops.resize(input_nodesWithDrops.size());
+
+    for(int i=0;i<input_coverages.size();i++)
+    {
+
+    }
 
     try
     {
