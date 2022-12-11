@@ -84,12 +84,11 @@ void PCP_Local_Search::local_search()
 
     }
 
-    vector<int> test_member_merge;
     set_union(center_coverages[59].begin(),center_coverages[59].end(),
-              center_coverages[12].begin(),center_coverages[12].end(),
-              back_inserter(test_member_merge));
-    cerr << "Test merge size (" <<test_member_merge.size()<<"): ";
-    for (int & it : test_member_merge)
+              center_coverages[13].begin(),center_coverages[13].end(),
+              back_inserter(covered));
+    cerr << "Test merge size (" <<covered.size()<<"): ";
+    for (int & it : covered)
         cerr << it << " ";
     cerr << endl;
 
