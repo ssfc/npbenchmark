@@ -75,7 +75,7 @@ void PCP_Local_Search::swap_center(int center_out, int center_in)
 
 void PCP_Local_Search::local_search()
 {
-    if(nodes_with_drops.size()==0)
+    if(nodes_with_drops.empty())
     {
         cerr << "Initial solution: ";
         for (int i = 0; i < num_center; i++)
