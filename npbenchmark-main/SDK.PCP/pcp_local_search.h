@@ -22,7 +22,7 @@ private: // member variables.
     vector<int> covered; // points already covered by set;
     vector<int> uncovered; // points has not been covered by set;
 
-public: // member functions. 
+public: // member functions.
     PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
     ~PCP_Local_Search();
 

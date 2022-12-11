@@ -50,6 +50,16 @@ PCP_Local_Search::PCP_Local_Search(int input_nodeNum, int input_centerNum, vecto
     {
         cerr << "初始化内存分配失败:" << endl;
     }
+
+    for(int i=0;i<input_nodeNum;i++)
+    {
+        universe.push_back(i);
+    }
+
+    for(int i=0;i<input_nodeNum;i++)
+    {
+        uncovered.push_back(i);
+    }
 }
 
 PCP_Local_Search::~PCP_Local_Search()
