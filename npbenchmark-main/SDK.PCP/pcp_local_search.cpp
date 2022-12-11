@@ -72,9 +72,9 @@ void PCP_Local_Search::swap_center(int center_out, int center_in)
 
 }
 
-void PCP_Local_Search::local_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Local_Search::local_search(int seed)
 {
-    if(input_nodesWithDrops.size()==0)
+    if(nodes_with_drops.size()==0)
     {
         cerr << "Initial solution: ";
         for (int i = 0; i < num_center; i++)
@@ -82,6 +82,15 @@ void PCP_Local_Search::local_search(vector<vector<int>> &input_coverages, vector
         cerr << endl;
 
     }
+
+    vector<int> test_member_merge;
+    set_union(center_coverages[59].begin(),center_coverages[59].end(),
+              center_coverages[12].begin(),center_coverages[12].end(),
+              back_inserter(test_member_merge));
+    cerr << "Test merge size (" <<test_member_merge.size()<<"): ";
+    for (int & it : test_member_merge)
+        cerr << it << " ";
+    cerr << endl;
 
 
 }

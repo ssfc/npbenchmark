@@ -27,7 +27,7 @@ public: // member functions.
     ~PCP_Local_Search();
 
     void swap_center(int center_out, int center_in);
-    void local_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
+    void local_search(int seed);
 };
 
 
