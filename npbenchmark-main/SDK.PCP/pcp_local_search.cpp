@@ -70,7 +70,19 @@ PCP_Local_Search::~PCP_Local_Search()
 
 void PCP_Local_Search::swap_center(int center_out, int center_in)
 {
+    vector<int> temp;
+    set_difference(covered.begin(),covered.end(),
+                   center_coverages[center_out].begin(),center_coverages[center_out].end(),
+                   back_inserter(temp));
 
+    covered.assign(temp.begin(), temp.end());
+    temp.resize(0);
+
+    set_union(covered.begin(),covered.end(),
+                   center_coverages[center_in].begin(),center_coverages[center_in].end(),
+                   back_inserter(temp));
+    covered.assign(temp.begin(), temp.end());
+    temp.resize(0);
 }
 
 void PCP_Local_Search::local_search()
@@ -85,13 +97,19 @@ void PCP_Local_Search::local_search()
     }
 
     set_union(center_coverages[59].begin(),center_coverages[59].end(),
-              center_coverages[13].begin(),center_coverages[13].end(),
+              center_coverages[12].begin(),center_coverages[12].end(),
               back_inserter(covered));
     cerr << "Test merge size (" <<covered.size()<<"): ";
     for (int & it : covered)
         cerr << it << " ";
     cerr << endl;
 
+    swap_center(13, 12);
+
+    cerr << "Test swap size (" <<covered.size()<<"): ";
+    for (int & it : covered)
+        cerr << it << " ";
+    cerr << endl;
 
 }
 
