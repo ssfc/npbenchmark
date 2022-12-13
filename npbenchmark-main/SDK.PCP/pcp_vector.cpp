@@ -98,20 +98,7 @@ void PCP_Vector::local_search()
 
     }
 
-    set_union(center_coverages[59].begin(),center_coverages[59].end(),
-              center_coverages[12].begin(),center_coverages[12].end(),
-              back_inserter(covered));
-    cerr << "Test merge size (" <<covered.size()<<"): ";
-    for (int & it : covered)
-        cerr << it << " ";
-    cerr << endl;
 
-    //swap_center(13, 12);
-
-    cerr << "Test swap size (" <<covered.size()<<"): ";
-    for (int & it : covered)
-        cerr << it << " ";
-    cerr << endl;
 
 }
 
