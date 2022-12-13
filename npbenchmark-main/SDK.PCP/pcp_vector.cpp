@@ -174,7 +174,7 @@ void PCP_Vector::local_search()
         {
             for(int i=0;i<covered.size();i++)
             {
-                covered[i] += center_coverages[j][i];
+                covered[i] += center_coverages[solution[j]][i];
             }
         }
 
