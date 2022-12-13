@@ -154,6 +154,10 @@ void PCP_Vector::find_move()
         }
     }
     swap_center(center_out, center_in);
+    cerr << "current solution: ";
+    for (int i = 0; i < num_center; i++)
+        cerr << solution[i] <<" ";
+    cerr << endl;
     cerr << "number of uncovered after first find move: " << count(covered.begin(), covered.end(), 0) << endl;
 }
 
