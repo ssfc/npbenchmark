@@ -4,6 +4,7 @@
 # include "pcp_vector.h"
 
 # include <algorithm>
+# include <climits>
 # include <iostream>
 # include <random>
 # include <vector>
@@ -113,15 +114,47 @@ void PCP_Vector::find_move()
         }
     }
 
+    unsigned int min_uncovered_size = INT_MAX;
+    int center_out;
+    int center_in;
     for(int i=0;i<set_selected.size();i++)
     {
         for(int j=0;j<set_unselected.size();j++)
         {
             vector<int> temp;
+            temp.resize(covered.size());
             temp.assign(covered.begin(), covered.end());
+
+            for(int k=0;k<covered.size();k++)
+            {
+                temp[k] -= center_coverages[set_selected[i]][k];
+            }
+
+            for(int k=0;k<covered.size();k++)
+            {
+                temp[k] += center_coverages[set_unselected[j]][k];
+            }
+
+            if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
+            {
+                min_uncovered_size = count(temp.begin(), temp.end(), 0);
+                cerr << "current min_uncovered_size: " << min_uncovered_size << endl;
+                center_out = set_selected[i];
+                center_in = set_unselected[j];
+            }
         }
     }
-
+    cerr << "center_out: " << center_out << endl;
+    cerr << "center_in: " << center_in << endl;
+    for(int i=0;i<num_center;i++)
+    {
+        if(solution[i] == center_out)
+        {
+            solution[i] = center_in;
+        }
+    }
+    swap_center(center_out, center_in);
+    cerr << "number of uncovered after first find move: " << count(covered.begin(), covered.end(), 0) << endl;
 }
 
 void PCP_Vector::local_search()
