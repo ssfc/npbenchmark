@@ -63,6 +63,12 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     {
         uncovered.push_back(i);
     }
+
+    covered.resize(input_nodeNum);
+    for(int i=0;i<input_nodeNum;i++)
+    {
+        covered[i] = 0;
+    }
 }
 
 PCP_Vector::~PCP_Vector()
