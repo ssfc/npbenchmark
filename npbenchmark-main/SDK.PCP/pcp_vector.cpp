@@ -96,8 +96,10 @@ void PCP_Vector::local_search()
             cerr << solution[i] <<" ";
         cerr << endl;
 
-    }
+        int num_elements = center_coverages.size() - count(center_coverages[0].begin(), center_coverages[0].end(), 0);
+        cerr << "number of elements in 0: " << num_elements << endl;
 
+    }
 
 
 }
