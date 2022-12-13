@@ -95,7 +95,11 @@ void PCP_Vector::find_move()
     vector<int> set_covered;
     vector<int> set_uncovered;
 
-
+    solution_vector.resize(num_node);
+    for(int i=0;i<num_center;i++)
+    {
+        solution_vector[solution[i]] = 1;
+    }
 
     for(int i=0;i<num_center;i++)
     {
