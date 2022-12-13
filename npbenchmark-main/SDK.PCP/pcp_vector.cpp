@@ -98,26 +98,16 @@ void PCP_Vector::local_search()
             cerr << solution[i] <<" ";
         cerr << endl;
 
-        for(int i=0;i<covered.size();i++)
+        for(int j=0;j<num_center;j++)
         {
-            covered[i] += center_coverages[59][i];
+            for(int i=0;i<covered.size();i++)
+            {
+                covered[i] += center_coverages[j][i];
+            }
         }
 
-        unsigned int num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
-        cerr << "number of elements in 59: " << num_elements << endl;
-
-        for(int i=0;i<covered.size();i++)
-        {
-            covered[i] += center_coverages[12][i];
-        }
-
-        num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
-        cerr << "number of elements in 59+12: " << num_elements << endl;
-
-        swap_center(12, 13);
-
-        num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
-        cerr << "number of elements in 59+13: " << num_elements << endl;
+        unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
+        cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
     }
 
