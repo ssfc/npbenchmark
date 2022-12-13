@@ -113,7 +113,13 @@ void PCP_Vector::find_move()
         }
     }
 
-
+    for(int i=0;i<set_selected.size();i++)
+    {
+        for(int j=0;j<set_unselected.size();j++)
+        {
+            
+        }
+    }
 
 }
 
