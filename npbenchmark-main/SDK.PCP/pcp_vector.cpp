@@ -103,7 +103,7 @@ void PCP_Vector::local_search()
             covered[i] += center_coverages[59][i];
         }
 
-        int num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
+        unsigned int num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
         cerr << "number of elements in 59: " << num_elements << endl;
 
         for(int i=0;i<covered.size();i++)
