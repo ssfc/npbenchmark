@@ -165,7 +165,6 @@ void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
-        solution[0] = 12; 
         cerr << "Initial solution: ";
         for (int i = 0; i < num_center; i++)
             cerr << solution[i] <<" ";
@@ -182,7 +181,8 @@ void PCP_Vector::local_search()
         unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
         cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
-        find_move();
+        for(int i=0;i<10;i++)
+            find_move();
 
     }
 
