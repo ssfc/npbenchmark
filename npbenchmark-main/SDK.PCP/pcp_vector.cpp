@@ -20,14 +20,16 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
     num_node = input_nodeNum;
     num_center = input_centerNum;
-    center_coverages.resize(input_coverages.size());
+    center_coverages.resize(input_nodeNum);
     nodes_with_drops.resize(input_nodesWithDrops.size());
 
     for(int i=0;i<input_coverages.size();i++)
     {
+        center_coverages[i].resize(input_nodeNum);
         for(int j=0;j<input_coverages[i].size();j++)
         {
-            center_coverages[i].push_back(input_coverages[i][j]);
+            int index = input_coverages[i][j];
+            center_coverages[i][index] = 1;
         }
     }
 
