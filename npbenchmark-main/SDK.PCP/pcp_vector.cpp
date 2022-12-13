@@ -78,19 +78,7 @@ PCP_Vector::~PCP_Vector()
 
 void PCP_Vector::swap_center(int center_out, int center_in)
 {
-    vector<int> temp;
-    set_difference(covered.begin(),covered.end(),
-                   center_coverages[center_out].begin(),center_coverages[center_out].end(),
-                   back_inserter(temp));
-
-    covered.assign(temp.begin(), temp.end());
-    temp.resize(0);
-
-    set_union(covered.begin(),covered.end(),
-              center_coverages[center_in].begin(),center_coverages[center_in].end(),
-              back_inserter(temp));
-    covered.assign(temp.begin(), temp.end());
-    temp.resize(0);
+    
 }
 
 void PCP_Vector::local_search()
