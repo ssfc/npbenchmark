@@ -91,7 +91,23 @@ void PCP_Vector::swap_center(int center_out, int center_in)
 
 void PCP_Vector::find_move()
 {
-    
+    vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
+    vector<int> set_covered;
+    vector<int> set_uncovered;
+
+
+
+    for(int i=0;i<num_center;i++)
+    {
+        if(covered[i]==0)
+        {
+            set_uncovered.push_back(i);
+        }
+        else
+        {
+
+        }
+    }
 }
 
 void PCP_Vector::local_search()
