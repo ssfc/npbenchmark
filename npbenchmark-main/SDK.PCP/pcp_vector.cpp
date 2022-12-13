@@ -113,19 +113,8 @@ void PCP_Vector::find_move()
         }
     }
 
-    cerr << "selected: ";
-    for(int i=0;i<set_selected.size();i++)
-    {
-        cerr << set_selected[i] << " ";
-    }
-    cerr << endl;
 
-    cerr << "unselected: ";
-    for(int i=0;i<set_unselected.size();i++)
-    {
-        cerr << set_unselected[i] << " ";
-    }
-    cerr << endl;
+
 }
 
 void PCP_Vector::local_search()
