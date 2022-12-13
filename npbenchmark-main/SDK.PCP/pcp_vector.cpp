@@ -165,6 +165,7 @@ void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
+        solution[0] = 12; 
         cerr << "Initial solution: ";
         for (int i = 0; i < num_center; i++)
             cerr << solution[i] <<" ";
