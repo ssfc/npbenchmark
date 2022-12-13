@@ -92,8 +92,8 @@ void PCP_Vector::swap_center(int center_out, int center_in)
 void PCP_Vector::find_move()
 {
     vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
-    vector<int> set_covered;
-    vector<int> set_uncovered;
+    vector<int> set_selected;
+    vector<int> set_unselected;
 
     solution_vector.resize(num_node);
     for(int i=0;i<num_center;i++)
@@ -101,17 +101,31 @@ void PCP_Vector::find_move()
         solution_vector[solution[i]] = 1;
     }
 
-    for(int i=0;i<num_center;i++)
+    for(int i=0;i<solution_vector.size();i++)
     {
-        if(covered[i]==0)
+        if(solution_vector[i]==0)
         {
-            set_uncovered.push_back(i);
+            set_unselected.push_back(i);
         }
         else
         {
-
+            set_selected.push_back(i);
         }
     }
+
+    cerr << "selected: ";
+    for(int i=0;i<set_selected.size();i++)
+    {
+        cerr << set_selected[i] << " ";
+    }
+    cerr << endl;
+
+    cerr << "unselected: ";
+    for(int i=0;i<set_unselected.size();i++)
+    {
+        cerr << set_unselected[i] << " ";
+    }
+    cerr << endl;
 }
 
 void PCP_Vector::local_search()
