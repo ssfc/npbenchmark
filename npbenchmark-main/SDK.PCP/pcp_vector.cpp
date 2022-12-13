@@ -13,7 +13,7 @@ using namespace std;
 mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
-PCP_Local_Search::PCP_Local_Search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
+PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
 {
     seed = input_seed;
     initRand(seed); // initialize random generator;
@@ -63,12 +63,12 @@ PCP_Local_Search::PCP_Local_Search(int input_nodeNum, int input_centerNum, vecto
     }
 }
 
-PCP_Local_Search::~PCP_Local_Search()
+PCP_Vector::~PCP_Vector()
 {
 
 }
 
-void PCP_Local_Search::swap_center(int center_out, int center_in)
+void PCP_Vector::swap_center(int center_out, int center_in)
 {
     vector<int> temp;
     set_difference(covered.begin(),covered.end(),
@@ -85,7 +85,7 @@ void PCP_Local_Search::swap_center(int center_out, int center_in)
     temp.resize(0);
 }
 
-void PCP_Local_Search::local_search()
+void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {

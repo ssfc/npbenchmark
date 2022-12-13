@@ -45,7 +45,7 @@ public:
         // test_graph.greedy_find(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
 
         // 2: local search method;
-        PCP_Local_Search test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
+        PCP_Vector test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test_graph.local_search();
 
 
