@@ -117,9 +117,9 @@ void PCP_Vector::find_move()
     unsigned int min_uncovered_size = INT_MAX;
     int center_out;
     int center_in;
-    for(int i=0;i<set_selected.size();i++)
+    for(int i : set_selected)
     {
-        for(int j=0;j<set_unselected.size();j++)
+        for(int j : set_unselected)
         {
             vector<int> temp;
             temp.resize(covered.size());
@@ -127,20 +127,20 @@ void PCP_Vector::find_move()
 
             for(int k=0;k<covered.size();k++)
             {
-                temp[k] -= center_coverages[set_selected[i]][k];
+                temp[k] -= center_coverages[i][k];
             }
 
             for(int k=0;k<covered.size();k++)
             {
-                temp[k] += center_coverages[set_unselected[j]][k];
+                temp[k] += center_coverages[j][k];
             }
 
             if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
             {
                 min_uncovered_size = count(temp.begin(), temp.end(), 0);
                 cerr << "current min_uncovered_size: " << min_uncovered_size << endl;
-                center_out = set_selected[i];
-                center_in = set_unselected[j];
+                center_out = i;
+                center_in = j;
             }
         }
     }
