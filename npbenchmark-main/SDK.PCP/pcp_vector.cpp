@@ -89,6 +89,11 @@ void PCP_Vector::swap_center(int center_out, int center_in)
     }
 }
 
+void PCP_Vector::find_move()
+{
+    
+}
+
 void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
