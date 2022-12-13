@@ -104,7 +104,7 @@ void PCP_Local_Search::local_search()
         cerr << it << " ";
     cerr << endl;
 
-    swap_center(13, 12);
+    //swap_center(13, 12);
 
     cerr << "Test swap size (" <<covered.size()<<"): ";
     for (int & it : covered)
