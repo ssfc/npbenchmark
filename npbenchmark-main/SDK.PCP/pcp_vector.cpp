@@ -78,7 +78,15 @@ PCP_Vector::~PCP_Vector()
 
 void PCP_Vector::swap_center(int center_out, int center_in)
 {
-    
+    for(int i=0;i<covered.size();i++)
+    {
+        covered[i] -= center_coverages[center_out][i];
+    }
+
+    for(int i=0;i<covered.size();i++)
+    {
+        covered[i] += center_coverages[center_in][i];
+    }
 }
 
 void PCP_Vector::local_search()
@@ -106,18 +114,7 @@ void PCP_Vector::local_search()
         num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
         cerr << "number of elements in 59+12: " << num_elements << endl;
 
-        for(int i=0;i<covered.size();i++)
-        {
-            covered[i] -= center_coverages[12][i];
-        }
-
-        num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
-        cerr << "number of elements in 59+12-12: " << num_elements << endl;
-
-        for(int i=0;i<covered.size();i++)
-        {
-            covered[i] += center_coverages[13][i];
-        }
+        swap_center(12, 13);
 
         num_elements = center_coverages.size() - count(covered.begin(), covered.end(), 0);
         cerr << "number of elements in 59+13: " << num_elements << endl;
