@@ -34,13 +34,6 @@ public:
 
 	void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
 		// TODO: implement your own solver which fills the `output` to replace the following trivial solver.
-		// sample solver: pick center randomly (the solution can be infeasible).
-
-		//                      +----[ exit before timeout ]
-		//                      |
-		for (NodeId n = 0; !isTimeout() && (n < input.centerNum); ++n) { output[n] = rand(input.nodeNum); }
-		//                                                                             |
-		//        [ use the random number generator initialized by the given seed ]----+
 
         // 1: greedy method;
         // PCP_Greedy test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
@@ -59,12 +52,6 @@ public:
         {
             output[i] = test_graph.get_solution(i);
         }
-
-		// TODO: the following code in this function is for illustration only and can be deleted.
-		// print some information for debugging.
-        cerr << "iterations: " << test_iterations << endl;
-		cerr << input.nodeNum << '\t' << input.centerNum << endl;
-		for (NodeId n = 0; !isTimeout() && (n < input.centerNum); ++n) { cerr << n << '\t' << output[n] << endl; }
 	}
 
 	void reduceRadius(PCenter& input, Nodes nodesWithDrop) {
