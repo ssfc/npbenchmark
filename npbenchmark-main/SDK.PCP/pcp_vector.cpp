@@ -119,7 +119,7 @@ void PCP_Vector::find_move()
     {
         for(int j : set_unselected)
         {
-            vector<int> temp;
+            vector<int> temp; // dim, num_node; 
             temp.resize(covered.size());
             temp.assign(covered.begin(), covered.end());
 
