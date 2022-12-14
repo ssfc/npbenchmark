@@ -145,8 +145,6 @@ void PCP_Vector::find_move()
                 equal_count++;
 
                 cerr << "current min_uncovered_size: " << min_uncovered_size << endl;
-                center_out = i;
-                center_in = j;
             }
             else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
             {
@@ -157,6 +155,10 @@ void PCP_Vector::find_move()
             }
         }
     }
+
+    unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
+    center_out = equal_delta[rand_select][0];
+    center_in = equal_delta[rand_select][1];
 
     cerr << "center_out: " << center_out << endl;
     cerr << "center_in: " << center_in << endl;
@@ -200,8 +202,9 @@ void PCP_Vector::local_search()
         unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
         cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
-        for(int i=0;i<5;i++)
+        for(int i=0;i<300 && count(covered.begin(), covered.end(), 0)!=0;i++)
         {
+            cerr << "iteration" << i << endl;
             find_move();
             make_move();
         }
