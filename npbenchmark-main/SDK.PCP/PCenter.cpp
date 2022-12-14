@@ -55,7 +55,7 @@ public:
 
 		// TODO: the following code in this function is for illustration only and can be deleted.
 		// print some information for debugging.
-        cerr << "iterations: " << test_iterations << endl; 
+        cerr << "iterations: " << test_iterations << endl;
 		cerr << input.nodeNum << '\t' << input.centerNum << endl;
 		for (NodeId n = 0; !isTimeout() && (n < input.centerNum); ++n) { cerr << n << '\t' << output[n] << endl; }
 	}
