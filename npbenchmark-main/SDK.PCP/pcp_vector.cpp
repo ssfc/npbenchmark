@@ -143,8 +143,6 @@ void PCP_Vector::find_move()
                 equal_delta[equal_count][1] = j; // j is center in;
 
                 equal_count++;
-
-                cerr << "current min_uncovered_size: " << min_uncovered_size << endl;
             }
             else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
             {
@@ -159,10 +157,6 @@ void PCP_Vector::find_move()
     unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
     center_out = equal_delta[rand_select][0];
     center_in = equal_delta[rand_select][1];
-
-    cerr << "center_out: " << center_out << endl;
-    cerr << "center_in: " << center_in << endl;
-
 }
 
 void PCP_Vector::make_move()
@@ -175,11 +169,6 @@ void PCP_Vector::make_move()
         }
     }
     swap_center(center_out, center_in);
-    cerr << "solution after swap: ";
-    for (int i = 0; i < num_center; i++)
-        cerr << solution[i] <<" ";
-    cerr << endl;
-    cerr << "number of uncovered after find move: " << count(covered.begin(), covered.end(), 0) << endl;
 }
 
 void PCP_Vector::local_search()
@@ -213,7 +202,7 @@ void PCP_Vector::local_search()
 
         for(int i=0;count(covered.begin(), covered.end(), 0)!=0;i++)
         {
-            cerr << "iteration: " << i << endl;
+            // cerr << "iteration: " << i << endl;
             find_move();
             make_move();
         }
