@@ -187,6 +187,15 @@ void PCP_Vector::local_search()
     if(nodes_with_drops.empty())
     {
         cerr << "Initial solution: ";
+        // 62 59 98 41 77
+        /*
+        solution[0] = 62;
+        solution[1] = 59;
+        solution[2] = 98;
+        solution[3] = 41;
+        solution[4] = 77;
+         */
+
         for (int i = 0; i < num_center; i++)
             cerr << solution[i] <<" ";
         cerr << endl;
