@@ -24,6 +24,7 @@ private: // member variables.
     vector<int> uncovered; // points has not been covered by set;
     int center_in;
     int center_out;
+    int equal_delta[2000][2];
 
 public: // member functions.
     PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
