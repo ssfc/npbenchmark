@@ -212,3 +212,10 @@ void PCP_Vector::local_search()
 
 }
 
+// get solution;
+unsigned int PCP_Vector::get_solution(int i)
+{
+    return solution[i];
+}
+
+

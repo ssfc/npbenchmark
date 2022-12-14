@@ -34,6 +34,7 @@ public: // member functions.
     void find_move();
     void make_move();
     void local_search();
+    unsigned int get_solution(int i);
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H

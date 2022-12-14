@@ -48,7 +48,11 @@ public:
         PCP_Vector test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test_graph.local_search();
 
-
+        for (int i = 0;i < input.centerNum;i++)
+        {
+            output[i] = test_graph.get_solution(i);
+        }
+        
 		// TODO: the following code in this function is for illustration only and can be deleted.
 		// print some information for debugging.
 		cerr << input.nodeNum << '\t' << input.centerNum << endl;
