@@ -115,8 +115,6 @@ void PCP_Vector::find_move()
     }
 
     unsigned int min_uncovered_size = INT_MAX;
-    int center_out;
-    int center_in;
     for(int i : set_selected)
     {
         for(int j : set_unselected)
@@ -181,9 +179,11 @@ void PCP_Vector::local_search()
         unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
         cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
-        for(int i=0;i<10;i++)
+        for(int i=0;i<5;i++)
+        {
             find_move();
 
+        }
     }
 
 
