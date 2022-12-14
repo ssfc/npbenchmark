@@ -173,7 +173,7 @@ void PCP_Vector::make_move()
     swap_center(center_out, center_in);
 }
 
-void PCP_Vector::local_search()
+int PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
@@ -210,6 +210,8 @@ void PCP_Vector::local_search()
             iter++;
         }
     }
+
+    return iter;
 }
 
 // get solution;
