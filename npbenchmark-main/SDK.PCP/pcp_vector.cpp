@@ -175,11 +175,11 @@ void PCP_Vector::make_move()
         }
     }
     swap_center(center_out, center_in);
-    cerr << "current solution: ";
+    cerr << "solution after swap: ";
     for (int i = 0; i < num_center; i++)
         cerr << solution[i] <<" ";
     cerr << endl;
-    cerr << "number of uncovered after first find move: " << count(covered.begin(), covered.end(), 0) << endl;
+    cerr << "number of uncovered after find move: " << count(covered.begin(), covered.end(), 0) << endl;
 }
 
 void PCP_Vector::local_search()
@@ -202,9 +202,9 @@ void PCP_Vector::local_search()
         unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
         cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
-        for(int i=0;i<300 && count(covered.begin(), covered.end(), 0)!=0;i++)
+        for(int i=0;count(covered.begin(), covered.end(), 0)!=0;i++)
         {
-            cerr << "iteration" << i << endl;
+            cerr << "iteration: " << i << endl;
             find_move();
             make_move();
         }
