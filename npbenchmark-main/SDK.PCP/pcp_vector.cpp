@@ -70,6 +70,8 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     {
         covered[i] = 0;
     }
+
+    iter = 0;
 }
 
 PCP_Vector::~PCP_Vector()
@@ -200,14 +202,14 @@ void PCP_Vector::local_search()
         unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
         cerr << "number of uncovered in initial solution: " << num_uncovered << endl;
 
-        for(int i=0;count(covered.begin(), covered.end(), 0)!=0;i++)
+        while(count(covered.begin(), covered.end(), 0)!=0)
         {
             // cerr << "iteration: " << i << endl;
             find_move();
             make_move();
+            iter++;
         }
     }
-
 }
 
 // get solution;
