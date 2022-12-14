@@ -31,6 +31,7 @@ public: // member functions.
 
     void swap_center(int center_out, int center_in);
     void find_move();
+    void make_move();
     void local_search();
 };
 

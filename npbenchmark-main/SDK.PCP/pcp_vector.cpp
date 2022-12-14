@@ -144,6 +144,11 @@ void PCP_Vector::find_move()
     }
     cerr << "center_out: " << center_out << endl;
     cerr << "center_in: " << center_in << endl;
+
+}
+
+void PCP_Vector::make_move()
+{
     for(int i=0;i<num_center;i++)
     {
         if(solution[i] == center_out)
@@ -182,10 +187,9 @@ void PCP_Vector::local_search()
         for(int i=0;i<5;i++)
         {
             find_move();
-
+            make_move();
         }
     }
-
-
+    
 }
 
