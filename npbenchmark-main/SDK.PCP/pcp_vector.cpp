@@ -123,12 +123,12 @@ void PCP_Vector::find_move()
             temp.resize(covered.size());
             temp.assign(covered.begin(), covered.end());
 
-            for(int k=0;k<covered.size();k++)
+            for(int k=0;k<temp.size();k++)
             {
                 temp[k] -= center_coverages[i][k];
             }
 
-            for(int k=0;k<covered.size();k++)
+            for(int k=0;k<temp.size();k++)
             {
                 temp[k] += center_coverages[j][k];
             }
@@ -190,6 +190,6 @@ void PCP_Vector::local_search()
             make_move();
         }
     }
-    
+
 }
 
