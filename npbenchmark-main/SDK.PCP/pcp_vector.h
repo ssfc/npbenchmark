@@ -31,7 +31,7 @@ public: // member functions.
     PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Vector();
 
-    void swap_center(int center_out, int center_in);
+    void swap_center();
     void find_move();
     void make_move();
     int local_search();

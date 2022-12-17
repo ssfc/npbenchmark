@@ -79,7 +79,7 @@ PCP_Vector::~PCP_Vector()
 
 }
 
-void PCP_Vector::swap_center(int center_out, int center_in)
+void PCP_Vector::swap_center()
 {
     for(int i=0;i<covered.size();i++)
     {
@@ -170,7 +170,7 @@ void PCP_Vector::make_move()
             solution[i] = center_in;
         }
     }
-    swap_center(center_out, center_in);
+    swap_center();
 }
 
 int PCP_Vector::local_search()
