@@ -215,6 +215,13 @@ int PCP_Vector::local_search()
             // cerr << "iteration: " << i << endl;
             find_move();
             make_move();
+
+            /*
+            if(iter==1)
+            {
+                print_tabu_tenure_table();
+            }*/
+
             iter++;
         }
 
