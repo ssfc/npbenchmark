@@ -242,11 +242,11 @@ int PCP_Vector::local_search()
         solution[4] = 77;
          */
         
-        for(int j=0;j<num_center;j++)
+        for(int i=0;i<num_center;i++)
         {
-            for(int i=0;i<covered.size();i++)
+            for(int j=0;j<covered.size();j++)
             {
-                covered[i] += center_coverages[solution[j]][i];
+                covered[j] += center_coverages[solution[i]][j];
             }
         }
 
