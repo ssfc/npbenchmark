@@ -187,7 +187,7 @@ void Graph::find_move()
     int equal_nontabu_count = 0;
     int equal_tabu_count = 0;
 
-    int A = best_conflict - conflict;
+    int aspiration = best_conflict - conflict;
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
@@ -250,7 +250,7 @@ void Graph::find_move()
         }
     }
 
-    if (tabu_delta < A && tabu_delta < min_delta)
+    if (tabu_delta < aspiration && tabu_delta < min_delta)
     {
         min_delta = tabu_delta;
         unsigned int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
