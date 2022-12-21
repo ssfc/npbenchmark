@@ -49,6 +49,12 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         for (int i = 0; i < num_center; i++)
             solution[i] = pseudoRandNumGen() % num_node;
 
+        tabu_tenure_table = new unsigned int* [num_node];
+        for (int i = 0; i < num_node; i++)
+        {
+            tabu_tenure_table[i] = new unsigned int[num_node];
+        }
+
     }
     catch (const bad_alloc& e)
     {
