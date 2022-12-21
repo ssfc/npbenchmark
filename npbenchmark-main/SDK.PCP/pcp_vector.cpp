@@ -216,11 +216,13 @@ int PCP_Vector::local_search()
             find_move();
             make_move();
 
-            /*
+            /* debug: tabu tenure; 
             if(iter==1)
             {
+                cerr << "tabu tenure: " << tabu_tenure_table[center_out][center_in] << endl;
                 print_tabu_tenure_table();
-            }*/
+            }
+             */
 
             iter++;
         }
@@ -240,7 +242,7 @@ unsigned int PCP_Vector::get_solution(int i)
 
 void PCP_Vector::print_tabu_tenure_table()
 {
-    cerr << "final tabu tenure table: " << endl;
+    cerr << "tabu tenure table: " << endl;
     for(int i=0;i<num_node;i++)
     {
         for(int j=0;j<num_node;j++)
