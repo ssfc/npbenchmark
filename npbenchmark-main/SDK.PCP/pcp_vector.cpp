@@ -183,6 +183,7 @@ void PCP_Vector::make_move()
         }
     }
     swap_center();
+    // tabu_tenure_table[center_out][center_in] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 }
 
 int PCP_Vector::local_search()
