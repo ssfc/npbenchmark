@@ -217,6 +217,18 @@ int PCP_Vector::local_search()
             make_move();
             iter++;
         }
+
+        /*
+        cerr << "final tabu tenure table: " << endl;
+        for(int i=0;i<num_node;i++)
+        {
+            for(int j=0;j<num_node;j++)
+            {
+                cerr << tabu_tenure_table[i][j] << " ";
+            }
+            cerr << endl;
+        }
+         */
     }
 
     return iter;
