@@ -134,37 +134,75 @@ void PCP_Vector::find_move()
     {
         for(int j : set_unselected) // center in;
         {
-            vector<int> temp; // dim, num_node;
-            temp.resize(covered.size());
-            temp.assign(covered.begin(), covered.end());
-
-            for(int k=0;k<temp.size();k++)
+            if (tabu_tenure_table[i][j] <= iter) //非禁忌移动;
             {
-                temp[k] -= center_coverages[i][k];
+                vector<int> temp; // dim, num_node;
+                temp.resize(covered.size());
+                temp.assign(covered.begin(), covered.end());
+
+                for(int k=0;k<temp.size();k++)
+                {
+                    temp[k] -= center_coverages[i][k];
+                }
+
+                for(int k=0;k<temp.size();k++)
+                {
+                    temp[k] += center_coverages[j][k];
+                }
+
+                if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
+                {
+                    min_uncovered_size = count(temp.begin(), temp.end(), 0);
+                    equal_count = 0;
+
+                    equal_delta[equal_count][0] = i; // i is center out;
+                    equal_delta[equal_count][1] = j; // j is center in;
+
+                    equal_count++;
+                }
+                else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
+                {
+                    equal_delta[equal_count][0] = i; // i is center out;
+                    equal_delta[equal_count][1] = j; // j is center in;
+
+                    equal_count++;
+                }
+            }
+            else // 禁忌移动;
+            {
+                vector<int> temp; // dim, num_node;
+                temp.resize(covered.size());
+                temp.assign(covered.begin(), covered.end());
+
+                for(int k=0;k<temp.size();k++)
+                {
+                    temp[k] -= center_coverages[i][k];
+                }
+
+                for(int k=0;k<temp.size();k++)
+                {
+                    temp[k] += center_coverages[j][k];
+                }
+
+                if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
+                {
+                    min_uncovered_size = count(temp.begin(), temp.end(), 0);
+                    equal_count = 0;
+
+                    equal_delta[equal_count][0] = i; // i is center out;
+                    equal_delta[equal_count][1] = j; // j is center in;
+
+                    equal_count++;
+                }
+                else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
+                {
+                    equal_delta[equal_count][0] = i; // i is center out;
+                    equal_delta[equal_count][1] = j; // j is center in;
+
+                    equal_count++;
+                }
             }
 
-            for(int k=0;k<temp.size();k++)
-            {
-                temp[k] += center_coverages[j][k];
-            }
-
-            if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
-            {
-                min_uncovered_size = count(temp.begin(), temp.end(), 0);
-                equal_count = 0;
-
-                equal_delta[equal_count][0] = i; // i is center out;
-                equal_delta[equal_count][1] = j; // j is center in;
-
-                equal_count++;
-            }
-            else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
-            {
-                equal_delta[equal_count][0] = i; // i is center out;
-                equal_delta[equal_count][1] = j; // j is center in;
-
-                equal_count++;
-            }
         }
     }
 
@@ -216,7 +254,7 @@ int PCP_Vector::local_search()
             find_move();
             make_move();
 
-            /* debug: tabu tenure; 
+            /* debug: tabu tenure;
             if(iter==1)
             {
                 cerr << "tabu tenure: " << tabu_tenure_table[center_out][center_in] << endl;
