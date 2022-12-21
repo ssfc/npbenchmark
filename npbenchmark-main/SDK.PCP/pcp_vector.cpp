@@ -129,7 +129,10 @@ void PCP_Vector::find_move()
     }
 
     unsigned int min_uncovered_size = INT_MAX;
-    int equal_count = 0;
+    // int equal_count = 0;
+    int equal_nontabu_count = 0;
+    int equal_tabu_count = 0;
+
     for(int i : set_selected) // center out;
     {
         for(int j : set_unselected) // center in;
@@ -153,19 +156,19 @@ void PCP_Vector::find_move()
                 if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
                 {
                     min_uncovered_size = count(temp.begin(), temp.end(), 0);
-                    equal_count = 0;
+                    equal_nontabu_count = 0;
 
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
+                    equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
 
-                    equal_count++;
+                    equal_nontabu_count++;
                 }
                 else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
                 {
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
+                    equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
 
-                    equal_count++;
+                    equal_nontabu_count++;
                 }
             }
             else // 禁忌移动;
@@ -187,28 +190,28 @@ void PCP_Vector::find_move()
                 if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
                 {
                     min_uncovered_size = count(temp.begin(), temp.end(), 0);
-                    equal_count = 0;
+                    equal_tabu_count = 0;
 
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
+                    equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
 
-                    equal_count++;
+                    equal_tabu_count++;
                 }
                 else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
                 {
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
+                    equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
 
-                    equal_count++;
+                    equal_tabu_count++;
                 }
             }
 
         }
     }
 
-    unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
-    center_out = equal_delta[rand_select][0];
-    center_in = equal_delta[rand_select][1];
+    unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // equal_delta随机选择
+    center_out = equal_nontabu_delta[rand_select][0];
+    center_in = equal_nontabu_delta[rand_select][1];
 }
 
 void PCP_Vector::make_move()
