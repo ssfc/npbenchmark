@@ -83,6 +83,12 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 PCP_Vector::~PCP_Vector()
 {
     delete[] solution;
+
+    for (int i = 0; i < num_node; i++)
+    {
+        delete[] tabu_tenure_table[i];
+    }
+
 }
 
 void PCP_Vector::swap_center()
