@@ -24,6 +24,8 @@ private: // member variables.
     vector<int> uncovered; // points has not been covered by set;
     int center_in;
     int center_out;
+
+    unsigned int** tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node * num_node;
     int equal_delta[2000][2];
     int iter;
 

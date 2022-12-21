@@ -76,7 +76,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
 PCP_Vector::~PCP_Vector()
 {
-
+    delete[] solution;
 }
 
 void PCP_Vector::swap_center()
