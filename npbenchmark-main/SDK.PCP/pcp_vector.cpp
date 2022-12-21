@@ -218,17 +218,8 @@ int PCP_Vector::local_search()
             iter++;
         }
 
-        /*
-        cerr << "final tabu tenure table: " << endl;
-        for(int i=0;i<num_node;i++)
-        {
-            for(int j=0;j<num_node;j++)
-            {
-                cerr << tabu_tenure_table[i][j] << " ";
-            }
-            cerr << endl;
-        }
-         */
+        // print final tabu_tenure_table;
+        // print_tabu_tenure_table();
     }
 
     return iter;
@@ -240,4 +231,16 @@ unsigned int PCP_Vector::get_solution(int i)
     return solution[i];
 }
 
+void PCP_Vector::print_tabu_tenure_table()
+{
+    cerr << "final tabu tenure table: " << endl;
+    for(int i=0;i<num_node;i++)
+    {
+        for(int j=0;j<num_node;j++)
+        {
+            cerr << tabu_tenure_table[i][j] << " ";
+        }
+        cerr << endl;
+    }
+}
 

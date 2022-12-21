@@ -40,6 +40,9 @@ public: // member functions.
     void make_move();
     int local_search();
     unsigned int get_solution(int i);
+
+    // debug functions;
+    void print_tabu_tenure_table();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H
