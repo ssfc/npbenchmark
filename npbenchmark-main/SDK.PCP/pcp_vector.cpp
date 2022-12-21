@@ -19,6 +19,8 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     seed = input_seed;
     initRand(seed); // initialize random generator;
 
+    conflict = 0;
+
     num_node = input_nodeNum;
     num_center = input_centerNum;
     center_coverages.resize(input_nodeNum);

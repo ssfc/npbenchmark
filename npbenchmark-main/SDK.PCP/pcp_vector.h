@@ -19,6 +19,8 @@ private: // member variables.
     vector<vector<int>> nodes_with_drops;
 
     unsigned int* solution; // index of selected center; dimension, num_center;
+    unsigned int conflict;
+
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
     vector<int> uncovered; // points has not been covered by set;
