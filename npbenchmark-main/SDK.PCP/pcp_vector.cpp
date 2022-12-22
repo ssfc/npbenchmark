@@ -81,7 +81,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
     iter = 0;
 
-    // compute initial conflict of random solution; 
+    // compute initial conflict of random solution;
     // 62 59 98 41 77
     /*
     solution[0] = 62;
@@ -99,8 +99,8 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         }
     }
 
-    unsigned int num_uncovered = count(covered.begin(), covered.end(), 0);
-    cerr << "number of uncovered in the initial solution: " << num_uncovered << endl;
+    conflict = count(covered.begin(), covered.end(), 0);
+    cerr << "number of uncovered in the initial solution: " << conflict << endl;
 }
 
 PCP_Vector::~PCP_Vector()
