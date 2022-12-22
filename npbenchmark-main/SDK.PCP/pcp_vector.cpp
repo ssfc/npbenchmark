@@ -81,6 +81,15 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
     iter = 0;
 
+    // compute initial conflict of random solution; 
+    // 62 59 98 41 77
+    /*
+    solution[0] = 62;
+    solution[1] = 59;
+    solution[2] = 98;
+    solution[3] = 41;
+    solution[4] = 77;
+     */
 
     for(int i=0;i<num_center;i++)
     {
@@ -245,17 +254,6 @@ int PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
-        // 62 59 98 41 77
-        /*
-        solution[0] = 62;
-        solution[1] = 59;
-        solution[2] = 98;
-        solution[3] = 41;
-        solution[4] = 77;
-         */
-        
-
-
         while(count(covered.begin(), covered.end(), 0)!=0)
         {
             // cerr << "iteration: " << i << endl;
@@ -286,6 +284,7 @@ unsigned int PCP_Vector::get_solution(int i)
     return solution[i];
 }
 
+// debug function;
 void PCP_Vector::print_tabu_tenure_table()
 {
     cerr << "tabu tenure table: " << endl;
