@@ -249,6 +249,9 @@ void PCP_Vector::make_move()
     }
     swap_center();
     conflict = count(covered.begin(), covered.end(), 0);
+    if (conflict < best_conflict)
+        best_conflict = conflict; // update minimum conflict of history;
+
     tabu_tenure_table[center_out][center_in] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 }
 
