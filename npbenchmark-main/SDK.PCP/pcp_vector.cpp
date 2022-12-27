@@ -133,6 +133,13 @@ void PCP_Vector::find_move()
     min_delta = INT_MAX;
     int tabu_delta = INT_MAX;
 
+    unsigned int min_uncovered_size = INT_MAX;
+    // int equal_count = 0;
+    int equal_nontabu_count = 0;
+    int equal_tabu_count = 0;
+
+    int aspiration = best_conflict - conflict;
+
     vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
     vector<int> set_selected;
     vector<int> set_unselected;
@@ -154,11 +161,6 @@ void PCP_Vector::find_move()
             set_selected.push_back(i);
         }
     }
-
-    unsigned int min_uncovered_size = INT_MAX;
-    // int equal_count = 0;
-    int equal_nontabu_count = 0;
-    int equal_tabu_count = 0;
 
     for(int i : set_selected) // center out;
     {
