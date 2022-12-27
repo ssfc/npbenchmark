@@ -130,6 +130,9 @@ void PCP_Vector::swap_center()
 
 void PCP_Vector::find_move()
 {
+    min_delta = INT_MAX;
+    int tabu_delta = INT_MAX;
+
     vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
     vector<int> set_selected;
     vector<int> set_unselected;
