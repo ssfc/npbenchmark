@@ -20,6 +20,7 @@ private: // member variables.
 
     unsigned int* solution; // index of selected center; dimension, num_center;
     unsigned int conflict;
+    unsigned int best_conflict;
 
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;

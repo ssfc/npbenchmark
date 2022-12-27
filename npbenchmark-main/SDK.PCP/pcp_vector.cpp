@@ -100,6 +100,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     }
 
     conflict = count(covered.begin(), covered.end(), 0);
+    best_conflict = conflict;
     cerr << "number of uncovered in the initial solution: " << conflict << endl;
 }
 
@@ -247,14 +248,15 @@ void PCP_Vector::make_move()
         }
     }
     swap_center();
-    tabu_tenure_table[center_out][center_in] = iter + count(covered.begin(), covered.end(), 0) + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    conflict = count(covered.begin(), covered.end(), 0);
+    tabu_tenure_table[center_out][center_in] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 }
 
 int PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
-        while(count(covered.begin(), covered.end(), 0)!=0)
+        while(conflict!=0)
         {
             // cerr << "iteration: " << i << endl;
             find_move();
