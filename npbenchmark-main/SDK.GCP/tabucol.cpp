@@ -204,7 +204,7 @@ void Graph::find_move()
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
                     int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table_i[j] <= iter) //非禁忌移动;
+                    if (tabu_tenure_table_i[j] <= iter) //nontabu move; 
                     {
                         if (tmp < min_delta)
                         {//分支预判惩罚 6.0
@@ -224,13 +224,13 @@ void Graph::find_move()
                             equal_nontabu_count++;
                         }
                     }
-                    else // 禁忌移动;
+                    else // tabu move;
                     {
                         if (tmp < tabu_delta)
                         {//6.0
                             equal_tabu_count = 0;
                             tabu_delta = tmp;
-                            
+
                             equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
 
