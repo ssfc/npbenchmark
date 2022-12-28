@@ -133,8 +133,6 @@ void PCP_Vector::find_move()
     min_delta = INT_MAX;
     int tabu_delta = INT_MAX;
 
-    unsigned int min_uncovered_size = INT_MAX;
-    // int equal_count = 0;
     int equal_nontabu_count = 0;
     int equal_tabu_count = 0;
 
@@ -180,19 +178,20 @@ void PCP_Vector::find_move()
                 temp[k] += center_coverages[j][k];
             }
 
+            int this_delta = count(temp.begin(), temp.end(), 0) - conflict;
             if (tabu_tenure_table[i][j] <= iter) //非禁忌移动;
             {
-                if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
+                if(this_delta < min_delta) // the less the better;
                 {
-                    min_uncovered_size = count(temp.begin(), temp.end(), 0);
                     equal_nontabu_count = 0;
+                    min_delta = this_delta;
 
                     equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
                     equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
 
                     equal_nontabu_count++;
                 }
-                else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
+                else if(this_delta == min_delta) // the less the better;
                 {
                     equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
                     equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
@@ -202,17 +201,17 @@ void PCP_Vector::find_move()
             }
             else // 禁忌移动;
             {
-                if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
+                if(this_delta < tabu_delta) // the less the better;
                 {
-                    min_uncovered_size = count(temp.begin(), temp.end(), 0);
                     equal_tabu_count = 0;
+                    tabu_delta = this_delta;
 
                     equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
                     equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
 
                     equal_tabu_count++;
                 }
-                else if(count(temp.begin(), temp.end(), 0) == min_uncovered_size) // the less the better;
+                else if(this_delta == tabu_delta) // the less the better;
                 {
                     equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
                     equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
@@ -239,7 +238,7 @@ void PCP_Vector::make_move()
         }
     }
     swap_center();
-    conflict = count(covered.begin(), covered.end(), 0);
+    conflict = min_delta + conflict;
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
