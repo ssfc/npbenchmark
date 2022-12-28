@@ -203,20 +203,20 @@ void Graph::find_move()
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int tmp = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table_i[j] <= iter) //nontabu move; 
+                    int this_delta = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
+                    if (tabu_tenure_table_i[j] <= iter) //nontabu move;
                     {
-                        if (tmp < min_delta)
+                        if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
                             equal_nontabu_count = 0;
-                            min_delta = tmp;
+                            min_delta = this_delta;
 
                             equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
 
                             equal_nontabu_count++;
                         }
-                        else if (tmp == min_delta)
+                        else if (this_delta == min_delta)
                         {
                             equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
@@ -226,17 +226,17 @@ void Graph::find_move()
                     }
                     else // tabu move;
                     {
-                        if (tmp < tabu_delta)
+                        if (this_delta < tabu_delta)
                         {//6.0
                             equal_tabu_count = 0;
-                            tabu_delta = tmp;
+                            tabu_delta = this_delta;
 
                             equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
 
                             equal_tabu_count++;
                         }
-                        else if(tmp == tabu_delta)
+                        else if(this_delta == tabu_delta)
                         {
                             equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
