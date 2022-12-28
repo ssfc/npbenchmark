@@ -166,22 +166,22 @@ void PCP_Vector::find_move()
     {
         for(int j : set_unselected) // center in;
         {
+            vector<int> temp; // dim, num_node;
+            temp.resize(covered.size());
+            temp.assign(covered.begin(), covered.end());
+
+            for(int k=0;k<temp.size();k++)
+            {
+                temp[k] -= center_coverages[i][k];
+            }
+
+            for(int k=0;k<temp.size();k++)
+            {
+                temp[k] += center_coverages[j][k];
+            }
+
             if (tabu_tenure_table[i][j] <= iter) //非禁忌移动;
             {
-                vector<int> temp; // dim, num_node;
-                temp.resize(covered.size());
-                temp.assign(covered.begin(), covered.end());
-
-                for(int k=0;k<temp.size();k++)
-                {
-                    temp[k] -= center_coverages[i][k];
-                }
-
-                for(int k=0;k<temp.size();k++)
-                {
-                    temp[k] += center_coverages[j][k];
-                }
-
                 if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
                 {
                     min_uncovered_size = count(temp.begin(), temp.end(), 0);
@@ -202,20 +202,6 @@ void PCP_Vector::find_move()
             }
             else // 禁忌移动;
             {
-                vector<int> temp; // dim, num_node;
-                temp.resize(covered.size());
-                temp.assign(covered.begin(), covered.end());
-
-                for(int k=0;k<temp.size();k++)
-                {
-                    temp[k] -= center_coverages[i][k];
-                }
-
-                for(int k=0;k<temp.size();k++)
-                {
-                    temp[k] += center_coverages[j][k];
-                }
-
                 if(count(temp.begin(), temp.end(), 0) < min_uncovered_size) // the less the better;
                 {
                     min_uncovered_size = count(temp.begin(), temp.end(), 0);
