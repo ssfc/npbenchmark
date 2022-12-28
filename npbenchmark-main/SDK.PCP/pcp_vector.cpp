@@ -227,8 +227,8 @@ void PCP_Vector::find_move()
     {
         min_delta = tabu_delta;
         unsigned int rand_select = pseudoRandNumGen() % equal_tabu_count; // equal_delta随机选择
-        center_out = equal_nontabu_delta[rand_select][0];
-        center_in = equal_nontabu_delta[rand_select][1];
+        center_out = equal_tabu_delta[rand_select][0];
+        center_in = equal_tabu_delta[rand_select][1];
     }
     else
     {
