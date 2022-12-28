@@ -228,9 +228,9 @@ void Graph::find_move()
                     {
                         if (tmp < tabu_delta)
                         {//6.0
-                            tabu_delta = tmp;
                             equal_tabu_count = 0;
-
+                            tabu_delta = tmp;
+                            
                             equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
 
