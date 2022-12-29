@@ -119,12 +119,12 @@ void PCP_Vector::swap_center()
 {
     for(int i=0;i<covered.size();i++)
     {
-        covered[i] += center_coverages[center_in][i];
+        covered[i] -= center_coverages[center_out][i];
     }
 
     for(int i=0;i<covered.size();i++)
     {
-        covered[i] -= center_coverages[center_out][i];
+        covered[i] += center_coverages[center_in][i];
     }
 }
 
@@ -170,12 +170,12 @@ void PCP_Vector::find_move()
 
             for(int k=0;k<temp.size();k++)
             {
-                temp[k] += center_coverages[j][k];
+                temp[k] -= center_coverages[i][k];
             }
 
             for(int k=0;k<temp.size();k++)
             {
-                temp[k] -= center_coverages[i][k];
+                temp[k] += center_coverages[j][k];
             }
 
             int this_delta = count(temp.begin(), temp.end(), 0) - conflict;
