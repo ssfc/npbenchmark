@@ -198,7 +198,7 @@ int equ_count;
 int equ_delt[2000][2];//先试试写死
 int sel_vertex, sel_color;
 
-void findmove()
+void find_move()
 {
     delt = 10000;//初始为最大整数
     int tmp_delt;
@@ -235,7 +235,8 @@ void findmove()
     sel_vertex = equ_delt[tmp][0];
     sel_color = equ_delt[tmp][1];
 }
-void makemove()
+
+void make_move()
 {
     f_p = delt + f_p;
     if (f_p < best_f) best_f = f_p;
@@ -263,8 +264,8 @@ void Tabu(int p) //输入的是第p个种群
     iter = 0;
     while (iter < MAX_TABU_ITER && best_f)
     {
-        findmove();
-        makemove();
+        find_move();
+        make_move();
         iter++;
     }
     f[p] = f_p;//感觉不太对，此时s不一定是最小f时的s了，但是best_f时的解，无法保存吧
