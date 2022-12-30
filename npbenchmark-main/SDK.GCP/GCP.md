@@ -37,10 +37,10 @@
 37. albnner: use global parameters; have HEA, but not good enough; 
 38. 
 39. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
-40. chenfengkg: use global parameters; 
+40. chenfengkg: use global parameters; not have HEA; 
 41. 
 42. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
-43. CoCoThink: NOT use global parameters; (2022年11月18日)
+43. CoCoThink: NOT use global parameters; not have HEA; (2022年11月18日)
 44. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
 45. Test the running time of CoCoThink: 
 46. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
