@@ -1,7 +1,3 @@
-//
-// Created by take_ on 2022/12/30.
-//
-
 // HEA02.cpp: 定义控制台应用程序的入口点。
 //
 
@@ -425,7 +421,7 @@ int main()
 
         clock_t start, end;
         start = clock();
-        
+
         while (max_crossover_num && min_f)
         {
             CrossOver();
