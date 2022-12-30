@@ -27,7 +27,7 @@ int* color_num;//保存每种颜色的个数，大小为K
 int* s;
 int f_p;//当前种群的f
 void Tabu(int p);
-void Initialize_Popu(); //初始化种群
+void initialize_population(); //初始化种群
 void initial_allocate();//开辟数组
 
 void initial_allocate()
@@ -111,7 +111,7 @@ void Initialize(string fileName)
     }
     ifs.close();
     srand((unsigned int)time(NULL));
-    Initialize_Popu();
+    initialize_population();
 
     initial_allocate();
 
@@ -123,7 +123,7 @@ void Initialize(string fileName)
     }
 }
 
-void Initialize_Popu() //初始化种群
+void initialize_population() //初始化种群
 {
     int* h_sol;
     sol = new int*[POPULATION_NUM + 1];
