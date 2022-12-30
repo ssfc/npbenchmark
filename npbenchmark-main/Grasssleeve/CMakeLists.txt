@@ -3,4 +3,4 @@ project(Grasssleeve)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Grasssleeve main.cpp)
+add_executable(Grasssleeve HEA02.cpp)
