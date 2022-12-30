@@ -34,7 +34,7 @@
 34. My problem is the great variance of result; (2022年11月19日)
 35. 
 36. Sample of albnner: https://github.com/albnner/SmartLab 
-37. albnner: use global parameters; 
+37. albnner: use global parameters; have HEA, but not good enough; 
 38. 
 39. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
 40. chenfengkg: use global parameters; 
@@ -54,10 +54,10 @@
 54. Grasssleeve: use global parameters; No response on windows platform; 
 55. 
 56. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-57. jokerpwn: NOT use global parameters; 
+57. jokerpwn: NOT use global parameters; have HEA; 
 58. 
 59. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-60. KailinLi: NOT use global parameters; 
+60. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
 61. 
 62. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
 63. RyleeRuiYe: use global parameters; 
