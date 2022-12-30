@@ -11,7 +11,7 @@
 using namespace std;
 #define POPULATION_NUM 10  //种群数据设为10
 #define MAX_TABU_ITER 10000//tabu search最多的迭代次数
-#define SOL POPULATION_NUM+1  //存储解
+#define SOL (POPULATION_NUM+1)  //存储解
 
 //#define SHOWBUG
 
