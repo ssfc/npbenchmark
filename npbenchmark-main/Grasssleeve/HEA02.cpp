@@ -28,9 +28,9 @@ int* s;
 int f_p;//当前种群的f
 void Tabu(int p);
 void Initialize_Popu(); //初始化种群
-void Initialloc();//开辟数组
+void initial_allocate();//开辟数组
 
-void Initialloc()
+void initial_allocate()
 {
     //开辟邻接颜色表
     adj_table = new int*[N];
@@ -115,7 +115,7 @@ void Initialize(string fileName)
     srand((unsigned int)time(NULL));
     Initialize_Popu();
 
-    Initialloc();
+    initial_allocate();
 
 
     for (int i = 0; i < POPULATION_NUM; i++)
