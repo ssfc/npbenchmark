@@ -12,8 +12,7 @@
 
 #pragma once
 
-#include "targetver.h"
-
+#include <SDKDDKVer.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
