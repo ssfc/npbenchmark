@@ -1,6 +1,7 @@
 // HEA02.cpp: 定义控制台应用程序的入口点。
 //
 
+#include<climits>
 #include<cstring>
 #include<string>
 #include<iostream>
@@ -143,8 +144,9 @@ void initialize_population() //初始化种群
 
 ////禁忌算法
 
-int best_f = 10000;
+int best_f = INT_MAX;
 int f[SOL] = { 10000 };
+
 void Initialize_Adj()//计算邻接颜色表
 {
     //int* s = sol[p];  //第p个种群
@@ -194,7 +196,7 @@ int sel_vertex, sel_color;
 
 void find_move()
 {
-    delt = 10000;//初始为最大整数
+    delt = INT_MAX;//初始为最大整数
     int tmp_delt;
     int c_color;//当前结点颜色
     int *h_color;//邻接颜色表行首指针
@@ -398,7 +400,7 @@ int main()
     {
         bool flag_update = true;//种群是否更新过
         int best_p;
-        int min_f = 10000;
+        int min_f = INT_MAX;
 
         //num_color = 49;
         num_color = 72;
