@@ -500,6 +500,5 @@ int main()
 
 
     //cout << "min_f=" << min_f << endl;
-    system("pause");
     return 0;
 }
