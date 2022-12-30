@@ -15,10 +15,10 @@ using namespace std;
 
 //#define SHOWBUG
 
-int N, K;
+int num_vertex, num_color;
 int **NbID; //顶点数*(顶点数-1)，保存邻点有哪些
 int* num_adj; //保存邻点个数
-int** sol;//保存解 [第i个解][第j个顶点] 即p*N
+int** sol;//保存解 [第i个解][第j个顶点] 即p*num_vertex
 int** adj_table;//邻接颜色表
 int** tabu_tenure_table;
 
@@ -33,27 +33,27 @@ void initial_allocate();//开辟数组
 void initial_allocate()
 {
     //开辟邻接颜色表
-    adj_table = new int*[N];
-    for (int i = 0; i < N; i++)
-        adj_table[i] = new int[K];
+    adj_table = new int*[num_vertex];
+    for (int i = 0; i < num_vertex; i++)
+        adj_table[i] = new int[num_color];
     /////////////////////////////////////
     ///////////开辟tt
-    tabu_tenure_table = new int*[N];
-    for (int i = 0; i < N; i++)
-        tabu_tenure_table[i] = new int[K];
+    tabu_tenure_table = new int*[num_vertex];
+    for (int i = 0; i < num_vertex; i++)
+        tabu_tenure_table[i] = new int[num_color];
     /////开辟color_num
-    color_num = new int[K];
+    color_num = new int[num_color];
 }
 
 void delete_allocate()
 {
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < num_vertex; i++)
         delete[]NbID[i];
     delete[]NbID;
 
     delete[]num_adj;
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < num_vertex; i++)
         delete[]adj_table[i];
     delete[]adj_table;
 
@@ -61,7 +61,7 @@ void delete_allocate()
         delete[]sol[i];
     delete[]sol;
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < num_vertex; i++)
         delete[]tabu_tenure_table[i];
     delete[]tabu_tenure_table;
 
@@ -81,15 +81,15 @@ void Initialize(string fileName)
     {
         if (str == "edge")
         {
-            ifs >> N;
-            //初始化NbID为N*(N-1)数组和num_adj
-            num_adj = new int[N];
-            for (int i = 0; i < N; i++) num_adj[i] = 0;
-            NbID = new int*[N];
-            for (int i = 0; i < N; i++) NbID[i] = new int[N - 1];
-            for (int i = 0; i < N; i++)
+            ifs >> num_vertex;
+            //初始化NbID为N*(num_vertex-1)数组和num_adj
+            num_adj = new int[num_vertex];
+            for (int i = 0; i < num_vertex; i++) num_adj[i] = 0;
+            NbID = new int*[num_vertex];
+            for (int i = 0; i < num_vertex; i++) NbID[i] = new int[num_vertex - 1];
+            for (int i = 0; i < num_vertex; i++)
             {
-                for (int j = 0; j < N - 1; j++) NbID[i][j] = 0;
+                for (int j = 0; j < num_vertex - 1; j++) NbID[i][j] = 0;
             }
         }
         if (str == "e")
@@ -129,13 +129,13 @@ void Initialize_Popu() //初始化种群
     sol = new int*[POPULATION_NUM + 1];
     for (size_t i = 0; i < POPULATION_NUM + 1; i++)
     {
-        sol[i] = new int[N];
+        sol[i] = new int[num_vertex];
     }
     for (int i = 0; i < POPULATION_NUM; i++)
     {
         h_sol = sol[i];
-        for (int j = 0; j < N; j++)
-            h_sol[j] = rand() % K;
+        for (int j = 0; j < num_vertex; j++)
+            h_sol[j] = rand() % num_color;
     }
 }
 
@@ -148,8 +148,8 @@ int f[SOL] = { 10000 };
 void Initialize_Adj()//计算邻接颜色表
 {
     //int* s = sol[p];  //第p个种群
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < K; j++)
+    for (int i = 0; i < num_vertex; i++)
+        for (int j = 0; j < num_color; j++)
             adj_table[i][j] = 0;
 
     int* h_adj_table;
@@ -159,7 +159,7 @@ void Initialize_Adj()//计算邻接颜色表
     int c_color;//当前顶点的颜色
 
     f_p = 0;
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < num_vertex; i++)
     {
         h_adj_table = adj_table[i];
         h_NbID = NbID[i];
@@ -181,8 +181,8 @@ void Initialize_Adj()//计算邻接颜色表
 
 void Initialize_TT()//禁忌表
 {
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < K; j++)
+    for (int i = 0; i < num_vertex; i++)
+        for (int j = 0; j < num_color; j++)
             tabu_tenure_table[i][j] = 0;
 }
 
@@ -200,13 +200,13 @@ void find_move()
     int *h_color;//邻接颜色表行首指针
     int *h_tabu;//禁忌表行首指针
     int c_color_table;//当前结点邻接颜色表的值
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < num_vertex; i++) {
         c_color = s[i];
         h_color = adj_table[i];
         c_color_table = h_color[c_color];//即adj_color_table[i][sol[i]]的值
         if (c_color_table > 0) {  //颜色表此处的值不为0
             h_tabu = tabu_tenure_table[i];
-            for (int j = 0; j < K; j++) {
+            for (int j = 0; j < num_color; j++) {
                 if (c_color != j) { //如果颜色不相同
                     tmp_delt = h_color[j] - c_color_table;
                     if (tmp_delt <= delt && (iter > h_tabu[j] || (tmp_delt + f_p) < best_f)) {
@@ -279,10 +279,10 @@ void CrossOver()
 {
     max_equ_count = 0;
     int count_s = 0;
-    memset(color_num, 0, K * sizeof(int));
+    memset(color_num, 0, num_color * sizeof(int));
 
 #ifdef SHOWNUM
-    for (int i = 0; i < K; i++)
+    for (int i = 0; i < num_color; i++)
 	{
 		cout << "num of " << i << " is " << color_num[i] << endl;
 	}
@@ -297,7 +297,7 @@ void CrossOver()
 
 
     int* h_s1 = sol[m], *h_s2 = sol[n];
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < num_vertex; i++)
     {
         s1[i] = h_s1[i];
         s2[i] = h_s2[i];
@@ -305,9 +305,9 @@ void CrossOver()
 
     bool odd = false;
     int c_color, c_v;
-    for (int l = 0; l < K; l++)
+    for (int l = 0; l < num_color; l++)
     {
-        memset(color_num, 0, K * sizeof(int));//每次都要清零
+        memset(color_num, 0, num_color * sizeof(int));//每次都要清零
         if (odd)
         {
             odd = false;
@@ -329,20 +329,20 @@ void CrossOver()
         int tmp_max = -1;
 
 #ifdef SHOWNUM
-        for (int i = 0; i < K; i++)
+        for (int i = 0; i < num_color; i++)
 		{
 			cout << "num of " << i << " is " << color_num[i] << endl;
 		}
 
 		int total = 0;
-		for (int i = 0; i < K; i++)
+		for (int i = 0; i < num_color; i++)
 		{
 			total += color_num[i];
 		}
 		cout << "total num is " << total << endl;
 #endif // SHOWNUM
 
-        for (int i = 0; i < K; i++)
+        for (int i = 0; i < num_color; i++)
         {
             if (tmp_max <= color_num[i])
             {
@@ -383,7 +383,7 @@ void CrossOver()
     while (it != s1.end())
     {
         c_v = it->first;
-        sol[SOL - 1][c_v] = rand() % K;//随机设
+        sol[SOL - 1][c_v] = rand() % num_color;//随机设
         it++;
     }
 
@@ -400,8 +400,8 @@ int main()
         int best_p;
         int min_f = 10000;
 
-        //K = 49;
-        K = 72;
+        //num_color = 49;
+        num_color = 72;
         //Initialize("DSJC500.5.col.txt");
         Initialize("DSJC250.9.col.txt");
 
@@ -452,13 +452,13 @@ int main()
 			//pool update
 			if (f[worst_p] > f[SOL - 1])//当offspring s的冲突数比population里面最大的冲突数的解sw要好，就将sw替换为s，否则以0.3的概率将sw替换为s
 			{
-				memcpy(sol[worst_p], sol[SOL - 1], N * sizeof(int));
+				memcpy(sol[worst_p], sol[SOL - 1], num_vertex * sizeof(int));
 				f[worst_p] = f[SOL - 1];
 				flag_update = true;
 			}
 			else if(rand() % 100 < 30) //两句不能用或写在一起，因为是1不满足时，才看2是否满足？？好像不对
 			{
-				memcpy(sol[worst_p], sol[SOL - 1], N * sizeof(int));
+				memcpy(sol[worst_p], sol[SOL - 1], num_vertex * sizeof(int));
 				f[worst_p] = f[SOL - 1];
 				flag_update = true;
 			}else flag_update = false;//没有更新过
@@ -481,7 +481,7 @@ int main()
             }
             worst_p = equ_worst_f[rand() % worst_f_count];
 
-            memcpy(sol[worst_p], sol[SOL - 1], N * sizeof(int));
+            memcpy(sol[worst_p], sol[SOL - 1], num_vertex * sizeof(int));
             f[worst_p] = f[SOL - 1];
             ////////////////////原策略end
             max_crossover_num--;
@@ -491,7 +491,7 @@ int main()
 
 #ifdef SHOWRESULT
         //cout << "best solution is population " << best_p << endl;
-        cout << "NO." << 10 - count << "\t K=" << K << "\t Cross Iter= " << 2000 - max_crossover_num << "\t time=" << (end - start) << endl;
+        cout << "NO." << 10 - count << "\t num_color=" << num_color << "\t Cross Iter= " << 2000 - max_crossover_num << "\t time=" << (end - start) << endl;
 #endif // SHOWRESULT
 
         count--;
