@@ -404,8 +404,12 @@ int main()
         bool flag_update = true;//种群是否更新过
         int best_p;
         int min_f = 10000;
-        K = 48;
-        Initialize("DSJC500.5.col");
+
+        K = 49;
+        //K = 72;
+        Initialize("DSJC500.5.col.txt");
+        //Initialize("DSJC250.9.col.txt");
+
         for (int i = 0; i < POPULATION_NUM; i++)
         {
             if (min_f > f[i])
