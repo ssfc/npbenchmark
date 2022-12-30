@@ -20,7 +20,7 @@ int **NbID; //顶点数*(顶点数-1)，保存邻点有哪些
 int* num_adj; //保存邻点个数
 int** sol;//保存解 [第i个解][第j个顶点] 即p*N
 int** adj_table;//邻接颜色表
-int** tabutenure;
+int** tabu_tenure_table;
 
 int* color_num;//保存每种颜色的个数，大小为K
 
@@ -38,9 +38,9 @@ void initial_allocate()
         adj_table[i] = new int[K];
     /////////////////////////////////////
     ///////////开辟tt
-    tabutenure = new int*[N];
+    tabu_tenure_table = new int*[N];
     for (int i = 0; i < N; i++)
-        tabutenure[i] = new int[K];
+        tabu_tenure_table[i] = new int[K];
     /////开辟color_num
     color_num = new int[K];
 
@@ -64,8 +64,8 @@ void Deleteloc()
     delete[]sol;
 
     for (int i = 0; i < N; i++)
-        delete[]tabutenure[i];
-    delete[]tabutenure;
+        delete[]tabu_tenure_table[i];
+    delete[]tabu_tenure_table;
 
     delete[]color_num;
     //delete[]s;
@@ -185,7 +185,7 @@ void Initialize_TT()//禁忌表
 {
     for (int i = 0; i < N; i++)
         for (int j = 0; j < K; j++)
-            tabutenure[i][j] = 0;
+            tabu_tenure_table[i][j] = 0;
 }
 
 int delt;
@@ -207,7 +207,7 @@ void find_move()
         h_color = adj_table[i];
         c_color_table = h_color[c_color];//即adj_color_table[i][sol[i]]的值
         if (c_color_table > 0) {  //颜色表此处的值不为0
-            h_tabu = tabutenure[i];
+            h_tabu = tabu_tenure_table[i];
             for (int j = 0; j < K; j++) {
                 if (c_color != j) { //如果颜色不相同
                     tmp_delt = h_color[j] - c_color_table;
@@ -238,7 +238,7 @@ void make_move()
     if (f_p < best_f) best_f = f_p;
     int old_color = s[sel_vertex];
     s[sel_vertex] = sel_color; //更新颜色
-    tabutenure[sel_vertex][old_color] = iter + f_p + (rand() % 10) + 1;//更新禁忌表，是否最后要+1？？
+    tabu_tenure_table[sel_vertex][old_color] = iter + f_p + (rand() % 10) + 1;//更新禁忌表，是否最后要+1？？
     //还要有数组存下每个顶点的邻边，以及邻边的数量
     int* h_NbID = NbID[sel_vertex];
     int num_edge = num_adj[sel_vertex];
