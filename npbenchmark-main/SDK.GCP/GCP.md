@@ -51,7 +51,7 @@
 51. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
 52. 
 53. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-54. Grasssleeve: use global parameters; No response on windows platform; has HEA, report the result; 
+54. Grasssleeve: use global parameters; No response on windows platform; has HEA, report the result; 感觉这个人没有考清楚情况, 又是新策略旧策略, 一些地方又不清楚; 
 55. 
 56. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
 57. jokerpwn: NOT use global parameters; have HEA, not report result; 
