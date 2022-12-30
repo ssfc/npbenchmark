@@ -419,11 +419,13 @@ int main()
                 best_p = i;
             }
         }
+
         int max_crossover_num = 2000;
         int equ_worst_f[2000], worst_f_count;
 
         clock_t start, end;
         start = clock();
+        
         while (max_crossover_num && min_f)
         {
             CrossOver();
