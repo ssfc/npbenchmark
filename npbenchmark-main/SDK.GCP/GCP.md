@@ -51,7 +51,7 @@
 51. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
 52. 
 53. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-54. Grasssleeve: use global parameters; No response on windows platform; 
+54. Grasssleeve: use global parameters; No response on windows platform; has HEA; 
 55. 
 56. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
 57. jokerpwn: NOT use global parameters; have HEA; 
@@ -60,8 +60,8 @@
 60. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
 61. 
 62. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-63. RyleeRuiYe: use global parameters; 
+63. RyleeRuiYe: use global parameters; has HEA, not report result; 
 64. 
 65. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-66. yuanFang1: use global parameters; 
+66. yuanFang1: use global parameters; has HEA, report the result; 
 67. 
