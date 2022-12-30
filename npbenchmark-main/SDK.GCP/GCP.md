@@ -63,5 +63,5 @@
 63. RyleeRuiYe: use global parameters; has HEA, not report result; 
 64. 
 65. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-66. yuanFang1: use global parameters; has HEA, report the result; 
+66. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
 67. 

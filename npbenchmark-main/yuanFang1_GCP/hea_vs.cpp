@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     char c, s1[100], s2[100], file[100];
     FILE *fp;
     srand((unsigned)time(NULL));
-    sprintf(file, ".\\instances\\%s", argv[1]);
+    sprintf(file, "./instances/%s", argv[1]);
     if ((fp = fopen(file, "r")) == NULL) {
         cout << "file not open";
         return 0;
