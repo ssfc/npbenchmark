@@ -43,8 +43,6 @@ void initial_allocate()
         tabu_tenure_table[i] = new int[K];
     /////开辟color_num
     color_num = new int[K];
-
-
 }
 
 void Deleteloc()
