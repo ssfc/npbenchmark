@@ -406,10 +406,10 @@ int main()
         int best_p;
         int min_f = 10000;
 
-        K = 49;
-        //K = 72;
-        Initialize("DSJC500.5.col.txt");
-        //Initialize("DSJC250.9.col.txt");
+        //K = 49;
+        K = 72;
+        //Initialize("DSJC500.5.col.txt");
+        Initialize("DSJC250.9.col.txt");
 
         for (int i = 0; i < POPULATION_NUM; i++)
         {
