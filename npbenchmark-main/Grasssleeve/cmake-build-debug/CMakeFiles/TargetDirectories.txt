@@ -1,0 +1,3 @@
+C:/wamp64/www/npbenchmark/npbenchmark-main/Grasssleeve/cmake-build-debug/CMakeFiles/Grasssleeve.dir
+C:/wamp64/www/npbenchmark/npbenchmark-main/Grasssleeve/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/wamp64/www/npbenchmark/npbenchmark-main/Grasssleeve/cmake-build-debug/CMakeFiles/rebuild_cache.dir

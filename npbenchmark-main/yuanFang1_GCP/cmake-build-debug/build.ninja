@@ -49,12 +49,6 @@ cmake_ninja_workdir = C$:/wamp64/www/npbenchmark/npbenchmark-main/yuanFang1_GCP/
 
 build cmake_object_order_depends_target_yuanFang1_GCP: phony || CMakeFiles/yuanFang1_GCP.dir
 
-build CMakeFiles/yuanFang1_GCP.dir/main.cpp.obj: CXX_COMPILER__yuanFang1_GCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/yuanFang1_GCP/main.cpp || cmake_object_order_depends_target_yuanFang1_GCP
-  DEP_FILE = CMakeFiles\yuanFang1_GCP.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\yuanFang1_GCP.dir
-  OBJECT_FILE_DIR = CMakeFiles\yuanFang1_GCP.dir
-
 build CMakeFiles/yuanFang1_GCP.dir/hea_vs.cpp.obj: CXX_COMPILER__yuanFang1_GCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/yuanFang1_GCP/hea_vs.cpp || cmake_object_order_depends_target_yuanFang1_GCP
   DEP_FILE = CMakeFiles\yuanFang1_GCP.dir\hea_vs.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -69,7 +63,7 @@ build CMakeFiles/yuanFang1_GCP.dir/hea_vs.cpp.obj: CXX_COMPILER__yuanFang1_GCP_D
 #############################################
 # Link the executable yuanFang1_GCP.exe
 
-build yuanFang1_GCP.exe: CXX_EXECUTABLE_LINKER__yuanFang1_GCP_Debug CMakeFiles/yuanFang1_GCP.dir/main.cpp.obj CMakeFiles/yuanFang1_GCP.dir/hea_vs.cpp.obj
+build yuanFang1_GCP.exe: CXX_EXECUTABLE_LINKER__yuanFang1_GCP_Debug CMakeFiles/yuanFang1_GCP.dir/hea_vs.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\yuanFang1_GCP.dir
