@@ -5,7 +5,7 @@
 #include<string>
 #include<iostream>
 #include<fstream>
-#include<time.h>
+#include<ctime>
 #include<map>
 
 using namespace std;
@@ -45,7 +45,7 @@ void initial_allocate()
     color_num = new int[K];
 }
 
-void Deleteloc()
+void delete_allocate()
 {
     for (int i = 0; i < N; i++)
         delete[]NbID[i];
@@ -495,7 +495,7 @@ int main()
 #endif // SHOWRESULT
 
         count--;
-        Deleteloc();
+        delete_allocate();
     }
 
 
