@@ -3,4 +3,4 @@ project(jokerpwn)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(jokerpwn main.cpp HEA.cpp)
+add_executable(jokerpwn HEA.cpp)
