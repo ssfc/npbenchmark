@@ -1,0 +1,3 @@
+C:/wamp64/www/npbenchmark/npbenchmark-main/ruiye/cmake-build-debug/CMakeFiles/ruiye.dir
+C:/wamp64/www/npbenchmark/npbenchmark-main/ruiye/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/wamp64/www/npbenchmark/npbenchmark-main/ruiye/cmake-build-debug/CMakeFiles/rebuild_cache.dir
