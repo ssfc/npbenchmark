@@ -49,12 +49,6 @@ cmake_ninja_workdir = C$:/wamp64/www/npbenchmark/npbenchmark-main/jokerpwn/cmake
 
 build cmake_object_order_depends_target_jokerpwn: phony || CMakeFiles/jokerpwn.dir
 
-build CMakeFiles/jokerpwn.dir/main.cpp.obj: CXX_COMPILER__jokerpwn_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/jokerpwn/main.cpp || cmake_object_order_depends_target_jokerpwn
-  DEP_FILE = CMakeFiles\jokerpwn.dir\main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\jokerpwn.dir
-  OBJECT_FILE_DIR = CMakeFiles\jokerpwn.dir
-
 build CMakeFiles/jokerpwn.dir/HEA.cpp.obj: CXX_COMPILER__jokerpwn_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/jokerpwn/HEA.cpp || cmake_object_order_depends_target_jokerpwn
   DEP_FILE = CMakeFiles\jokerpwn.dir\HEA.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -69,7 +63,7 @@ build CMakeFiles/jokerpwn.dir/HEA.cpp.obj: CXX_COMPILER__jokerpwn_Debug C$:/wamp
 #############################################
 # Link the executable jokerpwn.exe
 
-build jokerpwn.exe: CXX_EXECUTABLE_LINKER__jokerpwn_Debug CMakeFiles/jokerpwn.dir/main.cpp.obj CMakeFiles/jokerpwn.dir/HEA.cpp.obj
+build jokerpwn.exe: CXX_EXECUTABLE_LINKER__jokerpwn_Debug CMakeFiles/jokerpwn.dir/HEA.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\jokerpwn.dir

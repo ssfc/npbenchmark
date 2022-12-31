@@ -654,7 +654,7 @@ public:
             //最差解的替换和信息更新
             update_population();
             iter2++;
-            cout<<iter2<<" "<<f[record[0]]<<endl;
+            // cout<<iter2<<" "<<f[record[0]]<<endl;
         }
 
         end_time=clock();
