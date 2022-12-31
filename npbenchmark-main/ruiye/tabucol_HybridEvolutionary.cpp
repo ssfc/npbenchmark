@@ -11,7 +11,8 @@
 #define INF 100000
 
 using namespace std;
-ifstream fin("DSJC500.5.txt");
+//ifstream fin("DSJC500.5.txt");
+ifstream fin("DSJC250.9.txt");
 ofstream fout("output.txt");
 
 int Final_Colornum;//最终颜色数
@@ -361,7 +362,9 @@ int main()
     int i;
     time_t start, stop;
     srand((unsigned)time(NULL));
-    Final_Colornum = Colornum = 49;
+    //Final_Colornum = Colornum = 49;
+    Final_Colornum = Colornum = 72;
+
     initialization();
     Iter1 = 0;
     while (Iter1 < 100000)
@@ -382,18 +385,21 @@ int main()
                 Final_Colornum = Colornum;
                 break;
             }
-            cout << "第" << Iter2 << "次尝试颜色数为：" << Colornum << endl;
-            fout << "第" << Iter2 << "次尝试颜色数为：" << Colornum << endl;
+            //cout << "第" << Iter2 << "次尝试颜色数为：" << Colornum << endl;
+            //fout << "第" << Iter2 << "次尝试颜色数为：" << Colornum << endl;
+            /*
             for (int i = 0; i < POP; ++i)
                 cout << Conflictnum[i] << " ";
             cout << endl;
             for (i = 0; i < POP; ++i)
                 fout << Conflictnum[i] << " ";
             fout << endl;
+             */
             //	cout << "子类覆盖失败" << Unsuccess1 << " " << Unsuccess2 << endl;
             //	fout << "子类覆盖失败" << Unsuccess1 << " " << Unsuccess2 << endl;
         }
         stop = time(NULL);
+        /*
         cout << "使用时间为" << (stop - start) << "s" << endl;
         cout << "当前颜色为" << Final_Colornum + 1 << endl;
         cout << "最佳冲突边数为" << Conflict_best << endl;
@@ -402,6 +408,7 @@ int main()
         fout << "当前颜色为" << Final_Colornum + 1 << endl;
         fout << "最佳冲突边数为" << Conflict_best << endl;
         fout << "***********************************************" << endl;
+         */
         if (Final_Colornum == 1)
             break;
     }

@@ -60,7 +60,7 @@
 60. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
 61. 
 62. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-63. RyleeRuiYe: use global parameters; has HEA, not report result; 
+63. RyleeRuiYe: use global parameters; has HEA, not report result; RuiYe's program generate an extremely big file and cannot output result; 
 64. 
 65. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
 66. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
