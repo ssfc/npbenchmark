@@ -3,4 +3,4 @@ project(yuanFang1_GCP)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(yuanFang1_GCP hea_vs.cpp stdafx.h targetver.h)
+add_executable(yuanFang1_GCP hea_vs.cpp)
