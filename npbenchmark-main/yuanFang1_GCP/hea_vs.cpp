@@ -30,7 +30,7 @@ struct Population {
     int fnum[P + 1];
 };
 
-Population popu;
+Population population;
 Population_solution p_sol[P+1];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int conf_num = 0;
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
         insert_adjList(j, i);
     }
 
-    popu.min_f = 100000;
+    population.min_f = 100000;
     k = atoi(argv[2]);
 
     for (p = 1; p <= P; p++)
@@ -114,11 +114,11 @@ int main(int argc, char *argv[])
         }
 
         tabu_search(sol[p]);
-        popu.fnum[p] = f;
+        population.fnum[p] = f;
 
-        if (f < popu.min_f)
+        if (f < population.min_f)
         {
-            popu.min_f = f;
+            population.min_f = f;
         }
         if (f == 0)
             break;
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
 
         Population_solution temps;
         int cnt = 0;
-        while (popu.min_f != 0)
+        while (population.min_f != 0)
         {
             int p1 = rand() % P + 1, p2;
 
@@ -171,29 +171,29 @@ int main(int argc, char *argv[])
             int max_f = -1, max_p;
             for (i = 1; i <= P; i++)
             {
-                if (popu.fnum[i] >max_f)
+                if (population.fnum[i] >max_f)
                 {
-                    max_f = popu.fnum[i];
+                    max_f = population.fnum[i];
                     max_p = i;
                 }
             }
 
             p_sol[max_p] = temps;//将种群中冲突数最大的替换成temps
-            popu.fnum[max_p] = f;
+            population.fnum[max_p] = f;
 
-            if (f<popu.min_f)
+            if (f<population.min_f)
             {
-                popu.min_f = f;
+                population.min_f = f;
             }
 
-            cout << "mint_f = " << popu.min_f << endl;
+            cout << "mint_f = " << population.min_f << endl;
         }
     }
 
     clock_t ends = clock();
     res_time = (double)(ends - start) / CLOCKS_PER_SEC;
     cout << res_time<<endl;
-    if (popu.min_f == 0)
+    if (population.min_f == 0)
     {
         fp = fopen("result.txt", "a+");
         if (fp == NULL)
