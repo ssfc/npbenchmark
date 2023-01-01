@@ -228,7 +228,7 @@ void dynamic_alloc()
     //p_sol = (Population_solution *)malloc(sizeof(Population_solution)*(P + 1));
     solution = (int **)malloc(sizeof(int *)*(P + 1));
     for (int i = 0; i <= P; i++)
-        solution[i] = (int *)malloc(sizeof(int)*(point_num + 1));
+        solution[i] = new int [point_num + 1];
 }
 
 int tabu_search(int *s)
