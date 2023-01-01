@@ -433,39 +433,7 @@ int main()
             }
             int tmp_worst = -1;
             int worst_p;//最差的种群
-//////////////////新策略
-/*			if (flag_update)
-			{
-				for (int i = 0; i < POPULATION_NUM; i++) //找出最差解
-				{
-					if (tmp_worst <= f[i])
-					{
-						if (tmp_worst < f[i])
-						{
-							tmp_worst = f[i];
-							worst_f_count = 0;
-						}
-						equ_worst_f[worst_f_count] = i;
-						worst_f_count++;
-					}
-				}
-				worst_p = equ_worst_f[rand() % worst_f_count];
-			}
-			//pool update
-			if (f[worst_p] > f[SOL - 1])//当offspring s的冲突数比population里面最大的冲突数的解sw要好，就将sw替换为s，否则以0.3的概率将sw替换为s
-			{
-				memcpy(sol[worst_p], sol[SOL - 1], num_vertex * sizeof(int));
-				f[worst_p] = f[SOL - 1];
-				flag_update = true;
-			}
-			else if(rand() % 100 < 30) //两句不能用或写在一起，因为是1不满足时，才看2是否满足？？好像不对
-			{
-				memcpy(sol[worst_p], sol[SOL - 1], num_vertex * sizeof(int));
-				f[worst_p] = f[SOL - 1];
-				flag_update = true;
-			}else flag_update = false;//没有更新过
-*/
-///////////////新策略end
+
             //////原策略
 
             for (int i = 0; i < POPULATION_NUM; i++) //找出最差解
