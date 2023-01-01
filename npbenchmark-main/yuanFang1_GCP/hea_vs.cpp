@@ -17,16 +17,18 @@
 #define P 20
 using namespace std;
 int MaxIter = 16000;
-typedef struct P_sol {
+
+struct P_sol {
     int psol[MaxColor][MaxPoint];
     int num[MaxColor];
     int index1[MaxPoint], index2[MaxPoint];
-}P_sol;
+};
 
-typedef struct Popu {
+struct Popu {
     int min_f, min_p;
     int fnum[P + 1];
-}Popu;
+};
+
 Popu popu;
 P_sol p_sol[P+1];
 int conflict[MaxPoint], conf_index[MaxPoint];
