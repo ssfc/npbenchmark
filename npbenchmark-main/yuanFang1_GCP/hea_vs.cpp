@@ -51,7 +51,7 @@ struct Move {
 VerNode *adjList;
 int **sol;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
-int point_num, edge_num, f, best_f, k;
+int point_num, edge_num, f, best_conflict, k;
 long long iter;
 int res_iter;
 double res_time;
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_table, 0, sizeof(tabu_table));
-        f = best_f=conf_num = 0;
+        f = best_conflict = conf_num = 0;
         for (i = 1; i <= point_num; i++)
         {
             sol[p][i] = rand() % k + 1;
@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
 
             memset(adj_color_table, 0, sizeof(adj_color_table));
             memset(tabu_table, 0, sizeof(tabu_table));
-            f = best_f = conf_num =0;
+            f = best_conflict = conf_num =0;
 
             tabu_search(temps.index1);//对temps进行禁忌搜索
 
@@ -252,7 +252,7 @@ int tabu_search(int *s)
     }
     f = f / 2;
     //cout <<"initial_f = "<<f<<endl;
-    best_f = f;
+    best_conflict = f;
     iter = 0;
 
     while (iter < MaxIter)
@@ -341,16 +341,16 @@ Move find_move(int *s)
     }
     int temp1 = f + tabu_move_delt, temp2 = f + non_tabu_move_delt;
     Move res;
-    if (temp1<best_f && temp1<temp2)
+    if (temp1<best_conflict && temp1<temp2)
     {
-        f = best_f = temp1;
+        f = best_conflict = temp1;
         int index = rand() % tabu_cnt;
         res = tabu_move[index];
     }
     else
     {
-        if (temp2<best_f)
-            best_f = temp2;
+        if (temp2 < best_conflict)
+            best_conflict = temp2;
         f = temp2;
         int index = rand() % non_tabu_cnt;
         res = non_tabu_move[index];
