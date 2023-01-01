@@ -15,6 +15,7 @@
 #define MaxPoint 1002
 #define MaxColor 300
 #define P 20
+
 using namespace std;
 int MaxIter = 16000;
 
@@ -33,14 +34,15 @@ Population popu;
 P_sol p_sol[P+1];
 int conflict[MaxPoint], conf_index[MaxPoint];
 int conf_num = 0;
-typedef struct ArcNode {
+
+struct ArcNode {
     int adjvex;
     struct ArcNode *next;
-}ArcNode;
+};
 
-typedef struct VerNode {
+struct VerNode {
     ArcNode *first;
-}VerNode;
+};
 
 typedef struct Move {
     int u, vi, vj;
