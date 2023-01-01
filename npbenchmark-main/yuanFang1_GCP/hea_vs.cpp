@@ -44,9 +44,10 @@ struct VerNode {
     ArcNode *first;
 };
 
-typedef struct Move {
+struct Move {
     int u, vi, vj;
-}Move;
+};
+
 VerNode *adjList;
 int **sol;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
