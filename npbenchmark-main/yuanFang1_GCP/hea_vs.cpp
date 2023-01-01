@@ -208,18 +208,22 @@ int tabu_search(int *s)
     int i, is_conf;
     //cout <<endl;
 
-    for (i = 1; i <= point_num; i++) {
+    for (i = 1; i <= point_num; i++)
+    {
         ArcNode *temp = adjList[i].first;
         is_conf = 0;
-        while (temp) {
-            if (s[temp->adjvex] == s[i]) {
+        while (temp)
+        {
+            if (s[temp->adjvex] == s[i])
+            {
                 is_conf = 1;
                 f++;
             }
             adj_color_table[i][s[temp->adjvex]]++;
             temp = temp->next;
         }
-        if (is_conf) {
+        if (is_conf)
+        {
             conflict[conf_num] = i;
             conf_index[i] = conf_num++;
         }
@@ -261,9 +265,12 @@ Move find_move(int *s)
                 if (j != sol_i) {
                     int temp_delt = adj_color_table[i][j] - adj_color_table[i][sol_i];
                     //cout <<temp_delt<<'\t';
-                    if (iter >= tabu_table[i][j]) {
-                        if (temp_delt <= non_tabu_move_delt) {
-                            if (temp_delt < non_tabu_move_delt) {
+                    if (iter >= tabu_table[i][j])
+                    {
+                        if (temp_delt <= non_tabu_move_delt)
+                        {
+                            if (temp_delt < non_tabu_move_delt)
+                            {
                                 non_tabu_cnt = 0;
                                 non_tabu_move_delt = temp_delt;
                             }
@@ -281,9 +288,12 @@ Move find_move(int *s)
                         //
                         //						}
                     }
-                    else {
-                        if (temp_delt <= tabu_move_delt) {
-                            if (temp_delt < tabu_move_delt) {
+                    else
+                    {
+                        if (temp_delt <= tabu_move_delt)
+                        {
+                            if (temp_delt < tabu_move_delt)
+                            {
                                 tabu_cnt = 0;
                                 tabu_move_delt = temp_delt;
                             }
@@ -309,12 +319,14 @@ Move find_move(int *s)
     }
     int temp1 = f + tabu_move_delt, temp2 = f + non_tabu_move_delt;
     Move res;
-    if (temp1<best_f && temp1<temp2) {
+    if (temp1<best_f && temp1<temp2)
+    {
         f = best_f = temp1;
         int index = rand() % tabu_cnt;
         res = tabu_move[index];
     }
-    else {
+    else
+    {
         if (temp2<best_f)
             best_f = temp2;
         f = temp2;
@@ -324,66 +336,87 @@ Move find_move(int *s)
     return res;
 
 }
-void MakeMove(int u, int vj, int *s) {
+
+void MakeMove(int u, int vj, int *s)
+{
     int vi = s[u];
     s[u] = vj;
     tabu_table[u][vi] = f + iter + rand() % 10 + 1;
     ArcNode *temp = adjList[u].first;
 
-    while (temp) {
+    while (temp)
+    {
         int adjvex = temp->adjvex;
-        if ((--adj_color_table[adjvex][vi]) == 0) {
-            if (s[adjvex] == vi) {
+        if ((--adj_color_table[adjvex][vi]) == 0)
+        {
+            if (s[adjvex] == vi)
+            {
                 del_conf(adjvex);
             }
         }
-        if ((++adj_color_table[adjvex][vj]) == 1) {
-            if (s[adjvex] == vj) {
+
+        if ((++adj_color_table[adjvex][vj]) == 1)
+        {
+            if (s[adjvex] == vj)
+            {
                 add_conf(adjvex);
             }
         }
         temp = temp->next;
     }
+
     if (adj_color_table[u][vi] != 0 && adj_color_table[u][vj] == 0)
         del_conf(u);
     if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
         add_conf(u);
 }
 
-void add_conf(int adjvex) {
+void add_conf(int adjvex)
+{
     conflict[conf_num] = adjvex;
     conf_index[adjvex] = conf_num++;
 }
 
-void del_conf(int adjvex) {
+void del_conf(int adjvex)
+{
     int temp_index = conf_index[adjvex];
     conflict[temp_index] = conflict[--conf_num];
     conf_index[conflict[temp_index]] = temp_index;
 }
 
 
-void crossover(int p1, int p2, int *index1) {
+void crossover(int p1, int p2, int *index1)
+{
     int l, A, B, j;
     P_sol s[2];
     s[0] = p_sol[p1];
     s[1] = p_sol[p2];
-    for (l = 1; l <= k; l++) {
-        if (l % 2 != 0) {
+
+    for (l = 1; l <= k; l++)
+    {
+        if (l % 2 != 0)
+        {
             A = 0; B = 1;
         }
-        else {
+        else
+        {
             A = 1; B = 0;
         }
+
         int max_index, max_num = -1, *h_num = s[A].num;
-        for (j = 1; j <= k; j++) {
-            if (h_num[j] >max_num) {
+        for (j = 1; j <= k; j++)
+        {
+            if (h_num[j] >max_num)
+            {
                 max_index = j;
                 max_num = h_num[j];
             }
         }
+
         int num = h_num[max_index];
         int *h_color = s[A].psol[max_index];
-        for (j = 0; j<num; j++) {
+        for (j = 0; j<num; j++)
+        {
             int point = h_color[j];
             index1[point] = l;//只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
@@ -397,9 +430,11 @@ void crossover(int p1, int p2, int *index1) {
         s[A].num[max_index] = 0;
 
     }
-    for (l = 1; l <= k; l++) {
+    for (l = 1; l <= k; l++)
+    {
         int num = s[0].num[l];
-        for (j = 0; j<num; j++) {
+        for (j = 0; j<num; j++)
+        {
             int point = s[0].psol[l][j];
             int color = rand() % k + 1;//随机分配到某一种颜色中去
             index1[point] = color;
