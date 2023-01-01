@@ -279,12 +279,17 @@ Move find_move(int *s)
     Move tabu_move[MaxPoint], non_tabu_move[MaxPoint];
     int tabu_cnt = 1, non_tabu_cnt = 1;
     int tabu_move_delt = 100000, non_tabu_move_delt = 100000;
-    for (conf_i = 0; conf_i< conf_num; conf_i++) {
+
+    for (conf_i = 0; conf_i< conf_num; conf_i++)
+    {
         i = conflict[conf_i];
         sol_i = s[i];
-        if (adj_color_table[i][sol_i]>0) {
-            for (j = 1; j <= k; j++) {
-                if (j != sol_i) {
+        if (adj_color_table[i][sol_i]>0)
+        {
+            for (j = 1; j <= k; j++)
+            {
+                if (j != sol_i)
+                {
                     int temp_delt = adj_color_table[i][j] - adj_color_table[i][sol_i];
                     //cout <<temp_delt<<'\t';
                     if (iter >= tabu_table[i][j])
@@ -312,13 +317,12 @@ Move find_move(int *s)
                             tabu_move[tabu_cnt].u = i;
                             tabu_move[tabu_cnt++].vj = j;
                         }
-
                     }
                 }
-
             }
         }
     }
+
     int temp1 = f + tabu_move_delt, temp2 = f + non_tabu_move_delt;
     Move res;
     if (temp1<best_conflict && temp1<temp2)
