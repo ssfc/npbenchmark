@@ -76,10 +76,13 @@ int main(int argc, char *argv[])
     FILE *fp;
     srand((unsigned)time(NULL));
     sprintf(file, "./instances/%s", argv[1]);
-    if ((fp = fopen(file, "r")) == NULL) {
+
+    if ((fp = fopen(file, "r")) == NULL)
+    {
         cout << "file not open";
         return 0;
     }
+
     do {
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
@@ -87,7 +90,8 @@ int main(int argc, char *argv[])
 
     dynamic_alloc();
     memset(adjList, 0, sizeof(VerNode)*(point_num + 1));
-    while (!feof(fp)) {
+    while (!feof(fp))
+    {
         fscanf(fp, "%c %d %d\n", &c, &i, &j);
         insert_adjList(i, j);
         insert_adjList(j, i);
@@ -96,18 +100,22 @@ int main(int argc, char *argv[])
     popu.min_f = 100000;
     k = atoi(argv[2]);
 
-    for (p = 1; p <= P; p++) {
+    for (p = 1; p <= P; p++)
+    {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_table, 0, sizeof(tabu_table));
         f = best_f=conf_num = 0;
-        for (i = 1; i <= point_num; i++) {
+        for (i = 1; i <= point_num; i++)
+        {
             sol[p][i] = rand() % k + 1;
             //cout << sol[i] <<' ';
         }
+
         tabu_search(sol[p]);
         popu.fnum[p] = f;
 
-        if (f < popu.min_f) {
+        if (f < popu.min_f)
+        {
             popu.min_f = f;
             popu.min_p = p;
         }
@@ -151,9 +159,8 @@ int main(int argc, char *argv[])
 
             tabu_search(temps.index1);//对temps进行禁忌搜索
 
-
-
-            for (i = 1; i <= point_num; i++) {//变成划分的形式
+            for (i = 1; i <= point_num; i++)
+            {//变成划分的形式
                 int color = temps.index1[i];
                 int color_num = temps.num[color];
                 temps.psol[color][color_num] = i;
@@ -161,8 +168,10 @@ int main(int argc, char *argv[])
                 temps.num[color] = ++color_num;
             }
             int max_f = -1, max_p;
-            for (i = 1; i <= P; i++) {
-                if (popu.fnum[i] >max_f) {
+            for (i = 1; i <= P; i++)
+            {
+                if (popu.fnum[i] >max_f)
+                {
                     max_f = popu.fnum[i];
                     max_p = i;
                 }
@@ -171,7 +180,8 @@ int main(int argc, char *argv[])
             p_sol[max_p] = temps;//将种群中冲突数最大的替换成temps
             popu.fnum[max_p] = f;
 
-            if (f<popu.min_f) {
+            if (f<popu.min_f)
+            {
                 popu.min_f = f;
                 popu.min_p = max_p;
             }
@@ -179,11 +189,13 @@ int main(int argc, char *argv[])
             cout << "mint_f = " << popu.min_f << endl;
         }
     }
+
     clock_t ends = clock();
     res_time = (double)(ends - start) / CLOCKS_PER_SEC;
     cout << res_time<<endl;
-    if (popu.min_f == 0) {
-        fp = fopen(".\\result.txt", "a+");
+    if (popu.min_f == 0)
+    {
+        fp = fopen("result.txt", "a+");
         if (fp == NULL)
             printf("output file open error\n");
         fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], res_time , MaxIter);
@@ -194,7 +206,8 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void insert_adjList(int i, int j) {
+void insert_adjList(int i, int j)
+{
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adjvex = i;
     temp1->next = adjList[j].first;
