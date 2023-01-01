@@ -200,7 +200,7 @@ int main(int argc, char *argv[])
     clock_t ends = clock();
     res_time = (double)(ends - start) / CLOCKS_PER_SEC;
     cout << res_time<<endl;
-    
+
     if (population.min_conflict == 0)
     {
         fp = fopen("result.txt", "a+");
@@ -234,10 +234,10 @@ void dynamic_alloc()
 
 int tabu_search(int *s)
 {
-    int i, is_conf;
+    int is_conf;
     //cout <<endl;
 
-    for (i = 1; i <= point_num; i++)
+    for (int i = 1; i <= point_num; i++)
     {
         ArcNode *temp = adjList[i].first;
         is_conf = 0;
@@ -258,6 +258,7 @@ int tabu_search(int *s)
             conflict_index[i] = conf_num++;
         }
     }
+
     f = f / 2;
     //cout <<"initial_f = "<<f<<endl;
     best_conflict = f;
