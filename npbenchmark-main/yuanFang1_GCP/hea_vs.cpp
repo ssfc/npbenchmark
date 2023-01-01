@@ -7,7 +7,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
-#include <string>
 #include <cstring>
 #include <iostream>
 #include <fstream>
@@ -170,12 +169,12 @@ int main(int argc, char *argv[])
                 temps.index2[i] = color_num;
                 temps.num[color] = ++color_num;
             }
-            int max_f = -1, max_p;
+            int max_conflict = -1, max_p;
             for (i = 1; i <= P; i++)
             {
-                if (population.fnum[i] >max_f)
+                if (population.fnum[i] >max_conflict)
                 {
-                    max_f = population.fnum[i];
+                    max_conflict = population.fnum[i];
                     max_p = i;
                 }
             }
