@@ -26,7 +26,7 @@ struct Population_solution {
 
 struct Population {
     int min_conflict;
-    int fnum[P + 1];
+    int num_conflict[P + 1];
 };
 
 Population population;
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
         }
 
         tabu_search(sol[p]);
-        population.fnum[p] = f;
+        population.num_conflict[p] = f;
 
         if (f < population.min_conflict)
         {
@@ -172,15 +172,15 @@ int main(int argc, char *argv[])
             int max_conflict = -1, max_p;
             for (i = 1; i <= P; i++)
             {
-                if (population.fnum[i] >max_conflict)
+                if (population.num_conflict[i] >max_conflict)
                 {
-                    max_conflict = population.fnum[i];
+                    max_conflict = population.num_conflict[i];
                     max_p = i;
                 }
             }
 
             p_sol[max_p] = temps;//将种群中冲突数最大的替换成temps
-            population.fnum[max_p] = f;
+            population.num_conflict[max_p] = f;
 
             if (f<population.min_conflict)
             {
