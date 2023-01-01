@@ -60,7 +60,7 @@ void insert_adjList(int i, int j);
 void dynamic_alloc();
 int tabu_search(int *s);
 Move find_move(int *s);
-void MakeMove(int u, int vj, int *s);
+void make_move(int u, int vj, int *s);
 void add_conf(int adjvex);
 void del_conf(int adjvex);
 void crossover(int p1, int p2, int *index1);
@@ -238,7 +238,7 @@ int tabu_search(int *s)
         if (f == 0)
             break;
         Move mymove = find_move(s);
-        MakeMove(mymove.u, mymove.vj, s);
+        make_move(mymove.u, mymove.vj, s);
         iter++;
     }
 
@@ -337,7 +337,7 @@ Move find_move(int *s)
 
 }
 
-void MakeMove(int u, int vj, int *s)
+void make_move(int u, int vj, int *s)
 {
     int vi = s[u];
     s[u] = vj;
