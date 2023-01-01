@@ -225,8 +225,8 @@ void insert_adjList(int i, int j)
 void dynamic_alloc()
 {
     adjList = new VerNode [point_num + 1];
-    //p_sol = (Population_solution *)malloc(sizeof(Population_solution)*(P + 1));
-    solution = (int **)malloc(sizeof(int *)*(P + 1));
+
+    solution = new int *[P + 1];
     for (int i = 0; i <= P; i++)
         solution[i] = new int [point_num + 1];
 }
