@@ -48,7 +48,7 @@ struct Move {
 };
 
 VerNode *adjList;
-int **sol;
+int **solution;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
 int point_num, edge_num, f, best_conflict, k;
 long long iter;
@@ -112,11 +112,11 @@ int main(int argc, char *argv[])
         f = best_conflict = conf_num = 0;
         for (i = 1; i <= point_num; i++)
         {
-            sol[p][i] = rand() % k + 1;
-            //cout << sol[i] <<' ';
+            solution[p][i] = rand() % k + 1;
+            //cout << solution[i] <<' ';
         }
 
-        tabu_search(sol[p]);
+        tabu_search(solution[p]);
         population.num_conflict[p] = f;
 
         if (f < population.min_conflict)
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
         {
             for (i = 1; i <= point_num; i++)
             {
-                int color = p_sol[p].index1[i] = sol[p][i];
+                int color = p_sol[p].index1[i] = solution[p][i];
                 int color_num = p_sol[p].num[color];
                 p_sol[p].psol[color][color_num] = i;
                 p_sol[p].index2[i] = color_num++;
@@ -227,9 +227,9 @@ void dynamic_alloc()
     int i;
     adjList = (VerNode *)malloc(sizeof(VerNode)*(point_num + 1));
     //p_sol = (Population_solution *)malloc(sizeof(Population_solution)*(P + 1));
-    sol = (int **)malloc(sizeof(int *)*(P + 1));
+    solution = (int **)malloc(sizeof(int *)*(P + 1));
     for (i = 0; i <= P; i++)
-        sol[i] = (int *)malloc(sizeof(int)*(point_num + 1));
+        solution[i] = (int *)malloc(sizeof(int)*(point_num + 1));
 }
 
 int tabu_search(int *s)
