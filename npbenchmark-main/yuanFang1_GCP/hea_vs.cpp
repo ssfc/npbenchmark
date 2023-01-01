@@ -36,7 +36,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 int conf_num = 0;
 
 struct ArcNode {
-    int adjvex;
+    int adj_vertex;
     struct ArcNode *next;
 };
 
@@ -62,8 +62,8 @@ int tabu_search(int *s);
 Move find_move(int *s);
 void make_move(int u, int vj, int *s);
 
-void add_conflict(int adjvex);
-void delete_conflict(int adjvex);
+void add_conflict(int adj_vertex);
+void delete_conflict(int adj_vertex);
 void cross_over(int p1, int p2, int *index1);
 
 /*
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
 void insert_adjList(int i, int j)
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
-    temp1->adjvex = i;
+    temp1->adj_vertex = i;
     temp1->next = adjList[j].first;
     adjList[j].first = temp1;
 }
@@ -237,14 +237,15 @@ int tabu_search(int *s)
         is_conf = 0;
         while (temp)
         {
-            if (s[temp->adjvex] == s[i])
+            if (s[temp->adj_vertex] == s[i])
             {
                 is_conf = 1;
                 f++;
             }
-            adj_color_table[i][s[temp->adjvex]]++;
+            adj_color_table[i][s[temp->adj_vertex]]++;
             temp = temp->next;
         }
+
         if (is_conf)
         {
             conflict[conf_num] = i;
@@ -353,20 +354,20 @@ void make_move(int u, int vj, int *s)
 
     while (temp)
     {
-        int adjvex = temp->adjvex;
-        if ((--adj_color_table[adjvex][vi]) == 0)
+        int adj_vertex = temp->adj_vertex;
+        if ((--adj_color_table[adj_vertex][vi]) == 0)
         {
-            if (s[adjvex] == vi)
+            if (s[adj_vertex] == vi)
             {
-                delete_conflict(adjvex);
+                delete_conflict(adj_vertex);
             }
         }
 
-        if ((++adj_color_table[adjvex][vj]) == 1)
+        if ((++adj_color_table[adj_vertex][vj]) == 1)
         {
-            if (s[adjvex] == vj)
+            if (s[adj_vertex] == vj)
             {
-                add_conflict(adjvex);
+                add_conflict(adj_vertex);
             }
         }
         temp = temp->next;
@@ -378,15 +379,15 @@ void make_move(int u, int vj, int *s)
         add_conflict(u);
 }
 
-void add_conflict(int adjvex)
+void add_conflict(int adj_vertex)
 {
-    conflict[conf_num] = adjvex;
-    conflict_index[adjvex] = conf_num++;
+    conflict[conf_num] = adj_vertex;
+    conflict_index[adj_vertex] = conf_num++;
 }
 
-void delete_conflict(int adjvex)
+void delete_conflict(int adj_vertex)
 {
-    int temp_index = conflict_index[adjvex];
+    int temp_index = conflict_index[adj_vertex];
     conflict[temp_index] = conflict[--conf_num];
     conflict_index[conflict[temp_index]] = temp_index;
 }
