@@ -233,25 +233,25 @@ void dynamic_alloc()
 
 int tabu_search(int *s)
 {
-    int is_conf;
+    bool is_conflict;
     //cout <<endl;
 
     for (int i = 1; i <= point_num; i++)
     {
         ArcNode *temp = adjList[i].first;
-        is_conf = 0;
+        is_conflict = false;
         while (temp)
         {
             if (s[temp->adj_vertex] == s[i])
             {
-                is_conf = 1;
+                is_conflict = true;
                 f++;
             }
             adj_color_table[i][s[temp->adj_vertex]]++;
             temp = temp->next;
         }
 
-        if (is_conf)
+        if (is_conflict)
         {
             conflict[conf_num] = i;
             conflict_index[i] = conf_num++;
