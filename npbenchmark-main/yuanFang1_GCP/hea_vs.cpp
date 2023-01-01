@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 
     sprintf(file, "./instances/%s", argv[1]);
 
-    if ((fp = fopen(file, "r")) == NULL)
+    if ((fp = fopen(file, "r")) == nullptr)
     {
         cout << "file not open";
         return 0;
@@ -91,7 +91,9 @@ int main(int argc, char *argv[])
     sscanf(s1, "%c %s %d %d", &c, s2, &point_num, &edge_num);
 
     dynamic_alloc();
+
     memset(adjList, 0, sizeof(VerNode)*(point_num + 1));
+
     while (!feof(fp))
     {
         fscanf(fp, "%c %d %d\n", &c, &i, &j);
