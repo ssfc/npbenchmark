@@ -26,7 +26,7 @@ struct Population_solution {
 };
 
 struct Population {
-    int min_f;
+    int min_conflict;
     int fnum[P + 1];
 };
 
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
         insert_adjList(j, i);
     }
 
-    population.min_f = 100000;
+    population.min_conflict = 100000;
     k = atoi(argv[2]);
 
     for (p = 1; p <= P; p++)
@@ -118,9 +118,9 @@ int main(int argc, char *argv[])
         tabu_search(sol[p]);
         population.fnum[p] = f;
 
-        if (f < population.min_f)
+        if (f < population.min_conflict)
         {
-            population.min_f = f;
+            population.min_conflict = f;
         }
         if (f == 0)
             break;
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 
         Population_solution temps;
         int cnt = 0;
-        while (population.min_f != 0)
+        while (population.min_conflict != 0)
         {
             int p1 = rand() % P + 1, p2;
 
@@ -183,27 +183,27 @@ int main(int argc, char *argv[])
             p_sol[max_p] = temps;//将种群中冲突数最大的替换成temps
             population.fnum[max_p] = f;
 
-            if (f<population.min_f)
+            if (f<population.min_conflict)
             {
-                population.min_f = f;
+                population.min_conflict = f;
             }
 
-            cout << "mint_f = " << population.min_f << endl;
+            cout << "min conflict = " << population.min_conflict << endl;
         }
     }
 
     clock_t ends = clock();
     res_time = (double)(ends - start) / CLOCKS_PER_SEC;
     cout << res_time<<endl;
-    if (population.min_f == 0)
+    if (population.min_conflict == 0)
     {
         fp = fopen("result.txt", "a+");
-        if (fp == NULL)
+        if (fp == nullptr)
             printf("output file open error\n");
         fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], res_time , MaxIter);
     }
     else
-        cout << "overtime" << endl;
+        cout << "over time" << endl;
 
     return 0;
 }
