@@ -269,8 +269,8 @@ int tabu_search(int *solution)
     {
         if (f == 0)
             break;
-        Move mymove = find_move(solution);
-        make_move(mymove.u, mymove.vj, solution);
+        Move my_move = find_move(solution);
+        make_move(my_move.u, my_move.vj, solution);
         iter++;
     }
 
