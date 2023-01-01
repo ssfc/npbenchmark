@@ -30,7 +30,7 @@ struct Population {
 };
 
 Population population;
-Population_solution p_sol[P+1];
+Population_solution population_solution[P+1];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int conf_num = 0;
 
@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
             break;
     }
 
-    memset(p_sol, 0, sizeof(p_sol));
+    memset(population_solution, 0, sizeof(population_solution));
     clock_t start = clock();
 
     if (p > P)
@@ -138,11 +138,11 @@ int main(int argc, char *argv[])
         {
             for (i = 1; i <= point_num; i++)
             {
-                int color = p_sol[p].index1[i] = solution[p][i];
-                int color_num = p_sol[p].num[color];
-                p_sol[p].psol[color][color_num] = i;
-                p_sol[p].index2[i] = color_num++;
-                p_sol[p].num[color] = color_num;
+                int color = population_solution[p].index1[i] = solution[p][i];
+                int color_num = population_solution[p].num[color];
+                population_solution[p].psol[color][color_num] = i;
+                population_solution[p].index2[i] = color_num++;
+                population_solution[p].num[color] = color_num;
             }
         }
 
@@ -187,7 +187,7 @@ int main(int argc, char *argv[])
                 }
             }
 
-            p_sol[max_p] = temps;//将种群中冲突数最大的替换成temps
+            population_solution[max_p] = temps;//将种群中冲突数最大的替换成temps
             population.num_conflict[max_p] = f;
 
             if (f<population.min_conflict)
@@ -405,8 +405,8 @@ void cross_over(int p1, int p2, int *index1)
 {
     int l, A, B, j;
     Population_solution s[2];
-    s[0] = p_sol[p1];
-    s[1] = p_sol[p2];
+    s[0] = population_solution[p1];
+    s[1] = population_solution[p2];
 
     for (l = 1; l <= k; l++)
     {
