@@ -59,7 +59,7 @@ double res_time;
 void insert_adjList(int i, int j);
 void dynamic_alloc();
 int tabu_search(int *s);
-Move FindMove(int *s);
+Move find_move(int *s);
 void MakeMove(int u, int vj, int *s);
 void add_conf(int adjvex);
 void del_conf(int adjvex);
@@ -229,10 +229,11 @@ int tabu_search(int *s)
     best_f = f;
     iter = 0;
 
-    while (iter < MaxIter) {
+    while (iter < MaxIter)
+    {
         if (f == 0)
             break;
-        Move mymove = FindMove(s);
+        Move mymove = find_move(s);
         MakeMove(mymove.u, mymove.vj, s);
         iter++;
     }
@@ -245,7 +246,8 @@ int tabu_search(int *s)
     return 1;
 }
 
-Move FindMove(int *s) {
+Move find_move(int *s)
+{
     int i, j, conf_i;
     int sol_i;
     Move tabu_move[MaxPoint], non_tabu_move[MaxPoint];
