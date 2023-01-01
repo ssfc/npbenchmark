@@ -63,7 +63,7 @@ Move find_move(int *s);
 void make_move(int u, int vj, int *s);
 void add_conf(int adjvex);
 void del_conf(int adjvex);
-void crossover(int p1, int p2, int *index1);
+void cross_over(int p1, int p2, int *index1);
 /*
 argv[1]:文件名
 argv[2]:迭代次数
@@ -151,7 +151,7 @@ int main(int argc, char *argv[])
 
             memset(&temps, 0, sizeof(temps));
 
-            crossover(p1, p2, temps.index1);
+            cross_over(p1, p2, temps.index1);
 
             memset(adj_color_table, 0, sizeof(adj_color_table));
             memset(tabu_table, 0, sizeof(tabu_table));
@@ -406,7 +406,7 @@ void del_conf(int adjvex)
 }
 
 
-void crossover(int p1, int p2, int *index1)
+void cross_over(int p1, int p2, int *index1)
 {
     int l, A, B, j;
     Population_solution s[2];
