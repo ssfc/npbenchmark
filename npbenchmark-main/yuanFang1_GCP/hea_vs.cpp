@@ -32,7 +32,7 @@ struct Population {
 
 Population popu;
 Population_solution p_sol[P+1];
-int conflict[MaxPoint], conf_index[MaxPoint];
+int conflict[MaxPoint], conflict_index[MaxPoint];
 int conf_num = 0;
 
 struct ArcNode {
@@ -247,7 +247,7 @@ int tabu_search(int *s)
         if (is_conf)
         {
             conflict[conf_num] = i;
-            conf_index[i] = conf_num++;
+            conflict_index[i] = conf_num++;
         }
     }
     f = f / 2;
@@ -396,14 +396,14 @@ void make_move(int u, int vj, int *s)
 void add_conflict(int adjvex)
 {
     conflict[conf_num] = adjvex;
-    conf_index[adjvex] = conf_num++;
+    conflict_index[adjvex] = conf_num++;
 }
 
 void delete_conflict(int adjvex)
 {
-    int temp_index = conf_index[adjvex];
+    int temp_index = conflict_index[adjvex];
     conflict[temp_index] = conflict[--conf_num];
-    conf_index[conflict[temp_index]] = temp_index;
+    conflict_index[conflict[temp_index]] = temp_index;
 }
 
 
