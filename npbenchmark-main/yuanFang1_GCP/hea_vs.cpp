@@ -299,16 +299,6 @@ Move find_move(int *s)
                             non_tabu_move[non_tabu_cnt].u = i;
                             non_tabu_move[non_tabu_cnt++].vj = j;
                         }
-                        //	                    else if(temp_delt == non_tabu_move.delt){
-                        //	                    	non_tabu_cnt++;
-                        //	                    	double t = 1.0/non_tabu_cnt;
-                        //	                    	if((rand()/(RAND_MAX+1.0)) < t){
-                        //	                    		non_tabu_move.u = i;
-                        //		                        non_tabu_move.vi = sol_i;
-                        //		                        non_tabu_move.vj = j;
-                        //							}
-                        //
-                        //						}
                     }
                     else
                     {
@@ -322,16 +312,6 @@ Move find_move(int *s)
                             tabu_move[tabu_cnt].u = i;
                             tabu_move[tabu_cnt++].vj = j;
                         }
-                        //	                    else if(temp_delt == tabu_move.delt){
-                        //	                    	tabu_cnt++;
-                        //	                    	double t = 1.0/tabu_cnt,r= rand()/(RAND_MAX+1.0);
-                        //	                    	if(r < t){
-                        //	                    		tabu_move.u = i;
-                        //		                        tabu_move.vi = sol_i;
-                        //		                        tabu_move.vj = j;
-                        //							}
-                        //
-                        //						}
 
                     }
                 }
