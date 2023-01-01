@@ -404,11 +404,13 @@ void crossover(int p1, int p2, int *index1)
     {
         if (l % 2 != 0)
         {
-            A = 0; B = 1;
+            A = 0;
+            B = 1;
         }
         else
         {
-            A = 1; B = 0;
+            A = 1;
+            B = 0;
         }
 
         int max_index, max_num = -1, *h_num = s[A].num;
