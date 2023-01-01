@@ -26,7 +26,7 @@ struct Population_solution {
 };
 
 struct Population {
-    int min_f, min_p;
+    int min_f;
     int fnum[P + 1];
 };
 
@@ -119,7 +119,6 @@ int main(int argc, char *argv[])
         if (f < popu.min_f)
         {
             popu.min_f = f;
-            popu.min_p = p;
         }
         if (f == 0)
             break;
@@ -185,7 +184,6 @@ int main(int argc, char *argv[])
             if (f<popu.min_f)
             {
                 popu.min_f = f;
-                popu.min_p = max_p;
             }
 
             cout << "mint_f = " << popu.min_f << endl;
