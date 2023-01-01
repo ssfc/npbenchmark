@@ -57,7 +57,7 @@ double res_time;
 
 void insert_adjList(int i, int j);
 void dynamic_alloc();
-int tabu_search(int *s);
+int tabu_search(int *solution);
 Move find_move(int *s);
 void make_move(int u, int vj, int *s);
 
@@ -110,6 +110,7 @@ int main(int argc, char *argv[])
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_table, 0, sizeof(tabu_table));
         f = best_conflict = conf_num = 0;
+
         for (i = 1; i <= point_num; i++)
         {
             solution[p][i] = rand() % k + 1;
@@ -123,6 +124,7 @@ int main(int argc, char *argv[])
         {
             population.min_conflict = f;
         }
+
         if (f == 0)
             break;
     }
@@ -178,7 +180,7 @@ int main(int argc, char *argv[])
 
             for (i = 1; i <= P; i++)
             {
-                if (population.num_conflict[i] >max_conflict)
+                if (population.num_conflict[i] > max_conflict)
                 {
                     max_conflict = population.num_conflict[i];
                     max_p = i;
@@ -231,7 +233,7 @@ void dynamic_alloc()
         solution[i] = new int [point_num + 1];
 }
 
-int tabu_search(int *s)
+int tabu_search(int *solution)
 {
     bool is_conflict;
     //cout <<endl;
@@ -242,12 +244,12 @@ int tabu_search(int *s)
         is_conflict = false;
         while (temp)
         {
-            if (s[temp->adj_vertex] == s[i])
+            if (solution[temp->adj_vertex] == solution[i])
             {
                 is_conflict = true;
                 f++;
             }
-            adj_color_table[i][s[temp->adj_vertex]]++;
+            adj_color_table[i][solution[temp->adj_vertex]]++;
             temp = temp->next;
         }
 
@@ -267,8 +269,8 @@ int tabu_search(int *s)
     {
         if (f == 0)
             break;
-        Move mymove = find_move(s);
-        make_move(mymove.u, mymove.vj, s);
+        Move mymove = find_move(solution);
+        make_move(mymove.u, mymove.vj, solution);
         iter++;
     }
 
