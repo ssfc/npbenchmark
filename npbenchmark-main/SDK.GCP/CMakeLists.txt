@@ -9,4 +9,4 @@ include_directories(.)
 add_executable(SDK_GCP
         GraphColoring.cpp
         GraphColoring.h
-        Main.cpp tabucol.cpp tabucol.h my_main.cpp)
+        Main.cpp tabucol.cpp tabucol.h my_main.cpp hea.cpp hea.h)

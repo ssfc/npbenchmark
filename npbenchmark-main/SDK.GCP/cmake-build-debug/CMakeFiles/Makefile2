@@ -80,12 +80,12 @@ clean: CMakeFiles/SDK_GCP.dir/clean
 CMakeFiles/SDK_GCP.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5 "Built target SDK_GCP"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target SDK_GCP"
 .PHONY : CMakeFiles/SDK_GCP.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SDK_GCP.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\cmake-build-debug\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\cmake-build-debug\CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/SDK_GCP.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.GCP\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/SDK_GCP.dir/rule

@@ -176,6 +176,30 @@ Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
+hea.obj: hea.cpp.obj
+.PHONY : hea.obj
+
+# target to build an object file
+hea.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/hea.cpp.obj
+.PHONY : hea.cpp.obj
+
+hea.i: hea.cpp.i
+.PHONY : hea.i
+
+# target to preprocess a source file
+hea.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/hea.cpp.i
+.PHONY : hea.cpp.i
+
+hea.s: hea.cpp.s
+.PHONY : hea.s
+
+# target to generate assembly for a file
+hea.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK_GCP.dir\build.make CMakeFiles/SDK_GCP.dir/hea.cpp.s
+.PHONY : hea.cpp.s
+
 my_main.obj: my_main.cpp.obj
 .PHONY : my_main.obj
 
@@ -239,6 +263,9 @@ help:
 	@echo ... Main.obj
 	@echo ... Main.i
 	@echo ... Main.s
+	@echo ... hea.obj
+	@echo ... hea.i
+	@echo ... hea.s
 	@echo ... my_main.obj
 	@echo ... my_main.i
 	@echo ... my_main.s
