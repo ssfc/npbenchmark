@@ -63,7 +63,7 @@ Move find_move(int *s);
 void make_move(int u, int vj, int *s);
 
 void add_conflict(int adjvex);
-void del_conf(int adjvex);
+void delete_conflict(int adjvex);
 void cross_over(int p1, int p2, int *index1);
 /*
 argv[1]:文件名
@@ -373,7 +373,7 @@ void make_move(int u, int vj, int *s)
         {
             if (s[adjvex] == vi)
             {
-                del_conf(adjvex);
+                delete_conflict(adjvex);
             }
         }
 
@@ -388,7 +388,7 @@ void make_move(int u, int vj, int *s)
     }
 
     if (adj_color_table[u][vi] != 0 && adj_color_table[u][vj] == 0)
-        del_conf(u);
+        delete_conflict(u);
     if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
         add_conflict(u);
 }
@@ -399,7 +399,7 @@ void add_conflict(int adjvex)
     conf_index[adjvex] = conf_num++;
 }
 
-void del_conf(int adjvex)
+void delete_conflict(int adjvex)
 {
     int temp_index = conf_index[adjvex];
     conflict[temp_index] = conflict[--conf_num];
