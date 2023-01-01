@@ -24,12 +24,12 @@ struct P_sol {
     int index1[MaxPoint], index2[MaxPoint];
 };
 
-struct Popu {
+struct Population {
     int min_f, min_p;
     int fnum[P + 1];
 };
 
-Popu popu;
+Population popu;
 P_sol p_sol[P+1];
 int conflict[MaxPoint], conf_index[MaxPoint];
 int conf_num = 0;
@@ -55,7 +55,7 @@ double res_time;
 
 void insert_adjList(int i, int j);
 void dynamic_alloc();
-int tabusearch(int *s);
+int tabu_search(int *s);
 Move FindMove(int *s);
 void MakeMove(int u, int vj, int *s);
 void add_conf(int adjvex);
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
             sol[p][i] = rand() % k + 1;
             //cout << sol[i] <<' ';
         }
-        tabusearch(sol[p]);
+        tabu_search(sol[p]);
         popu.fnum[p] = f;
 
         if (f < popu.min_f) {
@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
             memset(tabu_table, 0, sizeof(tabu_table));
             f = best_f = conf_num =0;
 
-            tabusearch(temps.index1);//对temps进行禁忌搜索
+            tabu_search(temps.index1);//对temps进行禁忌搜索
 
 
 
@@ -189,7 +189,9 @@ void insert_adjList(int i, int j) {
     temp1->next = adjList[j].first;
     adjList[j].first = temp1;
 }
-void dynamic_alloc() {
+
+void dynamic_alloc()
+{
     int i;
     adjList = (VerNode *)malloc(sizeof(VerNode)*(point_num + 1));
     //p_sol = (P_sol *)malloc(sizeof(P_sol)*(P + 1));
@@ -197,7 +199,9 @@ void dynamic_alloc() {
     for (i = 0; i <= P; i++)
         sol[i] = (int *)malloc(sizeof(int)*(point_num + 1));
 }
-int tabusearch(int *s) {
+
+int tabu_search(int *s)
+{
     int i, is_conf;
     //cout <<endl;
 
