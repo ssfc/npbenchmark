@@ -65,10 +65,10 @@ void make_move(int u, int vj, int *s);
 void add_conflict(int adjvex);
 void delete_conflict(int adjvex);
 void cross_over(int p1, int p2, int *index1);
+
 /*
 argv[1]:文件名
-argv[2]:迭代次数
-argv[3]:颜色数
+argv[2]:颜色数
 */
 int main(int argc, char *argv[])
 {
