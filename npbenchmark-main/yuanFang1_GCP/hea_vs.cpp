@@ -19,7 +19,7 @@
 using namespace std;
 int MaxIter = 16000;
 
-struct P_sol {
+struct Population_solution {
     int psol[MaxColor][MaxPoint];
     int num[MaxColor];
     int index1[MaxPoint], index2[MaxPoint];
@@ -31,7 +31,7 @@ struct Population {
 };
 
 Population popu;
-P_sol p_sol[P+1];
+Population_solution p_sol[P+1];
 int conflict[MaxPoint], conf_index[MaxPoint];
 int conf_num = 0;
 
@@ -116,9 +116,12 @@ int main(int argc, char *argv[])
     }
     memset(p_sol, 0, sizeof(p_sol));
     clock_t start = clock();
-    if (p > P) {
-        for (p = 1; p <= P; p++) {
-            for (i = 1; i <= point_num; i++) {
+    if (p > P)
+    {
+        for (p = 1; p <= P; p++)
+        {
+            for (i = 1; i <= point_num; i++)
+            {
                 int color = p_sol[p].index1[i] = sol[p][i];
                 int color_num = p_sol[p].num[color];
                 p_sol[p].psol[color][color_num] = i;
@@ -126,13 +129,18 @@ int main(int argc, char *argv[])
                 p_sol[p].num[color] = color_num;
             }
         }
-        P_sol temps;
+
+        Population_solution temps;
         int cnt = 0;
-        while (popu.min_f != 0) {
+        while (popu.min_f != 0)
+        {
             int p1 = rand() % P + 1, p2;
-            do {
+
+            do
+            {
                 p2 = rand() % P + 1;
             } while (p1 == p2);
+
             memset(&temps, 0, sizeof(temps));
 
             crossover(p1, p2, temps.index1);
@@ -197,7 +205,7 @@ void dynamic_alloc()
 {
     int i;
     adjList = (VerNode *)malloc(sizeof(VerNode)*(point_num + 1));
-    //p_sol = (P_sol *)malloc(sizeof(P_sol)*(P + 1));
+    //p_sol = (Population_solution *)malloc(sizeof(Population_solution)*(P + 1));
     sol = (int **)malloc(sizeof(int *)*(P + 1));
     for (i = 0; i <= P; i++)
         sol[i] = (int *)malloc(sizeof(int)*(point_num + 1));
@@ -388,7 +396,7 @@ void del_conf(int adjvex)
 void crossover(int p1, int p2, int *index1)
 {
     int l, A, B, j;
-    P_sol s[2];
+    Population_solution s[2];
     s[0] = p_sol[p1];
     s[1] = p_sol[p2];
 
