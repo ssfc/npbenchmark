@@ -61,7 +61,8 @@ void dynamic_alloc();
 int tabu_search(int *s);
 Move find_move(int *s);
 void make_move(int u, int vj, int *s);
-void add_conf(int adjvex);
+
+void add_conflict(int adjvex);
 void del_conf(int adjvex);
 void cross_over(int p1, int p2, int *index1);
 /*
@@ -380,7 +381,7 @@ void make_move(int u, int vj, int *s)
         {
             if (s[adjvex] == vj)
             {
-                add_conf(adjvex);
+                add_conflict(adjvex);
             }
         }
         temp = temp->next;
@@ -389,10 +390,10 @@ void make_move(int u, int vj, int *s)
     if (adj_color_table[u][vi] != 0 && adj_color_table[u][vj] == 0)
         del_conf(u);
     if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
-        add_conf(u);
+        add_conflict(u);
 }
 
-void add_conf(int adjvex)
+void add_conflict(int adjvex)
 {
     conflict[conf_num] = adjvex;
     conf_index[adjvex] = conf_num++;
