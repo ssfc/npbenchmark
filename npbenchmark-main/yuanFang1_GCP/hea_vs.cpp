@@ -84,9 +84,11 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    do {
+    do
+    {
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
+
     sscanf(s1, "%c %s %d %d", &c, s2, &point_num, &edge_num);
 
     dynamic_alloc();
@@ -124,8 +126,10 @@ int main(int argc, char *argv[])
         if (f == 0)
             break;
     }
+
     memset(p_sol, 0, sizeof(p_sol));
     clock_t start = clock();
+
     if (p > P)
     {
         for (p = 1; p <= P; p++)
@@ -169,7 +173,9 @@ int main(int argc, char *argv[])
                 temps.index2[i] = color_num;
                 temps.num[color] = ++color_num;
             }
+
             int max_conflict = -1, max_p;
+
             for (i = 1; i <= P; i++)
             {
                 if (population.num_conflict[i] >max_conflict)
@@ -194,6 +200,7 @@ int main(int argc, char *argv[])
     clock_t ends = clock();
     res_time = (double)(ends - start) / CLOCKS_PER_SEC;
     cout << res_time<<endl;
+    
     if (population.min_conflict == 0)
     {
         fp = fopen("result.txt", "a+");
