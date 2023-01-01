@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
     int i, j, p;
     char c, s1[100], s2[100], file[100];
     FILE *fp;
-    srand((unsigned)time(NULL));
+    srand(6);
+
     sprintf(file, "./instances/%s", argv[1]);
 
     if ((fp = fopen(file, "r")) == NULL)
