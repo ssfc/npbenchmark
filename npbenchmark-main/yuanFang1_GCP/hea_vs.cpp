@@ -50,7 +50,7 @@ struct Move {
 
 VerNode *adj_list;
 int **solution;
-int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
+int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 int res_iter;
@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
     for (p = 1; p <= num_population; p++)
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
-        memset(tabu_table, 0, sizeof(tabu_table));
+        memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         f = best_conflict = conflict_num = 0;
 
         for (i = 1; i <= num_vertex; i++)
@@ -163,7 +163,7 @@ int main(int argc, char *argv[])
             cross_over(p1, p2, temps.index1);
 
             memset(adj_color_table, 0, sizeof(adj_color_table));
-            memset(tabu_table, 0, sizeof(tabu_table));
+            memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
             f = best_conflict = conflict_num =0;
 
             tabu_search(temps.index1);//对temps进行禁忌搜索
@@ -303,7 +303,7 @@ Move find_move(int *s)
                 {
                     int temp_delt = adj_color_table[i][j] - adj_color_table[i][sol_i];
                     //cout <<temp_delt<<'\t';
-                    if (iter >= tabu_table[i][j])
+                    if (iter >= tabu_tenure_table[i][j])
                     {
                         if (temp_delt <= non_tabu_move_delt)
                         {
@@ -358,7 +358,7 @@ void make_move(int u, int vj, int *s)
 {
     int vi = s[u];
     s[u] = vj;
-    tabu_table[u][vi] = f + iter + rand() % 10 + 1;
+    tabu_tenure_table[u][vi] = f + iter + rand() % 10 + 1;
     ArcNode *temp = adj_list[u].first;
 
     while (temp)
