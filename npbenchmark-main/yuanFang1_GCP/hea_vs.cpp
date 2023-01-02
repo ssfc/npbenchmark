@@ -54,7 +54,7 @@ int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 int res_iter;
-double res_time;
+double elapsed_time;
 
 void insert_adj_list(int i, int j);
 void dynamic_alloc();
@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
     }
 
     memset(population_solution, 0, sizeof(population_solution));
-    clock_t start = clock();
+    double start_time = clock();
 
     for (p = 1; p <= num_population; p++)
     {
@@ -201,16 +201,16 @@ int main(int argc, char *argv[])
         cout << "min conflict = " << population.min_conflict << endl;
     }
 
-    clock_t ends = clock();
-    res_time = (double)(ends - start) / CLOCKS_PER_SEC;
-    cout << res_time<<endl;
+    double end_time = clock();
+    elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    cout << elapsed_time<<endl;
 
     if (population.min_conflict == 0)
     {
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], res_time , max_iter);
+        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , max_iter);
     }
     else
         cout << "over time" << endl;
