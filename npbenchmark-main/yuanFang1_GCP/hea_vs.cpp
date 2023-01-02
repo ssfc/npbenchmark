@@ -51,7 +51,7 @@ struct Move {
 VerNode *adj_list;
 int **solution;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
-int num_vertex, edge_num, f, best_conflict, num_color;
+int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 int res_iter;
 double res_time;
@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
 
-    sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &edge_num);
+    sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
 
     dynamic_alloc();
 
