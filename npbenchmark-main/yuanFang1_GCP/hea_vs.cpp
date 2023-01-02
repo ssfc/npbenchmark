@@ -184,19 +184,19 @@ int main(int argc, char *argv[])
             temps.color_num[color] = ++color_num;
         }
 
-        int max_conflict = -1, max_p;
+        int max_conflict = -1, max_conflict_index;
 
         for (i = 0; i < num_population; i++)
         {
             if (population.num_conflict[i] > max_conflict)
             {
                 max_conflict = population.num_conflict[i];
-                max_p = i;
+                max_conflict_index = i;
             }
         }
 
-        population_solution[max_p] = temps; // 将种群中冲突数最大的替换成temps
-        population.num_conflict[max_p] = f;
+        population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
+        population.num_conflict[max_conflict_index] = f;
 
         if (f < population.min_conflict)
         {
