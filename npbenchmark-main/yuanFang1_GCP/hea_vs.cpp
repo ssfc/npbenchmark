@@ -428,7 +428,7 @@ void cross_over(int p1, int p2, int *index1)
         int max_index, max_num = -1, *h_num = s[A].num;
         for (int j = 1; j <= num_color; j++)
         {
-            if (h_num[j] >max_num)
+            if (h_num[j] > max_num)
             {
                 max_index = j;
                 max_num = h_num[j];
