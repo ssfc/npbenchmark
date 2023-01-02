@@ -51,7 +51,7 @@ struct Move {
 VerNode *adj_list;
 int **solution;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
-int point_num, edge_num, f, best_conflict, num_color;
+int num_vertex, edge_num, f, best_conflict, num_color;
 long long iter;
 int res_iter;
 double res_time;
@@ -90,11 +90,11 @@ int main(int argc, char *argv[])
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
 
-    sscanf(s1, "%c %s %d %d", &c, s2, &point_num, &edge_num);
+    sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &edge_num);
 
     dynamic_alloc();
 
-    memset(adj_list, 0, sizeof(VerNode)*(point_num + 1));
+    memset(adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
 
     while (!feof(fp))
     {
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
         memset(tabu_table, 0, sizeof(tabu_table));
         f = best_conflict = conflict_num = 0;
 
-        for (i = 1; i <= point_num; i++)
+        for (i = 1; i <= num_vertex; i++)
         {
             solution[p][i] = rand() % num_color + 1;
             //cout << solution[i] <<' ';
@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
     {
         for (p = 1; p <= P; p++)
         {
-            for (i = 1; i <= point_num; i++)
+            for (i = 1; i <= num_vertex; i++)
             {
                 int color = population_solution[p].index1[i] = solution[p][i];
                 int color_num = population_solution[p].num[color];
@@ -168,7 +168,7 @@ int main(int argc, char *argv[])
 
             tabu_search(temps.index1);//对temps进行禁忌搜索
 
-            for (i = 1; i <= point_num; i++)
+            for (i = 1; i <= num_vertex; i++)
             {//变成划分的形式
                 int color = temps.index1[i];
                 int color_num = temps.num[color];
@@ -227,11 +227,11 @@ void insert_adj_list(int i, int j)
 
 void dynamic_alloc()
 {
-    adj_list = new VerNode [point_num + 1];
+    adj_list = new VerNode [num_vertex + 1];
 
     solution = new int *[P + 1];
     for (int i = 0; i <= P; i++)
-        solution[i] = new int [point_num + 1];
+        solution[i] = new int [num_vertex + 1];
 }
 
 int tabu_search(int *solution)
@@ -239,7 +239,7 @@ int tabu_search(int *solution)
     bool is_conflict;
     //cout <<endl;
 
-    for (int i = 1; i <= point_num; i++)
+    for (int i = 1; i <= num_vertex; i++)
     {
         ArcNode *temp = adj_list[i].first;
         is_conflict = false;
