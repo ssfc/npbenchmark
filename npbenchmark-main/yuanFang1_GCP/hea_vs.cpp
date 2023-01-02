@@ -403,7 +403,7 @@ void delete_conflict(int adj_vertex)
 
 void cross_over(int p1, int p2, int *index1)
 {
-    int A, B, j;
+    int A, B;
     Population_solution s[2];
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
@@ -422,7 +422,7 @@ void cross_over(int p1, int p2, int *index1)
         }
 
         int max_index, max_num = -1, *h_num = s[A].num;
-        for (j = 1; j <= k; j++)
+        for (int j = 1; j <= k; j++)
         {
             if (h_num[j] >max_num)
             {
@@ -433,7 +433,7 @@ void cross_over(int p1, int p2, int *index1)
 
         int num = h_num[max_index];
         int *h_color = s[A].psol[max_index];
-        for (j = 0; j<num; j++)
+        for (int j = 0; j<num; j++)
         {
             int point = h_color[j];
             index1[point] = i;//只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
@@ -452,7 +452,7 @@ void cross_over(int p1, int p2, int *index1)
     for (int i = 1; i <= k; i++)
     {
         int num = s[0].num[i];
-        for (j = 0; j<num; j++)
+        for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
             int color = rand() % k + 1;//随机分配到某一种颜色中去
