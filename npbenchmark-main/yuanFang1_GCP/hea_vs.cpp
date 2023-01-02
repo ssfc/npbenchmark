@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 
     sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
 
-    // allocate space to variables; 
+    // allocate space to variables;
     dynamic_alloc();
 
     memset(adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
         insert_adj_list(j, i);
     }
 
-    population.min_conflict = 100000;
+    population.min_conflict = INT_MAX;
     num_color = atoi(argv[2]);
 
     for (p = 1; p <= num_population; p++)
