@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
     population.min_conflict = INT_MAX;
     num_color = atoi(argv[2]);
 
-    // this is also the process of initialization; 
+    // this is also the process of initialization;
     for (p = 1; p <= num_population; p++)
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
 
     while (population.min_conflict != 0)
     {
-        // random select two from population as parents;
+        // random select two index from population as parents;
         int p1 = rand() % num_population + 1, p2;
 
         do
