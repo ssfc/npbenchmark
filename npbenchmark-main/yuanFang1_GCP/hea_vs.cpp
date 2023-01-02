@@ -201,9 +201,11 @@ int main(int argc, char *argv[])
         if (f < population.min_conflict)
         {
             population.min_conflict = f;
+            population.min_conflict_index = max_conflict_index;
         }
 
         cout << "min conflict = " << population.min_conflict << endl;
+        cout << "min conflict index = " << population.min_conflict_index << endl;
     }
 
     double end_time = clock();
