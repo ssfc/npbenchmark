@@ -56,7 +56,7 @@ long long iter;
 int res_iter;
 double res_time;
 
-void insert_adjList(int i, int j);
+void insert_adj_list(int i, int j);
 void dynamic_alloc();
 int tabu_search(int *solution);
 Move find_move(int *s);
@@ -99,8 +99,8 @@ int main(int argc, char *argv[])
     while (!feof(fp))
     {
         fscanf(fp, "%c %d %d\n", &c, &i, &j);
-        insert_adjList(i, j);
-        insert_adjList(j, i);
+        insert_adj_list(i, j);
+        insert_adj_list(j, i);
     }
 
     population.min_conflict = 100000;
@@ -217,7 +217,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void insert_adjList(int i, int j)
+void insert_adj_list(int i, int j)
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
