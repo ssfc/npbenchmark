@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
 
         cross_over(p1, p2, temps.index1);
 
-        // reset adj_color_table and tabu_tenure_table to zero; 
+        // reset adj_color_table and tabu_tenure_table to zero;
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         f = best_conflict = conflict_num =0;
@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
 
     double end_time = clock();
     elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "elapsed_time(s): " << elapsed_time << endl;
+    cout << "elapsed time(s): " << elapsed_time << endl;
 
     if (population.min_conflict == 0)
     {
