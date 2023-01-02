@@ -137,71 +137,68 @@ int main(int argc, char *argv[])
     memset(population_solution, 0, sizeof(population_solution));
     clock_t start = clock();
 
-    if (p > num_population)
+    for (p = 1; p <= num_population; p++)
     {
-        for (p = 1; p <= num_population; p++)
+        for (i = 1; i <= num_vertex; i++)
         {
-            for (i = 1; i <= num_vertex; i++)
+            int color = population_solution[p].index1[i] = solution_collection[p][i];
+            int color_num = population_solution[p].num[color];
+            population_solution[p].psol[color][color_num] = i;
+            population_solution[p].index2[i] = color_num++;
+            population_solution[p].num[color] = color_num;
+        }
+    }
+
+    Population_solution temps;
+    int cnt = 0;
+    while (population.min_conflict != 0)
+    {
+        int p1 = rand() % num_population + 1, p2;
+
+        do
+        {
+            p2 = rand() % num_population + 1;
+        } while (p1 == p2);
+
+        memset(&temps, 0, sizeof(temps));
+
+        cross_over(p1, p2, temps.index1);
+
+        memset(adj_color_table, 0, sizeof(adj_color_table));
+        memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
+        f = best_conflict = conflict_num =0;
+
+        tabu_search(temps.index1);//对temps进行禁忌搜索
+
+        for (i = 1; i <= num_vertex; i++)
+        {//变成划分的形式
+            int color = temps.index1[i];
+            int color_num = temps.num[color];
+            temps.psol[color][color_num] = i;
+            temps.index2[i] = color_num;
+            temps.num[color] = ++color_num;
+        }
+
+        int max_conflict = -1, max_p;
+
+        for (i = 1; i <= num_population; i++)
+        {
+            if (population.num_conflict[i] > max_conflict)
             {
-                int color = population_solution[p].index1[i] = solution_collection[p][i];
-                int color_num = population_solution[p].num[color];
-                population_solution[p].psol[color][color_num] = i;
-                population_solution[p].index2[i] = color_num++;
-                population_solution[p].num[color] = color_num;
+                max_conflict = population.num_conflict[i];
+                max_p = i;
             }
         }
 
-        Population_solution temps;
-        int cnt = 0;
-        while (population.min_conflict != 0)
+        population_solution[max_p] = temps;//将种群中冲突数最大的替换成temps
+        population.num_conflict[max_p] = f;
+
+        if (f<population.min_conflict)
         {
-            int p1 = rand() % num_population + 1, p2;
-
-            do
-            {
-                p2 = rand() % num_population + 1;
-            } while (p1 == p2);
-
-            memset(&temps, 0, sizeof(temps));
-
-            cross_over(p1, p2, temps.index1);
-
-            memset(adj_color_table, 0, sizeof(adj_color_table));
-            memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
-            f = best_conflict = conflict_num =0;
-
-            tabu_search(temps.index1);//对temps进行禁忌搜索
-
-            for (i = 1; i <= num_vertex; i++)
-            {//变成划分的形式
-                int color = temps.index1[i];
-                int color_num = temps.num[color];
-                temps.psol[color][color_num] = i;
-                temps.index2[i] = color_num;
-                temps.num[color] = ++color_num;
-            }
-
-            int max_conflict = -1, max_p;
-
-            for (i = 1; i <= num_population; i++)
-            {
-                if (population.num_conflict[i] > max_conflict)
-                {
-                    max_conflict = population.num_conflict[i];
-                    max_p = i;
-                }
-            }
-
-            population_solution[max_p] = temps;//将种群中冲突数最大的替换成temps
-            population.num_conflict[max_p] = f;
-
-            if (f<population.min_conflict)
-            {
-                population.min_conflict = f;
-            }
-
-            cout << "min conflict = " << population.min_conflict << endl;
+            population.min_conflict = f;
         }
+
+        cout << "min conflict = " << population.min_conflict << endl;
     }
 
     clock_t ends = clock();
