@@ -173,7 +173,7 @@ int main(int argc, char *argv[])
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         f = best_conflict = conflict_num =0;
 
-        tabu_search(temps.index1);// 仅仅需要对新形成的temps进行禁忌搜索; 
+        tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (i = 1; i <= num_vertex; i++)
         {//变成划分的形式
