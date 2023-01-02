@@ -441,7 +441,7 @@ void cross_over(int p1, int p2, int *index1)
         for (int j = 0; j<num; j++)
         {
             int point = h_color[j];
-            index1[point] = i;//只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
+            index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
             int color = s[B].index1[point];//在B中删除这个点
             int index2 = s[B].index2[point];
