@@ -218,6 +218,13 @@ int main(int argc, char *argv[])
         if (fp == nullptr)
             printf("output file open error\n");
         fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , max_iter);
+
+        cout << "color of each vertex: ";
+        for(int i=1;i<=num_vertex;i++)
+        {
+            cout << population_solution[population.min_conflict_index].index1[i] << " ";
+        }
+        cout << endl;
     }
     else
         cout << "over time" << endl;
