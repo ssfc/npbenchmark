@@ -153,6 +153,7 @@ int main(int argc, char *argv[])
 
     while (population.min_conflict != 0)
     {
+        // random select two from population as parents;
         int p1 = rand() % num_population + 1, p2;
 
         do
