@@ -51,7 +51,7 @@ struct Move {
 VerNode *adjList;
 int **solution;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
-int point_num, edge_num, f, best_conflict, k;
+int point_num, edge_num, f, best_conflict, num_color;
 long long iter;
 int res_iter;
 double res_time;
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
     }
 
     population.min_conflict = 100000;
-    k = atoi(argv[2]);
+    num_color = atoi(argv[2]);
 
     for (p = 1; p <= P; p++)
     {
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
 
         for (i = 1; i <= point_num; i++)
         {
-            solution[p][i] = rand() % k + 1;
+            solution[p][i] = rand() % num_color + 1;
             //cout << solution[i] <<' ';
         }
 
@@ -297,7 +297,7 @@ Move find_move(int *s)
         sol_i = s[i];
         if (adj_color_table[i][sol_i]>0)
         {
-            for (j = 1; j <= k; j++)
+            for (j = 1; j <= num_color; j++)
             {
                 if (j != sol_i)
                 {
@@ -409,7 +409,7 @@ void cross_over(int p1, int p2, int *index1)
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
-    for (int i = 1; i <= k; i++)
+    for (int i = 1; i <= num_color; i++)
     {
         if (i % 2 != 0)
         {
@@ -423,7 +423,7 @@ void cross_over(int p1, int p2, int *index1)
         }
 
         int max_index, max_num = -1, *h_num = s[A].num;
-        for (int j = 1; j <= k; j++)
+        for (int j = 1; j <= num_color; j++)
         {
             if (h_num[j] >max_num)
             {
@@ -450,14 +450,15 @@ void cross_over(int p1, int p2, int *index1)
 
     }
 
-    for (int i = 1; i <= k; i++)
+    for (int i = 1; i <= num_color; i++)
     {
         int num = s[0].num[i];
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
-            int color = rand() % k + 1;//随机分配到某一种颜色中去
+            int color = rand() % num_color + 1;//随机分配到某一种颜色中去
             index1[point] = color;
         }
     }
 }
+
