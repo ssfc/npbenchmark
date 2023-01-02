@@ -107,6 +107,7 @@ int main(int argc, char *argv[])
     population.min_conflict = INT_MAX;
     num_color = atoi(argv[2]);
 
+    // this is also the process of initialization; 
     for (p = 1; p <= num_population; p++)
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
