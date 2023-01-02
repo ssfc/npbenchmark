@@ -49,7 +49,7 @@ struct Move {
 };
 
 VerNode *adj_list;
-int **solution;
+int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
@@ -114,11 +114,11 @@ int main(int argc, char *argv[])
 
         for (i = 1; i <= num_vertex; i++)
         {
-            solution[p][i] = rand() % num_color + 1;
+            solution_collection[p][i] = rand() % num_color + 1;
             //cout << solution[i] <<' ';
         }
 
-        tabu_search(solution[p]);
+        tabu_search(solution_collection[p]);
         population.num_conflict[p] = f;
 
         if (f < population.min_conflict)
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
         {
             for (i = 1; i <= num_vertex; i++)
             {
-                int color = population_solution[p].index1[i] = solution[p][i];
+                int color = population_solution[p].index1[i] = solution_collection[p][i];
                 int color_num = population_solution[p].num[color];
                 population_solution[p].psol[color][color_num] = i;
                 population_solution[p].index2[i] = color_num++;
@@ -229,9 +229,9 @@ void dynamic_alloc()
 {
     adj_list = new VerNode [num_vertex + 1];
 
-    solution = new int *[num_population + 1];
+    solution_collection = new int *[num_population + 1];
     for (int i = 0; i <= num_population; i++)
-        solution[i] = new int [num_vertex + 1];
+        solution_collection[i] = new int [num_vertex + 1];
 }
 
 int tabu_search(int *solution)
