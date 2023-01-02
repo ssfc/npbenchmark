@@ -48,7 +48,7 @@ struct Move {
     int u, vi, vj;
 };
 
-VerNode *adjList;
+VerNode *adj_list;
 int **solution;
 int adj_color_table[MaxPoint][MaxPoint], tabu_table[MaxPoint][MaxPoint];
 int point_num, edge_num, f, best_conflict, num_color;
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 
     dynamic_alloc();
 
-    memset(adjList, 0, sizeof(VerNode)*(point_num + 1));
+    memset(adj_list, 0, sizeof(VerNode)*(point_num + 1));
 
     while (!feof(fp))
     {
@@ -221,13 +221,13 @@ void insert_adj_list(int i, int j)
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
-    temp1->next = adjList[j].first;
-    adjList[j].first = temp1;
+    temp1->next = adj_list[j].first;
+    adj_list[j].first = temp1;
 }
 
 void dynamic_alloc()
 {
-    adjList = new VerNode [point_num + 1];
+    adj_list = new VerNode [point_num + 1];
 
     solution = new int *[P + 1];
     for (int i = 0; i <= P; i++)
@@ -241,7 +241,7 @@ int tabu_search(int *solution)
 
     for (int i = 1; i <= point_num; i++)
     {
-        ArcNode *temp = adjList[i].first;
+        ArcNode *temp = adj_list[i].first;
         is_conflict = false;
         while (temp)
         {
@@ -359,7 +359,7 @@ void make_move(int u, int vj, int *s)
     int vi = s[u];
     s[u] = vj;
     tabu_table[u][vi] = f + iter + rand() % 10 + 1;
-    ArcNode *temp = adjList[u].first;
+    ArcNode *temp = adj_list[u].first;
 
     while (temp)
     {
