@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
     }
 
     Population_solution temps;
-    int cnt = 0;
+    
     while (population.min_conflict != 0)
     {
         int p1 = rand() % num_population + 1, p2;
