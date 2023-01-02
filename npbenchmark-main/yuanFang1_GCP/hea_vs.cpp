@@ -21,7 +21,7 @@ int max_iter = 16000;
 
 struct Population_solution {
     int psol[MaxColor][MaxPoint];
-    int num[MaxColor];
+    int color_num[MaxColor];
     int index1[MaxPoint], index2[MaxPoint];
 };
 
@@ -143,10 +143,10 @@ int main(int argc, char *argv[])
         for (i = 1; i <= num_vertex; i++)
         {
             int color = population_solution[p].index1[i] = solution_collection[p][i]; // color of population p, vertex i;
-            int color_num = population_solution[p].num[color];
+            int color_num = population_solution[p].color_num[color];
             population_solution[p].psol[color][color_num] = i;
             population_solution[p].index2[i] = color_num++;
-            population_solution[p].num[color] = color_num;
+            population_solution[p].color_num[color] = color_num;
         }
     }
 
@@ -176,10 +176,10 @@ int main(int argc, char *argv[])
         for (i = 1; i <= num_vertex; i++)
         {//变成划分的形式
             int color = temps.index1[i];
-            int color_num = temps.num[color];
+            int color_num = temps.color_num[color];
             temps.psol[color][color_num] = i;
             temps.index2[i] = color_num;
-            temps.num[color] = ++color_num;
+            temps.color_num[color] = ++color_num;
         }
 
         int max_conflict = -1, max_p;
@@ -426,7 +426,7 @@ void cross_over(int p1, int p2, int *index1)
             B = 0;
         }
 
-        int max_index, max_num = -1, *h_num = s[A].num;
+        int max_index, max_num = -1, *h_num = s[A].color_num;
         for (int j = 1; j <= num_color; j++)
         {
             if (h_num[j] > max_num)
@@ -445,18 +445,18 @@ void cross_over(int p1, int p2, int *index1)
 
             int color = s[B].index1[point];//在B中删除这个点
             int index2 = s[B].index2[point];
-            int t = s[B].psol[color][index2] = s[B].psol[color][--s[B].num[color]];
+            int t = s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
             s[B].index2[t] = index2;
         }
 
         //删除这些点
-        s[A].num[max_index] = 0;
+        s[A].color_num[max_index] = 0;
 
     }
 
     for (int i = 1; i <= num_color; i++)
     {
-        int num = s[0].num[i];
+        int num = s[0].color_num[i];
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
