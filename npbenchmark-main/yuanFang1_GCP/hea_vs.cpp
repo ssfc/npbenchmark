@@ -195,7 +195,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        population_solution[max_p] = temps;//将种群中冲突数最大的替换成temps
+        population_solution[max_p] = temps; // 将种群中冲突数最大的替换成temps
         population.num_conflict[max_p] = f;
 
         if (f < population.min_conflict)
