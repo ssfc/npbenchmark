@@ -112,6 +112,7 @@ int main(int argc, char *argv[])
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         f = best_conflict = conflict_num = 0;
 
+        // initialization: set random solution to each solution in the population;
         for (i = 1; i <= num_vertex; i++)
         {
             solution_collection[p][i] = rand() % num_color + 1;
