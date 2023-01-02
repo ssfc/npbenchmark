@@ -92,6 +92,7 @@ int main(int argc, char *argv[])
 
     sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
 
+    // allocate space to variables; 
     dynamic_alloc();
 
     memset(adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
