@@ -354,10 +354,10 @@ Move find_move(int *s)
 
 }
 
-void make_move(int u, int vj, int *s)
+void make_move(int u, int vj, int *solultion)
 {
-    int vi = s[u];
-    s[u] = vj;
+    int vi = solultion[u];
+    solultion[u] = vj;
     tabu_tenure_table[u][vi] = f + iter + rand() % 10 + 1;
     ArcNode *temp = adj_list[u].first;
 
@@ -366,7 +366,7 @@ void make_move(int u, int vj, int *s)
         int adj_vertex = temp->adj_vertex;
         if ((--adj_color_table[adj_vertex][vi]) == 0)
         {
-            if (s[adj_vertex] == vi)
+            if (solultion[adj_vertex] == vi)
             {
                 delete_conflict(adj_vertex);
             }
@@ -374,7 +374,7 @@ void make_move(int u, int vj, int *s)
 
         if ((++adj_color_table[adj_vertex][vj]) == 1)
         {
-            if (s[adj_vertex] == vj)
+            if (solultion[adj_vertex] == vj)
             {
                 add_conflict(adj_vertex);
             }
