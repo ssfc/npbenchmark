@@ -120,6 +120,7 @@ int main(int argc, char *argv[])
             //cout << solution[i] <<' ';
         }
 
+        // do tabu-search for each population in the collection; 
         tabu_search(solution_collection[p]);
         population.num_conflict[p] = f;
 
