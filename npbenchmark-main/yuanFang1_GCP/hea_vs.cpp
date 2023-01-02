@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
     }
 
     Population_solution temps;
-    
+
     while (population.min_conflict != 0)
     {
         int p1 = rand() % num_population + 1, p2;
@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
         population_solution[max_p] = temps;//将种群中冲突数最大的替换成temps
         population.num_conflict[max_p] = f;
 
-        if (f<population.min_conflict)
+        if (f < population.min_conflict)
         {
             population.min_conflict = f;
         }
