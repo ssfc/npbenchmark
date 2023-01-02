@@ -408,9 +408,9 @@ void cross_over(int p1, int p2, int *index1)
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
-    for (int l = 1; l <= k; l++)
+    for (int i = 1; i <= k; i++)
     {
-        if (l % 2 != 0)
+        if (i % 2 != 0)
         {
             A = 0;
             B = 1;
@@ -436,7 +436,7 @@ void cross_over(int p1, int p2, int *index1)
         for (j = 0; j<num; j++)
         {
             int point = h_color[j];
-            index1[point] = l;//只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
+            index1[point] = i;//只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
             int color = s[B].index1[point];//在B中删除这个点
             int index2 = s[B].index2[point];
@@ -448,13 +448,13 @@ void cross_over(int p1, int p2, int *index1)
         s[A].num[max_index] = 0;
 
     }
-    
-    for (int l = 1; l <= k; l++)
+
+    for (int i = 1; i <= k; i++)
     {
-        int num = s[0].num[l];
+        int num = s[0].num[i];
         for (j = 0; j<num; j++)
         {
-            int point = s[0].psol[l][j];
+            int point = s[0].psol[i][j];
             int color = rand() % k + 1;//随机分配到某一种颜色中去
             index1[point] = color;
         }
