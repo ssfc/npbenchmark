@@ -33,7 +33,7 @@ struct Population {
 Population population;
 Population_solution population_solution[P+1];
 int conflict[MaxPoint], conflict_index[MaxPoint];
-int conf_num = 0;
+int conflict_num = 0;
 
 struct ArcNode {
     int adj_vertex;
@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_table, 0, sizeof(tabu_table));
-        f = best_conflict = conf_num = 0;
+        f = best_conflict = conflict_num = 0;
 
         for (i = 1; i <= point_num; i++)
         {
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
 
             memset(adj_color_table, 0, sizeof(adj_color_table));
             memset(tabu_table, 0, sizeof(tabu_table));
-            f = best_conflict = conf_num =0;
+            f = best_conflict = conflict_num =0;
 
             tabu_search(temps.index1);//对temps进行禁忌搜索
 
@@ -256,8 +256,8 @@ int tabu_search(int *solution)
 
         if (is_conflict)
         {
-            conflict[conf_num] = i;
-            conflict_index[i] = conf_num++;
+            conflict[conflict_num] = i;
+            conflict_index[i] = conflict_num++;
         }
     }
 
@@ -291,7 +291,7 @@ Move find_move(int *s)
     int tabu_cnt = 1, non_tabu_cnt = 1;
     int tabu_move_delt = 100000, non_tabu_move_delt = 100000;
 
-    for (conf_i = 0; conf_i< conf_num; conf_i++)
+    for (conf_i = 0; conf_i< conflict_num; conf_i++)
     {
         i = conflict[conf_i];
         sol_i = s[i];
@@ -390,14 +390,14 @@ void make_move(int u, int vj, int *s)
 
 void add_conflict(int adj_vertex)
 {
-    conflict[conf_num] = adj_vertex;
-    conflict_index[adj_vertex] = conf_num++;
+    conflict[conflict_num] = adj_vertex;
+    conflict_index[adj_vertex] = conflict_num++;
 }
 
 void delete_conflict(int adj_vertex)
 {
     int temp_index = conflict_index[adj_vertex];
-    conflict[temp_index] = conflict[--conf_num];
+    conflict[temp_index] = conflict[--conflict_num];
     conflict_index[conflict[temp_index]] = temp_index;
 }
 
