@@ -14,7 +14,7 @@
 
 #define MaxPoint 1002
 #define MaxColor 300
-#define P 20
+#define num_population 20
 
 using namespace std;
 int max_iter = 16000;
@@ -27,11 +27,11 @@ struct Population_solution {
 
 struct Population {
     int min_conflict;
-    int num_conflict[P + 1];
+    int num_conflict[num_population + 1];
 };
 
 Population population;
-Population_solution population_solution[P+1];
+Population_solution population_solution[num_population+1];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int conflict_num = 0;
 
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
     population.min_conflict = 100000;
     num_color = atoi(argv[2]);
 
-    for (p = 1; p <= P; p++)
+    for (p = 1; p <= num_population; p++)
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_table, 0, sizeof(tabu_table));
@@ -133,9 +133,9 @@ int main(int argc, char *argv[])
     memset(population_solution, 0, sizeof(population_solution));
     clock_t start = clock();
 
-    if (p > P)
+    if (p > num_population)
     {
-        for (p = 1; p <= P; p++)
+        for (p = 1; p <= num_population; p++)
         {
             for (i = 1; i <= num_vertex; i++)
             {
@@ -151,11 +151,11 @@ int main(int argc, char *argv[])
         int cnt = 0;
         while (population.min_conflict != 0)
         {
-            int p1 = rand() % P + 1, p2;
+            int p1 = rand() % num_population + 1, p2;
 
             do
             {
-                p2 = rand() % P + 1;
+                p2 = rand() % num_population + 1;
             } while (p1 == p2);
 
             memset(&temps, 0, sizeof(temps));
@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
 
             int max_conflict = -1, max_p;
 
-            for (i = 1; i <= P; i++)
+            for (i = 1; i <= num_population; i++)
             {
                 if (population.num_conflict[i] > max_conflict)
                 {
@@ -229,8 +229,8 @@ void dynamic_alloc()
 {
     adj_list = new VerNode [num_vertex + 1];
 
-    solution = new int *[P + 1];
-    for (int i = 0; i <= P; i++)
+    solution = new int *[num_population + 1];
+    for (int i = 0; i <= num_population; i++)
         solution[i] = new int [num_vertex + 1];
 }
 
