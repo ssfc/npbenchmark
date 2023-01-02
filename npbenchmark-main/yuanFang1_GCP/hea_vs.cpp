@@ -17,7 +17,7 @@
 #define P 20
 
 using namespace std;
-int MaxIter = 16000;
+int max_iter = 16000;
 
 struct Population_solution {
     int psol[MaxColor][MaxPoint];
@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], res_time , MaxIter);
+        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], res_time , max_iter);
     }
     else
         cout << "over time" << endl;
@@ -266,7 +266,7 @@ int tabu_search(int *solution)
     best_conflict = f;
     iter = 0;
 
-    while (iter < MaxIter)
+    while (iter < max_iter)
     {
         if (f == 0)
             break;
@@ -275,7 +275,7 @@ int tabu_search(int *solution)
         iter++;
     }
 
-    if (iter == MaxIter)
+    if (iter == max_iter)
         return 0;
 
     res_iter = iter;
