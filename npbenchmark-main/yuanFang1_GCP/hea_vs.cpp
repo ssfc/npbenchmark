@@ -26,7 +26,7 @@ struct Population_solution {
 };
 
 struct Population {
-    int min_conflict;
+    int min_conflict; // the min conflict among the population collection; 
     int num_conflict[num_population + 1];
 };
 
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
             //cout << solution[i] <<' ';
         }
 
-        // do tabu-search for each population in the collection; 
+        // do tabu-search for each population in the collection;
         tabu_search(solution_collection[p]);
         population.num_conflict[p] = f;
 
