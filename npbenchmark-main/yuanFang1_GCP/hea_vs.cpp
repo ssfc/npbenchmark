@@ -27,11 +27,11 @@ struct Population_solution {
 
 struct Population {
     int min_conflict; // the min conflict among the population collection;
-    int num_conflict[num_population + 1];
+    int num_conflict[num_population];
 };
 
 Population population;
-Population_solution population_solution[num_population+1];
+Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int conflict_num = 0;
 
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
     num_color = atoi(argv[2]);
 
     // this is also the process of initialization;
-    for (p = 1; p <= num_population; p++)
+    for (p = 0; p < num_population; p++)
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
     memset(population_solution, 0, sizeof(population_solution));
     double start_time = clock();
 
-    for (p = 1; p <= num_population; p++)
+    for (p = 0; p < num_population; p++)
     {
         for (i = 1; i <= num_vertex; i++)
         {
@@ -155,11 +155,11 @@ int main(int argc, char *argv[])
     while (population.min_conflict != 0)
     {
         // random select two index from population as parents;
-        int p1 = rand() % num_population + 1, p2;
+        int p1 = rand() % num_population, p2;
 
         do
         {
-            p2 = rand() % num_population + 1;
+            p2 = rand() % num_population;
         } while (p1 == p2);
 
         memset(&temps, 0, sizeof(temps));
@@ -184,7 +184,7 @@ int main(int argc, char *argv[])
 
         int max_conflict = -1, max_p;
 
-        for (i = 1; i <= num_population; i++)
+        for (i = 0; i < num_population; i++)
         {
             if (population.num_conflict[i] > max_conflict)
             {
@@ -233,8 +233,8 @@ void dynamic_alloc()
 {
     adj_list = new VerNode [num_vertex + 1];
 
-    solution_collection = new int *[num_population + 1];
-    for (int i = 0; i <= num_population; i++)
+    solution_collection = new int *[num_population];
+    for (int i = 0; i < num_population; i++)
         solution_collection[i] = new int [num_vertex + 1];
 }
 
