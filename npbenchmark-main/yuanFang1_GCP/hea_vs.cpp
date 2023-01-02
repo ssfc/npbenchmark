@@ -403,12 +403,12 @@ void delete_conflict(int adj_vertex)
 
 void cross_over(int p1, int p2, int *index1)
 {
-    int l, A, B, j;
+    int A, B, j;
     Population_solution s[2];
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
-    for (l = 1; l <= k; l++)
+    for (int l = 1; l <= k; l++)
     {
         if (l % 2 != 0)
         {
@@ -448,7 +448,8 @@ void cross_over(int p1, int p2, int *index1)
         s[A].num[max_index] = 0;
 
     }
-    for (l = 1; l <= k; l++)
+    
+    for (int l = 1; l <= k; l++)
     {
         int num = s[0].num[l];
         for (j = 0; j<num; j++)
