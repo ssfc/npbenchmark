@@ -203,7 +203,7 @@ int main(int argc, char *argv[])
 
     double end_time = clock();
     elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << elapsed_time<<endl;
+    cout << "elapsed_time(s): " << elapsed_time<<endl;
 
     if (population.min_conflict == 0)
     {
