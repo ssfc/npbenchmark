@@ -298,7 +298,7 @@ int tabu_search(int *solution)
     return 1;
 }
 
-Move find_move(int *s)
+Move find_move(int *solution)
 {
     int i, j, conf_i;
     int sol_i;
@@ -309,37 +309,39 @@ Move find_move(int *s)
     for (conf_i = 0; conf_i< conflict_num; conf_i++)
     {
         i = conflict[conf_i];
-        sol_i = s[i];
+        sol_i = solution[i];
         if (adj_color_table[i][sol_i]>0)
         {
             for (j = 1; j <= num_color; j++)
             {
                 if (j != sol_i)
                 {
-                    int temp_delt = adj_color_table[i][j] - adj_color_table[i][sol_i];
-                    //cout <<temp_delt<<'\t';
+                    int this_delta = adj_color_table[i][j] - adj_color_table[i][sol_i];
+                    //cout <<this_delta<<'\t';
                     if (iter >= tabu_tenure_table[i][j])
                     {
-                        if (temp_delt <= non_tabu_move_delt)
+                        if (this_delta <= non_tabu_move_delt)
                         {
-                            if (temp_delt < non_tabu_move_delt)
+                            if (this_delta < non_tabu_move_delt)
                             {
                                 non_tabu_cnt = 0;
-                                non_tabu_move_delt = temp_delt;
+                                non_tabu_move_delt = this_delta;
                             }
+
                             non_tabu_move[non_tabu_cnt].u = i;
                             non_tabu_move[non_tabu_cnt++].vj = j;
                         }
                     }
                     else
                     {
-                        if (temp_delt <= tabu_move_delt)
+                        if (this_delta <= tabu_move_delt)
                         {
-                            if (temp_delt < tabu_move_delt)
+                            if (this_delta < tabu_move_delt)
                             {
                                 tabu_cnt = 0;
-                                tabu_move_delt = temp_delt;
+                                tabu_move_delt = this_delta;
                             }
+
                             tabu_move[tabu_cnt].u = i;
                             tabu_move[tabu_cnt++].vj = j;
                         }
