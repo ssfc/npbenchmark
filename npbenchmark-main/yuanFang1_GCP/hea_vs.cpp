@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
         }
 
         // do tabu-search for each population in the collection;
-        cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
+        // cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
         tabu_search(solution_collection[p]);
 
         population.num_conflict[p] = f;
