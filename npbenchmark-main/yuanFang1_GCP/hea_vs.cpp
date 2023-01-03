@@ -232,6 +232,10 @@ int main(int argc, char *argv[])
             cout << population_solution[population.min_conflict_index].index1[i] << " ";
         }
         cout << endl;
+
+        cout << "conflict of final solution: ";
+        cout << compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
+        cout << endl;
     }
     else
         cout << "over time" << endl;
