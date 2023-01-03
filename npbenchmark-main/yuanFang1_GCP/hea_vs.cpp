@@ -282,7 +282,7 @@ int tabu_search(int *solution)
     }
 
     f = f / 2;
-    //cout <<"initial_f = "<<f<<endl;
+    cout <<"initial_f = "<<f<<endl;
     best_conflict = f;
     iter = 0;
 
@@ -487,5 +487,49 @@ void cross_over(int p1, int p2, int *index1)
 // debug function: compute conflict of a solution
 int compute_conflict(int *solution)
 {
+    bool is_conflict;
+    //cout <<endl;
 
+    for (int i = 1; i <= num_vertex; i++)
+    {
+        ArcNode *temp = adj_list[i].first;
+        is_conflict = false;
+        while (temp)
+        {
+            if (solution[temp->adj_vertex] == solution[i])
+            {
+                is_conflict = true;
+                f++;
+            }
+            adj_color_table[i][solution[temp->adj_vertex]]++;
+            temp = temp->next;
+        }
+
+        if (is_conflict)
+        {
+            conflict[conflict_num] = i;
+            conflict_index[i] = conflict_num++;
+        }
+    }
+
+    f = f / 2;
+    //cout <<"initial_f = "<<f<<endl;
+    best_conflict = f;
+    iter = 0;
+
+    while (iter < max_iter)
+    {
+        if (f == 0)
+            break;
+        Move my_move = find_move(solution);
+        make_move(my_move.u, my_move.vj, solution);
+        iter++;
+    }
+
+    if (iter == max_iter)
+        return 0;
+
+    res_iter = iter;
+
+    return 1;
 }
