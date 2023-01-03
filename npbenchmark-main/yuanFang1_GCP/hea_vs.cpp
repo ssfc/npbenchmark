@@ -54,7 +54,6 @@ int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
-int res_iter;
 double elapsed_time;
 
 void insert_adj_list(int i, int j);
@@ -308,8 +307,6 @@ int tabu_search(int *solution)
 
     if (iter == max_iter)
         return 0;
-
-    res_iter = iter;
 
     return 1;
 }
