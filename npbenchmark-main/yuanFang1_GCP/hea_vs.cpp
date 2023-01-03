@@ -54,7 +54,6 @@ int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
-double elapsed_time;
 
 void insert_adj_list(int i, int j);
 void dynamic_alloc();
@@ -217,7 +216,7 @@ int main(int argc, char *argv[])
     }
 
     double end_time = clock();
-    elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
     cout << "Population iteration: " << population_iteration << endl;
     cout << "elapsed time(s): " << elapsed_time << endl;
 
