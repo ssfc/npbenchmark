@@ -161,6 +161,7 @@ int main(int argc, char *argv[])
 
     Population_solution temps;
 
+    int population_iteration = 0;
     while (population.min_conflict != 0)
     {
         // random select two index from population as parents;
@@ -213,10 +214,12 @@ int main(int argc, char *argv[])
 
         cout << "min conflict = " << population.min_conflict << endl;
         cout << "min conflict index = " << population.min_conflict_index << endl;
+        population_iteration++;
     }
 
     double end_time = clock();
     elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    cout << "Population iteration: " << population_iteration << endl;
     cout << "elapsed time(s): " << elapsed_time << endl;
 
     if (population.min_conflict == 0)
