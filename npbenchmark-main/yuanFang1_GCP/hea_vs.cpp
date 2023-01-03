@@ -128,7 +128,9 @@ int main(int argc, char *argv[])
         }
 
         // do tabu-search for each population in the collection;
+        cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
         tabu_search(solution_collection[p]);
+
         population.num_conflict[p] = f;
 
         // record the min conflict up till now;
@@ -487,49 +489,24 @@ void cross_over(int p1, int p2, int *index1)
 // debug function: compute conflict of a solution
 int compute_conflict(int *solution)
 {
-    bool is_conflict;
+    int this_conflict = 0;
     //cout <<endl;
 
     for (int i = 1; i <= num_vertex; i++)
     {
         ArcNode *temp = adj_list[i].first;
-        is_conflict = false;
         while (temp)
         {
             if (solution[temp->adj_vertex] == solution[i])
             {
-                is_conflict = true;
-                f++;
+                this_conflict++;
             }
             adj_color_table[i][solution[temp->adj_vertex]]++;
             temp = temp->next;
         }
-
-        if (is_conflict)
-        {
-            conflict[conflict_num] = i;
-            conflict_index[i] = conflict_num++;
-        }
     }
 
-    f = f / 2;
-    //cout <<"initial_f = "<<f<<endl;
-    best_conflict = f;
-    iter = 0;
+    this_conflict = this_conflict / 2;
 
-    while (iter < max_iter)
-    {
-        if (f == 0)
-            break;
-        Move my_move = find_move(solution);
-        make_move(my_move.u, my_move.vj, solution);
-        iter++;
-    }
-
-    if (iter == max_iter)
-        return 0;
-
-    res_iter = iter;
-
-    return 1;
+    return this_conflict;
 }
