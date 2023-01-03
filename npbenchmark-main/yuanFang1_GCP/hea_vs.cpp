@@ -303,8 +303,8 @@ Move find_move(int *solution)
     int i, j, conf_i;
     int sol_i;
     Move tabu_move[MaxPoint], non_tabu_move[MaxPoint];
-    int tabu_cnt = 1, non_tabu_cnt = 1;
-    int tabu_move_delt = 100000, non_tabu_move_delt = 100000;
+    int tabu_count = 1, non_tabu_count = 1;
+    int tabu_move_delta = 100000, non_tabu_move_delta = 100000;
 
     for (conf_i = 0; conf_i< conflict_num; conf_i++)
     {
@@ -320,30 +320,30 @@ Move find_move(int *solution)
                     //cout <<this_delta<<'\t';
                     if (iter >= tabu_tenure_table[i][j])
                     {
-                        if (this_delta <= non_tabu_move_delt)
+                        if (this_delta <= non_tabu_move_delta)
                         {
-                            if (this_delta < non_tabu_move_delt)
+                            if (this_delta < non_tabu_move_delta)
                             {
-                                non_tabu_cnt = 0;
-                                non_tabu_move_delt = this_delta;
+                                non_tabu_count = 0;
+                                non_tabu_move_delta = this_delta;
                             }
 
-                            non_tabu_move[non_tabu_cnt].u = i;
-                            non_tabu_move[non_tabu_cnt++].vj = j;
+                            non_tabu_move[non_tabu_count].u = i;
+                            non_tabu_move[non_tabu_count++].vj = j;
                         }
                     }
                     else
                     {
-                        if (this_delta <= tabu_move_delt)
+                        if (this_delta <= tabu_move_delta)
                         {
-                            if (this_delta < tabu_move_delt)
+                            if (this_delta < tabu_move_delta)
                             {
-                                tabu_cnt = 0;
-                                tabu_move_delt = this_delta;
+                                tabu_count = 0;
+                                tabu_move_delta = this_delta;
                             }
 
-                            tabu_move[tabu_cnt].u = i;
-                            tabu_move[tabu_cnt++].vj = j;
+                            tabu_move[tabu_count].u = i;
+                            tabu_move[tabu_count++].vj = j;
                         }
                     }
                 }
@@ -351,12 +351,12 @@ Move find_move(int *solution)
         }
     }
 
-    int temp1 = f + tabu_move_delt, temp2 = f + non_tabu_move_delt;
+    int temp1 = f + tabu_move_delta, temp2 = f + non_tabu_move_delta;
     Move res;
     if (temp1<best_conflict && temp1<temp2)
     {
         f = best_conflict = temp1;
-        int index = rand() % tabu_cnt;
+        int index = rand() % tabu_count;
         res = tabu_move[index];
     }
     else
@@ -364,11 +364,11 @@ Move find_move(int *solution)
         if (temp2 < best_conflict)
             best_conflict = temp2;
         f = temp2;
-        int index = rand() % non_tabu_cnt;
+        int index = rand() % non_tabu_count;
         res = non_tabu_move[index];
     }
-    return res;
 
+    return res;
 }
 
 void make_move(int u, int vj, int *solultion)
