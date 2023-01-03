@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= num_vertex; i++)
         {
-            solution_collection[p][i] = rand() % num_color + 1;
+            solution_collection[p][i] = rand() % num_color;
             //cout << solution[i] <<' ';
         }
 
@@ -325,7 +325,7 @@ Move find_move(int *solution)
         sol_i = solution[i];
         if (adj_color_table[i][sol_i]>0)
         {
-            for (j = 1; j <= num_color; j++)
+            for (j = 0; j < num_color; j++)
             {
                 if (j != sol_i)
                 {
@@ -439,9 +439,9 @@ void cross_over(int p1, int p2, int *index1)
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
-    for (int i = 1; i <= num_color; i++)
+    for (int i = 0; i < num_color; i++)
     {
-        if (i % 2 != 0)
+        if (i % 2 != 1)
         {
             A = 0;
             B = 1;
@@ -453,7 +453,7 @@ void cross_over(int p1, int p2, int *index1)
         }
 
         int max_index, max_num = -1, *h_num = s[A].color_num;
-        for (int j = 1; j <= num_color; j++)
+        for (int j = 0; j < num_color; j++)
         {
             if (h_num[j] > max_num)
             {
@@ -480,13 +480,13 @@ void cross_over(int p1, int p2, int *index1)
 
     }
 
-    for (int i = 1; i <= num_color; i++)
+    for (int i = 0; i < num_color; i++)
     {
         int num = s[0].color_num[i];
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
-            int color = rand() % num_color + 1;//随机分配到某一种颜色中去
+            int color = rand() % num_color;//随机分配到某一种颜色中去
             index1[point] = color;
         }
     }
