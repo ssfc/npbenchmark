@@ -67,6 +67,11 @@ void add_conflict(int adj_vertex);
 void delete_conflict(int adj_vertex);
 void cross_over(int p1, int p2, int *index1);
 
+// debug function: compute conflict of a solution
+int compute_conflict(int *solution);
+
+
+
 /*
 argv[1]:文件名
 argv[2]:颜色数
@@ -479,3 +484,8 @@ void cross_over(int p1, int p2, int *index1)
     }
 }
 
+// debug function: compute conflict of a solution
+int compute_conflict(int *solution)
+{
+
+}
