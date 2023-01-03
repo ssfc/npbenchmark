@@ -233,9 +233,11 @@ int main(int argc, char *argv[])
         }
         cout << endl;
 
+        cout << "conflict of solution 19: ";
+        cout << compute_conflict(population_solution[19].index1) << endl;
+
         cout << "conflict of final solution: ";
         cout << compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
-        cout << endl;
     }
     else
         cout << "over time" << endl;
