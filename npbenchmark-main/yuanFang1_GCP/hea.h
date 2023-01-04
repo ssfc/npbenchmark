@@ -12,7 +12,7 @@ class Hybrid_Evolution
 private:
 
 public:
-
+    void insert_adj_list(int i, int j);
 };
 
 

@@ -57,7 +57,6 @@ int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 
-void insert_adj_list(int i, int j);
 void dynamic_alloc();
 int tabu_search(int *solution);
 Move find_move(int *s);
@@ -71,6 +70,13 @@ void cross_over(int p1, int p2, int *index1);
 int compute_conflict(int *solution);
 
 
+void Hybrid_Evolution::insert_adj_list(int i, int j)
+{
+    ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
+    temp1->adj_vertex = i;
+    temp1->next = adj_list[j].first;
+    adj_list[j].first = temp1;
+}
 
 /*
 argv[1]:文件名
@@ -78,6 +84,10 @@ argv[2]:颜色数
 */
 int main(int argc, char *argv[])
 {
+    Hybrid_Evolution test;
+
+
+
     int i, j, p;
     char c, s1[100], s2[100], file[100];
     FILE *fp;
@@ -106,8 +116,8 @@ int main(int argc, char *argv[])
     while (!feof(fp))
     {
         fscanf(fp, "%c %d %d\n", &c, &i, &j);
-        insert_adj_list(i, j);
-        insert_adj_list(j, i);
+        test.insert_adj_list(i, j);
+        test.insert_adj_list(j, i);
     }
 
     population.min_conflict = INT_MAX;
@@ -248,13 +258,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-void insert_adj_list(int i, int j)
-{
-    ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
-    temp1->adj_vertex = i;
-    temp1->next = adj_list[j].first;
-    adj_list[j].first = temp1;
-}
+
 
 void dynamic_alloc()
 {
