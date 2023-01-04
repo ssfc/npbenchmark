@@ -4,6 +4,8 @@
 // hea_vs.cpp : 定义控制台应用程序的入口点。
 //
 
+#include "hea.h"
+
 #include <climits>
 #include <cstdio>
 #include <cstdlib>
