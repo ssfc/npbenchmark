@@ -342,15 +342,12 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    /*
     do
     {
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
-     */
 
     int num_edge;
-    // sscanf(s1, "%c %s %d %d", &c, s2, &test.num_vertex, &num_edge);
     sscanf(s1, "%c %s %d %d", &c, s2, &test.num_vertex, &num_edge);
 
     // allocate space to variables;

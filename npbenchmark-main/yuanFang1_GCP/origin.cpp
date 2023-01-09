@@ -31,7 +31,7 @@ int equ_delta[2000][2];//非禁忌相同delta值
 int equ_tabudelta[2000][2];//禁忌相同delta值
 
 
-//按空格切分每行
+// split each line with space; 
 void split(const string& src, const string& delim, vector<string>& dest)
 {
     dest.clear();
