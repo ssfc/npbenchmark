@@ -5,6 +5,14 @@
 #ifndef YUANFANG1_GCP_HEA_H
 #define YUANFANG1_GCP_HEA_H
 
+#include <climits>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <cstring>
+#include <iostream>
+#include <fstream>
+
 using namespace std;
 
 #define MaxPoint 1002
