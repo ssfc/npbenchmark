@@ -7,6 +7,11 @@
 
 using namespace std;
 
+#define MaxPoint 1002
+#define MaxColor 300
+#define num_population 20
+
+
 struct ArcNode {
     int adj_vertex;
     struct ArcNode *next;
@@ -20,6 +25,11 @@ struct Move {
     int u, vi, vj;
 };
 
+struct Population {
+    int min_conflict; // the min conflict among the population collection;
+    int min_conflict_index;
+    int num_conflict[num_population];
+};
 
 
 class Hybrid_Evolution

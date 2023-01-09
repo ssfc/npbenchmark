@@ -14,9 +14,6 @@
 #include <iostream>
 #include <fstream>
 
-#define MaxPoint 1002
-#define MaxColor 300
-#define num_population 20
 
 using namespace std;
 int max_iter = 16000;
@@ -27,11 +24,7 @@ struct Population_solution {
     int index1[MaxPoint], index2[MaxPoint];
 };
 
-struct Population {
-    int min_conflict; // the min conflict among the population collection;
-    int min_conflict_index;
-    int num_conflict[num_population];
-};
+
 
 Population population;
 Population_solution population_solution[num_population];
