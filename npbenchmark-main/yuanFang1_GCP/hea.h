@@ -39,6 +39,7 @@ private:
 public:
     void dynamic_alloc();
     void insert_adj_list(int i, int j);
+    static void add_conflict(int adj_vertex);
 
     int tabu_search(int *solution);
     Move find_move(int *s);
