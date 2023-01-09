@@ -25,6 +25,12 @@ struct Move {
     int u, vi, vj;
 };
 
+struct Population_solution {
+    int psol[MaxColor][MaxPoint];
+    int color_num[MaxColor];
+    int index1[MaxPoint], index2[MaxPoint];
+};
+
 struct Population {
     int min_conflict; // the min conflict among the population collection;
     int min_conflict_index;
@@ -37,6 +43,13 @@ class Hybrid_Evolution
 private:
 
 public:
+    // variables;
+    long long iter;
+
+
+
+
+    // functions
     void dynamic_alloc();
     void insert_adj_list(int i, int j);
     static void add_conflict(int adj_vertex);
@@ -46,7 +59,7 @@ public:
     Move find_move(int *s);
     void make_move(int u, int vj, int *solution);
 
-
+    void cross_over(int p1, int p2, int *index1);
 
     // debug function: compute conflict of a solution
     int compute_conflict(int *solution);

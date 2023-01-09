@@ -18,11 +18,7 @@
 using namespace std;
 int max_iter = 16000;
 
-struct Population_solution {
-    int psol[MaxColor][MaxPoint];
-    int color_num[MaxColor];
-    int index1[MaxPoint], index2[MaxPoint];
-};
+
 
 
 
@@ -40,14 +36,14 @@ VerNode *adj_list;
 int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
-long long iter;
 
 
 
 
 
 
-void cross_over(int p1, int p2, int *index1);
+
+
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
 {
@@ -233,9 +229,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
     conflict_index[conflict[temp_index]] = temp_index;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void cross_over(int p1, int p2, int *index1)
+void Hybrid_Evolution::cross_over(int p1, int p2, int *index1)
 {
     int A, B;
     Population_solution s[2];
@@ -426,7 +420,7 @@ int main(int argc, char *argv[])
 
         memset(&temps, 0, sizeof(temps));
 
-        cross_over(p1, p2, temps.index1);
+        test.cross_over(p1, p2, temps.index1);
 
         // reset adj_color_table and tabu_tenure_table to zero;
         memset(adj_color_table, 0, sizeof(adj_color_table));
