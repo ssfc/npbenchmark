@@ -47,9 +47,7 @@ struct VerNode {
     ArcNode *first;
 };
 
-struct Move {
-    int u, vi, vj;
-};
+
 
 VerNode *adj_list;
 int **solution_collection;

@@ -7,6 +7,10 @@
 
 using namespace std;
 
+struct Move {
+    int u, vi, vj;
+};
+
 class Hybrid_Evolution
 {
 private:
