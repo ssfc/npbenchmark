@@ -346,6 +346,8 @@ int main(int argc, char *argv[])
     FILE *fp;
     srand(6);
 
+    //////////////////////////////////////////////////////////////////////////////////////
+
     sprintf(file, "./instances/%s", argv[1]);
 
     if ((fp = fopen(file, "r")) == nullptr)
@@ -373,6 +375,9 @@ int main(int argc, char *argv[])
         test.insert_adj_list(i, j);
         test.insert_adj_list(j, i);
     }
+
+
+    /////////////////////////////////////////////////////////////////////
 
     population.min_conflict = INT_MAX;
     test.num_color = atoi(argv[2]);
