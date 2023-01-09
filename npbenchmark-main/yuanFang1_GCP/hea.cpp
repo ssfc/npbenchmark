@@ -34,7 +34,6 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 
 int **solution_collection;
-
 int tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
 int num_color;
