@@ -46,6 +46,7 @@ private:
 public:
     // variables;
     VerNode *adj_list;
+    int adj_color_table[MaxPoint][MaxPoint];
 
 
     int best_conflict;

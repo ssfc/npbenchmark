@@ -34,7 +34,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 
 int **solution_collection;
-int adj_color_table[MaxPoint][MaxPoint];
+
 int tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
 int num_color;
@@ -368,7 +368,7 @@ int main(int argc, char *argv[])
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
-        memset(adj_color_table, 0, sizeof(adj_color_table));
+        memset(test.adj_color_table, 0, sizeof(test.adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         test.f = test.best_conflict = test.conflict_num = 0;
 
@@ -429,7 +429,7 @@ int main(int argc, char *argv[])
         test.cross_over(p1, p2, temps.index1);
 
         // reset adj_color_table and tabu_tenure_table to zero;
-        memset(adj_color_table, 0, sizeof(adj_color_table));
+        memset(test.adj_color_table, 0, sizeof(test.adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         test.f = test.best_conflict = test.conflict_num =0;
 
