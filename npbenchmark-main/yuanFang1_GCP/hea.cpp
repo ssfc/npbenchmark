@@ -45,7 +45,7 @@ long long iter;
 
 
 
-void make_move(int u, int vj, int *s);
+
 
 void add_conflict(int adj_vertex);
 void delete_conflict(int adj_vertex);
@@ -188,9 +188,7 @@ Move Hybrid_Evolution::find_move(int *solution)
     return res;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void make_move(int u, int vj, int *solution)
+void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 {
     int vi = solution[u];
     solution[u] = vj;
@@ -223,6 +221,8 @@ void make_move(int u, int vj, int *solution)
     if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
         add_conflict(u);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void add_conflict(int adj_vertex)
 {

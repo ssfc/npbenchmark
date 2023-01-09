@@ -42,7 +42,7 @@ public:
 
     int tabu_search(int *solution);
     Move find_move(int *s);
-
+    void make_move(int u, int vj, int *solution);
 
 
 
