@@ -36,7 +36,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 int tabu_tenure_table[MaxPoint][MaxPoint];
 
-int num_color;
+
 
 
 
@@ -363,7 +363,7 @@ int main(int argc, char *argv[])
     }
 
     population.min_conflict = INT_MAX;
-    num_color = atoi(argv[2]);
+    test.num_color = atoi(argv[2]);
 
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
@@ -375,7 +375,7 @@ int main(int argc, char *argv[])
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
         {
-            test.solution_collection[p][i] = rand() % num_color;
+            test.solution_collection[p][i] = rand() % test.num_color;
             //cout << solution[i] <<' ';
         }
 
