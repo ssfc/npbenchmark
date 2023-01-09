@@ -22,7 +22,7 @@ int max_iter = 16000;
 
 
 
-Population population;
+
 Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 
@@ -326,7 +326,7 @@ argv[2]:颜色数
 int main(int argc, char *argv[])
 {
     Hybrid_Evolution test;
-
+    Population population;
 
 
     int i, j, p;
