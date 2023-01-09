@@ -41,10 +41,11 @@ struct Population {
 class Hybrid_Evolution
 {
 private:
+    long long iter;
 
 public:
     // variables;
-    long long iter;
+
 
 
 

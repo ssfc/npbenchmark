@@ -35,7 +35,11 @@ int conflict_num = 0;
 VerNode *adj_list;
 int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
-int num_vertex, num_edge, f, best_conflict, num_color;
+int num_vertex;
+int num_edge;
+int f;
+int best_conflict;
+int num_color;
 
 
 
