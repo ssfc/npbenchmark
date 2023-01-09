@@ -2,9 +2,9 @@
 // Blog: https://codeleading.com/article/96523487065/ 
 //禁忌搜索解决图着色问题
 
-#include<time.h>
+#include<ctime>
 #include<fstream>
-#include<stdlib.h>
+#include<cstdlib>
 #include<stack>
 #include<vector>
 #include<climits>
