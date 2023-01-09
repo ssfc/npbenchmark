@@ -47,7 +47,6 @@ long long iter;
 
 
 
-void delete_conflict(int adj_vertex);
 void cross_over(int p1, int p2, int *index1);
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
@@ -227,15 +226,14 @@ void Hybrid_Evolution::add_conflict(int adj_vertex)
     conflict_index[adj_vertex] = conflict_num++;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void delete_conflict(int adj_vertex)
+void Hybrid_Evolution::delete_conflict(int adj_vertex)
 {
     int temp_index = conflict_index[adj_vertex];
     conflict[temp_index] = conflict[--conflict_num];
     conflict_index[conflict[temp_index]] = temp_index;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void cross_over(int p1, int p2, int *index1)
 {
