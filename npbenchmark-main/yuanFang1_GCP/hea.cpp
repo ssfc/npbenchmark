@@ -57,7 +57,7 @@ int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 
-void dynamic_alloc();
+
 int tabu_search(int *solution);
 Move find_move(int *s);
 void make_move(int u, int vj, int *s);
@@ -74,9 +74,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
     adj_list[j].first = temp1;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-void dynamic_alloc()
+void Hybrid_Evolution::dynamic_alloc()
 {
     adj_list = new VerNode [num_vertex + 1];
 
@@ -84,6 +82,8 @@ void dynamic_alloc()
     for (int i = 0; i < num_population; i++)
         solution_collection[i] = new int [num_vertex + 1];
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int tabu_search(int *solution)
 {
@@ -369,7 +369,7 @@ int main(int argc, char *argv[])
     sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
 
     // allocate space to variables;
-    dynamic_alloc();
+    test.dynamic_alloc();
 
     memset(adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
 

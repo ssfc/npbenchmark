@@ -12,6 +12,7 @@ class Hybrid_Evolution
 private:
 
 public:
+    void dynamic_alloc();
     void insert_adj_list(int i, int j);
 
 
