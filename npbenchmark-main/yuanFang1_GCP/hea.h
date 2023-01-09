@@ -45,6 +45,9 @@ private:
 
 public:
     // variables;
+    VerNode *adj_list;
+
+
     int best_conflict;
     int f;
     int conflict_num;

@@ -32,7 +32,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 
 
-VerNode *adj_list;
+
 int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
@@ -352,7 +352,7 @@ int main(int argc, char *argv[])
     // allocate space to variables;
     test.dynamic_alloc();
 
-    memset(adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
+    memset(test.adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
 
     while (!feof(fp))
     {
