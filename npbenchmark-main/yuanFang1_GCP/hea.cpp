@@ -36,7 +36,6 @@ VerNode *adj_list;
 int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
-int num_edge;
 int f;
 int best_conflict;
 int num_color;
@@ -346,6 +345,7 @@ int main(int argc, char *argv[])
         fgets(s1, 100, fp);
     } while (s1[0] == 'c');
 
+    int num_edge;
     sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
 
     // allocate space to variables;
