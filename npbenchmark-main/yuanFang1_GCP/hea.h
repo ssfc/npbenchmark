@@ -7,9 +7,20 @@
 
 using namespace std;
 
+struct ArcNode {
+    int adj_vertex;
+    struct ArcNode *next;
+};
+
+struct VerNode {
+    ArcNode *first;
+};
+
 struct Move {
     int u, vi, vj;
 };
+
+
 
 class Hybrid_Evolution
 {

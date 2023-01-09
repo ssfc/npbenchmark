@@ -38,14 +38,8 @@ Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int conflict_num = 0;
 
-struct ArcNode {
-    int adj_vertex;
-    struct ArcNode *next;
-};
 
-struct VerNode {
-    ArcNode *first;
-};
+
 
 
 
