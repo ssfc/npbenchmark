@@ -33,7 +33,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 
 
-int **solution_collection;
+
 int tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
 int num_color;
@@ -375,13 +375,13 @@ int main(int argc, char *argv[])
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= num_vertex; i++)
         {
-            solution_collection[p][i] = rand() % num_color;
+            test.solution_collection[p][i] = rand() % num_color;
             //cout << solution[i] <<' ';
         }
 
         // do tabu-search for each population in the collection;
         // cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
-        test.tabu_search(solution_collection[p]);
+        test.tabu_search(test.solution_collection[p]);
 
         population.num_conflict[p] = test.f;
 
@@ -403,7 +403,7 @@ int main(int argc, char *argv[])
     {
         for (i = 1; i <= num_vertex; i++)
         {
-            int color = population_solution[p].index1[i] = solution_collection[p][i]; // color of population p, vertex i;
+            int color = population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = population_solution[p].color_num[color];
             population_solution[p].psol[color][color_num] = i;
             population_solution[p].index2[i] = color_num++;

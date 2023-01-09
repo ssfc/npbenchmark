@@ -53,7 +53,7 @@ public:
     int f;
     int conflict_num;
 
-
+    int **solution_collection;
 
 
 
