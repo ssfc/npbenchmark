@@ -45,6 +45,8 @@ private:
 
 public:
     // variables;
+    int num_vertex;
+
     VerNode *adj_list;
     int adj_color_table[MaxPoint][MaxPoint];
 

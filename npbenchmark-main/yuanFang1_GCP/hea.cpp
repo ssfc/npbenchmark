@@ -35,7 +35,7 @@ int conflict[MaxPoint], conflict_index[MaxPoint];
 
 
 int tabu_tenure_table[MaxPoint][MaxPoint];
-int num_vertex;
+
 int num_color;
 
 
@@ -348,12 +348,12 @@ int main(int argc, char *argv[])
     } while (s1[0] == 'c');
 
     int num_edge;
-    sscanf(s1, "%c %s %d %d", &c, s2, &num_vertex, &num_edge);
+    sscanf(s1, "%c %s %d %d", &c, s2, &test.num_vertex, &num_edge);
 
     // allocate space to variables;
     test.dynamic_alloc();
 
-    memset(test.adj_list, 0, sizeof(VerNode)*(num_vertex + 1));
+    memset(test.adj_list, 0, sizeof(VerNode)*(test.num_vertex + 1));
 
     while (!feof(fp))
     {
@@ -373,7 +373,7 @@ int main(int argc, char *argv[])
         test.f = test.best_conflict = test.conflict_num = 0;
 
         // initialization: set random solution to each solution in the population;
-        for (i = 1; i <= num_vertex; i++)
+        for (i = 1; i <= test.num_vertex; i++)
         {
             test.solution_collection[p][i] = rand() % num_color;
             //cout << solution[i] <<' ';
@@ -401,7 +401,7 @@ int main(int argc, char *argv[])
 
     for (p = 0; p < num_population; p++)
     {
-        for (i = 1; i <= num_vertex; i++)
+        for (i = 1; i <= test.num_vertex; i++)
         {
             int color = population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = population_solution[p].color_num[color];
@@ -435,7 +435,7 @@ int main(int argc, char *argv[])
 
         test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
 
-        for (i = 1; i <= num_vertex; i++)
+        for (i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
             int color = temps.index1[i];
             int color_num = temps.color_num[color];
@@ -482,7 +482,7 @@ int main(int argc, char *argv[])
         fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , max_iter);
 
         cout << "color of each vertex: ";
-        for(int i=1;i<=num_vertex;i++)
+        for(int i=1;i<=test.num_vertex;i++)
         {
             cout << population_solution[population.min_conflict_index].index1[i] << " ";
         }
