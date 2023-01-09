@@ -44,7 +44,7 @@ long long iter;
 
 
 
-Move find_move(int *s);
+
 void make_move(int u, int vj, int *s);
 
 void add_conflict(int adj_vertex);
@@ -115,9 +115,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
     return 1;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Move find_move(int *solution)
+Move Hybrid_Evolution::find_move(int *solution)
 {
     int i, j, conf_i;
     int sol_i;
@@ -189,6 +187,8 @@ Move find_move(int *solution)
 
     return res;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void make_move(int u, int vj, int *solution)
 {
