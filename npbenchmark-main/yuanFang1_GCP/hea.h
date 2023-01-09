@@ -12,6 +12,7 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -84,6 +85,7 @@ public:
 
     // debug function: compute conflict of a solution
     int compute_conflict(int *solution);
+    void split(const string& src, const string& delim, vector<string>& dest);
 };
 
 
