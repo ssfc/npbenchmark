@@ -58,7 +58,7 @@ int num_vertex, num_edge, f, best_conflict, num_color;
 long long iter;
 
 
-int tabu_search(int *solution);
+
 Move find_move(int *s);
 void make_move(int u, int vj, int *s);
 
@@ -83,9 +83,7 @@ void Hybrid_Evolution::dynamic_alloc()
         solution_collection[i] = new int [num_vertex + 1];
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-int tabu_search(int *solution)
+int Hybrid_Evolution::tabu_search(int *solution)
 {
     bool is_conflict;
     //cout <<endl;
@@ -131,6 +129,8 @@ int tabu_search(int *solution)
 
     return 1;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Move find_move(int *solution)
 {
@@ -399,7 +399,7 @@ int main(int argc, char *argv[])
 
         // do tabu-search for each population in the collection;
         // cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
-        tabu_search(solution_collection[p]);
+        test.tabu_search(solution_collection[p]);
 
         population.num_conflict[p] = f;
 
@@ -451,7 +451,7 @@ int main(int argc, char *argv[])
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
         f = best_conflict = conflict_num =0;
 
-        tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
+        test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (i = 1; i <= num_vertex; i++)
         {//变成划分的形式
