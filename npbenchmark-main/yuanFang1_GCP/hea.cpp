@@ -66,8 +66,7 @@ void add_conflict(int adj_vertex);
 void delete_conflict(int adj_vertex);
 void cross_over(int p1, int p2, int *index1);
 
-// debug function: compute conflict of a solution
-int compute_conflict(int *solution);
+
 
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
@@ -247,10 +246,10 @@ int main(int argc, char *argv[])
         cout << endl;
 
         cout << "conflict of solution 19: ";
-        cout << compute_conflict(population_solution[19].index1) << endl;
+        cout << test.compute_conflict(population_solution[19].index1) << endl;
 
         cout << "conflict of final solution: ";
-        cout << compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
+        cout << test.compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
     }
     else
         cout << "over time" << endl;
@@ -498,7 +497,7 @@ void cross_over(int p1, int p2, int *index1)
 }
 
 // debug function: compute conflict of a solution
-int compute_conflict(int *solution)
+int Hybrid_Evolution::compute_conflict(int *solution)
 {
     int this_conflict = 0;
     //cout <<endl;

@@ -13,6 +13,12 @@ private:
 
 public:
     void insert_adj_list(int i, int j);
+
+
+
+
+    // debug function: compute conflict of a solution
+    int compute_conflict(int *solution);
 };
 
 
