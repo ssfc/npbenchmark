@@ -25,7 +25,7 @@ int max_iter = 16000;
 Population population;
 Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
-int conflict_num = 0;
+
 
 
 
@@ -36,8 +36,6 @@ VerNode *adj_list;
 int **solution_collection;
 int adj_color_table[MaxPoint][MaxPoint], tabu_tenure_table[MaxPoint][MaxPoint];
 int num_vertex;
-int f;
-int best_conflict;
 int num_color;
 
 
@@ -46,7 +44,10 @@ int num_color;
 
 
 
-
+Hybrid_Evolution::Hybrid_Evolution()
+{
+    conflict_num = 0;
+}
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
 {
@@ -368,7 +369,7 @@ int main(int argc, char *argv[])
     {
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
-        f = best_conflict = conflict_num = 0;
+        test.f = test.best_conflict = test.conflict_num = 0;
 
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= num_vertex; i++)
@@ -381,16 +382,16 @@ int main(int argc, char *argv[])
         // cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
         test.tabu_search(solution_collection[p]);
 
-        population.num_conflict[p] = f;
+        population.num_conflict[p] = test.f;
 
         // record the min conflict up till now;
-        if (f < population.min_conflict)
+        if (test.f < population.min_conflict)
         {
-            population.min_conflict = f;
+            population.min_conflict = test.f;
             population.min_conflict_index = p;
         }
 
-        if (f == 0)
+        if (test.f == 0)
             break;
     }
 
@@ -429,7 +430,7 @@ int main(int argc, char *argv[])
         // reset adj_color_table and tabu_tenure_table to zero;
         memset(adj_color_table, 0, sizeof(adj_color_table));
         memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
-        f = best_conflict = conflict_num =0;
+        test.f = test.best_conflict = test.conflict_num =0;
 
         test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
 
@@ -454,11 +455,11 @@ int main(int argc, char *argv[])
         }
 
         population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
-        population.num_conflict[max_conflict_index] = f;
+        population.num_conflict[max_conflict_index] = test.f;
 
-        if (f < population.min_conflict)
+        if (test.f < population.min_conflict)
         {
-            population.min_conflict = f;
+            population.min_conflict = test.f;
             population.min_conflict_index = max_conflict_index;
         }
 
