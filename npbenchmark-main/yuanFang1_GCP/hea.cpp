@@ -47,6 +47,7 @@ int num_color;
 
 Hybrid_Evolution::Hybrid_Evolution()
 {
+    iter = 0;
     conflict_num = 0;
 }
 
