@@ -309,7 +309,6 @@ void Hybrid_Evolution::split(const string& src, const string& delim, vector<stri
 
 /*
 argv[1]:文件名
-argv[2]:颜色数
 */
 int main(int argc, char *argv[])
 {
@@ -471,7 +470,7 @@ int main(int argc, char *argv[])
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , test.max_iter);
+        fprintf(fp, "%s %-9d %-15lf %-7d\n", argv[1], test.num_color, elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
         for(int i=1;i<=test.num_vertex;i++)
