@@ -338,6 +338,7 @@ int main(int argc, char *argv[])
 
     int num_edge;
     sscanf(s1, "%d %d %d", &test.num_vertex, &num_edge, &test.num_color);
+    //fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
 
     // allocate space to variables;
     test.dynamic_alloc();
@@ -473,7 +474,7 @@ int main(int argc, char *argv[])
         fprintf(fp, "%s %-9d %-15lf %-7d\n", argv[1], test.num_color, elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
-        for(int i=1;i<=test.num_vertex;i++)
+        for(i=1;i<=test.num_vertex;i++)
         {
             cerr << population_solution[population.min_conflict_index].index1[i] << " ";
         }
