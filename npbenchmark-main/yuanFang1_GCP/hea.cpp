@@ -338,7 +338,7 @@ int main(int argc, char *argv[])
     } while (s1[0] == 'c');
 
     int num_edge;
-    sscanf(s1, "%d %d", &test.num_vertex, &num_edge);
+    sscanf(s1, "%d %d %d", &test.num_vertex, &num_edge, &test.num_color);
 
     // allocate space to variables;
     test.dynamic_alloc();
@@ -356,7 +356,6 @@ int main(int argc, char *argv[])
     /////////////////////////////////////////////////////////////////////
 
     population.min_conflict = INT_MAX;
-    test.num_color = atoi(argv[2]);
 
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
