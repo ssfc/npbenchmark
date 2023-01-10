@@ -342,8 +342,8 @@ int main(int argc, char *argv[])
     while (!feof(fp))
     {
         fscanf(fp, "%d %d\n", &i, &j);
-        test.insert_adj_list(i, j);
-        test.insert_adj_list(j, i);
+        test.insert_adj_list(i+1, j+1);
+        test.insert_adj_list(j+1, i+1);
     }
 
 
