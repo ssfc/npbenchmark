@@ -9,7 +9,7 @@
 using namespace std;
 
 Population_solution population_solution[num_population];
-int conflict[MaxPoint];
+int conflicts[MaxPoint];
 int conflict_index[MaxPoint];
 int tabu_tenure_table[MaxPoint][MaxPoint];
 
@@ -80,7 +80,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
 
         if (is_conflict)
         {
-            conflict[conflict_num] = i;
+            conflicts[conflict_num] = i;
             conflict_index[i] = conflict_num++;
         }
     }
@@ -115,7 +115,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
 
     for (conf_i = 0; conf_i< conflict_num; conf_i++)
     {
-        i = conflict[conf_i];
+        i = conflicts[conf_i];
         sol_i = solution[i];
         if (adj_color_table[i][sol_i]>0)
         {
@@ -214,15 +214,15 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 
 void Hybrid_Evolution::add_conflict(int adj_vertex)
 {
-    conflict[conflict_num] = adj_vertex;
+    conflicts[conflict_num] = adj_vertex;
     conflict_index[adj_vertex] = conflict_num++;
 }
 
 void Hybrid_Evolution::delete_conflict(int adj_vertex)
 {
     int temp_index = conflict_index[adj_vertex];
-    conflict[temp_index] = conflict[--conflict_num];
-    conflict_index[conflict[temp_index]] = temp_index;
+    conflicts[temp_index] = conflicts[--conflict_num];
+    conflict_index[conflicts[temp_index]] = temp_index;
 }
 
 void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
