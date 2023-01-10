@@ -317,7 +317,7 @@ int main(int argc, char *argv[])
 
 
     int i, j, p;
-    char s1[100], file[100];
+    char file[100];
     FILE *fp;
     srand(6);
 
