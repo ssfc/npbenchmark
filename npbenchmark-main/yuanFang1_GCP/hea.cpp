@@ -29,6 +29,11 @@ Hybrid_Evolution::Hybrid_Evolution()
     max_iter = 16000;
 }
 
+Hybrid_Evolution::~Hybrid_Evolution()
+{
+
+}
+
 void Hybrid_Evolution::insert_adj_list(int i, int j) const
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));

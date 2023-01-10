@@ -76,6 +76,7 @@ public:
 
     // functions
     Hybrid_Evolution();
+    ~Hybrid_Evolution();
 
     void dynamic_alloc();
     void insert_adj_list(int i, int j) const;
