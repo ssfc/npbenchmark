@@ -331,9 +331,7 @@ int main(int argc, char *argv[])
         return 0;
     }
     
-
     int num_edge;
-    //sscanf(s1, "%d %d %d", &test.num_vertex, &num_edge, &test.num_color);
     fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
 
     // allocate space to variables;
