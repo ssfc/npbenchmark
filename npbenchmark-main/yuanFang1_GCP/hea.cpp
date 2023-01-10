@@ -203,7 +203,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
     conflict_index[conflict[temp_index]] = temp_index;
 }
 
-void Hybrid_Evolution::cross_over(int p1, int p2, int *index1)
+void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
 {
     int A, B;
     Population_solution s[2];
@@ -264,7 +264,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1)
 }
 
 // debug function: compute conflict of a solution
-int Hybrid_Evolution::compute_conflict(int *solution)
+int Hybrid_Evolution::compute_conflict(const int *solution)
 {
     int this_conflict = 0;
     //cerr <<endl;

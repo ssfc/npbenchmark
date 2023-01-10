@@ -82,10 +82,10 @@ public:
     Move find_move(int *s);
     void make_move(int u, int vj, int *solution);
 
-    void cross_over(int p1, int p2, int *index1);
+    void cross_over(int p1, int p2, int *index1) const;
 
     // debug function: compute conflict of a solution
-    int compute_conflict(int *solution);
+    int compute_conflict(const int *solution);
     void split(const string& src, const string& delim, vector<string>& dest);
 };
 
