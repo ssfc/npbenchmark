@@ -63,7 +63,7 @@ void Hybrid_Evolution::dynamic_alloc()
 int Hybrid_Evolution::tabu_search(int *solution)
 {
     bool is_conflict;
-    //cout <<endl;
+    //cerr <<endl;
 
     for (int i = 1; i <= num_vertex; i++)
     {
@@ -88,7 +88,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
     }
 
     f = f / 2;
-    cout <<"initial_f = "<<f<<endl;
+    cerr <<"initial_f = "<<f<<endl;
     best_conflict = f;
     iter = 0;
 
@@ -126,7 +126,7 @@ Move Hybrid_Evolution::find_move(int *solution)
                 if (j != sol_i)
                 {
                     int this_delta = adj_color_table[i][j] - adj_color_table[i][sol_i];
-                    //cout <<this_delta<<'\t';
+                    //cerr <<this_delta<<'\t';
                     if (iter >= tabu_tenure_table[i][j])
                     {
                         if (this_delta <= non_tabu_move_delta)
@@ -291,7 +291,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1)
 int Hybrid_Evolution::compute_conflict(int *solution)
 {
     int this_conflict = 0;
-    //cout <<endl;
+    //cerr <<endl;
 
     for (int i = 1; i <= num_vertex; i++)
     {
@@ -352,7 +352,7 @@ int main(int argc, char *argv[])
 
     if ((fp = fopen(file, "r")) == nullptr)
     {
-        cout << "file not open";
+        cerr << "file not open";
         return 0;
     }
 
@@ -393,11 +393,11 @@ int main(int argc, char *argv[])
         for (i = 1; i <= test.num_vertex; i++)
         {
             test.solution_collection[p][i] = rand() % test.num_color;
-            //cout << solution[i] <<' ';
+            //cerr << solution[i] <<' ';
         }
 
         // do tabu-search for each population in the collection;
-        // cout << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
+        // cerr << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
         test.tabu_search(test.solution_collection[p]);
 
         population.num_conflict[p] = test.f;
@@ -481,15 +481,15 @@ int main(int argc, char *argv[])
             population.min_conflict_index = max_conflict_index;
         }
 
-        cout << "min conflict = " << population.min_conflict << endl;
-        cout << "min conflict index = " << population.min_conflict_index << endl;
+        cerr << "min conflict = " << population.min_conflict << endl;
+        cerr << "min conflict index = " << population.min_conflict_index << endl;
         population_iteration++;
     }
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cout << "Population iteration: " << population_iteration << endl;
-    cout << "elapsed time(s): " << elapsed_time << endl;
+    cerr << "Population iteration: " << population_iteration << endl;
+    cerr << "elapsed time(s): " << elapsed_time << endl;
 
     if (population.min_conflict == 0)
     {
@@ -498,21 +498,21 @@ int main(int argc, char *argv[])
             printf("output file open error\n");
         fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , max_iter);
 
-        cout << "color of each vertex: ";
+        cerr << "color of each vertex: ";
         for(int i=1;i<=test.num_vertex;i++)
         {
-            cout << population_solution[population.min_conflict_index].index1[i] << " ";
+            cerr << population_solution[population.min_conflict_index].index1[i] << " ";
         }
-        cout << endl;
+        cerr << endl;
 
-        cout << "conflict of solution 19: ";
-        cout << test.compute_conflict(population_solution[19].index1) << endl;
+        cerr << "conflict of solution 19: ";
+        cerr << test.compute_conflict(population_solution[19].index1) << endl;
 
-        cout << "conflict of final solution: ";
-        cout << test.compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
+        cerr << "conflict of final solution: ";
+        cerr << test.compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
     }
     else
-        cout << "over time" << endl;
+        cerr << "over time" << endl;
 
     return 0;
 }
