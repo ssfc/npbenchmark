@@ -318,7 +318,7 @@ int main(int argc, char *argv[])
 
 
     int i, j, p;
-    char letter, s1[100], s2[100], file[100];
+    char letter, s1[100], file[100];
     FILE *fp;
     srand(6);
 
@@ -338,7 +338,7 @@ int main(int argc, char *argv[])
     } while (s1[0] == 'c');
 
     int num_edge;
-    sscanf(s1, "%s %d %d", s2, &test.num_vertex, &num_edge);
+    sscanf(s1, "%d %d", &test.num_vertex, &num_edge);
 
     // allocate space to variables;
     test.dynamic_alloc();
