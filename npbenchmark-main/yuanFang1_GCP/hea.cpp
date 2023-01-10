@@ -14,12 +14,12 @@ int tabu_tenure_table[MaxPoint][MaxPoint];
 
 Population::Population()
 {
-
+    num_conflict = new int [num_population];
 }
 
 Population::~Population()
 {
-
+    delete []num_conflict;
 }
 
 Hybrid_Evolution::Hybrid_Evolution()

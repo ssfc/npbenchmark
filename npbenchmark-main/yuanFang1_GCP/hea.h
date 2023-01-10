@@ -44,7 +44,7 @@ class Population {
 public:
     int min_conflict; // the min conflict among the population collection;
     int min_conflict_index;
-    int num_conflict[num_population];
+    int *num_conflict;
 
     Population();
     ~Population();
