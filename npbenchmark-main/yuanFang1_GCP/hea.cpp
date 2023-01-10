@@ -324,7 +324,7 @@ int main(int argc, char *argv[])
 
     //////////////////////////////////////////////////////////////////////////////////////
 
-    sprintf(file, "./instances/%s", argv[1]);
+    sprintf(file, "./data/%s", argv[1]);
 
     if ((fp = fopen(file, "r")) == nullptr)
     {
