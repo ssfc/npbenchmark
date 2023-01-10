@@ -317,7 +317,7 @@ int main(int argc, char *argv[])
 
 
     int i, j, p;
-    char letter, s1[100], file[100];
+    char s1[100], file[100];
     FILE *fp;
     srand(6);
 
@@ -330,7 +330,7 @@ int main(int argc, char *argv[])
         cerr << "file not open";
         return 0;
     }
-    
+
     int num_edge;
     fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
 
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
 
     while (!feof(fp))
     {
-        fscanf(fp, "%c %d %d\n", &letter, &i, &j);
+        fscanf(fp, "%d %d\n", &i, &j);
         test.insert_adj_list(i, j);
         test.insert_adj_list(j, i);
     }
