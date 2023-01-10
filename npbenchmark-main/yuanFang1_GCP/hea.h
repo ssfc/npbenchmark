@@ -45,9 +45,12 @@ public:
     int min_conflict; // the min conflict among the population collection;
     int min_conflict_index;
     int num_conflict[num_population];
+
+    Population();
+    ~Population();
 };
 
-
+// class HE;
 class Hybrid_Evolution
 {
 private:

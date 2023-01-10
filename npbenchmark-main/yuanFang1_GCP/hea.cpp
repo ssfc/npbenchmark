@@ -12,6 +12,16 @@ Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
 int tabu_tenure_table[MaxPoint][MaxPoint];
 
+Population::Population()
+{
+
+}
+
+Population::~Population()
+{
+
+}
+
 Hybrid_Evolution::Hybrid_Evolution()
 {
     iter = 0;
