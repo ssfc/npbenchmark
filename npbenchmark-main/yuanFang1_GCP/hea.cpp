@@ -9,7 +9,8 @@
 using namespace std;
 
 Population_solution population_solution[num_population];
-int conflict[MaxPoint], conflict_index[MaxPoint];
+int conflict[MaxPoint];
+int conflict_index[MaxPoint];
 int tabu_tenure_table[MaxPoint][MaxPoint];
 
 Population_solution::Population_solution()
