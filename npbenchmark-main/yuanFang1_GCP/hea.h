@@ -40,7 +40,8 @@ struct Population_solution {
     int index1[MaxPoint], index2[MaxPoint];
 };
 
-struct Population {
+class Population {
+public:
     int min_conflict; // the min conflict among the population collection;
     int min_conflict_index;
     int num_conflict[num_population];
