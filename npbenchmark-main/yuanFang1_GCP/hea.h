@@ -34,10 +34,14 @@ struct Move {
     int u, vi, vj;
 };
 
-struct Population_solution {
+class Population_solution {
+public:
     int psol[MaxColor][MaxPoint];
     int color_num[MaxColor];
     int index1[MaxPoint], index2[MaxPoint];
+
+    Population_solution();
+    ~Population_solution();
 };
 
 class Population {
