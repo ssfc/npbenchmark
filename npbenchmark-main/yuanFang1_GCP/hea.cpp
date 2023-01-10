@@ -19,7 +19,7 @@ Hybrid_Evolution::Hybrid_Evolution()
     max_iter = 16000;
 }
 
-void Hybrid_Evolution::insert_adj_list(int i, int j)
+void Hybrid_Evolution::insert_adj_list(int i, int j) const
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
@@ -83,7 +83,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
     return 1;
 }
 
-Move Hybrid_Evolution::find_move(int *solution)
+Move Hybrid_Evolution::find_move(const int *solution)
 {
     int i, j, conf_i;
     int sol_i;
@@ -318,7 +318,7 @@ int main(int argc, char *argv[])
 
 
     int i, j, p;
-    char c, s1[100], s2[100], file[100];
+    char letter, s1[100], s2[100], file[100];
     FILE *fp;
     srand(6);
 
@@ -338,7 +338,7 @@ int main(int argc, char *argv[])
     } while (s1[0] == 'c');
 
     int num_edge;
-    sscanf(s1, "%c %s %d %d", &c, s2, &test.num_vertex, &num_edge);
+    sscanf(s1, "%c %s %d %d", &letter, s2, &test.num_vertex, &num_edge);
 
     // allocate space to variables;
     test.dynamic_alloc();
@@ -347,7 +347,7 @@ int main(int argc, char *argv[])
 
     while (!feof(fp))
     {
-        fscanf(fp, "%c %d %d\n", &c, &i, &j);
+        fscanf(fp, "%c %d %d\n", &letter, &i, &j);
         test.insert_adj_list(i, j);
         test.insert_adj_list(j, i);
     }

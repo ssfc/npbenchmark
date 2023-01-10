@@ -74,12 +74,12 @@ public:
     Hybrid_Evolution();
 
     void dynamic_alloc();
-    void insert_adj_list(int i, int j);
+    void insert_adj_list(int i, int j) const;
     void add_conflict(int adj_vertex);
     void delete_conflict(int adj_vertex);
 
     int tabu_search(int *solution);
-    Move find_move(int *s);
+    Move find_move(const int *s);
     void make_move(int u, int vj, int *solution);
 
     void cross_over(int p1, int p2, int *index1) const;
