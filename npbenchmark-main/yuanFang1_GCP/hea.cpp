@@ -330,15 +330,11 @@ int main(int argc, char *argv[])
         cerr << "file not open";
         return 0;
     }
-
-    do
-    {
-        fgets(s1, 100, fp);
-    } while (s1[0] == 'c');
+    
 
     int num_edge;
-    sscanf(s1, "%d %d %d", &test.num_vertex, &num_edge, &test.num_color);
-    //fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
+    //sscanf(s1, "%d %d %d", &test.num_vertex, &num_edge, &test.num_color);
+    fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
 
     // allocate space to variables;
     test.dynamic_alloc();
