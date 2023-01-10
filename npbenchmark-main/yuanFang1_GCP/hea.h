@@ -38,7 +38,8 @@ class Population_solution {
 public:
     int psol[MaxColor][MaxPoint];
     int color_num[MaxColor];
-    int index1[MaxPoint], index2[MaxPoint];
+    int index1[MaxPoint];
+    int index2[MaxPoint];
 
     Population_solution();
     ~Population_solution();
