@@ -6,41 +6,17 @@
 
 #include "hea.h"
 
-
-
 using namespace std;
-int max_iter = 16000;
-
-
-
-
-
 
 Population_solution population_solution[num_population];
 int conflict[MaxPoint], conflict_index[MaxPoint];
-
-
-
-
-
-
-
-
-
 int tabu_tenure_table[MaxPoint][MaxPoint];
-
-
-
-
-
-
-
-
 
 Hybrid_Evolution::Hybrid_Evolution()
 {
     iter = 0;
     conflict_num = 0;
+    max_iter = 16000;
 }
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
@@ -496,7 +472,7 @@ int main(int argc, char *argv[])
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , max_iter);
+        fprintf(fp, "%s %-9s %-15lf %-7d\n", argv[1], argv[2], elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
         for(int i=1;i<=test.num_vertex;i++)

@@ -67,6 +67,7 @@ public:
 
     int **solution_collection;
 
+    int max_iter;
 
 
     // functions
