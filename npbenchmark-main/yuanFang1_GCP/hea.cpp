@@ -398,7 +398,7 @@ int main(int argc, char *argv[])
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
-        memset(test.adj_color_table, 0, sizeof(test.adj_color_table));
+        memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         test.f = test.best_conflict = test.conflict_num = 0;
 
