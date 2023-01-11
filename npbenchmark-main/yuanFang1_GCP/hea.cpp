@@ -38,11 +38,11 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_list = new VerNode [num_vertex + 1];
 
     /*
-    adj_color_table = new int* [num_vertex+1];
+    adj_color_table = new int* [MaxPoint];
 
-    for (int i = 1; i <= num_vertex; i++)
+    for (int i = 0; i < MaxPoint; i++)
     {
-        adj_color_table[i] = new int [num_color];
+        adj_color_table[i] = new int [MaxPoint];
     }
     */
 
