@@ -76,6 +76,7 @@ public:
     int *conflicts;
     int *conflict_index;
 
+    int num_population;
     int **solution_collection;
     Population_solution *population_solution;
 

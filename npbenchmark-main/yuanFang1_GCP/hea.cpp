@@ -34,6 +34,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
+    num_population = input_num_population;
 
     adj_list = new VerNode [num_vertex + 1];
 
@@ -65,10 +66,9 @@ Hybrid_Evolution::~Hybrid_Evolution()
 {
     delete []adj_list;
 
-    /*
+
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
-        */
 
     delete []population_solution;
 
