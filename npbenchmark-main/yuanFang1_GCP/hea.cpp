@@ -55,6 +55,8 @@ Hybrid_Evolution::~Hybrid_Evolution()
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
 
+    delete []population_solution;
+
     delete []conflicts;
     delete []conflict_index;
 }
