@@ -334,7 +334,6 @@ argv[1]:文件名
 */
 int main(int argc, char *argv[])
 {
-    Hybrid_Evolution test;
     Population population;
 
 
@@ -358,6 +357,7 @@ int main(int argc, char *argv[])
     int input_num_color;
     //fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
+    Hybrid_Evolution test;
     test.num_vertex = input_num_vertex;
     test.num_color = input_num_color;
 
