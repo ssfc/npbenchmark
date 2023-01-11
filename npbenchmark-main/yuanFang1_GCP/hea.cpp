@@ -19,6 +19,9 @@ Population_solution::~Population_solution()
 
 Population::Population(int input_num_population)
 {
+    min_conflict = INT_MAX;
+
+
     num_conflict = new int [input_num_population];
 }
 
@@ -389,11 +392,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(i+1, j+1);
         test.insert_adj_list(j+1, i+1);
     }
-
-
-
-
-    population.min_conflict = INT_MAX;
+    
 
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
