@@ -43,6 +43,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
     max_iter = 16000;
 
     conflicts = new int [MaxPoint];
+    conflict_index =  new int [MaxPoint];
 }
 
 Hybrid_Evolution::~Hybrid_Evolution()

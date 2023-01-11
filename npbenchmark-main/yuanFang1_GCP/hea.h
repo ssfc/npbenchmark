@@ -73,9 +73,8 @@ public:
     int best_conflict;
     int f;
     int conflict_num;
-    // int conflicts[MaxPoint];
     int *conflicts;
-    int conflict_index[MaxPoint];
+    int *conflict_index;
 
     int **solution_collection;
 
