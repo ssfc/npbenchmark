@@ -27,8 +27,10 @@ Population::~Population()
     delete []num_conflict;
 }
 
-Hybrid_Evolution::Hybrid_Evolution()
+Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex)
 {
+    num_vertex = input_num_vertex;
+
     iter = 0;
     conflict_num = 0;
     max_iter = 16000;
@@ -355,10 +357,9 @@ int main(int argc, char *argv[])
     int input_num_vertex;
     int num_edge;
     int input_num_color;
-    //fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
+
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
-    Hybrid_Evolution test;
-    test.num_vertex = input_num_vertex;
+    Hybrid_Evolution test(input_num_vertex);
     test.num_color = input_num_color;
 
     // allocate space to variables;
