@@ -17,9 +17,9 @@ Population_solution::Population_solution()
 Population_solution::~Population_solution()
 {}
 
-Population::Population()
+Population::Population(int input_num_population)
 {
-    num_conflict = new int [num_population];
+    num_conflict = new int [input_num_population];
 }
 
 Population::~Population()
@@ -357,7 +357,7 @@ argv[1]:文件名
 */
 int main(int argc, char *argv[])
 {
-    Population population;
+    Population population(num_population);
 
 
     int i, j, p;

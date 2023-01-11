@@ -51,7 +51,7 @@ public:
     int min_conflict_index;
     int *num_conflict;
 
-    Population();
+    Population(int input_num_population);
     ~Population();
 };
 
