@@ -83,7 +83,7 @@ public:
 
 
     // functions
-    Hybrid_Evolution(int input_num_vertex);
+    Hybrid_Evolution(int input_num_vertex, int input_num_color);
     ~Hybrid_Evolution();
 
     void dynamic_alloc();
