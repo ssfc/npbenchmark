@@ -34,6 +34,16 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
 
     adj_list = new VerNode [num_vertex + 1];
 
+    /*
+    adj_color_table = new int* [num_vertex+1];
+
+    for (int i = 1; i <= num_vertex; i++)
+    {
+        adj_color_table[i] = new int [num_color];
+    }
+    */
+
+
     solution_collection = new int *[num_population];
     for (int i = 0; i < num_population; i++)
         solution_collection[i] = new int [num_vertex + 1];
