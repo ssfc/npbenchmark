@@ -30,7 +30,7 @@ Population::~Population()
     delete []num_conflict;
 }
 
-Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
+Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
@@ -47,11 +47,11 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
     */
 
 
-    solution_collection = new int *[num_population];
-    for (int i = 0; i < num_population; i++)
+    solution_collection = new int *[input_num_population];
+    for (int i = 0; i < input_num_population; i++)
         solution_collection[i] = new int [num_vertex + 1];
 
-    population_solution = new Population_solution [num_population];
+    population_solution = new Population_solution [input_num_population];
 
     iter = 0;
     conflict_num = 0;
@@ -65,8 +65,10 @@ Hybrid_Evolution::~Hybrid_Evolution()
 {
     delete []adj_list;
 
+    /*
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
+        */
 
     delete []population_solution;
 
@@ -382,7 +384,7 @@ int main(int argc, char *argv[])
     int input_num_color;
 
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
-    Hybrid_Evolution test(input_num_vertex, input_num_color);
+    Hybrid_Evolution test(input_num_vertex, input_num_color, num_population);
 
     memset(test.adj_list, 0, sizeof(VerNode)*(test.num_vertex + 1));
 
