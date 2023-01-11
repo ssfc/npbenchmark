@@ -77,6 +77,7 @@ public:
     int *conflict_index;
 
     int **solution_collection;
+    Population_solution *population_solution;
 
     int max_iter;
 

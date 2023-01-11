@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Population_solution population_solution[num_population];
+
 int tabu_tenure_table[MaxPoint][MaxPoint];
 
 Population_solution::Population_solution()
@@ -37,6 +37,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
     solution_collection = new int *[num_population];
     for (int i = 0; i < num_population; i++)
         solution_collection[i] = new int [num_vertex + 1];
+
+    population_solution = new Population_solution [num_population];
 
     iter = 0;
     conflict_num = 0;
@@ -406,18 +408,18 @@ int main(int argc, char *argv[])
             break;
     }
 
-    memset(population_solution, 0, sizeof(population_solution));
+    memset(test.population_solution, 0, sizeof(test.population_solution));
     double start_time = clock();
 
     for (p = 0; p < num_population; p++)
     {
         for (i = 1; i <= test.num_vertex; i++)
         {
-            int color = population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
-            int color_num = population_solution[p].color_num[color];
-            population_solution[p].psol[color][color_num] = i;
-            population_solution[p].index2[i] = color_num++;
-            population_solution[p].color_num[color] = color_num;
+            int color = test.population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
+            int color_num = test.population_solution[p].color_num[color];
+            test.population_solution[p].psol[color][color_num] = i;
+            test.population_solution[p].index2[i] = color_num++;
+            test.population_solution[p].color_num[color] = color_num;
         }
     }
 
@@ -465,7 +467,7 @@ int main(int argc, char *argv[])
             }
         }
 
-        population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
+        test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
         population.num_conflict[max_conflict_index] = test.f;
 
         if (test.f < population.min_conflict)
@@ -494,15 +496,15 @@ int main(int argc, char *argv[])
         cerr << "color of each vertex: ";
         for(i=1;i<=test.num_vertex;i++)
         {
-            cerr << population_solution[population.min_conflict_index].index1[i] << " ";
+            cerr << test.population_solution[population.min_conflict_index].index1[i] << " ";
         }
         cerr << endl;
 
         cerr << "conflict of solution 19: ";
-        cerr << test.compute_conflict(population_solution[19].index1) << endl;
+        cerr << test.compute_conflict(test.population_solution[19].index1) << endl;
 
         cerr << "conflict of final solution: ";
-        cerr << test.compute_conflict(population_solution[population.min_conflict_index].index1) << endl;
+        cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].index1) << endl;
     }
     else
         cerr << "over time" << endl;
