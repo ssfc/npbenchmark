@@ -50,7 +50,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
 
 Hybrid_Evolution::~Hybrid_Evolution()
 {
+    delete []adj_list;
+
+    for (int i = 0; i < num_population; i++)
+        delete[] solution_collection[i];
+
     delete []conflicts;
+    delete []conflict_index;
 }
 
 void Hybrid_Evolution::insert_adj_list(int i, int j) const
