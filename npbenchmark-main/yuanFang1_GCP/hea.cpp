@@ -459,8 +459,8 @@ int main(int argc, char *argv[])
         test.cross_over(p1, p2, temps.index1);
 
         // reset adj_color_table and tabu_tenure_table to zero;
-        memset(test.adj_color_table, 0, sizeof(test.adj_color_table));
-        memset(tabu_tenure_table, 0, sizeof(tabu_tenure_table));
+        memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         test.f = test.best_conflict = test.conflict_num =0;
 
         test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
