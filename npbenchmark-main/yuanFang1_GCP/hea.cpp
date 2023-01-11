@@ -353,8 +353,13 @@ int main(int argc, char *argv[])
         return 0;
     }
 
+    int input_num_vertex;
     int num_edge;
-    fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
+    int input_num_color;
+    //fscanf(fp, "%d %d %d\n", &test.num_vertex, &num_edge, &test.num_color);
+    fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
+    test.num_vertex = input_num_vertex;
+    test.num_color = input_num_color;
 
     // allocate space to variables;
     test.dynamic_alloc();
