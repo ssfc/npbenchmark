@@ -86,7 +86,6 @@ public:
     Hybrid_Evolution(int input_num_vertex, int input_num_color);
     ~Hybrid_Evolution();
 
-    void dynamic_alloc();
     void insert_adj_list(int i, int j) const;
     void add_conflict(int adj_vertex);
     void delete_conflict(int adj_vertex);

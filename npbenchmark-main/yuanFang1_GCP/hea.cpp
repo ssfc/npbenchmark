@@ -58,10 +58,6 @@ void Hybrid_Evolution::insert_adj_list(int i, int j) const
     adj_list[j].first = temp1;
 }
 
-void Hybrid_Evolution::dynamic_alloc()
-{
-
-}
 
 int Hybrid_Evolution::tabu_search(int *solution)
 {
@@ -109,6 +105,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
 
     return 1;
 }
+
 
 Move Hybrid_Evolution::find_move(const int *solution)
 {
@@ -347,7 +344,6 @@ int main(int argc, char *argv[])
     FILE *fp;
     srand(6);
 
-    //////////////////////////////////////////////////////////////////////////////////////
 
     sprintf(file, "./data/%s", argv[1]);
 
@@ -364,9 +360,6 @@ int main(int argc, char *argv[])
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
     Hybrid_Evolution test(input_num_vertex, input_num_color);
 
-    // allocate space to variables;
-    test.dynamic_alloc();
-
     memset(test.adj_list, 0, sizeof(VerNode)*(test.num_vertex + 1));
 
     while (!feof(fp))
@@ -377,7 +370,7 @@ int main(int argc, char *argv[])
     }
 
 
-    /////////////////////////////////////////////////////////////////////
+
 
     population.min_conflict = INT_MAX;
 
