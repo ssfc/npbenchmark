@@ -18,7 +18,6 @@ using namespace std;
 
 #define MaxPoint 1002
 #define MaxColor 300
-#define num_population 20
 
 
 struct ArcNode {

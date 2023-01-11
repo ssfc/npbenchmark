@@ -362,14 +362,13 @@ argv[1]:文件名
 */
 int main(int argc, char *argv[])
 {
+    int num_population = 20;
     Population population(num_population);
-
 
     int i, j, p;
     char file[100];
     FILE *fp;
     srand(6);
-
 
     sprintf(file, "./data/%s", argv[1]);
 
