@@ -34,6 +34,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color)
 
     adj_list = new VerNode [num_vertex + 1];
 
+    solution_collection = new int *[num_population];
+    for (int i = 0; i < num_population; i++)
+        solution_collection[i] = new int [num_vertex + 1];
+
     iter = 0;
     conflict_num = 0;
     max_iter = 16000;
@@ -56,9 +60,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j) const
 
 void Hybrid_Evolution::dynamic_alloc()
 {
-    solution_collection = new int *[num_population];
-    for (int i = 0; i < num_population; i++)
-        solution_collection[i] = new int [num_vertex + 1];
+
 }
 
 int Hybrid_Evolution::tabu_search(int *solution)
