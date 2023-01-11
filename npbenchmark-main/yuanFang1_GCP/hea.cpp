@@ -53,11 +53,11 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
         */
 
 
-        solution_collection = new int *[input_num_population];
-        for (int i = 0; i < input_num_population; i++)
+        solution_collection = new int *[num_population];
+        for (int i = 0; i < num_population; i++)
             solution_collection[i] = new int[num_vertex + 1];
 
-        population_solution = new Population_solution[input_num_population];
+        population_solution = new Population_solution[num_population];
 
         conflicts = new int[MaxPoint];
         conflict_index = new int[MaxPoint];
