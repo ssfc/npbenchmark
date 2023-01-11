@@ -32,11 +32,13 @@ Hybrid_Evolution::Hybrid_Evolution()
     iter = 0;
     conflict_num = 0;
     max_iter = 16000;
+
+    conflicts = new int [MaxPoint];
 }
 
 Hybrid_Evolution::~Hybrid_Evolution()
 {
-
+    delete []conflicts;
 }
 
 void Hybrid_Evolution::insert_adj_list(int i, int j) const
