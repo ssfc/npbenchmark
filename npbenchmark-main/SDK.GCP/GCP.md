@@ -29,38 +29,46 @@
 29. My DSJC0500.5.txt is 8 581 771 iterations, 18.1217 seconds (seed 9); 
 30. My DSJC0500.5.txt is 39 288 630 iterations, 84.2613 seconds (seed 10); 
 31. 
-32. 
-33. My problem is the great variance of result; (2022年11月19日)
+32. My DSJC1000.1.txt is 267 474 167 iterations, 565.158 seconds (seed 1);
+33. 
 34. 
-35. Sample of albnner: https://github.com/albnner/SmartLab 
-36. albnner: use global parameters; have HEA, but not good enough; 
+35. 
+36. 
 37. 
-38. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
-39. chenfengkg: use global parameters; not have HEA; 
+38. 
+39. 
 40. 
-41. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
-42. CoCoThink: NOT use global parameters; not have HEA; (2022年11月18日)
-43. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
-44. Test the running time of CoCoThink: 
-45. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
-46. DSJC250.9.col is 84698 iterations, 1.34207 seconds; 
-47. DSJC500.5.col is 54 756 380 iterations, 1180.34 seconds; 
-48. DSJC500.5.col is 48 212 914 iterations, 1033.54 seconds; (replace rand with pseudoRandNumGen) 
-49. 
-50. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
-51. 
-52. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
-53. Grasssleeve: use global parameters; No response on windows platform; has HEA, report the result; 感觉这个人没有考清楚情况, 又是新策略旧策略, 一些地方又不清楚; 
-54. 
-55. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
-56. jokerpwn: NOT use global parameters; have HEA, not report result; 
+41. My problem is the great variance of result; (2022年11月19日)
+42. 
+43. Sample of albnner: https://github.com/albnner/SmartLab 
+44. albnner: use global parameters; have HEA, but not good enough; 
+45. 
+46. Sample of chenfengkg: https://github.com/chenfengkg/tabucol 
+47. chenfengkg: use global parameters; not have HEA; 
+48. 
+49. Sample of CoCoThink: https://github.com/CoCoThink/TabuCol 
+50. CoCoThink: NOT use global parameters; not have HEA; (2022年11月18日)
+51. Add dataset DSJC125.5.col to CoCoThink: YES, it can run; (2022年11月18日)
+52. Test the running time of CoCoThink: 
+53. DSJC125.5.col is 178918 iterations, 0.408642 seconds; 
+54. DSJC250.9.col is 84698 iterations, 1.34207 seconds; 
+55. DSJC500.5.col is 54 756 380 iterations, 1180.34 seconds; 
+56. DSJC500.5.col is 48 212 914 iterations, 1033.54 seconds; (replace rand with pseudoRandNumGen) 
 57. 
-58. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
-59. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
-60. 
-61. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-62. RyleeRuiYe: use global parameters; has HEA, not report result; RuiYe's program generate an extremely big file and cannot output result; 
-63. 
-64. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-65. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
-66. 
+58. Since CoCoThink does not say its running time, try other methods; (2022年11月19日)
+59. 
+60. Sample of Grasssleeve: https://github.com/Grasssleeve/Graph-Coloring-Problem 
+61. Grasssleeve: use global parameters; No response on windows platform; has HEA, report the result; 感觉这个人没有考清楚情况, 又是新策略旧策略, 一些地方又不清楚; 
+62. 
+63. Sample of jokerpwn: https://github.com/jokerpwn/heuristic-algorithm-learning 
+64. jokerpwn: NOT use global parameters; have HEA, not report result; 
+65. 
+66. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
+67. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
+68. 
+69. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+70. RyleeRuiYe: use global parameters; has HEA, not report result; RuiYe's program generate an extremely big file and cannot output result; 
+71. 
+72. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+73. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
+74. 
