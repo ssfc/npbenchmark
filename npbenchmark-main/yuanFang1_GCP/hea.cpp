@@ -441,7 +441,7 @@ int main(int argc, char *argv[])
             break;
     }
 
-    memset(test.population_solution, 0, sizeof(test.population_solution));
+    memset(test.population_solution, 0, sizeof(Population_solution)*test.num_population);
     double start_time = clock();
 
     for (p = 0; p < num_population; p++)
