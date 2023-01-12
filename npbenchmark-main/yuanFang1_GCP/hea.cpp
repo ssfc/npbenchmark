@@ -42,6 +42,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     max_iter = 16000;
 
     adj_list.resize(num_vertex + 1);
+
+    adj_color_table.resize(MaxPoint);
+    for(int i=0;i<MaxPoint;i++)
+    {
+        adj_color_table[i].resize(MaxPoint);
+    }
+
     tabu_tenure_table.resize(MaxPoint);
     for(int i=0;i<MaxPoint;i++)
     {
@@ -399,7 +406,7 @@ int main(int argc, char *argv[])
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
-        memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
@@ -465,7 +472,7 @@ int main(int argc, char *argv[])
         test.cross_over(p1, p2, temps.index1);
 
         // reset adj_color_table and tabu_tenure_table to zero;
-        memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
