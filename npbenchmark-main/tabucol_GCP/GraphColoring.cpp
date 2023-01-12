@@ -1,5 +1,5 @@
 #include "GraphColoring.h"
-#include "hea.h"
+#include "tabucol.h"
 
 #include <climits>
 #include <cstdlib>
