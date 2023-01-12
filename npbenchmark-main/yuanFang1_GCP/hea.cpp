@@ -197,11 +197,16 @@ Move Hybrid_Evolution::find_move(const int *solution)
         }
     }
 
-    int temp1 = f + tabu_move_delta, temp2 = f + non_tabu_move_delta;
+    int temp1 = f + tabu_move_delta;
+    int temp2 = f + non_tabu_move_delta;
+
     Move res;
+
     if (temp1<best_conflict && temp1<temp2)
     {
-        f = best_conflict = temp1;
+        f = temp1;
+        best_conflict = temp1;
+
         int index = rand() % tabu_count;
         res = tabu_move[index];
     }
