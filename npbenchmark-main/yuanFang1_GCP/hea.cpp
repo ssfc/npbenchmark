@@ -22,15 +22,13 @@ Population_solution::~Population_solution()
 Population::Population(int input_num_population)
 {
     min_conflict = INT_MAX;
-
-
-    num_conflict = new int [input_num_population];
+    num_conflict.resize(input_num_population);
 }
 
 
 Population::~Population()
 {
-    delete []num_conflict;
+
 }
 
 
