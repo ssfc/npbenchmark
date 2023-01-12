@@ -9,7 +9,8 @@
 using namespace std;
 
 
-int tabu_tenure_table[MaxPoint][MaxPoint];
+// int tabu_tenure_table[MaxPoint][MaxPoint];
+vector<vector<int> > tabu_tenure_table(MaxPoint,vector<int>(MaxPoint));
 
 Population_solution::Population_solution()
 {}
@@ -396,7 +397,8 @@ int main(int argc, char *argv[])
     for (p = 0; p < num_population; p++)
     {
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        // memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        for(auto& x : tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
         test.best_conflict = 0;
@@ -462,7 +464,8 @@ int main(int argc, char *argv[])
 
         // reset adj_color_table and tabu_tenure_table to zero;
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        //memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
+        for(auto& x : tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
         test.best_conflict = 0;
