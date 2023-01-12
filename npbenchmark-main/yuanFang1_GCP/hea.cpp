@@ -64,15 +64,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
 Hybrid_Evolution::~Hybrid_Evolution()
 {
-    // delete []adj_list;
-
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
 
     delete []population_solution;
-
-    // delete []conflicts;
-    // delete []conflict_index;
 }
 
 
