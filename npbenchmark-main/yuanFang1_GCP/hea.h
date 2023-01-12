@@ -77,7 +77,8 @@ public:
     int conflict_num;
     //int *conflicts;
     vector<int> conflicts;
-    int *conflict_index;
+    // int *conflict_index;
+    vector<int> conflict_index;
 
     int num_population;
     int **solution_collection;
