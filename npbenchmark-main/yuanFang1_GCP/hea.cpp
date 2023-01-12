@@ -14,8 +14,10 @@ int tabu_tenure_table[MaxPoint][MaxPoint];
 Population_solution::Population_solution()
 {}
 
+
 Population_solution::~Population_solution()
 {}
+
 
 Population::Population(int input_num_population)
 {
@@ -25,10 +27,12 @@ Population::Population(int input_num_population)
     num_conflict = new int [input_num_population];
 }
 
+
 Population::~Population()
 {
     delete []num_conflict;
 }
+
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population)
 {
@@ -81,6 +85,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
     delete []conflicts;
     delete []conflict_index;
 }
+
 
 void Hybrid_Evolution::insert_adj_list(int i, int j) const
 {
@@ -222,6 +227,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
     return res;
 }
 
+
 void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 {
     int vi = solution[u];
@@ -256,11 +262,13 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
         add_conflict(u);
 }
 
+
 void Hybrid_Evolution::add_conflict(int adj_vertex)
 {
     conflicts[conflict_num] = adj_vertex;
     conflict_index[adj_vertex] = conflict_num++;
 }
+
 
 void Hybrid_Evolution::delete_conflict(int adj_vertex)
 {
@@ -268,6 +276,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
     conflicts[temp_index] = conflicts[--conflict_num];
     conflict_index[conflicts[temp_index]] = temp_index;
 }
+
 
 void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
 {
