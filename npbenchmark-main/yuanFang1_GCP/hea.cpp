@@ -141,7 +141,6 @@ int Hybrid_Evolution::tabu_search(int *solution)
 
 Move Hybrid_Evolution::find_move(const int *solution)
 {
-    int i;
     int sol_i;
 
     Move tabu_move[MaxPoint];
@@ -155,7 +154,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
 
     for (int conf_i = 0; conf_i< conflict_num; conf_i++)
     {
-        i = conflicts[conf_i];
+        int i = conflicts[conf_i];
         sol_i = solution[i];
         if (adj_color_table[i][sol_i]>0)
         {
