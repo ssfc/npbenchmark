@@ -67,7 +67,6 @@ public:
     int num_vertex;
     int num_color;
 
-    // VerNode *adj_list;
     vector<VerNode> adj_list;
     vector<vector<int> > adj_color_table;
     vector<vector<int> > tabu_tenure_table;
