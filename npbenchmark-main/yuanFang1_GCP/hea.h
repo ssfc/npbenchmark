@@ -99,7 +99,6 @@ public:
 
     // debug function: compute conflict of a solution
     int compute_conflict(const int *solution);
-    void split(const string& src, const string& delim, vector<string>& dest);
 };
 
 
