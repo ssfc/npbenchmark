@@ -429,8 +429,10 @@ int main(int argc, char *argv[])
     {
         for (i = 1; i <= test.num_vertex; i++)
         {
-            int color = test.population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
+            test.population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
+            int color = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = test.population_solution[p].color_num[color];
+            
             test.population_solution[p].psol[color][color_num] = i;
             test.population_solution[p].index2[i] = color_num++;
             test.population_solution[p].color_num[color] = color_num;
@@ -457,7 +459,10 @@ int main(int argc, char *argv[])
         // reset adj_color_table and tabu_tenure_table to zero;
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        test.f = test.best_conflict = test.conflict_num =0;
+
+        test.f = 0;
+        test.best_conflict = 0;
+        test.conflict_num = 0;
 
         test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
 
