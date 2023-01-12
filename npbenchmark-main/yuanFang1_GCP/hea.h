@@ -79,7 +79,7 @@ public:
 
     int num_population;
     int **solution_collection;
-    Population_solution *population_solution;
+    vector<Population_solution> population_solution;
 
     int max_iter;
 

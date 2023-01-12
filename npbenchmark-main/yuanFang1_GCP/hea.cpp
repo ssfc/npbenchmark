@@ -48,12 +48,14 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflicts.resize(MaxPoint);
     conflict_index.resize(MaxPoint);
 
+    population_solution.resize(num_population);
+
     try {
         solution_collection = new int *[num_population];
         for (int i = 0; i < num_population; i++)
             solution_collection[i] = new int [num_vertex + 1];
 
-        population_solution = new Population_solution [num_population];
+        // population_solution = new Population_solution [num_population];
     }
     catch (const bad_alloc& e)
     {
@@ -67,7 +69,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
 
-    delete []population_solution;
+    // delete []population_solution;
 }
 
 
@@ -426,7 +428,7 @@ int main(int argc, char *argv[])
             break;
     }
 
-    memset(test.population_solution, 0, sizeof(Population_solution)*test.num_population);
+    memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
 
     for (p = 0; p < num_population; p++)
