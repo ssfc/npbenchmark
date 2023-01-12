@@ -284,7 +284,10 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
             B = 0;
         }
 
-        int max_index, max_num = -1, *h_num = s[A].color_num;
+        int max_index;
+        int max_num = -1;
+        int *h_num = s[A].color_num;
+
         for (int j = 0; j < num_color; j++)
         {
             if (h_num[j] > max_num)
