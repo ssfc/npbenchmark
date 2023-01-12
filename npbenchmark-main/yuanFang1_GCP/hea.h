@@ -75,7 +75,8 @@ public:
     int best_conflict;
     int f;
     int conflict_num;
-    int *conflicts;
+    //int *conflicts;
+    vector<int> conflicts;
     int *conflict_index;
 
     int num_population;

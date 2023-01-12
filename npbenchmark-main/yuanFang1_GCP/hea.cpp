@@ -45,6 +45,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     max_iter = 16000;
 
     adj_list.resize(num_vertex + 1);
+    conflicts.resize(MaxPoint);
 
     try {
         // adj_list = new VerNode[num_vertex + 1];
@@ -65,7 +66,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
         population_solution = new Population_solution [num_population];
 
-        conflicts = new int[MaxPoint];
+        // conflicts = new int[MaxPoint];
         conflict_index = new int[MaxPoint];
     }
     catch (const bad_alloc& e)
@@ -84,7 +85,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
     delete []population_solution;
 
-    delete []conflicts;
+    // delete []conflicts;
     delete []conflict_index;
 }
 
