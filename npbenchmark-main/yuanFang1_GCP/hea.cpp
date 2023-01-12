@@ -432,7 +432,7 @@ int main(int argc, char *argv[])
             test.population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
             int color = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = test.population_solution[p].color_num[color];
-            
+
             test.population_solution[p].psol[color][color_num] = i;
             test.population_solution[p].index2[i] = color_num++;
             test.population_solution[p].color_num[color] = color_num;
