@@ -55,6 +55,12 @@ build CMakeFiles/tabucol_GCP.dir/main.cpp.obj: CXX_COMPILER__tabucol_GCP_Debug C
   OBJECT_DIR = CMakeFiles\tabucol_GCP.dir
   OBJECT_FILE_DIR = CMakeFiles\tabucol_GCP.dir
 
+build CMakeFiles/tabucol_GCP.dir/GraphColoring.cpp.obj: CXX_COMPILER__tabucol_GCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/tabucol_GCP/GraphColoring.cpp || cmake_object_order_depends_target_tabucol_GCP
+  DEP_FILE = CMakeFiles\tabucol_GCP.dir\GraphColoring.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\tabucol_GCP.dir
+  OBJECT_FILE_DIR = CMakeFiles\tabucol_GCP.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target tabucol_GCP
@@ -63,7 +69,7 @@ build CMakeFiles/tabucol_GCP.dir/main.cpp.obj: CXX_COMPILER__tabucol_GCP_Debug C
 #############################################
 # Link the executable tabucol_GCP.exe
 
-build tabucol_GCP.exe: CXX_EXECUTABLE_LINKER__tabucol_GCP_Debug CMakeFiles/tabucol_GCP.dir/main.cpp.obj
+build tabucol_GCP.exe: CXX_EXECUTABLE_LINKER__tabucol_GCP_Debug CMakeFiles/tabucol_GCP.dir/main.cpp.obj CMakeFiles/tabucol_GCP.dir/GraphColoring.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\tabucol_GCP.dir
