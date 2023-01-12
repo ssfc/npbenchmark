@@ -306,7 +306,9 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
 
             int color = s[B].index1[point];//在B中删除这个点
             int index2 = s[B].index2[point];
-            int t = s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
+
+            s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
+            int t = s[B].psol[color][index2];
             s[B].index2[t] = index2;
         }
 
