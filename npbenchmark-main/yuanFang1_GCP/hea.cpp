@@ -44,8 +44,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflict_num = 0;
     max_iter = 16000;
 
+    adj_list.resize(num_vertex + 1);
+
     try {
-        adj_list = new VerNode[num_vertex + 1];
+        // adj_list = new VerNode[num_vertex + 1];
 
         /*
         adj_color_table = new int* [MaxPoint];
@@ -75,7 +77,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
 Hybrid_Evolution::~Hybrid_Evolution()
 {
-    delete []adj_list;
+    // delete []adj_list;
 
     for (int i = 0; i < num_population; i++)
         delete[] solution_collection[i];
@@ -87,7 +89,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
 }
 
 
-void Hybrid_Evolution::insert_adj_list(int i, int j) const
+void Hybrid_Evolution::insert_adj_list(int i, int j)
 {
     ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
@@ -397,7 +399,8 @@ int main(int argc, char *argv[])
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
     Hybrid_Evolution test(input_num_vertex, input_num_color, num_population);
 
-    memset(test.adj_list, 0, sizeof(VerNode)*(test.num_vertex + 1));
+    // memset(test.adj_list, 0, sizeof(test.adj_list));
+    memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
 
     while (!feof(fp))
     {

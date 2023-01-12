@@ -5,6 +5,7 @@
 #ifndef YUANFANG1_GCP_HEA_H
 #define YUANFANG1_GCP_HEA_H
 
+#include <algorithm>
 #include <climits>
 #include <cstdio>
 #include <cstdlib>
@@ -65,7 +66,8 @@ public:
     int num_vertex;
     int num_color;
 
-    VerNode *adj_list;
+    // VerNode *adj_list;
+    vector<VerNode> adj_list;
     int adj_color_table[MaxPoint][MaxPoint];
     //int **adj_color_table;
 
@@ -87,7 +89,7 @@ public:
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population);
     ~Hybrid_Evolution();
 
-    void insert_adj_list(int i, int j) const;
+    void insert_adj_list(int i, int j);
     void add_conflict(int adj_vertex);
     void delete_conflict(int adj_vertex);
 
