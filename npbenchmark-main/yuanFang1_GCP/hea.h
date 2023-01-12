@@ -31,7 +31,8 @@ struct VerNode {
 };
 
 struct Move {
-    int u, vi, vj;
+    int u;
+    int vj;
 };
 
 class Population_solution {
