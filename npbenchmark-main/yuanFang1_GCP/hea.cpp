@@ -396,7 +396,10 @@ int main(int argc, char *argv[])
     {
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        test.f = test.best_conflict = test.conflict_num = 0;
+
+        test.f = 0;
+        test.best_conflict = 0;
+        test.conflict_num = 0;
 
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
