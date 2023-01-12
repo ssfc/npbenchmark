@@ -141,7 +141,7 @@ int Hybrid_Evolution::tabu_search(int *solution)
 
 Move Hybrid_Evolution::find_move(const int *solution)
 {
-    int i, conf_i;
+    int i;
     int sol_i;
 
     Move tabu_move[MaxPoint];
@@ -153,7 +153,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
     int tabu_move_delta = 100000;
     int non_tabu_move_delta = 100000;
 
-    for (conf_i = 0; conf_i< conflict_num; conf_i++)
+    for (int conf_i = 0; conf_i< conflict_num; conf_i++)
     {
         i = conflicts[conf_i];
         sol_i = solution[i];
