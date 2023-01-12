@@ -69,15 +69,12 @@ public:
     // VerNode *adj_list;
     vector<VerNode> adj_list;
     int adj_color_table[MaxPoint][MaxPoint];
-    //int **adj_color_table;
 
 
     int best_conflict;
     int f;
     int conflict_num;
-    //int *conflicts;
     vector<int> conflicts;
-    // int *conflict_index;
     vector<int> conflict_index;
 
     int num_population;
