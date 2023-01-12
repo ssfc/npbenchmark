@@ -70,7 +70,7 @@ public:
     // VerNode *adj_list;
     vector<VerNode> adj_list;
     int adj_color_table[MaxPoint][MaxPoint];
-
+    vector<vector<int> > tabu_tenure_table;
 
     int best_conflict;
     int f;

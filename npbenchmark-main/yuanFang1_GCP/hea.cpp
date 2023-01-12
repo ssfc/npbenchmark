@@ -10,7 +10,7 @@ using namespace std;
 
 
 // int tabu_tenure_table[MaxPoint][MaxPoint];
-vector<vector<int> > tabu_tenure_table(MaxPoint,vector<int>(MaxPoint));
+
 
 Population_solution::Population_solution()
 {}
@@ -44,6 +44,12 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     max_iter = 16000;
 
     adj_list.resize(num_vertex + 1);
+    tabu_tenure_table.resize(MaxPoint);
+    for(int i=0;i<MaxPoint;i++)
+    {
+        tabu_tenure_table[i].resize(MaxPoint);
+    }
+
     conflicts.resize(MaxPoint);
     conflict_index.resize(MaxPoint);
 
@@ -398,7 +404,7 @@ int main(int argc, char *argv[])
     {
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         // memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        for(auto& x : tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
         test.best_conflict = 0;
@@ -465,7 +471,7 @@ int main(int argc, char *argv[])
         // reset adj_color_table and tabu_tenure_table to zero;
         memset(test.adj_color_table, 0, sizeof(int)*MaxPoint*MaxPoint);
         //memset(tabu_tenure_table, 0, sizeof(int)*MaxPoint*MaxPoint);
-        for(auto& x : tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
         test.f = 0;
         test.best_conflict = 0;
