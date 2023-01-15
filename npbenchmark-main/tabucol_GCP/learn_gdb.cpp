@@ -6,12 +6,18 @@
 
 using namespace std;
 
+void hello()
+{
+    cout<<"hello world";
+}
+
+
 int main()
 {
     int arr[4] = {1, 2, 3, 4};
-    for(int i=0;i<4;i++)
+    for(int i : arr)
     {
-        cout<<arr[i]<<endl;
+        cout<<i<<endl;
     }
 
     return 0;
