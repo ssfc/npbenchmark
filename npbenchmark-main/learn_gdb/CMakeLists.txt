@@ -3,4 +3,4 @@ project(learn_gdb)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(learn_gdb main.cpp)
+add_executable(learn_gdb learn_gdb.cpp)
