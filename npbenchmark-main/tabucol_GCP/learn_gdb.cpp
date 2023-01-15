@@ -8,7 +8,7 @@ using namespace std;
 
 void hello()
 {
-    cout<<"hello world";
+    cout<<"hello world"<<endl;
 }
 
 
@@ -19,6 +19,8 @@ int main()
     {
         cout<<i<<endl;
     }
+
+    hello();
 
     return 0;
 }
