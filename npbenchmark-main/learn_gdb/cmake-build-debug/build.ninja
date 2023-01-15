@@ -49,14 +49,14 @@ cmake_ninja_workdir = C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/cmak
 
 build cmake_object_order_depends_target_learn_gdb: phony || CMakeFiles/learn_gdb.dir
 
-build CMakeFiles/learn_gdb.dir/main.cpp.obj: CXX_COMPILER__learn_gdb_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/main.cpp || cmake_object_order_depends_target_learn_gdb
-  DEP_FILE = CMakeFiles\learn_gdb.dir\main.cpp.obj.d
+build CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj: CXX_COMPILER__learn_gdb_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/learn_gdb.cpp || cmake_object_order_depends_target_learn_gdb
+  DEP_FILE = CMakeFiles\learn_gdb.dir\learn_gdb.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\learn_gdb.dir
   OBJECT_FILE_DIR = CMakeFiles\learn_gdb.dir
 
-build CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj: CXX_COMPILER__learn_gdb_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/learn_gdb.cpp || cmake_object_order_depends_target_learn_gdb
-  DEP_FILE = CMakeFiles\learn_gdb.dir\learn_gdb.cpp.obj.d
+build CMakeFiles/learn_gdb.dir/test_error.cpp.obj: CXX_COMPILER__learn_gdb_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/test_error.cpp || cmake_object_order_depends_target_learn_gdb
+  DEP_FILE = CMakeFiles\learn_gdb.dir\test_error.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\learn_gdb.dir
   OBJECT_FILE_DIR = CMakeFiles\learn_gdb.dir
@@ -69,7 +69,7 @@ build CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj: CXX_COMPILER__learn_gdb_Debug 
 #############################################
 # Link the executable learn_gdb.exe
 
-build learn_gdb.exe: CXX_EXECUTABLE_LINKER__learn_gdb_Debug CMakeFiles/learn_gdb.dir/main.cpp.obj CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj
+build learn_gdb.exe: CXX_EXECUTABLE_LINKER__learn_gdb_Debug CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj CMakeFiles/learn_gdb.dir/test_error.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\learn_gdb.dir
