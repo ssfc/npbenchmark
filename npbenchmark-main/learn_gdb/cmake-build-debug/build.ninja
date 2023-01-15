@@ -61,6 +61,12 @@ build CMakeFiles/learn_gdb.dir/test_error.cpp.obj: CXX_COMPILER__learn_gdb_Debug
   OBJECT_DIR = CMakeFiles\learn_gdb.dir
   OBJECT_FILE_DIR = CMakeFiles\learn_gdb.dir
 
+build CMakeFiles/learn_gdb.dir/debug_running.cpp.obj: CXX_COMPILER__learn_gdb_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/learn_gdb/debug_running.cpp || cmake_object_order_depends_target_learn_gdb
+  DEP_FILE = CMakeFiles\learn_gdb.dir\debug_running.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\learn_gdb.dir
+  OBJECT_FILE_DIR = CMakeFiles\learn_gdb.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target learn_gdb
@@ -69,7 +75,7 @@ build CMakeFiles/learn_gdb.dir/test_error.cpp.obj: CXX_COMPILER__learn_gdb_Debug
 #############################################
 # Link the executable learn_gdb.exe
 
-build learn_gdb.exe: CXX_EXECUTABLE_LINKER__learn_gdb_Debug CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj CMakeFiles/learn_gdb.dir/test_error.cpp.obj
+build learn_gdb.exe: CXX_EXECUTABLE_LINKER__learn_gdb_Debug CMakeFiles/learn_gdb.dir/learn_gdb.cpp.obj CMakeFiles/learn_gdb.dir/test_error.cpp.obj CMakeFiles/learn_gdb.dir/debug_running.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\learn_gdb.dir
