@@ -19,8 +19,11 @@ void test1()
 
 int main()
 {
-    int *temp = NULL;
-    *temp = 10;
+    for(;;)
+    {
+        test();
+        test1();
+    }
 
     return 0;
 }
