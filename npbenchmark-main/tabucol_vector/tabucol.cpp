@@ -73,10 +73,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         }
 
         // allocate memory to equ_delta;
-        equal_nontabu_delta = new int* [2000];
+        equal_nontabu_delta.resize(2000);
         for(int i=0;i<2000;i++)
         {
-            equal_nontabu_delta[i] = new int[2];
+            equal_nontabu_delta[i].resize(2);
         }
 
         // allocate memory to equ_tabu_delta;
