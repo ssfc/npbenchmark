@@ -11,14 +11,14 @@ using namespace std;
 
 // random number generator.
 mt19937 pseudoRandNumGen;
-void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
+void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 // constructor;
 Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    initRand(seed);
+    init_rand(seed);
 
     conflict = 0;
 
