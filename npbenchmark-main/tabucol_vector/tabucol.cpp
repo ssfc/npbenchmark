@@ -26,7 +26,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     {
         // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
         adj_list = new int* [num_vertex];
-        vertex_edge_num = new int[num_vertex];
+        vertex_edge_num.resize(num_vertex);
 
         for (int i = 0; i < num_vertex; i++)
         {
@@ -45,7 +45,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         }
 
         // allocate memory and initial value for solution (dim, num_vertex);
-        solution = new unsigned int[num_vertex];
+        solution.resize(num_vertex);
         for (int i = 0; i < num_vertex; i++)
             solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
@@ -158,7 +158,7 @@ Graph::~Graph()
         delete[] adj_color_table[i];
         delete[] adj_list[i];
     }
-    delete[] solution;
+
     delete[] tabu_tenure_table;
     delete[] adj_color_table;
     delete[] adj_list;
