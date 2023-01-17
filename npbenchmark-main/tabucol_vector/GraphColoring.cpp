@@ -2,13 +2,10 @@
 #include "tabucol.h"
 
 #include <climits>
-#include <cstdlib>
 #include <ctime>
 #include <fstream>
 #include <iostream>
-#include <numeric>
 #include <random>
-#include <string>
 #include <vector>
 
 using namespace std;
