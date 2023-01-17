@@ -191,7 +191,6 @@ void Graph::find_move()
 
         // use one-dimensional array to save addressing time;
         int* adj_color_table_i = adj_color_table[i];
-        vector<int> tabu_tenure_table_i(tabu_tenure_table[i].begin(), tabu_tenure_table[i].end());
 
         if (adj_color_table_i[solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -200,7 +199,7 @@ void Graph::find_move()
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
                     int this_delta = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table_i[j] <= iter) //nontabu move;
+                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
