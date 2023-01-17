@@ -22,10 +22,10 @@ private:
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
     vector<int> solution; // color of each vertex; dimension, num_vertex;
-    unsigned int conflict;
-    unsigned int best_conflict; // 历史最好的冲突值
+    int conflict;
+    int best_conflict; // 历史最好的冲突值
 
-    unsigned int** tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
+    vector<vector<int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     int** adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
