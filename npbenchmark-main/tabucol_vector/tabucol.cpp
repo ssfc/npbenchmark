@@ -16,137 +16,137 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 // constructor;
 Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed)
 {
-num_vertex = input_num_vertex;
-num_color = input_num_color;
-initRand(seed);
+    num_vertex = input_num_vertex;
+    num_color = input_num_color;
+    initRand(seed);
 
-conflict = 0;
+    conflict = 0;
 
-try
-{
-// allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
-adj_list = new int* [num_vertex];
-vertex_edge_num = new int[num_vertex];
+    try
+    {
+        // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
+        adj_list = new int* [num_vertex];
+        vertex_edge_num = new int[num_vertex];
 
-for (int i = 0; i < num_vertex; i++)
-{
-adj_list[i] = new int[num_vertex];
-vertex_edge_num[i] = 0;
-}
+        for (int i = 0; i < num_vertex; i++)
+        {
+            adj_list[i] = new int[num_vertex];
+            vertex_edge_num[i] = 0;
+        }
 
-// the reason to use adj_list_i is to accelerate;
-for (int i = 0; i < num_vertex; i++)
-{
-int* adj_list_i = adj_list[i];
-for (int j = 0; j < num_vertex; j++)
-{
-adj_list_i[j] = 0;
-}
-}
+        // the reason to use adj_list_i is to accelerate;
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int* adj_list_i = adj_list[i];
+            for (int j = 0; j < num_vertex; j++)
+            {
+                adj_list_i[j] = 0;
+            }
+        }
 
-// allocate memory and initial value for solution (dim, num_vertex);
-solution = new unsigned int[num_vertex];
-for (int i = 0; i < num_vertex; i++)
-solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
+        // allocate memory and initial value for solution (dim, num_vertex);
+        solution = new unsigned int[num_vertex];
+        for (int i = 0; i < num_vertex; i++)
+            solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
-// allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
-adj_color_table = new int* [num_vertex];
-tabu_tenure_table = new unsigned int* [num_vertex];
+        // allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
+        adj_color_table = new int* [num_vertex];
+        tabu_tenure_table = new unsigned int* [num_vertex];
 
-for (int i = 0; i < num_vertex; i++)
-{
-adj_color_table[i] = new int[num_color];
-tabu_tenure_table[i] = new unsigned int[num_color];
-}
+        for (int i = 0; i < num_vertex; i++)
+        {
+            adj_color_table[i] = new int[num_color];
+            tabu_tenure_table[i] = new unsigned int[num_color];
+        }
 
-// allocate initial value to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
-for (int i = 0; i < num_vertex; i++)
-{
-int* adj_color_table_i = adj_color_table[i];
-unsigned int* tabu_tenure_table_i = tabu_tenure_table[i];
+        // allocate initial value to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int* adj_color_table_i = adj_color_table[i];
+            unsigned int* tabu_tenure_table_i = tabu_tenure_table[i];
 
-for (int j = 0; j < num_color; j++)
-{
-adj_color_table_i[j] = 0;
-tabu_tenure_table_i[j] = 0;
-}
-}
+            for (int j = 0; j < num_color; j++)
+            {
+                adj_color_table_i[j] = 0;
+                tabu_tenure_table_i[j] = 0;
+            }
+        }
 
-// allocate memory to equ_delta;
-equal_nontabu_delta = new int* [2000];
-for(int i=0;i<2000;i++)
-{
-equal_nontabu_delta[i] = new int[2];
-}
+        // allocate memory to equ_delta;
+        equal_nontabu_delta = new int* [2000];
+        for(int i=0;i<2000;i++)
+        {
+            equal_nontabu_delta[i] = new int[2];
+        }
 
-// allocate memory to equ_tabu_delta;
-equal_tabu_delta = new int* [2000];
-for(int i=0;i<2000;i++)
-{
-equal_tabu_delta[i] = new int[2];
-}
+        // allocate memory to equ_tabu_delta;
+        equal_tabu_delta = new int* [2000];
+        for(int i=0;i<2000;i++)
+        {
+            equal_tabu_delta[i] = new int[2];
+        }
 
-for (int i = 0; i < num_vertex; i++)
-{
-int num_edge = vertex_edge_num[i];
-unsigned int this_vertex_color = solution[i];
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int num_edge = vertex_edge_num[i];
+            unsigned int this_vertex_color = solution[i];
 
-int* adj_color_table_i = adj_color_table[i];
-int* adj_list_i = adj_list[i];
+            int* adj_color_table_i = adj_color_table[i];
+            int* adj_list_i = adj_list[i];
 
-for (int j = 0; j < num_edge; j++)
-{
-unsigned int adj_color = solution[adj_list_i[j]];
+            for (int j = 0; j < num_edge; j++)
+            {
+                unsigned int adj_color = solution[adj_list_i[j]];
 
-if (this_vertex_color == adj_color)
-conflict++;
+                if (this_vertex_color == adj_color)
+                    conflict++;
 
-adj_color_table_i[adj_color]++; // initialize adjacent color table;
-}
-}
+                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+            }
+        }
 
-// add edge information from dataset to class;
-for (int i = 0;i < input_edge_num; i++)
-{
-int v1 = input_edges[i][0];
-int v2 = input_edges[i][1];
+        // add edge information from dataset to class;
+        for (int i = 0;i < input_edge_num; i++)
+        {
+            int v1 = input_edges[i][0];
+            int v2 = input_edges[i][1];
 
-adj_list[v1][vertex_edge_num[v1]] = v2;
-vertex_edge_num[v1]++;
+            adj_list[v1][vertex_edge_num[v1]] = v2;
+            vertex_edge_num[v1]++;
 
-adj_list[v2][vertex_edge_num[v2]] = v1;
-vertex_edge_num[v2]++;
-}
+            adj_list[v2][vertex_edge_num[v2]] = v1;
+            vertex_edge_num[v2]++;
+        }
 
-// compute initial conflict;
-for (int i = 0; i < num_vertex; i++)
-{
-int num_edge = vertex_edge_num[i];
-unsigned int this_vertex_color = solution[i];
+        // compute initial conflict;
+        for (int i = 0; i < num_vertex; i++)
+        {
+            int num_edge = vertex_edge_num[i];
+            unsigned int this_vertex_color = solution[i];
 
-int* adj_color_table_i = adj_color_table[i];
-int* adj_list_i = adj_list[i];
+            int* adj_color_table_i = adj_color_table[i];
+            int* adj_list_i = adj_list[i];
 
-for (int j = 0; j < num_edge; j++)
-{
-unsigned int adj_color = solution[adj_list_i[j]];
+            for (int j = 0; j < num_edge; j++)
+            {
+                unsigned int adj_color = solution[adj_list_i[j]];
 
-if (this_vertex_color == adj_color)
-conflict++;
+                if (this_vertex_color == adj_color)
+                    conflict++;
 
-adj_color_table_i[adj_color]++; // initialize adjacent color table;
-}
-}
+                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+            }
+        }
 
-conflict = conflict / 2;
-best_conflict = conflict;
-cerr << "initial number of confilcts:" << conflict << endl;
+        conflict = conflict / 2;
+        best_conflict = conflict;
+        cerr << "initial number of confilcts:" << conflict << endl;
 
-}
-catch (const bad_alloc& e)
-{
-cerr << "初始化内存分配失败:" << endl;
-}
+    }
+    catch (const bad_alloc& e)
+    {
+        cerr << "初始化内存分配失败:" << endl;
+    }
 }
 
 // free the memory;
@@ -313,6 +313,3 @@ unsigned int Graph::get_solution(int i)
 {
     return solution[i];
 }
-
-// running command:
-// g++ main.cpp GraphColoring.cpp tabucol.cpp -O3; ./a.out 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
