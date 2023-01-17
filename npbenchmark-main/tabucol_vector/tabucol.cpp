@@ -321,4 +321,4 @@ unsigned int Graph::get_solution(int i)
 // In shell:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3 -g; gdb a.out
 // In GDB:
-// r 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt 
+// r 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
