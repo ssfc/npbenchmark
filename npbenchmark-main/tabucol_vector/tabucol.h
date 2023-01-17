@@ -31,7 +31,7 @@ private:
     int min_delta; // 移动增量
     int node_moved; // 每次移动的结点
     int color_moved; //每次移动的颜色
-    unsigned int iter;
+    int iter;
 
     vector<vector<int>> equal_nontabu_delta; //非禁忌相同delta值
     vector<vector<int>> equal_tabu_delta; //禁忌相同delta值
@@ -42,10 +42,10 @@ public:
 
     void find_move();
     void make_move();
-    unsigned int tabu_search();
+    int tabu_search();
 
     void print_graph() const; // print adjacent list of graph;
-    unsigned int get_solution(int i);
+    int get_solution(int i);
 };
 
 #endif //SDK_GCP_TABUCOL_H
