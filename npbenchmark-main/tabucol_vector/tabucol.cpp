@@ -80,10 +80,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         }
 
         // allocate memory to equ_tabu_delta;
-        equal_tabu_delta = new int* [2000];
+        equal_tabu_delta.resize(2000);
         for(int i=0;i<2000;i++)
         {
-            equal_tabu_delta[i] = new int[2];
+            equal_tabu_delta[i].resize(2);
         }
 
         for (int i = 0; i < num_vertex; i++)
