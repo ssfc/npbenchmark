@@ -16,7 +16,7 @@ private:
     int num_vertex; // number of vertex in the graph;
     int num_color; // number of color in the graph;
 
-    int** adj_list; // adjacency list; dimension, num_vertex * num_vertex;
+    vector<vector<int>> adj_list; // adjacency list; dimension, num_vertex * num_vertex;
     // each row is 11...1000, the number of 1 is the number of vertex adjacent to it, recording in vertex_edge;
 
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
@@ -26,7 +26,7 @@ private:
     int best_conflict; // 历史最好的冲突值
 
     vector<vector<int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
-    int** adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
+    vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
     int node_moved; // 每次移动的结点

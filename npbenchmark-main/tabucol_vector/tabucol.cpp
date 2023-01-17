@@ -25,23 +25,13 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     try
     {
         // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
-        adj_list = new int* [num_vertex];
+        adj_list.resize(num_vertex);
         vertex_edge_num.resize(num_vertex);
 
         for (int i = 0; i < num_vertex; i++)
         {
-            adj_list[i] = new int[num_vertex];
+            adj_list[i].resize(num_vertex);
             vertex_edge_num[i] = 0;
-        }
-
-        // the reason to use adj_list_i is to accelerate;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            int* adj_list_i = adj_list[i];
-            for (int j = 0; j < num_vertex; j++)
-            {
-                adj_list_i[j] = 0;
-            }
         }
 
         // allocate memory and initial value for solution (dim, num_vertex);
@@ -50,24 +40,13 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
         // allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
-        adj_color_table = new int* [num_vertex];
+        adj_color_table.resize(num_vertex);
         tabu_tenure_table.resize(num_vertex);
 
         for (int i = 0; i < num_vertex; i++)
         {
-            adj_color_table[i] = new int[num_color];
+            adj_color_table[i].resize(num_color);
             tabu_tenure_table[i].resize(num_color);
-        }
-
-        // allocate initial value to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
-        for (int i = 0; i < num_vertex; i++)
-        {
-            int* adj_color_table_i = adj_color_table[i];
-
-            for (int j = 0; j < num_color; j++)
-            {
-                adj_color_table_i[j] = 0;
-            }
         }
 
         // allocate memory to equ_delta;
@@ -89,17 +68,14 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             int num_edge = vertex_edge_num[i];
             int this_vertex_color = solution[i];
 
-            int* adj_color_table_i = adj_color_table[i];
-            int* adj_list_i = adj_list[i];
-
             for (int j = 0; j < num_edge; j++)
             {
-                int adj_color = solution[adj_list_i[j]];
+                int adj_color = solution[adj_list[i][j]];
 
                 if (this_vertex_color == adj_color)
                     conflict++;
 
-                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+                adj_color_table[i][adj_color]++; // initialize adjacent color table;
             }
         }
 
@@ -122,17 +98,14 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
             int num_edge = vertex_edge_num[i];
             int this_vertex_color = solution[i];
 
-            int* adj_color_table_i = adj_color_table[i];
-            int* adj_list_i = adj_list[i];
-
             for (int j = 0; j < num_edge; j++)
             {
-                int adj_color = solution[adj_list_i[j]];
+                int adj_color = solution[adj_list[i][j]];
 
                 if (this_vertex_color == adj_color)
                     conflict++;
 
-                adj_color_table_i[adj_color]++; // initialize adjacent color table;
+                adj_color_table[i][adj_color]++; // initialize adjacent color table;
             }
         }
 
@@ -150,14 +123,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 // free the memory;
 Graph::~Graph()
 {
-    for (int i = 0; i < num_vertex; i++)
-    {
-        delete[] adj_color_table[i];
-        delete[] adj_list[i];
-    }
 
-    delete[] adj_color_table;
-    delete[] adj_list;
 }
 
 // class: print adjacency list of graph;
@@ -166,10 +132,9 @@ void Graph::print_graph() const
     cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
     for (int i = 0; i < num_vertex; i++)
     {
-        int* adj_list_i = adj_list[i];
         for (int j = 0;j < vertex_edge_num[i];j++)
         {
-            cerr << adj_list_i[j] << " ";
+            cerr << adj_list[i][j] << " ";
         }
         cerr << endl;
     }
@@ -189,16 +154,13 @@ void Graph::find_move()
     {
         int solution_i = solution[i]; // solution_i is color;
 
-        // use one-dimensional array to save addressing time;
-        int* adj_color_table_i = adj_color_table[i];
-
-        if (adj_color_table_i[solution_i] > 0) // if vertex i overlap its neighbor's color;
+        if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
             for (int j = 0; j < num_color; j++) // j is color;
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int this_delta = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
+                    int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
                     if (tabu_tenure_table[i][j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
@@ -274,17 +236,13 @@ void Graph::make_move()
     solution[node_moved] = color_moved;
     tabu_tenure_table[node_moved][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
-    int* adj_list_node_moved = adj_list[node_moved];
-
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[node_moved]; i++)
     {
-        int adj_list_node_moved_i = adj_list_node_moved[i];
+        int adj_list_node_moved_i = adj_list[node_moved][i];
 
-        int* adj_color_table_adj_list_node_moved_i = adj_color_table[adj_list_node_moved_i];
-
-        adj_color_table_adj_list_node_moved_i[old_color]--;
-        adj_color_table_adj_list_node_moved_i[color_moved]++;
+        adj_color_table[adj_list_node_moved_i][old_color]--;
+        adj_color_table[adj_list_node_moved_i][color_moved]++;
     }
 }
 
