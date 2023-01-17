@@ -231,15 +231,22 @@ void Graph::find_move()
                             equal_tabu_count = 0;
                             tabu_delta = this_delta;
 
-                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+                            // equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
+                            // equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+
+                            equal_tabu_delta.resize(0);
+                            vector<int> to_add = {i, j};
+                            equal_tabu_delta.push_back(to_add);
 
                             equal_tabu_count++;
                         }
                         else if(this_delta == tabu_delta)
                         {
-                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+                            // equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
+                            // equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+
+                            vector<int> to_add = {i, j};
+                            equal_tabu_delta.push_back(to_add);
 
                             equal_tabu_count++;
                         }
