@@ -13,8 +13,14 @@ int main()
     vector<int> test;
     test.resize(2);
 
-    test[3] = 4;
-    
+    test[30] = 4;
+    cout<<test[30]<<endl;
+
+    cout<<"content: ";
+    for(int i=0;i<test.size();i++)
+    {
+        cout<<test[i]<<endl;
+    }
 
     return 0;
 }
