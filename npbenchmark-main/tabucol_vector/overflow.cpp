@@ -13,8 +13,9 @@ int main()
     vector<int> test;
     test.resize(2);
 
-    test[30] = 4;
-    cout<<test[30]<<endl;
+    test.at(0) = 1;
+    test.at(1) = 2;
+    test.at(30) = 30;
 
     cout<<"content: ";
     for(int i=0;i<test.size();i++)
