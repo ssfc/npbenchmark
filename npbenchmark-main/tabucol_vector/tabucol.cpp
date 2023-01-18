@@ -165,6 +165,11 @@ void Graph::find_move()
                         if(max_equal_nontabu_count < equal_nontabu_count)
                         {
                             max_equal_nontabu_count = equal_nontabu_count;
+
+                            if(max_equal_nontabu_count > 1900)
+                            {
+                                cerr << max_equal_nontabu_count << endl;
+                            }
                         }
                         // debug part end;
                     }
@@ -192,6 +197,11 @@ void Graph::find_move()
                         if(max_equal_tabu_count < equal_tabu_count)
                         {
                             max_equal_tabu_count = equal_tabu_count;
+
+                            if(max_equal_tabu_count > 1900)
+                            {
+                                cerr << max_equal_tabu_count << endl;
+                            }
                         }
                         // debug part end;
                     }
