@@ -22,102 +22,95 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 
     conflict = 0;
 
-    try
+    // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
+    adj_list.resize(num_vertex);
+    vertex_edge_num.resize(num_vertex);
+
+    for (int i = 0; i < num_vertex; i++)
     {
-        // allocate memory to adjacent list (num_vertex * num_vertex) and vertex edge (num_vertex);
-        adj_list.resize(num_vertex);
-        vertex_edge_num.resize(num_vertex);
-
-        for (int i = 0; i < num_vertex; i++)
-        {
-            adj_list[i].resize(num_vertex);
-            vertex_edge_num[i] = 0;
-        }
-
-        // allocate memory and initial value for solution (dim, num_vertex);
-        solution.resize(num_vertex);
-        for (int i = 0; i < num_vertex; i++)
-            solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
-
-        // allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
-        adj_color_table.resize(num_vertex);
-        tabu_tenure_table.resize(num_vertex);
-
-        for (int i = 0; i < num_vertex; i++)
-        {
-            adj_color_table[i].resize(num_color);
-            tabu_tenure_table[i].resize(num_color);
-        }
-
-        // allocate memory to equ_delta;
-        equal_nontabu_delta.resize(2000);
-        for(int i=0;i<2000;i++)
-        {
-            equal_nontabu_delta[i].resize(2);
-        }
-
-        // allocate memory to equ_tabu_delta;
-        equal_tabu_delta.resize(2000);
-        for(int i=0;i<2000;i++)
-        {
-            equal_tabu_delta[i].resize(2);
-        }
-
-        for (int i = 0; i < num_vertex; i++)
-        {
-            int num_edge = vertex_edge_num[i];
-            int this_vertex_color = solution[i];
-
-            for (int j = 0; j < num_edge; j++)
-            {
-                int adj_color = solution[adj_list[i][j]];
-
-                if (this_vertex_color == adj_color)
-                    conflict++;
-
-                adj_color_table[i][adj_color]++; // initialize adjacent color table;
-            }
-        }
-
-        // add edge information from dataset to class;
-        for (int i = 0;i < input_edge_num; i++)
-        {
-            int v1 = input_edges[i][0];
-            int v2 = input_edges[i][1];
-
-            adj_list[v1][vertex_edge_num[v1]] = v2;
-            vertex_edge_num[v1]++;
-
-            adj_list[v2][vertex_edge_num[v2]] = v1;
-            vertex_edge_num[v2]++;
-        }
-
-        // compute initial conflict;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            int num_edge = vertex_edge_num[i];
-            int this_vertex_color = solution[i];
-
-            for (int j = 0; j < num_edge; j++)
-            {
-                int adj_color = solution[adj_list[i][j]];
-
-                if (this_vertex_color == adj_color)
-                    conflict++;
-
-                adj_color_table[i][adj_color]++; // initialize adjacent color table;
-            }
-        }
-
-        conflict = conflict / 2;
-        best_conflict = conflict;
-        cerr << "initial number of confilcts:" << conflict << endl;
-
+        adj_list[i].resize(num_vertex);
+        vertex_edge_num[i] = 0;
     }
-    catch (const bad_alloc& e)
+
+    // allocate memory and initial value for solution (dim, num_vertex);
+    solution.resize(num_vertex);
+    for (int i = 0; i < num_vertex; i++)
+        solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
+
+    // allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
+    adj_color_table.resize(num_vertex);
+    tabu_tenure_table.resize(num_vertex);
+
+    for (int i = 0; i < num_vertex; i++)
     {
-        cerr << "初始化内存分配失败:" << endl;
+        adj_color_table[i].resize(num_color);
+        tabu_tenure_table[i].resize(num_color);
     }
+
+    // allocate memory to equ_delta;
+    equal_nontabu_delta.resize(2000);
+    for(int i=0;i<2000;i++)
+    {
+        equal_nontabu_delta[i].resize(2);
+    }
+
+    // allocate memory to equ_tabu_delta;
+    equal_tabu_delta.resize(2000);
+    for(int i=0;i<2000;i++)
+    {
+        equal_tabu_delta[i].resize(2);
+    }
+
+    for (int i = 0; i < num_vertex; i++)
+    {
+        int num_edge = vertex_edge_num[i];
+        int this_vertex_color = solution[i];
+
+        for (int j = 0; j < num_edge; j++)
+        {
+            int adj_color = solution[adj_list[i][j]];
+
+            if (this_vertex_color == adj_color)
+                conflict++;
+
+            adj_color_table[i][adj_color]++; // initialize adjacent color table;
+        }
+    }
+
+    // add edge information from dataset to class;
+    for (int i = 0;i < input_edge_num; i++)
+    {
+        int v1 = input_edges[i][0];
+        int v2 = input_edges[i][1];
+
+        adj_list[v1][vertex_edge_num[v1]] = v2;
+        vertex_edge_num[v1]++;
+
+        adj_list[v2][vertex_edge_num[v2]] = v1;
+        vertex_edge_num[v2]++;
+    }
+
+    // compute initial conflict;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        int num_edge = vertex_edge_num[i];
+        int this_vertex_color = solution[i];
+
+        for (int j = 0; j < num_edge; j++)
+        {
+            int adj_color = solution[adj_list[i][j]];
+
+            if (this_vertex_color == adj_color)
+                conflict++;
+
+            adj_color_table[i][adj_color]++; // initialize adjacent color table;
+        }
+    }
+
+    conflict = conflict / 2;
+    best_conflict = conflict;
+    cerr << "initial number of confilcts:" << conflict << endl;
+
 }
 
 // free the memory;

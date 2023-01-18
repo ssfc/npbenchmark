@@ -36,6 +36,10 @@ private:
     vector<vector<int>> equal_nontabu_delta; //非禁忌相同delta值
     vector<vector<int>> equal_tabu_delta; //禁忌相同delta值
 
+    // debug variables;
+    // int max_equal_nontabu_count;
+    // int max_equal_tabu_count;
+
 public:
     Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed);
     ~Graph();
