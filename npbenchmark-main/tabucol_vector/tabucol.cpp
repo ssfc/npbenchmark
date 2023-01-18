@@ -61,22 +61,6 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         equal_tabu_delta[i].resize(2);
     }
 
-    for (int i = 0; i < num_vertex; i++)
-    {
-        int num_edge = vertex_edge_num[i];
-        int this_vertex_color = solution[i];
-
-        for (int j = 0; j < num_edge; j++)
-        {
-            int adj_color = solution[adj_list[i][j]];
-
-            if (this_vertex_color == adj_color)
-                conflict++;
-
-            adj_color_table[i][adj_color]++; // initialize adjacent color table;
-        }
-    }
-
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)
     {
