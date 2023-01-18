@@ -54,6 +54,10 @@ namespace szx
             cerr << "success, iterations: " << test_iterations << " elapsed_time(s): " << elapsed_time
                  << " frequency:" << test_iterations / elapsed_time << endl;
 
+            // debug function:
+            cerr << "max equal nontabu count: " << test_graph.get_max_equal_nontabu_count() << endl;
+            cerr << "max equal tabu count: " << test_graph.get_max_equal_tabu_count() << endl;
+
             for (int i = 0;i < input.nodeNum;i++)
             {
                 output[i] = test_graph.get_solution(i);

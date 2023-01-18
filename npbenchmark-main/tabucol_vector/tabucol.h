@@ -37,8 +37,8 @@ private:
     vector<vector<int>> equal_tabu_delta; //禁忌相同delta值
 
     // debug variables;
-    // int max_equal_nontabu_count;
-    // int max_equal_tabu_count;
+    int max_equal_nontabu_count;
+    int max_equal_tabu_count;
 
 public:
     Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed);
@@ -50,6 +50,10 @@ public:
 
     void print_graph() const; // print adjacent list of graph;
     int get_solution(int i);
+
+    // debug function
+    int get_max_equal_nontabu_count();
+    int get_max_equal_tabu_count();
 };
 
 #endif //SDK_GCP_TABUCOL_H

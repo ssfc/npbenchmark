@@ -61,6 +61,9 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         equal_tabu_delta[i].resize(2);
     }
 
+    max_equal_nontabu_count = 0;
+    max_equal_tabu_count = 0;
+
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)
     {
@@ -157,6 +160,13 @@ void Graph::find_move()
 
                             equal_nontabu_count++;
                         }
+
+                        // debug part: estimate the size of max equal nontabu count;
+                        if(max_equal_nontabu_count < equal_nontabu_count)
+                        {
+                            max_equal_nontabu_count = equal_nontabu_count;
+                        }
+                        // debug part end;
                     }
                     else // tabu move;
                     {
@@ -178,6 +188,12 @@ void Graph::find_move()
                             equal_tabu_count++;
                         }
 
+                        // debug part: estimate the size of max equal tabu count;
+                        if(max_equal_tabu_count < equal_tabu_count)
+                        {
+                            max_equal_tabu_count = equal_tabu_count;
+                        }
+                        // debug part end;
                     }
                 }
             }
@@ -243,6 +259,19 @@ int Graph::get_solution(int i)
 {
     return solution[i];
 }
+
+// debug function:
+int Graph::get_max_equal_nontabu_count()
+{
+    return max_equal_nontabu_count;
+}
+
+// debug function:
+int Graph::get_max_equal_tabu_count()
+{
+    return max_equal_tabu_count;
+}
+
 
 // running command:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3; ./a.out 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
