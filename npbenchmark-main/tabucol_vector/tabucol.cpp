@@ -123,8 +123,8 @@ void Graph::print_graph() const
 // class: find best move (tabu or not tabu);
 void Graph::find_move()
 {
-    min_delta = INT_MAX;
-    int tabu_delta = INT_MAX;
+    min_delta = 999999;
+    int tabu_delta = 999999;
     int equal_nontabu_count = 0;
     int equal_tabu_count = 0;
 
