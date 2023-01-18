@@ -5,8 +5,8 @@
 #ifndef SDK_GCP_TABUCOL_H
 #define SDK_GCP_TABUCOL_H
 
-# include <array>
-# include <vector>
+#include <array>
+#include <vector>
 
 using namespace std;
 
