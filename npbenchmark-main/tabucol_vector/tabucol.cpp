@@ -286,4 +286,6 @@ int Graph::get_max_equal_tabu_count()
 // In shell:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3 -g; gdb a.out
 // In GDB:
-// r 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
+// r 999999 6 <./data/DSJC0250.9.txt > sln.0250.9.txt
+// r 999999 1 <./data/DSJC1000.1.txt > sln.1000.1.txt
+
