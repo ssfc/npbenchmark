@@ -249,6 +249,10 @@ int Graph::tabu_search()
     {
         iter++;
         // cerr << "iter: " << iter << endl;
+
+        if(iter == 2147483000)
+            cerr << "reaching int upper bound!"<<endl;
+
         find_move();
         make_move();
     }
