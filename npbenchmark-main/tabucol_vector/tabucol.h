@@ -25,13 +25,13 @@ private:
     int conflict;
     int best_conflict; // 历史最好的冲突值
 
-    vector<vector<int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
+    vector<vector<long long int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
     int node_moved; // 每次移动的结点
     int color_moved; //每次移动的颜色
-    int iter;
+    long long int iter;
 
     vector<vector<int>> equal_nontabu_delta; //非禁忌相同delta值
     vector<vector<int>> equal_tabu_delta; //禁忌相同delta值
@@ -46,7 +46,7 @@ public:
 
     void find_move();
     void make_move();
-    int tabu_search();
+    long long int tabu_search();
 
     void print_graph() const; // print adjacent list of graph;
     int get_solution(int i);

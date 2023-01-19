@@ -1,5 +1,5 @@
 //
-// Created by take_ on 2022/11/3.
+// Created by take_ on 2023年1月19日.
 //
 #include "tabucol.h"
 #include <climits>
@@ -242,7 +242,7 @@ void Graph::make_move()
 }
 
 // class: tabu search;
-int Graph::tabu_search()
+long long int Graph::tabu_search()
 {
     iter = 0;
     while (conflict > 0)
@@ -250,10 +250,12 @@ int Graph::tabu_search()
         iter++;
         // cerr << "iter: " << iter << endl;
 
+        /*
         if(iter == 2147483000)
         {
             cerr << "reaching int upper bound!"<<endl;
         }
+         */
         
         find_move();
         make_move();
