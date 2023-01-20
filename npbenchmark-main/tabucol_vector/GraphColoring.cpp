@@ -1,12 +1,10 @@
 #include "GraphColoring.h"
 #include "tabucol.h"
 
-#include <climits>
-#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <random>
-#include <vector>
+
 
 using namespace std;
 
