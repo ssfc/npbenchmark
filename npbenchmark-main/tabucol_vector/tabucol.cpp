@@ -263,6 +263,8 @@ long long int Graph::tabu_search()
         make_move();
     }
 
+    end_time = clock();
+
     return iter;
 }
 
@@ -288,6 +290,12 @@ int Graph::get_max_equal_tabu_count()
 double Graph::get_start_time()
 {
     return start_time;
+}
+
+// debug function:
+double Graph::get_end_time()
+{
+    return end_time;
 }
 
 // running command:
