@@ -267,7 +267,7 @@ void Graph::tabu_search()
 
     double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
     cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-         << " frequency:" << iter / elapsed_time << endl;
+         << " frequency:" << double (iter) / elapsed_time << endl;
 
     // debug function:
     cerr << "max equal nontabu count: " << get_max_equal_nontabu_count() << endl;
