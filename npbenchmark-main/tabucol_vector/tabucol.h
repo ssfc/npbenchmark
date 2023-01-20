@@ -49,7 +49,7 @@ public:
 
     void find_move();
     void make_move();
-    long long int tabu_search();
+    void tabu_search();
 
     void print_graph() const; // print adjacent list of graph;
     int get_solution(int i);
@@ -57,8 +57,6 @@ public:
     // debug function
     int get_max_equal_nontabu_count();
     int get_max_equal_tabu_count();
-    double get_start_time();
-    double get_end_time();
 };
 
 #endif //SDK_GCP_TABUCOL_H

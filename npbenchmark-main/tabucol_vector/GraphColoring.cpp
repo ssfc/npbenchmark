@@ -45,15 +45,7 @@ namespace szx
             // cerr << "Finish creating graph." << endl;
             // test.print_graph();
 
-            unsigned int test_iterations = test_graph.tabu_search();
-
-            double elapsed_time = (test_graph.get_end_time() - test_graph.get_start_time()) / CLOCKS_PER_SEC;
-            cerr << "success, iterations: " << test_iterations << " elapsed_time(s): " << elapsed_time
-                 << " frequency:" << test_iterations / elapsed_time << endl;
-
-            // debug function:
-            cerr << "max equal nontabu count: " << test_graph.get_max_equal_nontabu_count() << endl;
-            cerr << "max equal tabu count: " << test_graph.get_max_equal_tabu_count() << endl;
+            test_graph.tabu_search();
 
             for (int i = 0;i < input.nodeNum;i++)
             {

@@ -242,7 +242,7 @@ void Graph::make_move()
 }
 
 // class: tabu search;
-long long int Graph::tabu_search()
+void Graph::tabu_search()
 {
     iter = 0;
     start_time = clock();
@@ -265,7 +265,13 @@ long long int Graph::tabu_search()
 
     end_time = clock();
 
-    return iter;
+    double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+    cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+         << " frequency:" << iter / elapsed_time << endl;
+
+    // debug function:
+    cerr << "max equal nontabu count: " << get_max_equal_nontabu_count() << endl;
+    cerr << "max equal tabu count: " << get_max_equal_tabu_count() << endl;
 }
 
 // get solution;
@@ -286,17 +292,6 @@ int Graph::get_max_equal_tabu_count()
     return max_equal_tabu_count;
 }
 
-// debug function:
-double Graph::get_start_time()
-{
-    return start_time;
-}
-
-// debug function:
-double Graph::get_end_time()
-{
-    return end_time;
-}
 
 // running command:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3; ./a.out 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
