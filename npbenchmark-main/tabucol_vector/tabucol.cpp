@@ -256,7 +256,7 @@ void Graph::tabu_search()
         {
             cerr << "Iteration: " << iter << " ";
             double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-            cerr << " elapsed_time(s): " << elapsed_time
+            cerr << " elapsed time(s): " << elapsed_time
                  << " frequency:" << double (iter) / elapsed_time << endl;
         }
 
