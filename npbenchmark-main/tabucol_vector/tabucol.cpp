@@ -252,7 +252,6 @@ void Graph::tabu_search()
         iter++;
         // cerr << "iter: " << iter << endl;
 
-
         if(iter % 1000000 == 0)
         {
             cerr << "Iteration: " << iter << " ";
@@ -261,7 +260,6 @@ void Graph::tabu_search()
                  << " frequency:" << double (iter) / elapsed_time << endl;
         }
 
-        
         find_move();
         make_move();
     }
