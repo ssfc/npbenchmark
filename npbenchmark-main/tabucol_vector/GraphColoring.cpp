@@ -45,12 +45,10 @@ namespace szx
             // cerr << "Finish creating graph." << endl;
             // test.print_graph();
 
-            double start_time = clock();
-
             unsigned int test_iterations = test_graph.tabu_search();
 
             double end_time = clock();
-            double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+            double elapsed_time = (end_time - test_graph.get_start_time()) / CLOCKS_PER_SEC;
             cerr << "success, iterations: " << test_iterations << " elapsed_time(s): " << elapsed_time
                  << " frequency:" << test_iterations / elapsed_time << endl;
 

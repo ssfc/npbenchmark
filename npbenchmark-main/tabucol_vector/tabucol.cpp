@@ -245,17 +245,19 @@ void Graph::make_move()
 long long int Graph::tabu_search()
 {
     iter = 0;
+    start_time = clock();
+
     while (conflict > 0)
     {
         iter++;
         // cerr << "iter: " << iter << endl;
 
-        /*
-        if(iter == 2147483000)
+
+        if(iter % 1000000 == 0)
         {
-            cerr << "reaching int upper bound!"<<endl;
+            cerr << "Iteration: " << iter << endl;
         }
-         */
+
         
         find_move();
         make_move();
@@ -282,6 +284,11 @@ int Graph::get_max_equal_tabu_count()
     return max_equal_tabu_count;
 }
 
+// debug function:
+double Graph::get_start_time()
+{
+    return start_time;
+}
 
 // running command:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3; ./a.out 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt

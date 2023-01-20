@@ -6,6 +6,7 @@
 #define SDK_GCP_TABUCOL_H
 
 #include <array>
+#include <ctime>
 #include <vector>
 
 using namespace std;
@@ -39,6 +40,7 @@ private:
     // debug variables;
     int max_equal_nontabu_count;
     int max_equal_tabu_count;
+    double start_time;
 
 public:
     Graph(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int seed);
@@ -54,6 +56,7 @@ public:
     // debug function
     int get_max_equal_nontabu_count();
     int get_max_equal_tabu_count();
+    double get_start_time();
 };
 
 #endif //SDK_GCP_TABUCOL_H
