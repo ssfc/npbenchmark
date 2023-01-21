@@ -55,8 +55,8 @@ public:
     int get_solution(int i);
 
     // debug function
-    int get_max_equal_nontabu_count();
-    int get_max_equal_tabu_count();
+    int get_max_equal_nontabu_count() const;
+    int get_max_equal_tabu_count() const;
 };
 
 #endif //SDK_GCP_TABUCOL_H

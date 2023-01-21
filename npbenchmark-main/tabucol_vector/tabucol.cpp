@@ -282,13 +282,13 @@ int Graph::get_solution(int i)
 }
 
 // debug function:
-int Graph::get_max_equal_nontabu_count()
+int Graph::get_max_equal_nontabu_count() const
 {
     return max_equal_nontabu_count;
 }
 
 // debug function:
-int Graph::get_max_equal_tabu_count()
+int Graph::get_max_equal_tabu_count() const
 {
     return max_equal_tabu_count;
 }
