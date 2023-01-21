@@ -102,9 +102,7 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 
 // free the memory;
 Graph::~Graph()
-{
-
-}
+= default;
 
 // class: print adjacency list of graph;
 void Graph::print_graph() const
