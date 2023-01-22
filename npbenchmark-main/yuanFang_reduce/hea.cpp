@@ -1,12 +1,8 @@
 //
 // Created by take_ on 2023/1/23.
-//
-
-//
-// Created by take_ on 2022/12/30.
-//
 // hea_vs.cpp : 定义控制台应用程序的入口点。
 //
+
 
 #include "hea.h"
 

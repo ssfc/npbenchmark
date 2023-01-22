@@ -60,7 +60,7 @@ public:
 class Hybrid_Evolution
 {
 private:
-    int iter;
+    long long int iter;
 
 public:
     // variables;
