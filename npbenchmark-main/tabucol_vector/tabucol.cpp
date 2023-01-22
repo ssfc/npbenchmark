@@ -33,9 +33,9 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     }
 
     // allocate memory and initial value for solution (dim, num_vertex);
-    solution.resize(num_vertex);
+    single_solution.resize(num_vertex);
     for (int i = 0; i < num_vertex; i++)
-        solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
+        single_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
     // allocate memory to conflict color table (num_vertex * num_color) and tenure vertex color (num_vertex * num_color);
     adj_color_table.resize(num_vertex);
@@ -81,11 +81,11 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        int this_vertex_color = solution[i];
+        int this_vertex_color = single_solution[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            int adj_color = solution[adj_list[i][j]];
+            int adj_color = single_solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -130,7 +130,7 @@ void Graph::find_move()
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        int solution_i = solution[i]; // solution_i is color;
+        int solution_i = single_solution[i]; // solution_i is color;
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -225,8 +225,8 @@ void Graph::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    int old_color = solution[node_moved];
-    solution[node_moved] = color_moved;
+    int old_color = single_solution[node_moved];
+    single_solution[node_moved] = color_moved;
     tabu_tenure_table[node_moved][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
@@ -276,7 +276,7 @@ void Graph::tabu_search()
 // get solution;
 int Graph::get_solution(int i)
 {
-    return solution[i];
+    return single_solution[i];
 }
 
 // debug function:

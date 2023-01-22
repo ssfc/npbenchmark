@@ -22,7 +22,7 @@ private:
 
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
-    vector<int> solution; // color of each vertex; dimension, num_vertex;
+    vector<int> single_solution; // color of each vertex; dimension, num_vertex;
     int conflict;
     int best_conflict; // 历史最好的冲突值
 
