@@ -69,7 +69,7 @@ public:
 
     vector<VerNode> adj_list;
     vector<vector<int> > adj_color_table;
-    vector<vector<int> > tabu_tenure_table;
+    vector<vector<long long int> > tabu_tenure_table;
 
     int best_conflict;
     int f;
@@ -81,7 +81,7 @@ public:
     int **solution_collection;
     vector<Population_solution> population_solution;
 
-    int max_iter;
+    long long int max_iter;
 
 
     // functions

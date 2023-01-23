@@ -456,7 +456,7 @@ int main(int argc, char *argv[])
 
     Population_solution temps;
 
-    int population_iteration = 0;
+    long long int population_iteration = 0;
     while (population.min_conflict != 0)
     {
         // random select two index from population as parents;
@@ -525,7 +525,7 @@ int main(int argc, char *argv[])
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9d %-15lf %-7d\n", argv[1], test.num_color, elapsed_time , test.max_iter);
+        fprintf(fp, "%s %-9d %-15lf %-7lld\n", argv[1], test.num_color, elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
         for(i=1;i<=test.num_vertex;i++)
