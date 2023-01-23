@@ -442,6 +442,7 @@ int main(int argc, char *argv[])
     }
 
 
+    /* to reduce
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
 
@@ -459,7 +460,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    /* to reduce
+
     Population_solution temps;
 
     long long int population_iteration = 0;
