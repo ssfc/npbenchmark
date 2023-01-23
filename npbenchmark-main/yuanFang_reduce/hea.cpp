@@ -35,11 +35,13 @@ Population::~Population()
 }
 
 
-Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population)
+Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed)
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     num_population = input_num_population;
+
+    srand(input_seed);
 
     iter = 0;
     conflict_num = 0;
@@ -389,9 +391,8 @@ int main(int argc, char *argv[])
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
 
     int rand_seed = atoi(argv[2]);
-    srand(rand_seed);
 
-    Hybrid_Evolution test(input_num_vertex, input_num_color, num_population);
+    Hybrid_Evolution test(input_num_vertex, input_num_color, num_population, rand_seed);
 
     memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
 

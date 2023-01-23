@@ -86,7 +86,7 @@ public:
 
 
     // functions
-    Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population);
+    Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
     ~Hybrid_Evolution();
 
     void insert_adj_list(int i, int j);
