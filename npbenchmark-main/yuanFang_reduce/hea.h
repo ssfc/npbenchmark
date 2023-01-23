@@ -92,7 +92,7 @@ public:
     void add_conflict(int adj_vertex);
     void delete_conflict(int adj_vertex);
 
-    int tabu_search(int *solution);
+    void tabu_search(int *solution);
     Move find_move(const int *s);
     void make_move(int u, int vj, int *solution);
 

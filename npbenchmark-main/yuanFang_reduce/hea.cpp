@@ -92,7 +92,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-int Hybrid_Evolution::tabu_search(int *solution)
+void Hybrid_Evolution::tabu_search(int *solution)
 {
     bool is_conflict;
     //cerr <<endl;
@@ -130,11 +130,6 @@ int Hybrid_Evolution::tabu_search(int *solution)
         make_move(my_move.u, my_move.vj, solution);
         iter++;
     }
-
-    if (iter == max_iter)
-        return 0;
-
-    return 1;
 }
 
 
