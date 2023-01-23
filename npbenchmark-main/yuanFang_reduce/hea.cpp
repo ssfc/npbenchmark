@@ -353,7 +353,7 @@ int Hybrid_Evolution::compute_conflict(const int *solution)
             {
                 this_conflict++;
             }
-            
+
             temp = temp->next;
         }
     }
@@ -422,8 +422,9 @@ int main(int argc, char *argv[])
         }
 
         // do tabu-search for each population in the collection;
-        // cerr << "Compute conflict is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+        cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
         test.tabu_search(test.solution_collection[p]);
+        cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
         population.num_conflict[p] = test.f;
 
