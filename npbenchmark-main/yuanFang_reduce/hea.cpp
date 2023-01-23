@@ -373,7 +373,9 @@ int main(int argc, char *argv[])
     int i, j, p;
     char file[100];
     FILE *fp;
-    srand(6);
+
+    int rand_seed = atoi(argv[2]);
+    srand(rand_seed);
 
     sprintf(file, "./data/%s", argv[3]);
 
