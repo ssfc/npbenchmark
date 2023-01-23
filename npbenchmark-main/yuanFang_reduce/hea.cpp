@@ -369,7 +369,7 @@ argv[3]:文件名
 */
 int main(int argc, char *argv[])
 {
-    int num_population = 20;
+    int num_population = 1;
     Population population(num_population);
 
     int i, j, p;
@@ -426,6 +426,7 @@ int main(int argc, char *argv[])
         test.tabu_search(test.solution_collection[p]);
         cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
+        /* to reduce
         population.num_conflict[p] = test.f;
 
         // record the min conflict up till now;
@@ -437,10 +438,10 @@ int main(int argc, char *argv[])
 
         if (test.f == 0)
             break;
+            */
     }
 
 
-    /*
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
 
@@ -458,7 +459,7 @@ int main(int argc, char *argv[])
         }
     }
 
-
+    /* to reduce
     Population_solution temps;
 
     long long int population_iteration = 0;
