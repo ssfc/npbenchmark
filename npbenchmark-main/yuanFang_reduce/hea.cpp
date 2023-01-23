@@ -440,6 +440,7 @@ int main(int argc, char *argv[])
     }
 
 
+    /*
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
 
@@ -547,6 +548,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
+        */
 
 
     return 0;
