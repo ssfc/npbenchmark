@@ -40,7 +40,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     num_population = input_num_population;
-    
+
     init_rand(input_seed);
 
     iter = 0;
@@ -353,7 +353,7 @@ int Hybrid_Evolution::compute_conflict(const int *solution)
             {
                 this_conflict++;
             }
-            adj_color_table[i][solution[temp->adj_vertex]]++;
+            
             temp = temp->next;
         }
     }
@@ -422,7 +422,7 @@ int main(int argc, char *argv[])
         }
 
         // do tabu-search for each population in the collection;
-        // cerr << "Compute conflict is: " << compute_conflict(solution_collection[p]) << endl;
+        // cerr << "Compute conflict is: " << test.compute_conflict(test.solution_collection[p]) << endl;
         test.tabu_search(test.solution_collection[p]);
 
         population.num_conflict[p] = test.f;
@@ -437,6 +437,7 @@ int main(int argc, char *argv[])
         if (test.f == 0)
             break;
     }
+
 
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
@@ -454,6 +455,7 @@ int main(int argc, char *argv[])
             test.population_solution[p].color_num[color] = color_num;
         }
     }
+
 
     Population_solution temps;
 
@@ -516,6 +518,7 @@ int main(int argc, char *argv[])
         population_iteration++;
     }
 
+
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
     cerr << "Population iteration: " << population_iteration << endl;
@@ -543,6 +546,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
+
 
     return 0;
 }
