@@ -408,17 +408,21 @@ int main(int argc, char *argv[])
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
+    int *temp_solution = new int [test.num_vertex+1];
+
     // initialization: set random solution to each solution in the population;
     for (i = 1; i <= test.num_vertex; i++)
     {
-        test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
+        temp_solution[i] = pseudoRandNumGen() % test.num_color;
         //cerr << solution[i] <<' ';
     }
 
     // do tabu-search for each population in the collection;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
-    test.tabu_search(test.solution_collection[p]);
-    cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    test.tabu_search(temp_solution);
+    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
+
+    delete []temp_solution;
 
 
     /* to reduce
