@@ -104,4 +104,4 @@ public:
 };
 
 
-#endif //YUANFANG1_GCP_HEA_H
+#endif //YUANFANG_REDUCE_HEA_H
