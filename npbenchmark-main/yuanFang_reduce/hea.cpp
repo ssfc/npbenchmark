@@ -41,7 +41,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_color = input_num_color;
     num_population = input_num_population;
 
-    srand(input_seed);
+    // srand(input_seed);
+    init_rand(input_seed);
 
     iter = 0;
     conflict_num = 0;
@@ -207,7 +208,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
         f = temp1;
         best_conflict = temp1;
 
-        int index = rand() % tabu_count;
+        int index = pseudoRandNumGen() % tabu_count;
         res = tabu_move[index];
     }
     else
@@ -215,7 +216,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
         if (temp2 < best_conflict)
             best_conflict = temp2;
         f = temp2;
-        int index = rand() % non_tabu_count;
+        int index = pseudoRandNumGen() % non_tabu_count;
         res = non_tabu_move[index];
     }
 
@@ -227,7 +228,7 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 {
     int vi = solution[u];
     solution[u] = vj;
-    tabu_tenure_table[u][vi] = f + iter + rand() % 10 + 1;
+    tabu_tenure_table[u][vi] = f + iter + pseudoRandNumGen() % 10 + 1;
     ArcNode *temp = adj_list[u].first;
 
     while (temp)
@@ -332,7 +333,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
-            int color = rand() % num_color;//随机分配到某一种颜色中去
+            int color = pseudoRandNumGen() % num_color;//随机分配到某一种颜色中去
             index1[point] = color;
         }
     }
@@ -417,7 +418,7 @@ int main(int argc, char *argv[])
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
         {
-            test.solution_collection[p][i] = rand() % test.num_color;
+            test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
             //cerr << solution[i] <<' ';
         }
 
@@ -461,11 +462,11 @@ int main(int argc, char *argv[])
     while (population.min_conflict != 0)
     {
         // random select two index from population as parents;
-        int p1 = rand() % num_population, p2;
+        int p1 = pseudoRandNumGen() % num_population, p2;
 
         do
         {
-            p2 = rand() % num_population;
+            p2 = pseudoRandNumGen() % num_population;
         } while (p1 == p2);
 
         memset(&temps, 0, sizeof(temps));
