@@ -40,8 +40,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     num_population = input_num_population;
-
-    // srand(input_seed);
+    
     init_rand(input_seed);
 
     iter = 0;
