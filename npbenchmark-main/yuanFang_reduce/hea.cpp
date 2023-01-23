@@ -374,9 +374,6 @@ int main(int argc, char *argv[])
     char file[100];
     FILE *fp;
 
-    int rand_seed = atoi(argv[2]);
-    srand(rand_seed);
-
     sprintf(file, "./data/%s", argv[3]);
 
     if ((fp = fopen(file, "r")) == nullptr)
@@ -390,6 +387,10 @@ int main(int argc, char *argv[])
     int input_num_color;
 
     fscanf(fp, "%d %d %d\n", &input_num_vertex, &num_edge, &input_num_color);
+
+    int rand_seed = atoi(argv[2]);
+    srand(rand_seed);
+
     Hybrid_Evolution test(input_num_vertex, input_num_color, num_population);
 
     memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
