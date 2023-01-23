@@ -13,6 +13,7 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <random>
 #include <vector>
 
 using namespace std;

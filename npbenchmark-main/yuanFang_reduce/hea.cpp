@@ -9,6 +9,10 @@
 using namespace std;
 
 
+// random number generator.
+mt19937 pseudoRandNumGen;
+void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
+
 
 Population_solution::Population_solution()
 {}
@@ -359,7 +363,7 @@ int Hybrid_Evolution::compute_conflict(const int *solution)
 
 
 /*
-argv[1]:文件名
+argv[3]:文件名
 */
 int main(int argc, char *argv[])
 {
@@ -371,7 +375,7 @@ int main(int argc, char *argv[])
     FILE *fp;
     srand(6);
 
-    sprintf(file, "./data/%s", argv[1]);
+    sprintf(file, "./data/%s", argv[3]);
 
     if ((fp = fopen(file, "r")) == nullptr)
     {
@@ -518,7 +522,7 @@ int main(int argc, char *argv[])
         fp = fopen("result.txt", "a+");
         if (fp == nullptr)
             printf("output file open error\n");
-        fprintf(fp, "%s %-9d %-15lf %-7lld\n", argv[1], test.num_color, elapsed_time , test.max_iter);
+        fprintf(fp, "%s %-9d %-15lf %-7lld\n", argv[3], test.num_color, elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
         for(i=1;i<=test.num_vertex;i++)
