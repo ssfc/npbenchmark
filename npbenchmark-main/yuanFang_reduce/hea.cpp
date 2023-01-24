@@ -429,9 +429,10 @@ int main(int argc, char *argv[])
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
+        /* to reduce
         test.f = 0;
         test.best_conflict = 0;
-        test.conflict_num = 0;
+        test.conflict_num = 0;*/
 
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
