@@ -101,6 +101,7 @@ public:
 
     // debug function: compute conflict of a solution
     int compute_conflict(const int *solution);
+    long long int get_iteration();
 };
 
 

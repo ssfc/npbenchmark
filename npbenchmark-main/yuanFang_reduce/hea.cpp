@@ -368,6 +368,13 @@ int Hybrid_Evolution::compute_conflict(const int *solution)
 }
 
 
+// debug function
+long long int Hybrid_Evolution::get_iteration()
+{
+    return iter;
+}
+
+
 /*
 argv[3]:文件名
 */
@@ -407,7 +414,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(j+1, i+1);
     }
 
-    
+
     int *temp_solution = new int [test.num_vertex + 1];
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -422,8 +429,10 @@ int main(int argc, char *argv[])
 
     // do tabu-search for each population in the collection;
     cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    cerr << "iterations: " << test.get_iteration() << endl;
     test.tabu_search(temp_solution);
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    cerr << "iterations: " << test.get_iteration() << endl;
 
 
     /*// to reduce
