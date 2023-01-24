@@ -52,21 +52,21 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_color_table.resize(MaxPoint);
     for(int i=0;i<MaxPoint;i++)
     {
-        adj_color_table[i].resize(MaxPoint);
+        adj_color_table[i].resize(MaxPoint, 0);
     }
 
     tabu_tenure_table.resize(MaxPoint);
     for(int i=0;i<MaxPoint;i++)
     {
-        tabu_tenure_table[i].resize(MaxPoint);
+        tabu_tenure_table[i].resize(MaxPoint, 0);
     }
 
     best_conflict = 0;
     f = 0;
     conflict_num = 0;
 
-    conflicts.resize(MaxPoint);
-    conflict_index.resize(MaxPoint);
+    conflicts.resize(MaxPoint, 0);
+    conflict_index.resize(MaxPoint, 0);
 
     population_solution.resize(num_population);
 
