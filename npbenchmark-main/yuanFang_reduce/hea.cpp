@@ -407,7 +407,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(j+1, i+1);
     }
 
-/*
+
     p = 0;
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -424,26 +424,18 @@ int main(int argc, char *argv[])
     cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
     test.tabu_search(test.solution_collection[p]);
     cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
-*/
 
 
+    /*// to reduce
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
-        /*// to reduce
         test.f = 0;
         test.best_conflict = 0;
         test.conflict_num = 0;
-         */// to reduce
-
-        /*// to debug
-        cerr << "test.f: " << test.f << endl;
-        cerr << "test.best_conflict: " << test.best_conflict << endl;
-        cerr << "test.conflict_num: " << test.conflict_num << endl;
-         */// to debug
 
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
@@ -457,7 +449,6 @@ int main(int argc, char *argv[])
         test.tabu_search(test.solution_collection[p]);
         cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-        /* to reduce
         population.num_conflict[p] = test.f;
 
         // record the min conflict up till now;
@@ -469,10 +460,8 @@ int main(int argc, char *argv[])
 
         if (test.f == 0)
             break;
-            */
-    }
 
-    /* to reduce
+    }
 
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
     double start_time = clock();
