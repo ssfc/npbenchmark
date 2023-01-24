@@ -434,6 +434,10 @@ int main(int argc, char *argv[])
         test.best_conflict = 0;
         test.conflict_num = 0;*/
 
+        cerr << "test.f: " << test.f << endl;
+        cerr << "test.best_conflict: " << test.best_conflict << endl;
+        cerr << "test.conflict_num: " << test.conflict_num << endl;
+
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
         {
