@@ -61,6 +61,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
         tabu_tenure_table[i].resize(MaxPoint);
     }
 
+    best_conflict = 0;
+    f = 0;
+    conflict_num = 0;
+
     conflicts.resize(MaxPoint);
     conflict_index.resize(MaxPoint);
 
@@ -429,14 +433,16 @@ int main(int argc, char *argv[])
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
-        /* to reduce
+        /*// to reduce
         test.f = 0;
         test.best_conflict = 0;
-        test.conflict_num = 0;*/
+        test.conflict_num = 0;*/// to reduce
 
+        /*// to debug
         cerr << "test.f: " << test.f << endl;
         cerr << "test.best_conflict: " << test.best_conflict << endl;
         cerr << "test.conflict_num: " << test.conflict_num << endl;
+         */// to debug
 
         // initialization: set random solution to each solution in the population;
         for (i = 1; i <= test.num_vertex; i++)
