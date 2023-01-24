@@ -409,6 +409,7 @@ int main(int argc, char *argv[])
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
     int *temp_solution = new int [test.num_vertex+1];
+    // memset(temp_solution, 0, sizeof(int)*(test.num_vertex+1));
 
     // initialization: set random solution to each solution in the population;
     for (i = 1; i <= test.num_vertex; i++)

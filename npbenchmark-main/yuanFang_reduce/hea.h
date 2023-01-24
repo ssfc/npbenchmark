@@ -79,7 +79,7 @@ public:
     vector<int> conflict_index;
 
     int num_population;
-    int **solution_collection;
+    int **solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
 
     long long int max_iter;
