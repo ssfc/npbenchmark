@@ -436,7 +436,8 @@ int main(int argc, char *argv[])
         /*// to reduce
         test.f = 0;
         test.best_conflict = 0;
-        test.conflict_num = 0;*/// to reduce
+        test.conflict_num = 0;
+         */// to reduce
 
         /*// to debug
         cerr << "test.f: " << test.f << endl;
