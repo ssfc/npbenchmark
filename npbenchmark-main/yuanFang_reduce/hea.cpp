@@ -114,6 +114,7 @@ void Hybrid_Evolution::tabu_search(int *solution)
                 is_conflict = true;
                 f++;
             }
+
             adj_color_table[i][solution[temp->adj_vertex]]++;
             temp = temp->next;
         }
