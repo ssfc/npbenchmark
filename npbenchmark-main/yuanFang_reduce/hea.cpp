@@ -134,11 +134,14 @@ void Hybrid_Evolution::tabu_search(int *solution, bool is_limit)
     best_conflict = conflict;
     iter = 0;
 
-    while (iter < max_iter && conflict > 0)
+    if(is_limit)
     {
-        Move my_move = find_move(solution);
-        make_move(my_move.u, my_move.vj, solution);
-        iter++;
+        while (iter < max_iter && conflict > 0)
+        {
+            Move my_move = find_move(solution);
+            make_move(my_move.u, my_move.vj, solution);
+            iter++;
+        }
     }
 }
 
