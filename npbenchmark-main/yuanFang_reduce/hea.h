@@ -73,7 +73,7 @@ public:
     vector<vector<long long int> > tabu_tenure_table;
 
     int best_conflict;
-    int f;
+    int conflict;
     int conflict_num;
     vector<int> conflicts;
     vector<int> conflict_index;

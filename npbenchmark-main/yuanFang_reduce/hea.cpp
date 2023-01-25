@@ -62,7 +62,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     }
 
     best_conflict = 0;
-    f = 0;
+    conflict = 0;
     conflict_num = 0;
 
     conflicts.resize(MaxPoint, 0);
@@ -116,7 +116,7 @@ void Hybrid_Evolution::tabu_search(int *solution)
             if (solution[temp->adj_vertex] == solution[i])
             {
                 is_conflict = true;
-                f++;
+                conflict++;
             }
             adj_color_table[i][solution[temp->adj_vertex]]++;
             temp = temp->next;
@@ -129,12 +129,12 @@ void Hybrid_Evolution::tabu_search(int *solution)
         }
     }
 
-    f = f / 2;
-    cerr <<"initial_f = "<<f<<endl;
-    best_conflict = f;
+    conflict = conflict / 2;
+    cerr << "initial_f = " << conflict <<endl;
+    best_conflict = conflict;
     iter = 0;
 
-    while (iter < max_iter  && f > 0)
+    while (iter < max_iter  && conflict > 0)
     {
         Move my_move = find_move(solution);
         make_move(my_move.u, my_move.vj, solution);
@@ -201,14 +201,14 @@ Move Hybrid_Evolution::find_move(const int *solution)
         }
     }
 
-    int temp1 = f + tabu_move_delta;
-    int temp2 = f + non_tabu_move_delta;
+    int temp1 = conflict + tabu_move_delta;
+    int temp2 = conflict + non_tabu_move_delta;
 
     Move res;
 
     if (temp1<best_conflict && temp1<temp2)
     {
-        f = temp1;
+        conflict = temp1;
         best_conflict = temp1;
 
         int index = pseudoRandNumGen() % tabu_count;
@@ -218,7 +218,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
     {
         if (temp2 < best_conflict)
             best_conflict = temp2;
-        f = temp2;
+        conflict = temp2;
         int index = pseudoRandNumGen() % non_tabu_count;
         res = non_tabu_move[index];
     }
@@ -231,7 +231,7 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 {
     int vi = solution[u];
     solution[u] = vj;
-    tabu_tenure_table[u][vi] = f + iter + pseudoRandNumGen() % 10 + 1;
+    tabu_tenure_table[u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
     ArcNode *temp = adj_list[u].first;
 
     while (temp)
@@ -456,7 +456,7 @@ int main(int argc, char *argv[])
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
-        test.f = 0;
+        test.conflict = 0;
         test.best_conflict = 0;
         test.conflict_num = 0;
 
@@ -472,16 +472,16 @@ int main(int argc, char *argv[])
         test.tabu_search(test.solution_collection[p]);
         // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-        population.num_conflict[p] = test.f;
+        population.num_conflict[p] = test.conflict;
 
         // record the min conflict up till now;
-        if (test.f < population.min_conflict)
+        if (test.conflict < population.min_conflict)
         {
-            population.min_conflict = test.f;
+            population.min_conflict = test.conflict;
             population.min_conflict_index = p;
         }
 
-        if (test.f == 0)
+        if (test.conflict == 0)
             break;
 
     }
@@ -525,7 +525,7 @@ int main(int argc, char *argv[])
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
-        test.f = 0;
+        test.conflict = 0;
         test.best_conflict = 0;
         test.conflict_num = 0;
 
@@ -552,11 +552,11 @@ int main(int argc, char *argv[])
         }
 
         test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
-        population.num_conflict[max_conflict_index] = test.f;
+        population.num_conflict[max_conflict_index] = test.conflict;
 
-        if (test.f < population.min_conflict)
+        if (test.conflict < population.min_conflict)
         {
-            population.min_conflict = test.f;
+            population.min_conflict = test.conflict;
             population.min_conflict_index = max_conflict_index;
         }
 
