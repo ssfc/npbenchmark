@@ -321,11 +321,11 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
             index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
             int color = s[B].index1[point];//在B中删除这个点
-            int index2 = s[B].index2[point];
+            int index2 = s[B].index2s[point];
 
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
             int t = s[B].psol[color][index2];
-            s[B].index2[t] = index2;
+            s[B].index2s[t] = index2;
         }
 
         //删除这些点
@@ -501,7 +501,7 @@ int main(int argc, char *argv[])
             int color_num = test.population_solution[p].color_num[color];
 
             test.population_solution[p].psol[color][color_num] = i;
-            test.population_solution[p].index2[i] = color_num++;
+            test.population_solution[p].index2s[i] = color_num++;
             test.population_solution[p].color_num[color] = color_num;
         }
     }
@@ -539,7 +539,7 @@ int main(int argc, char *argv[])
             int color = temps.index1[i];
             int color_num = temps.color_num[color];
             temps.psol[color][color_num] = i;
-            temps.index2[i] = color_num;
+            temps.index2s[i] = color_num;
             temps.color_num[color] = ++color_num;
         }
 

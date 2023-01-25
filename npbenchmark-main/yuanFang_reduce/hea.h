@@ -41,7 +41,7 @@ public:
     int psol[MaxColor][MaxPoint];
     int color_num[MaxColor];
     int index1[MaxPoint];
-    int index2[MaxPoint];
+    int index2s[MaxPoint];
 
     Population_solution();
     ~Population_solution();
