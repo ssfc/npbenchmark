@@ -90,12 +90,12 @@ public:
     ~Hybrid_Evolution();
 
     void insert_adj_list(int i, int j);
-    void add_conflict(int adj_vertex);
-    void delete_conflict(int adj_vertex);
 
     void tabu_search(int *solution);
     Move find_move(const int *s);
     void make_move(int u, int vj, int *solution);
+    void add_conflict(int adj_vertex); // only used in make_move;
+    void delete_conflict(int adj_vertex); // only used in make_move;
 
     void cross_over(int p1, int p2, int *index1) const;
 
