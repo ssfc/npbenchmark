@@ -134,7 +134,7 @@ void Hybrid_Evolution::tabu_search(int *solution)
     best_conflict = f;
     iter = 0;
 
-    while (f > 0)
+    while (iter < max_iter  && f > 0)
     {
         Move my_move = find_move(solution);
         make_move(my_move.u, my_move.vj, solution);
@@ -382,7 +382,7 @@ long long int Hybrid_Evolution::get_iteration() const
 */
 int main(int argc, char *argv[])
 {
-    int num_population = 1;
+    int num_population = 20;
     Population population(num_population);
 
     int i, j, p;
@@ -416,7 +416,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(j+1, i+1);
     }
 
-
+    /*// to debug
     int *temp_solution = new int [test.num_vertex + 1];
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -446,9 +446,10 @@ int main(int argc, char *argv[])
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
+     */
 
 
-    /*// to reduce
+    ///*// to reduce
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
@@ -467,9 +468,9 @@ int main(int argc, char *argv[])
         }
 
         // do tabu-search for each population in the collection;
-        cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+        // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
         test.tabu_search(test.solution_collection[p]);
-        cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+        // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
         population.num_conflict[p] = test.f;
 
@@ -592,7 +593,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
-        */
+        //*/ to reduce
 
 
     return 0;
