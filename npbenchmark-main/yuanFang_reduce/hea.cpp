@@ -429,7 +429,7 @@ int main(int argc, char *argv[])
 
     // do tabu-search for each population in the collection;
     cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
-    cerr << "iterations: " << test.get_iteration() << endl;
+    // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
 
@@ -437,10 +437,13 @@ int main(int argc, char *argv[])
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cerr << "elapsed time(s): " << elapsed_time << endl;
+    // cerr << "elapsed time(s): " << elapsed_time << endl;
+
+    cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
+         << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
-    cerr << "iterations: " << test.get_iteration() << endl;
+    // cerr << "iterations: " << test.get_iteration() << endl;
 
 
     /*// to reduce
