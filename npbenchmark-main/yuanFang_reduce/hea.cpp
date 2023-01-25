@@ -102,7 +102,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-void Hybrid_Evolution::tabu_search(int *solution)
+void Hybrid_Evolution::tabu_search(int *solution, bool is_limit)
 {
     bool is_conflict;
     //cerr <<endl;
@@ -469,7 +469,7 @@ int main(int argc, char *argv[])
 
         // do tabu-search for each population in the collection;
         // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
-        test.tabu_search(test.solution_collection[p]);
+        test.tabu_search(test.solution_collection[p], true);
         // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
         population.num_conflict[p] = test.conflict;
@@ -529,7 +529,7 @@ int main(int argc, char *argv[])
         test.best_conflict = 0;
         test.conflict_num = 0;
 
-        test.tabu_search(temps.index1); // 仅仅需要对新形成的temps进行禁忌搜索;
+        test.tabu_search(temps.index1, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
