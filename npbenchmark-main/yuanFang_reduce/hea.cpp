@@ -369,7 +369,7 @@ int Hybrid_Evolution::compute_conflict(const int *solution)
 
 
 // debug function
-long long int Hybrid_Evolution::get_iteration()
+long long int Hybrid_Evolution::get_iteration() const
 {
     return iter;
 }
