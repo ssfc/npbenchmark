@@ -449,7 +449,7 @@ int main(int argc, char *argv[])
      */
 
 
-    ///*// to reduce
+    ///* to reduce
     // this is also the process of initialization;
     for (p = 0; p < num_population; p++)
     {
