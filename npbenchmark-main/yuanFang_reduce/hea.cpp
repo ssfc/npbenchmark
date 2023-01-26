@@ -16,7 +16,7 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution()
 {
-    color_num.resize(MaxColor, 0);
+    //color_num.resize(MaxColor, 0);
 }
 
 
