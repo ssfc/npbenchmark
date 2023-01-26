@@ -15,7 +15,9 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 
 Population_solution::Population_solution()
-{}
+{
+    color_num.resize(MaxColor, 0);
+}
 
 
 Population_solution::~Population_solution()
@@ -488,7 +490,10 @@ int main(int argc, char *argv[])
 
     }
 
+    cerr << "Before: " << test.population_solution[0].color_num[17];
     memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
+    cerr << "After: " << test.population_solution[0].color_num[17];
+
     double start_time = clock();
 
     for (p = 0; p < num_population; p++)
@@ -605,3 +610,4 @@ int main(int argc, char *argv[])
 // debugging command:
 // g++ hea.cpp -g; gdb a.out
 // r 11 6 chvatal.txt
+// r 11 6 DSJC0250.9.txt
