@@ -204,15 +204,15 @@ Move Hybrid_Evolution::find_move(const int *solution)
         }
     }
 
-    int temp1 = conflict + tabu_move_delta;
+    int tabu_move_conflict = conflict + tabu_move_delta;
     int temp2 = conflict + non_tabu_move_delta;
 
     Move res;
 
-    if (temp1<best_conflict && temp1<temp2)
+    if (tabu_move_conflict < best_conflict && tabu_move_conflict < temp2)
     {
-        conflict = temp1;
-        best_conflict = temp1;
+        conflict = tabu_move_conflict;
+        best_conflict = tabu_move_conflict;
 
         int index = pseudoRandNumGen() % tabu_count;
         res = tabu_move[index];
