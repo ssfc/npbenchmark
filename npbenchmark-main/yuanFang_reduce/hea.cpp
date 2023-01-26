@@ -389,7 +389,6 @@ int main(int argc, char *argv[])
     int num_population = 20;
     Population population(num_population);
 
-    int i;
     char file[100];
     FILE *fp;
 
@@ -413,12 +412,13 @@ int main(int argc, char *argv[])
 
     memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
 
-    int v2;
+    int v1; // first vertex of an edge;
+    int v2; // second vertex of an edge;
     while (!feof(fp))
     {
-        fscanf(fp, "%d %d\n", &i, &v2);
-        test.insert_adj_list(i+1, v2+1);
-        test.insert_adj_list(v2+1, i+1);
+        fscanf(fp, "%d %d\n", &v1, &v2);
+        test.insert_adj_list(v1+1, v2+1);
+        test.insert_adj_list(v2+1, v1+1);
     }
 
     /*// to debug
@@ -466,7 +466,7 @@ int main(int argc, char *argv[])
         test.conflict_num = 0;
 
         // initialization: set random solution to each solution in the population;
-        for (i = 1; i <= test.num_vertex; i++)
+        for (int i = 1; i <= test.num_vertex; i++)
         {
             test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
             //cerr << solution[i] <<' ';
@@ -499,7 +499,7 @@ int main(int argc, char *argv[])
 
     for (int p = 0; p < num_population; p++)
     {
-        for (i = 1; i <= test.num_vertex; i++)
+        for (int i = 1; i <= test.num_vertex; i++)
         {
             test.population_solution[p].index1s[i] = test.solution_collection[p][i]; // color of population p, vertex i;
             int color = test.solution_collection[p][i]; // color of population p, vertex i;
@@ -539,7 +539,7 @@ int main(int argc, char *argv[])
 
         test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
-        for (i = 1; i <= test.num_vertex; i++)
+        for (int i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
             int color = temps.index1s[i];
             int color_num = temps.color_num[color];
@@ -550,7 +550,7 @@ int main(int argc, char *argv[])
 
         int max_conflict = -1, max_conflict_index;
 
-        for (i = 0; i < num_population; i++)
+        for (int i = 0; i < num_population; i++)
         {
             if (population.num_conflict[i] > max_conflict)
             {
@@ -588,7 +588,7 @@ int main(int argc, char *argv[])
         fprintf(fp, "%s %-9d %-15lf %-7lld\n", argv[3], test.num_color, elapsed_time , test.max_iter);
 
         cerr << "color of each vertex: ";
-        for(i=1;i<=test.num_vertex;i++)
+        for(int i=1;i<=test.num_vertex;i++)
         {
             cerr << test.population_solution[population.min_conflict_index].index1s[i] << " ";
         }
