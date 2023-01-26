@@ -602,3 +602,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+// debugging command:
+// g++ hea.cpp -g; gdb a.out
+// r 11 6 chvatal.txt
