@@ -104,50 +104,6 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-void Hybrid_Evolution::tabu_search(int *solution, bool is_limit)
-{
-    bool is_conflict;
-    //cerr <<endl;
-
-    for (int i = 1; i <= num_vertex; i++)
-    {
-        ArcNode *temp = adj_list[i].first;
-        is_conflict = false;
-        while (temp)
-        {
-            if (solution[temp->adj_vertex] == solution[i])
-            {
-                is_conflict = true;
-                conflict++;
-            }
-            adj_color_table[i][solution[temp->adj_vertex]]++;
-            temp = temp->next;
-        }
-
-        if (is_conflict)
-        {
-            conflicts[conflict_num] = i;
-            conflict_index[i] = conflict_num++;
-        }
-    }
-
-    conflict = conflict / 2;
-    cerr << "initial_f = " << conflict <<endl;
-    best_conflict = conflict;
-    iter = 0;
-
-    if(is_limit)
-    {
-        while (iter < max_iter && conflict > 0)
-        {
-            Move my_move = find_move(solution);
-            make_move(my_move.u, my_move.vj, solution);
-            iter++;
-        }
-    }
-}
-
-
 Move Hybrid_Evolution::find_move(const int *solution)
 {
     int sol_i;
@@ -264,6 +220,50 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
         delete_conflict(u);
     if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
         add_conflict(u);
+}
+
+
+void Hybrid_Evolution::tabu_search(int *solution, bool is_limit)
+{
+    bool is_conflict;
+    //cerr <<endl;
+
+    for (int i = 1; i <= num_vertex; i++)
+    {
+        ArcNode *temp = adj_list[i].first;
+        is_conflict = false;
+        while (temp)
+        {
+            if (solution[temp->adj_vertex] == solution[i])
+            {
+                is_conflict = true;
+                conflict++;
+            }
+            adj_color_table[i][solution[temp->adj_vertex]]++;
+            temp = temp->next;
+        }
+
+        if (is_conflict)
+        {
+            conflicts[conflict_num] = i;
+            conflict_index[i] = conflict_num++;
+        }
+    }
+
+    conflict = conflict / 2;
+    cerr << "initial_f = " << conflict <<endl;
+    best_conflict = conflict;
+    iter = 0;
+
+    if(is_limit)
+    {
+        while (iter < max_iter && conflict > 0)
+        {
+            Move my_move = find_move(solution);
+            make_move(my_move.u, my_move.vj, solution);
+            iter++;
+        }
+    }
 }
 
 

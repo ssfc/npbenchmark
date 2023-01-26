@@ -88,12 +88,11 @@ public:
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
     ~Hybrid_Evolution();
-
     void insert_adj_list(int i, int j);
 
-    void tabu_search(int *solution, bool is_limit);
     Move find_move(const int *solution);
     void make_move(int u, int vj, int *solution);
+    void tabu_search(int *solution, bool is_limit);
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;
 
