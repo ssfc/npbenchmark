@@ -571,8 +571,9 @@ int main(int argc, char *argv[])
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cerr << "Population iteration: " << population_iteration << endl;
-    cerr << "elapsed time(s): " << elapsed_time << endl;
+    cerr << "Population iteration: " << population_iteration << " ";
+    cerr << "elapsed time(s): " << elapsed_time << " ";
+    cerr << "Population frequency: " << double (population_iteration) / elapsed_time << endl;
 
     if (population.min_conflict == 0)
     {
