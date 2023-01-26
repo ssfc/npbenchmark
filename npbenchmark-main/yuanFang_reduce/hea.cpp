@@ -320,7 +320,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
             int point = h_color[j];
             index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
-            int color = s[B].index1[point];//在B中删除这个点
+            int color = s[B].index1s[point];//在B中删除这个点
             int index2 = s[B].index2s[point];
 
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
@@ -496,7 +496,7 @@ int main(int argc, char *argv[])
     {
         for (i = 1; i <= test.num_vertex; i++)
         {
-            test.population_solution[p].index1[i] = test.solution_collection[p][i]; // color of population p, vertex i;
+            test.population_solution[p].index1s[i] = test.solution_collection[p][i]; // color of population p, vertex i;
             int color = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = test.population_solution[p].color_num[color];
 
@@ -522,7 +522,7 @@ int main(int argc, char *argv[])
 
         memset(&temps, 0, sizeof(temps));
 
-        test.cross_over(p1, p2, temps.index1);
+        test.cross_over(p1, p2, temps.index1s);
 
         // reset adj_color_table and tabu_tenure_table to zero;
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -532,11 +532,11 @@ int main(int argc, char *argv[])
         test.best_conflict = 0;
         test.conflict_num = 0;
 
-        test.tabu_search(temps.index1, true); // 仅仅需要对新形成的temps进行禁忌搜索;
+        test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
-            int color = temps.index1[i];
+            int color = temps.index1s[i];
             int color_num = temps.color_num[color];
             temps.psol[color][color_num] = i;
             temps.index2s[i] = color_num;
@@ -584,15 +584,15 @@ int main(int argc, char *argv[])
         cerr << "color of each vertex: ";
         for(i=1;i<=test.num_vertex;i++)
         {
-            cerr << test.population_solution[population.min_conflict_index].index1[i] << " ";
+            cerr << test.population_solution[population.min_conflict_index].index1s[i] << " ";
         }
         cerr << endl;
 
         cerr << "conflict of solution 19: ";
-        cerr << test.compute_conflict(test.population_solution[19].index1) << endl;
+        cerr << test.compute_conflict(test.population_solution[19].index1s) << endl;
 
         cerr << "conflict of final solution: ";
-        cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].index1) << endl;
+        cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].index1s) << endl;
     }
     else
         cerr << "over time" << endl;
