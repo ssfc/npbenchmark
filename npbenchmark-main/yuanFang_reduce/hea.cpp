@@ -389,7 +389,7 @@ int main(int argc, char *argv[])
     int num_population = 20;
     Population population(num_population);
 
-    int i, j, p;
+    int i, j;
     char file[100];
     FILE *fp;
 
@@ -455,7 +455,7 @@ int main(int argc, char *argv[])
 
     ///* to reduce
     // this is also the process of initialization;
-    for (p = 0; p < num_population; p++)
+    for (int p = 0; p < num_population; p++)
     {
         for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
         for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -496,7 +496,7 @@ int main(int argc, char *argv[])
 
     double start_time = clock();
 
-    for (p = 0; p < num_population; p++)
+    for (int p = 0; p < num_population; p++)
     {
         for (i = 1; i <= test.num_vertex; i++)
         {
