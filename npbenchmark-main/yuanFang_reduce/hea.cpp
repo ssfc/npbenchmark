@@ -389,7 +389,7 @@ int main(int argc, char *argv[])
     int num_population = 20;
     Population population(num_population);
 
-    int i, j;
+    int i;
     char file[100];
     FILE *fp;
 
@@ -413,11 +413,12 @@ int main(int argc, char *argv[])
 
     memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
 
+    int v2;
     while (!feof(fp))
     {
-        fscanf(fp, "%d %d\n", &i, &j);
-        test.insert_adj_list(i+1, j+1);
-        test.insert_adj_list(j+1, i+1);
+        fscanf(fp, "%d %d\n", &i, &v2);
+        test.insert_adj_list(i+1, v2+1);
+        test.insert_adj_list(v2+1, i+1);
     }
 
     /*// to debug
