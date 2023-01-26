@@ -205,11 +205,11 @@ Move Hybrid_Evolution::find_move(const int *solution)
     }
 
     int tabu_move_conflict = conflict + tabu_move_delta;
-    int temp2 = conflict + non_tabu_move_delta;
+    int non_tabu_move_conflict = conflict + non_tabu_move_delta;
 
     Move res;
 
-    if (tabu_move_conflict < best_conflict && tabu_move_conflict < temp2)
+    if (tabu_move_conflict < best_conflict && tabu_move_conflict < non_tabu_move_conflict)
     {
         conflict = tabu_move_conflict;
         best_conflict = tabu_move_conflict;
@@ -219,9 +219,9 @@ Move Hybrid_Evolution::find_move(const int *solution)
     }
     else
     {
-        if (temp2 < best_conflict)
-            best_conflict = temp2;
-        conflict = temp2;
+        if (non_tabu_move_conflict < best_conflict)
+            best_conflict = non_tabu_move_conflict;
+        conflict = non_tabu_move_conflict;
         int index = pseudoRandNumGen() % non_tabu_count;
         res = non_tabu_move[index];
     }
