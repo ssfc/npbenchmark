@@ -16,13 +16,11 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution()
 {
-    /*
     psol.resize(MaxColor);
     for(int i=0;i<MaxColor;i++)
     {
         psol[i].resize(MaxPoint, 0);
     }
-     */
 
     color_num.resize(MaxColor, 0);
 
@@ -501,7 +499,7 @@ int main(int argc, char *argv[])
 
     for(auto & i : test.population_solution)
     {
-        memset(i.psol, 0, sizeof(i.psol));
+        for(auto& x : i.psol) memset(&x[0],0,sizeof(int)*x.size());
         memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
         memset(i.index1s, 0, sizeof(i.index1s));
         memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
@@ -537,8 +535,7 @@ int main(int argc, char *argv[])
             p2 = pseudoRandNumGen() % num_population;
         } while (p1 == p2);
 
-        // memset(&temps, 0, sizeof(temps));
-        memset(temps.psol, 0, sizeof(temps.psol));
+        for(auto& x : temps.psol) memset(&x[0],0,sizeof(int)*x.size());
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
         memset(temps.index1s, 0, sizeof(temps.index1s));
         memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
