@@ -488,10 +488,8 @@ int main(int argc, char *argv[])
 
         if (test.conflict == 0)
             break;
-
     }
 
-    cerr << "Before: " << test.population_solution[0].color_num[17] << endl;
     for(auto & i : test.population_solution)
     {
         memset(i.psol, 0, sizeof(i.psol));
@@ -499,7 +497,6 @@ int main(int argc, char *argv[])
         memset(i.index1s, 0, sizeof(i.index1s));
         memset(i.index2s, 0, sizeof(i.index2s));
     }
-    cerr << "After: " << test.population_solution[0].color_num[17] << endl;
 
     double start_time = clock();
 
