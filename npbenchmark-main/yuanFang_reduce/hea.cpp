@@ -495,7 +495,6 @@ int main(int argc, char *argv[])
     for(auto & i : test.population_solution)
     {
         memset(i.psol, 0, sizeof(i.psol));
-        // memset(i.color_num, 0, sizeof(i.color_num));
         memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
         memset(i.index1s, 0, sizeof(i.index1s));
         memset(i.index2s, 0, sizeof(i.index2s));
@@ -534,7 +533,6 @@ int main(int argc, char *argv[])
 
         // memset(&temps, 0, sizeof(temps));
         memset(temps.psol, 0, sizeof(temps.psol));
-        // memset(i.color_num, 0, sizeof(i.color_num));
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
         memset(temps.index1s, 0, sizeof(temps.index1s));
         memset(temps.index2s, 0, sizeof(temps.index2s));
