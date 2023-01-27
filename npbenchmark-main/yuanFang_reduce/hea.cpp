@@ -17,6 +17,8 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 Population_solution::Population_solution()
 {
     color_num.resize(MaxColor, 0);
+
+    index2s.resize(MaxPoint, 0);
 }
 
 
@@ -495,7 +497,7 @@ int main(int argc, char *argv[])
         memset(i.psol, 0, sizeof(i.psol));
         memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
         memset(i.index1s, 0, sizeof(i.index1s));
-        memset(i.index2s, 0, sizeof(i.index2s));
+        memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
     }
 
     double start_time = clock();
@@ -532,7 +534,7 @@ int main(int argc, char *argv[])
         memset(temps.psol, 0, sizeof(temps.psol));
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
         memset(temps.index1s, 0, sizeof(temps.index1s));
-        memset(temps.index2s, 0, sizeof(temps.index2s));
+        memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
         // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
         test.cross_over(p1, p2, temps.index1s);

@@ -42,7 +42,8 @@ public:
     vector<int> color_num;
 
     int index1s[MaxPoint];
-    int index2s[MaxPoint];
+    // int index2s[MaxPoint];
+    vector<int> index2s;
 
     Population_solution();
     ~Population_solution();
