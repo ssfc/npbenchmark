@@ -16,6 +16,14 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution()
 {
+    /*
+    psol.resize(MaxColor);
+    for(int i=0;i<MaxColor;i++)
+    {
+        psol[i].resize(MaxPoint, 0);
+    }
+     */
+
     color_num.resize(MaxColor, 0);
 
     index2s.resize(MaxPoint, 0);
@@ -317,10 +325,9 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
         }
 
         int num = s[A].color_num[max_index];
-        int *h_color = s[A].psol[max_index];
         for (int j = 0; j<num; j++)
         {
-            int point = h_color[j];
+            int point = s[A].psol[max_index][j];
             index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
             int color = s[B].index1s[point];//在B中删除这个点
