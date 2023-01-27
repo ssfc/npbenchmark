@@ -617,7 +617,11 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// debugging command:
-// g++ hea.cpp -g; gdb a.out
-// r 11 6 chvatal.txt
-// r 11 6 DSJC0250.9.txt
+/*
+ * debugging command:
+ * laptop: C:\wamp64\www\npbenchmark\npbenchmark-main\yuanFang_reduce
+ * home server: /home/ssfc/yuanFang_reduce
+ * g++ hea.cpp -g; gdb a.out
+ * r 11 6 chvatal.txt
+ * r 11 6 DSJC0250.9.txt
+ */
