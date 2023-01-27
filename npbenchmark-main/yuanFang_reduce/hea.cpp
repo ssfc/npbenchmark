@@ -492,13 +492,12 @@ int main(int argc, char *argv[])
     }
 
     cerr << "Before: " << test.population_solution[0].color_num[17];
-    // memset(&test.population_solution[0], 0, sizeof(test.population_solution[0])*test.population_solution.size());
-    for(int i=0;i<test.population_solution.size();i++)
+    for(auto & i : test.population_solution)
     {
-        memset(test.population_solution[i].psol, 0, sizeof(test.population_solution[i].psol));
-        memset(test.population_solution[i].color_num, 0, sizeof(test.population_solution[i].color_num));
-        memset(test.population_solution[i].index1s, 0, sizeof(test.population_solution[i].index1s));
-        memset(test.population_solution[i].index2s, 0, sizeof(test.population_solution[i].index2s));
+        memset(i.psol, 0, sizeof(i.psol));
+        memset(i.color_num, 0, sizeof(i.color_num));
+        memset(i.index1s, 0, sizeof(i.index1s));
+        memset(i.index2s, 0, sizeof(i.index2s));
     }
     cerr << "After: " << test.population_solution[0].color_num[17];
 
