@@ -39,7 +39,6 @@ struct Move {
 class Population_solution {
 public:
     int psol[MaxColor][MaxPoint];
-    //int color_num[MaxColor];
     vector<int> color_num;
 
     int index1s[MaxPoint];
