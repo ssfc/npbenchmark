@@ -533,8 +533,7 @@ int main(int argc, char *argv[])
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
         memset(temps.index1s, 0, sizeof(temps.index1s));
         memset(temps.index2s, 0, sizeof(temps.index2s));
-
-        cerr << "After 2: " << temps.color_num[17] << endl;
+        // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence; 
 
         test.cross_over(p1, p2, temps.index1s);
 
