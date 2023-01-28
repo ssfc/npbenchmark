@@ -244,7 +244,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     }
 
     conflict = conflict / 2;
-    cerr << "initial_f = " << conflict <<endl;
+    // cerr << "initial_f = " << conflict <<endl;
     best_conflict = conflict;
     iter = 0;
 
@@ -567,8 +567,13 @@ int main(int argc, char *argv[])
             population.min_conflict_index = max_conflict_index;
         }
 
-        cerr << "min conflict = " << population.min_conflict << endl;
-        cerr << "min conflict index = " << population.min_conflict_index << endl;
+        if(population_iteration % 10 == 0)
+        {
+            cerr << "Population iteration: " << population_iteration << endl;
+            cerr << "min conflict: " << population.min_conflict << endl;
+            cerr << "min conflict index: " << population.min_conflict_index << endl;
+        }
+
         population_iteration++;
     }
 
