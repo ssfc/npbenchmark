@@ -159,7 +159,7 @@ Move Hybrid_Evolution::find_move(vector<int> &solution)
     int tabu_move_conflict = conflict + tabu_move_delta;
     int non_tabu_move_conflict = conflict + non_tabu_move_delta;
 
-    Move result;
+    Move result = {-1, -1};
 
     if (tabu_move_conflict < best_conflict && tabu_move_conflict < non_tabu_move_conflict)
     {
