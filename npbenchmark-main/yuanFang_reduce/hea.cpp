@@ -40,9 +40,7 @@ Population::Population(int input_num_population)
 
 
 Population::~Population()
-{
-
-}
+= default;
 
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed)
@@ -87,8 +85,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
 
 Hybrid_Evolution::~Hybrid_Evolution()
-{
-}
+= default;
 
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
