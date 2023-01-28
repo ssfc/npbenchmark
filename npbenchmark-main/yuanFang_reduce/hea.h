@@ -40,8 +40,7 @@ class Population_solution {
 public:
     vector<vector<int>> psol;
     vector<int> color_num;
-
-    int index1s[MaxPoint];
+    vector<int> index1s;
     vector<int> index2s;
 
     Population_solution();
@@ -70,8 +69,8 @@ public:
     int num_color;
 
     vector<VerNode> adj_list;
-    vector<vector<int> > adj_color_table;
-    vector<vector<long long int> > tabu_tenure_table;
+    vector<vector<int>> adj_color_table;
+    vector<vector<long long int>> tabu_tenure_table;
 
     int best_conflict;
     int conflict;
@@ -80,7 +79,7 @@ public:
     vector<int> conflict_index;
 
     int num_population;
-    int **solution_collection;  // dim, num_population * (num_vertex+1)
+    vector<vector<int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
 
     long long int max_iter;
@@ -91,16 +90,16 @@ public:
     ~Hybrid_Evolution();
     void insert_adj_list(int i, int j);
 
-    Move find_move(const int *solution);
-    void make_move(int u, int vj, int *solution);
-    void tabu_search(int *solution, bool is_limit);
+    Move find_move(vector<int> &solution);
+    void make_move(int u, int vj, vector<int> &solution);
+    void tabu_search(vector<int> &solution, bool is_limit);
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;
 
-    void cross_over(int p1, int p2, int *index1) const;
+    void cross_over(int p1, int p2, vector<int> &index1);
 
     // debug function: compute conflict of a solution
-    int compute_conflict(const int *solution);
+    int compute_conflict(vector<int> &solution);
     long long int get_iteration() const;
 };
 

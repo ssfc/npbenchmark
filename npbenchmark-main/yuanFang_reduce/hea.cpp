@@ -23,7 +23,7 @@ Population_solution::Population_solution()
     }
 
     color_num.resize(MaxColor, 0);
-
+    index1s.resize(MaxPoint, 0);
     index2s.resize(MaxPoint, 0);
 }
 
@@ -78,28 +78,15 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflicts.resize(MaxPoint, 0);
     conflict_index.resize(MaxPoint, 0);
 
+    solution_collection.resize(num_population);
+    for (int i = 0; i < num_population; i++)
+        solution_collection[i].resize(num_vertex + 1, 0);
     population_solution.resize(num_population);
-
-    try {
-        solution_collection = new int *[num_population];
-        for (int i = 0; i < num_population; i++)
-            solution_collection[i] = new int [num_vertex + 1];
-
-        // population_solution = new Population_solution [num_population];
-    }
-    catch (const bad_alloc& e)
-    {
-        cerr << "初始化内存分配失败:" << endl;
-    }
 }
 
 
 Hybrid_Evolution::~Hybrid_Evolution()
 {
-    for (int i = 0; i < num_population; i++)
-        delete[] solution_collection[i];
-
-    // delete []population_solution;
 }
 
 
@@ -112,7 +99,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-Move Hybrid_Evolution::find_move(const int *solution)
+Move Hybrid_Evolution::find_move(vector<int> &solution)
 {
     int sol_i;
 
@@ -196,7 +183,7 @@ Move Hybrid_Evolution::find_move(const int *solution)
 }
 
 
-void Hybrid_Evolution::make_move(int u, int vj, int *solution)
+void Hybrid_Evolution::make_move(int u, int vj, vector<int> &solution)
 {
     int vi = solution[u];
     solution[u] = vj;
@@ -231,7 +218,7 @@ void Hybrid_Evolution::make_move(int u, int vj, int *solution)
 }
 
 
-void Hybrid_Evolution::tabu_search(int *solution, bool is_limit)
+void Hybrid_Evolution::tabu_search(vector<int> &solution, bool is_limit)
 {
     bool is_conflict;
     //cerr <<endl;
@@ -290,7 +277,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
 }
 
 
-void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
+void Hybrid_Evolution::cross_over(int p1, int p2, vector<int>& index1)
 {
     int A, B;
     Population_solution s[2];
@@ -354,7 +341,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, int *index1) const
 }
 
 // debug function: compute conflict of a solution
-int Hybrid_Evolution::compute_conflict(const int *solution)
+int Hybrid_Evolution::compute_conflict(vector<int> &solution)
 {
     int this_conflict = 0;
     //cerr <<endl;
@@ -501,7 +488,7 @@ int main(int argc, char *argv[])
     {
         for(auto& x : i.psol) memset(&x[0],0,sizeof(int)*x.size());
         memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
-        memset(i.index1s, 0, sizeof(i.index1s));
+        memset(&i.index1s[0], 0, sizeof(i.index1s[0]) * i.index1s.size());
         memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
     }
 
@@ -537,7 +524,7 @@ int main(int argc, char *argv[])
 
         for(auto& x : temps.psol) memset(&x[0],0,sizeof(int)*x.size());
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
-        memset(temps.index1s, 0, sizeof(temps.index1s));
+        memset(&temps.index1s[0], 0, sizeof(temps.index1s[0]) * temps.index1s.size());
         memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
         // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
