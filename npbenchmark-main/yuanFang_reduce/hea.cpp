@@ -29,12 +29,13 @@ Population_solution::Population_solution()
 
 
 Population_solution::~Population_solution()
-{}
+= default;
 
 
 Population::Population(int input_num_population)
 {
     min_conflict = INT_MAX;
+    min_conflict_index = 0;
     num_conflict.resize(input_num_population);
 }
 
@@ -90,7 +91,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
 void Hybrid_Evolution::insert_adj_list(int i, int j)
 {
-    ArcNode *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
+    auto *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
     temp1->next = adj_list[j].first;
     adj_list[j].first = temp1;
