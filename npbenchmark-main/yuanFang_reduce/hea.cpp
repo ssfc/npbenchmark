@@ -166,7 +166,7 @@ Move Hybrid_Evolution::find_move(vector<int> &solution)
         conflict = tabu_move_conflict;
         best_conflict = tabu_move_conflict;
 
-        int index = pseudoRandNumGen() % tabu_count;
+        unsigned int index = pseudoRandNumGen() % tabu_count;
         result = tabu_move[index];
     }
     else
@@ -174,7 +174,7 @@ Move Hybrid_Evolution::find_move(vector<int> &solution)
         if (non_tabu_move_conflict < best_conflict)
             best_conflict = non_tabu_move_conflict;
         conflict = non_tabu_move_conflict;
-        int index = pseudoRandNumGen() % non_tabu_count;
+        unsigned int index = pseudoRandNumGen() % non_tabu_count;
         result = non_tabu_move[index];
     }
 
@@ -333,7 +333,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, vector<int>& index1)
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
-            int color = pseudoRandNumGen() % num_color;//随机分配到某一种颜色中去
+            unsigned int color = pseudoRandNumGen() % num_color;//随机分配到某一种颜色中去
             index1[point] = color;
         }
     }
@@ -514,7 +514,7 @@ int main(int argc, char *argv[])
     while (population.min_conflict != 0)
     {
         // random select two index from population as parents;
-        int p1 = pseudoRandNumGen() % num_population, p2;
+        unsigned int p1 = pseudoRandNumGen() % num_population, p2;
 
         do
         {
