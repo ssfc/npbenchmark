@@ -1,5 +1,5 @@
 //
-// Created by take_ on 2023/1/27.
+// Created by take_ on 2023/1/28.
 // hea_vs.cpp : 定义控制台应用程序的入口点。
 //
 
@@ -17,9 +17,9 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 Population_solution::Population_solution()
 {
     psol.resize(MaxColor);
-    for(int i=0;i<MaxColor;i++)
+    for(auto & i : psol)
     {
-        psol[i].resize(MaxPoint, 0);
+        i.resize(MaxPoint, 0);
     }
 
     color_num.resize(MaxColor, 0);
@@ -60,15 +60,15 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_list.resize(num_vertex + 1);
 
     adj_color_table.resize(MaxPoint);
-    for(int i=0;i<MaxPoint;i++)
+    for(auto & i : adj_color_table)
     {
-        adj_color_table[i].resize(MaxPoint, 0);
+        i.resize(MaxPoint, 0);
     }
 
     tabu_tenure_table.resize(MaxPoint);
-    for(int i=0;i<MaxPoint;i++)
+    for(auto & i : tabu_tenure_table)
     {
-        tabu_tenure_table[i].resize(MaxPoint, 0);
+        i.resize(MaxPoint, 0);
     }
 
     best_conflict = 0;
@@ -79,8 +79,9 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflict_index.resize(MaxPoint, 0);
 
     solution_collection.resize(num_population);
-    for (int i = 0; i < num_population; i++)
-        solution_collection[i].resize(num_vertex + 1, 0);
+    for (auto & i : solution_collection)
+        i.resize(num_vertex + 1, 0);
+
     population_solution.resize(num_population);
 }
 
