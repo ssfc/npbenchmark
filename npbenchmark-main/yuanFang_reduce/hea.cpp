@@ -1,6 +1,5 @@
 //
-// Created by take_ on 2023/1/28.
-// hea_vs.cpp : 定义控制台应用程序的入口点。
+// Created by take on 2023/1/28.
 //
 
 
@@ -98,9 +97,9 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-Move Hybrid_Evolution::find_move(vector<int> &solution)
+Move Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
-    int sol_i;
+    unsigned int sol_i;
 
     Move tabu_move[MaxPoint];
     Move non_tabu_move[MaxPoint];
@@ -182,9 +181,9 @@ Move Hybrid_Evolution::find_move(vector<int> &solution)
 }
 
 
-void Hybrid_Evolution::make_move(int u, int vj, vector<int> &solution)
+void Hybrid_Evolution::make_move(int u, int vj, vector<unsigned int> &solution)
 {
-    int vi = solution[u];
+    unsigned int vi = solution[u];
     solution[u] = vj;
     tabu_tenure_table[u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
     ArcNode *temp = adj_list[u].first;
@@ -217,7 +216,7 @@ void Hybrid_Evolution::make_move(int u, int vj, vector<int> &solution)
 }
 
 
-void Hybrid_Evolution::tabu_search(vector<int> &solution, bool is_limit)
+void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit)
 {
     bool is_conflict;
     //cerr <<endl;
@@ -276,7 +275,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
 }
 
 
-void Hybrid_Evolution::cross_over(int p1, int p2, vector<int>& index1)
+void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsigned int>& index1)
 {
     int A, B;
     Population_solution s[2];
@@ -314,8 +313,8 @@ void Hybrid_Evolution::cross_over(int p1, int p2, vector<int>& index1)
             int point = s[A].psol[max_index][j];
             index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
-            int color = s[B].index1s[point];//在B中删除这个点
-            int index2 = s[B].index2s[point];
+            unsigned int color = s[B].index1s[point];//在B中删除这个点
+            unsigned int index2 = s[B].index2s[point];
 
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
             int t = s[B].psol[color][index2];
@@ -340,7 +339,7 @@ void Hybrid_Evolution::cross_over(int p1, int p2, vector<int>& index1)
 }
 
 // debug function: compute conflict of a solution
-int Hybrid_Evolution::compute_conflict(vector<int> &solution)
+int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 {
     int this_conflict = 0;
     //cerr <<endl;
@@ -498,7 +497,7 @@ int main(int argc, char *argv[])
         for (int i = 1; i <= test.num_vertex; i++)
         {
             test.population_solution[p].index1s[i] = test.solution_collection[p][i]; // color of population p, vertex i;
-            int color = test.solution_collection[p][i]; // color of population p, vertex i;
+            unsigned int color = test.solution_collection[p][i]; // color of population p, vertex i;
             int color_num = test.population_solution[p].color_num[color];
 
             test.population_solution[p].psol[color][color_num] = i;
@@ -541,7 +540,7 @@ int main(int argc, char *argv[])
 
         for (int i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
-            int color = temps.index1s[i];
+            unsigned int color = temps.index1s[i];
             int color_num = temps.color_num[color];
             temps.psol[color][color_num] = i;
             temps.index2s[i] = color_num;
