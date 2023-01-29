@@ -268,7 +268,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
         while (conflict > 0)
         {
             Move my_move = find_move(solution);
-            make_move(my_move.u, my_move.vj, solution);
+            make_move(node_moved, color_moved, solution);
 
             if(iter % 100000 == 0)
             {
