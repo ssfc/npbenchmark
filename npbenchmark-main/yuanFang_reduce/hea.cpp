@@ -248,12 +248,32 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     best_conflict = conflict;
     iter = 0;
 
-    if(is_limit)
+    if(is_limit) // set upper bound of iteration;
     {
         while (iter < max_iter && conflict > 0)
         {
             Move my_move = find_move(solution);
             make_move(my_move.u, my_move.vj, solution);
+            iter++;
+        }
+    }
+    else // not set upper bound of iteration;
+    {
+        double start_time = clock();
+
+        while (conflict > 0)
+        {
+            Move my_move = find_move(solution);
+            make_move(my_move.u, my_move.vj, solution);
+
+            if(iter % 1000000 == 0)
+            {
+                cerr << "Iteration: " << iter << " ";
+                double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+                cerr << " elapsed time(s): " << elapsed_time
+                     << " frequency:" << double (iter) / elapsed_time << endl;
+            }
+
             iter++;
         }
     }
@@ -413,14 +433,15 @@ int main(int argc, char *argv[])
         test.insert_adj_list(v2+1, v1+1);
     }
 
-    /*// to debug
-    int *temp_solution = new int [test.num_vertex + 1];
+    // to debug
+    vector<unsigned int> temp_solution;
+    temp_solution.resize(test.num_vertex+1, 0);
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
     for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
 
 
     // initialization: set random solution to each solution in the population;
-    for (i = 1; i <= test.num_vertex; i++)
+    for (int i = 1; i <= test.num_vertex; i++)
     {
         temp_solution[i] = pseudoRandNumGen() % test.num_color;
         //cerr << solution[i] <<' ';
@@ -432,7 +453,7 @@ int main(int argc, char *argv[])
 
     double start_time = clock();
 
-    test.tabu_search(temp_solution);
+    test.tabu_search(temp_solution, false);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -443,10 +464,10 @@ int main(int argc, char *argv[])
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
-     */
+     //*/
 
 
-    ///* to reduce
+    /* to reduce
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
@@ -606,7 +627,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
-        //*/ to reduce
+        */ // to reduce
 
 
     return 0;
@@ -619,4 +640,5 @@ int main(int argc, char *argv[])
  * g++ hea.cpp -g; gdb a.out
  * r 11 6 chvatal.txt
  * r 11 6 DSJC0250.9.txt
+ * r 11 6 DSJC1000.9.txt
  */
