@@ -167,6 +167,8 @@ Move Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
         unsigned int index = pseudoRandNumGen() % tabu_count;
         result = tabu_move[index];
+        node_moved = result.u;
+        color_moved = result.vj;
     }
     else
     {
@@ -175,6 +177,8 @@ Move Hybrid_Evolution::find_move(vector<unsigned int> &solution)
         conflict = non_tabu_move_conflict;
         unsigned int index = pseudoRandNumGen() % non_tabu_count;
         result = non_tabu_move[index];
+        node_moved = result.u;
+        color_moved = result.vj;
     }
 
     return result;
@@ -266,7 +270,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             Move my_move = find_move(solution);
             make_move(my_move.u, my_move.vj, solution);
 
-            if(iter % 10000 == 0)
+            if(iter % 100000 == 0)
             {
                 cerr << "Iteration: " << iter << " ";
                 double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
