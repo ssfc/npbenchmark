@@ -97,7 +97,7 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 }
 
 
-Move Hybrid_Evolution::find_move(vector<unsigned int> &solution)
+void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
     unsigned int sol_i;
 
@@ -180,8 +180,6 @@ Move Hybrid_Evolution::find_move(vector<unsigned int> &solution)
         node_moved = result.u;
         color_moved = result.vj;
     }
-
-    return result;
 }
 
 
@@ -256,7 +254,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     {
         while (iter < max_iter && conflict > 0)
         {
-            Move my_move = find_move(solution);
+            find_move(solution);
             make_move(node_moved, color_moved, solution);
             iter++;
         }
@@ -267,7 +265,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
         while (conflict > 0)
         {
-            Move my_move = find_move(solution);
+            find_move(solution);
             make_move(node_moved, color_moved, solution);
 
             if(iter % 100000 == 0)

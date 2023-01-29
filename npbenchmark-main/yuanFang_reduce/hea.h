@@ -92,7 +92,7 @@ public:
     ~Hybrid_Evolution();
     void insert_adj_list(int i, int j);
 
-    Move find_move(vector<unsigned int> &solution);
+    void find_move(vector<unsigned int> &solution);
     void make_move(int u, int vj, vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit);
     void add_conflict(int adj_vertex); // only used in make_move;
