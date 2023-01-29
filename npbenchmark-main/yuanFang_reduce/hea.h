@@ -93,7 +93,7 @@ public:
     void insert_adj_list(int i, int j);
 
     void find_move(vector<unsigned int> &solution);
-    void make_move(int u, int vj, vector<unsigned int> &solution);
+    void make_move(vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit);
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;

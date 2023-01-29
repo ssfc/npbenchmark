@@ -183,12 +183,12 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::make_move(int u, int vj, vector<unsigned int> &solution)
+void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 {
-    unsigned int vi = solution[u];
-    solution[u] = vj;
-    tabu_tenure_table[u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
-    ArcNode *temp = adj_list[u].first;
+    unsigned int vi = solution[node_moved];
+    solution[node_moved] = color_moved;
+    tabu_tenure_table[node_moved][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
+    ArcNode *temp = adj_list[node_moved].first;
 
     while (temp)
     {
@@ -201,9 +201,9 @@ void Hybrid_Evolution::make_move(int u, int vj, vector<unsigned int> &solution)
             }
         }
 
-        if ((++adj_color_table[adj_vertex][vj]) == 1)
+        if ((++adj_color_table[adj_vertex][color_moved]) == 1)
         {
-            if (solution[adj_vertex] == vj)
+            if (solution[adj_vertex] == color_moved)
             {
                 add_conflict(adj_vertex);
             }
@@ -211,10 +211,10 @@ void Hybrid_Evolution::make_move(int u, int vj, vector<unsigned int> &solution)
         temp = temp->next;
     }
 
-    if (adj_color_table[u][vi] != 0 && adj_color_table[u][vj] == 0)
-        delete_conflict(u);
-    if (adj_color_table[u][vi] == 0 && adj_color_table[u][vj] != 0)
-        add_conflict(u);
+    if (adj_color_table[node_moved][vi] != 0 && adj_color_table[node_moved][color_moved] == 0)
+        delete_conflict(node_moved);
+    if (adj_color_table[node_moved][vi] == 0 && adj_color_table[node_moved][color_moved] != 0)
+        add_conflict(node_moved);
 }
 
 
@@ -255,7 +255,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
         while (iter < max_iter && conflict > 0)
         {
             find_move(solution);
-            make_move(node_moved, color_moved, solution);
+            make_move(solution);
             iter++;
         }
     }
@@ -266,7 +266,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
         while (conflict > 0)
         {
             find_move(solution);
-            make_move(node_moved, color_moved, solution);
+            make_move(solution);
 
             if(iter % 100000 == 0)
             {
