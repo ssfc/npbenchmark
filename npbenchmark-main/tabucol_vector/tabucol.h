@@ -12,8 +12,8 @@
 using namespace std;
 
 struct Move {
-    int u;
-    int vj;
+    int u; // 每次移动的结点
+    int vj; //每次移动的颜色
 };
 
 class Graph
@@ -29,14 +29,14 @@ private:
 
     vector<int> single_solution; // color of each vertex; dimension, num_vertex;
     int conflict;
-    int best_conflict; // 历史最好的冲突值
+    int best_conflict; // the best conflict in the history;
 
     vector<vector<long long int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
-    int node_moved; // 每次移动的结点
-    int color_moved; //每次移动的颜色
+    int node_moved;
+    int color_moved;
     long long int iter;
 
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
