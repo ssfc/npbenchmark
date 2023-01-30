@@ -48,6 +48,8 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     }
 
     min_delta = 999999;
+    moved = {-1, -1};
+    iter = 0;
 
     // allocate memory to equ_delta;
     equal_nontabu_delta.resize(2000, {-1, -1});
@@ -55,8 +57,11 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     // allocate memory to equ_tabu_delta;
     equal_tabu_delta.resize(2000, {0,0});
 
+    // debug variables;
     max_equal_nontabu_count = 0;
     max_equal_tabu_count = 0;
+    start_time = 0;
+    end_time = 0;
 
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)

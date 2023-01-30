@@ -35,7 +35,7 @@ private:
     vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
-    Move moved;
+    Move moved{-1, -1};
     long long int iter;
 
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
