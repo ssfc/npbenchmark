@@ -43,9 +43,11 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 
     for (int i = 0; i < num_vertex; i++)
     {
-        adj_color_table[i].resize(num_color);
-        tabu_tenure_table[i].resize(num_color);
+        adj_color_table[i].resize(num_color, 0);
+        tabu_tenure_table[i].resize(num_color, 0);
     }
+
+    min_delta = 999999;
 
     // allocate memory to equ_delta;
     equal_nontabu_delta.resize(2000, {-1, -1});
