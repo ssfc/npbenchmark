@@ -11,6 +11,11 @@
 
 using namespace std;
 
+struct Move {
+    int u;
+    int vj;
+};
+
 class Graph
 {
 private:
@@ -34,8 +39,8 @@ private:
     int color_moved; //每次移动的颜色
     long long int iter;
 
-    vector<vector<int>> equal_nontabu_delta; //非禁忌相同delta值
-    vector<vector<int>> equal_tabu_delta; //禁忌相同delta值
+    vector<Move> equal_nontabu_delta; //非禁忌相同delta值
+    vector<Move> equal_tabu_delta; //禁忌相同delta值
 
     // debug variables;
     int max_equal_nontabu_count;

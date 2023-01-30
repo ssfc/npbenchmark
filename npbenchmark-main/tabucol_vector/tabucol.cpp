@@ -48,18 +48,10 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     }
 
     // allocate memory to equ_delta;
-    equal_nontabu_delta.resize(2000);
-    for(int i=0;i<2000;i++)
-    {
-        equal_nontabu_delta[i].resize(2);
-    }
+    equal_nontabu_delta.resize(2000, {-1, -1});
 
     // allocate memory to equ_tabu_delta;
-    equal_tabu_delta.resize(2000);
-    for(int i=0;i<2000;i++)
-    {
-        equal_tabu_delta[i].resize(2);
-    }
+    equal_tabu_delta.resize(2000, {0,0});
 
     max_equal_nontabu_count = 0;
     max_equal_tabu_count = 0;
@@ -146,15 +138,15 @@ void Graph::find_move()
                             equal_nontabu_count = 0;
                             min_delta = this_delta;
 
-                            equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
-                            equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
+                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
                         }
                         else if (this_delta == min_delta)
                         {
-                            equal_nontabu_delta[equal_nontabu_count][0] = i; // i is vertex;
-                            equal_nontabu_delta[equal_nontabu_count][1] = j; // j is color;
+                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
                         }
@@ -174,15 +166,15 @@ void Graph::find_move()
                             equal_tabu_count = 0;
                             tabu_delta = this_delta;
 
-                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
                         }
                         else if(this_delta == tabu_delta)
                         {
-                            equal_tabu_delta[equal_tabu_count][0] = i; // i is vertex;
-                            equal_tabu_delta[equal_tabu_count][1] = j; // j is color;
+                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
                         }
@@ -205,15 +197,15 @@ void Graph::find_move()
         min_delta = tabu_delta;
         int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
         // cerr << "random select tabu: " << rand_select << endl;
-        node_moved = equal_tabu_delta[rand_select][0];
-        color_moved = equal_tabu_delta[rand_select][1];
+        node_moved = equal_tabu_delta[rand_select].u;
+        color_moved = equal_tabu_delta[rand_select].vj;
     }
     else
     {
         int rand_select = pseudoRandNumGen() % equal_nontabu_count; // 相等delta随机选择
         // cerr << "random select nontabu: " << rand_select << endl;
-        node_moved = equal_nontabu_delta[rand_select][0];
-        color_moved = equal_nontabu_delta[rand_select][1];
+        node_moved = equal_nontabu_delta[rand_select].u;
+        color_moved = equal_nontabu_delta[rand_select].vj;
     }
 }
 
