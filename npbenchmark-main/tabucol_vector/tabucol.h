@@ -27,7 +27,7 @@ private:
 
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
-    vector<int> single_solution; // color of each vertex; dimension, num_vertex;
+    vector<unsigned int> single_solution; // color of each vertex; dimension, num_vertex;
     int conflict;
     int best_conflict; // the best conflict in the history;
 
@@ -56,7 +56,7 @@ public:
     void tabu_search();
 
     void print_graph() const; // print adjacent list of graph;
-    int get_solution(int i);
+    unsigned int get_solution(int i);
 
     // debug function
     [[nodiscard]] int get_max_equal_nontabu_count() const;

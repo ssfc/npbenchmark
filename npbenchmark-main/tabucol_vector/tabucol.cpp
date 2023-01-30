@@ -73,11 +73,11 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        int this_vertex_color = single_solution[i];
+        unsigned int this_vertex_color = single_solution[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            int adj_color = single_solution[adj_list[i][j]];
+            unsigned int adj_color = single_solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -122,7 +122,7 @@ void Graph::find_move()
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        int solution_i = single_solution[i]; // solution_i is color;
+        unsigned int solution_i = single_solution[i]; // solution_i is color;
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -195,13 +195,13 @@ void Graph::find_move()
     if (tabu_delta < aspiration && tabu_delta < min_delta)
     {
         min_delta = tabu_delta;
-        int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
         // cerr << "random select tabu: " << rand_select << endl;
         moved = equal_tabu_delta[rand_select];
     }
     else
     {
-        int rand_select = pseudoRandNumGen() % equal_nontabu_count; // 相等delta随机选择
+        unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // 相等delta随机选择
         // cerr << "random select nontabu: " << rand_select << endl;
         moved = equal_nontabu_delta[rand_select];
     }
@@ -215,7 +215,7 @@ void Graph::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    int old_color = single_solution[moved.u];
+    unsigned int old_color = single_solution[moved.u];
     single_solution[moved.u] = moved.vj;
     tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
@@ -264,7 +264,7 @@ void Graph::tabu_search()
 }
 
 // get solution;
-int Graph::get_solution(int i)
+unsigned int Graph::get_solution(int i)
 {
     return single_solution[i];
 }
