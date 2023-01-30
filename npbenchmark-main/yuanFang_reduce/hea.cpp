@@ -268,7 +268,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             find_move(solution);
             make_move(solution);
 
-            if(iter % 100000 == 0)
+            if(iter % 500000 == 0)
             {
                 cerr << "Iteration: " << iter << " ";
                 double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
