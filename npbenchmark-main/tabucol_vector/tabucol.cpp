@@ -197,15 +197,13 @@ void Graph::find_move()
         min_delta = tabu_delta;
         int rand_select = pseudoRandNumGen() % equal_tabu_count; // 相等tabu_delta随机选择
         // cerr << "random select tabu: " << rand_select << endl;
-        node_moved = equal_tabu_delta[rand_select].u;
-        color_moved = equal_tabu_delta[rand_select].vj;
+        moved = equal_tabu_delta[rand_select];
     }
     else
     {
         int rand_select = pseudoRandNumGen() % equal_nontabu_count; // 相等delta随机选择
         // cerr << "random select nontabu: " << rand_select << endl;
-        node_moved = equal_nontabu_delta[rand_select].u;
-        color_moved = equal_nontabu_delta[rand_select].vj;
+        moved = equal_nontabu_delta[rand_select];
     }
 }
 
@@ -217,17 +215,17 @@ void Graph::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    int old_color = single_solution[node_moved];
-    single_solution[node_moved] = color_moved;
-    tabu_tenure_table[node_moved][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    int old_color = single_solution[moved.u];
+    single_solution[moved.u] = moved.vj;
+    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
-    for (int i = 0; i < vertex_edge_num[node_moved]; i++)
+    for (int i = 0; i < vertex_edge_num[moved.u]; i++)
     {
-        int adj_list_node_moved_i = adj_list[node_moved][i];
+        int adj_list_node_moved_i = adj_list[moved.u][i];
 
         adj_color_table[adj_list_node_moved_i][old_color]--;
-        adj_color_table[adj_list_node_moved_i][color_moved]++;
+        adj_color_table[adj_list_node_moved_i][moved.vj]++;
     }
 }
 
