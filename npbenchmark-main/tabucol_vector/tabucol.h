@@ -55,10 +55,10 @@ public:
     void make_move();
     void tabu_search();
 
-    void print_graph() const; // print adjacent list of graph;
     unsigned int get_solution(int i);
 
     // debug function
+    void print_graph() const; // print adjacent list of graph;
     [[nodiscard]] int get_max_equal_nontabu_count() const;
     [[nodiscard]] int get_max_equal_tabu_count() const;
 };
