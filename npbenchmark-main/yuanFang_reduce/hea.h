@@ -82,8 +82,7 @@ public:
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
 
-    int node_moved; // every time node moved;
-    int color_moved; // every time color moved;
+    Move moved;
     long long int max_iter;
 
 

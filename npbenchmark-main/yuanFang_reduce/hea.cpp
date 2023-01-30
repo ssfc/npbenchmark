@@ -158,17 +158,13 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
     int tabu_move_conflict = conflict + tabu_move_delta;
     int non_tabu_move_conflict = conflict + non_tabu_move_delta;
 
-    Move result = {-1, -1};
-
     if (tabu_move_conflict < best_conflict && tabu_move_conflict < non_tabu_move_conflict)
     {
         conflict = tabu_move_conflict;
         best_conflict = tabu_move_conflict;
 
         unsigned int index = pseudoRandNumGen() % tabu_count;
-        result = tabu_move[index];
-        node_moved = result.u;
-        color_moved = result.vj;
+        moved = tabu_move[index];
     }
     else
     {
@@ -176,19 +172,17 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
             best_conflict = non_tabu_move_conflict;
         conflict = non_tabu_move_conflict;
         unsigned int index = pseudoRandNumGen() % non_tabu_count;
-        result = non_tabu_move[index];
-        node_moved = result.u;
-        color_moved = result.vj;
+        moved = non_tabu_move[index];
     }
 }
 
 
 void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 {
-    unsigned int vi = solution[node_moved];
-    solution[node_moved] = color_moved;
-    tabu_tenure_table[node_moved][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
-    ArcNode *temp = adj_list[node_moved].first;
+    unsigned int vi = solution[moved.u];
+    solution[moved.u] = moved.vj;
+    tabu_tenure_table[moved.u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
+    ArcNode *temp = adj_list[moved.u].first;
 
     while (temp)
     {
@@ -201,9 +195,9 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
             }
         }
 
-        if ((++adj_color_table[adj_vertex][color_moved]) == 1)
+        if ((++adj_color_table[adj_vertex][moved.vj]) == 1)
         {
-            if (solution[adj_vertex] == color_moved)
+            if (solution[adj_vertex] == moved.vj)
             {
                 add_conflict(adj_vertex);
             }
@@ -211,10 +205,10 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
         temp = temp->next;
     }
 
-    if (adj_color_table[node_moved][vi] != 0 && adj_color_table[node_moved][color_moved] == 0)
-        delete_conflict(node_moved);
-    if (adj_color_table[node_moved][vi] == 0 && adj_color_table[node_moved][color_moved] != 0)
-        add_conflict(node_moved);
+    if (adj_color_table[moved.u][vi] != 0 && adj_color_table[moved.u][moved.vj] == 0)
+        delete_conflict(moved.u);
+    if (adj_color_table[moved.u][vi] == 0 && adj_color_table[moved.u][moved.vj] != 0)
+        add_conflict(moved.u);
 }
 
 
