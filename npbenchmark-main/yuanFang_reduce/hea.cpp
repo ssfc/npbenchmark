@@ -42,7 +42,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    adj_list.resize(num_vertex + 1);
+    adj_yf_list.resize(num_vertex + 1);
 
     conflict = 0;
     best_conflict = 0;
@@ -86,8 +86,8 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 {
     auto *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
-    temp1->next = adj_list[j].first;
-    adj_list[j].first = temp1;
+    temp1->next = adj_yf_list[j].first;
+    adj_yf_list[j].first = temp1;
 }
 
 
@@ -173,7 +173,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     unsigned int vi = solution[moved.u];
     solution[moved.u] = moved.vj;
     tabu_tenure_table[moved.u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
-    ArcNode *temp = adj_list[moved.u].first;
+    ArcNode *temp = adj_yf_list[moved.u].first;
 
     while (temp)
     {
@@ -210,7 +210,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
     for (int i = 1; i <= num_vertex; i++)
     {
-        ArcNode *temp = adj_list[i].first;
+        ArcNode *temp = adj_yf_list[i].first;
         is_conflict = false;
         while (temp)
         {
@@ -353,7 +353,7 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 
     for (int i = 1; i <= num_vertex; i++)
     {
-        ArcNode *temp = adj_list[i].first;
+        ArcNode *temp = adj_yf_list[i].first;
         while (temp)
         {
             if (solution[temp->adj_vertex] == solution[i])
@@ -409,7 +409,7 @@ int main(int argc, char *argv[])
 
     Hybrid_Evolution test(input_num_vertex, input_num_color, num_population, rand_seed);
 
-    memset(&test.adj_list[0], 0, sizeof(test.adj_list[0]) * test.adj_list.size());
+    memset(&test.adj_yf_list[0], 0, sizeof(test.adj_yf_list[0]) * test.adj_yf_list.size());
 
     int v1; // first vertex of an edge;
     int v2; // second vertex of an edge;

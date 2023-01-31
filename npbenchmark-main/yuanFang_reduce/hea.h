@@ -66,7 +66,7 @@ public:
     // variables;
     int num_vertex;
     int num_color;
-    vector<VerNode> adj_list;
+    vector<VerNode> adj_yf_list;
 
     int conflict;
     int best_conflict;
