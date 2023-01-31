@@ -36,10 +36,11 @@ private:
 
     int min_delta; // 移动增量
     Move moved{-1, -1};
-    long long int iter;
 
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
     vector<Move> equal_tabu_delta; //禁忌相同delta值
+
+    long long int iter;
 
     // debug variables;
     int max_equal_nontabu_count;

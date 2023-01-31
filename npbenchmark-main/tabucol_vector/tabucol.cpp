@@ -286,6 +286,8 @@ int Graph::get_max_equal_tabu_count() const
 }
 
 
+// laptop path:
+// C:\wamp64\www\npbenchmark\npbenchmark-main\yuanFang_reduce
 // running command:
 // g++ main.cpp GraphColoring.cpp tabucol.cpp -O3; ./a.out 999999 6 <./data/DSJC0250.9.txt >sln.0250.9.txt
 
