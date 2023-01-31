@@ -42,15 +42,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 {
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    num_population = input_num_population;
-
-    init_rand(input_seed);
-
-    iter = 0;
-    conflict_num = 0;
-    max_iter = 16000;
-
     adj_list.resize(num_vertex + 1);
+
+    conflict = 0;
+    best_conflict = 0;
+    conflict_num = 0;
+    conflicts.resize(MaxPoint, 0);
+    conflict_index.resize(MaxPoint, 0);
 
     adj_color_table.resize(MaxPoint);
     for(auto & i : adj_color_table)
@@ -64,18 +62,19 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
         i.resize(input_num_color, 0);
     }
 
-    best_conflict = 0;
-    conflict = 0;
-    conflict_num = 0;
+    moved = {-1, -1};
+    tabu_move.resize(2000, {-1, -1});
+    non_tabu_move.resize(2000, {-1, -1});
+    iter = 0;
+    max_iter = 16000;
 
-    conflicts.resize(MaxPoint, 0);
-    conflict_index.resize(MaxPoint, 0);
-
+    num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
-
     population_solution.resize(num_population, Population_solution(input_num_color));
+
+    init_rand(input_seed);
 }
 
 

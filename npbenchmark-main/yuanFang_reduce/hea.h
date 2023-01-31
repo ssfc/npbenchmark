@@ -66,25 +66,25 @@ public:
     // variables;
     int num_vertex;
     int num_color;
-
     vector<VerNode> adj_list;
-    vector<vector<int>> adj_color_table;
-    vector<vector<long long int>> tabu_tenure_table;
 
-    int best_conflict;
     int conflict;
+    int best_conflict;
     int conflict_num;
     vector<int> conflicts;
     vector<int> conflict_index;
 
+    vector<vector<int>> adj_color_table;
+    vector<vector<long long int>> tabu_tenure_table;
+
+    Move moved;
+    vector<Move> tabu_move;
+    vector<Move> non_tabu_move;
+    long long int max_iter;
+
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
-
-    Move moved;
-    Move tabu_move[2000];
-    Move non_tabu_move[2000];
-    long long int max_iter;
 
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
