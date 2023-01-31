@@ -66,7 +66,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     tabu_tenure_table.resize(MaxPoint);
     for(auto & i : tabu_tenure_table)
     {
-        i.resize(MaxPoint, 0);
+        i.resize(input_num_color, 0);
     }
 
     best_conflict = 0;
