@@ -13,7 +13,7 @@ mt19937 pseudoRandNumGen;
 void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 
-Population_solution::Population_solution()
+Population_solution::Population_solution(int input_num_color)
 {
     psol.resize(MaxColor);
     for(auto & i : psol)
@@ -80,7 +80,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
 
-    population_solution.resize(num_population);
+    population_solution.resize(num_population, Population_solution(MaxColor));
 }
 
 
@@ -294,7 +294,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
 void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsigned int>& index1)
 {
     int A, B;
-    Population_solution s[2];
+    Population_solution s[2] = {Population_solution(MaxColor), Population_solution(MaxColor)};
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
@@ -524,7 +524,7 @@ int main(int argc, char *argv[])
     }
 
 
-    Population_solution temps;
+    Population_solution temps(MaxColor);
 
     long long int population_iteration = 0;
     while (population.min_conflict != 0)

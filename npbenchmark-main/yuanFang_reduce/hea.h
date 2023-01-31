@@ -43,7 +43,7 @@ public:
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;
 
-    Population_solution();
+    Population_solution(int input_num_color);
     ~Population_solution();
 };
 
