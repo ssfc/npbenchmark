@@ -13,7 +13,7 @@ using namespace std;
 
 struct Move {
     int u; // every time node moved;
-    int vj; //每次移动的颜色
+    int vj; // every time color changed TO;
 };
 
 class Graph

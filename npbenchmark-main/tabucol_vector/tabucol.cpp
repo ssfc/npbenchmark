@@ -1,6 +1,3 @@
-//
-// Created by take_ on 2023年1月19日.
-//
 #include "tabucol.h"
 #include <climits>
 #include <fstream>
