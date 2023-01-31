@@ -82,8 +82,8 @@ public:
     vector<Population_solution> population_solution;
 
     Move moved;
-    Move tabu_move[MaxPoint];
-    Move non_tabu_move[MaxPoint];
+    Move tabu_move[2000];
+    Move non_tabu_move[2000];
     long long int max_iter;
 
     // functions
