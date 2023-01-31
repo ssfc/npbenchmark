@@ -42,7 +42,7 @@ public:
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;
 
-    Population_solution(int input_num_color);
+    explicit Population_solution(int input_num_color);
     ~Population_solution();
 };
 
@@ -52,7 +52,7 @@ public:
     int min_conflict_index;
     vector<int> num_conflict;
 
-    Population(int input_num_population);
+    explicit Population(int input_num_population);
     ~Population();
 };
 
