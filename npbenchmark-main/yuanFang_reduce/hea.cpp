@@ -43,6 +43,11 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     adj_yf_list.resize(num_vertex + 1);
+    adj_list.resize(num_vertex + 1);
+    for (int i = 1; i <= num_vertex; i++)
+    {
+        adj_list[i].resize(num_vertex + 1, 0);
+    }
 
     conflict = 0;
     best_conflict = 0;

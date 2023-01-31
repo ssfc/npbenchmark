@@ -67,6 +67,7 @@ public:
     int num_vertex;
     int num_color;
     vector<VerNode> adj_yf_list;
+    vector<vector<int>> adj_list; // adjacency list; dimension, (num_vertex+1) * (num_vertex+1);
 
     int conflict;
     int best_conflict;
