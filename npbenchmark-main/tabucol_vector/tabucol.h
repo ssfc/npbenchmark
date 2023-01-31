@@ -58,7 +58,7 @@ public:
     unsigned int get_solution(int i);
 
     // debug function
-    void print_graph() const; // print adjacent list of graph;
+    void print_adj_list() const; // print adjacent list of graph;
     [[nodiscard]] int get_max_equal_nontabu_count() const;
     [[nodiscard]] int get_max_equal_tabu_count() const;
 };

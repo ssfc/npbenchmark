@@ -100,20 +100,6 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
 Graph::~Graph()
 = default;
 
-// class: print adjacency list of graph;
-void Graph::print_graph() const
-{
-    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
-    for (int i = 0; i < num_vertex; i++)
-    {
-        for (int j = 0;j < vertex_edge_num[i];j++)
-        {
-            cerr << adj_list[i][j] << " ";
-        }
-        cerr << endl;
-    }
-}
-
 // class: find best move (tabu or not tabu);
 void Graph::find_move()
 {
@@ -271,6 +257,20 @@ void Graph::tabu_search()
 unsigned int Graph::get_solution(int i)
 {
     return single_solution[i];
+}
+
+// debug function: print adjacency list of graph;
+void Graph::print_adj_list() const
+{
+    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        for (int j = 0;j < vertex_edge_num[i];j++)
+        {
+            cerr << adj_list[i][j] << " ";
+        }
+        cerr << endl;
+    }
 }
 
 // debug function:
