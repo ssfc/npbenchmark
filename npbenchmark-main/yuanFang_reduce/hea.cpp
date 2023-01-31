@@ -1,8 +1,3 @@
-//
-// Created by take on 2023/1/28.
-//
-
-
 #include "hea.h"
 
 using namespace std;
@@ -100,9 +95,6 @@ void Hybrid_Evolution::insert_adj_list(int i, int j)
 void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
     unsigned int sol_i;
-
-    Move tabu_move[MaxPoint];
-    Move non_tabu_move[MaxPoint];
 
     int tabu_count = 1;
     int non_tabu_count = 1;

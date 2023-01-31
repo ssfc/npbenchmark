@@ -82,8 +82,9 @@ public:
     vector<Population_solution> population_solution;
 
     Move moved;
+    Move tabu_move[MaxPoint];
+    Move non_tabu_move[MaxPoint];
     long long int max_iter;
-
 
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
