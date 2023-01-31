@@ -524,7 +524,7 @@ int main(int argc, char *argv[])
     }
 
 
-    Population_solution temps(MaxColor);
+    Population_solution temps(input_num_color);
 
     long long int population_iteration = 0;
     while (population.min_conflict != 0)
