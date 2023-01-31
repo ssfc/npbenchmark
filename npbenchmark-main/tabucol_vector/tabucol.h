@@ -12,7 +12,7 @@
 using namespace std;
 
 struct Move {
-    int u; // 每次移动的结点
+    int u; // every time node moved;
     int vj; //每次移动的颜色
 };
 
