@@ -15,13 +15,13 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution(int input_num_color)
 {
-    psol.resize(MaxColor);
+    psol.resize(input_num_color);
     for(auto & i : psol)
     {
         i.resize(MaxPoint, 0);
     }
 
-    color_num.resize(MaxColor, 0);
+    color_num.resize(input_num_color, 0);
     index1s.resize(MaxPoint, 0);
     index2s.resize(MaxPoint, 0);
 }
