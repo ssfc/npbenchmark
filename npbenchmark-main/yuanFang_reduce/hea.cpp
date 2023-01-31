@@ -40,6 +40,8 @@ Population::~Population()
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed)
 {
+    init_rand(input_seed);
+    
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     adj_yf_list.resize(num_vertex + 1);
@@ -78,8 +80,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
     population_solution.resize(num_population, Population_solution(input_num_color));
-
-    init_rand(input_seed);
 }
 
 
