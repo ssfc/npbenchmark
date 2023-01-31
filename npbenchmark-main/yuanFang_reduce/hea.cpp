@@ -41,7 +41,7 @@ Population::~Population()
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed)
 {
     init_rand(input_seed);
-    
+
     num_vertex = input_num_vertex;
     num_color = input_num_color;
     adj_yf_list.resize(num_vertex + 1);
@@ -380,6 +380,12 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 long long int Hybrid_Evolution::get_iteration() const
 {
     return iter;
+}
+
+
+void Hybrid_Evolution::print_adj_yf_list()
+{
+
 }
 
 
