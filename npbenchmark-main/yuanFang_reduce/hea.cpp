@@ -429,7 +429,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(v2+1, v1+1);
     }
 
-    /* to debug
+    ///* to debug
     vector<unsigned int> temp_solution;
     temp_solution.resize(test.num_vertex+1, 0);
     for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
@@ -460,10 +460,10 @@ int main(int argc, char *argv[])
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
-     */// to debug
+     //*/// to debug
 
 
-    ///* to reduce
+    /* to reduce
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
@@ -623,7 +623,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
-        //*///  to reduce
+        *///  to reduce
 
 
     return 0;
