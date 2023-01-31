@@ -80,7 +80,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
 
-    population_solution.resize(num_population, Population_solution(MaxColor));
+    population_solution.resize(num_population, Population_solution(input_num_color));
 }
 
 
@@ -294,7 +294,7 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
 void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsigned int>& index1)
 {
     int A, B;
-    Population_solution s[2] = {Population_solution(MaxColor), Population_solution(MaxColor)};
+    Population_solution s[2] = {Population_solution(num_color), Population_solution(num_color)};
     s[0] = population_solution[p1];
     s[1] = population_solution[p2];
 
