@@ -95,8 +95,8 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
     unsigned int sol_i;
 
-    int tabu_count = 1;
-    int non_tabu_count = 1;
+    int tabu_count = 0;
+    int non_tabu_count = 0;
 
     int tabu_move_delta = 100000;
     int non_tabu_move_delta = 100000;
