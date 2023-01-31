@@ -22,25 +22,24 @@ private:
     int num_vertex; // number of vertex in the graph;
     int num_color; // number of color in the graph;
 
-    vector<vector<int>> adj_list; // adjacency list; dimension, num_vertex * num_vertex;
-    // each row is 11...1000, the number of 1 is the number of vertex adjacent to it, recording in vertex_edge;
-
+    vector<vector<int>> adj_list; /* adjacency list; dimension, num_vertex * num_vertex;
+    * each row is 11...1000, the number of 1 is the number of vertex adjacent to it, recording in vertex_edge;
+    */
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
-    vector<unsigned int> single_solution; // color of each vertex; dimension, num_vertex;
     int conflict;
     int best_conflict; // the best conflict in the history;
 
-    vector<vector<long long int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
     vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
+    vector<vector<long long int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
     Move moved{-1, -1};
-
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
     vector<Move> equal_tabu_delta; //禁忌相同delta值
-
     long long int iter;
+
+    vector<unsigned int> single_solution; // color of each vertex; dimension, num_vertex;
 
     // debug variables;
     int max_equal_nontabu_count;
