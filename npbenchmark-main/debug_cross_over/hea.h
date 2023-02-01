@@ -19,7 +19,7 @@
 using namespace std;
 
 #define MaxPoint 1002
-
+#define MaxColor 300
 
 struct ArcNode {
     int adj_vertex;
