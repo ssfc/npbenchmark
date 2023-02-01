@@ -91,7 +91,7 @@ public:
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
     ~Hybrid_Evolution();
-    void insert_adj_list(int i, int j);
+    void insert_adj_yf_list(int i, int j);
 
     void find_move(vector<unsigned int> &solution);
     void make_move(vector<unsigned int> &solution);
@@ -105,6 +105,7 @@ public:
     int compute_conflict(vector<unsigned int> &solution);
     [[nodiscard]] long long int get_iteration() const;
     void print_adj_yf_list();
+    void print_adj_list() const; // print adjacent list of graph;
 };
 
 

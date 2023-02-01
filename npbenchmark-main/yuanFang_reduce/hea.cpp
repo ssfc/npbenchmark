@@ -88,7 +88,7 @@ Hybrid_Evolution::~Hybrid_Evolution()
 = default;
 
 
-void Hybrid_Evolution::insert_adj_list(int i, int j)
+void Hybrid_Evolution::insert_adj_yf_list(int i, int j)
 {
     auto *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
     temp1->adj_vertex = i;
@@ -386,7 +386,7 @@ long long int Hybrid_Evolution::get_iteration() const
 
 void Hybrid_Evolution::print_adj_yf_list()
 {
-    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
+    cerr << "YFR Adjacency list of graph: " << num_vertex << " " << num_color << endl;
     for(int i=1;i<=num_vertex;i++)
     {
         cerr << "Vertex " << i << ": ";
@@ -395,6 +395,22 @@ void Hybrid_Evolution::print_adj_yf_list()
         {
             cerr << temp->adj_vertex << " ";
             temp = temp->next;
+        }
+        cerr << endl;
+    }
+}
+
+
+// debug function: print adjacency list of graph;
+void Hybrid_Evolution::print_adj_list() const
+{
+    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
+    for (int i = 1; i <= num_vertex+1; i++)
+    {
+        cerr << "Vertex " << i << ": ";
+        for (int j = 1;j <= vertex_edge_num[i];j++)
+        {
+            cerr << adj_list[i][j] << " ";
         }
         cerr << endl;
     }
@@ -439,10 +455,11 @@ int main(int argc, char *argv[])
     while (!feof(fp))
     {
         fscanf(fp, "%d %d\n", &v1, &v2);
-        test.insert_adj_list(v1+1, v2+1);
-        test.insert_adj_list(v2+1, v1+1);
+        test.insert_adj_yf_list(v1+1, v2+1);
+        test.insert_adj_yf_list(v2+1, v1+1);
     }
     test.print_adj_yf_list();
+    test.print_adj_list();
 
     ///* to debug
     vector<unsigned int> temp_solution;
