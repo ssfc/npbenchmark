@@ -239,7 +239,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                         if(max_equal_nontabu_count < equal_nontabu_count)
                         {
                             max_equal_nontabu_count = equal_nontabu_count;
-                            cerr << "max equal nontabu count: " << max_equal_nontabu_count << endl;
+                            // cerr << "max equal nontabu count: " << max_equal_nontabu_count << endl;
                         }
                         // debug part end;
                     }
@@ -267,7 +267,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                         if(max_equal_tabu_count < equal_tabu_count)
                         {
                             max_equal_tabu_count = equal_tabu_count;
-                            cerr << "max equal tabu count: " << max_equal_tabu_count << endl;
+                            // cerr << "max equal tabu count: " << max_equal_tabu_count << endl;
                         }
                         // debug part end;
                     }
@@ -434,7 +434,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
     conflict = conflict / 2;
     best_conflict = conflict;
-    cerr << "initial number of confilcts:" << conflict << endl;
+    // cerr << "initial number of confilcts:" << conflict << endl;
 
     iter = 0;
     start_time = clock();
@@ -446,6 +446,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             iter++;
             // cerr << "iter: " << iter << endl;
 
+            /*
             if (iter % 1000000 == 0)
             {
                 cerr << "Iteration: " << iter << " ";
@@ -453,6 +454,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
                 cerr << " elapsed time(s): " << elapsed_time
                      << " frequency:" << double(iter) / elapsed_time << endl;
             }
+             */
 
             find_move(solution);
             make_move(solution);
@@ -476,17 +478,17 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             find_move(solution);
             make_move(solution);
         }
+
+        end_time = clock();
+
+        double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+        cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+             << " frequency:" << double (iter) / elapsed_time << endl;
+
+        // debug function:
+        cerr << "max equal nontabu count: " << get_max_equal_nontabu_count() << endl;
+        cerr << "max equal tabu count: " << get_max_equal_tabu_count() << endl;
     }
-
-    end_time = clock();
-
-    double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
-    cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-         << " frequency:" << double (iter) / elapsed_time << endl;
-
-    // debug function:
-    cerr << "max equal nontabu count: " << get_max_equal_nontabu_count() << endl;
-    cerr << "max equal tabu count: " << get_max_equal_tabu_count() << endl;
 }
 
 
@@ -718,7 +720,7 @@ int main(int argc, char *argv[])
     // test.print_adj_yf_list();
     // test.print_adj_list();
 
-    ///* to debug
+    /* to debug
     vector<unsigned int> temp_solution_1;
     temp_solution_1.resize(test.num_vertex+1, 0);
 
@@ -749,10 +751,10 @@ int main(int argc, char *argv[])
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
-     //*/// to debug
+     */// to debug
 
 
-    /* to reduce
+    ///* to reduce
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
@@ -912,7 +914,7 @@ int main(int argc, char *argv[])
     }
     else
         cerr << "over time" << endl;
-        *///  to reduce
+        //*///  to reduce
 
 
     return 0;
