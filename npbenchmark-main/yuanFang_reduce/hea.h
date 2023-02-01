@@ -113,6 +113,10 @@ public:
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;
 
+    void find_move();
+    void make_move();
+    void tabu_search();
+
     void cross_over(unsigned int p1, unsigned int p2, vector<unsigned int> &index1);
 
     // debug function: compute conflict of a solution
@@ -121,6 +125,9 @@ public:
     [[nodiscard]] long long int get_iteration() const;
     void print_adj_yf_list();
     void print_adj_list() const; // print adjacent list of graph;
+
+    [[nodiscard]] int get_max_equal_nontabu_count() const;
+    [[nodiscard]] int get_max_equal_tabu_count() const;
 };
 
 
