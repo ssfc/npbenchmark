@@ -114,7 +114,7 @@ public:
 
     void find_move(vector<unsigned int> &solution);
     void make_move(vector<unsigned int> &solution);
-    void tabu_search(vector<unsigned int> &solution);
+    void tabu_search(vector<unsigned int> &solution, bool is_limit);
 
     void cross_over(unsigned int p1, unsigned int p2, vector<unsigned int> &index1);
 

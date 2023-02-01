@@ -413,7 +413,7 @@ void Hybrid_Evolution::tabu_yf_search(vector<unsigned int> &solution, bool is_li
 }
 
 
-void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution)
+void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit)
 {
     // compute initial conflict;
     for (int i = 1; i <= num_vertex; i++)
@@ -439,21 +439,43 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution)
     iter = 0;
     start_time = clock();
 
-    while (conflict > 0)
+    if(is_limit) // set upper bound of iteration;
     {
-        iter++;
-        // cerr << "iter: " << iter << endl;
-
-        if(iter % 1000000 == 0)
+        while (iter < max_iter && conflict > 0)
         {
-            cerr << "Iteration: " << iter << " ";
-            double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-            cerr << " elapsed time(s): " << elapsed_time
-                 << " frequency:" << double (iter) / elapsed_time << endl;
-        }
+            iter++;
+            // cerr << "iter: " << iter << endl;
 
-        find_move(solution);
-        make_move(solution);
+            if (iter % 1000000 == 0)
+            {
+                cerr << "Iteration: " << iter << " ";
+                double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+                cerr << " elapsed time(s): " << elapsed_time
+                     << " frequency:" << double(iter) / elapsed_time << endl;
+            }
+
+            find_move(solution);
+            make_move(solution);
+        }
+    }
+    else
+    {
+        while (conflict > 0)
+        {
+            iter++;
+            // cerr << "iter: " << iter << endl;
+
+            if (iter % 1000000 == 0)
+            {
+                cerr << "Iteration: " << iter << " ";
+                double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+                cerr << " elapsed time(s): " << elapsed_time
+                     << " frequency:" << double(iter) / elapsed_time << endl;
+            }
+
+            find_move(solution);
+            make_move(solution);
+        }
     }
 
     end_time = clock();
@@ -693,8 +715,8 @@ int main(int argc, char *argv[])
 
         test.insert_adj_list(v1+1, v2+1);
     }
-    test.print_adj_yf_list();
-    test.print_adj_list();
+    // test.print_adj_yf_list();
+    // test.print_adj_list();
 
     ///* to debug
     vector<unsigned int> temp_solution_1;
@@ -716,7 +738,7 @@ int main(int argc, char *argv[])
     double start_time = clock();
 
     // test.tabu_yf_search(temp_solution_1, false);
-    test.tabu_search(temp_solution_2);
+    test.tabu_search(temp_solution_2, true);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
