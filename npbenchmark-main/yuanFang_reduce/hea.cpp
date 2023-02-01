@@ -81,10 +81,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     equal_nontabu_delta.resize(2000, {-1, -1});
     equal_tabu_delta.resize(2000, {0,0});
 
-    single_solution.resize(num_vertex + 1);
-    for (int i = 1; i <= num_vertex; i++)
-        single_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
-
     num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
@@ -199,7 +195,7 @@ void Hybrid_Evolution::find_yf_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::find_move()
+void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
     min_delta = 999999;
     int tabu_delta = 999999;
@@ -210,7 +206,7 @@ void Hybrid_Evolution::find_move()
 
     for (int i = 1; i <= num_vertex; i++) // i is vertex;
     {
-        unsigned int solution_i = single_solution[i]; // solution_i is color;
+        unsigned int solution_i = solution[i]; // solution_i is color;
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -331,15 +327,15 @@ void Hybrid_Evolution::make_yf_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::make_move()
+void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 {
     conflict = min_delta + conflict; // update value of conflict;
 
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    unsigned int old_color = single_solution[moved.u];
-    single_solution[moved.u] = moved.vj;
+    unsigned int old_color = solution[moved.u];
+    solution[moved.u] = moved.vj;
     tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
@@ -417,17 +413,17 @@ void Hybrid_Evolution::tabu_yf_search(vector<unsigned int> &solution, bool is_li
 }
 
 
-void Hybrid_Evolution::tabu_search()
+void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution)
 {
     // compute initial conflict;
     for (int i = 1; i <= num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = single_solution[i];
+        unsigned int this_vertex_color = solution[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = single_solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -456,8 +452,8 @@ void Hybrid_Evolution::tabu_search()
                  << " frequency:" << double (iter) / elapsed_time << endl;
         }
 
-        find_move();
-        make_move();
+        find_move(solution);
+        make_move(solution);
     }
 
     end_time = clock();
@@ -712,19 +708,15 @@ int main(int argc, char *argv[])
     }
 
     vector<unsigned int> temp_solution_2 = temp_solution_1;
-    for(int i=1;i<=test.single_solution.size();i++)
-    {
-        test.single_solution[i] = temp_solution_2[i];
-    }
 
     cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(test.single_solution) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
 
     // test.tabu_yf_search(temp_solution_1, false);
-    test.tabu_search();
+    test.tabu_search(temp_solution_2);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -733,7 +725,7 @@ int main(int argc, char *argv[])
     cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
          << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
-    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(test.single_solution) << endl;
+    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
      //*/// to debug
 

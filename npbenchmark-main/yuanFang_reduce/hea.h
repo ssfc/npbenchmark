@@ -89,7 +89,6 @@ public:
 
     long long int max_iter;
 
-    vector<unsigned int> single_solution; // color of each vertex; dimension, num_vertex;
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
@@ -113,9 +112,9 @@ public:
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;
 
-    void find_move();
-    void make_move();
-    void tabu_search();
+    void find_move(vector<unsigned int> &solution);
+    void make_move(vector<unsigned int> &solution);
+    void tabu_search(vector<unsigned int> &solution);
 
     void cross_over(unsigned int p1, unsigned int p2, vector<unsigned int> &index1);
 
