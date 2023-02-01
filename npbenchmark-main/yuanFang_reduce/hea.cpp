@@ -627,7 +627,7 @@ long long int Hybrid_Evolution::get_iteration() const
     return iter;
 }
 
-
+// debug function
 void Hybrid_Evolution::print_adj_yf_list()
 {
     cerr << "YFR Adjacency list of graph: " << num_vertex << " " << num_color << endl;
@@ -774,7 +774,7 @@ int main(int argc, char *argv[])
 
         // do tabu-search for each population in the collection;
         // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
-        test.tabu_search(test.solution_collection[p], true);
+        test.tabu_yf_search(test.solution_collection[p], true);
         // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
         population.num_conflict[p] = test.conflict;
@@ -844,7 +844,7 @@ int main(int argc, char *argv[])
         test.best_conflict = 0;
         test.conflict_num = 0;
 
-        test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
+        test.tabu_yf_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (int i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
@@ -907,10 +907,10 @@ int main(int argc, char *argv[])
         cerr << endl;
 
         cerr << "conflict of solution 19: ";
-        cerr << test.compute_conflict(test.population_solution[19].index1s) << endl;
+        cerr << test.compute_yf_conflict(test.population_solution[19].index1s) << endl;
 
         cerr << "conflict of final solution: ";
-        cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].index1s) << endl;
+        cerr << test.compute_yf_conflict(test.population_solution[population.min_conflict_index].index1s) << endl;
     }
     else
         cerr << "over time" << endl;
