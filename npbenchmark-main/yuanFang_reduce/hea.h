@@ -95,9 +95,9 @@ public:
     void insert_adj_yf_list(int i, int j);
     void insert_adj_list(int i, int j);
 
-    void find_move(vector<unsigned int> &solution);
-    void make_move(vector<unsigned int> &solution);
-    void tabu_search(vector<unsigned int> &solution, bool is_limit);
+    void find_yf_move(vector<unsigned int> &solution);
+    void make_yf_move(vector<unsigned int> &solution);
+    void tabu_yf_search(vector<unsigned int> &solution, bool is_limit);
     void add_conflict(int adj_vertex); // only used in make_move;
     void delete_conflict(int adj_vertex); // only used in make_move;
 

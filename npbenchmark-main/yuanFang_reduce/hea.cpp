@@ -107,7 +107,7 @@ void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 }
 
 
-void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
+void Hybrid_Evolution::find_yf_move(vector<unsigned int> &solution)
 {
     unsigned int sol_i;
 
@@ -184,7 +184,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
+void Hybrid_Evolution::make_yf_move(vector<unsigned int> &solution)
 {
     unsigned int vi = solution[moved.u];
     solution[moved.u] = moved.vj;
@@ -219,7 +219,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit)
+void Hybrid_Evolution::tabu_yf_search(vector<unsigned int> &solution, bool is_limit)
 {
     bool is_conflict;
     //cerr <<endl;
@@ -255,8 +255,8 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     {
         while (iter < max_iter && conflict > 0)
         {
-            find_move(solution);
-            make_move(solution);
+            find_yf_move(solution);
+            make_yf_move(solution);
             iter++;
         }
     }
@@ -266,8 +266,8 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
         while (conflict > 0)
         {
-            find_move(solution);
-            make_move(solution);
+            find_yf_move(solution);
+            make_yf_move(solution);
 
             if(iter % 500000 == 0)
             {
@@ -515,7 +515,7 @@ int main(int argc, char *argv[])
 
     double start_time = clock();
 
-    test.tabu_search(temp_solution, false);
+    test.tabu_yf_search(temp_solution, false);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
