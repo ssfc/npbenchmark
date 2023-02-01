@@ -68,6 +68,7 @@ public:
     int num_color;
     vector<VerNode> adj_yf_list;
     vector<vector<int>> adj_list; // adjacency list; dimension, (num_vertex+1) * (num_vertex+1);
+    vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex + 1;
 
     int conflict;
     int best_conflict;

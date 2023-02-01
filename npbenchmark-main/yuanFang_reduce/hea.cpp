@@ -50,6 +50,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     {
         adj_list[i].resize(num_vertex + 1, 0);
     }
+    vertex_edge_num.resize(num_vertex + 1, 0);
 
     conflict = 0;
     best_conflict = 0;
@@ -385,7 +386,18 @@ long long int Hybrid_Evolution::get_iteration() const
 
 void Hybrid_Evolution::print_adj_yf_list()
 {
-
+    cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
+    for(int i=1;i<=num_vertex;i++)
+    {
+        cerr << "Vertex " << i << ": ";
+        ArcNode *temp = adj_yf_list[i].first;
+        while (temp)
+        {
+            cerr << temp->adj_vertex << " ";
+            temp = temp->next;
+        }
+        cerr << endl;
+    }
 }
 
 
@@ -430,6 +442,7 @@ int main(int argc, char *argv[])
         test.insert_adj_list(v1+1, v2+1);
         test.insert_adj_list(v2+1, v1+1);
     }
+    test.print_adj_yf_list();
 
     ///* to debug
     vector<unsigned int> temp_solution;
