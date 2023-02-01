@@ -41,7 +41,7 @@ namespace szx
 
             // create graph;
             // cerr << "Finish creating graph." << endl;
-            // test.print_graph();
+            test_graph.print_adj_list();
 
             test_graph.tabu_search();
 

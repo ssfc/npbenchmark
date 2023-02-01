@@ -265,6 +265,7 @@ void Graph::print_adj_list() const
     cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
     for (int i = 0; i < num_vertex; i++)
     {
+        cerr << "Vertex " << i << ": ";
         for (int j = 0;j < vertex_edge_num[i];j++)
         {
             cerr << adj_list[i][j] << " ";
