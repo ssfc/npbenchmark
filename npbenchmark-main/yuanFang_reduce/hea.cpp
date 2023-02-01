@@ -499,23 +499,23 @@ int main(int argc, char *argv[])
     test.print_adj_list();
 
     ///* to debug
-    vector<unsigned int> temp_solution;
-    temp_solution.resize(test.num_vertex+1, 0);
+    vector<unsigned int> temp_solution_1;
+    temp_solution_1.resize(test.num_vertex+1, 0);
 
     // initialization: set random solution to each solution in the population;
     for (int i = 1; i <= test.num_vertex; i++)
     {
-        temp_solution[i] = pseudoRandNumGen() % test.num_color;
+        temp_solution_1[i] = pseudoRandNumGen() % test.num_color;
         //cerr << solution[i] <<' ';
     }
 
-    cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_1) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
 
-    test.tabu_yf_search(temp_solution, false);
+    test.tabu_yf_search(temp_solution_1, false);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -524,7 +524,7 @@ int main(int argc, char *argv[])
     cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
          << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
-    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
+    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
      //*/// to debug
 
