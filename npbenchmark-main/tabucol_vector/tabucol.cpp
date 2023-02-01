@@ -72,28 +72,6 @@ Graph::Graph(int input_num_vertex, int input_edge_num, int input_num_color, vect
         adj_list[v2][vertex_edge_num[v2]] = v1;
         vertex_edge_num[v2]++;
     }
-
-    // compute initial conflict;
-    for (int i = 0; i < num_vertex; i++)
-    {
-        int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = single_solution[i];
-
-        for (int j = 0; j < num_edge; j++)
-        {
-            unsigned int adj_color = single_solution[adj_list[i][j]];
-
-            if (this_vertex_color == adj_color)
-                conflict++;
-
-            adj_color_table[i][adj_color]++; // initialize adjacent color table;
-        }
-    }
-
-    conflict = conflict / 2;
-    best_conflict = conflict;
-    cerr << "initial number of confilcts:" << conflict << endl;
-
 }
 
 // free the memory;
@@ -222,6 +200,27 @@ void Graph::make_move()
 // class: tabu search;
 void Graph::tabu_search()
 {
+    // compute initial conflict;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        int num_edge = vertex_edge_num[i];
+        unsigned int this_vertex_color = single_solution[i];
+
+        for (int j = 0; j < num_edge; j++)
+        {
+            unsigned int adj_color = single_solution[adj_list[i][j]];
+
+            if (this_vertex_color == adj_color)
+                conflict++;
+
+            adj_color_table[i][adj_color]++; // initialize adjacent color table;
+        }
+    }
+
+    conflict = conflict / 2;
+    best_conflict = conflict;
+    cerr << "initial number of confilcts:" << conflict << endl;
+
     iter = 0;
     start_time = clock();
 
