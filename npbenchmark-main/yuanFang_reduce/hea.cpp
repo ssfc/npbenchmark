@@ -76,11 +76,26 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     iter = 0;
     max_iter = 16000;
 
+    min_delta = 999999;
+
+    equal_nontabu_delta.resize(2000, {-1, -1});
+    equal_tabu_delta.resize(2000, {0,0});
+
+    single_solution.resize(num_vertex + 1);
+    for (int i = 1; i <= num_vertex; i++)
+        single_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
+
     num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
     population_solution.resize(num_population, Population_solution(input_num_color));
+
+    // debug variables;
+    max_equal_nontabu_count = 0;
+    max_equal_tabu_count = 0;
+    start_time = 0;
+    end_time = 0;
 }
 
 
@@ -512,7 +527,7 @@ int main(int argc, char *argv[])
     vector<unsigned int> temp_solution_2 = temp_solution_1;
 
     cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_1) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();

@@ -82,11 +82,23 @@ public:
     Move moved;
     vector<Move> tabu_move;
     vector<Move> non_tabu_move;
+
+    int min_delta; // 移动增量
+    vector<Move> equal_nontabu_delta; //非禁忌相同delta值
+    vector<Move> equal_tabu_delta; //禁忌相同delta值
+
     long long int max_iter;
 
+    vector<unsigned int> single_solution; // color of each vertex; dimension, num_vertex;
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
+
+    // debug variables:
+    int max_equal_nontabu_count;
+    int max_equal_tabu_count;
+    double start_time;
+    double end_time;
 
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
