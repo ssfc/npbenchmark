@@ -712,14 +712,19 @@ int main(int argc, char *argv[])
     }
 
     vector<unsigned int> temp_solution_2 = temp_solution_1;
+    for(int i=1;i<=test.single_solution.size();i++)
+    {
+        test.single_solution[i] = temp_solution_2[i];
+    }
 
     cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(test.single_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
 
-    test.tabu_yf_search(temp_solution_1, false);
+    // test.tabu_yf_search(temp_solution_1, false);
+    test.tabu_search();
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -728,7 +733,7 @@ int main(int argc, char *argv[])
     cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
          << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
-    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
+    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(test.single_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
      //*/// to debug
 
