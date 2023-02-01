@@ -105,6 +105,7 @@ public:
 
     // debug function: compute conflict of a solution
     int compute_yf_conflict(vector<unsigned int> &solution);
+    int compute_conflict(vector<unsigned int> &solution);
     [[nodiscard]] long long int get_iteration() const;
     void print_adj_yf_list();
     void print_adj_list() const; // print adjacent list of graph;

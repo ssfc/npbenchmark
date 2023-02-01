@@ -386,6 +386,31 @@ int Hybrid_Evolution::compute_yf_conflict(vector<unsigned int> &solution)
     return this_conflict;
 }
 
+// debug function: compute conflict of a solution
+int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
+{
+    int this_conflict = 0;
+    //cerr <<endl;
+
+    for (int i = 1; i <= num_vertex; i++)
+    {
+        int num_edge = vertex_edge_num[i];
+        unsigned int this_vertex_color = solution[i];
+
+        for (int j = 0; j < num_edge; j++)
+        {
+            unsigned int adj_color = solution[adj_list[i][j]];
+
+            if (this_vertex_color == adj_color)
+                this_conflict++;
+        }
+    }
+
+    this_conflict = this_conflict / 2;
+
+    return this_conflict;
+}
+
 
 // debug function
 long long int Hybrid_Evolution::get_iteration() const
@@ -476,9 +501,6 @@ int main(int argc, char *argv[])
     ///* to debug
     vector<unsigned int> temp_solution;
     temp_solution.resize(test.num_vertex+1, 0);
-    for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
-    for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
-
 
     // initialization: set random solution to each solution in the population;
     for (int i = 1; i <= test.num_vertex; i++)
@@ -487,8 +509,8 @@ int main(int argc, char *argv[])
         //cerr << solution[i] <<' ';
     }
 
-    // do tabu-search for each population in the collection;
-    cerr << "Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
+    cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
