@@ -97,6 +97,16 @@ void Hybrid_Evolution::insert_adj_yf_list(int i, int j)
 }
 
 
+void Hybrid_Evolution::insert_adj_list(int v1, int v2)
+{
+    adj_list[v1][vertex_edge_num[v1]] = v2;
+    vertex_edge_num[v1]++;
+
+    adj_list[v2][vertex_edge_num[v2]] = v1;
+    vertex_edge_num[v2]++;
+}
+
+
 void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 {
     unsigned int sol_i;
@@ -405,7 +415,7 @@ void Hybrid_Evolution::print_adj_yf_list()
 void Hybrid_Evolution::print_adj_list() const
 {
     cerr << "Adjacency list of graph: " << num_vertex << " " << num_color << endl;
-    for (int i = 1; i <= num_vertex+1; i++)
+    for (int i = 1; i <= num_vertex; i++)
     {
         cerr << "Vertex " << i << ": ";
         for (int j = 1;j <= vertex_edge_num[i];j++)
@@ -457,6 +467,8 @@ int main(int argc, char *argv[])
         fscanf(fp, "%d %d\n", &v1, &v2);
         test.insert_adj_yf_list(v1+1, v2+1);
         test.insert_adj_yf_list(v2+1, v1+1);
+
+        test.insert_adj_list(v1+1, v2+1);
     }
     test.print_adj_yf_list();
     test.print_adj_list();

@@ -91,7 +91,9 @@ public:
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
     ~Hybrid_Evolution();
+
     void insert_adj_yf_list(int i, int j);
+    void insert_adj_list(int i, int j);
 
     void find_move(vector<unsigned int> &solution);
     void make_move(vector<unsigned int> &solution);
