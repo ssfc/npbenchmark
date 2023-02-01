@@ -30,7 +30,9 @@ private:
     int conflict;
     int best_conflict; // the best conflict in the history;
 
-    vector<vector<int>> adj_color_table; // conflicts of each color on each node; dimension, num_vertex * num_color;
+    vector<vector<int>> adj_color_table; /* Each element: when a node select a color, its conflicts with all its neighbors;
+                                          * dimension, num_vertex * num_color;
+                                          */
     vector<vector<long long int>> tabu_tenure_table; // tenure of each color on each node; dimension, num_vertex * num_color;
 
     int min_delta; // 移动增量
