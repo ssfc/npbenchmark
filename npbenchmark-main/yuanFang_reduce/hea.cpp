@@ -362,7 +362,7 @@ void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsig
 }
 
 // debug function: compute conflict of a solution
-int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
+int Hybrid_Evolution::compute_yf_conflict(vector<unsigned int> &solution)
 {
     int this_conflict = 0;
     //cerr <<endl;
@@ -488,7 +488,7 @@ int main(int argc, char *argv[])
     }
 
     // do tabu-search for each population in the collection;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
@@ -502,7 +502,7 @@ int main(int argc, char *argv[])
     cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
          << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
-    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
+    cerr << "Conflict after tabu search is: " << test.compute_yf_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
      //*/// to debug
 
