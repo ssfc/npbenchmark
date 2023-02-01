@@ -418,7 +418,7 @@ void Hybrid_Evolution::print_adj_list() const
     for (int i = 1; i <= num_vertex; i++)
     {
         cerr << "Vertex " << i << ": ";
-        for (int j = 1;j <= vertex_edge_num[i];j++)
+        for (int j = 0;j < vertex_edge_num[i];j++)
         {
             cerr << adj_list[i][j] << " ";
         }
