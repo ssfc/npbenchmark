@@ -509,6 +509,8 @@ int main(int argc, char *argv[])
         //cerr << solution[i] <<' ';
     }
 
+    vector<unsigned int> temp_solution_2 = temp_solution_1;
+
     cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
     cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_1) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
