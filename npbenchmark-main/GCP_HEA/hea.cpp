@@ -54,13 +54,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflict = 0;
     best_conflict = 0;
 
-    adj_color_table.resize(input_num_vertex + 1);
+    adj_color_table.resize(input_num_vertex);
     for(auto & i : adj_color_table)
     {
         i.resize(input_num_color, 0);
     }
 
-    tabu_tenure_table.resize(input_num_vertex + 1);
+    tabu_tenure_table.resize(input_num_vertex);
     for(auto & i : tabu_tenure_table)
     {
         i.resize(input_num_color, 0);
@@ -114,14 +114,14 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
     {
         unsigned int solution_i = solution[i]; // solution_i is color;
 
-        if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
+        if (adj_color_table[i-1][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
             for (int j = 0; j < num_color; j++) // j is color;
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
+                    int this_delta = adj_color_table[i-1][j] - adj_color_table[i-1][solution_i]; // new-old, the less the better;
+                    if (tabu_tenure_table[i-1][j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
@@ -207,15 +207,15 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
     unsigned int old_color = solution[moved.u];
     solution[moved.u] = moved.vj;
-    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u-1]; i++)
     {
         int adj_list_node_moved_i = adj_list[moved.u][i];
 
-        adj_color_table[adj_list_node_moved_i][old_color]--;
-        adj_color_table[adj_list_node_moved_i][moved.vj]++;
+        adj_color_table[adj_list_node_moved_i-1][old_color]--;
+        adj_color_table[adj_list_node_moved_i-1][moved.vj]++;
     }
 }
 
@@ -235,7 +235,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             if (this_vertex_color == adj_color)
                 conflict++;
 
-            adj_color_table[i][adj_color]++; // initialize adjacent color table;
+            adj_color_table[i-1][adj_color]++; // initialize adjacent color table;
         }
     }
 
