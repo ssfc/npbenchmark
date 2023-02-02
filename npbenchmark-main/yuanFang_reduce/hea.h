@@ -102,7 +102,7 @@ public:
     void make_move(vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit);
 
-    void cross_over(unsigned int p1, unsigned int p2, vector<unsigned int> &index1);
+    void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
 
     // debug function: compute conflict of a solution
     int compute_conflict(vector<unsigned int> &solution);

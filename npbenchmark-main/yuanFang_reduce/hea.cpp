@@ -321,12 +321,12 @@ void Hybrid_Evolution::delete_conflict(int adj_vertex)
 }
 
 
-void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsigned int>& index1)
+void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsigned int>& index1)
 {
     int A, B;
     Population_solution s[2] = {Population_solution(num_color), Population_solution(num_color)};
-    s[0] = population_solution[p1];
-    s[1] = population_solution[p2];
+    s[0] = population_solution[s1];
+    s[1] = population_solution[s2];
 
     for (int i = 0; i < num_color; i++)
     {
