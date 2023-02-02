@@ -60,20 +60,20 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_color_table.resize(input_num_vertex + 1);
     for(auto & i : adj_color_table)
     {
-        i.resize(input_num_color, 0);
+        i.resize(input_num_color+100, 0);
     }
 
     tabu_tenure_table.resize(input_num_vertex + 1);
     for(auto & i : tabu_tenure_table)
     {
-        i.resize(input_num_color, 0);
+        i.resize(input_num_color+100, 0);
     }
 
     moved = {-1, -1};
     tabu_move.resize(2000, {-1, -1});
     non_tabu_move.resize(2000, {-1, -1});
     iter = 0;
-    max_iter = 16000;
+    max_iter = 800;
 
     min_delta = 999999;
 
@@ -488,7 +488,7 @@ int main(int argc, char *argv[])
     // test.print_adj_yf_list();
     // test.print_adj_list();
 
-    ///* to debug
+    /* to debug
     vector<unsigned int> temp_solution;
     temp_solution.resize(test.num_vertex+1, 0);
 
@@ -516,10 +516,10 @@ int main(int argc, char *argv[])
 
     cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
-     //*/// to debug
+     */// to debug
 
 
-    /* to reduce
+    ///* to reduce
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
@@ -640,7 +640,7 @@ int main(int argc, char *argv[])
             population.min_conflict_index = max_conflict_index;
         }
 
-        if(population_iteration % 10 == 0)
+        if(population_iteration % 1 == 0)
         {
             cerr << "Population iteration: " << population_iteration << endl;
             cerr << "min conflict: " << population.min_conflict << endl;
