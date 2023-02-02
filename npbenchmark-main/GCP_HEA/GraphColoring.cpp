@@ -87,9 +87,9 @@ namespace szx
                 test.best_conflict = 0;
 
                 // initialization: set random solution to each solution in the population;
-                for (int i = 1; i <= test.num_vertex; i++)
+                for (int i = 0; i < test.num_vertex; i++)
                 {
-                    test.solution_collection[p][i-1] = pseudoRandNumGen() % test.num_color;
+                    test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
                     //cerr << solution[i] <<' ';
                 }
 
