@@ -13,12 +13,12 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
     psol.resize(input_num_color);
     for(auto & i : psol)
     {
-        i.resize(MaxPoint, 0);
+        i.resize(input_num_vertex + 1, 0);
     }
 
     color_num.resize(input_num_color, 0);
-    index1s.resize(MaxPoint, 0);
-    index2s.resize(MaxPoint, 0);
+    index1s.resize(input_num_vertex + 1, 0);
+    index2s.resize(input_num_vertex + 1, 0);
 }
 
 
@@ -54,16 +54,16 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflict = 0;
     best_conflict = 0;
     conflict_num = 0;
-    conflicts.resize(MaxPoint, 0);
-    conflict_index.resize(MaxPoint, 0);
+    conflicts.resize(input_num_vertex + 1, 0);
+    conflict_index.resize(input_num_vertex + 1, 0);
 
-    adj_color_table.resize(MaxPoint);
+    adj_color_table.resize(input_num_vertex + 1);
     for(auto & i : adj_color_table)
     {
         i.resize(MaxColor, 0);
     }
 
-    tabu_tenure_table.resize(MaxPoint);
+    tabu_tenure_table.resize(input_num_vertex + 1);
     for(auto & i : tabu_tenure_table)
     {
         i.resize(MaxColor, 0);
