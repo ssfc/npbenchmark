@@ -306,21 +306,6 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 }
 
 
-void Hybrid_Evolution::add_conflict(int adj_vertex)
-{
-    conflicts[conflict_num] = adj_vertex;
-    conflict_index[adj_vertex] = conflict_num++;
-}
-
-
-void Hybrid_Evolution::delete_conflict(int adj_vertex)
-{
-    int temp_index = conflict_index[adj_vertex];
-    conflicts[temp_index] = conflicts[--conflict_num];
-    conflict_index[conflicts[temp_index]] = temp_index;
-}
-
-
 void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsigned int>& index1)
 {
     int A, B;
