@@ -67,13 +67,11 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     }
 
     moved = {-1, -1};
-    iter = 0;
-    max_iter = 20000;
-
-    min_delta = 999999;
-
     equal_nontabu_delta.resize(2000, {-1, -1});
     equal_tabu_delta.resize(2000, {0,0});
+    min_delta = 999999;
+    iter = 0;
+    max_iter = 20000;
 
     num_population = input_num_population;
     solution_collection.resize(num_population);
