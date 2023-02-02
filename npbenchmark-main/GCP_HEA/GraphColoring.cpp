@@ -47,7 +47,7 @@ namespace szx
                 int v1 = input.edges[i][0];
                 int v2 = input.edges[i][1];
 
-                test.insert_adj_list(v1+1, v2+1);
+                test.insert_adj_list(v1, v2);
             }
             // test.print_adj_yf_list();
             // test.print_adj_list();

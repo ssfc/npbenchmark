@@ -93,11 +93,11 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 {
-    adj_list[v1][vertex_edge_num[v1]] = v2;
-    vertex_edge_num[v1]++;
+    adj_list[v1+1][vertex_edge_num[v1+1]] = v2+1;
+    vertex_edge_num[v1+1]++;
 
-    adj_list[v2][vertex_edge_num[v2]] = v1;
-    vertex_edge_num[v2]++;
+    adj_list[v2+1][vertex_edge_num[v2+1]] = v1+1;
+    vertex_edge_num[v2+1]++;
 }
 
 
