@@ -18,7 +18,6 @@
 
 using namespace std;
 
-#define MaxColor 300
 
 struct Move {
     int u;

@@ -640,7 +640,7 @@ int main(int argc, char *argv[])
             population.min_conflict_index = max_conflict_index;
         }
 
-        if(population_iteration % 1 == 0)
+        if(population_iteration % 5 == 0)
         {
             cerr << "Population iteration: " << population_iteration << endl;
             cerr << "min conflict: " << population.min_conflict << endl;
