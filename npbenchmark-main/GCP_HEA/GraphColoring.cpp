@@ -196,7 +196,7 @@ namespace szx
                     population.min_conflict_index = max_conflict_index;
                 }
 
-                if(population_iteration % 5 == 0)
+                if(population_iteration % 10 == 0)
                 {
                     cerr << "Population iteration: " << population_iteration << endl;
                     cerr << "min conflict: " << population.min_conflict << endl;
@@ -236,6 +236,16 @@ namespace szx
             {
                 output[i] = test.population_solution[population.min_conflict_index].index1s[i+1];
             }
+
+            // debug function:
+            cerr << "output: " << endl;
+            for(int i=0;i<input.nodeNum;i++)
+            {
+                {
+                    cerr << output[i] << " ";
+                }
+            }
+            cerr << endl;
         }
     };
 
