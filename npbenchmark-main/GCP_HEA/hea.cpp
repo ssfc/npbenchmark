@@ -70,7 +70,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     tabu_move.resize(2000, {-1, -1});
     non_tabu_move.resize(2000, {-1, -1});
     iter = 0;
-    max_iter = 16000;
+    max_iter = 20000;
 
     min_delta = 999999;
 
