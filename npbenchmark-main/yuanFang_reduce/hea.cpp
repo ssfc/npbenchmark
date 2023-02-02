@@ -60,13 +60,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_color_table.resize(input_num_vertex + 1);
     for(auto & i : adj_color_table)
     {
-        i.resize(MaxColor, 0);
+        i.resize(input_num_color, 0);
     }
 
     tabu_tenure_table.resize(input_num_vertex + 1);
     for(auto & i : tabu_tenure_table)
     {
-        i.resize(MaxColor, 0);
+        i.resize(input_num_color, 0);
     }
 
     moved = {-1, -1};
@@ -488,27 +488,24 @@ int main(int argc, char *argv[])
     // test.print_adj_yf_list();
     // test.print_adj_list();
 
-    /* to debug
-    vector<unsigned int> temp_solution_1;
-    temp_solution_1.resize(test.num_vertex+1, 0);
+    ///* to debug
+    vector<unsigned int> temp_solution;
+    temp_solution.resize(test.num_vertex+1, 0);
 
     // initialization: set random solution to each solution in the population;
     for (int i = 1; i <= test.num_vertex; i++)
     {
-        temp_solution_1[i] = pseudoRandNumGen() % test.num_color;
+        temp_solution[i] = pseudoRandNumGen() % test.num_color;
         //cerr << solution[i] <<' ';
     }
 
-    vector<unsigned int> temp_solution_2 = temp_solution_1;
-
-    cerr << "YF Conflict before tabu search is: " << test.compute_yf_conflict(temp_solution_1) << endl;
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
+    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
 
     double start_time = clock();
 
     // test.tabu_yf_search(temp_solution_1, false);
-    test.tabu_search(temp_solution_2, true);
+    test.tabu_search(temp_solution, true);
 
     double end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
@@ -517,12 +514,12 @@ int main(int argc, char *argv[])
     cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
          << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
 
-    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution_2) << endl;
+    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
     // cerr << "iterations: " << test.get_iteration() << endl;
-     */// to debug
+     //*/// to debug
 
 
-    ///* to reduce
+    /* to reduce
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
