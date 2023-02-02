@@ -33,7 +33,7 @@ public:
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;
 
-    explicit Population_solution(int input_num_color);
+    explicit Population_solution(int input_num_vertex, int input_num_color);
     ~Population_solution();
 };
 
