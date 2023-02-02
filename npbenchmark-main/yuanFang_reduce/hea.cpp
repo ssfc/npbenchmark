@@ -60,20 +60,20 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_color_table.resize(input_num_vertex + 1);
     for(auto & i : adj_color_table)
     {
-        i.resize(input_num_color+100, 0);
+        i.resize(input_num_color, 0);
     }
 
     tabu_tenure_table.resize(input_num_vertex + 1);
     for(auto & i : tabu_tenure_table)
     {
-        i.resize(input_num_color+100, 0);
+        i.resize(input_num_color, 0);
     }
 
     moved = {-1, -1};
     tabu_move.resize(2000, {-1, -1});
     non_tabu_move.resize(2000, {-1, -1});
     iter = 0;
-    max_iter = 800;
+    max_iter = 16000;
 
     min_delta = 999999;
 
@@ -523,8 +523,8 @@ int main(int argc, char *argv[])
     // this is also the process of initialization;
     for (int p = 0; p < num_population; p++)
     {
-        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
-        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
+        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(x[0])*x.size());
 
         test.conflict = 0;
         test.best_conflict = 0;
@@ -557,7 +557,7 @@ int main(int argc, char *argv[])
 
     for(auto & i : test.population_solution)
     {
-        for(auto& x : i.psol) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : i.psol) memset(&x[0],0,sizeof(x[0])*x.size());
         memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
         memset(&i.index1s[0], 0, sizeof(i.index1s[0]) * i.index1s.size());
         memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
@@ -593,7 +593,7 @@ int main(int argc, char *argv[])
             p2 = pseudoRandNumGen() % num_population;
         } while (p1 == p2);
 
-        for(auto& x : temps.psol) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : temps.psol) memset(&x[0],0,sizeof(x[0])*x.size());
         memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
         memset(&temps.index1s[0], 0, sizeof(temps.index1s[0]) * temps.index1s.size());
         memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
@@ -602,8 +602,8 @@ int main(int argc, char *argv[])
         test.cross_over(p1, p2, temps.index1s);
 
         // reset adj_color_table and tabu_tenure_table to zero;
-        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(int)*x.size());
-        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(int)*x.size());
+        for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
+        for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(x[0])*x.size());
 
         test.conflict = 0;
         test.best_conflict = 0;
@@ -671,7 +671,7 @@ int main(int argc, char *argv[])
         }
         cerr << endl;
 
-        cerr << "conflict of solution 18: ";
+        cerr << "conflict of solution 19: ";
         cerr << test.compute_conflict(test.population_solution[19].index1s) << endl;
 
         cerr << "conflict of final solution: ";
