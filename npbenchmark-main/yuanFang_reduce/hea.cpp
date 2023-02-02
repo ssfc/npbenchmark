@@ -44,7 +44,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    adj_yf_list.resize(num_vertex + 1);
     adj_list.resize(num_vertex + 1);
     for (int i = 1; i <= num_vertex; i++)
     {
@@ -61,13 +60,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     adj_color_table.resize(MaxPoint);
     for(auto & i : adj_color_table)
     {
-        i.resize(input_num_color, 0);
+        i.resize(MaxColor, 0);
     }
 
     tabu_tenure_table.resize(MaxPoint);
     for(auto & i : tabu_tenure_table)
     {
-        i.resize(input_num_color, 0);
+        i.resize(MaxColor, 0);
     }
 
     moved = {-1, -1};
@@ -99,15 +98,6 @@ Hybrid_Evolution::~Hybrid_Evolution()
 = default;
 
 
-void Hybrid_Evolution::insert_adj_yf_list(int i, int j)
-{
-    auto *temp1 = (ArcNode *)malloc(sizeof(ArcNode));
-    temp1->adj_vertex = i;
-    temp1->next = adj_yf_list[j].first;
-    adj_yf_list[j].first = temp1;
-}
-
-
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 {
     adj_list[v1][vertex_edge_num[v1]] = v2;
@@ -115,83 +105,6 @@ void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 
     adj_list[v2][vertex_edge_num[v2]] = v1;
     vertex_edge_num[v2]++;
-}
-
-
-void Hybrid_Evolution::find_yf_move(vector<unsigned int> &solution)
-{
-    unsigned int sol_i;
-
-    int tabu_count = 0;
-    int non_tabu_count = 0;
-
-    int tabu_move_delta = 100000;
-    int non_tabu_move_delta = 100000;
-
-    for (int conf_i = 0; conf_i< conflict_num; conf_i++)
-    {
-        int i = conflicts[conf_i];
-        sol_i = solution[i];
-        if (adj_color_table[i][sol_i]>0)
-        {
-            for (int j = 0; j < num_color; j++)
-            {
-                if (j != sol_i)
-                {
-                    int this_delta = adj_color_table[i][j] - adj_color_table[i][sol_i];
-                    //cerr <<this_delta<<'\t';
-                    if (iter >= tabu_tenure_table[i][j])
-                    {
-                        if (this_delta <= non_tabu_move_delta)
-                        {
-                            if (this_delta < non_tabu_move_delta)
-                            {
-                                non_tabu_count = 0;
-                                non_tabu_move_delta = this_delta;
-                            }
-
-                            non_tabu_move[non_tabu_count].u = i;
-                            non_tabu_move[non_tabu_count++].vj = j;
-                        }
-                    }
-                    else
-                    {
-                        if (this_delta <= tabu_move_delta)
-                        {
-                            if (this_delta < tabu_move_delta)
-                            {
-                                tabu_count = 0;
-                                tabu_move_delta = this_delta;
-                            }
-
-                            tabu_move[tabu_count].u = i;
-                            tabu_move[tabu_count++].vj = j;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    int tabu_move_conflict = conflict + tabu_move_delta;
-    int non_tabu_move_conflict = conflict + non_tabu_move_delta;
-
-    if (tabu_move_conflict < best_conflict && tabu_move_conflict < non_tabu_move_conflict)
-    {
-        conflict = tabu_move_conflict;
-        best_conflict = tabu_move_conflict;
-
-        unsigned int index = pseudoRandNumGen() % tabu_count;
-        moved = tabu_move[index];
-    }
-    else
-    {
-        if (non_tabu_move_conflict < best_conflict)
-            best_conflict = non_tabu_move_conflict;
-        conflict = non_tabu_move_conflict;
-        unsigned int index = pseudoRandNumGen() % non_tabu_count;
-        moved = non_tabu_move[index];
-    }
 }
 
 
@@ -292,41 +205,6 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::make_yf_move(vector<unsigned int> &solution)
-{
-    unsigned int vi = solution[moved.u];
-    solution[moved.u] = moved.vj;
-    tabu_tenure_table[moved.u][vi] = conflict + iter + pseudoRandNumGen() % 10 + 1;
-    ArcNode *temp = adj_yf_list[moved.u].first;
-
-    while (temp)
-    {
-        int adj_vertex = temp->adj_vertex;
-        if ((--adj_color_table[adj_vertex][vi]) == 0)
-        {
-            if (solution[adj_vertex] == vi)
-            {
-                delete_conflict(adj_vertex);
-            }
-        }
-
-        if ((++adj_color_table[adj_vertex][moved.vj]) == 1)
-        {
-            if (solution[adj_vertex] == moved.vj)
-            {
-                add_conflict(adj_vertex);
-            }
-        }
-        temp = temp->next;
-    }
-
-    if (adj_color_table[moved.u][vi] != 0 && adj_color_table[moved.u][moved.vj] == 0)
-        delete_conflict(moved.u);
-    if (adj_color_table[moved.u][vi] == 0 && adj_color_table[moved.u][moved.vj] != 0)
-        add_conflict(moved.u);
-}
-
-
 void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 {
     conflict = min_delta + conflict; // update value of conflict;
@@ -345,70 +223,6 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
         adj_color_table[adj_list_node_moved_i][old_color]--;
         adj_color_table[adj_list_node_moved_i][moved.vj]++;
-    }
-}
-
-
-void Hybrid_Evolution::tabu_yf_search(vector<unsigned int> &solution, bool is_limit)
-{
-    bool is_conflict;
-    //cerr <<endl;
-
-    for (int i = 1; i <= num_vertex; i++)
-    {
-        ArcNode *temp = adj_yf_list[i].first;
-        is_conflict = false;
-        while (temp)
-        {
-            if (solution[temp->adj_vertex] == solution[i])
-            {
-                is_conflict = true;
-                conflict++;
-            }
-            adj_color_table[i][solution[temp->adj_vertex]]++;
-            temp = temp->next;
-        }
-
-        if (is_conflict)
-        {
-            conflicts[conflict_num] = i;
-            conflict_index[i] = conflict_num++;
-        }
-    }
-
-    conflict = conflict / 2;
-    // cerr << "initial_f = " << conflict <<endl;
-    best_conflict = conflict;
-    iter = 0;
-
-    if(is_limit) // set upper bound of iteration;
-    {
-        while (iter < max_iter && conflict > 0)
-        {
-            find_yf_move(solution);
-            make_yf_move(solution);
-            iter++;
-        }
-    }
-    else // not set upper bound of iteration;
-    {
-        double start_time = clock();
-
-        while (conflict > 0)
-        {
-            find_yf_move(solution);
-            make_yf_move(solution);
-
-            if(iter % 500000 == 0)
-            {
-                cerr << "Iteration: " << iter << " ";
-                double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-                cerr << " elapsed time(s): " << elapsed_time
-                     << " frequency:" << double (iter) / elapsed_time << endl;
-            }
-
-            iter++;
-        }
     }
 }
 
@@ -570,30 +384,6 @@ void Hybrid_Evolution::cross_over(unsigned int p1, unsigned int p2, vector<unsig
     }
 }
 
-// debug function: compute conflict of a solution
-int Hybrid_Evolution::compute_yf_conflict(vector<unsigned int> &solution)
-{
-    int this_conflict = 0;
-    //cerr <<endl;
-
-    for (int i = 1; i <= num_vertex; i++)
-    {
-        ArcNode *temp = adj_yf_list[i].first;
-        while (temp)
-        {
-            if (solution[temp->adj_vertex] == solution[i])
-            {
-                this_conflict++;
-            }
-
-            temp = temp->next;
-        }
-    }
-
-    this_conflict = this_conflict / 2;
-
-    return this_conflict;
-}
 
 // debug function: compute conflict of a solution
 int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
@@ -625,23 +415,6 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 long long int Hybrid_Evolution::get_iteration() const
 {
     return iter;
-}
-
-// debug function
-void Hybrid_Evolution::print_adj_yf_list()
-{
-    cerr << "YFR Adjacency list of graph: " << num_vertex << " " << num_color << endl;
-    for(int i=1;i<=num_vertex;i++)
-    {
-        cerr << "Vertex " << i << ": ";
-        ArcNode *temp = adj_yf_list[i].first;
-        while (temp)
-        {
-            cerr << temp->adj_vertex << " ";
-            temp = temp->next;
-        }
-        cerr << endl;
-    }
 }
 
 
@@ -705,16 +478,11 @@ int main(int argc, char *argv[])
 
     Hybrid_Evolution test(input_num_vertex, input_num_color, num_population, rand_seed);
 
-    memset(&test.adj_yf_list[0], 0, sizeof(test.adj_yf_list[0]) * test.adj_yf_list.size());
-
     int v1; // first vertex of an edge;
     int v2; // second vertex of an edge;
     while (!feof(fp))
     {
         fscanf(fp, "%d %d\n", &v1, &v2);
-        test.insert_adj_yf_list(v1+1, v2+1);
-        test.insert_adj_yf_list(v2+1, v1+1);
-
         test.insert_adj_list(v1+1, v2+1);
     }
     // test.print_adj_yf_list();
@@ -774,7 +542,7 @@ int main(int argc, char *argv[])
 
         // do tabu-search for each population in the collection;
         // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
-        test.tabu_yf_search(test.solution_collection[p], true);
+        test.tabu_search(test.solution_collection[p], true);
         // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
         population.num_conflict[p] = test.conflict;
@@ -844,7 +612,7 @@ int main(int argc, char *argv[])
         test.best_conflict = 0;
         test.conflict_num = 0;
 
-        test.tabu_yf_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
+        test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         for (int i = 1; i <= test.num_vertex; i++)
         {//变成划分的形式
@@ -906,11 +674,11 @@ int main(int argc, char *argv[])
         }
         cerr << endl;
 
-        cerr << "conflict of solution 19: ";
-        cerr << test.compute_yf_conflict(test.population_solution[19].index1s) << endl;
+        cerr << "conflict of solution 18: ";
+        cerr << test.compute_conflict(test.population_solution[19].index1s) << endl;
 
         cerr << "conflict of final solution: ";
-        cerr << test.compute_yf_conflict(test.population_solution[population.min_conflict_index].index1s) << endl;
+        cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].index1s) << endl;
     }
     else
         cerr << "over time" << endl;
