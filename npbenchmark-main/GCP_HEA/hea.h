@@ -65,12 +65,9 @@ public:
     vector<vector<long long int>> tabu_tenure_table;
 
     Move moved;
-    vector<Move> tabu_move;
-    vector<Move> non_tabu_move;
-
-    int min_delta; // 移动增量
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
     vector<Move> equal_tabu_delta; //禁忌相同delta值
+    int min_delta; // 移动增量
 
     long long int max_iter;
 
