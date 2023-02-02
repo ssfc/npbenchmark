@@ -61,6 +61,12 @@ build CMakeFiles/GCP_HEA.dir/GraphColoring.cpp.obj: CXX_COMPILER__GCP_HEA_Debug 
   OBJECT_DIR = CMakeFiles\GCP_HEA.dir
   OBJECT_FILE_DIR = CMakeFiles\GCP_HEA.dir
 
+build CMakeFiles/GCP_HEA.dir/hea.cpp.obj: CXX_COMPILER__GCP_HEA_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/GCP_HEA/hea.cpp || cmake_object_order_depends_target_GCP_HEA
+  DEP_FILE = CMakeFiles\GCP_HEA.dir\hea.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GCP_HEA.dir
+  OBJECT_FILE_DIR = CMakeFiles\GCP_HEA.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GCP_HEA
@@ -69,7 +75,7 @@ build CMakeFiles/GCP_HEA.dir/GraphColoring.cpp.obj: CXX_COMPILER__GCP_HEA_Debug 
 #############################################
 # Link the executable GCP_HEA.exe
 
-build GCP_HEA.exe: CXX_EXECUTABLE_LINKER__GCP_HEA_Debug CMakeFiles/GCP_HEA.dir/main.cpp.obj CMakeFiles/GCP_HEA.dir/GraphColoring.cpp.obj
+build GCP_HEA.exe: CXX_EXECUTABLE_LINKER__GCP_HEA_Debug CMakeFiles/GCP_HEA.dir/main.cpp.obj CMakeFiles/GCP_HEA.dir/GraphColoring.cpp.obj CMakeFiles/GCP_HEA.dir/hea.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GCP_HEA.dir
