@@ -76,7 +76,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
-        i.resize(num_vertex + 1, 0);
+        i.resize(num_vertex, 0);
     population_solution.resize(num_population, Population_solution(input_num_vertex, input_num_color));
 
     // debug variables;
@@ -112,7 +112,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
     for (int i = 1; i <= num_vertex; i++) // i is vertex;
     {
-        unsigned int solution_i = solution[i]; // solution_i is color;
+        unsigned int solution_i = solution[i-1]; // solution_i is color;
 
         if (adj_color_table[i-1][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -205,8 +205,8 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    unsigned int old_color = solution[moved.u];
-    solution[moved.u] = moved.vj;
+    unsigned int old_color = solution[moved.u-1];
+    solution[moved.u-1] = moved.vj;
     tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
@@ -226,11 +226,11 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     for (int i = 1; i <= num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i-1];
-        unsigned int this_vertex_color = solution[i];
+        unsigned int this_vertex_color = solution[i-1];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i-1][j]];
+            unsigned int adj_color = solution[adj_list[i-1][j]-1];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -361,11 +361,11 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
     for (int i = 1; i <= num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i-1];
-        unsigned int this_vertex_color = solution[i];
+        unsigned int this_vertex_color = solution[i-1];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i-1][j]];
+            unsigned int adj_color = solution[adj_list[i-1][j] - 1];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;

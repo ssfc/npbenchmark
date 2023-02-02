@@ -89,7 +89,7 @@ namespace szx
                 // initialization: set random solution to each solution in the population;
                 for (int i = 1; i <= test.num_vertex; i++)
                 {
-                    test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
+                    test.solution_collection[p][i-1] = pseudoRandNumGen() % test.num_color;
                     //cerr << solution[i] <<' ';
                 }
 
@@ -125,8 +125,8 @@ namespace szx
             {
                 for (int i = 1; i <= test.num_vertex; i++)
                 {
-                    test.population_solution[p].index1s[i] = test.solution_collection[p][i]; // color of population p, vertex i;
-                    unsigned int color = test.solution_collection[p][i]; // color of population p, vertex i;
+                    test.population_solution[p].index1s[i] = test.solution_collection[p][i-1]; // color of population p, vertex i;
+                    unsigned int color = test.solution_collection[p][i-1]; // color of population p, vertex i;
                     int color_num = test.population_solution[p].color_num[color];
 
                     test.population_solution[p].psol[color][color_num] = i;
