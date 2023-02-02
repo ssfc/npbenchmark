@@ -53,9 +53,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
     conflict = 0;
     best_conflict = 0;
-    conflict_num = 0;
-    conflicts.resize(input_num_vertex + 1, 0);
-    conflict_index.resize(input_num_vertex + 1, 0);
 
     adj_color_table.resize(input_num_vertex + 1);
     for(auto & i : adj_color_table)

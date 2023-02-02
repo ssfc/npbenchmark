@@ -60,11 +60,8 @@ public:
 
     int conflict;
     int best_conflict;
-    int conflict_num;
-    vector<int> conflicts;
-    vector<int> conflict_index;
 
-    vector<vector<int>> adj_color_table;
+    vector<vector<int>> adj_color_table; // dimension,
     vector<vector<long long int>> tabu_tenure_table;
 
     Move moved;

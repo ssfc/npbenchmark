@@ -85,7 +85,6 @@ namespace szx
 
                 test.conflict = 0;
                 test.best_conflict = 0;
-                test.conflict_num = 0;
 
                 // initialization: set random solution to each solution in the population;
                 for (int i = 1; i <= test.num_vertex; i++)
@@ -163,7 +162,6 @@ namespace szx
 
                 test.conflict = 0;
                 test.best_conflict = 0;
-                test.conflict_num = 0;
 
                 test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
@@ -196,7 +194,7 @@ namespace szx
                     population.min_conflict_index = max_conflict_index;
                 }
 
-                if(population_iteration % 10 == 0)
+                if(population_iteration % 20 == 0)
                 {
                     cerr << "Population iteration: " << population_iteration << endl;
                     cerr << "min conflict: " << population.min_conflict << endl;
