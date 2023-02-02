@@ -110,32 +110,32 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
     int aspiration = best_conflict - conflict;
 
-    for (int i = 1; i <= num_vertex; i++) // i is vertex;
+    for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        unsigned int solution_i = solution[i-1]; // solution_i is color;
+        unsigned int solution_i = solution[i]; // solution_i is color;
 
-        if (adj_color_table[i-1][solution_i] > 0) // if vertex i overlap its neighbor's color;
+        if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
             for (int j = 0; j < num_color; j++) // j is color;
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int this_delta = adj_color_table[i-1][j] - adj_color_table[i-1][solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table[i-1][j] <= iter) //nontabu move;
+                    int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
+                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
                             equal_nontabu_count = 0;
                             min_delta = this_delta;
 
-                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].u = i+1; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
                         }
                         else if (this_delta == min_delta)
                         {
-                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].u = i+1; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
@@ -156,14 +156,14 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                             equal_tabu_count = 0;
                             tabu_delta = this_delta;
 
-                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].u = i+1; // i is vertex;
                             equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
                         }
                         else if(this_delta == tabu_delta)
                         {
-                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].u = i+1; // i is vertex;
                             equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
