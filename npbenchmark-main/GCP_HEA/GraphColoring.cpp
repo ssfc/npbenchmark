@@ -123,14 +123,14 @@ namespace szx
 
             for (int p = 0; p < num_population; p++)
             {
-                for (int i = 1; i <= test.num_vertex; i++)
+                for (int i = 0; i < test.num_vertex; i++)
                 {
-                    test.population_solution[p].index1s[i] = test.solution_collection[p][i-1]; // color of population p, vertex i;
-                    unsigned int color = test.solution_collection[p][i-1]; // color of population p, vertex i;
+                    test.population_solution[p].index1s[i+1] = test.solution_collection[p][i]; // color of population p, vertex i;
+                    unsigned int color = test.solution_collection[p][i]; // color of population p, vertex i;
                     int color_num = test.population_solution[p].color_num[color];
 
-                    test.population_solution[p].psol[color][color_num] = i;
-                    test.population_solution[p].index2s[i] = color_num++;
+                    test.population_solution[p].psol[color][color_num] = i+1;
+                    test.population_solution[p].index2s[i+1] = color_num++;
                     test.population_solution[p].color_num[color] = color_num;
                 }
             }
