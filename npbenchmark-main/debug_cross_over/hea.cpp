@@ -297,7 +297,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 
     for (int i = 0; i < num_color; i++)
     {
-        if (i % 2 != 1)
+        if (i % 2 == 0)
         {
             A = 0;
             B = 1;
