@@ -134,7 +134,7 @@ namespace szx
                     test.population_solution[p].psol[color][color_num] = i;
                     // 顶点i对应的某个东西 = 解[p][i]对应颜色的数量+1; 顶点在所属颜色独立集中的序号;
                     test.population_solution[p].index2s[i] = color_num++;
-                    test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色数量+1;
+                    test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
             }
 
