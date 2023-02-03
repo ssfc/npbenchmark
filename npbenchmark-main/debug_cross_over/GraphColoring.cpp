@@ -130,13 +130,15 @@ namespace szx
                     unsigned int color = test.solution_collection[p][i]; // take out the color of solution[p][i];
                     int color_num = test.population_solution[p].color_num[color]; // take out the color num of solution[p][i] corresponding color;
 
-                    test.population_solution[p].psol[color][color_num] = i; // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
-                    //////////////////////////////////////// 前面的都看懂了
-                    test.population_solution[p].index2s[i] = color_num++; // index2s[i] = 解[p][i]对应颜色的数量+1;
+                    // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
+                    test.population_solution[p].psol[color][color_num] = i;
+                    // 顶点i对应的某个东西 = 解[p][i]对应颜色的数量+1; 顶点在所属颜色独立集中的序号;
+                    test.population_solution[p].index2s[i] = color_num++;
                     test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色数量+1;
                 }
             }
 
+            //////////////////////////////////////// 前面的都看懂了
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
