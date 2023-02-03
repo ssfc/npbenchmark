@@ -27,7 +27,7 @@ struct Move {
 class Population_solution {
 public:
     vector<vector<int>> psol;
-    vector<int> color_num;
+    vector<int> color_num; // dimension, num_color; 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集; 
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;
 

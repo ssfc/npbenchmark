@@ -297,6 +297,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 
     for (int i = 0; i < num_color; i++)
     {
+        // 如果循环数是奇数，摘取s1的独立集；如果循环数是偶数，摘取s2的独立集。
         if (i % 2 == 0)
         {
             A = 0;
