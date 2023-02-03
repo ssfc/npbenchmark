@@ -346,7 +346,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
-            unsigned int color = pseudoRandNumGen() % num_color;//随机分配到某一种颜色中去
+            unsigned int color = pseudoRandNumGen() % num_color; //随机分配到某一种颜色中去
             index1[point] = color;
         }
     }
