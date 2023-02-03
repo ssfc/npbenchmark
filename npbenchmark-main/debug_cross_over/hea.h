@@ -26,7 +26,7 @@ struct Move {
 
 class Population_solution {
 public:
-    vector<vector<int>> psol; // dimension, num_color * (num_vertex+1); 猜测, psol可能是记录分配独立集的各色节点; 
+    vector<vector<int>> psol; // dimension, num_color * (num_vertex+1); 猜测, psol可能是记录分配独立集的各色节点;
     vector<int> color_num; // dimension, num_color; 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;

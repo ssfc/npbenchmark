@@ -322,12 +322,12 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         }
 
         int num = s[A].color_num[max_index]; // 抽取解中最大颜色所包含的顶点数量;
-        for (int j = 0; j<num; j++)
+        for (int j = 0; j<num; j++) // 遍历从0到最大颜色数量;
         {
-            int point = s[A].psol[max_index][j];
+            int point = s[A].psol[max_index][j]; // psol[最多颜色序号][j]
             index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
 
-            unsigned int color = s[B].index1s[point];//在B中删除这个点
+            unsigned int color = s[B].index1s[point]; //在B中删除这个点
             unsigned int index2 = s[B].index2s[point];
 
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
@@ -336,7 +336,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         }
 
         //删除这些点
-        s[A].color_num[max_index] = 0;
+        s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零;
 
     }
 

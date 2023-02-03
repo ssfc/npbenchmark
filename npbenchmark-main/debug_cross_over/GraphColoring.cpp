@@ -128,11 +128,11 @@ namespace szx
                     // copy color solution from solution_collection to population_solution[p].index1s;
                     test.population_solution[p].index1s[i] = test.solution_collection[p][i];
                     unsigned int color = test.solution_collection[p][i]; // take out the color of solution[p][i];
-                    int color_num = test.population_solution[p].color_num[color];
-
-                    test.population_solution[p].psol[color][color_num] = i;
-                    test.population_solution[p].index2s[i] = color_num++;
-                    test.population_solution[p].color_num[color] = color_num;
+                    int color_num = test.population_solution[p].color_num[color]; // take out the color num of solution[p][i] corresponding color;
+//////////////////////////////////////// 前面的都看懂了
+                    test.population_solution[p].psol[color][color_num] = i; // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员按顺序排列; 
+                    test.population_solution[p].index2s[i] = color_num++; // index2s[i] = 解[p][i]对应颜色的数量+1;
+                    test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色数量+1;
                 }
             }
 
