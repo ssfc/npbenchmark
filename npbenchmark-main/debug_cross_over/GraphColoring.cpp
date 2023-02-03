@@ -126,8 +126,8 @@ namespace szx
                 for (int i = 1; i <= test.num_vertex; i++)
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
-                    test.population_solution[p].index1s[i] = test.solution_collection[p][i]; 
-                    unsigned int color = test.solution_collection[p][i]; // color of population p, vertex i;
+                    test.population_solution[p].index1s[i] = test.solution_collection[p][i];
+                    unsigned int color = test.solution_collection[p][i]; // take out the color of solution[p][i];
                     int color_num = test.population_solution[p].color_num[color];
 
                     test.population_solution[p].psol[color][color_num] = i;
