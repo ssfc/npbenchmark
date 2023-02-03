@@ -55,6 +55,18 @@ build CMakeFiles/debug_cross_over.dir/hea.cpp.obj: CXX_COMPILER__debug_cross_ove
   OBJECT_DIR = CMakeFiles\debug_cross_over.dir
   OBJECT_FILE_DIR = CMakeFiles\debug_cross_over.dir
 
+build CMakeFiles/debug_cross_over.dir/main.cpp.obj: CXX_COMPILER__debug_cross_over_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/debug_cross_over/main.cpp || cmake_object_order_depends_target_debug_cross_over
+  DEP_FILE = CMakeFiles\debug_cross_over.dir\main.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\debug_cross_over.dir
+  OBJECT_FILE_DIR = CMakeFiles\debug_cross_over.dir
+
+build CMakeFiles/debug_cross_over.dir/GraphColoring.cpp.obj: CXX_COMPILER__debug_cross_over_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/debug_cross_over/GraphColoring.cpp || cmake_object_order_depends_target_debug_cross_over
+  DEP_FILE = CMakeFiles\debug_cross_over.dir\GraphColoring.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\debug_cross_over.dir
+  OBJECT_FILE_DIR = CMakeFiles\debug_cross_over.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target debug_cross_over
@@ -63,7 +75,7 @@ build CMakeFiles/debug_cross_over.dir/hea.cpp.obj: CXX_COMPILER__debug_cross_ove
 #############################################
 # Link the executable debug_cross_over.exe
 
-build debug_cross_over.exe: CXX_EXECUTABLE_LINKER__debug_cross_over_Debug CMakeFiles/debug_cross_over.dir/hea.cpp.obj
+build debug_cross_over.exe: CXX_EXECUTABLE_LINKER__debug_cross_over_Debug CMakeFiles/debug_cross_over.dir/hea.cpp.obj CMakeFiles/debug_cross_over.dir/main.cpp.obj CMakeFiles/debug_cross_over.dir/GraphColoring.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\debug_cross_over.dir

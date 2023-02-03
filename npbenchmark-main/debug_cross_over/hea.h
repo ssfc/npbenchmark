@@ -18,17 +18,6 @@
 
 using namespace std;
 
-#define MaxPoint 1002
-#define MaxColor 300
-
-struct ArcNode {
-    int adj_vertex;
-    struct ArcNode *next;
-};
-
-struct VerNode {
-    ArcNode *first;
-};
 
 struct Move {
     int u;
@@ -42,7 +31,7 @@ public:
     vector<unsigned int> index1s;
     vector<unsigned int> index2s;
 
-    explicit Population_solution(int input_num_color);
+    explicit Population_solution(int input_num_vertex, int input_num_color);
     ~Population_solution();
 };
 
@@ -66,41 +55,51 @@ public:
     // variables;
     int num_vertex;
     int num_color;
+    vector<vector<int>> adj_list; // adjacency list; dimension, (num_vertex+1) * (num_vertex+1);
+    vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex + 1;
 
-    vector<VerNode> adj_list;
-    vector<vector<int>> adj_color_table;
+    int conflict;
+    int best_conflict;
+
+    vector<vector<int>> adj_color_table; // dimension,
     vector<vector<long long int>> tabu_tenure_table;
 
-    int best_conflict;
-    int conflict;
-    int conflict_num;
-    vector<int> conflicts;
-    vector<int> conflict_index;
+    Move moved;
+    vector<Move> equal_nontabu_delta; //非禁忌相同delta值
+    vector<Move> equal_tabu_delta; //禁忌相同delta值
+    int min_delta; // 移动增量
+
+    long long int max_iter;
 
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Population_solution> population_solution;
 
-    Move moved;
-    long long int max_iter;
-
+    // debug variables:
+    int max_equal_nontabu_count;
+    int max_equal_tabu_count;
+    double start_time;
+    double end_time;
 
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_num_color, int input_num_population, int input_seed);
     ~Hybrid_Evolution();
+
     void insert_adj_list(int i, int j);
 
     void find_move(vector<unsigned int> &solution);
     void make_move(vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit);
-    void add_conflict(int adj_vertex); // only used in make_move;
-    void delete_conflict(int adj_vertex); // only used in make_move;
 
-    void cross_over(unsigned int p1, unsigned int p2, vector<unsigned int> &index1);
+    void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
 
     // debug function: compute conflict of a solution
     int compute_conflict(vector<unsigned int> &solution);
     [[nodiscard]] long long int get_iteration() const;
+    void print_adj_list() const; // print adjacent list of graph;
+
+    [[nodiscard]] int get_max_equal_nontabu_count() const;
+    [[nodiscard]] int get_max_equal_tabu_count() const;
 };
 
 
