@@ -309,19 +309,19 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             B = 0;
         }
 
+        // 寻找抽取解中的包含顶点最多的颜色(最大独立集);
         int max_index;
         int max_num = -1;
-
         for (int j = 0; j < num_color; j++)
         {
             if (s[A].color_num[j] > max_num)
             {
-                max_index = j;
-                max_num = s[A].color_num[j];
+                max_index = j; // 抽取解中最大颜色的名称(序号);
+                max_num = s[A].color_num[j]; // 抽取解中最大颜色所包含的顶点数量;
             }
         }
 
-        int num = s[A].color_num[max_index];
+        int num = s[A].color_num[max_index]; // 抽取解中最大颜色所包含的顶点数量;
         for (int j = 0; j<num; j++)
         {
             int point = s[A].psol[max_index][j];
