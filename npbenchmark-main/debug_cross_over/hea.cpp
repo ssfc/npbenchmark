@@ -377,7 +377,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 
     for (int i = 0; i < num_color; i++)
     {
-        int num = s[0].color_num[i];
+        int num = s[0].color_num[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
         for (int j = 0; j<num; j++)
         {
             int point = s[0].psol[i][j];
