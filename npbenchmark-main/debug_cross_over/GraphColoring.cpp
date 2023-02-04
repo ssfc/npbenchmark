@@ -76,7 +76,7 @@ namespace szx
              */// to debug
 
 
-//////////////////////////////////////// 前面的都验证了; 
+//////////////////////////////////////// 前面的都验证了;
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
