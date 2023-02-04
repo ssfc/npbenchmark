@@ -121,7 +121,8 @@ namespace szx
 
             double start_time = clock();
 
-            for (int p = 0; p < num_population; p++) {
+            for (int p = 0; p < num_population; p++)
+            {
                 for (int i = 1; i <= test.num_vertex; i++) // i is name of vertex;
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
@@ -170,8 +171,6 @@ namespace szx
                 }
                 cerr << endl;
 
-                //////////////////////////////////////// 前面的都看懂了
-
                 // reset adj_color_table and tabu_tenure_table to zero;
                 for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
                 for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(x[0])*x.size());
@@ -181,8 +180,9 @@ namespace szx
 
                 test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
+                // 由temps的index1s构造出psol, index2s, color_num;
                 for (int i = 1; i <= test.num_vertex; i++)
-                {//变成划分的形式
+                {
                     unsigned int color = temps.index1s[i];
                     int color_num = temps.color_num[color];
                     temps.psol[color][color_num] = i;
@@ -190,8 +190,8 @@ namespace szx
                     temps.color_num[color] = ++color_num;
                 }
 
+                // 找出种群中的最大冲突数; 
                 int max_conflict = -1, max_conflict_index;
-
                 for (int i = 0; i < num_population; i++)
                 {
                     if (population.num_conflict[i] > max_conflict)
@@ -200,7 +200,7 @@ namespace szx
                         max_conflict_index = i;
                     }
                 }
-
+//////////////////////////////////////// 前面的都看懂了
                 test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
                 population.num_conflict[max_conflict_index] = test.conflict;
 
