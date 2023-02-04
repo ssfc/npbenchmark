@@ -133,8 +133,6 @@ namespace szx
 
             double start_time = clock();
 
-            //////////////////////////////////////// 前面的都验证了;
-
             // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
@@ -157,7 +155,8 @@ namespace szx
                 test.population_solution[p].print_population_solution();
             }
 
-            /* to reduce
+            //////////////////////////////////////// 前面的都验证了;
+            ///* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
@@ -165,7 +164,6 @@ namespace szx
             {
                 // random select two index from population as parents;
                 unsigned int p1 = pseudoRandNumGen() % num_population, p2;
-
                 do
                 {
                     p2 = pseudoRandNumGen() % num_population;
@@ -277,7 +275,7 @@ namespace szx
                 }
             }
             cerr << endl;
-             */// to reduce
+             //*/// to reduce
         }
     };
 
