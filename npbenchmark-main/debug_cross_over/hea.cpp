@@ -78,10 +78,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    adj_list.resize(num_vertex + 1);
-    for (int i = 1; i <= num_vertex; i++)
+    adj_list.resize(num_vertex);
+    for (int i = 0; i < num_vertex; i++)
     {
-        adj_list[i].resize(num_vertex + 1, 0);
+        adj_list[i].resize(num_vertex, 0);
     }
     vertex_edge_num.resize(num_vertex, 0);
 
@@ -127,10 +127,10 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 {
-    adj_list[v1+1][vertex_edge_num[v1]] = v2+1;
+    adj_list[v1][vertex_edge_num[v1]] = v2+1;
     vertex_edge_num[v1]++;
 
-    adj_list[v2+1][vertex_edge_num[v2]] = v1+1;
+    adj_list[v2][vertex_edge_num[v2]] = v1+1;
     vertex_edge_num[v2]++;
 }
 
@@ -246,7 +246,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u-1]; i++)
     {
-        int adj_list_node_moved_i = adj_list[moved.u][i];
+        int adj_list_node_moved_i = adj_list[moved.u-1][i];
 
         adj_color_table[adj_list_node_moved_i-1][old_color]--;
         adj_color_table[adj_list_node_moved_i-1][moved.vj]++;
@@ -264,7 +264,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list[i-1][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -402,7 +402,7 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list[i-1][j]];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;
@@ -431,7 +431,7 @@ void Hybrid_Evolution::print_adj_list() const
         cerr << "Vertex " << i << ": ";
         for (int j = 0;j < vertex_edge_num[i-1];j++)
         {
-            cerr << adj_list[i][j] << " ";
+            cerr << adj_list[i-1][j] << " ";
         }
         cerr << endl;
     }
