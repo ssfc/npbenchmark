@@ -37,7 +37,7 @@ namespace szx
             */
 
 
-            int num_population = 20;
+            int num_population = 1;
             Population population(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
@@ -76,7 +76,7 @@ namespace szx
              */// to debug
 
 
-            ///* to reduce
+
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
@@ -136,9 +136,30 @@ namespace szx
                     test.population_solution[p].index2s[i] = color_num++;
                     test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
+
+                // for debugging:
+                cerr << "index1s: ";
+                for(int i=1;i<=test.num_vertex;i++)
+                {
+                    cerr << test.population_solution[p].index1s[i] << " ";
+                }
+                cerr << endl;
+
+                cerr << "psol: ";
+                for(int i=0;i<test.population_solution[p].psol.size();i++)
+                {
+                    for(int j=0;j<test.population_solution[p].psol[i].size();j++)
+                    {
+                        cerr << test.population_solution[p].psol[i][j] << " ";
+                    }
+                    cerr << endl;
+                }
+
+
             }
 
             //////////////////////////////////////// 前面的都看懂了
+            /* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
@@ -248,6 +269,7 @@ namespace szx
                 }
             }
             cerr << endl;
+             */// to reduce
         }
     };
 
