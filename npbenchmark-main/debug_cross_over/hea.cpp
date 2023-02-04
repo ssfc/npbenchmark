@@ -94,7 +94,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
         i.resize(input_num_color, 0);
     }
 
-    tabu_tenure_table.resize(input_num_vertex + 1);
+    tabu_tenure_table.resize(input_num_vertex);
     for(auto & i : tabu_tenure_table)
     {
         i.resize(input_num_color, 0);
@@ -155,7 +155,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
                     int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
+                    if (tabu_tenure_table[i-1][j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
@@ -241,7 +241,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
     unsigned int old_color = solution[moved.u];
     solution[moved.u] = moved.vj;
-    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u-1]; i++)
