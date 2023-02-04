@@ -141,7 +141,7 @@ namespace szx
             }
 
             //////////////////////////////////////// 前面的都看懂了
-            /* to reduce
+            ///* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
@@ -251,7 +251,7 @@ namespace szx
                 }
             }
             cerr << endl;
-             */// to reduce
+             //*/// to reduce
         }
     };
 
