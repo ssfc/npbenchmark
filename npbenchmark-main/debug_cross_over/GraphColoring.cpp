@@ -125,7 +125,7 @@ namespace szx
 
             for(auto & i : test.population_solution)
             {
-                for(auto& x : i.psol) memset(&x[0],0,sizeof(x[0])*x.size());
+                for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
                 memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
                 memset(&i.index1s[0], 0, sizeof(i.index1s[0]) * i.index1s.size());
                 memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
@@ -145,7 +145,7 @@ namespace szx
                     int color_num = test.population_solution[p].color_num[color]; // take out the color num of solution[p][i] corresponding color;
 
                     // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
-                    test.population_solution[p].psol[color][color_num] = i;
+                    test.population_solution[p].partition[color][color_num] = i;
                     // 顶点i在所属颜色独立集中的序号;
                     test.population_solution[p].index2s[i-1] = color_num++;
                     test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
@@ -169,7 +169,7 @@ namespace szx
                     p2 = pseudoRandNumGen() % num_population;
                 } while (p1 == p2);
 
-                for(auto& x : temps.psol) memset(&x[0],0,sizeof(x[0])*x.size());
+                for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
                 memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
                 memset(&temps.index1s[0], 0, sizeof(temps.index1s[0]) * temps.index1s.size());
                 memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
@@ -203,7 +203,7 @@ namespace szx
                 {
                     unsigned int color = temps.index1s[i];
                     int color_num = temps.color_num[color];
-                    temps.psol[color][color_num] = i;
+                    temps.partition[color][color_num] = i;
                     temps.index2s[i-1] = color_num;
                     temps.color_num[color] = ++color_num;
                 }

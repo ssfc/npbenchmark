@@ -10,8 +10,8 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution(int input_num_vertex, int input_num_color)
 {
-    psol.resize(input_num_color);
-    for(auto & i : psol)
+    partition.resize(input_num_color);
+    for(auto & i : partition)
     {
         i.resize(input_num_vertex + 1, 0);
     }
@@ -42,11 +42,11 @@ void Population_solution::print_population_solution()
     cerr << endl;
 
     cerr << "psol: " << endl;
-    for(int i=0;i<psol.size();i++)
+    for(int i=0;i<partition.size();i++)
     {
         for(int j=0;j<color_num[i];j++)
         {
-            cerr << psol[i][j] << " ";
+            cerr << partition[i][j] << " ";
         }
         cerr << endl;
     }
@@ -357,7 +357,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 
         for (int j = 0; j<max_num; j++) // 遍历最多颜色的独立集;
         {
-            int point = s[A].psol[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
+            int point = s[A].partition[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
             index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
@@ -365,8 +365,8 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             unsigned int index2 = s[B].index2s[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
-            s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
-            int t = s[B].psol[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
+            s[B].partition[color][index2] = s[B].partition[color][--s[B].color_num[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
+            int t = s[B].partition[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
             s[B].index2s[t-1] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
@@ -380,7 +380,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         int num = s[0].color_num[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
         for (int j = 0; j<num; j++) // 遍历颜色i独立集中的剩余顶点;
         {
-            int point = s[0].psol[i][j]; // 颜色i独立集中第j个顶点的名字;
+            int point = s[0].partition[i][j]; // 颜色i独立集中第j个顶点的名字;
             unsigned int color = pseudoRandNumGen() % num_color; //随机寻找一种颜色;
             index1[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
         }
