@@ -121,8 +121,7 @@ namespace szx
 
             double start_time = clock();
 
-            for (int p = 0; p < num_population; p++)
-            {
+            for (int p = 0; p < num_population; p++) {
                 for (int i = 1; i <= test.num_vertex; i++) // i is name of vertex;
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
@@ -138,36 +137,7 @@ namespace szx
                 }
 
                 // for debugging:
-                cerr << "index1s: ";
-                for(int i=1;i<=test.num_vertex;i++)
-                {
-                    cerr << test.population_solution[p].index1s[i] << " ";
-                }
-                cerr << endl;
-
-                cerr << "index2s: ";
-                for(int i=1;i<=test.num_vertex;i++)
-                {
-                    cerr << test.population_solution[p].index2s[i] << " ";
-                }
-                cerr << endl;
-
-                cerr << "psol: ";
-                for(int i=0;i<test.population_solution[p].psol.size();i++)
-                {
-                    for(int j=0;j<test.population_solution[p].psol[i].size();j++)
-                    {
-                        cerr << test.population_solution[p].psol[i][j] << " ";
-                    }
-                    cerr << endl;
-                }
-
-                cerr << "color nums: ";
-                for(int i=0;i<test.population_solution[p].color_num.size();i++)
-                {
-                    cerr << test.population_solution[p].color_num[i] << " ";
-                }
-                cerr << endl;
+                test.population_solution[p].print_population_solution();
             }
 
             //////////////////////////////////////// 前面的都看懂了
