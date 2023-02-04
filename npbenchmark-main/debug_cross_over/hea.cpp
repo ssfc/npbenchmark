@@ -35,9 +35,9 @@ void Population_solution::print_population_solution()
     cerr << endl;
 
     cerr << "index2s: ";
-    for(int i=0;i<index2s.size();i++)
+    for(unsigned int index2 : index2s)
     {
-        cerr << index2s[i] << " ";
+        cerr << index2 << " ";
     }
     cerr << endl;
 
@@ -52,9 +52,9 @@ void Population_solution::print_population_solution()
     }
 
     cerr << "color nums: ";
-    for(int i=0;i<color_num.size();i++)
+    for(int i : color_num)
     {
-        cerr << color_num[i] << " ";
+        cerr << i << " ";
     }
     cerr << endl;
 }
