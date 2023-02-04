@@ -27,7 +27,7 @@ struct Move {
 // 整个population solution可以用一个solution构造出来;
 class Population_solution {
 public:
-    // dimension: num_color * (num_vertex+1);
+    // dimension: num_color * num_vertex;
     // element: vertex name (i);
     // meaning: 将属于某颜色的独立集所有成员顶点按顺序排列, 范围之外的置零;
     vector<vector<int>> partition;
@@ -39,7 +39,7 @@ public:
     // element: amount of color i the solution;
     // meaning: solution;
     vector<unsigned int> index1s;
-    // dimension: num_vertex+1;
+    // dimension: num_vertex;
     // element: 序号;
     // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该solution中是第几次出现;
     vector<unsigned int> index2s;
