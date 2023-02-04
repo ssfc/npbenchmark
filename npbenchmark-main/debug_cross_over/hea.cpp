@@ -371,7 +371,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             s[B].index2s[t] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
-        //删除这些点
+        //删除A中的这些点
         s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
     }
 
