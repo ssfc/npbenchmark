@@ -41,7 +41,7 @@ void Population_solution::print_population_solution()
     }
     cerr << endl;
 
-    cerr << "psol: ";
+    cerr << "psol: " << endl;
     for(int i=0;i<psol.size();i++)
     {
         for(int j=0;j<psol[i].size();j++)

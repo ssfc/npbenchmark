@@ -37,7 +37,7 @@ namespace szx
             */
 
 
-            int num_population = 1;
+            int num_population = 3;
             Population population(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
@@ -144,7 +144,7 @@ namespace szx
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
-            while (population.min_conflict != 0)
+            while (population.min_conflict != 0 && population_iteration<2)
             {
                 // random select two index from population as parents;
                 unsigned int p1 = pseudoRandNumGen() % num_population, p2;
@@ -161,6 +161,13 @@ namespace szx
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
                 test.cross_over(p1, p2, temps.index1s);
+
+                cerr << "index1s after cross over: ";
+                for(int i=1;i<temps.index1s.size();i++)
+                {
+                    cerr << temps.index1s[i] << " ";
+                }
+                cerr << endl;
 
                 //////////////////////////////////////// 前面的都看懂了
 
