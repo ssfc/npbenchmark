@@ -132,7 +132,7 @@ namespace szx
 
                     // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
                     test.population_solution[p].psol[color][color_num] = i;
-                    // 顶点i对应的某个东西 = 解[p][i]对应颜色的数量+1; 顶点在所属颜色独立集中的序号;
+                    // 顶点i在所属颜色独立集中的序号;
                     test.population_solution[p].index2s[i] = color_num++;
                     test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
@@ -142,6 +142,13 @@ namespace szx
                 for(int i=1;i<=test.num_vertex;i++)
                 {
                     cerr << test.population_solution[p].index1s[i] << " ";
+                }
+                cerr << endl;
+
+                cerr << "index2s: ";
+                for(int i=1;i<=test.num_vertex;i++)
+                {
+                    cerr << test.population_solution[p].index2s[i] << " ";
                 }
                 cerr << endl;
 
@@ -155,6 +162,12 @@ namespace szx
                     cerr << endl;
                 }
 
+                cerr << "color nums: ";
+                for(int i=0;i<=test.population_solution[p].color_num[i];i++)
+                {
+                    cerr << test.population_solution[p].color_num[i] << " ";
+                }
+                cerr << endl;
 
             }
 
