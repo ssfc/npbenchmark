@@ -362,8 +362,8 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 //////////////////////////////////////// 前面的都看懂了
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
-            unsigned int color = s[B].index1s[point]; // 找出B中顶点{2,5,6,7,10}对应的颜色;
-            unsigned int index2 = s[B].index2s[point]; // 找出B中顶点{2,5,6,7,10}在分划中的位置;
+            unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
+            unsigned int index2 = s[B].index2s[point]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
             int t = s[B].psol[color][index2];
