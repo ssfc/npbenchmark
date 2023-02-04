@@ -83,7 +83,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     {
         adj_list[i].resize(num_vertex + 1, 0);
     }
-    vertex_edge_num.resize(num_vertex + 1, 0);
+    vertex_edge_num.resize(num_vertex, 0);
 
     conflict = 0;
     best_conflict = 0;
@@ -127,11 +127,11 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 {
-    adj_list[v1+1][vertex_edge_num[v1+1]] = v2+1;
-    vertex_edge_num[v1+1]++;
+    adj_list[v1+1][vertex_edge_num[v1]] = v2+1;
+    vertex_edge_num[v1]++;
 
-    adj_list[v2+1][vertex_edge_num[v2+1]] = v1+1;
-    vertex_edge_num[v2+1]++;
+    adj_list[v2+1][vertex_edge_num[v2]] = v1+1;
+    vertex_edge_num[v2]++;
 }
 
 
@@ -244,7 +244,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
-    for (int i = 0; i < vertex_edge_num[moved.u]; i++)
+    for (int i = 0; i < vertex_edge_num[moved.u-1]; i++)
     {
         int adj_list_node_moved_i = adj_list[moved.u][i];
 
@@ -259,7 +259,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     // compute initial conflict;
     for (int i = 1; i <= num_vertex; i++)
     {
-        int num_edge = vertex_edge_num[i];
+        int num_edge = vertex_edge_num[i-1];
         unsigned int this_vertex_color = solution[i];
 
         for (int j = 0; j < num_edge; j++)
@@ -397,7 +397,7 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 
     for (int i = 1; i <= num_vertex; i++)
     {
-        int num_edge = vertex_edge_num[i];
+        int num_edge = vertex_edge_num[i-1];
         unsigned int this_vertex_color = solution[i];
 
         for (int j = 0; j < num_edge; j++)
@@ -429,7 +429,7 @@ void Hybrid_Evolution::print_adj_list() const
     for (int i = 1; i <= num_vertex; i++)
     {
         cerr << "Vertex " << i << ": ";
-        for (int j = 0;j < vertex_edge_num[i];j++)
+        for (int j = 0;j < vertex_edge_num[i-1];j++)
         {
             cerr << adj_list[i][j] << " ";
         }
