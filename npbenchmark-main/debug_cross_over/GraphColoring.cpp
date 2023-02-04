@@ -155,12 +155,12 @@ namespace szx
                 test.population_solution[p].print_population_solution();
             }
 
-            //////////////////////////////////////// 前面的都验证了;
+
             ///* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
-            while (population.min_conflict != 0 && population_iteration<2)
+            while (population.min_conflict != 0)
             {
                 // random select two index from population as parents;
                 unsigned int p1 = pseudoRandNumGen() % num_population, p2;
@@ -208,6 +208,10 @@ namespace szx
                     temps.color_num[color] = ++color_num;
                 }
 
+                cerr << "temps structure: " << endl;
+                temps.print_population_solution();
+
+                //////////////////////////////////////// 前面的都验证了;
                 // 找出种群中的最大冲突数;
                 int max_conflict = -1, max_conflict_index;
                 for (int i = 0; i < num_population; i++)
