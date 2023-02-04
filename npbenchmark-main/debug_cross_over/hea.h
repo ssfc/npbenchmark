@@ -40,7 +40,7 @@ public:
     // meaning: solution;
     vector<unsigned int> index1s;
     // dimension: num_vertex+1;
-    // element: 序号; 
+    // element: 序号;
     // meaning: 顶点i在所属颜色独立集中的序号;
     vector<unsigned int> index2s;
 

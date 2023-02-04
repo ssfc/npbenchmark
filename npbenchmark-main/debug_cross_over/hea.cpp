@@ -360,13 +360,13 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         {
             int point = s[A].psol[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
             index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
-//////////////////////////////////////// 前面的都看懂了
+
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
             unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
             unsigned int index2 = s[B].index2s[point]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
-
+//////////////////////////////////////// 前面的都看懂了
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
-            s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
+            s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
             int t = s[B].psol[color][index2];
             s[B].index2s[t] = index2;
         }
