@@ -198,7 +198,7 @@ namespace szx
 
                 test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
-                // 由temps的index1s构造出psol, index2s, color_num;
+                // 由temps的index1s构造出partition, index2s, color_num;
                 for (int i = 1; i <= test.num_vertex; i++)
                 {
                     unsigned int color = temps.index1s[i];
