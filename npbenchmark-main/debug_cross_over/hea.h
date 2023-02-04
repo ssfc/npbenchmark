@@ -29,8 +29,8 @@ class Population_solution {
 public:
     vector<vector<int>> psol; // dimension, num_color * (num_vertex+1); 将属于某颜色的独立集所有成员顶点按顺序排列, 范围之外的置零;
     vector<int> color_num; // dimension, num_color; 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
-    vector<unsigned int> index1s;
-    vector<unsigned int> index2s;
+    vector<unsigned int> index1s; // dimension, num_vertex+1; solution;
+    vector<unsigned int> index2s; // dimension, num_vertex+1; 顶点i在所属颜色独立集中的序号;
 
     explicit Population_solution(int input_num_vertex, int input_num_color);
     ~Population_solution();
