@@ -76,7 +76,7 @@ namespace szx
              */// to debug
 
 
-
+//////////////////////////////////////// 前面的都验证了; 
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
@@ -190,7 +190,7 @@ namespace szx
                     temps.color_num[color] = ++color_num;
                 }
 
-                // 找出种群中的最大冲突数; 
+                // 找出种群中的最大冲突数;
                 int max_conflict = -1, max_conflict_index;
                 for (int i = 0; i < num_population; i++)
                 {
@@ -200,10 +200,11 @@ namespace szx
                         max_conflict_index = i;
                     }
                 }
-//////////////////////////////////////// 前面的都看懂了
+
                 test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
                 population.num_conflict[max_conflict_index] = test.conflict;
 
+                // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
                 if (test.conflict < population.min_conflict)
                 {
                     population.min_conflict = test.conflict;
