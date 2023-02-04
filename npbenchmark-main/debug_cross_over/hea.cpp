@@ -365,6 +365,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
             unsigned int index2 = s[B].index2s[point]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
+            // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
             int t = s[B].psol[color][index2];
             s[B].index2s[t] = index2;
