@@ -364,16 +364,15 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
             unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
             unsigned int index2 = s[B].index2s[point]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
-//////////////////////////////////////// 前面的都看懂了
+
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
             s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
-            int t = s[B].psol[color][index2];
-            s[B].index2s[t] = index2;
+            int t = s[B].psol[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
+            s[B].index2s[t] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
         //删除这些点
-        s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零;
-
+        s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
     }
 
     for (int i = 0; i < num_color; i++)
