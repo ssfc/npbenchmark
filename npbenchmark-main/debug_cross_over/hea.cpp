@@ -375,14 +375,15 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
     }
 
+    // 整理s[0](或者s[1])分化中剩下的顶点;
     for (int i = 0; i < num_color; i++)
     {
         int num = s[0].color_num[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
-        for (int j = 0; j<num; j++)
+        for (int j = 0; j<num; j++) // 遍历颜色i独立集中的剩余顶点;
         {
-            int point = s[0].psol[i][j];
-            unsigned int color = pseudoRandNumGen() % num_color; //随机分配到某一种颜色中去
-            index1[point] = color;
+            int point = s[0].psol[i][j]; // 颜色i独立集中第j个顶点的名字;
+            unsigned int color = pseudoRandNumGen() % num_color; //随机寻找一种颜色;
+            index1[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
         }
     }
 }
