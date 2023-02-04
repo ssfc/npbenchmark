@@ -75,8 +75,6 @@ namespace szx
             // cerr << "iterations: " << test.get_iteration() << endl;
              */// to debug
 
-
-//////////////////////////////////////// 前面的都验证了;
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
@@ -94,9 +92,23 @@ namespace szx
                 }
 
                 // do tabu-search for each population in the collection;
-                // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+                cerr << "Population: " << p << endl;
+                cerr << "Solution before tabu search: ";
+                for(int i=1;i<test.solution_collection[p].size();i++)
+                {
+                    cerr << test.solution_collection[p][i] << " ";
+                }
+                cerr << endl;
+                cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
+
                 test.tabu_search(test.solution_collection[p], true);
-                // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+                cerr << "Solution after tabu search:  ";
+                for(int i=1;i<test.solution_collection[p].size();i++)
+                {
+                    cerr << test.solution_collection[p][i] << " ";
+                }
+                cerr << endl;
+                cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
 
                 population.num_conflict[p] = test.conflict;
 
@@ -121,6 +133,9 @@ namespace szx
 
             double start_time = clock();
 
+            //////////////////////////////////////// 前面的都验证了;
+
+            // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
                 for (int i = 1; i <= test.num_vertex; i++) // i is name of vertex;
@@ -141,7 +156,7 @@ namespace szx
                 test.population_solution[p].print_population_solution();
             }
 
-            ///* to reduce
+            /* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
@@ -261,7 +276,7 @@ namespace szx
                 }
             }
             cerr << endl;
-             //*/// to reduce
+             */// to reduce
         }
     };
 
