@@ -13,7 +13,7 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
     partition.resize(input_num_color);
     for(auto & i : partition)
     {
-        i.resize(input_num_vertex + 1, 0);
+        i.resize(input_num_vertex, 0);
     }
 
     color_num.resize(input_num_color, 0);
