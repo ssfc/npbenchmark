@@ -140,7 +140,6 @@ namespace szx
                 test.population_solution[p].print_population_solution();
             }
 
-            //////////////////////////////////////// 前面的都看懂了
             ///* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
@@ -162,6 +161,8 @@ namespace szx
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
                 test.cross_over(p1, p2, temps.index1s);
+
+                //////////////////////////////////////// 前面的都看懂了
 
                 // reset adj_color_table and tabu_tenure_table to zero;
                 for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());

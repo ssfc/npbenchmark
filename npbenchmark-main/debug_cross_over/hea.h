@@ -24,6 +24,7 @@ struct Move {
     int vj;
 };
 
+// 整个population solution可以用一个solution构造出来; 
 class Population_solution {
 public:
     vector<vector<int>> psol; // dimension, num_color * (num_vertex+1); 将属于某颜色的独立集所有成员顶点按顺序排列, 范围之外的置零;
