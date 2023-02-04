@@ -52,7 +52,7 @@ void Population_solution::print_population_solution()
     }
 
     cerr << "color nums: ";
-    for(int i=0;i<color_num[i];i++)
+    for(int i=0;i<color_num.size();i++)
     {
         cerr << color_num[i] << " ";
     }

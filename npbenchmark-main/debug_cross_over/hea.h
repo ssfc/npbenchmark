@@ -41,7 +41,7 @@ public:
     vector<unsigned int> index1s;
     // dimension: num_vertex+1;
     // element: 序号;
-    // meaning: 顶点i在所属颜色独立集中的序号;
+    // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该solution中是第几次出现; 
     vector<unsigned int> index2s;
 
     explicit Population_solution(int input_num_vertex, int input_num_color);

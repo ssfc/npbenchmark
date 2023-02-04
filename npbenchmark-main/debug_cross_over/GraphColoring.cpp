@@ -138,6 +138,7 @@ namespace szx
             // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
+                cerr << "p: " << p <<" " << endl;
                 for (int i = 1; i <= test.num_vertex; i++) // i is name of vertex;
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
