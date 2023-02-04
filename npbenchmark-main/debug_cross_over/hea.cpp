@@ -257,19 +257,19 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit)
 {
     // compute initial conflict;
-    for (int i = 1; i <= num_vertex; i++)
+    for (int i = 0; i < num_vertex; i++)
     {
-        int num_edge = vertex_edge_num[i-1];
-        unsigned int this_vertex_color = solution[i];
+        int num_edge = vertex_edge_num[i];
+        unsigned int this_vertex_color = solution[i+1];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i-1][j]];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
 
-            adj_color_table[i-1][adj_color]++; // initialize adjacent color table;
+            adj_color_table[i][adj_color]++; // initialize adjacent color table;
         }
     }
 
@@ -354,7 +354,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
                 max_num = s[A].color_num[j]; // 抽取解中最大颜色所包含的顶点数量;
             }
         }
-        
+
         for (int j = 0; j<max_num; j++) // 遍历最多颜色的独立集;
         {
             int point = s[A].psol[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
