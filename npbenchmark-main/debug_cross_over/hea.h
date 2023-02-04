@@ -33,6 +33,9 @@ public:
 
     explicit Population_solution(int input_num_vertex, int input_num_color);
     ~Population_solution();
+
+    // debug function
+    void print_population_solution();
 };
 
 class Population {

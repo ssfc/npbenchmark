@@ -163,12 +163,11 @@ namespace szx
                 }
 
                 cerr << "color nums: ";
-                for(int i=0;i<=test.population_solution[p].color_num[i];i++)
+                for(int i=0;i<test.population_solution[p].color_num.size();i++)
                 {
                     cerr << test.population_solution[p].color_num[i] << " ";
                 }
                 cerr << endl;
-
             }
 
             //////////////////////////////////////// 前面的都看懂了

@@ -25,6 +25,40 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
 Population_solution::~Population_solution()
 = default;
 
+void Population_solution::print_population_solution()
+{
+    cerr << "index1s: ";
+    for(int i=1;i<index1s.size();i++)
+    {
+        cerr << index1s[i] << " ";
+    }
+    cerr << endl;
+
+    cerr << "index2s: ";
+    for(int i=1;i<index2s.size();i++)
+    {
+        cerr << index2s[i] << " ";
+    }
+    cerr << endl;
+
+    cerr << "psol: ";
+    for(int i=0;i<psol.size();i++)
+    {
+        for(int j=0;j<psol[i].size();j++)
+        {
+            cerr << psol[i][j] << " ";
+        }
+        cerr << endl;
+    }
+
+    cerr << "color nums: ";
+    for(int i=0;i<color_num[i];i++)
+    {
+        cerr << color_num[i] << " ";
+    }
+    cerr << endl;
+}
+
 
 Population::Population(int input_num_population)
 {
