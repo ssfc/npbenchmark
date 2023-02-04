@@ -359,9 +359,9 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         for (int j = 0; j<num; j++) // 遍历最多颜色的独立集;
         {
             int point = s[A].psol[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
-            index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样; 
+            index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
-            //在B中删除这个点
+            //在B中删除这个点{2,5,6,7,10}
             unsigned int color = s[B].index1s[point];
             unsigned int index2 = s[B].index2s[point];
 
