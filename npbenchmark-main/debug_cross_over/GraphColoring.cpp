@@ -160,6 +160,7 @@ namespace szx
                 memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
+
                 test.cross_over(p1, p2, temps.index1s);
 
                 cerr << "index1s after cross over: ";
