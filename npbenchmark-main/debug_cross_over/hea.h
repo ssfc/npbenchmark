@@ -71,8 +71,8 @@ public:
     // variables;
     int num_vertex;
     int num_color;
-    vector<vector<int>> adj_list; // adjacency list; dimension, (num_vertex+1) * (num_vertex+1);
-    vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex + 1;
+    vector<vector<int>> adj_list; // adjacency list; dimension, num_vertex * num_vertex;
+    vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
     int conflict;
     int best_conflict;
