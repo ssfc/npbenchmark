@@ -24,13 +24,13 @@ struct Move {
     int vj;
 };
 
-// 整个population solution可以用一个solution构造出来;
+// 整个类可以用一个sol构造出来;
 class Partition_Solution {
 public:
     unsigned int num_vertex;
     // dimension, num_vertex+1;
-    // element: amount of color i the solution;
-    // meaning: solution;
+    // element: amount of color i the sol;
+    // meaning: sol;
     vector<unsigned int> solution;
     // dimension: num_color * num_vertex;
     // element: vertex name (i);
@@ -38,10 +38,10 @@ public:
     vector<vector<int>> partition;
     // dimension: num_vertex;
     // element: 序号;
-    // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该solution中是第几次出现;
+    // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该sol中是第几次出现;
     vector<unsigned int> partition_index;
     // dimension, num_color;
-    // element: num of color i in the solution;
+    // element: num of color i in the sol;
     // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
     vector<int> num_colors;
 
