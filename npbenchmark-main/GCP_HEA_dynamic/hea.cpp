@@ -99,16 +99,29 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     conflict = 0;
     best_conflict = 0;
 
-    adj_color_table.resize(input_num_vertex);
-    for(auto & i : adj_color_table)
+    adj_color_table = new int* [num_vertex];
+    for (int i = 0; i < num_vertex; i++)
     {
-        i.resize(input_num_color, 0);
+        adj_color_table[i] = new int[num_color];
     }
 
     tabu_tenure_table = new long long int* [num_vertex];
     for (int i = 0; i < num_vertex; i++)
     {
         tabu_tenure_table[i] = new long long int[num_color];
+    }
+
+    // allocate initial value
+    for (int i = 0; i < num_vertex; i++)
+    {
+        int* adj_color_table_i = adj_color_table[i];
+        long long int* tabu_tenure_table_i = tabu_tenure_table[i];
+
+        for (int j = 0; j < num_color; j++)
+        {
+            adj_color_table_i[j] = 0;
+            tabu_tenure_table_i[j] = 0;
+        }
     }
 
     moved = {-1, -1};
@@ -136,8 +149,10 @@ Hybrid_Evolution::~Hybrid_Evolution()
 {
     for (int i = 0; i < num_vertex; i++)
     {
+        delete[] adj_color_table[i];
         delete[] tabu_tenure_table[i];
     }
+    delete[] adj_color_table;
     delete[] tabu_tenure_table;
 }
 
@@ -164,15 +179,16 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
         unsigned int solution_i = solution[i]; // solution_i is color;
+        int* adj_color_table_i = adj_color_table[i];
 
-        if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
+        if (adj_color_table_i[solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
             long long int* tabu_tenure_table_i = tabu_tenure_table[i];
             for (int j = 0; j < num_color; j++) // j is color;
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
-                    int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
+                    int this_delta = adj_color_table_i[j] - adj_color_table_i[solution_i]; // new-old, the less the better;
                     if (tabu_tenure_table_i[j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
@@ -279,6 +295,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     {
         int num_edge = vertex_edge_num[i];
         unsigned int this_vertex_color = solution[i];
+        int* adj_color_table_i = adj_color_table[i];
 
         for (int j = 0; j < num_edge; j++)
         {
@@ -287,7 +304,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             if (this_vertex_color == adj_color)
                 conflict++;
 
-            adj_color_table[i][adj_color]++; // initialize adjacent color table;
+            adj_color_table_i[adj_color]++; // initialize adjacent color table;
         }
     }
 
@@ -470,8 +487,8 @@ int Hybrid_Evolution::get_max_equal_tabu_count() const
 
 /*
  * debugging command:
- * laptop: C:\wamp64\www\npbenchmark\npbenchmark-main\yuanFang_reduce
- * home server: /home/ssfc/yuanFang_reduce
+ * laptop: C:\wamp64\www\npbenchmark\npbenchmark-main\GCP_HEA_dynamic
+ * home server: /home/ssfc/GCP_HEA_dynamic
  * g++ hea.cpp -g; gdb a.out
  * r 11 6 chvatal.txt
  * r 11 6 DSJC0250.9.txt

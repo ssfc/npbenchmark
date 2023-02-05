@@ -78,9 +78,9 @@ namespace szx
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
-                for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
                 for (int i = 0; i < test.num_vertex; i++)
                 {
+                    memset(test.adj_color_table[i], 0, test.num_color * sizeof(int));
                     memset(test.tabu_tenure_table[i], 0, test.num_color * sizeof(long long int));
                 }
 
@@ -177,9 +177,9 @@ namespace szx
                 // cerr << endl;
 
                 // reset adj_color_table and tabu_tenure_table to zero;
-                for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
                 for (int i = 0; i < test.num_vertex; i++)
                 {
+                    memset(test.adj_color_table[i], 0, test.num_color * sizeof(int));
                     memset(test.tabu_tenure_table[i], 0, test.num_color * sizeof(long long int));
                 }
 

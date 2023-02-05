@@ -79,7 +79,7 @@ public:
     int conflict;
     int best_conflict;
 
-    vector<vector<int>> adj_color_table; // dimension,
+    int** adj_color_table; // dimension,
     long long int** tabu_tenure_table;
 
     Move moved;
