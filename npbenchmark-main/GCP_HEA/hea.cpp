@@ -17,7 +17,7 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
     }
 
     num_colors.resize(input_num_color, 0);
-    index1s.resize(input_num_vertex + 1, 0);
+    solution.resize(input_num_vertex + 1, 0);
     index2s.resize(input_num_vertex, 0);
 }
 
@@ -28,9 +28,9 @@ Population_solution::~Population_solution()
 void Population_solution::print_population_solution()
 {
     cerr << "index1s: ";
-    for(int i=1;i<index1s.size();i++)
+    for(int i=1;i<solution.size();i++)
     {
-        cerr << index1s[i] << " ";
+        cerr << solution[i] << " ";
     }
     cerr << endl;
 
@@ -361,7 +361,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
-            unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
+            unsigned int color = s[B].solution[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
             unsigned int index2 = s[B].index2s[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;

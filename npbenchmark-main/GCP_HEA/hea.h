@@ -38,7 +38,7 @@ public:
     // dimension, num_vertex+1;
     // element: amount of color i the solution;
     // meaning: solution;
-    vector<unsigned int> index1s;
+    vector<unsigned int> solution;
     // dimension: num_vertex;
     // element: 序号;
     // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该solution中是第几次出现;
