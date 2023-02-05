@@ -27,9 +27,9 @@ Partition_Solution::~Partition_Solution()
 void Partition_Solution::print_population_solution()
 {
     cerr << "Solution: ";
-    for(int i=1;i<solution.size();i++)
+    for(int i=0;i<solution.size()-1;i++)
     {
-        cerr << solution[i] << " ";
+        cerr << solution[i+1] << " ";
     }
     cerr << endl;
 
