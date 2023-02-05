@@ -27,7 +27,7 @@ Population_solution::~Population_solution()
 
 void Population_solution::print_population_solution()
 {
-    cerr << "index1s: ";
+    cerr << "Solution: ";
     for(int i=1;i<solution.size();i++)
     {
         cerr << solution[i] << " ";
