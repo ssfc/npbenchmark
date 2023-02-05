@@ -37,7 +37,7 @@ namespace szx
             */
 
 
-            int num_population = 20;
+            int num_population = 10;
             Population population(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
@@ -210,14 +210,14 @@ namespace szx
                     population.min_conflict_index = max_conflict_index;
                 }
 
-                /*
-                if(population_iteration % 20 == 0)
+                ///*
+                if(population_iteration % 50 == 0)
                 {
                     cerr << "Population iteration: " << population_iteration << endl;
                     cerr << "min conflict: " << population.min_conflict << endl;
                     cerr << "min conflict index: " << population.min_conflict_index << endl;
                 }
-                 */
+                 //*/
 
                 population_iteration++;
             }
