@@ -126,7 +126,7 @@ namespace szx
             for(auto & i : test.population_solution)
             {
                 for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
+                memset(&i.num_colors[0], 0, sizeof(i.num_colors[0]) * i.num_colors.size());
                 memset(&i.index1s[0], 0, sizeof(i.index1s[0]) * i.index1s.size());
                 memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
             }
@@ -142,13 +142,13 @@ namespace szx
                     // copy color solution from solution_collection to population_solution[p].index1s;
                     test.population_solution[p].index1s[i] = test.solution_collection[p][i];
                     unsigned int color = test.solution_collection[p][i]; // take out the color of solution[p][i];
-                    int color_num = test.population_solution[p].color_num[color]; // take out the color num of solution[p][i] corresponding color;
+                    int color_num = test.population_solution[p].num_colors[color]; // take out the color num of solution[p][i] corresponding color;
 
                     // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
                     test.population_solution[p].partition[color][color_num] = i;
                     // 顶点i在所属颜色独立集中的序号;
                     test.population_solution[p].index2s[i-1] = color_num++;
-                    test.population_solution[p].color_num[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
+                    test.population_solution[p].num_colors[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
 
                 // for debugging:
@@ -170,7 +170,7 @@ namespace szx
                 } while (p1 == p2);
 
                 for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
+                memset(&temps.num_colors[0], 0, sizeof(temps.num_colors[0]) * temps.num_colors.size());
                 memset(&temps.index1s[0], 0, sizeof(temps.index1s[0]) * temps.index1s.size());
                 memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
@@ -202,10 +202,10 @@ namespace szx
                 for (int i = 1; i <= test.num_vertex; i++)
                 {
                     unsigned int color = temps.index1s[i];
-                    int color_num = temps.color_num[color];
+                    int color_num = temps.num_colors[color];
                     temps.partition[color][color_num] = i;
                     temps.index2s[i-1] = color_num;
-                    temps.color_num[color] = ++color_num;
+                    temps.num_colors[color] = ++color_num;
                 }
 
                 cerr << "temps structure: " << endl;

@@ -37,7 +37,7 @@ namespace szx
             */
 
 
-            int num_population = 20;
+            int num_population = 2;
             Population population(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
@@ -75,8 +75,6 @@ namespace szx
             // cerr << "iterations: " << test.get_iteration() << endl;
              */// to debug
 
-
-            ///* to reduce
             // this is also the process of initialization;
             for (int p = 0; p < num_population; p++)
             {
@@ -87,16 +85,30 @@ namespace szx
                 test.best_conflict = 0;
 
                 // initialization: set random solution to each solution in the population;
-                for (int i = 0; i < test.num_vertex; i++)
+                for (int i = 1; i <= test.num_vertex; i++)
                 {
                     test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
                     //cerr << solution[i] <<' ';
                 }
 
                 // do tabu-search for each population in the collection;
-                // cerr << "Conflict before tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+                cerr << "Population: " << p << endl;
+                cerr << "Solution before tabu search: ";
+                for(int i=1;i<test.solution_collection[p].size();i++)
+                {
+                    cerr << test.solution_collection[p][i] << " ";
+                }
+                cerr << endl;
+                cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
+
                 test.tabu_search(test.solution_collection[p], true);
-                // cerr << "Conflict after tabu search is: " << test.compute_conflict(test.solution_collection[p]) << endl;
+                cerr << "Solution after tabu search:  ";
+                for(int i=1;i<test.solution_collection[p].size();i++)
+                {
+                    cerr << test.solution_collection[p][i] << " ";
+                }
+                cerr << endl;
+                cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
 
                 population.num_conflict[p] = test.conflict;
 
@@ -113,28 +125,38 @@ namespace szx
 
             for(auto & i : test.population_solution)
             {
-                for(auto& x : i.psol) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&i.color_num[0], 0, sizeof(i.color_num[0]) * i.color_num.size());
+                for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
+                memset(&i.num_colors[0], 0, sizeof(i.num_colors[0]) * i.num_colors.size());
                 memset(&i.index1s[0], 0, sizeof(i.index1s[0]) * i.index1s.size());
                 memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
             }
 
             double start_time = clock();
 
+            // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
-                for (int i = 0; i < test.num_vertex; i++)
+                cerr << "p: " << p <<" " << endl;
+                for (int i = 1; i <= test.num_vertex; i++) // i is name of vertex;
                 {
-                    test.population_solution[p].index1s[i+1] = test.solution_collection[p][i]; // color of population p, vertex i;
-                    unsigned int color = test.solution_collection[p][i]; // color of population p, vertex i;
-                    int color_num = test.population_solution[p].color_num[color];
+                    // copy color solution from solution_collection to population_solution[p].index1s;
+                    test.population_solution[p].index1s[i] = test.solution_collection[p][i];
+                    unsigned int color = test.solution_collection[p][i]; // take out the color of solution[p][i];
+                    int color_num = test.population_solution[p].num_colors[color]; // take out the color num of solution[p][i] corresponding color;
 
-                    test.population_solution[p].psol[color][color_num] = i+1;
-                    test.population_solution[p].index2s[i+1] = color_num++;
-                    test.population_solution[p].color_num[color] = color_num;
+                    // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
+                    test.population_solution[p].partition[color][color_num] = i;
+                    // 顶点i在所属颜色独立集中的序号;
+                    test.population_solution[p].index2s[i-1] = color_num++;
+                    test.population_solution[p].num_colors[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
+
+                // for debugging:
+                test.population_solution[p].print_population_solution();
             }
 
+
+            ///* to reduce
             Population_solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
@@ -142,19 +164,30 @@ namespace szx
             {
                 // random select two index from population as parents;
                 unsigned int p1 = pseudoRandNumGen() % num_population, p2;
-
                 do
                 {
                     p2 = pseudoRandNumGen() % num_population;
                 } while (p1 == p2);
 
-                for(auto& x : temps.psol) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&temps.color_num[0], 0, sizeof(temps.color_num[0]) * temps.color_num.size());
+                for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
+                memset(&temps.num_colors[0], 0, sizeof(temps.num_colors[0]) * temps.num_colors.size());
                 memset(&temps.index1s[0], 0, sizeof(temps.index1s[0]) * temps.index1s.size());
                 memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
+                cerr << "p1 before cross over: " << endl;
+                test.population_solution[p1].print_population_solution();
+                cerr << "p2 before cross over: " << endl;
+                test.population_solution[p2].print_population_solution();
+
                 test.cross_over(p1, p2, temps.index1s);
+
+                cerr << "solution generated by cross over: ";
+                for(int i=1;i<temps.index1s.size();i++)
+                {
+                    cerr << temps.index1s[i] << " ";
+                }
+                cerr << endl;
 
                 // reset adj_color_table and tabu_tenure_table to zero;
                 for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
@@ -165,17 +198,22 @@ namespace szx
 
                 test.tabu_search(temps.index1s, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
+                // 由temps的index1s构造出partition, index2s, color_num;
                 for (int i = 1; i <= test.num_vertex; i++)
-                {//变成划分的形式
+                {
                     unsigned int color = temps.index1s[i];
-                    int color_num = temps.color_num[color];
-                    temps.psol[color][color_num] = i;
-                    temps.index2s[i] = color_num;
-                    temps.color_num[color] = ++color_num;
+                    int color_num = temps.num_colors[color];
+                    temps.partition[color][color_num] = i;
+                    temps.index2s[i-1] = color_num;
+                    temps.num_colors[color] = ++color_num;
                 }
 
-                int max_conflict = -1, max_conflict_index;
+                cerr << "temps structure: " << endl;
+                temps.print_population_solution();
 
+                //////////////////////////////////////// 前面的都验证了;
+                // 找出种群中的最大冲突数;
+                int max_conflict = -1, max_conflict_index;
                 for (int i = 0; i < num_population; i++)
                 {
                     if (population.num_conflict[i] > max_conflict)
@@ -188,6 +226,7 @@ namespace szx
                 test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
                 population.num_conflict[max_conflict_index] = test.conflict;
 
+                // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
                 if (test.conflict < population.min_conflict)
                 {
                     population.min_conflict = test.conflict;
@@ -244,6 +283,7 @@ namespace szx
                 }
             }
             cerr << endl;
+             //*/// to reduce
         }
     };
 

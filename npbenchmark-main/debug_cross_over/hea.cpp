@@ -16,7 +16,7 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
         i.resize(input_num_vertex, 0);
     }
 
-    color_num.resize(input_num_color, 0);
+    num_colors.resize(input_num_color, 0);
     index1s.resize(input_num_vertex + 1, 0);
     index2s.resize(input_num_vertex, 0);
 }
@@ -41,10 +41,10 @@ void Population_solution::print_population_solution()
     }
     cerr << endl;
 
-    cerr << "psol: " << endl;
+    cerr << "partition: " << endl;
     for(int i=0;i<partition.size();i++)
     {
-        for(int j=0;j<color_num[i];j++)
+        for(int j=0;j<num_colors[i];j++)
         {
             cerr << partition[i][j] << " ";
         }
@@ -52,7 +52,7 @@ void Population_solution::print_population_solution()
     }
 
     cerr << "color nums: ";
-    for(int i : color_num)
+    for(int i : num_colors)
     {
         cerr << i << " ";
     }
@@ -348,10 +348,10 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         int max_num = -1;
         for (int j = 0; j < num_color; j++)
         {
-            if (s[A].color_num[j] > max_num)
+            if (s[A].num_colors[j] > max_num)
             {
                 max_index = j; // 抽取解中最大颜色的名称(序号);
-                max_num = s[A].color_num[j]; // 抽取解中最大颜色所包含的顶点数量;
+                max_num = s[A].num_colors[j]; // 抽取解中最大颜色所包含的顶点数量;
             }
         }
 
@@ -365,19 +365,19 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             unsigned int index2 = s[B].index2s[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
-            s[B].partition[color][index2] = s[B].partition[color][--s[B].color_num[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
+            s[B].partition[color][index2] = s[B].partition[color][--s[B].num_colors[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
             int t = s[B].partition[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
             s[B].index2s[t-1] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
         //删除A中的这些点
-        s[A].color_num[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
+        s[A].num_colors[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
     }
 
     // 整理s[0](或者s[1])分化中剩下的顶点;
     for (int i = 0; i < num_color; i++)
     {
-        int num = s[0].color_num[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
+        int num = s[0].num_colors[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
         for (int j = 0; j<num; j++) // 遍历颜色i独立集中的剩余顶点;
         {
             int point = s[0].partition[i][j]; // 颜色i独立集中第j个顶点的名字;

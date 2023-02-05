@@ -10,20 +10,54 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Population_solution::Population_solution(int input_num_vertex, int input_num_color)
 {
-    psol.resize(input_num_color);
-    for(auto & i : psol)
+    partition.resize(input_num_color);
+    for(auto & i : partition)
     {
-        i.resize(input_num_vertex + 1, 0);
+        i.resize(input_num_vertex, 0);
     }
 
-    color_num.resize(input_num_color, 0);
+    num_colors.resize(input_num_color, 0);
     index1s.resize(input_num_vertex + 1, 0);
-    index2s.resize(input_num_vertex + 1, 0);
+    index2s.resize(input_num_vertex, 0);
 }
 
 
 Population_solution::~Population_solution()
 = default;
+
+void Population_solution::print_population_solution()
+{
+    cerr << "index1s: ";
+    for(int i=1;i<index1s.size();i++)
+    {
+        cerr << index1s[i] << " ";
+    }
+    cerr << endl;
+
+    cerr << "index2s: ";
+    for(unsigned int index2 : index2s)
+    {
+        cerr << index2 << " ";
+    }
+    cerr << endl;
+
+    cerr << "partition: " << endl;
+    for(int i=0;i<partition.size();i++)
+    {
+        for(int j=0;j<num_colors[i];j++)
+        {
+            cerr << partition[i][j] << " ";
+        }
+        cerr << endl;
+    }
+
+    cerr << "color nums: ";
+    for(int i : num_colors)
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
+}
 
 
 Population::Population(int input_num_population)
@@ -71,12 +105,12 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     equal_tabu_delta.resize(2000, {0,0});
     min_delta = 999999;
     iter = 0;
-    max_iter = 20000;
+    max_iter = 1;
 
     num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
-        i.resize(num_vertex, 0);
+        i.resize(num_vertex + 1, 0);
     population_solution.resize(num_population, Population_solution(input_num_vertex, input_num_color));
 
     // debug variables;
@@ -112,7 +146,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        unsigned int solution_i = solution[i]; // solution_i is color;
+        unsigned int solution_i = solution[i+1]; // solution_i is color;
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -205,8 +239,8 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    unsigned int old_color = solution[moved.u-1];
-    solution[moved.u-1] = moved.vj;
+    unsigned int old_color = solution[moved.u];
+    solution[moved.u] = moved.vj;
     tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
@@ -226,11 +260,11 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = solution[i];
+        unsigned int this_vertex_color = solution[i+1];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]-1];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -295,9 +329,10 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
     s[0] = population_solution[s1];
     s[1] = population_solution[s2];
 
-    for (int i = 0; i < num_color; i++)
+    for (int i = 0; i < num_color; i++) // 遍历所有颜色;
     {
-        if (i % 2 != 1)
+        // 如果循环数是奇数，摘取s1的独立集；如果循环数是偶数，摘取s2的独立集。
+        if (i % 2 == 0)
         {
             A = 0;
             B = 1;
@@ -308,45 +343,46 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             B = 0;
         }
 
+        // 寻找抽取解中的包含顶点最多的颜色(最大独立集);
         int max_index;
         int max_num = -1;
-
         for (int j = 0; j < num_color; j++)
         {
-            if (s[A].color_num[j] > max_num)
+            if (s[A].num_colors[j] > max_num)
             {
-                max_index = j;
-                max_num = s[A].color_num[j];
+                max_index = j; // 抽取解中最大颜色的名称(序号);
+                max_num = s[A].num_colors[j]; // 抽取解中最大颜色所包含的顶点数量;
             }
         }
 
-        int num = s[A].color_num[max_index];
-        for (int j = 0; j<num; j++)
+        for (int j = 0; j<max_num; j++) // 遍历最多颜色的独立集;
         {
-            int point = s[A].psol[max_index][j];
-            index1[point] = i; //只需要保存哪个点分配了哪种颜色，因为马上要对它进行禁忌搜索，其它的保存了又会变
+            int point = s[A].partition[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
+            index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
-            unsigned int color = s[B].index1s[point];//在B中删除这个点
-            unsigned int index2 = s[B].index2s[point];
+            //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
+            unsigned int color = s[B].index1s[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
+            unsigned int index2 = s[B].index2s[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
-            s[B].psol[color][index2] = s[B].psol[color][--s[B].color_num[color]];
-            int t = s[B].psol[color][index2];
-            s[B].index2s[t] = index2;
+            // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
+            s[B].partition[color][index2] = s[B].partition[color][--s[B].num_colors[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
+            int t = s[B].partition[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
+            s[B].index2s[t-1] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
-        //删除这些点
-        s[A].color_num[max_index] = 0;
-
+        //删除A中的这些点
+        s[A].num_colors[max_index] = 0; // 将A中拥有最多颜色的置零; 其实也没有置零, 只是通过限制访问范围实现了”置零“
     }
 
+    // 整理s[0](或者s[1])分化中剩下的顶点;
     for (int i = 0; i < num_color; i++)
     {
-        int num = s[0].color_num[i];
-        for (int j = 0; j<num; j++)
+        int num = s[0].num_colors[i]; // s[0]中颜色i的数量; 其实这里选s[0]还是s[1]没有区别, 剩下的顶点是一样的;
+        for (int j = 0; j<num; j++) // 遍历颜色i独立集中的剩余顶点;
         {
-            int point = s[0].psol[i][j];
-            unsigned int color = pseudoRandNumGen() % num_color;//随机分配到某一种颜色中去
-            index1[point] = color;
+            int point = s[0].partition[i][j]; // 颜色i独立集中第j个顶点的名字;
+            unsigned int color = pseudoRandNumGen() % num_color; //随机寻找一种颜色;
+            index1[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
         }
     }
 }
@@ -361,11 +397,11 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = solution[i];
+        unsigned int this_vertex_color = solution[i+1];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j] - 1];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;

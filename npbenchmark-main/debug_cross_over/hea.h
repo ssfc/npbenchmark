@@ -34,7 +34,7 @@ public:
     // dimension, num_color;
     // element: num of color i in the solution;
     // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
-    vector<int> color_num;
+    vector<int> num_colors;
     // dimension, num_vertex+1;
     // element: amount of color i the solution;
     // meaning: solution;
