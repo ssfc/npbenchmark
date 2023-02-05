@@ -138,10 +138,10 @@ Hybrid_Evolution::~Hybrid_Evolution()
 
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
 {
-    adj_list[v1][vertex_edge_num[v1]] = v2+1;
+    adj_list[v1][vertex_edge_num[v1]] = v2;
     vertex_edge_num[v1]++;
 
-    adj_list[v2][vertex_edge_num[v2]] = v1+1;
+    adj_list[v2][vertex_edge_num[v2]] = v1;
     vertex_edge_num[v2]++;
 }
 
@@ -173,14 +173,14 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                             equal_nontabu_count = 0;
                             min_delta = this_delta;
 
-                            equal_nontabu_delta[equal_nontabu_count].u = i+1; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
                         }
                         else if (this_delta == min_delta)
                         {
-                            equal_nontabu_delta[equal_nontabu_count].u = i+1; // i is vertex;
+                            equal_nontabu_delta[equal_nontabu_count].u = i; // i is vertex;
                             equal_nontabu_delta[equal_nontabu_count].vj = j; // j is color;
 
                             equal_nontabu_count++;
@@ -201,14 +201,14 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
                             equal_tabu_count = 0;
                             tabu_delta = this_delta;
 
-                            equal_tabu_delta[equal_tabu_count].u = i+1; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
                         }
                         else if(this_delta == tabu_delta)
                         {
-                            equal_tabu_delta[equal_tabu_count].u = i+1; // i is vertex;
+                            equal_tabu_delta[equal_tabu_count].u = i; // i is vertex;
                             equal_tabu_delta[equal_tabu_count].vj = j; // j is color;
 
                             equal_tabu_count++;
@@ -250,17 +250,17 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    unsigned int old_color = solution[moved.u-1];
-    solution[moved.u-1] = moved.vj;
-    tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    unsigned int old_color = solution[moved.u];
+    solution[moved.u] = moved.vj;
+    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
-    for (int i = 0; i < vertex_edge_num[moved.u-1]; i++)
+    for (int i = 0; i < vertex_edge_num[moved.u]; i++)
     {
-        int adj_list_node_moved_i = adj_list[moved.u-1][i];
+        int adj_list_node_moved_i = adj_list[moved.u][i];
 
-        adj_color_table[adj_list_node_moved_i-1][old_color]--;
-        adj_color_table[adj_list_node_moved_i-1][moved.vj]++;
+        adj_color_table[adj_list_node_moved_i][old_color]--;
+        adj_color_table[adj_list_node_moved_i][moved.vj]++;
     }
 }
 
@@ -275,7 +275,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]-1];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -412,7 +412,7 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]-1];
+            unsigned int adj_color = solution[adj_list[i][j]];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;
