@@ -153,7 +153,6 @@ namespace szx
                     p2 = pseudoRandNumGen() % num_population;
                 } while (p1 == p2);
 
-                memset(&temps.solution[0], 0, sizeof(temps.solution[0]) * temps.solution.size());
                 for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
                 memset(&temps.num_colors[0], 0, sizeof(temps.num_colors[0]) * temps.num_colors.size());
                 memset(&temps.partition_index[0], 0, sizeof(temps.partition_index[0]) * temps.partition_index.size());
