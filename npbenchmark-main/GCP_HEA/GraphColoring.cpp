@@ -84,11 +84,10 @@ namespace szx
                 test.conflict = 0;
                 test.best_conflict = 0;
 
-                // initialization: set random solution to each solution in the population;
+                // initialization: set random color to each sol in the population;
                 for (int i = 0; i < test.num_vertex; i++)
                 {
-                    test.solution_collection[p][i+1] = pseudoRandNumGen() % test.num_color;
-                    //cerr << solution[i] <<' ';
+                    test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
                 }
 
                 // do tabu-search for each population in the collection;
@@ -96,7 +95,7 @@ namespace szx
                 cerr << "Solution before tabu search: ";
                 for(int i=0;i<input.nodeNum;i++)
                 {
-                    cerr << test.solution_collection[p][i+1] << " ";
+                    cerr << test.solution_collection[p][i] << " ";
                 }
                 cerr << endl;
                 cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
@@ -105,7 +104,7 @@ namespace szx
                 cerr << "Solution after tabu search:  ";
                 for(int i=0;i<input.nodeNum;i++)
                 {
-                    cerr << test.solution_collection[p][i+1] << " ";
+                    cerr << test.solution_collection[p][i] << " ";
                 }
                 cerr << endl;
                 cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;

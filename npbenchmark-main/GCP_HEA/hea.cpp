@@ -11,7 +11,7 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color)
 {
     num_vertex = input_num_vertex;
-    solution.resize(input_num_vertex + 1, 0);
+    solution.resize(input_num_vertex, 0);
     partition.resize(input_num_color);
     for(auto & i : partition)
     {
@@ -25,7 +25,7 @@ void Partition_Solution::construct_partition()
 {
     for (int i = 0; i < num_vertex; i++)
     {
-        unsigned int color = solution[i+1];
+        unsigned int color = solution[i];
         int color_num = num_colors[color];
         partition[color][color_num] = i+1;
         partition_index[i] = color_num;
@@ -39,9 +39,9 @@ Partition_Solution::~Partition_Solution()
 void Partition_Solution::print_population_solution()
 {
     cerr << "Solution: ";
-    for(int i=0;i<solution.size()-1;i++)
+    for(int i=0;i<solution.size();i++)
     {
-        cerr << solution[i+1] << " ";
+        cerr << solution[i] << " ";
     }
     cerr << endl;
 
@@ -121,7 +121,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     num_population = input_num_population;
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
-        i.resize(num_vertex + 1, 0);
+        i.resize(num_vertex, 0);
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
 
     // debug variables;
@@ -157,7 +157,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
-        unsigned int solution_i = solution[i+1]; // solution_i is color;
+        unsigned int solution_i = solution[i]; // solution_i is color;
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
@@ -250,8 +250,8 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    unsigned int old_color = solution[moved.u];
-    solution[moved.u] = moved.vj;
+    unsigned int old_color = solution[moved.u-1];
+    solution[moved.u-1] = moved.vj;
     tabu_tenure_table[moved.u-1][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
 
     // update adjacent color table;
@@ -271,11 +271,11 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = solution[i+1];
+        unsigned int this_vertex_color = solution[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list[i][j]-1];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -369,10 +369,10 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         for (int j = 0; j<max_num; j++) // 遍历最多颜色的独立集;
         {
             int point = s[A].partition[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
-            index1[point] = i; // 将solution中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
+            index1[point] = i; // 将解中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
-            unsigned int color = s[B].solution[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
+            unsigned int color = s[B].solution[point-1]; // 找出顶点{2,5,6,7,10}在B中的颜色;
             unsigned int partition_index = s[B].partition_index[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
@@ -399,7 +399,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 }
 
 
-// debug function: compute conflict of a solution
+// debug function: compute conflict of a 解
 int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
 {
     int this_conflict = 0;
@@ -408,11 +408,11 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
     for (int i = 0; i < num_vertex; i++)
     {
         int num_edge = vertex_edge_num[i];
-        unsigned int this_vertex_color = solution[i+1];
+        unsigned int this_vertex_color = solution[i];
 
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list[i][j]-1];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;
