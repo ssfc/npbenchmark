@@ -125,10 +125,10 @@ namespace szx
 
             for(auto & i : test.population_solution)
             {
-                for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&i.num_colors[0], 0, sizeof(i.num_colors[0]) * i.num_colors.size());
                 memset(&i.solution[0], 0, sizeof(i.solution[0]) * i.solution.size());
-                memset(&i.index2s[0], 0, sizeof(i.index2s[0]) * i.index2s.size());
+                for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
+                memset(&i.partition_index[0], 0, sizeof(i.partition_index[0]) * i.partition_index.size());
+                memset(&i.num_colors[0], 0, sizeof(i.num_colors[0]) * i.num_colors.size());
             }
 
             double start_time = clock();
@@ -146,8 +146,7 @@ namespace szx
 
                     // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
                     test.population_solution[p].partition[color][color_num] = i;
-                    // 顶点i在所属颜色独立集中的序号;
-                    test.population_solution[p].index2s[i-1] = color_num++;
+                    test.population_solution[p].partition_index[i-1] = color_num++; // 顶点i在所属颜色独立集中的序号;
                     test.population_solution[p].num_colors[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
 
@@ -169,10 +168,10 @@ namespace szx
                     p2 = pseudoRandNumGen() % num_population;
                 } while (p1 == p2);
 
+                memset(&temps.solution[0], 0, sizeof(temps.solution[0]) * temps.solution.size());
                 for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
                 memset(&temps.num_colors[0], 0, sizeof(temps.num_colors[0]) * temps.num_colors.size());
-                memset(&temps.solution[0], 0, sizeof(temps.solution[0]) * temps.solution.size());
-                memset(&temps.index2s[0], 0, sizeof(temps.index2s[0]) * temps.index2s.size());
+                memset(&temps.partition_index[0], 0, sizeof(temps.partition_index[0]) * temps.partition_index.size());
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
                 cerr << "p1 before cross over: " << endl;
@@ -204,7 +203,7 @@ namespace szx
                     unsigned int color = temps.solution[i];
                     int color_num = temps.num_colors[color];
                     temps.partition[color][color_num] = i;
-                    temps.index2s[i-1] = color_num;
+                    temps.partition_index[i-1] = color_num;
                     temps.num_colors[color] = ++color_num;
                 }
 
