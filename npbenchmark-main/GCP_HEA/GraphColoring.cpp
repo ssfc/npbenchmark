@@ -132,7 +132,7 @@ namespace szx
 
             double start_time = clock();
 
-            /* to reduce
+            ///* to reduce
             // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
