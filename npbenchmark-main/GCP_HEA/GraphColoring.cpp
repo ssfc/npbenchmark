@@ -133,6 +133,8 @@ namespace szx
 
             double start_time = clock();
 
+            /* to reduce
+
             // 给solution_collection中的解构造分划;
             for (int p = 0; p < num_population; p++)
             {
@@ -148,8 +150,6 @@ namespace szx
                 test.population_solution[p].print_population_solution();
             }
 
-
-            ///* to reduce
             Partition_Solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
