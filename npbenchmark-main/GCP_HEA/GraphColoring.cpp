@@ -153,9 +153,8 @@ namespace szx
                     p2 = pseudoRandNumGen() % num_population;
                 } while (p1 == p2);
 
-                for(auto& x : temps.partition) memset(&x[0],0,sizeof(x[0])*x.size());
+                // 因为num_colors定义着边界, 所以只有num_colors需要置零;
                 memset(&temps.num_colors[0], 0, sizeof(temps.num_colors[0]) * temps.num_colors.size());
-                memset(&temps.partition_index[0], 0, sizeof(temps.partition_index[0]) * temps.partition_index.size());
                 // cerr << "After 2: " << temps.color_num[17] << endl; // debug memset sentence;
 
                 // debug information
