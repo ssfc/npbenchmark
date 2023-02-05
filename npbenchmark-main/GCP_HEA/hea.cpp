@@ -10,6 +10,7 @@ void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color)
 {
+    num_vertex = input_num_vertex;
     solution.resize(input_num_vertex + 1, 0);
     partition.resize(input_num_color);
     for(auto & i : partition)

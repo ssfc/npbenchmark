@@ -27,6 +27,7 @@ struct Move {
 // 整个population solution可以用一个solution构造出来;
 class Partition_Solution {
 public:
+    unsigned int num_vertex;
     // dimension, num_vertex+1;
     // element: amount of color i the solution;
     // meaning: solution;
