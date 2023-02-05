@@ -361,12 +361,12 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
 
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
             unsigned int color = s[B].solution[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
-            unsigned int index2 = s[B].partition_index[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
+            unsigned int partition_index = s[B].partition_index[point-1]; // 找出顶点{2,5,6,7,10}在分划B中的位置;
 
             // --s[B].color_num[color]; // 每删除顶点{2,5,6,7,10}中的一个, 就把顶点{2,5,6,7,10}在B中的颜色数量-1;
-            s[B].partition[color][index2] = s[B].partition[color][--s[B].num_colors[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
-            int t = s[B].partition[color][index2]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
-            s[B].partition_index[t-1] = index2; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
+            s[B].partition[color][partition_index] = s[B].partition[color][--s[B].num_colors[color]]; // 把一个分划中末尾的顶点填补到删除顶点的位置;
+            int t = s[B].partition[color][partition_index]; // 一个颜色分划中原先位于末尾, 现在填补到被删除顶点的顶点名字;
+            s[B].partition_index[t-1] = partition_index; // 将替换到被删除顶点的顶点在分划中的位置更新为被删除顶点的位置;
         }
 
         //删除A中的这些点
