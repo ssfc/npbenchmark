@@ -25,7 +25,7 @@ struct Move {
 };
 
 // 整个population solution可以用一个solution构造出来;
-class Population_solution {
+class Partition_Solution {
 public:
     // dimension, num_vertex+1;
     // element: amount of color i the solution;
@@ -44,8 +44,8 @@ public:
     // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
     vector<int> num_colors;
 
-    explicit Population_solution(int input_num_vertex, int input_num_color);
-    ~Population_solution();
+    explicit Partition_Solution(int input_num_vertex, int input_num_color);
+    ~Partition_Solution();
 
     // debug function
     void print_population_solution();
@@ -89,7 +89,7 @@ public:
 
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
-    vector<Population_solution> population_solution;
+    vector<Partition_Solution> population_solution;
 
     // debug variables:
     int max_equal_nontabu_count;

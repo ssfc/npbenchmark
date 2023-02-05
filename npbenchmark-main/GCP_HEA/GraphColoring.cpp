@@ -156,7 +156,7 @@ namespace szx
 
 
             ///* to reduce
-            Population_solution temps(input.nodeNum, input.colorNum);
+            Partition_Solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
             while (population.min_conflict != 0)

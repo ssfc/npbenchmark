@@ -8,7 +8,7 @@ mt19937 pseudoRandNumGen;
 void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 
-Population_solution::Population_solution(int input_num_vertex, int input_num_color)
+Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color)
 {
     solution.resize(input_num_vertex + 1, 0);
     partition.resize(input_num_color);
@@ -21,10 +21,10 @@ Population_solution::Population_solution(int input_num_vertex, int input_num_col
 }
 
 
-Population_solution::~Population_solution()
+Partition_Solution::~Partition_Solution()
 = default;
 
-void Population_solution::print_population_solution()
+void Partition_Solution::print_population_solution()
 {
     cerr << "Solution: ";
     for(int i=1;i<solution.size();i++)
@@ -33,10 +33,10 @@ void Population_solution::print_population_solution()
     }
     cerr << endl;
 
-    cerr << "index2s: ";
-    for(unsigned int index2 : partition_index)
+    cerr << "Partition index: ";
+    for(unsigned int i : partition_index)
     {
-        cerr << index2 << " ";
+        cerr << i << " ";
     }
     cerr << endl;
 
@@ -110,7 +110,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     solution_collection.resize(num_population);
     for (auto & i : solution_collection)
         i.resize(num_vertex + 1, 0);
-    population_solution.resize(num_population, Population_solution(input_num_vertex, input_num_color));
+    population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
 
     // debug variables;
     max_equal_nontabu_count = 0;
@@ -324,7 +324,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsigned int>& index1)
 {
     int A, B;
-    Population_solution s[2] = {Population_solution(num_vertex, num_color), Population_solution(num_vertex, num_color)};
+    Partition_Solution s[2] = {Partition_Solution(num_vertex, num_color), Partition_Solution(num_vertex, num_color)};
     s[0] = population_solution[s1];
     s[1] = population_solution[s2];
 
