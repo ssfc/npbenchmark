@@ -28,7 +28,7 @@ struct Move {
 class Partition_Solution {
 public:
     unsigned int num_vertex;
-    // dimension, num_vertex+1;
+    // dimension, num_vertex;
     // element: amount of color i the sol;
     // meaning: sol;
     vector<unsigned int> solution;
