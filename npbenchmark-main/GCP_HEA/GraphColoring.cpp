@@ -122,18 +122,10 @@ namespace szx
                     break;
             }
 
-            for(auto & i : test.population_solution)
-            {
-                memset(&i.solution[0], 0, sizeof(i.solution[0]) * i.solution.size());
-                for(auto& x : i.partition) memset(&x[0],0,sizeof(x[0])*x.size());
-                memset(&i.partition_index[0], 0, sizeof(i.partition_index[0]) * i.partition_index.size());
-                memset(&i.num_colors[0], 0, sizeof(i.num_colors[0]) * i.num_colors.size());
-            }
-
             double start_time = clock();
 
             ///* to reduce
-            // 给solution_collection中的解构造分划;
+            // construct partition for each solution in the solution;
             for (int p = 0; p < num_population; p++)
             {
                 // cerr << "p: " << p <<" " << endl;
