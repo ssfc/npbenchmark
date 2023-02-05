@@ -21,6 +21,17 @@ Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color
     num_colors.resize(input_num_color, 0);
 }
 
+void Partition_Solution::construct_partition()
+{
+    for (int i = 0; i < num_vertex; i++)
+    {
+        unsigned int color = solution[i+1];
+        int color_num = num_colors[color];
+        partition[color][color_num] = i+1;
+        partition_index[i] = color_num;
+        num_colors[color] = ++color_num;
+    }
+}
 
 Partition_Solution::~Partition_Solution()
 = default;

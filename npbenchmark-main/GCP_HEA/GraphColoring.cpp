@@ -141,14 +141,8 @@ namespace szx
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
                     test.population_solution[p].solution[i+1] = test.solution_collection[p][i+1];
-                    unsigned int color = test.solution_collection[p][i+1]; // take out the color of solution[p][i];
-                    int color_num = test.population_solution[p].num_colors[color]; // take out the color num of solution[p][i] corresponding color;
-
-                    // {[p][i]的颜色, [p][i]的颜色数量} = 顶点; 将某颜色的独立集成员顶点按顺序排列, 范围之外的置零;
-                    test.population_solution[p].partition[color][color_num] = i+1;
-                    test.population_solution[p].partition_index[i] = color_num++; // 顶点i在所属颜色独立集中的序号;
-                    test.population_solution[p].num_colors[color] = color_num; // 解[p][i]对应的颜色独立集magnitude+1;
                 }
+                test.population_solution[p].construct_partition();
 
                 // for debugging:
                 test.population_solution[p].print_population_solution();
@@ -198,14 +192,7 @@ namespace szx
                 test.tabu_search(temps.solution, true); // 仅仅需要对新形成的temps进行禁忌搜索;
 
                 // 由temps的index1s构造出partition, index2s, color_num;
-                for (int i = 0; i < test.num_vertex; i++)
-                {
-                    unsigned int color = temps.solution[i+1];
-                    int color_num = temps.num_colors[color];
-                    temps.partition[color][color_num] = i+1;
-                    temps.partition_index[i] = color_num;
-                    temps.num_colors[color] = ++color_num;
-                }
+                temps.construct_partition();
 
                 cerr << "temps structure: " << endl;
                 temps.print_population_solution();

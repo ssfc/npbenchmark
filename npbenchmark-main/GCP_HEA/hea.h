@@ -46,6 +46,7 @@ public:
     vector<int> num_colors;
 
     explicit Partition_Solution(int input_num_vertex, int input_num_color);
+    void construct_partition();
     ~Partition_Solution();
 
     // debug function
