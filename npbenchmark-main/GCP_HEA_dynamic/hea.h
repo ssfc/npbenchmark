@@ -80,7 +80,7 @@ public:
     int best_conflict;
 
     vector<vector<int>> adj_color_table; // dimension,
-    vector<vector<long long int>> tabu_tenure_table;
+    long long int **tabu_tenure_table;
 
     Move moved;
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值

@@ -79,7 +79,10 @@ namespace szx
             for (int p = 0; p < num_population; p++)
             {
                 for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
-                for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(x[0])*x.size());
+                for (int i = 0; i < test.num_vertex; i++)
+                {
+                    memset(test.tabu_tenure_table[i], 0, test.num_color * sizeof(long long int));
+                }
 
                 test.conflict = 0;
                 test.best_conflict = 0;
@@ -175,7 +178,11 @@ namespace szx
 
                 // reset adj_color_table and tabu_tenure_table to zero;
                 for(auto& x : test.adj_color_table) memset(&x[0],0,sizeof(x[0])*x.size());
-                for(auto& x : test.tabu_tenure_table) memset(&x[0],0,sizeof(x[0])*x.size());
+                for (int i = 0; i < test.num_vertex; i++)
+                {
+                    memset(test.tabu_tenure_table[i], 0, test.num_color * sizeof(long long int));
+                }
+
 
                 test.conflict = 0;
                 test.best_conflict = 0;

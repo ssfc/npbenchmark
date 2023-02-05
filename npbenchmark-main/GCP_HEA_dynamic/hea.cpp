@@ -105,10 +105,10 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
         i.resize(input_num_color, 0);
     }
 
-    tabu_tenure_table.resize(input_num_vertex);
-    for(auto & i : tabu_tenure_table)
+    tabu_tenure_table = new long long int* [num_vertex];
+    for (int i = 0; i < num_vertex; i++)
     {
-        i.resize(input_num_color, 0);
+        tabu_tenure_table[i] = new long long int[num_color];
     }
 
     moved = {-1, -1};
@@ -133,7 +133,13 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
 
 Hybrid_Evolution::~Hybrid_Evolution()
-= default;
+{
+    for (int i = 0; i < num_vertex; i++)
+    {
+        delete[] tabu_tenure_table[i];
+    }
+    delete[] tabu_tenure_table;
+}
 
 
 void Hybrid_Evolution::insert_adj_list(int v1, int v2)
@@ -161,12 +167,13 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
 
         if (adj_color_table[i][solution_i] > 0) // if vertex i overlap its neighbor's color;
         {
+            long long int* tabu_tenure_table_i = tabu_tenure_table[i];
             for (int j = 0; j < num_color; j++) // j is color;
             {
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
                     int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
+                    if (tabu_tenure_table_i[j] <= iter) //nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
