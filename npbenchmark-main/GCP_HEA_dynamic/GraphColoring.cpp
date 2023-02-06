@@ -226,7 +226,9 @@ namespace szx
                 ///*
                 if(population_iteration % 100 == 0)
                 {
-                    cerr << "Population iteration: " << population_iteration << endl;
+                    double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+                    cerr << "Population iteration: " << population_iteration <<"  ";
+                    cerr << "elapsed time(s): " << elapsed_time << endl;
                     cerr << "min conflict: " << population.min_conflict << endl;
                     cerr << "min conflict index: " << population.min_conflict_index << endl;
                 }
