@@ -37,7 +37,7 @@ namespace szx
             */
 
 
-            int num_population = 10;
+            int num_population = 20;
             Population population(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
