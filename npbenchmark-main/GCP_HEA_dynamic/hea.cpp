@@ -139,6 +139,19 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
         i.resize(num_vertex, 0);
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
 
+    // add edge information from dataset to class;
+    for (int i = 0;i < input_edge_num; i++)
+    {
+        int v1 = input_edges[i][0];
+        int v2 = input_edges[i][1];
+
+        adj_list[v1][vertex_edge_num[v1]] = v2;
+        vertex_edge_num[v1]++;
+
+        adj_list[v2][vertex_edge_num[v2]] = v1;
+        vertex_edge_num[v2]++;
+    }
+
     // debug variables;
     max_equal_nontabu_count = 0;
     max_equal_tabu_count = 0;
