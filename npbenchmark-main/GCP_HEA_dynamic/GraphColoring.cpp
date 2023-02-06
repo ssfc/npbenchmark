@@ -177,6 +177,7 @@ namespace szx
                 // cerr << endl;
 
                 // reset adj_color_table and tabu_tenure_table to zero;
+                // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
                 for (int i = 0; i < test.num_vertex; i++)
                 {
                     memset(test.adj_color_table[i], 0, test.num_color * sizeof(int));

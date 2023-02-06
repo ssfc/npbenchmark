@@ -89,10 +89,15 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
 
     num_vertex = input_num_vertex;
     num_color = input_num_color;
-    adj_list.resize(num_vertex);
+    adj_list = new int* [num_vertex];
     for (int i = 0; i < num_vertex; i++)
     {
-        adj_list[i].resize(num_vertex, 0);
+        adj_list[i] = new int[num_vertex];
+        int* adj_list_i = adj_list[i];
+        for (int j = 0; j < num_vertex; j++)
+        {
+            adj_list_i[j] = 0;
+        }
     }
     vertex_edge_num.resize(num_vertex, 0);
 
@@ -103,23 +108,20 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_num_color, in
     for (int i = 0; i < num_vertex; i++)
     {
         adj_color_table[i] = new int[num_color];
+        int* adj_color_table_i = adj_color_table[i];
+        for (int j = 0; j < num_color; j++)
+        {
+            adj_color_table_i[j] = 0;
+        }
     }
 
     tabu_tenure_table = new long long int* [num_vertex];
     for (int i = 0; i < num_vertex; i++)
     {
         tabu_tenure_table[i] = new long long int[num_color];
-    }
-
-    // allocate initial value
-    for (int i = 0; i < num_vertex; i++)
-    {
-        int* adj_color_table_i = adj_color_table[i];
         long long int* tabu_tenure_table_i = tabu_tenure_table[i];
-
         for (int j = 0; j < num_color; j++)
         {
-            adj_color_table_i[j] = 0;
             tabu_tenure_table_i[j] = 0;
         }
     }
@@ -149,9 +151,11 @@ Hybrid_Evolution::~Hybrid_Evolution()
 {
     for (int i = 0; i < num_vertex; i++)
     {
+        delete[] adj_list[i];
         delete[] adj_color_table[i];
         delete[] tabu_tenure_table[i];
     }
+    delete[] adj_list;
     delete[] adj_color_table;
     delete[] tabu_tenure_table;
 }
@@ -297,9 +301,10 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
         unsigned int this_vertex_color = solution[i];
         int* adj_color_table_i = adj_color_table[i];
 
+        int* adj_list_i = adj_list[i];
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list_i[j]];
 
             if (this_vertex_color == adj_color)
                 conflict++;
@@ -434,9 +439,10 @@ int Hybrid_Evolution::compute_conflict(vector<unsigned int> &solution)
         int num_edge = vertex_edge_num[i];
         unsigned int this_vertex_color = solution[i];
 
+        int* adj_list_i = adj_list[i];
         for (int j = 0; j < num_edge; j++)
         {
-            unsigned int adj_color = solution[adj_list[i][j]];
+            unsigned int adj_color = solution[adj_list_i[j]];
 
             if (this_vertex_color == adj_color)
                 this_conflict++;
@@ -463,9 +469,10 @@ void Hybrid_Evolution::print_adj_list() const
     for (int i = 0; i < num_vertex; i++)
     {
         cerr << "Vertex " << i << ": ";
+        int* adj_list_i = adj_list[i];
         for (int j = 0;j < vertex_edge_num[i];j++)
         {
-            cerr << adj_list[i][j] << " ";
+            cerr << adj_list_i[j] << " ";
         }
         cerr << endl;
     }
