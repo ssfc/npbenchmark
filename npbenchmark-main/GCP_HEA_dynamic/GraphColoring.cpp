@@ -43,7 +43,7 @@ namespace szx
             */
 
             int num_population = 30;
-            Population population(num_population);
+            Population_Conflict population_conflict(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
 
@@ -117,13 +117,13 @@ namespace szx
                 // cerr << endl;
                 // cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-                population.num_conflict[p] = test.conflict;
+                population_conflict.num_conflict[p] = test.conflict;
 
                 // record the min conflict up till now;
-                if (test.conflict < population.min_conflict)
+                if (test.conflict < population_conflict.min_conflict)
                 {
-                    population.min_conflict = test.conflict;
-                    population.min_conflict_index = p;
+                    population_conflict.min_conflict = test.conflict;
+                    population_conflict.min_conflict_index = p;
                 }
 
                 if (test.conflict == 0)
@@ -152,7 +152,7 @@ namespace szx
             Partition_Solution temps(input.nodeNum, input.colorNum);
 
             long long int population_iteration = 0;
-            while (population.min_conflict != 0)
+            while (population_conflict.min_conflict != 0)
             {
                 // random select two index from population as parents;
                 unsigned int p1 = pseudoRandNumGen() % num_population, p2;
@@ -206,21 +206,21 @@ namespace szx
                 int max_conflict = -1, max_conflict_index;
                 for (int i = 0; i < num_population; i++)
                 {
-                    if (population.num_conflict[i] > max_conflict)
+                    if (population_conflict.num_conflict[i] > max_conflict)
                     {
-                        max_conflict = population.num_conflict[i];
+                        max_conflict = population_conflict.num_conflict[i];
                         max_conflict_index = i;
                     }
                 }
 
                 test.population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
-                population.num_conflict[max_conflict_index] = test.conflict;
+                population_conflict.num_conflict[max_conflict_index] = test.conflict;
 
                 // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
-                if (test.conflict < population.min_conflict)
+                if (test.conflict < population_conflict.min_conflict)
                 {
-                    population.min_conflict = test.conflict;
-                    population.min_conflict_index = max_conflict_index;
+                    population_conflict.min_conflict = test.conflict;
+                    population_conflict.min_conflict_index = max_conflict_index;
                 }
 
                 ///*
@@ -229,8 +229,8 @@ namespace szx
                     double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
                     cerr << "Population iteration: " << population_iteration <<"  ";
                     cerr << "elapsed time(s): " << elapsed_time << endl;
-                    cerr << "min conflict: " << population.min_conflict << endl;
-                    cerr << "min conflict index: " << population.min_conflict_index << endl;
+                    cerr << "min conflict: " << population_conflict.min_conflict << endl;
+                    cerr << "min conflict index: " << population_conflict.min_conflict_index << endl;
                 }
                 //*/
 
@@ -244,12 +244,12 @@ namespace szx
             cerr << "elapsed time(s): " << elapsed_time << " ";
             cerr << "Population frequency: " << double (population_iteration) / elapsed_time << endl;
 
-            if (population.min_conflict == 0)
+            if (population_conflict.min_conflict == 0)
             {
                 cerr << "color of each vertex: ";
                 for(int i=0;i<test.num_vertex;i++)
                 {
-                    cerr << test.population_solution[population.min_conflict_index].solution[i] << " ";
+                    cerr << test.population_solution[population_conflict.min_conflict_index].solution[i] << " ";
                 }
                 cerr << endl;
 
@@ -257,7 +257,7 @@ namespace szx
                 cerr << test.compute_conflict(test.population_solution[0].solution) << endl;
 
                 cerr << "conflict of final solution: ";
-                cerr << test.compute_conflict(test.population_solution[population.min_conflict_index].solution) << endl;
+                cerr << test.compute_conflict(test.population_solution[population_conflict.min_conflict_index].solution) << endl;
             }
             else
                 cerr << "over time" << endl;
@@ -265,7 +265,7 @@ namespace szx
 
             for (int i = 0;i < input.nodeNum;i++)
             {
-                output[i] = test.population_solution[population.min_conflict_index].solution[i];
+                output[i] = test.population_solution[population_conflict.min_conflict_index].solution[i];
             }
 
             // debug function:

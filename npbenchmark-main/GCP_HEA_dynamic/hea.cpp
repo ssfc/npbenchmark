@@ -71,7 +71,7 @@ void Partition_Solution::print_population_solution()
 }
 
 
-Population::Population(int input_num_population)
+Population_Conflict::Population_Conflict(int input_num_population)
 {
     min_conflict = INT_MAX;
     min_conflict_index = 0;
@@ -79,7 +79,7 @@ Population::Population(int input_num_population)
 }
 
 
-Population::~Population()
+Population_Conflict::~Population_Conflict()
 = default;
 
 
@@ -425,6 +425,12 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
             index1[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
         }
     }
+}
+
+
+void Hybrid_Evolution::hybrid_evolution_search()
+{
+
 }
 
 

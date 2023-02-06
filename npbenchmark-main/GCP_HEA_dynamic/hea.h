@@ -53,14 +53,14 @@ public:
     void print_population_solution();
 };
 
-class Population {
+class Population_Conflict {
 public:
     int min_conflict; // the min conflict among the population collection;
     int min_conflict_index;
     vector<int> num_conflict;
 
-    explicit Population(int input_num_population);
-    ~Population();
+    explicit Population_Conflict(int input_num_population);
+    ~Population_Conflict();
 };
 
 // class HE;
@@ -110,6 +110,7 @@ public:
     void tabu_search(vector<unsigned int> &solution, bool is_limit);
 
     void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
+    void hybrid_evolution_search();
 
     // debug function: compute conflict of a solution
     int compute_conflict(vector<unsigned int> &solution);
