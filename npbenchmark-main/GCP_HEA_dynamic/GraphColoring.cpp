@@ -73,21 +73,21 @@ namespace szx
              */// to debug
 
             // this is also the process of initialization;
-            for (int p = 0; p < num_population; p++)
+            for (int i = 0; i < num_population; i++)
             {
-                for (int i = 0; i < test.num_vertex; i++)
+                for (int j = 0; j < test.num_vertex; j++)
                 {
-                    memset(test.adj_color_table[i], 0, test.num_color * sizeof(int));
-                    memset(test.tabu_tenure_table[i], 0, test.num_color * sizeof(long long int));
+                    memset(test.adj_color_table[j], 0, test.num_color * sizeof(int));
+                    memset(test.tabu_tenure_table[j], 0, test.num_color * sizeof(long long int));
                 }
 
                 test.conflict = 0;
                 test.best_conflict = 0;
 
                 // initialization: set random color to each sol in the population;
-                for (int i = 0; i < test.num_vertex; i++)
+                for (int j = 0; j < test.num_vertex; j++)
                 {
-                    test.solution_collection[p][i] = pseudoRandNumGen() % test.num_color;
+                    test.solution_collection[i][j] = pseudoRandNumGen() % test.num_color;
                 }
 
                 // do tabu-search for each population in the collection;
@@ -100,7 +100,7 @@ namespace szx
                 // cerr << endl;
                 // cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-                test.tabu_search(test.solution_collection[p], true);
+                test.tabu_search(test.solution_collection[i], true);
                 // cerr << "Solution after tabu search:  ";
                 // for(int i=0;i<input.nodeNum;i++)
                 // {
@@ -109,13 +109,13 @@ namespace szx
                 // cerr << endl;
                 // cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-                population_conflict.num_conflict[p] = test.conflict;
+                population_conflict.num_conflict[i] = test.conflict;
 
                 // record the min conflict up till now;
                 if (test.conflict < population_conflict.min_conflict)
                 {
                     population_conflict.min_conflict = test.conflict;
-                    population_conflict.min_conflict_index = p;
+                    population_conflict.min_conflict_index = i;
                 }
 
                 if (test.conflict == 0)
@@ -126,15 +126,15 @@ namespace szx
 
             ///* to reduce
             // construct partition for each solution in the solution;
-            for (int p = 0; p < num_population; p++)
+            for (int i = 0; i < num_population; i++)
             {
                 // cerr << "p: " << p <<" " << endl;
-                for (int i = 0; i < test.num_vertex; i++) // i is name of vertex;
+                for (int j = 0; j < test.num_vertex; j++) // j is name of vertex;
                 {
                     // copy color solution from solution_collection to population_solution[p].index1s;
-                    test.population_solution[p].solution[i] = test.solution_collection[p][i];
+                    test.population_solution[i].solution[j] = test.solution_collection[i][j];
                 }
-                test.population_solution[p].construct_partition();
+                test.population_solution[i].construct_partition();
 
                 // for debugging:
                 // test.population_solution[p].print_population_solution();
