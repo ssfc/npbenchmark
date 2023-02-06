@@ -90,6 +90,7 @@ public:
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Partition_Solution> population_solution;
+    vector<unsigned int> final_solution;
 
     // debug variables:
     int max_equal_nontabu_count;

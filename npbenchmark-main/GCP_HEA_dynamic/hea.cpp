@@ -137,6 +137,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     for (auto & i : solution_collection)
         i.resize(num_vertex, 0);
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
+    final_solution.resize(num_vertex, 0);
 
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)
