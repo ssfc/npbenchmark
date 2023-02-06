@@ -131,7 +131,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     equal_tabu_delta.resize(2000, {0,0});
     min_delta = 999999;
     iter = 0;
-    max_iter = 30000;
 
     num_population = input_num_population;
     solution_collection.resize(num_population);
@@ -305,7 +304,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 }
 
 
-void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit)
+void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter)
 {
     // compute initial conflict;
     for (int i = 0; i < num_vertex; i++)

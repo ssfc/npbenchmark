@@ -43,6 +43,7 @@ namespace szx
             */
 
             int num_population = 30;
+            long long int max_iter = 30000;
             Population_Conflict population_conflict(num_population);
 
             Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, num_population, seed);
@@ -100,7 +101,7 @@ namespace szx
                 // cerr << endl;
                 // cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-                test.tabu_search(test.solution_collection[i], true);
+                test.tabu_search(test.solution_collection[i], true, max_iter);
                 // cerr << "Solution after tabu search:  ";
                 // for(int i=0;i<input.nodeNum;i++)
                 // {
@@ -185,7 +186,7 @@ namespace szx
                 test.conflict = 0;
                 test.best_conflict = 0;
 
-                test.tabu_search(temps.solution, true); // 仅仅需要对新形成的temps进行禁忌搜索;
+                test.tabu_search(temps.solution, true, max_iter); // 仅仅需要对新形成的temps进行禁忌搜索;
 
                 // 由temps的index1s构造出partition, index2s, color_num;
                 temps.construct_partition();

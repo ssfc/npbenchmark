@@ -87,8 +87,6 @@ public:
     vector<Move> equal_tabu_delta; //禁忌相同delta值
     int min_delta; // 移动增量
 
-    long long int max_iter;
-
     int num_population;
     vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Partition_Solution> population_solution;
@@ -107,7 +105,7 @@ public:
 
     void find_move(vector<unsigned int> &solution);
     void make_move(vector<unsigned int> &solution);
-    void tabu_search(vector<unsigned int> &solution, bool is_limit);
+    void tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter);
 
     void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
     void hybrid_evolution_search();
