@@ -45,7 +45,7 @@ namespace szx
             int num_population = 30;
             Population_Conflict population_conflict(num_population);
 
-            Hybrid_Evolution test(input.nodeNum, input.colorNum, num_population, seed);
+            Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, num_population, seed);
 
             for (int i = 0;i < input.edgeNum; i++)
             {
