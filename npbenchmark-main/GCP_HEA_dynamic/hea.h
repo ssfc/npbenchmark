@@ -109,7 +109,7 @@ public:
     void tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter);
 
     void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
-    void hybrid_evolution_search();
+    void hybrid_evolution_search(long long int max_iter);
 
     // debug function: compute conflict of a solution
     int compute_conflict(vector<unsigned int> &solution);
