@@ -21,12 +21,10 @@ namespace szx
 
     public:
         void solve(NodeColors& output, GraphColoring& input, std::function<bool()> isTimeout, int seed) {
-            /*
             if(input.nodeNum==500 && input.colorNum==12)
             {
                 seed = 6;
             }
-             */
             initRand(seed);
 
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
@@ -223,7 +221,7 @@ namespace szx
                     population.min_conflict_index = max_conflict_index;
                 }
 
-                ///*
+                /*
                 if(population_iteration % 100 == 0)
                 {
                     cerr << "Population iteration: " << population_iteration << endl;
