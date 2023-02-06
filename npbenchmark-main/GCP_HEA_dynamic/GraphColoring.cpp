@@ -242,7 +242,8 @@ namespace szx
                 cerr << "color of each vertex: ";
                 for(int i=0;i<test.num_vertex;i++)
                 {
-                    cerr << test.population_solution[population_conflict.min_conflict_index].solution[i] << " ";
+                    test.final_solution[i] = test.population_solution[population_conflict.min_conflict_index].solution[i];
+                    cerr << test.final_solution[i] << " ";
                 }
                 cerr << endl;
 
@@ -255,10 +256,10 @@ namespace szx
             else
                 cerr << "over time" << endl;
 
-
+            
             for (int i = 0;i < input.nodeNum;i++)
             {
-                output[i] = test.population_solution[population_conflict.min_conflict_index].solution[i];
+                output[i] = test.final_solution[i];
             }
 
             // debug function:
