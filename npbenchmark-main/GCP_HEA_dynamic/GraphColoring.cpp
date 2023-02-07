@@ -42,12 +42,9 @@ namespace szx
             */
 
             int num_population = 30;
-            long long int max_iter = 30000;
-            Population_Conflict population_conflict(num_population);
-
+            long long int max_iter = 40000;
             Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, num_population, seed);
             test.hybrid_evolution_search(max_iter);
-
 
             for (int i = 0;i < input.nodeNum;i++)
             {
@@ -55,13 +52,14 @@ namespace szx
             }
 
             // debug function:
+            /*
             cerr << "output: " << endl;
             for(int i=0;i<input.nodeNum;i++)
             {
                 {
                     cerr << output[i] << " ";
                 }
-            }
+            }*/
             cerr << endl;
             //*/// to reduce
         }

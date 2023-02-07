@@ -39,9 +39,9 @@ Partition_Solution::~Partition_Solution()
 void Partition_Solution::print_population_solution()
 {
     cerr << "Solution: ";
-    for(int i=0;i<solution.size();i++)
+    for(unsigned int i : solution)
     {
-        cerr << solution[i] << " ";
+        cerr << i << " ";
     }
     cerr << endl;
 
@@ -155,7 +155,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     // debug variables;
     max_equal_nontabu_count = 0;
     max_equal_tabu_count = 0;
-    start_time = 0;
+    start_time = clock();
     end_time = 0;
 }
 
@@ -521,8 +521,6 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
             break;
     }
 
-    double start_time = clock();
-
     ///* to reduce
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
@@ -627,8 +625,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         population_iteration++;
     }
 
-
-    double end_time = clock();
+    end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
     cerr << "Population iteration: " << population_iteration << " ";
     cerr << "elapsed time(s): " << elapsed_time << " ";
