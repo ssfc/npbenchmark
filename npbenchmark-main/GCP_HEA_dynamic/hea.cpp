@@ -331,7 +331,6 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     // cerr << "initial number of confilcts:" << conflict << endl;
 
     iter = 0;
-    start_time = clock();
 
     if(is_limit) // set upper bound of iteration;
     {
@@ -614,7 +613,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         ///*
         if(population_iteration % 100 == 0)
         {
-            double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+            double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
             cerr << "Population iteration: " << population_iteration <<"  ";
             cerr << "elapsed time(s): " << elapsed_time << endl;
             cerr << "min conflict: " << population_conflict.min_conflict << endl;
