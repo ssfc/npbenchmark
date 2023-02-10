@@ -88,7 +88,6 @@ public:
     int min_delta; // 移动增量
 
     int num_population;
-    vector<vector<unsigned int>> solution_collection;  // dim, num_population * (num_vertex+1)
     vector<Partition_Solution> population_solution;
     vector<unsigned int> final_solution;
 

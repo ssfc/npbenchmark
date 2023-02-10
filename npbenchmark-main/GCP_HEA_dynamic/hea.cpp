@@ -133,9 +133,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     iter = 0;
 
     num_population = input_num_population;
-    solution_collection.resize(num_population);
-    for (auto & i : solution_collection)
-        i.resize(num_vertex, 0);
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
     final_solution.resize(num_vertex, 0);
 
@@ -485,7 +482,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         // initialization: set random color to each sol in the population;
         for (int j = 0; j < num_vertex; j++)
         {
-            solution_collection[i][j] = pseudoRandNumGen() % num_color;
+            population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
         }
 
         // do tabu-search for each population in the collection;
@@ -498,7 +495,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         // cerr << endl;
         // cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-        tabu_search(solution_collection[i], true, max_iter);
+        tabu_search(population_solution[i].solution, true, max_iter);
         // cerr << "Solution after tabu search:  ";
         // for(int i=0;i<input.nodeNum;i++)
         // {
@@ -525,18 +522,12 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
     for (int i = 0; i < num_population; i++)
     {
         // cerr << "p: " << p <<" " << endl;
-        for (int j = 0; j < num_vertex; j++) // j is name of vertex;
-        {
-            // copy color solution from solution_collection to population_solution[p].index1s;
-            population_solution[i].solution[j] = solution_collection[i][j];
-        }
         population_solution[i].construct_partition();
 
         // for debugging:
         // test.population_solution[p].print_population_solution();
     }
-
-
+    
     Partition_Solution temps(num_vertex, num_color);
 
     long long int population_iteration = 0;
