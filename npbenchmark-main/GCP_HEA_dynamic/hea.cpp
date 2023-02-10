@@ -495,7 +495,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         // cerr << endl;
         // cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-        tabu_search(population_solution[i].solution, true, max_iter);
+        tabu_search(population_solution[i].solution, true, max_iter/2);
         // cerr << "Solution after tabu search:  ";
         // for(int i=0;i<input.nodeNum;i++)
         // {
@@ -527,7 +527,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         // for debugging:
         // test.population_solution[p].print_population_solution();
     }
-    
+
     Partition_Solution temps(num_vertex, num_color);
 
     long long int population_iteration = 0;
@@ -571,7 +571,18 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         conflict = 0;
         best_conflict = 0;
 
-        tabu_search(temps.solution, true, max_iter); // 仅仅需要对新形成的temps进行禁忌搜索;
+        if(population_conflict.min_conflict <= 3)
+        {
+            tabu_search(temps.solution, true, max_iter); // 仅仅需要对新形成的temps进行禁忌搜索;
+        }
+        else if(population_conflict.min_conflict > 3 && population_conflict.min_conflict<=6)
+        {
+            tabu_search(temps.solution, true, max_iter/2); // 仅仅需要对新形成的temps进行禁忌搜索;
+        }
+        else
+        {
+            tabu_search(temps.solution, true, max_iter/4); // 仅仅需要对新形成的temps进行禁忌搜索;
+        }
 
         // 由temps的index1s构造出partition, index2s, color_num;
         temps.construct_partition();

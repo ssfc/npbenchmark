@@ -41,8 +41,8 @@ namespace szx
             }
             */
 
-            int num_population = 30;
-            long long int max_iter = 40000;
+            int num_population = 20;
+            long long int max_iter = 30000;
             Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, num_population, seed);
             test.hybrid_evolution_search(max_iter);
 
