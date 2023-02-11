@@ -1,0 +1,56 @@
+CPPutilibs
+	by Kirk
+==============================
+some utility classes written by cpp.
+
+
+
+
+USAGE
+==============================
+check the related header file to get the usage of the classes.
+check "Tester.cpp" for code example for using each class.
+
+
+CLASS LIST ( IMPLEMENTED )
+==============================
+[ Graph ] :
+DirectedGraph, UndirectedGraph
+matrix representation, ajacent table representation
+some basic algorithm on graph
+
+[ BidirectionIndex ] :
+this can be used as an O(1) implementation of set<int>  
+when the integers are aggregate in certain range. 
+for example, vertex set in topological graph.
+
+[ RandSelect ] :
+make it possible to pick one element out of a sequence of elements 
+by same probability without recording all of them.
+
+[ RangeRand ] :
+select a integer in a range by same probability 
+
+[ Timer ] :
+record a series of timestamps.
+
+[Log] :
+make it easy to show log when debuging and 
+avoid too much log in release version.
+
+CLASS LIST ( IN THE PLAN )
+==============================
+[ Trie ] :
+dictionary tree
+
+[ SuffixTree ] :
+
+
+[ AVLTree ] :
+
+
+[ RedBlackTree ] :
+
+
+[ RationalNubmer ] :
+record numbers without accuracy loss
