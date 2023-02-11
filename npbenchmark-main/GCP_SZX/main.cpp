@@ -17,6 +17,6 @@ int main()
     //run_tabu( 6, csvFile );
 
     csvFile.close();
-    system( "pause" );
+    // system( "pause" );
     return 0;
 }

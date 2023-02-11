@@ -1,0 +1,4 @@
+# ninja log v5
+0	1196	6977899165637419	CMakeFiles/GCP_SZX.dir/main.cpp.obj	7d5d7eb64fd2cc09
+6	1330	6977899167001115	CMakeFiles/GCP_SZX.dir/solver.cpp.obj	11d9ef3d5e18cf2b
+11	1716	6977899170856517	CMakeFiles/GCP_SZX.dir/GraphColoring.cpp.obj	5c689dc72609ae34
