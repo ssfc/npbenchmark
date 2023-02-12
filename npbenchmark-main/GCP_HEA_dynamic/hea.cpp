@@ -289,7 +289,9 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
     unsigned int old_color = solution[moved.u];
     solution[moved.u] = moved.vj;
-    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    // 用这种方法只需要更新iter就可以了, 而不需要更新整个tabu_tenure_table; 因为tabu_tenure+old_iter-new_iter等价于tabu_tenure--
+    // in each iteration;
+    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1;
 
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u]; i++)

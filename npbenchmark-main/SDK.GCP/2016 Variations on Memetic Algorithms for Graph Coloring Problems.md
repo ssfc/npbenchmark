@@ -14,7 +14,8 @@ HEAD - for HEA in Duet - works with a population of only two individuals. Moreov
 ## Related works
 ### 2.1 TabuCol
 1. **Even** if the objective function is **worse**, at each iteration, one of the best neighbors which are not inside the tabu list is chosen; If there are several **equal best** moves, one chooses one of them at **random**; (2023年2月12日)
-2. 
+2. the objective function of the neighbors is not computed from scratch, but only the difference between the two solutions is computed. 
+3. 
 
 
 
