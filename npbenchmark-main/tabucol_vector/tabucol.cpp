@@ -99,7 +99,7 @@ void Graph::find_move()
                 if (solution_i != j) // find a new color;
                 {//cpu流水线
                     int this_delta = adj_color_table[i][j] - adj_color_table[i][solution_i]; // new-old, the less the better;
-                    if (tabu_tenure_table[i][j] <= iter) //nontabu move;
+                    if (tabu_tenure_table[i][j] <= iter) // nontabu move;
                     {
                         if (this_delta < min_delta)
                         {//分支预判惩罚 6.0
@@ -185,7 +185,8 @@ void Graph::make_move()
 
     unsigned int old_color = single_solution[moved.u];
     single_solution[moved.u] = moved.vj;
-    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    // 如果表达式tabu_tenure_table[i][j] <= iter中是<=就得+1, 如果是<就不需要+1;
+    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1;
 
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u]; i++)
