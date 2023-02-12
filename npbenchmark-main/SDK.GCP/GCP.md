@@ -68,9 +68,12 @@
 68. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/GraphColoring 
 69. KailinLi: NOT use global parameters; he said he had HEA, we still cannot find; 
 70. 
-71. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
-72. RyleeRuiYe: use global parameters; has HEA, not report result; RuiYe's program generate an extremely big file and cannot output result; 
+71. Sample of QiyuanY: https://github.com/QiyuanY/tabu-k-color
+72. QiyuanY: has HEA; has HEAD; but the code write extremely ugly; (2023年2月11日)
 73. 
-74. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
-75. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
+74. Sample of RyleeRuiYe: https://github.com/RyleeRuiYe/k-coloring 
+75. RyleeRuiYe: use global parameters; has HEA, not report result; RuiYe's program generate an extremely big file and cannot output result; 
 76. 
+77. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
+78. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
+79. 
