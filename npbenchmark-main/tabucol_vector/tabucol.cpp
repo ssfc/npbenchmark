@@ -186,7 +186,7 @@ void Graph::make_move()
     unsigned int old_color = single_solution[moved.u];
     single_solution[moved.u] = moved.vj;
     // 如果表达式tabu_tenure_table[i][j] <= iter中是<=就得+1, 如果是<就不需要+1;
-    tabu_tenure_table[moved.u][old_color] = iter + conflict + pseudoRandNumGen() % 10 + 1;
+    tabu_tenure_table[moved.u][old_color] = iter + conflict * 0.6 + pseudoRandNumGen() % 10 + 1;
 
     // update adjacent color table;
     for (int i = 0; i < vertex_edge_num[moved.u]; i++)
