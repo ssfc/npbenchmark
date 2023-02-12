@@ -80,3 +80,16 @@
 80. Sample of yuanFang1: https://github.com/yuanFang1/graph_coloring/tree/master/ts_vs/ts_vs 
 81. yuanFang1: use global parameters; has HEA, report the result; WTF? Segmentation fault (core dumped) 
 82. 
+83. Sample of zywang624: https://github.com/zywang624/smartlab/blob/837c7ee2577eb17a98c7c68c1b8d59c19e56b66f/hea/code/hea_duet.cpp
+84. Is hea_duet algorithm equals with head algorithm? 
+85. 
+86. 
+87. 
+88. 
+89. 
+90. 
+91. 
+92. 
+93. 
+94. 
+95. tbc
