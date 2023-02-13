@@ -2,8 +2,8 @@
 // Created by take_ on 2023/1/25.
 //
 
-#ifndef YUANFANG_REDUCE_HEA_H
-#define YUANFANG_REDUCE_HEA_H
+#ifndef HEAD1_H
+#define HEAD1_H
 
 #include <algorithm>
 #include <climits>
@@ -120,4 +120,4 @@ public:
 };
 
 
-#endif //YUANFANG_REDUCE_HEA_H
+#endif //HEAD1_H
