@@ -3,4 +3,4 @@ project(GCP_HEAD_1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(GCP_HEAD_1 main.cpp GraphColoring.h GraphColoring.cpp hea.h hea.cpp)
+add_executable(GCP_HEAD_1 main.cpp GraphColoring.h GraphColoring.cpp head.h head.cpp)

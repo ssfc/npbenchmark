@@ -1,5 +1,5 @@
 #include "GraphColoring.h"
-#include "hea.h"
+#include "head.h"
 
 #include <fstream>
 #include <iostream>
