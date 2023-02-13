@@ -73,8 +73,6 @@ void Partition_Solution::print_population_solution()
 
 Population_Conflict::Population_Conflict(int input_num_population)
 {
-    population_min_conflict = INT_MAX;
-    population_min_conflict_index = 0;
     population_num_conflict.resize(input_num_population);
 }
 
@@ -134,6 +132,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
 
     num_population = input_num_population;
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
+    population_min_conflict = INT_MAX;
+    population_min_conflict_index = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
         final_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
@@ -485,10 +485,10 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         population_conflict.population_num_conflict[i] = conflict;
 
         // record the min conflict up till now;
-        if (conflict < population_conflict.population_min_conflict)
+        if (conflict < population_min_conflict)
         {
-            population_conflict.population_min_conflict = conflict;
-            population_conflict.population_min_conflict_index = i;
+            population_min_conflict = conflict;
+            population_min_conflict_index = i;
         }
 
         if (conflict == 0)
@@ -509,7 +509,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     Partition_Solution temps(num_vertex, num_color);
 
     long long int population_iteration = 0;
-    while (population_conflict.population_min_conflict != 0)
+    while (population_min_conflict != 0)
     {
         // random select two index from population as parents;
         unsigned int p1 = pseudoRandNumGen() % num_population, p2;
@@ -573,10 +573,10 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         population_conflict.population_num_conflict[max_conflict_index] = conflict;
 
         // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
-        if (conflict < population_conflict.population_min_conflict)
+        if (conflict < population_min_conflict)
         {
-            population_conflict.population_min_conflict = conflict;
-            population_conflict.population_min_conflict_index = max_conflict_index;
+            population_min_conflict = conflict;
+            population_min_conflict_index = max_conflict_index;
         }
 
         ///*
@@ -585,8 +585,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
             cerr << "Population iteration: " << population_iteration <<"  ";
             cerr << "elapsed time(s): " << elapsed_time << endl;
-            cerr << "min conflict: " << population_conflict.population_min_conflict << endl;
-            cerr << "min conflict index: " << population_conflict.population_min_conflict_index << endl;
+            cerr << "min conflict: " << population_min_conflict << endl;
+            cerr << "min conflict index: " << population_min_conflict_index << endl;
         }
         //*/
 
@@ -599,12 +599,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     cerr << "elapsed time(s): " << elapsed_time << " ";
     cerr << "Population frequency: " << double (population_iteration) / elapsed_time << endl;
 
-    if (population_conflict.population_min_conflict == 0)
+    if (population_min_conflict == 0)
     {
         cerr << "color of each vertex: ";
         for(int i=0;i<num_vertex;i++)
         {
-            final_solution[i] = population_solution[population_conflict.population_min_conflict_index].solution[i];
+            final_solution[i] = population_solution[population_min_conflict_index].solution[i];
             cerr << final_solution[i] << " ";
         }
         cerr << endl;

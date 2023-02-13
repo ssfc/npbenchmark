@@ -55,8 +55,6 @@ public:
 
 class Population_Conflict {
 public:
-    int population_min_conflict; // the min conflict among the population collection;
-    int population_min_conflict_index;
     vector<int> population_num_conflict;
 
     explicit Population_Conflict(int input_num_population);
@@ -89,6 +87,8 @@ public:
 
     int num_population;
     vector<Partition_Solution> population_solution;
+    int population_min_conflict; // the min conflict among the population collection;
+    int population_min_conflict_index;
     vector<unsigned int> final_solution;
 
     // debug variables:
