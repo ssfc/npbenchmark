@@ -83,6 +83,7 @@ public:
     int population_min_conflict; // the min conflict among the population collection;
     int population_min_conflict_index;
     vector<int> population_num_conflict;
+    Partition_Solution best_solution;
     vector<unsigned int> final_solution;
 
     // debug variables:
