@@ -109,6 +109,7 @@ public:
 
     void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
     void hybrid_evolution_search(long long int max_iter);
+    void hybrid_evolution_duet_1(long long int max_iter);
 
     // debug function: compute conflict of a solution
     int compute_conflict(vector<unsigned int> &solution);
