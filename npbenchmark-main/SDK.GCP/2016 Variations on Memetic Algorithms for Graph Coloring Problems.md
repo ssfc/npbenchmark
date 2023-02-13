@@ -29,10 +29,14 @@ HEAD - for HEA in Duet - works with a population of only two individuals. Moreov
 2. A major risk is stops sometimes too quickly. the greater the population size, the greater the search diversity. (2023年2月13日)
 
 ### 3.2 Improved hybrid algorithm: HEAD
-1. Itercycle = 10, the number of generations into one
+1. Algorithm 2:
+2. Input: Itercycle = 10, the number of generations into one
 cycle. (2023年2月13日)
-2. saveBest是找出这几个conflict最小的那个意思吗?
-3. 
+1. Line 8: saveBest是找出这几个conflict最小的那个意思吗?
+2. Line 10: 每个10轮做一次检测？
+3. Line 13: elite1又重新初始化了？
+4. We add two other candidate solutions (similar to elite solutions), elite1 and elite2, in order to reintroduce some diversity to the duet.
+5. 
 
 
 
