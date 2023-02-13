@@ -467,8 +467,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     cerr << "best solution: ";
     print_array(best_solution.solution);
 
-
-    ///* to reduce
+    
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
     {
