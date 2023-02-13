@@ -464,6 +464,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     print_array(population_solution[0].solution);
     cerr << "p2: ";
     print_array(population_solution[1].solution);
+    cerr << "best solution: ";
+    print_array(best_solution.solution);
 
 
     ///* to reduce
