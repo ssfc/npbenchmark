@@ -375,7 +375,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 }
 
 
-void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsigned int>& index1)
+void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsigned int>& child)
 {
     int A, B;
     Partition_Solution s[2] = {Partition_Solution(num_vertex, num_color), Partition_Solution(num_vertex, num_color)};
@@ -411,7 +411,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         for (int j = 0; j<max_num; j++) // 遍历最多颜色的独立集;
         {
             int point = s[A].partition[max_index][j]; // 最多颜色独立集中的第j个顶点的名称; {2, 5, 6, 7, 10}
-            index1[point] = i; // 将解中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
+            child[point] = i; // 将解中的对应顶点point{2,5,6,7,10}改成颜色i; 为啥不是max_index? 因为伪代码就是这样;
 
             //j循环的过程中, 在B中删除这些点{2,5,6,7,10}
             unsigned int color = s[B].solution[point]; // 找出顶点{2,5,6,7,10}在B中的颜色;
@@ -435,7 +435,7 @@ void Hybrid_Evolution::cross_over(unsigned int s1, unsigned int s2, vector<unsig
         {
             int point = s[0].partition[i][j]; // 颜色i独立集中第j个顶点的名字;
             unsigned int color = pseudoRandNumGen() % num_color; //随机寻找一种颜色;
-            index1[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
+            child[point] = color; // 给颜色i独立集中第j个顶点分配一种随机的颜色;
         }
     }
 }

@@ -107,7 +107,7 @@ public:
     void make_move(vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter);
 
-    void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &index1);
+    void cross_over(unsigned int s1, unsigned int s2, vector<unsigned int> &child);
     void hybrid_evolution_search(long long int max_iter);
     void hybrid_evolution_duet_1(long long int max_iter);
 
