@@ -459,6 +459,13 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
 
+    // evaluate LINE 1
+    cerr << "p1: ";
+    print_array(population_solution[0].solution);
+    cerr << "p2: ";
+    print_array(population_solution[1].solution);
+
+
     ///* to reduce
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
@@ -645,6 +652,16 @@ int Hybrid_Evolution::get_max_equal_nontabu_count() const
 int Hybrid_Evolution::get_max_equal_tabu_count() const
 {
     return max_equal_tabu_count;
+}
+
+// debug function:
+void Hybrid_Evolution::print_array(vector<unsigned int> &solution)
+{
+    for(unsigned int i : solution)
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
 }
 
 
