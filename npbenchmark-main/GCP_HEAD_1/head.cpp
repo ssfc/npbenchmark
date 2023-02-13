@@ -375,14 +375,12 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 }
 
 
-void Hybrid_Evolution::cross_over(Partition_Solution s1, Partition_Solution s2, vector<unsigned int>& child)
+void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_Solution& s2, vector<unsigned int>& child) const
 {
     int A, B;
     Partition_Solution s[2] = {Partition_Solution(num_vertex, num_color), Partition_Solution(num_vertex, num_color)};
     s[0] = s1;
     s[1] = s2;
-    Partition_Solution SA = Partition_Solution(num_vertex, num_color);
-    Partition_Solution SB = Partition_Solution(num_vertex, num_color);
 
     for (int i = 0; i < num_color; i++) // 遍历所有颜色;
     {
