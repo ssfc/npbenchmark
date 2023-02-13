@@ -555,7 +555,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
-            cerr << "Population iteration: " << generation <<"  ";
+            cerr << "Generation: " << generation <<"  ";
             cerr << "elapsed time(s): " << elapsed_time << endl;
             cerr << "min conflict: " << population_min_conflict << endl;
             cerr << "min conflict index: " << population_min_conflict_index << endl;
@@ -567,9 +567,9 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
     end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cerr << "Population iteration: " << generation << " ";
+    cerr << "Generation: " << generation << " ";
     cerr << "elapsed time(s): " << elapsed_time << " ";
-    cerr << "Population frequency: " << double (generation) / elapsed_time << endl;
+    cerr << "Generation frequency: " << double (generation) / elapsed_time << endl;
 
     if (population_min_conflict == 0)
     {
