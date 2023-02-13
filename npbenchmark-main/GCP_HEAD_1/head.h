@@ -55,9 +55,9 @@ public:
 
 class Population_Conflict {
 public:
-    int min_conflict; // the min conflict among the population collection;
-    int min_conflict_index;
-    vector<int> num_conflict;
+    int population_min_conflict; // the min conflict among the population collection;
+    int population_min_conflict_index;
+    vector<int> population_num_conflict;
 
     explicit Population_Conflict(int input_num_population);
     ~Population_Conflict();
