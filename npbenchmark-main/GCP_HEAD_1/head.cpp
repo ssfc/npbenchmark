@@ -381,6 +381,8 @@ void Hybrid_Evolution::cross_over(Partition_Solution s1, Partition_Solution s2, 
     Partition_Solution s[2] = {Partition_Solution(num_vertex, num_color), Partition_Solution(num_vertex, num_color)};
     s[0] = s1;
     s[1] = s2;
+    Partition_Solution SA = Partition_Solution(num_vertex, num_color);
+    Partition_Solution SB = Partition_Solution(num_vertex, num_color);
 
     for (int i = 0; i < num_color; i++) // 遍历所有颜色;
     {
