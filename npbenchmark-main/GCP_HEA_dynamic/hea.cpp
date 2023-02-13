@@ -135,6 +135,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     num_population = input_num_population;
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
     final_solution.resize(num_vertex, 0);
+    for (int i = 0; i < num_vertex; i++)
+        final_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
 
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)
@@ -331,7 +333,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
     iter = 0;
 
-    if(is_limit) // set upper bound of iteration, used in HEA;
+    if(is_limit) // True: set upper bound of iteration, used in HEA;
     {
         while (iter < max_iter && conflict > 0)
         {
@@ -341,7 +343,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             make_move(solution);
         }
     }
-    else // used in tabu search;
+    else // False: used in tabu search;
     {
         while (conflict > 0)
         {
@@ -637,7 +639,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
         cerr << compute_conflict(population_solution[0].solution) << endl;
 
         cerr << "conflict of final solution: ";
-        cerr << compute_conflict(population_solution[population_conflict.min_conflict_index].solution) << endl;
+        cerr << compute_conflict(final_solution) << endl;
     }
     else
         cerr << "over time" << endl;

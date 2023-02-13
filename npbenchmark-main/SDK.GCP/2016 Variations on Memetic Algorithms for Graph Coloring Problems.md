@@ -24,7 +24,16 @@ HEAD - for HEA in Duet - works with a population of only two individuals. Moreov
 ### QA-col: Quantum Annealing for graph coloring
 
 ## 3 HEAD: Hybrid Evolutionary Algorithm in Duet
-1. 
+### 3.1 First hybrid algorithm: HEAD’
+1. two parallel TabuCol algorithms which periodically interact by crossover; (2023年2月13日)
+2. A major risk is stops sometimes too quickly. the greater the population size, the greater the search diversity. (2023年2月13日)
+
+### 3.2 Improved hybrid algorithm: HEAD
+1. Itercycle = 10, the number of generations into one
+cycle. (2023年2月13日)
+2. saveBest是找出这几个conflict最小的那个意思吗?
+3. 
+
 
 
 
