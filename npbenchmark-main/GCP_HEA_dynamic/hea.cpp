@@ -331,7 +331,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 
     iter = 0;
 
-    if(is_limit) // set upper bound of iteration;
+    if(is_limit) // set upper bound of iteration, used in HEA;
     {
         while (iter < max_iter && conflict > 0)
         {
@@ -341,7 +341,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             make_move(solution);
         }
     }
-    else
+    else // used in tabu search;
     {
         while (conflict > 0)
         {

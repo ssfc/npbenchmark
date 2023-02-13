@@ -20,8 +20,11 @@ HEAD - for HEA in Duet - works with a population of only two individuals. Moreov
 1. In MA, the mutation of the EA is replaced by a local search algorithm. (2023年2月13日)
 2. HEA belongs to MA; (2023年2月13日)
 3. The crossover used in HEA is called the Greedy Partition Crossover (GPX); **Drawbacks**: (1) GPX is asymmetrical; (2) GPX is a random crossover; (3) The final step produces many conflicts. (2023年2月13日)
-4. 
 
+### QA-col: Quantum Annealing for graph coloring
+
+## 3 HEAD: Hybrid Evolutionary Algorithm in Duet
+1. 
 
 
 

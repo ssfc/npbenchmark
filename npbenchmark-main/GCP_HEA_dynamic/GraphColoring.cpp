@@ -52,6 +52,8 @@ namespace szx
 
             // input.colorNum = 48;
             Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, num_population, seed);
+
+            // test.tabu_search()
             test.hybrid_evolution_search(max_iter);
 
             for (int i = 0;i < input.nodeNum;i++)
