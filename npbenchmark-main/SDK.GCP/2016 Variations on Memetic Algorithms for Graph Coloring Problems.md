@@ -14,8 +14,15 @@ HEAD - for HEA in Duet - works with a population of only two individuals. Moreov
 ## Related works
 ### 2.1 TabuCol
 1. **Even** if the objective function is **worse**, at each iteration, one of the best neighbors which are not inside the tabu list is chosen; If there are several **equal best** moves, one chooses one of them at **random**; (2023年2月12日)
-2. the objective function of the neighbors is not computed from scratch, but only the difference between the two solutions is computed. 
-3. 
+2. the objective function of the neighbors is not computed from scratch, but only the difference between the two solutions is computed. (2023年2月13日)
+
+### 2.2 Memetic Algorithms for graph coloring and HEA 
+1. In MA, the mutation of the EA is replaced by a local search algorithm. (2023年2月13日)
+2. HEA belongs to MA; (2023年2月13日)
+3. The crossover used in HEA is called the Greedy Partition Crossover (GPX); **Drawbacks**: (1) GPX is asymmetrical; (2) GPX is a random crossover; (3) The final step produces many conflicts. (2023年2月13日)
+4. 
+
+
 
 
 

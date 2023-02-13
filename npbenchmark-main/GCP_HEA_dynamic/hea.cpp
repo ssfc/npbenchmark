@@ -572,7 +572,7 @@ void Hybrid_Evolution::hybrid_evolution_search(long long int max_iter)
 
         conflict = 0;
         best_conflict = 0;
-        
+
         tabu_search(temps.solution, true, max_iter); // 仅仅需要对新形成的temps进行禁忌搜索;
 
         // 由temps的index1s构造出partition, index2s, color_num;
