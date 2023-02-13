@@ -444,7 +444,7 @@ void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
     Population_Conflict population_conflict(num_population);
-    
+
     // this is also the process of initialization;
     for (int i = 0; i < num_population; i++)
     {
