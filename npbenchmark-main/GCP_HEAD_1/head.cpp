@@ -71,16 +71,6 @@ void Partition_Solution::print_population_solution()
 }
 
 
-Population_Conflict::Population_Conflict(int input_num_population)
-{
-    population_num_conflict.resize(input_num_population);
-}
-
-
-Population_Conflict::~Population_Conflict()
-= default;
-
-
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_num_population, int input_seed)
 {
     init_rand(input_seed);
@@ -134,6 +124,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
     population_min_conflict = INT_MAX;
     population_min_conflict_index = 0;
+    population_num_conflict.resize(input_num_population);
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
         final_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
@@ -443,8 +434,6 @@ void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_
 
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
-    Population_Conflict population_conflict(num_population);
-
     // this is also the process of initialization;
     for (int i = 0; i < num_population; i++)
     {
@@ -482,7 +471,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << endl;
         // cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
 
-        population_conflict.population_num_conflict[i] = conflict;
+        population_num_conflict[i] = conflict;
 
         // record the min conflict up till now;
         if (conflict < population_min_conflict)
@@ -562,15 +551,15 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         int max_conflict = -1, max_conflict_index;
         for (int i = 0; i < num_population; i++)
         {
-            if (population_conflict.population_num_conflict[i] > max_conflict)
+            if (population_num_conflict[i] > max_conflict)
             {
-                max_conflict = population_conflict.population_num_conflict[i];
+                max_conflict = population_num_conflict[i];
                 max_conflict_index = i;
             }
         }
 
         population_solution[max_conflict_index] = temps; // 将种群中冲突数最大的替换成temps
-        population_conflict.population_num_conflict[max_conflict_index] = conflict;
+        population_num_conflict[max_conflict_index] = conflict;
 
         // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
         if (conflict < population_min_conflict)

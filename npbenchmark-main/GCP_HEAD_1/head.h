@@ -53,13 +53,6 @@ public:
     void print_population_solution();
 };
 
-class Population_Conflict {
-public:
-    vector<int> population_num_conflict;
-
-    explicit Population_Conflict(int input_num_population);
-    ~Population_Conflict();
-};
 
 // class HE;
 class Hybrid_Evolution
@@ -89,6 +82,7 @@ public:
     vector<Partition_Solution> population_solution;
     int population_min_conflict; // the min conflict among the population collection;
     int population_min_conflict_index;
+    vector<int> population_num_conflict;
     vector<unsigned int> final_solution;
 
     // debug variables:
