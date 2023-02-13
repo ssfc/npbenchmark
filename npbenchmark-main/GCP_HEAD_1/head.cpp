@@ -444,33 +444,7 @@ void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
     Population_Conflict population_conflict(num_population);
-
-    // test.print_adj_yf_list();
-    // test.print_adj_list();
-
-    /* to debug
-    vector<unsigned int> temp_solution;
-    temp_solution.resize(test.num_vertex+1, 0);
-    // initialization: set random solution to each solution in the population;
-    for (int i = 1; i <= test.num_vertex; i++)
-    {
-        temp_solution[i] = pseudoRandNumGen() % test.num_color;
-        //cerr << solution[i] <<' ';
-    }
-    cerr << "Conflict before tabu search is: " << test.compute_conflict(temp_solution) << endl;
-    // cerr << "iterations: " << test.get_iteration() << endl;
-    double start_time = clock();
-    // test.tabu_yf_search(temp_solution_1, false);
-    test.tabu_search(temp_solution, true);
-    double end_time = clock();
-    double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    // cerr << "elapsed time(s): " << elapsed_time << endl;
-    cerr << "Iterations: " << test.get_iteration() << " elapsed_time(s): " << elapsed_time
-         << " frequency:" << double (test.get_iteration()) / elapsed_time << endl;
-    cerr << "Conflict after tabu search is: " << test.compute_conflict(temp_solution) << endl;
-    // cerr << "iterations: " << test.get_iteration() << endl;
-     */// to debug
-
+    
     // this is also the process of initialization;
     for (int i = 0; i < num_population; i++)
     {
