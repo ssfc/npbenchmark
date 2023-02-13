@@ -129,7 +129,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     population_num_conflict.resize(input_num_population);
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
-        final_solution[i] = pseudoRandNumGen() % num_color;//初始化颜色
+        final_solution[i] = pseudoRandNumGen() % num_color;
 
     // add edge information from dataset to class;
     for (int i = 0;i < input_edge_num; i++)
@@ -448,43 +448,16 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         conflict = 0;
         best_conflict = 0;
 
-        // initialization: set random color to each sol in the population;
+        // LINE 1: initialize p1 and p2;
         for (int j = 0; j < num_vertex; j++)
         {
             population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
         }
-
-        // do tabu-search for each population in the collection;
-        // cerr << "Population: " << p << endl;
-        // cerr << "Solution before tabu search: ";
-        // for(int i=0;i<input.nodeNum;i++)
-        // {
-        //    cerr << test.solution_collection[p][i] << " ";
-        // }
-        // cerr << endl;
-        // cerr << "Conflict before tabu search: " << test.compute_conflict(test.solution_collection[p]) << endl;
-
-        tabu_search(population_solution[i].solution, true, max_iter/2);
-        // cerr << "Solution after tabu search:  ";
-        // for(int i=0;i<input.nodeNum;i++)
-        // {
-        //    cerr << test.solution_collection[p][i] << " ";
-        // }
-        // cerr << endl;
-        // cerr << "Conflict after tabu search is:  " << test.compute_conflict(test.solution_collection[p]) << endl;
-
-        population_num_conflict[i] = conflict;
-
-        // record the min conflict up till now;
-        if (conflict < population_min_conflict)
-        {
-            population_min_conflict = conflict;
-            population_min_conflict_index = i;
-        }
-
-        if (conflict == 0)
-            break;
     }
+
+    // LINE 1: initialize best_solution;
+    for (int i = 0; i < num_vertex; i++)
+        best_solution.solution[i] = pseudoRandNumGen() % num_color;
 
     ///* to reduce
     // construct partition for each solution in the solution;
