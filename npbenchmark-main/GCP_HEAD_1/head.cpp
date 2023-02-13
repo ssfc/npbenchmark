@@ -460,14 +460,14 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
 
     // evaluate LINE 1
-    cerr << "p1: ";
-    print_array(population_solution[0].solution);
-    cerr << "p2: ";
-    print_array(population_solution[1].solution);
-    cerr << "best solution: ";
-    print_array(best_solution.solution);
+    // cerr << "p1: ";
+    // print_array(population_solution[0].solution);
+    // cerr << "p2: ";
+    // print_array(population_solution[1].solution);
+    // cerr << "best solution: ";
+    // print_array(best_solution.solution);
 
-    
+
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
     {
@@ -480,7 +480,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
     Partition_Solution temps(num_vertex, num_color);
 
-    long long int population_iteration = 0;
+    long long int generation = 0;
     while (population_min_conflict != 0)
     {
         // random select two index from population as parents;
@@ -552,24 +552,24 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
 
         ///*
-        if(population_iteration % 100 == 0)
+        if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
-            cerr << "Population iteration: " << population_iteration <<"  ";
+            cerr << "Population iteration: " << generation <<"  ";
             cerr << "elapsed time(s): " << elapsed_time << endl;
             cerr << "min conflict: " << population_min_conflict << endl;
             cerr << "min conflict index: " << population_min_conflict_index << endl;
         }
         //*/
 
-        population_iteration++;
+        generation++;
     }
 
     end_time = clock();
     double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
-    cerr << "Population iteration: " << population_iteration << " ";
+    cerr << "Population iteration: " << generation << " ";
     cerr << "elapsed time(s): " << elapsed_time << " ";
-    cerr << "Population frequency: " << double (population_iteration) / elapsed_time << endl;
+    cerr << "Population frequency: " << double (generation) / elapsed_time << endl;
 
     if (population_min_conflict == 0)
     {

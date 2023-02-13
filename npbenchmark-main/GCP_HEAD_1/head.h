@@ -109,7 +109,7 @@ public:
     int compute_conflict(vector<unsigned int> &solution);
     [[nodiscard]] long long int get_iteration() const;
     void print_adj_list() const; // print adjacent list of graph;
-    void print_array(vector<unsigned int> &solution);
+    static void print_array(vector<unsigned int> &solution);
 
     [[nodiscard]] int get_max_equal_nontabu_count() const;
     [[nodiscard]] int get_max_equal_tabu_count() const;
