@@ -108,7 +108,6 @@ public:
     void tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter);
 
     void cross_over(const Partition_Solution& s1, const Partition_Solution& s2, vector<unsigned int> &child) const;
-    void hybrid_evolution_search(long long int max_iter);
     void hybrid_evolution_duet_1(long long int max_iter);
 
     // debug function: compute conflict of a solution
