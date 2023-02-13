@@ -1,7 +1,6 @@
 #include "GraphColoring.h"
 #include "head.h"
 
-#include <fstream>
 #include <iostream>
 #include <random>
 
