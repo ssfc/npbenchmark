@@ -477,14 +477,15 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 1: p1, p2, best <- init()
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
+    best_solution_conflict = compute_conflict(best_solution.solution);
 
     Solution_Partition c1(num_vertex, num_color);
     Solution_Partition c2(num_vertex, num_color);
 
     // Line 2: generation <- 0
     long long int generation = 0;
-    // Line 3: do while
-    while (population_min_conflict != 0 && population_solution[0].solution != population_solution[1].solution && generation < 1)
+    // Line 3 and Line 10: do while
+    while (best_solution_conflict > 0 && population_solution[0].solution != population_solution[1].solution)
     {
     // random select two index from population as parents;
 
@@ -552,29 +553,28 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
 
-
-
-        //////////////////////////////////////// 前面的都验证了;
+        // LINE 8: best <- saveBest(p1, p2, best)
         // 找出种群中的最大冲突数;
-        int max_conflict = -1, max_conflict_index;
-        for (int i = 0; i < num_population; i++)
+        if(population_num_conflict[0] < population_num_conflict[1]) // p1 < p2;
         {
-            if (population_num_conflict[i] > max_conflict)
+            if(population_num_conflict[0] < best_solution_conflict)
             {
-                max_conflict = population_num_conflict[i];
-                max_conflict_index = i;
+                best_solution_conflict = population_num_conflict[0];
+                best_solution = population_solution[0];
+            }
+        }
+        else // p1 >= p2;
+        {
+            if(population_num_conflict[1] < best_solution_conflict)
+            {
+                best_solution_conflict = population_num_conflict[1];
+                best_solution = population_solution[1];
             }
         }
 
-        population_solution[max_conflict_index] = c1; // 将种群中冲突数最大的替换成c1;
-        population_num_conflict[max_conflict_index] = conflict;
-
-        // 因为只有交叉后的结果是新来的, 所以只需比较交叉后的结果和原种群中最小即可;
-        if (conflict < population_min_conflict)
-        {
-            population_min_conflict = conflict;
-            population_min_conflict_index = max_conflict_index;
-        }
+        // cerr << population_num_conflict[0] << endl;
+        // cerr << population_num_conflict[1] << endl;
+        // cerr << best_solution_conflict << endl;
 
         ///*
         if(generation % 100 == 0)
@@ -582,8 +582,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
             cerr << "Generation: " << generation <<"  ";
             cerr << "elapsed time(s): " << elapsed_time << endl;
-            cerr << "min conflict: " << population_min_conflict << endl;
-            cerr << "min conflict index: " << population_min_conflict_index << endl;
+            cerr << "best solution conflict: " << best_solution_conflict << endl;
         }
         //*/
 
@@ -596,7 +595,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     cerr << "elapsed time(s): " << elapsed_time << " ";
     cerr << "Generation frequency: " << double (generation) / elapsed_time << endl;
 
-    if (population_min_conflict == 0)
+    if (best_solution_conflict == 0)
     {
         cerr << "color of each vertex: ";
         for(int i=0;i<num_vertex;i++)
