@@ -486,7 +486,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     Solution_Partition c1(num_vertex, num_color);
     Solution_Partition c2(num_vertex, num_color);
 
-    // Line 2: generation <- 0
+    // Line 2: generation, cycle <- 0
     long long int generation = 0;
     int cycle = 0;
     // Line 3 and Line 10: do while
