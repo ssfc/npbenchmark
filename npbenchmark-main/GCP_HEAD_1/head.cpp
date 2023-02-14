@@ -526,6 +526,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
         population_solution[0] = c1;
+        population_num_conflict[0] = conflict;
         // cerr << "conflict of p1 after tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
 
@@ -546,6 +547,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
         population_solution[1] = c2;
+        population_num_conflict[1] = conflict;
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
 
