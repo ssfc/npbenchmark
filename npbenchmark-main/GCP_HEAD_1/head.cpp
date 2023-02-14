@@ -480,6 +480,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
     Partition_Solution c1(num_vertex, num_color);
 
+    // Line 2: generation <- 0
     long long int generation = 0;
     while (population_min_conflict != 0 && population_solution[0].solution != population_solution[1].solution && generation < 1)
     {
