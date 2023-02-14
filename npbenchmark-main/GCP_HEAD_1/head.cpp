@@ -481,7 +481,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     Partition_Solution c1(num_vertex, num_color);
 
     long long int generation = 0;
-    while (population_min_conflict != 0 && population_solution[0].solution != population_solution[1].solution)
+    while (population_min_conflict != 0 && population_solution[0].solution != population_solution[1].solution && generation < 1)
     {
     // random select two index from population as parents;
         unsigned int p1 = pseudoRandNumGen() % num_population, p2;
