@@ -78,7 +78,6 @@ public:
     vector<Move> equal_tabu_delta; //禁忌相同delta值
     int min_delta; // 移动增量
 
-    int num_population;
     Solution_Partition p1;
     Solution_Partition p2;
     vector<int> population_num_conflict;
@@ -93,7 +92,7 @@ public:
     double end_time;
 
     // functions
-    Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_num_population, int input_seed);
+    Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_seed);
     ~Hybrid_Evolution();
 
     void insert_adj_list(int i, int j);
