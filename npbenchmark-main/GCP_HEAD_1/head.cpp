@@ -508,7 +508,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // c2.construct_partition();
         // cerr << "c2 structure: " << endl;
         // c2.print_solution_partition();
-        
+
         // LINE 6: p1 <- TabuCol(c1,IterTC)
         // reset adj_color_table and tabu_tenure_table to zero;
         // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
