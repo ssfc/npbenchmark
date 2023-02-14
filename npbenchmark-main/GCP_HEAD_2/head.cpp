@@ -440,7 +440,7 @@ void Hybrid_Evolution::cross_over(const Solution_Partition& s1, const Solution_P
 
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
-    // Line 1: p1, p2, best <- init()
+    // Line 1: p1, p2, elite1, elite2, best <- init()
     for (int i = 0; i < num_vertex; i++)
     {
         p1.solution[i] = pseudoRandNumGen() % num_color;
@@ -451,20 +451,34 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         p2.solution[i] = pseudoRandNumGen() % num_color;
     }
 
+    // construct partition for each solution in the solution;
+    p1.construct_partition();
+    p2.construct_partition();
+
+    for (int i = 0; i < num_vertex; i++)
+    {
+        elite1.solution[i] = pseudoRandNumGen() % num_color;
+    }
+
+    for (int i = 0; i < num_vertex; i++)
+    {
+        elite2.solution[i] = pseudoRandNumGen() % num_color;
+    }
+
     // evaluate LINE 1
     // cerr << "p1: ";
     // print_array(population_solution[0].solution);
     // cerr << "p2: ";
     // print_array(population_solution[1].solution);
-
-    // construct partition for each solution in the solution;
-    p1.construct_partition();
-    p2.construct_partition();
+    cerr << "elite1: ";
+    print_array(elite1.solution);
+    cerr << "elite2: ";
+    print_array(elite2.solution);
 
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
 
-    // Line 1: p1, p2, best <- init()
+    // Line 1: p1, p2, elite1, elite2, best <- init()
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
     best_solution_conflict = compute_conflict(best_solution.solution);
