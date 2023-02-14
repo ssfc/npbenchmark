@@ -125,7 +125,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     iter = 0;
 
     num_population = input_num_population;
-    population_solution.resize(num_population, Solution_Partition(input_num_vertex, input_num_color));
     population_num_conflict.resize(input_num_population);
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
@@ -438,12 +437,14 @@ void Hybrid_Evolution::cross_over(const Solution_Partition& s1, const Solution_P
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
     // Line 1: p1, p2, best <- init()
-    for (int i = 0; i < num_population; i++)
+    for (int i = 0; i < num_vertex; i++)
     {
-        for (int j = 0; j < num_vertex; j++)
-        {
-            population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
-        }
+        p1.solution[i] = pseudoRandNumGen() % num_color;
+    }
+
+    for (int i = 0; i < num_vertex; i++)
+    {
+        p2.solution[i] = pseudoRandNumGen() % num_color;
     }
 
     // evaluate LINE 1
@@ -453,14 +454,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // print_array(population_solution[1].solution);
 
     // construct partition for each solution in the solution;
-    for (int i = 0; i < num_population; i++)
-    {
-        population_solution[i].construct_partition();
-
-        // for debugging:
-        // cerr << "population: " << i <<" " << endl;
-        // population_solution[i].print_solution_partition();
-    }
+    p1.construct_partition();
+    p2.construct_partition();
 
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
@@ -476,7 +471,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 2: generation <- 0
     long long int generation = 0;
     // Line 3 and Line 10: do while
-    while (best_solution_conflict > 0 && population_solution[0].solution != population_solution[1].solution)
+    while (best_solution_conflict > 0 && p1.solution != p2.solution)
     {
         // random select two index from population as parents;
 
@@ -492,12 +487,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // test.population_solution[p2].print_population_solution();
 
         // Line 4: c1 <- GPX(p1, p2)
-        cross_over(population_solution[0], population_solution[1], c1.solution);
+        cross_over(p1, p2, c1.solution);
         // c1.construct_partition();
         // cerr << "c1 structure: " << endl;
         // c1.print_solution_partition();
         // LINE 5: c2 <- GPX(p2, p1)
-        cross_over(population_solution[1], population_solution[0], c2.solution);
+        cross_over(p2, p1, c2.solution);
         // c2.construct_partition();
         // cerr << "c2 structure: " << endl;
         // c2.print_solution_partition();
@@ -518,7 +513,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         c1.construct_partition();
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
-        population_solution[0] = c1;
+        p1 = c1;
         population_num_conflict[0] = conflict;
         // cerr << "conflict of p1 after tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
@@ -539,7 +534,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         c2.construct_partition();
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
-        population_solution[1] = c2;
+        p2 = c2;
         population_num_conflict[1] = conflict;
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
@@ -551,7 +546,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             if(population_num_conflict[0] < best_solution_conflict)
             {
                 best_solution_conflict = population_num_conflict[0];
-                best_solution = population_solution[0];
+                best_solution = p1;
             }
         }
         else // p1 >= p2;
@@ -559,7 +554,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             if(population_num_conflict[1] < best_solution_conflict)
             {
                 best_solution_conflict = population_num_conflict[1];
-                best_solution = population_solution[1];
+                best_solution = p2;
             }
         }
 

@@ -79,7 +79,6 @@ public:
     int min_delta; // 移动增量
 
     int num_population;
-    vector<Solution_Partition> population_solution;
     Solution_Partition p1;
     Solution_Partition p2;
     vector<int> population_num_conflict;
