@@ -50,7 +50,7 @@ public:
     ~Solution_Partition();
 
     // debug function
-    void print_population_solution();
+    void print_solution_partition();
 };
 
 

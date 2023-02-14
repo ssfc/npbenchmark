@@ -36,7 +36,7 @@ void Solution_Partition::construct_partition()
 Solution_Partition::~Solution_Partition()
 = default;
 
-void Solution_Partition::print_population_solution()
+void Solution_Partition::print_solution_partition()
 {
     cerr << "Solution: ";
     for(unsigned int i : solution)
@@ -467,7 +467,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         population_solution[i].construct_partition();
 
         // for debugging:
-        population_solution[i].print_population_solution();
+        population_solution[i].print_solution_partition();
     }
 
     // cerr << "best solution: ";
