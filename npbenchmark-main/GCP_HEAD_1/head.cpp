@@ -528,11 +528,14 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         conflict = 0;
         best_conflict = 0;
 
-        tabu_search(c1.solution, true, max_iter); // 仅仅需要对新形成的child进行禁忌搜索;
+        // LINE 6: p1 <- TabuCol(c1,IterTC)
+        tabu_search(c1.solution, true, max_iter);
         c1.construct_partition();
+        population_solution[0] = c1;
 
-        // cerr << "child structure: " << endl;
-        // child.print_population_solution();
+
+
+
 
         //////////////////////////////////////// 前面的都验证了;
         // 找出种群中的最大冲突数;
