@@ -75,8 +75,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
                                    vector<array<int, 2>>& input_edges, int input_seed)
         :p1(input_num_vertex, input_num_color)
         ,p2(input_num_vertex, input_num_color)
-        ,elite1(input_num_vertex, input_num_color)
-        ,elite2(input_num_vertex, input_num_color)
         ,best_solution(input_num_vertex, input_num_color)
 {
     init_rand(input_seed);
@@ -473,7 +471,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 2: generation <- 0
     long long int generation = 0;
     // Line 3 and Line 10: do while
-    while (best_solution_conflict > 0 && p1.solution != p2.solution && generation < 1)
+    while (best_solution_conflict > 0 && p1.solution != p2.solution)
     {
         // random select two index from population as parents;
 
@@ -564,7 +562,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << population_num_conflict[1] << endl;
         // cerr << best_solution_conflict << endl;
 
-        ///*
+        /*
         if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
@@ -572,7 +570,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             cerr << "elapsed time(s): " << elapsed_time << endl;
             cerr << "best solution conflict: " << best_solution_conflict << endl;
         }
-        //*/
+        */
 
         generation++;
     }

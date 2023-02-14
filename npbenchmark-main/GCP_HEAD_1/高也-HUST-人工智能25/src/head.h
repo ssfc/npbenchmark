@@ -80,11 +80,9 @@ public:
 
     Solution_Partition p1;
     Solution_Partition p2;
-    Solution_Partition elite1;
-    Solution_Partition elite2;
-    Solution_Partition best_solution;
     int p1_conflict;
     int p2_conflict;
+    Solution_Partition best_solution;
     int best_solution_conflict;
     vector<unsigned int> final_solution;
 
