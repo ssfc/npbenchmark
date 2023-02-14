@@ -484,6 +484,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
     best_solution_conflict = compute_conflict(best_solution.solution);
+    // cerr << "initial best_solution_conflict" << best_solution_conflict << endl;
 
     Solution_Partition c1(num_vertex, num_color);
     Solution_Partition c2(num_vertex, num_color);
@@ -587,11 +588,15 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << elite1_conflict << endl;
 
         // LINE 9: best <- saveBest(elite1, best)
+        // print_array(best_solution.solution);
+        // cerr << best_solution_conflict << endl;
         if(elite1_conflict < best_solution_conflict)
         {
             best_solution_conflict = elite1_conflict;
             best_solution = elite1;
         }
+        // print_array(best_solution.solution);
+        // cerr << best_solution_conflict << endl;
 
 
         ///*
