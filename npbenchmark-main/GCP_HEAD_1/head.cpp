@@ -531,9 +531,11 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // LINE 6: p1 <- TabuCol(c1,IterTC)
         tabu_search(c1.solution, true, max_iter);
         c1.construct_partition();
+        // cerr << "conflict of p1 before tabu: ";
+        // cerr << compute_conflict(population_solution[0].solution) << endl;
         population_solution[0] = c1;
-
-
+        // cerr << "conflict of p1 after tabu: ";
+        // cerr << compute_conflict(population_solution[0].solution) << endl;
 
 
 
