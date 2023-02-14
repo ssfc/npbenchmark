@@ -25,7 +25,7 @@ struct Move {
 };
 
 // 整个类可以用一个sol构造出来;
-class Partition_Solution {
+class Solution_Partition {
 public:
     unsigned int num_vertex;
     // dimension, num_vertex;
@@ -45,9 +45,9 @@ public:
     // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
     vector<int> num_colors;
 
-    explicit Partition_Solution(int input_num_vertex, int input_num_color);
+    explicit Solution_Partition(int input_num_vertex, int input_num_color);
     void construct_partition();
-    ~Partition_Solution();
+    ~Solution_Partition();
 
     // debug function
     void print_population_solution();
@@ -79,11 +79,11 @@ public:
     int min_delta; // 移动增量
 
     int num_population;
-    vector<Partition_Solution> population_solution;
+    vector<Solution_Partition> population_solution;
     int population_min_conflict; // the min conflict among the population collection;
     int population_min_conflict_index;
     vector<int> population_num_conflict;
-    Partition_Solution best_solution;
+    Solution_Partition best_solution;
     vector<unsigned int> final_solution;
 
     // debug variables:
@@ -102,7 +102,7 @@ public:
     void make_move(vector<unsigned int> &solution);
     void tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter);
 
-    void cross_over(const Partition_Solution& s1, const Partition_Solution& s2, vector<unsigned int> &child) const;
+    void cross_over(const Solution_Partition& s1, const Solution_Partition& s2, vector<unsigned int> &child) const;
     void hybrid_evolution_duet_1(long long int max_iter);
 
     // debug function: compute conflict of a solution

@@ -8,7 +8,7 @@ mt19937 pseudoRandNumGen;
 void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 
-Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color)
+Solution_Partition::Solution_Partition(int input_num_vertex, int input_num_color)
 {
     num_vertex = input_num_vertex;
     solution.resize(input_num_vertex, 0);
@@ -21,7 +21,7 @@ Partition_Solution::Partition_Solution(int input_num_vertex, int input_num_color
     num_colors.resize(input_num_color, 0);
 }
 
-void Partition_Solution::construct_partition()
+void Solution_Partition::construct_partition()
 {
     for (int i = 0; i < num_vertex; i++)
     {
@@ -33,10 +33,10 @@ void Partition_Solution::construct_partition()
     }
 }
 
-Partition_Solution::~Partition_Solution()
+Solution_Partition::~Solution_Partition()
 = default;
 
-void Partition_Solution::print_population_solution()
+void Solution_Partition::print_population_solution()
 {
     cerr << "Solution: ";
     for(unsigned int i : solution)
@@ -123,7 +123,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     iter = 0;
 
     num_population = input_num_population;
-    population_solution.resize(num_population, Partition_Solution(input_num_vertex, input_num_color));
+    population_solution.resize(num_population, Solution_Partition(input_num_vertex, input_num_color));
     population_min_conflict = INT_MAX;
     population_min_conflict_index = 0;
     population_num_conflict.resize(input_num_population);
@@ -368,10 +368,10 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
 }
 
 
-void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_Solution& s2, vector<unsigned int>& child) const
+void Hybrid_Evolution::cross_over(const Solution_Partition& s1, const Solution_Partition& s2, vector<unsigned int>& child) const
 {
     int A, B;
-    Partition_Solution s[2] = {Partition_Solution(num_vertex, num_color), Partition_Solution(num_vertex, num_color)};
+    Solution_Partition s[2] = {Solution_Partition(num_vertex, num_color), Solution_Partition(num_vertex, num_color)};
     s[0] = s1;
     s[1] = s2;
 
@@ -477,8 +477,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
 
-    Partition_Solution c1(num_vertex, num_color);
-    Partition_Solution c2(num_vertex, num_color);
+    Solution_Partition c1(num_vertex, num_color);
+    Solution_Partition c2(num_vertex, num_color);
 
     // Line 2: generation <- 0
     long long int generation = 0;
