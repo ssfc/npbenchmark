@@ -128,6 +128,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
 
     p1_conflict = 0;
     p2_conflict = 0;
+    elite1_conflict = 0;
+    elite2_conflict = 0;
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)

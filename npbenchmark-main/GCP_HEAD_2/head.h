@@ -85,6 +85,8 @@ public:
     Solution_Partition best_solution;
     int p1_conflict;
     int p2_conflict;
+    int elite1_conflict;
+    int elite2_conflict;
     int best_solution_conflict;
     vector<unsigned int> final_solution;
 
