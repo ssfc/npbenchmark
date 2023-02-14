@@ -124,7 +124,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     min_delta = 999999;
     iter = 0;
 
-    population_num_conflict.resize(2);
+    p1_conflict = 0;
+    p2_conflict = 0;
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
@@ -513,7 +514,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
         p1 = c1;
-        population_num_conflict[0] = conflict;
+        p1_conflict = conflict;
         // cerr << "conflict of p1 after tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
 
@@ -534,25 +535,25 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
         p2 = c2;
-        population_num_conflict[1] = conflict;
+        p2_conflict = conflict;
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
 
         // LINE 8: best <- saveBest(p1, p2, best)
         // 找出种群中的最大冲突数;
-        if(population_num_conflict[0] < population_num_conflict[1]) // p1 < p2;
+        if(p1_conflict < p2_conflict) // p1 < p2;
         {
-            if(population_num_conflict[0] < best_solution_conflict)
+            if(p1_conflict < best_solution_conflict)
             {
-                best_solution_conflict = population_num_conflict[0];
+                best_solution_conflict = p1_conflict;
                 best_solution = p1;
             }
         }
         else // p1 >= p2;
         {
-            if(population_num_conflict[1] < best_solution_conflict)
+            if(p2_conflict < best_solution_conflict)
             {
-                best_solution_conflict = population_num_conflict[1];
+                best_solution_conflict = p2_conflict;
                 best_solution = p2;
             }
         }
