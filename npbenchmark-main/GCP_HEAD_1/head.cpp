@@ -127,6 +127,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     population_min_conflict = INT_MAX;
     population_min_conflict_index = 0;
     population_num_conflict.resize(input_num_population);
+    best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
         final_solution[i] = pseudoRandNumGen() % num_color;
