@@ -459,11 +459,13 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     {
         elite1.solution[i] = pseudoRandNumGen() % num_color;
     }
+    elite1_conflict = compute_conflict(elite1.solution);
 
     for (int i = 0; i < num_vertex; i++)
     {
         elite2.solution[i] = pseudoRandNumGen() % num_color;
     }
+    elite2_conflict = compute_conflict(elite2.solution);
 
     // evaluate LINE 1
     // cerr << "p1: ";
@@ -558,28 +560,28 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
 
-        // LINE 8: best <- saveBest(p1, p2, best)
+        // LINE 8: elite1 <- saveBest(p1, p2, elite1)
         // 找出种群中的最大冲突数;
         if(p1_conflict < p2_conflict) // p1 < p2;
         {
-            if(p1_conflict < best_solution_conflict)
+            if(p1_conflict < elite1_conflict)
             {
-                best_solution_conflict = p1_conflict;
-                best_solution = p1;
+                elite1_conflict = p1_conflict;
+                elite1 = p1;
             }
         }
         else // p1 >= p2;
         {
-            if(p2_conflict < best_solution_conflict)
+            if(p2_conflict < elite1_conflict)
             {
-                best_solution_conflict = p2_conflict;
-                best_solution = p2;
+                elite1_conflict = p2_conflict;
+                elite1 = p2;
             }
         }
 
-        // cerr << population_num_conflict[0] << endl;
-        // cerr << population_num_conflict[1] << endl;
-        // cerr << best_solution_conflict << endl;
+        cerr << p1_conflict << endl;
+        cerr << p2_conflict << endl;
+        cerr << elite1_conflict << endl;
 
         ///*
         if(generation % 100 == 0)
