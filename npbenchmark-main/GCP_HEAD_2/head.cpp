@@ -579,9 +579,20 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             }
         }
 
-        cerr << p1_conflict << endl;
-        cerr << p2_conflict << endl;
-        cerr << elite1_conflict << endl;
+        // print_array(p1.solution);
+        // cerr << p1_conflict << endl;
+        // print_array(p2.solution);
+        // cerr << p2_conflict << endl;
+        // print_array(elite1.solution);
+        // cerr << elite1_conflict << endl;
+
+        // LINE 9: best <- saveBest(elite1, best)
+        if(elite1_conflict < best_solution_conflict)
+        {
+            best_solution_conflict = elite1_conflict;
+            best_solution = elite1;
+        }
+
 
         ///*
         if(generation % 100 == 0)
