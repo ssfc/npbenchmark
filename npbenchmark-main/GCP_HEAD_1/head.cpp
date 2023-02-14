@@ -436,7 +436,7 @@ void Hybrid_Evolution::cross_over(const Partition_Solution& s1, const Partition_
 
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
-    // this is also the process of initialization;
+    // Line 1: p1, p2, best <- init()
     for (int i = 0; i < num_population; i++)
     {
         for (int j = 0; j < num_vertex; j++)
@@ -455,7 +455,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
     }
 
-    // LINE 1: initialize best_solution;
+    // Line 1: p1, p2, best <- init()
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
 
