@@ -33,7 +33,7 @@
 33. 
 34. My DSJC1000.1.txt is 267 474 167 iterations, 565.158 seconds (seed 1);
 35. 
-36. 
+36. 在HEA算法中, 并没有独立的出来的best_solution, 只有整型的population_min_conflict和population_min_conflict_index; (2023年2月14日)
 37. 
 38. 
 39. 
