@@ -463,10 +463,10 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
     {
-        // cerr << "p: " << p <<" " << endl;
         population_solution[i].construct_partition();
 
         // for debugging:
+        cerr << "population: " << i <<" " << endl;
         population_solution[i].print_solution_partition();
     }
 
