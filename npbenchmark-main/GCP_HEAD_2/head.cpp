@@ -440,12 +440,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 1: p1, p2, best <- init()
     for (int i = 0; i < num_population; i++)
     {
-        for (int j = 0; j < num_vertex; j++)
-        {
-            memset(adj_color_table[j], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[j], 0, num_color * sizeof(long long int));
-        }
-
         conflict = 0;
         best_history_conflict = 0;
 
