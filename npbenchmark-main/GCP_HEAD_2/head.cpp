@@ -440,9 +440,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 1: p1, p2, best <- init()
     for (int i = 0; i < num_population; i++)
     {
-        conflict = 0;
-        best_history_conflict = 0;
-
         for (int j = 0; j < num_vertex; j++)
         {
             population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
