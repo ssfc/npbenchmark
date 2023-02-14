@@ -454,6 +454,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
     }
 
+    // evaluate LINE 1
+    // cerr << "p1: ";
+    // print_array(population_solution[0].solution);
+    // cerr << "p2: ";
+    // print_array(population_solution[1].solution);
+
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
     {
@@ -461,14 +467,9 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         population_solution[i].construct_partition();
 
         // for debugging:
-        // test.population_solution[p].print_population_solution();
+        population_solution[i].print_population_solution();
     }
 
-    // evaluate LINE 1
-    // cerr << "p1: ";
-    // print_array(population_solution[0].solution);
-    // cerr << "p2: ";
-    // print_array(population_solution[1].solution);
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
 
