@@ -529,8 +529,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_conflict = 0;
 
         tabu_search(c1.solution, true, max_iter); // 仅仅需要对新形成的child进行禁忌搜索;
-
-        // 由child的index1s构造出partition, index2s, color_num;
         c1.construct_partition();
 
         // cerr << "child structure: " << endl;
