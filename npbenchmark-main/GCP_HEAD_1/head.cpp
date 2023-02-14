@@ -577,7 +577,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << best_solution_conflict << endl;
 
         ///*
-        if(generation % 1000 == 0)
+        if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
             cerr << "Generation: " << generation <<"  ";
@@ -600,16 +600,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         cerr << "color of each vertex: ";
         for(int i=0;i<num_vertex;i++)
         {
-            final_solution[i] = population_solution[population_min_conflict_index].solution[i];
-            cerr << final_solution[i] << " ";
+            cerr << best_solution.solution[i] << " ";
         }
         cerr << endl;
 
-        cerr << "conflict of solution 0: ";
-        cerr << compute_conflict(population_solution[0].solution) << endl;
-
-        cerr << "conflict of final solution: ";
-        cerr << compute_conflict(final_solution) << endl;
+        cerr << "conflict of best solution: ";
+        cerr << compute_conflict(best_solution.solution) << endl;
     }
     else
         cerr << "over time" << endl;

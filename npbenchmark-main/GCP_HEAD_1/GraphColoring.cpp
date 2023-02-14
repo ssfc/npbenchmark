@@ -58,7 +58,7 @@ namespace szx
 
             for (int i = 0;i < input.nodeNum;i++)
             {
-                output[i] = test.final_solution[i];
+                output[i] = test.best_solution.solution[i];
             }
 
             // debug function:
