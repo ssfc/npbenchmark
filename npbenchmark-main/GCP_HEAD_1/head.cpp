@@ -448,25 +448,11 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         conflict = 0;
         best_conflict = 0;
 
-        // LINE 1: initialize p1 and p2;
         for (int j = 0; j < num_vertex; j++)
         {
             population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
         }
     }
-
-    // Line 1: p1, p2, best <- init()
-    for (int i = 0; i < num_vertex; i++)
-        best_solution.solution[i] = pseudoRandNumGen() % num_color;
-
-    // evaluate LINE 1
-    // cerr << "p1: ";
-    // print_array(population_solution[0].solution);
-    // cerr << "p2: ";
-    // print_array(population_solution[1].solution);
-    // cerr << "best solution: ";
-    // print_array(best_solution.solution);
-
 
     // construct partition for each solution in the solution;
     for (int i = 0; i < num_population; i++)
@@ -478,7 +464,20 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // test.population_solution[p].print_population_solution();
     }
 
+    // evaluate LINE 1
+    // cerr << "p1: ";
+    // print_array(population_solution[0].solution);
+    // cerr << "p2: ";
+    // print_array(population_solution[1].solution);
+    // cerr << "best solution: ";
+    // print_array(best_solution.solution);
+
+    // Line 1: p1, p2, best <- init()
+    for (int i = 0; i < num_vertex; i++)
+        best_solution.solution[i] = pseudoRandNumGen() % num_color;
+
     Partition_Solution c1(num_vertex, num_color);
+    Partition_Solution c2(num_vertex, num_color);
 
     // Line 2: generation <- 0
     long long int generation = 0;
