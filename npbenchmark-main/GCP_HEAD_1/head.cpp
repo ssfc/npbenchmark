@@ -482,6 +482,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
     // Line 2: generation <- 0
     long long int generation = 0;
+    // Line 3: do while
     while (population_min_conflict != 0 && population_solution[0].solution != population_solution[1].solution && generation < 1)
     {
     // random select two index from population as parents;
