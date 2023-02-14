@@ -68,7 +68,7 @@ public:
     vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
 
     int conflict;
-    int best_conflict;
+    int best_history_conflict;
 
     int** adj_color_table; // dimension,
     long long int** tabu_tenure_table;

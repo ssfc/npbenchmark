@@ -92,7 +92,7 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     vertex_edge_num.resize(num_vertex, 0);
 
     conflict = 0;
-    best_conflict = 0;
+    best_history_conflict = 0;
 
     adj_color_table = new int* [num_vertex];
     for (int i = 0; i < num_vertex; i++)
@@ -183,7 +183,7 @@ void Hybrid_Evolution::find_move(vector<unsigned int> &solution)
     int equal_nontabu_count = 0;
     int equal_tabu_count = 0;
 
-    int aspiration = best_conflict - conflict;
+    int aspiration = best_history_conflict - conflict;
 
     for (int i = 0; i < num_vertex; i++) // i is vertex;
     {
@@ -279,8 +279,8 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 {
     conflict = min_delta + conflict; // update value of conflict;
 
-    if (conflict < best_conflict)
-        best_conflict = conflict; // update minimum conflict of history;
+    if (conflict < best_history_conflict)
+        best_history_conflict = conflict; // update minimum conflict of history;
 
     unsigned int old_color = solution[moved.u];
     solution[moved.u] = moved.vj;
@@ -321,7 +321,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
     }
 
     conflict = conflict / 2;
-    best_conflict = conflict;
+    best_history_conflict = conflict;
     // cerr << "initial number of confilcts:" << conflict << endl;
 
     iter = 0;
@@ -446,7 +446,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
 
         conflict = 0;
-        best_conflict = 0;
+        best_history_conflict = 0;
 
         for (int j = 0; j < num_vertex; j++)
         {
@@ -519,7 +519,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
 
         conflict = 0;
-        best_conflict = 0;
+        best_history_conflict = 0;
 
         tabu_search(c1.solution, true, max_iter);
         c1.construct_partition();
@@ -540,7 +540,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
 
         conflict = 0;
-        best_conflict = 0;
+        best_history_conflict = 0;
 
         tabu_search(c2.solution, true, max_iter);
         c2.construct_partition();
