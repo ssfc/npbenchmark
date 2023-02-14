@@ -73,7 +73,9 @@ void Solution_Partition::print_solution_partition()
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color,
                                    vector<array<int, 2>>& input_edges, int input_num_population, int input_seed)
-        :best_solution(input_num_vertex, input_num_color)
+        :p1(input_num_vertex, input_num_color)
+        ,p2(input_num_vertex, input_num_color)
+        ,best_solution(input_num_vertex, input_num_color)
 {
     init_rand(input_seed);
 
