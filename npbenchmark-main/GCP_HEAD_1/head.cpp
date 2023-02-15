@@ -525,7 +525,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
 
         conflict = 0;
-        best_history_conflict = 0;
 
         tabu_search(c2.solution, true, max_iter);
         // cerr << "conflict of p2 before tabu: ";
