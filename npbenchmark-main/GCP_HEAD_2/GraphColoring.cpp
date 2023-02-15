@@ -53,6 +53,22 @@ namespace szx
             {
                 max_iter = 8000;
             }
+            else if(input.nodeNum == 500 && input.edgeNum == 112437) // 500.9
+            {
+                max_iter = 15000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 49629) // 1000.1
+            {
+                max_iter = 3000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 249826) // 1000.5
+            {
+                max_iter = 40000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 449449) // 1000.9
+            {
+                max_iter = 30000;
+            }
 
 
             /*
