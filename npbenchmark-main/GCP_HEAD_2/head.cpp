@@ -463,7 +463,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     }
     elite2_conflict = compute_conflict(elite2.solution);
 
-    // evaluate LINE 1
+    // evaluate LINE 1: p1, p2, elite1, elite2, best <- init()
     // cerr << "p1: ";
     // print_array(population_solution[0].solution);
     // cerr << "p2: ";
@@ -646,7 +646,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
         //*/
 
-        // LINE 15: generation++ 
+        // LINE 15: generation++
         generation++;
     }
 
