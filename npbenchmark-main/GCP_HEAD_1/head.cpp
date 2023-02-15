@@ -546,7 +546,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << population_num_conflict[1] << endl;
         // cerr << best_solution_conflict << endl;
 
-        ///*
+        /*
         if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;

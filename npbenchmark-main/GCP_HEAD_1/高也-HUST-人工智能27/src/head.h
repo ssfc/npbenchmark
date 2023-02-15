@@ -79,10 +79,10 @@ public:
     int min_delta; // 移动增量
 
     int num_population;
-    vector<Solution_Partition> population_solution;
-    int population_min_conflict; // the min conflict among the population collection;
-    int population_min_conflict_index;
-    vector<int> population_num_conflict;
+    Solution_Partition p1;
+    Solution_Partition p2;
+    int p1_conflict;
+    int p2_conflict;
     Solution_Partition best_solution;
     int best_solution_conflict;
     vector<unsigned int> final_solution;
@@ -94,7 +94,7 @@ public:
     double end_time;
 
     // functions
-    Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_num_population, int input_seed);
+    Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_seed);
     ~Hybrid_Evolution();
 
     void insert_adj_list(int i, int j);

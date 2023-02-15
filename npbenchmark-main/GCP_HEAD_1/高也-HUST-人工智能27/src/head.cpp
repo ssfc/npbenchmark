@@ -72,8 +72,10 @@ void Solution_Partition::print_solution_partition()
 
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color,
-                                   vector<array<int, 2>>& input_edges, int input_num_population, int input_seed)
-                                   :best_solution(input_num_vertex, input_num_color)
+                                   vector<array<int, 2>>& input_edges, int input_seed)
+                                   :p1(input_num_vertex, input_num_color)
+                                   ,p2(input_num_vertex, input_num_color)
+                                   ,best_solution(input_num_vertex, input_num_color)
 {
     init_rand(input_seed);
 
@@ -122,11 +124,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     min_delta = 999999;
     iter = 0;
 
-    num_population = input_num_population;
-    population_solution.resize(num_population, Solution_Partition(input_num_vertex, input_num_color));
-    population_min_conflict = INT_MAX;
-    population_min_conflict_index = 0;
-    population_num_conflict.resize(input_num_population);
+    p1_conflict = 0;
+    p2_conflict = 0;
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
@@ -302,6 +301,15 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
 void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter)
 {
+    conflict = 0;
+    // reset adj_color_table and tabu_tenure_table to zero;
+    // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        memset(adj_color_table[i], 0, num_color * sizeof(int));
+        memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
+    }
+
     // compute initial conflict;
     for (int i = 0; i < num_vertex; i++)
     {
@@ -438,21 +446,14 @@ void Hybrid_Evolution::cross_over(const Solution_Partition& s1, const Solution_P
 void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
     // Line 1: p1, p2, best <- init()
-    for (int i = 0; i < num_population; i++)
+    for (int i = 0; i < num_vertex; i++)
     {
-        for (int j = 0; j < num_vertex; j++)
-        {
-            memset(adj_color_table[j], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[j], 0, num_color * sizeof(long long int));
-        }
+        p1.solution[i] = pseudoRandNumGen() % num_color;
+    }
 
-        conflict = 0;
-        best_history_conflict = 0;
-
-        for (int j = 0; j < num_vertex; j++)
-        {
-            population_solution[i].solution[j] = pseudoRandNumGen() % num_color;
-        }
+    for (int i = 0; i < num_vertex; i++)
+    {
+        p2.solution[i] = pseudoRandNumGen() % num_color;
     }
 
     // evaluate LINE 1
@@ -460,16 +461,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // print_array(population_solution[0].solution);
     // cerr << "p2: ";
     // print_array(population_solution[1].solution);
-
-    // construct partition for each solution in the solution;
-    for (int i = 0; i < num_population; i++)
-    {
-        population_solution[i].construct_partition();
-
-        // for debugging:
-        // cerr << "population: " << i <<" " << endl;
-        // population_solution[i].print_solution_partition();
-    }
 
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
@@ -485,7 +476,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 2: generation <- 0
     long long int generation = 0;
     // Line 3 and Line 10: do while
-    while (best_solution_conflict > 0 && population_solution[0].solution != population_solution[1].solution)
+    while (best_solution_conflict > 0 && p1.solution != p2.solution)
     {
     // random select two index from population as parents;
 
@@ -501,74 +492,53 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // test.population_solution[p2].print_population_solution();
 
         // Line 4: c1 <- GPX(p1, p2)
-        cross_over(population_solution[0], population_solution[1], c1.solution);
+        // construct partition before crossover;
+        p1.construct_partition();
+        p2.construct_partition();
+        cross_over(p1, p2, c1.solution);
         // c1.construct_partition();
         // cerr << "c1 structure: " << endl;
         // c1.print_solution_partition();
         // LINE 5: c2 <- GPX(p2, p1)
-        cross_over(population_solution[1], population_solution[0], c2.solution);
+        cross_over(p2, p1, c2.solution);
         // c2.construct_partition();
         // cerr << "c2 structure: " << endl;
         // c2.print_solution_partition();
 
         // LINE 6: p1 <- TabuCol(c1,IterTC)
-        // reset adj_color_table and tabu_tenure_table to zero;
-        // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            memset(adj_color_table[i], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
-        }
-
-        conflict = 0;
-        best_history_conflict = 0;
-
         tabu_search(c1.solution, true, max_iter);
-        c1.construct_partition();
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
-        population_solution[0] = c1;
-        population_num_conflict[0] = conflict;
+        p1 = c1;
+        p1_conflict = conflict;
         // cerr << "conflict of p1 after tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
 
         // LINE 7: p1 <- TabuCol(c2,IterTC)
-        // reset adj_color_table and tabu_tenure_table to zero;
-        // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            memset(adj_color_table[i], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
-        }
-
-        conflict = 0;
-        best_history_conflict = 0;
-
         tabu_search(c2.solution, true, max_iter);
-        c2.construct_partition();
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
-        population_solution[1] = c2;
-        population_num_conflict[1] = conflict;
+        p2 = c2;
+        p2_conflict = conflict;
         // cerr << "conflict of p2 after tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
 
         // LINE 8: best <- saveBest(p1, p2, best)
         // 找出种群中的最大冲突数;
-        if(population_num_conflict[0] < population_num_conflict[1]) // p1 < p2;
+        if(p1_conflict < p2_conflict) // p1 < p2;
         {
-            if(population_num_conflict[0] < best_solution_conflict)
+            if(p1_conflict < best_solution_conflict)
             {
-                best_solution_conflict = population_num_conflict[0];
-                best_solution = population_solution[0];
+                best_solution_conflict = p1_conflict;
+                best_solution = p1;
             }
         }
         else // p1 >= p2;
         {
-            if(population_num_conflict[1] < best_solution_conflict)
+            if(p2_conflict < best_solution_conflict)
             {
-                best_solution_conflict = population_num_conflict[1];
-                best_solution = population_solution[1];
+                best_solution_conflict = p2_conflict;
+                best_solution = p2;
             }
         }
 
@@ -576,7 +546,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << population_num_conflict[1] << endl;
         // cerr << best_solution_conflict << endl;
 
-        ///*
+        /*
         if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
