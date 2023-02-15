@@ -607,6 +607,16 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             // cerr << "p1: ";
             // print_array(p1.solution);
             // cerr << "p1 conflict: " << p1_conflict << endl;
+
+            // LINE 12: elite2 <- elite1
+            // cerr << "elite1: ";
+            // print_array(elite1.solution);
+            // cerr << "elite1 conflict: " << elite1_conflict << endl;
+            elite2_conflict = elite1_conflict;
+            elite2 = elite1;
+            // cerr << "elite2: ";
+            // print_array(elite2.solution);
+            // cerr << "elite2 conflict: " << elite1_conflict << endl;
         }
 
 
