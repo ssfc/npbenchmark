@@ -491,12 +491,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         memset(&c2.num_colors[0], 0, sizeof(c2.num_colors[0]) * c2.num_colors.size());
         // cerr << "After 2: " << child.color_num[17] << endl; // debug memset sentence;
 
-        // debug information
-        // cerr << "p1 before cross over: " << endl;
-        // test.population_solution[p1].print_population_solution();
-        // cerr << "p2 before cross over: " << endl;
-        // test.population_solution[p2].print_population_solution();
-
         // Line 4: c1 <- GPX(p1, p2)
         // construct partition for each solution in the solution;
         p1.construct_partition();
