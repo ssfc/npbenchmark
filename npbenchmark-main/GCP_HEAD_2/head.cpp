@@ -442,32 +442,29 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 {
     // Line 1: p1, p2, elite1, elite2, best <- init()
     for (int i = 0; i < num_vertex; i++)
-    {
         p1.solution[i] = pseudoRandNumGen() % num_color;
-    }
 
     for (int i = 0; i < num_vertex; i++)
-    {
         p2.solution[i] = pseudoRandNumGen() % num_color;
-    }
 
     for (int i = 0; i < num_vertex; i++)
-    {
         elite1.solution[i] = pseudoRandNumGen() % num_color;
-    }
     elite1_conflict = compute_conflict(elite1.solution);
 
     for (int i = 0; i < num_vertex; i++)
-    {
         elite2.solution[i] = pseudoRandNumGen() % num_color;
-    }
     elite2_conflict = compute_conflict(elite2.solution);
+
+    for (int i = 0; i < num_vertex; i++)
+        best_solution.solution[i] = pseudoRandNumGen() % num_color;
+    best_solution_conflict = compute_conflict(best_solution.solution);
 
     // evaluate LINE 1: p1, p2, elite1, elite2, best <- init()
     // cerr << "p1: ";
     // print_array(population_solution[0].solution);
     // cerr << "p2: ";
     // print_array(population_solution[1].solution);
+
     // cerr << "elite1: ";
     // print_array(elite1.solution);
     // cerr << "elite2: ";
@@ -476,11 +473,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
-
-    // Line 1: p1, p2, elite1, elite2, best <- init()
-    for (int i = 0; i < num_vertex; i++)
-        best_solution.solution[i] = pseudoRandNumGen() % num_color;
-    best_solution_conflict = compute_conflict(best_solution.solution);
     // cerr << "best_solution_conflict" << best_solution_conflict << endl;
 
     // Line 2: generation, cycle <- 0
