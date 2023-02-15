@@ -481,15 +481,14 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     for (int i = 0; i < num_vertex; i++)
         best_solution.solution[i] = pseudoRandNumGen() % num_color;
     best_solution_conflict = compute_conflict(best_solution.solution);
-    // cerr << "initial best_solution_conflict" << best_solution_conflict << endl;
-
-    Solution_Partition c1(num_vertex, num_color);
-    Solution_Partition c2(num_vertex, num_color);
+    // cerr << "best_solution_conflict" << best_solution_conflict << endl;
 
     // Line 2: generation, cycle <- 0
     long long int generation = 0;
     int cycle = 0;
     int iter_cycle = 10; // the number of generations into one cycle;
+    Solution_Partition c1(num_vertex, num_color);
+    Solution_Partition c2(num_vertex, num_color);
     // Line 3 and Line 10: do while
     while (best_solution_conflict > 0 && p1.solution != p2.solution && generation < 1)
     {
