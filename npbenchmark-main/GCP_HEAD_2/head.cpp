@@ -482,7 +482,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     Solution_Partition c1(num_vertex, num_color);
     Solution_Partition c2(num_vertex, num_color);
     // Line 3 and Line 10: do while
-    while (best_solution_conflict > 0 && p1.solution != p2.solution && generation < 1)
+    while (best_solution_conflict > 0 && p1.solution != p2.solution)
     {
         // random select two index from population as parents;
 
@@ -612,7 +612,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             // cerr << "elite2 conflict: " << elite1_conflict << endl;
 
             // LINE 13: elite1 <- init()
-            // Evaluate LINE 13: elite1 <- init()
+            // Evaluate LINE 13
             // cerr << "elite1: ";
             // print_array(elite1.solution);
             // cerr << "elite1 conflict: " << elite1_conflict << endl;

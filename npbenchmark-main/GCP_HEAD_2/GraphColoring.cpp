@@ -40,7 +40,7 @@ namespace szx
             }
             */
 
-            long long int max_iter = 1;
+            long long int max_iter = 10000;
 
             /*
              * 500.1: p=20, max_iter=30000;
