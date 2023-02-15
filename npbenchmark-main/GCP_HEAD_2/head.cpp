@@ -472,6 +472,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // print_array(elite1.solution);
     // cerr << "elite2: ";
     // print_array(elite2.solution);
+    // cerr << "elite2 conflict: " << elite2_conflict << endl;
 
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
@@ -600,7 +601,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         if(generation % iter_cycle == 0)
         {
             // LINE 11: p1 <- elite2
+            p1_conflict = elite2_conflict; // best k-coloring of the previous cycle
+            p1 = elite2;
 
+            // cerr << "p1: ";
+            // print_array(p1.solution);
+            // cerr << "p1 conflict: " << p1_conflict << endl;
         }
 
 
