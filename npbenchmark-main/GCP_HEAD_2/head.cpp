@@ -631,6 +631,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             // print_array(elite1.solution);
             // cerr << "elite1 conflict: " << elite1_conflict << endl;
 
+            // LINE 14: cycle ++
+            cycle++;
         }
 
 
