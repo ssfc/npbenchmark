@@ -40,7 +40,36 @@ namespace szx
             }
             */
 
-            long long int max_iter = 10000;
+            long long int max_iter = 0;
+            // according to Table 2.
+            if(input.nodeNum < 500)
+            {
+                max_iter = 6000;
+            }
+            else if(input.nodeNum == 500 && input.edgeNum == 12458) // 500.1
+            {
+                max_iter = 8000;
+            }
+            else if(input.nodeNum == 500 && input.edgeNum == 62624) // 500.5
+            {
+                max_iter = 8000;
+            }
+            else if(input.nodeNum == 500 && input.edgeNum == 112437) // 500.9
+            {
+                max_iter = 25000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 49629) // 1000.1
+            {
+                max_iter = 7000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 249826) // 1000.5
+            {
+                max_iter = 40000;
+            }
+            else if(input.nodeNum == 1000 && input.edgeNum == 449449) // 1000.9
+            {
+                max_iter = 30000;
+            }
 
             /*
              * 500.1: p=20, max_iter=30000;
