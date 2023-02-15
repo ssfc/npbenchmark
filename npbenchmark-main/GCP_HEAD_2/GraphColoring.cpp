@@ -40,7 +40,20 @@ namespace szx
             }
             */
 
-            long long int max_iter = 4000;
+            long long int max_iter = 0;
+            if(input.nodeNum < 500)
+            {
+                max_iter = 6000;
+            }
+            else if(input.nodeNum == 500 && input.edgeNum == 12458) // 500.1
+            {
+                max_iter = 4000;
+            }
+            else if(input.nodeNum == 500 && input.edgeNum == 62624) // 500.5
+            {
+                max_iter = 8000;
+            }
+
 
             /*
              * 500.1: p=20, max_iter=30000;
