@@ -492,7 +492,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // Line 2: generation, cycle <- 0
     long long int generation = 0;
     int cycle = 0;
-    int iter_cycle = 10; // the number of generations into one cycle; 
+    int iter_cycle = 10; // the number of generations into one cycle;
     // Line 3 and Line 10: do while
     while (best_solution_conflict > 0 && p1.solution != p2.solution && generation < 1)
     {
@@ -598,6 +598,12 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         }
         // print_array(best_solution.solution);
         // cerr << best_solution_conflict << endl;
+
+        // Line 10: if generation % Itercycle = 0 then
+        if(generation % iter_cycle == 0)
+        {
+
+        }
 
 
         ///*
