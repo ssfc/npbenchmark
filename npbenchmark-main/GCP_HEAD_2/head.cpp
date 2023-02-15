@@ -520,6 +520,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_history_conflict = 0;
 
         tabu_search(c1.solution, true, max_iter);
+        // Evaluate LINE 6: p1 <- TabuCol(c1,IterTC)
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
         p1 = c1;
@@ -540,6 +541,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_history_conflict = 0;
 
         tabu_search(c2.solution, true, max_iter);
+        // Evaluate LINE 7: p1 <- TabuCol(c2,IterTC)
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
         p2 = c2;
