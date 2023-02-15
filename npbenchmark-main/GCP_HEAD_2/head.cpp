@@ -306,6 +306,14 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter)
 {
     conflict = 0;
+    // reset adj_color_table and tabu_tenure_table to zero;
+    // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
+    for (int i = 0; i < num_vertex; i++)
+    {
+        memset(adj_color_table[i], 0, num_color * sizeof(int));
+        memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
+    }
+
     // compute initial conflict;
     for (int i = 0; i < num_vertex; i++)
     {
@@ -509,14 +517,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // c2.print_solution_partition();
 
         // LINE 6: p1 <- TabuCol(c1,IterTC)
-        // reset adj_color_table and tabu_tenure_table to zero;
-        // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            memset(adj_color_table[i], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
-        }
-
         tabu_search(c1.solution, true, max_iter);
         // Evaluate LINE 6: p1 <- TabuCol(c1,IterTC)
         // cerr << "conflict of p1 before tabu: ";
@@ -527,14 +527,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // cerr << compute_conflict(population_solution[0].solution) << endl;
 
         // LINE 7: p1 <- TabuCol(c2,IterTC)
-        // reset adj_color_table and tabu_tenure_table to zero;
-        // adj_list不需要重置, 因为图的结构(点和边的关系)是不变的, 变的只是颜色;
-        for (int i = 0; i < num_vertex; i++)
-        {
-            memset(adj_color_table[i], 0, num_color * sizeof(int));
-            memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
-        }
-
         tabu_search(c2.solution, true, max_iter);
         // Evaluate LINE 7: p1 <- TabuCol(c2,IterTC)
         // cerr << "conflict of p2 before tabu: ";
