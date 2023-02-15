@@ -72,7 +72,7 @@ void Solution_Partition::print_solution_partition()
 
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color,
-                                   vector<array<int, 2>>& input_edges, int input_num_population, int input_seed)
+                                   vector<array<int, 2>>& input_edges, int input_seed)
                                    :p1(input_num_vertex, input_num_color)
                                    ,p2(input_num_vertex, input_num_color)
                                    ,best_solution(input_num_vertex, input_num_color)
@@ -123,9 +123,8 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     equal_tabu_delta.resize(2000, {0,0});
     min_delta = 999999;
     iter = 0;
-
-    num_population = input_num_population;
-    population_num_conflict.resize(input_num_population);
+    
+    population_num_conflict.resize(2);
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);
     for (int i = 0; i < num_vertex; i++)
