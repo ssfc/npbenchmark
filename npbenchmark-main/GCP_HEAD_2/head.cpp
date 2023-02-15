@@ -619,11 +619,17 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             // cerr << "elite2 conflict: " << elite1_conflict << endl;
 
             // LINE 13: elite1 <- init()
+            // cerr << "elite1: ";
+            // print_array(elite1.solution);
+            // cerr << "elite1 conflict: " << elite1_conflict << endl;
             for (int i = 0; i < num_vertex; i++)
             {
                 elite1.solution[i] = pseudoRandNumGen() % num_color;
             }
             elite1_conflict = compute_conflict(elite1.solution);
+            // cerr << "elite1: ";
+            // print_array(elite1.solution);
+            // cerr << "elite1 conflict: " << elite1_conflict << endl;
 
         }
 
