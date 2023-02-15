@@ -602,6 +602,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // Line 10: if generation % Itercycle = 0 then
         if(generation % iter_cycle == 0)
         {
+            // LINE 11: p1 <- elite2
 
         }
 

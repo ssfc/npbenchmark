@@ -124,8 +124,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
 
     num_population = input_num_population;
     population_solution.resize(num_population, Solution_Partition(input_num_vertex, input_num_color));
-    population_min_conflict = INT_MAX;
-    population_min_conflict_index = 0;
     population_num_conflict.resize(input_num_population);
     best_solution_conflict = 0;
     final_solution.resize(num_vertex, 0);

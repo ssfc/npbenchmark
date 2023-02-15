@@ -80,8 +80,6 @@ public:
 
     int num_population;
     vector<Solution_Partition> population_solution;
-    int population_min_conflict; // the min conflict among the population collection;
-    int population_min_conflict_index;
     vector<int> population_num_conflict;
     Solution_Partition best_solution;
     int best_solution_conflict;
