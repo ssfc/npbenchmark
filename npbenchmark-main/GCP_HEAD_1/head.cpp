@@ -301,6 +301,7 @@ void Hybrid_Evolution::make_move(vector<unsigned int> &solution)
 
 void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit, long long int max_iter)
 {
+    conflict = 0;
     // compute initial conflict;
     for (int i = 0; i < num_vertex; i++)
     {
@@ -505,8 +506,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
         }
 
-        conflict = 0;
-
         tabu_search(c1.solution, true, max_iter);
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
@@ -523,8 +522,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             memset(adj_color_table[i], 0, num_color * sizeof(int));
             memset(tabu_tenure_table[i], 0, num_color * sizeof(long long int));
         }
-
-        conflict = 0;
 
         tabu_search(c2.solution, true, max_iter);
         // cerr << "conflict of p2 before tabu: ";
