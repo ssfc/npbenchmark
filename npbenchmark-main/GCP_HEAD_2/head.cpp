@@ -612,6 +612,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             // cerr << "elite2 conflict: " << elite1_conflict << endl;
 
             // LINE 13: elite1 <- init()
+            // Evaluate LINE 13: elite1 <- init()
             // cerr << "elite1: ";
             // print_array(elite1.solution);
             // cerr << "elite1 conflict: " << elite1_conflict << endl;
