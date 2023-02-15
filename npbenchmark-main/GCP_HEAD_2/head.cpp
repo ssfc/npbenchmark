@@ -502,6 +502,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // c1.print_solution_partition();
         // LINE 5: c2 <- GPX(p2, p1)
         cross_over(p2, p1, c2.solution);
+        // Evaluate LINE 5: c2 <- GPX(p2, p1)
         // c2.construct_partition();
         // cerr << "c2 structure: " << endl;
         // c2.print_solution_partition();
