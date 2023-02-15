@@ -80,6 +80,8 @@ public:
 
     int num_population;
     vector<Solution_Partition> population_solution;
+    Solution_Partition p1;
+    Solution_Partition p2;
     vector<int> population_num_conflict;
     Solution_Partition best_solution;
     int best_solution_conflict;
