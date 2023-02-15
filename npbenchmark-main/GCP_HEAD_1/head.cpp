@@ -453,10 +453,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
     // cerr << "p2: ";
     // print_array(population_solution[1].solution);
 
-    // construct partition for each solution in the solution;
-    p1.construct_partition();
-    p2.construct_partition();
-
     // cerr << "best solution: ";
     // print_array(best_solution.solution);
 
@@ -487,6 +483,9 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // test.population_solution[p2].print_population_solution();
 
         // Line 4: c1 <- GPX(p1, p2)
+        // construct partition before crossover;
+        p1.construct_partition();
+        p2.construct_partition();
         cross_over(p1, p2, c1.solution);
         // c1.construct_partition();
         // cerr << "c1 structure: " << endl;
@@ -510,7 +509,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_history_conflict = 0;
 
         tabu_search(c1.solution, true, max_iter);
-        c1.construct_partition();
         // cerr << "conflict of p1 before tabu: ";
         // cerr << compute_conflict(population_solution[0].solution) << endl;
         p1 = c1;
@@ -531,7 +529,6 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         best_history_conflict = 0;
 
         tabu_search(c2.solution, true, max_iter);
-        c2.construct_partition();
         // cerr << "conflict of p2 before tabu: ";
         // cerr << compute_conflict(population_solution[1].solution) << endl;
         p2 = c2;
