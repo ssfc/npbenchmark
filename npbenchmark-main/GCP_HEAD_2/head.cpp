@@ -595,11 +595,13 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
             p1_conflict = elite2_conflict; // best k-coloring of the previous cycle
             p1 = elite2;
 
+            // Evaluate LINE 11: p1 <- elite2
             // cerr << "p1: ";
             // print_array(p1.solution);
             // cerr << "p1 conflict: " << p1_conflict << endl;
 
             // LINE 12: elite2 <- elite1
+            // Evaluate LINE 12: elite2 <- elite1
             // cerr << "elite1: ";
             // print_array(elite1.solution);
             // cerr << "elite1 conflict: " << elite1_conflict << endl;
