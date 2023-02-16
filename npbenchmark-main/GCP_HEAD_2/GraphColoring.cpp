@@ -79,7 +79,7 @@ namespace szx
              */
 
             // input.colorNum = 48;
-            Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, seed);
+            Hybrid_Evolution test(input.nodeNum, input.edgeNum, input.colorNum, input.edges, seed+20);
 
             // test.tabu_search(test.final_solution, false, 10000); // test tabu search;
             // test.hybrid_evolution_search(max_iter); // test HEA;

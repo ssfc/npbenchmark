@@ -618,7 +618,7 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
 
 
         /*
-        if(generation % 10 == 0)
+        if(generation % 100 == 0)
         {
             double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
             cerr << "Generation: " << generation <<"  ";
