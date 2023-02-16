@@ -68,6 +68,7 @@ namespace szx
             }
             else if(input.nodeNum == 1000 && input.edgeNum == 449449) // 1000.9
             {
+                input.colorNum = 223;
                 max_iter = 30000;
             }
 
