@@ -1,3 +1,0 @@
-C:/wamp64/www/npbenchmark/npbenchmark-main/debug_cross_over/cmake-build-debug/CMakeFiles/debug_cross_over.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/debug_cross_over/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/wamp64/www/npbenchmark/npbenchmark-main/debug_cross_over/cmake-build-debug/CMakeFiles/rebuild_cache.dir
