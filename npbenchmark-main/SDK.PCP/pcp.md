@@ -40,9 +40,10 @@
 40. 
 41. Sample of zywang624: https://github.com/zywang624/smartlab 
 42. has PCB3038; (2023年2月18日)
-43. 
-44. Interface of SDK PCP: 
-45. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-46. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-47. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
-48. 
+43. 为了实现集合的交并操作, 王子扬自己写了一个MY_SET: https://github.com/zywang624/smartlab/blob/main/P-center/code/MY_SET 
+44. 
+45. Interface of SDK PCP: 
+46. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+47. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+48. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+49. 
