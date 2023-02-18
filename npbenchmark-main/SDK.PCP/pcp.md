@@ -28,10 +28,21 @@
 28. Vj, 表示在当前覆盖半径内候选中心𝑗可以服务的节点集合, Vj={i∈𝑉│j∈Ci}。
 29. 
 30. 
-31. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
-32. 
-33. Interface of SDK PCP: 
-34. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-35. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-36. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+31. Sample of ChocoFairy: https://github.com/ChocoFairy/P-Center 
+32. has PCB3038; (2023年2月18日)
+33. 
+34. Sample of Edward-Elric233: https://github.com/Edward-Elric233/PCenter/tree/603ee061276e4f99e9e76e57f4cecc1dd16b8aa6
+35. 因为算法多次需要计算集合的交集、并集、势、遍历，因此设计一个集合数据结构是算法的核心。作者直接使用boost::dynamic_bitset作为实现集合的数据结构。
+36. 关于boost::dynamic_bitset常用操作, 详见 https://izualzhy.cn/boost-dynamic-bitset#25-%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C 
 37. 
+38. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
+39. only has pmed; (2023年2月18日)
+40. 
+41. Sample of zywang624: https://github.com/zywang624/smartlab 
+42. has PCB3038; (2023年2月18日)
+43. 
+44. Interface of SDK PCP: 
+45. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+46. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+47. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+48. 
