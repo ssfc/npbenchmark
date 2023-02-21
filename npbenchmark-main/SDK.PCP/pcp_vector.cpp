@@ -202,20 +202,9 @@ void PCP_Vector::find_move()
         }
     }
 
-    if(tabu_delta < aspiration && tabu_delta < min_delta)
-    {
-        min_delta = tabu_delta;
-        unsigned int rand_select = pseudoRandNumGen() % equal_tabu_count; // equal_delta随机选择
-        center_out = equal_tabu_delta[rand_select][0];
-        center_in = equal_tabu_delta[rand_select][1];
-    }
-    else
-    {
-        unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // equal_delta随机选择
-        center_out = equal_nontabu_delta[rand_select][0];
-        center_in = equal_nontabu_delta[rand_select][1];
-    }
-
+    unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // equal_delta随机选择
+    center_out = equal_nontabu_delta[rand_select][0];
+    center_in = equal_nontabu_delta[rand_select][1];
 }
 
 void PCP_Vector::make_move()
