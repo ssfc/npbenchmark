@@ -253,26 +253,23 @@ void PCP_Vector::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    tabu_tenure_table[center_out][center_in] = iter + conflict + pseudoRandNumGen() % 10 + 1; //更新禁忌表
+    tabu_tenure_table[center_out][center_in] = iter + 1; //更新禁忌表
 }
 
 int PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
-        while(conflict!=0)
+        while(conflict!=0 && iter<1)
         {
-            // cerr << "iteration: " << i << endl;
+            cerr << "iteration: " << iter << endl;
             find_move();
             make_move();
 
-            /* debug: tabu tenure;
-            if(iter==1)
-            {
-                cerr << "tabu tenure: " << tabu_tenure_table[center_out][center_in] << endl;
-                print_tabu_tenure_table();
-            }
-             */
+            ///* debug: tabu tenure;
+            cerr << "tabu tenure: " << tabu_tenure_table[center_out][center_in] << endl;
+            // print_tabu_tenure_table();
+             //*/
 
             iter++;
         }
