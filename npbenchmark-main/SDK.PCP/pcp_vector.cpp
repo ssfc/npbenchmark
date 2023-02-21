@@ -199,27 +199,6 @@ void PCP_Vector::find_move()
                     equal_nontabu_count++;
                 }
             }
-            else // 禁忌移动;
-            {
-                if(this_delta < tabu_delta) // the less the better;
-                {
-                    equal_tabu_count = 0;
-                    tabu_delta = this_delta;
-
-                    equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
-                    equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
-
-                    equal_tabu_count++;
-                }
-                else if(this_delta == tabu_delta) // the less the better;
-                {
-                    equal_tabu_delta[equal_tabu_count][0] = i; // i is center out;
-                    equal_tabu_delta[equal_tabu_count][1] = j; // j is center in;
-
-                    equal_tabu_count++;
-                }
-            }
-
         }
     }
 
@@ -260,7 +239,7 @@ int PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
-        while(conflict!=0 && iter<1)
+        while(conflict!=0)
         {
             cerr << "iteration: " << iter << endl;
             find_move();
