@@ -131,12 +131,8 @@ void PCP_Vector::swap_center()
 void PCP_Vector::find_move()
 {
     min_delta = INT_MAX;
-    int tabu_delta = INT_MAX;
 
     int equal_nontabu_count = 0;
-    int equal_tabu_count = 0;
-
-    int aspiration = best_conflict - conflict;
 
     vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
     vector<int> set_selected;
@@ -186,15 +182,15 @@ void PCP_Vector::find_move()
                     equal_nontabu_count = 0;
                     min_delta = this_delta;
 
-                    equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
-                    equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
+                    equal_delta[equal_nontabu_count][0] = i; // i is center out;
+                    equal_delta[equal_nontabu_count][1] = j; // j is center in;
 
                     equal_nontabu_count++;
                 }
                 else if(this_delta == min_delta) // the less the better;
                 {
-                    equal_nontabu_delta[equal_nontabu_count][0] = i; // i is center out;
-                    equal_nontabu_delta[equal_nontabu_count][1] = j; // j is center in;
+                    equal_delta[equal_nontabu_count][0] = i; // i is center out;
+                    equal_delta[equal_nontabu_count][1] = j; // j is center in;
 
                     equal_nontabu_count++;
                 }
@@ -203,8 +199,8 @@ void PCP_Vector::find_move()
     }
 
     unsigned int rand_select = pseudoRandNumGen() % equal_nontabu_count; // equal_delta随机选择
-    center_out = equal_nontabu_delta[rand_select][0];
-    center_in = equal_nontabu_delta[rand_select][1];
+    center_out = equal_delta[rand_select][0];
+    center_in = equal_delta[rand_select][1];
 }
 
 void PCP_Vector::make_move()

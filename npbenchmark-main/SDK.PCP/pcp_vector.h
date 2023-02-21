@@ -30,7 +30,7 @@ private: // member variables.
     int center_out;
 
     unsigned int** tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node * num_node;
-    int equal_nontabu_delta[2000][2]; //非禁忌相同delta值
+    int equal_delta[2000][2]; //非禁忌相同delta值
     long long int iter;
 
 public: // member functions.
