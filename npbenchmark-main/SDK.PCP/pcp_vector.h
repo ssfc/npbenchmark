@@ -32,7 +32,7 @@ private: // member variables.
     unsigned int** tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node * num_node;
     int equal_nontabu_delta[2000][2]; //非禁忌相同delta值
     int equal_tabu_delta[2000][2]; //禁忌相同delta值
-    int iter;
+    long long int iter;
 
 public: // member functions.
     PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
