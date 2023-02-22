@@ -246,7 +246,7 @@ void PCP_Vector::local_search()
 
         double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
         cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-             << " frequency:" << iter / elapsed_time << endl;
+             << " frequency:" << double (iter) / elapsed_time << endl;
     }
 }
 
