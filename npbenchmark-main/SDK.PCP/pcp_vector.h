@@ -18,7 +18,7 @@ private: // member variables.
     vector<vector<int>> center_coverages;
     vector<vector<int>> nodes_with_drops;
 
-    unsigned int* solution; // index of selected center; dimension, num_center;
+    vector<unsigned int> solution; // index of selected center; dimension, num_center;
     unsigned int conflict;
     unsigned int best_conflict;
     int min_delta; // 移动增量

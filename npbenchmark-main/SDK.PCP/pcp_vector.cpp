@@ -44,18 +44,9 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         }
     }
 
-    try
-    {
-        // allocate memory and initial value for solution (dim, num_center);
-        solution = new unsigned int[num_center];
-        for (int i = 0; i < num_center; i++)
-            solution[i] = pseudoRandNumGen() % num_node;
-    }
-    catch (const bad_alloc& e)
-    {
-        cerr << "初始化内存分配失败:" << endl;
-    }
-
+    solution.resize(num_center, 0);
+    for (int i = 0; i < num_center; i++)
+        solution[i] = pseudoRandNumGen() % num_node;
     tabu_tenure_table.resize(num_node, 0);
 
     for(int i=0;i<input_nodeNum;i++)
@@ -104,7 +95,6 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
 PCP_Vector::~PCP_Vector()
 {
-    delete[] solution;
 }
 
 void PCP_Vector::swap_center()
