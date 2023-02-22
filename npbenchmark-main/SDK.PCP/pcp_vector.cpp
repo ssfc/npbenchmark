@@ -165,15 +165,15 @@ void PCP_Vector::find_move()
                     equal_count = 0;
                     min_delta = this_delta;
 
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_delta[equal_count].center_out = i; // i is center out;
+                    equal_delta[equal_count].center_in = j; // j is center in;
 
                     equal_count++;
                 }
                 else if(this_delta == min_delta) // the less the better;
                 {
-                    equal_delta[equal_count][0] = i; // i is center out;
-                    equal_delta[equal_count][1] = j; // j is center in;
+                    equal_delta[equal_count].center_out = i; // i is center out;
+                    equal_delta[equal_count].center_in = j; // j is center in;
 
                     equal_count++;
                 }
@@ -182,8 +182,8 @@ void PCP_Vector::find_move()
     }
 
     unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
-    moved.center_out = equal_delta[rand_select][0];
-    moved.center_in = equal_delta[rand_select][1];
+    moved.center_out = equal_delta[rand_select].center_out;
+    moved.center_in = equal_delta[rand_select].center_in;
 }
 
 void PCP_Vector::make_move()
