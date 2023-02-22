@@ -17,8 +17,7 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
 :moved{-1, -1}
 {
-    seed = input_seed;
-    initRand(seed); // initialize random generator;
+    initRand(input_seed); // initialize random generator;
 
     conflict = 0;
     min_delta = INT_MAX;

@@ -18,7 +18,6 @@ struct Move {
 class PCP_Vector
 {
 private: // member variables.
-    int seed;
     int num_node;
     int num_center;
     vector<vector<int>> center_coverages;
