@@ -3,8 +3,10 @@ project(SDK_PCP)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
+set(Boost_LIBRARY_DIRS C:/boost_1_81_0/libs)
+set(Boost_INCLUDE_DIR C:/boost_1_81_0)
 
-include_directories(.)
+include_directories(C:/boost_1_81_0)
 
 add_executable(SDK_PCP
         Main.cpp

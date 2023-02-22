@@ -6,6 +6,7 @@
 #define SDK_PCP_PCP_VECTOR_H
 
 # include <vector>
+#include <boost/dynamic_bitset.hpp>
 
 using namespace std;
 
