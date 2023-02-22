@@ -15,6 +15,7 @@ mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
+:moved{-1, -1}
 {
     seed = input_seed;
     initRand(seed); // initialize random generator;
@@ -101,12 +102,12 @@ void PCP_Vector::swap_center()
 {
     for(int i=0;i<covered.size();i++)
     {
-        covered[i] += center_coverages[center_in][i];
+        covered[i] += center_coverages[moved.center_in][i];
     }
 
     for(int i=0;i<covered.size();i++)
     {
-        covered[i] -= center_coverages[center_out][i];
+        covered[i] -= center_coverages[moved.center_out][i];
     }
 }
 
@@ -181,17 +182,17 @@ void PCP_Vector::find_move()
     }
 
     unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
-    center_out = equal_delta[rand_select][0];
-    center_in = equal_delta[rand_select][1];
+    moved.center_out = equal_delta[rand_select][0];
+    moved.center_in = equal_delta[rand_select][1];
 }
 
 void PCP_Vector::make_move()
 {
     for(int i=0;i<num_center;i++)
     {
-        if(solution[i] == center_out)
+        if(solution[i] == moved.center_out)
         {
-            solution[i] = center_in;
+            solution[i] = moved.center_in;
         }
     }
     swap_center();
@@ -199,8 +200,8 @@ void PCP_Vector::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    tabu_tenure_table[center_out] = iter + 1; //更新禁忌表
-    tabu_tenure_table[center_in] = iter + 1; //更新禁忌表
+    tabu_tenure_table[moved.center_out] = iter + 1; //更新禁忌表
+    tabu_tenure_table[moved.center_in] = iter + 1; //更新禁忌表
 }
 
 void PCP_Vector::local_search()
@@ -214,8 +215,8 @@ void PCP_Vector::local_search()
             make_move();
 
             ///* debug: tabu tenure;
-            cerr << "tabu tenure out: " << tabu_tenure_table[center_out] << endl;
-            cerr << "tabu tenure in: " << tabu_tenure_table[center_in] << endl;
+            cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
+            cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
             // print_tabu_tenure_table();
              //*/
 

@@ -9,6 +9,12 @@
 
 using namespace std;
 
+struct Move {
+    int center_in;
+    int center_out;
+};
+
+
 class PCP_Vector
 {
 private: // member variables.
@@ -26,8 +32,7 @@ private: // member variables.
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
     vector<int> uncovered; // points has not been covered by set;
-    int center_in;
-    int center_out;
+    Move moved;
 
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node;
     int equal_delta[2000][2]; //非禁忌相同delta值
