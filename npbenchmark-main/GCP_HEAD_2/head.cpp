@@ -152,7 +152,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
     max_equal_nontabu_count = 0;
     max_equal_tabu_count = 0;
     start_time = clock();
-    end_time = 0;
 }
 
 
@@ -368,9 +367,7 @@ void Hybrid_Evolution::tabu_search(vector<unsigned int> &solution, bool is_limit
             make_move(solution);
         }
 
-        end_time = clock();
-
-        double elapsed_time = (end_time - start_time) / CLOCKS_PER_SEC;
+        double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
         cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
              << " frequency:" << double (iter) / elapsed_time << endl;
 
@@ -630,9 +627,8 @@ void Hybrid_Evolution::hybrid_evolution_duet_1(long long int max_iter)
         // LINE 15: generation++
         generation++;
     }
-
-    end_time = clock();
-    double elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
+    
+    double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     cerr << "Generation: " << generation << " ";
     cerr << "elapsed time(s): " << elapsed_time << " ";
     cerr << "Generation frequency: " << double (generation) / elapsed_time << endl;

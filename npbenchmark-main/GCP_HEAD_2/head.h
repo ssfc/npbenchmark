@@ -94,7 +94,6 @@ public:
     int max_equal_nontabu_count;
     int max_equal_tabu_count;
     double start_time;
-    double end_time;
 
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_seed);
