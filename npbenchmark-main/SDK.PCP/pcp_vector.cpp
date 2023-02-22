@@ -22,7 +22,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     conflict = 0;
     min_delta = INT_MAX;
 
-    num_node = input_nodeNum;
+    num_vertex = input_nodeNum;
     num_center = input_centerNum;
     center_coverages.resize(input_nodeNum);
     nodes_with_drops.resize(input_nodesWithDrops.size());
@@ -47,8 +47,8 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
     solution.resize(num_center, 0);
     for (int i = 0; i < num_center; i++)
-        solution[i] = pseudoRandNumGen() % num_node;
-    tabu_tenure_table.resize(num_node, 0);
+        solution[i] = pseudoRandNumGen() % num_vertex;
+    tabu_tenure_table.resize(num_vertex, 0);
 
     equal_delta.resize(2000, {0, 0});
 
@@ -123,7 +123,7 @@ void PCP_Vector::find_move()
     vector<int> set_selected;
     vector<int> set_unselected;
 
-    solution_vector.resize(num_node);
+    solution_vector.resize(num_vertex);
     for(int i=0;i<num_center;i++)
     {
         solution_vector[solution[i]] = 1;
@@ -243,9 +243,9 @@ unsigned int PCP_Vector::get_solution(int i)
 void PCP_Vector::print_tabu_tenure_table()
 {
     cerr << "tabu tenure table: " << endl;
-    for(int i=0;i<num_node;i++)
+    for(int i=0;i<num_vertex;i++)
     {
-        for(int j=0;j<num_node;j++)
+        for(int j=0;j<num_vertex;j++)
         {
             cerr << tabu_tenure_table[i] << " ";
         }
