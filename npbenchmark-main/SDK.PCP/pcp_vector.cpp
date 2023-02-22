@@ -185,8 +185,7 @@ void PCP_Vector::find_move()
     }
 
     unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
-    moved.center_out = equal_delta[rand_select].center_out;
-    moved.center_in = equal_delta[rand_select].center_in;
+    moved = equal_delta[rand_select];
 }
 
 void PCP_Vector::make_move()
