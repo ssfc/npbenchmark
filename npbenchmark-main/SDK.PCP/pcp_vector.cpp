@@ -19,14 +19,10 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 {
     initRand(input_seed); // initialize random generator;
 
-    conflict = 0;
-    min_delta = INT_MAX;
-
     num_vertex = input_nodeNum;
     num_center = input_centerNum;
-    center_coverages.resize(input_nodeNum);
-    nodes_with_drops.resize(input_nodesWithDrops.size());
 
+    center_coverages.resize(input_nodeNum);
     for(int i=0;i<input_coverages.size();i++)
     {
         center_coverages[i].resize(input_nodeNum);
@@ -37,6 +33,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         }
     }
 
+    nodes_with_drops.resize(input_nodesWithDrops.size());
     for(int i=0;i<input_nodesWithDrops.size();i++)
     {
         for(int j=0;j<input_nodesWithDrops[i].size();j++)
@@ -48,18 +45,12 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     solution.resize(num_center, 0);
     for (int i = 0; i < num_center; i++)
         solution[i] = pseudoRandNumGen() % num_vertex;
-    tabu_tenure_table.resize(num_vertex, 0);
-
-    equal_delta.resize(2000, {0, 0});
+    conflict = 0;
+    best_conflict = 0;
 
     for(int i=0;i<input_nodeNum;i++)
     {
         universe.push_back(i);
-    }
-
-    for(int i=0;i<input_nodeNum;i++)
-    {
-        uncovered.push_back(i);
     }
 
     covered.resize(input_nodeNum);
@@ -68,6 +59,14 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         covered[i] = 0;
     }
 
+    for(int i=0;i<input_nodeNum;i++)
+    {
+        uncovered.push_back(i);
+    }
+
+    tabu_tenure_table.resize(num_vertex, 0);
+    min_delta = INT_MAX;
+    equal_delta.resize(2000, {0, 0});
     iter = 0;
 
     // debug variables;
