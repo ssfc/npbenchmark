@@ -51,12 +51,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
         for (int i = 0; i < num_center; i++)
             solution[i] = pseudoRandNumGen() % num_node;
 
-        tabu_tenure_table = new unsigned int* [num_node];
-        for (int i = 0; i < num_node; i++)
-        {
-            tabu_tenure_table[i] = new unsigned int[num_node];
-        }
-
+        tabu_tenure_table = new unsigned int [num_node];
     }
     catch (const bad_alloc& e)
     {
@@ -110,12 +105,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 PCP_Vector::~PCP_Vector()
 {
     delete[] solution;
-
-    for (int i = 0; i < num_node; i++)
-    {
-        delete[] tabu_tenure_table[i];
-    }
-
+    delete[] tabu_tenure_table;
 }
 
 void PCP_Vector::swap_center()
@@ -178,7 +168,7 @@ void PCP_Vector::find_move()
             }
 
             int this_delta = count(temp.begin(), temp.end(), 0) - conflict;
-            if (tabu_tenure_table[i][j] <= iter) //非禁忌移动;
+            if (tabu_tenure_table[i] <= iter && tabu_tenure_table[j] <= iter) //非禁忌移动;
             {
                 if(this_delta < min_delta) // the less the better;
                 {
@@ -220,7 +210,8 @@ void PCP_Vector::make_move()
     if (conflict < best_conflict)
         best_conflict = conflict; // update minimum conflict of history;
 
-    tabu_tenure_table[center_out][center_in] = iter + 1; //更新禁忌表
+    tabu_tenure_table[center_out] = iter + 1; //更新禁忌表
+    tabu_tenure_table[center_in] = iter + 1; //更新禁忌表
 }
 
 void PCP_Vector::local_search()
@@ -234,7 +225,8 @@ void PCP_Vector::local_search()
             make_move();
 
             ///* debug: tabu tenure;
-            cerr << "tabu tenure: " << tabu_tenure_table[center_out][center_in] << endl;
+            cerr << "tabu tenure out: " << tabu_tenure_table[center_out] << endl;
+            cerr << "tabu tenure in: " << tabu_tenure_table[center_in] << endl;
             // print_tabu_tenure_table();
              //*/
 
@@ -264,7 +256,7 @@ void PCP_Vector::print_tabu_tenure_table()
     {
         for(int j=0;j<num_node;j++)
         {
-            cerr << tabu_tenure_table[i][j] << " ";
+            cerr << tabu_tenure_table[i] << " ";
         }
         cerr << endl;
     }
