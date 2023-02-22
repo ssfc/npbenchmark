@@ -723,6 +723,11 @@ void Hybrid_Evolution::print_array(vector<unsigned int> &solution)
     cerr << endl;
 }
 
+int Hybrid_Evolution::get_best_solution(int i)
+{
+    return best_solution.solution[i];
+}
+
 
 /*
  * debugging command:

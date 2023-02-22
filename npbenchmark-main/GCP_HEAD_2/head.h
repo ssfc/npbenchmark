@@ -58,9 +58,6 @@ public:
 class Hybrid_Evolution
 {
 private:
-    long long int iter;
-
-public:
     // variables;
     int num_vertex;
     int num_color;
@@ -77,6 +74,7 @@ public:
     vector<Move> equal_nontabu_delta; //非禁忌相同delta值
     vector<Move> equal_tabu_delta; //禁忌相同delta值
     int min_delta; // 移动增量
+    long long int iter;
 
     Solution_Partition p1;
     Solution_Partition p2;
@@ -95,6 +93,7 @@ public:
     int max_equal_tabu_count;
     double start_time;
 
+public:
     // functions
     Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color, vector<array<int, 2>>& input_edges, int input_seed);
     ~Hybrid_Evolution();
@@ -113,6 +112,7 @@ public:
     [[nodiscard]] long long int get_iteration() const;
     void print_adj_list() const; // print adjacent list of graph;
     static void print_array(vector<unsigned int> &solution);
+    int get_best_solution(int i);
 
     [[nodiscard]] int get_max_equal_nontabu_count() const;
     [[nodiscard]] int get_max_equal_tabu_count() const;
