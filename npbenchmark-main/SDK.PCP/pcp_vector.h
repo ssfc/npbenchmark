@@ -26,14 +26,14 @@ private: // member variables.
     vector<unsigned int> solution; // index of selected center; dimension, num_center;
     unsigned int conflict;
     unsigned int best_conflict;
-    int min_delta; // 移动增量
 
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
     vector<int> uncovered; // points has not been covered by set;
-    Move moved;
 
+    Move moved;
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node;
+    int min_delta; // 移动增量
     vector<Move> equal_delta; //非禁忌相同delta值
     long long int iter;
 
