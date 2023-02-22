@@ -35,7 +35,7 @@ private: // member variables.
     Move moved;
 
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node;
-    Move equal_delta[2000]; //非禁忌相同delta值
+    vector<Move> equal_delta; //非禁忌相同delta值
     long long int iter;
 
     // debug variables:

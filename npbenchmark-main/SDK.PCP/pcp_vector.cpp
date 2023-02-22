@@ -21,6 +21,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     initRand(seed); // initialize random generator;
 
     conflict = 0;
+    min_delta = INT_MAX;
 
     num_node = input_nodeNum;
     num_center = input_centerNum;
@@ -49,6 +50,8 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     for (int i = 0; i < num_center; i++)
         solution[i] = pseudoRandNumGen() % num_node;
     tabu_tenure_table.resize(num_node, 0);
+
+    equal_delta.resize(2000, {0, 0});
 
     for(int i=0;i<input_nodeNum;i++)
     {
