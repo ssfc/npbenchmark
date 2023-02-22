@@ -73,11 +73,12 @@ void Solution_Partition::print_solution_partition()
 
 Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int input_num_color,
                                    vector<array<int, 2>>& input_edges, int input_seed)
-        :p1(input_num_vertex, input_num_color)
-        ,p2(input_num_vertex, input_num_color)
-        ,elite1(input_num_vertex, input_num_color)
-        ,elite2(input_num_vertex, input_num_color)
-        ,best_solution(input_num_vertex, input_num_color)
+                                   :moved{-1, -1}
+                                   ,p1(input_num_vertex, input_num_color)
+                                   ,p2(input_num_vertex, input_num_color)
+                                   ,elite1(input_num_vertex, input_num_color)
+                                   ,elite2(input_num_vertex, input_num_color)
+                                   ,best_solution(input_num_vertex, input_num_color)
 {
     init_rand(input_seed);
 
@@ -120,7 +121,6 @@ Hybrid_Evolution::Hybrid_Evolution(int input_num_vertex, int input_edge_num, int
         }
     }
 
-    moved = {-1, -1};
     equal_nontabu_delta.resize(2000, {-1, -1});
     equal_tabu_delta.resize(2000, {0,0});
     min_delta = 999999;
