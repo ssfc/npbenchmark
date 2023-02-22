@@ -81,6 +81,9 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 
     iter = 0;
 
+    // debug variables;
+    start_time = clock();
+
     // compute initial conflict of random solution;
     // 62 59 98 41 77
     /*
@@ -240,6 +243,10 @@ void PCP_Vector::local_search()
 
         // print final tabu_tenure_table;
         // print_tabu_tenure_table();
+
+        double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+        cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+             << " frequency:" << iter / elapsed_time << endl;
     }
 }
 

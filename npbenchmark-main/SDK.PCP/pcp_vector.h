@@ -33,6 +33,9 @@ private: // member variables.
     int equal_delta[2000][2]; //非禁忌相同delta值
     long long int iter;
 
+    // debug variables:
+    double start_time;
+
 public: // member functions.
     PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Vector();

@@ -41,11 +41,7 @@ public:
 
         // 2: local search method;
         PCP_Vector test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-        double start_time = clock();
         test_graph.local_search();
-        double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-        cerr << "success, iterations: " << test_graph.get_iteration() << " elapsed_time(s): " << elapsed_time
-             << " frequency:" << test_graph.get_iteration() / elapsed_time << endl;
 
         for (int i = 0;i < input.centerNum;i++)
         {
