@@ -40,12 +40,12 @@ public:
         // test_graph.greedy_find(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
 
         // 2: local search method;
-        PCP_Vector test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-        test_graph.local_search();
+        PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
+        test.local_search();
 
         for (int i = 0;i < input.centerNum;i++)
         {
-            output[i] = test_graph.get_solution(i);
+            output[i] = test.get_solution(i);
         }
 	}
 
