@@ -220,7 +220,7 @@ void PCP_Vector::make_move()
     tabu_tenure_table[center_out][center_in] = iter + 1; //更新禁忌表
 }
 
-int PCP_Vector::local_search()
+void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
@@ -241,8 +241,6 @@ int PCP_Vector::local_search()
         // print final tabu_tenure_table;
         // print_tabu_tenure_table();
     }
-
-    return iter;
 }
 
 // get solution;

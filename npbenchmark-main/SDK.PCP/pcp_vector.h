@@ -40,7 +40,7 @@ public: // member functions.
     void swap_center();
     void find_move();
     void make_move();
-    int local_search();
+    void local_search();
     unsigned int get_solution(int i);
 
     // debug functions;
