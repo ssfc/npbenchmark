@@ -45,6 +45,7 @@ public: // member functions.
 
     // debug functions;
     void print_tabu_tenure_table();
+    long long int get_iteration();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H

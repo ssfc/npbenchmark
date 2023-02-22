@@ -265,3 +265,10 @@ void PCP_Vector::print_tabu_tenure_table()
     }
 }
 
+// debug function;
+long long int PCP_Vector::get_iteration()
+{
+    return iter;
+}
+
+
