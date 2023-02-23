@@ -33,6 +33,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
             center_coverages[i][index] = 1;
         }
     }
+    cerr << "dynamic biset: " << center_cover_vertex << endl;
 
     nodes_with_drops.resize(input_nodesWithDrops.size());
     for(int i=0;i<input_nodesWithDrops.size();i++)
@@ -210,8 +211,6 @@ void PCP_Vector::local_search()
 
         while(conflict!=0)
         {
-            cerr << "dynamic biset: " << center_cover_vertex << endl;
-
             cerr << "iteration: " << iter << endl;
             find_move();
             make_move();
