@@ -45,10 +45,10 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
         }
         // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
     }
-    cerr << endl;
+    // cerr << endl;
 
-    cerr << "center_cover_vertex[0]: " << center_cover_vertex[0] << endl;
-    cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
+    // cerr << "center_cover_vertex[0]: " << center_cover_vertex[0] << endl;
+    // cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
 
     nodes_with_drops.resize(input_nodesWithDrops.size());
     for(int i=0;i<input_nodesWithDrops.size();i++)
