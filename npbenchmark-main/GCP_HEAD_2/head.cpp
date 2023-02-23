@@ -730,6 +730,9 @@ int Hybrid_Evolution::get_best_solution(int i)
 
 
 /*
+ * running command:
+ * labtop: .\a.exe 999999 6 <.\data\DSJC0500.1.txt >sln.0500.1.txt
+ * home server: ./a.out 999999 6 <./data/DSJC0500.1.txt >sln.0500.1.txt
  * debugging command:
  * laptop: C:\wamp64\www\npbenchmark\npbenchmark-main\GCP_HEA_dynamic
  * home server: /home/ssfc/GCP_HEA_dynamic
