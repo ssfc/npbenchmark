@@ -14,26 +14,27 @@ using namespace std;
 mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
-PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
-:center_cover_vertex(input_nodeNum)
-,moved{-1, -1}
+PCP_Vector::PCP_Vector(int input_num_vertex, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
+:moved{-1, -1}
 {
     initRand(input_seed); // initialize random generator;
 
-    num_vertex = input_nodeNum;
+    num_vertex = input_num_vertex;
     num_center = input_centerNum;
 
-    center_coverages.resize(input_nodeNum);
+    center_coverages.resize(input_num_vertex);
     for(int i=0;i<input_coverages.size();i++)
     {
-        center_coverages[i].resize(input_nodeNum);
+        center_coverages[i].resize(input_num_vertex);
         for(int j=0;j<input_coverages[i].size();j++)
         {
             int index = input_coverages[i][j];
             center_coverages[i][index] = 1;
         }
     }
-    cerr << "dynamic biset: " << center_cover_vertex << endl;
+
+    center_cover_vertex.resize(input_centerNum, boost::dynamic_bitset<>(input_num_vertex));
+    cerr << "dynamic biset: " << center_cover_vertex[0] << endl;
 
     nodes_with_drops.resize(input_nodesWithDrops.size());
     for(int i=0;i<input_nodesWithDrops.size();i++)
@@ -50,18 +51,18 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
     conflict = 0;
     best_conflict = 0;
 
-    for(int i=0;i<input_nodeNum;i++)
+    for(int i=0;i<input_num_vertex;i++)
     {
         universe.push_back(i);
     }
 
-    covered.resize(input_nodeNum);
-    for(int i=0;i<input_nodeNum;i++)
+    covered.resize(input_num_vertex);
+    for(int i=0;i<input_num_vertex;i++)
     {
         covered[i] = 0;
     }
 
-    for(int i=0;i<input_nodeNum;i++)
+    for(int i=0;i<input_num_vertex;i++)
     {
         uncovered.push_back(i);
     }

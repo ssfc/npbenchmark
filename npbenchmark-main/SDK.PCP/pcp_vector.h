@@ -22,7 +22,7 @@ private: // member variables.
     int num_vertex;
     int num_center;
     vector<vector<int>> center_coverages;
-    boost::dynamic_bitset<> center_cover_vertex; // 创建一个长度为 10 的动态位集合
+    vector<boost::dynamic_bitset<>> center_cover_vertex; // 创建一个长度为 10 的动态位集合
     vector<vector<int>> nodes_with_drops;
 
     vector<unsigned int> solution; // index of selected center; dimension, num_center;
