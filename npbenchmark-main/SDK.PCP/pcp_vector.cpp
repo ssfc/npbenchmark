@@ -93,8 +93,7 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
 }
 
 PCP_Vector::~PCP_Vector()
-{
-}
+= default;
 
 void PCP_Vector::swap_center()
 {
@@ -208,7 +207,7 @@ void PCP_Vector::local_search()
         conflict = count(covered.begin(), covered.end(), 0);
         best_conflict = conflict;
         cerr << "number of uncovered in the initial solution: " << conflict << endl;
-        
+
         while(conflict!=0)
         {
             cerr << "dynamic biset: " << center_cover_vertex << endl;
