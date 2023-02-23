@@ -26,7 +26,11 @@ private: // member variables.
     // Element: true/false;
     // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
     vector<boost::dynamic_bitset<>> center_cover_vertex;
-    
+
+    // Dimension: num_vertex * num_vertex
+    // Element: true/false;
+    // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
+    vector<boost::dynamic_bitset<>> vertex_reach_center;
 
     vector<vector<int>> nodes_with_drops;
 
