@@ -22,10 +22,12 @@ private: // member variables.
     int num_vertex;
     int num_center;
     vector<vector<int>> center_coverages;
-    vector<boost::dynamic_bitset<>> center_cover_vertex;
     // Dimension: num_vertex * num_vertex
     // Element: true/false;
-    // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false; 
+    // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
+    vector<boost::dynamic_bitset<>> center_cover_vertex;
+    
+
     vector<vector<int>> nodes_with_drops;
 
     vector<unsigned int> solution; // index of selected center; dimension, num_center;
