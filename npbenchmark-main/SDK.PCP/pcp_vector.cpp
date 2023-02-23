@@ -90,10 +90,6 @@ PCP_Vector::PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int
             covered[j] += center_coverages[solution[i]][j];
         }
     }
-
-    conflict = count(covered.begin(), covered.end(), 0);
-    best_conflict = conflict;
-    cerr << "number of uncovered in the initial solution: " << conflict << endl;
 }
 
 PCP_Vector::~PCP_Vector()
@@ -209,8 +205,14 @@ void PCP_Vector::local_search()
 {
     if(nodes_with_drops.empty())
     {
+        conflict = count(covered.begin(), covered.end(), 0);
+        best_conflict = conflict;
+        cerr << "number of uncovered in the initial solution: " << conflict << endl;
+        
         while(conflict!=0)
         {
+            cerr << "dynamic biset: " << center_cover_vertex << endl;
+
             cerr << "iteration: " << iter << endl;
             find_move();
             make_move();
