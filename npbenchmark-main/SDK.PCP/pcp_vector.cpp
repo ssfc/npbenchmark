@@ -14,13 +14,15 @@ using namespace std;
 mt19937 pseudoRandNumGen;
 void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
-PCP_Vector::PCP_Vector(int input_num_vertex, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed)
+PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
+                       vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
+                       int input_seed)
 :moved{-1, -1}
 {
     initRand(input_seed); // initialize random generator;
 
     num_vertex = input_num_vertex;
-    num_center = input_centerNum;
+    num_center = input_num_center;
 
     center_coverages.resize(input_num_vertex);
     for(int i=0;i<input_coverages.size();i++)
@@ -33,7 +35,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_centerNum, vector<vector<
         }
     }
 
-    center_cover_vertex.resize(input_centerNum, boost::dynamic_bitset<>(input_num_vertex));
+    center_cover_vertex.resize(input_num_center, boost::dynamic_bitset<>(input_num_vertex));
     cerr << "dynamic biset: " << center_cover_vertex[0] << endl;
 
     nodes_with_drops.resize(input_nodesWithDrops.size());
