@@ -52,7 +52,7 @@ private: // member variables.
     double start_time;
 
 public: // member functions.
-    PCP_Vector(int input_nodeNum, int input_centerNum,
+    PCP_Vector(int input_num_vertex, int input_num_center,
                vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Vector();
 
