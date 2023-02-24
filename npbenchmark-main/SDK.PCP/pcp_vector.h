@@ -52,7 +52,8 @@ private: // member variables.
     double start_time;
 
 public: // member functions.
-    PCP_Vector(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
+    PCP_Vector(int input_nodeNum, int input_centerNum,
+               vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Vector();
 
     void swap_center();
