@@ -17,11 +17,9 @@ PCP_Greedy::PCP_Greedy(int input_center_num, int input_num_color, vector<vector<
 }
 
 PCP_Greedy::~PCP_Greedy()
-{
+= default;
 
-}
-
-void PCP_Greedy::greedy_find(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
     initRand(seed); // initialize random generator;
 

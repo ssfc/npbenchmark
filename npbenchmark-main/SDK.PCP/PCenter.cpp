@@ -38,7 +38,7 @@ public:
 
         // 1: greedy method;
         PCP_Greedy test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-        test_graph.greedy_find(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
+        test_graph.greedy_search(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
 
         // 2: local search method;
         /*
