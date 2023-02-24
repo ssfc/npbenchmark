@@ -23,7 +23,7 @@ void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum, vector<ve
 {
     initRand(seed); // initialize random generator;
 
-    if(input_nodesWithDrops.size()==0)
+    if(input_nodesWithDrops.empty())
     {
         vector<int> universe; // all points;
         vector<int> covered; // points already covered by set;
