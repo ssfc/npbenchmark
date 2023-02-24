@@ -25,7 +25,7 @@ void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum, vector<ve
 
     if(input_nodesWithDrops.empty())
     {
-        vector<int> uncovered; // points has not been covered by set;
+
         vector<int> selected; // centers selected;
         int equal_delta[2000]; //非禁忌相同delta值
         int equal_count = 0;
