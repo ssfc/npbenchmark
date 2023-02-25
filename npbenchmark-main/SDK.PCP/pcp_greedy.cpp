@@ -76,18 +76,6 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
     if(nodes_with_drops.empty())
     {
         int dbs_equal_count = 0;
-
-        /* // test whether union two sets is correct or not;
-        vector<int> test_merge;
-        set_union(input.coverages[59].begin(),input.coverages[59].end(),
-                         input.coverages[12].begin(),input.coverages[12].end(),
-                         back_inserter(test_merge));
-        cerr << "Test merge size (" <<test_merge.size()<<"): ";
-        for (int & it : test_merge)
-            cerr << it << " ";
-        cerr << endl;
-        */
-
         while(dbs_solution.size()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
