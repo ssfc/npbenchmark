@@ -86,7 +86,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
-                boost::dynamic_bitset<> this_intersection = dbs_uncovered & center_cover_vertex[j];
+                boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & dbs_uncovered;
                 unsigned long long this_intersection_size = this_intersection.count();
 
                 if(this_intersection_size > dbs_max_overlap_size)
