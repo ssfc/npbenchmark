@@ -43,6 +43,7 @@ private: // member variables.
     vector<int> covered; // points already covered by set;
     boost::dynamic_bitset<> dbs_covered;
     vector<int> uncovered; // points has not been covered by set;
+    boost::dynamic_bitset<> dbs_uncovered;
 
     Move moved;
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node;
