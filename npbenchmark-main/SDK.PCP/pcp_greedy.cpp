@@ -100,7 +100,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
         cerr << endl;
         */
 
-        while(selected.size()<num_center && covered.size()!=num_vertex && iter<1) // do one iteration;
+        while(selected.size()<num_center && covered.size()!=num_vertex) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
             int max_overlap_size = 0;
