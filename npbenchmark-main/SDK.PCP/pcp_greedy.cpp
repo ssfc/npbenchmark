@@ -63,7 +63,6 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
         }
     }
 
-    dbs_solution.resize(input_num_center, 0); // set dbs_solution all 0;
     dbs_covered.reset(); // set dbs_covered all 0;
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
@@ -215,6 +214,11 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 
         cerr << "Center selected are: ";
         for (int & it : selected)
+            cerr << it << " ";
+        cerr << endl;
+
+        cerr << "DBS Center selected are: ";
+        for (int & it : dbs_solution)
             cerr << it << " ";
         cerr << endl;
     }
