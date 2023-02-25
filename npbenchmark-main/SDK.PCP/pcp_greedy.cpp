@@ -14,6 +14,7 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
                        :dbs_uncovered(input_num_vertex)
+                       ,dbs_equal_delta{}
                        ,equal_delta{}
 {
     initRand(seed); // initialize random generator;
@@ -72,6 +73,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
     if(nodes_with_drops.empty())
     {
         int equal_count = 0;
+        int dbs_equal_count = 0;
 
         for(int i=0;i<num_vertex;i++)
         {
@@ -100,31 +102,8 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             int max_overlap_size = 0;
             int max_overlap_index = 0;
 
-            int dbs_overlap_size = 0;
+            unsigned long long dbs_max_overlap_size = 0;
             int dbs_max_overlap_index = 0;
-
-            for(int j=0;j<num_vertex;j++) // consider only one set;
-            {
-                vector<int> this_intersection;
-                set_intersection(uncovered.begin(),uncovered.end(),
-                                 input_coverages[j].begin(),input_coverages[j].end(),
-                                 back_inserter(this_intersection));
-
-                if(this_intersection.size() > max_overlap_size)
-                {
-                    max_overlap_size = this_intersection.size();
-                    max_overlap_index = j;
-
-                    equal_count = 0;
-                    equal_delta[equal_count] = j; // j is index of center;
-                    equal_count++;
-                }
-                else if(this_intersection.size() == max_overlap_size)
-                {
-                    equal_delta[equal_count] = j; // j is index of center;
-                    equal_count++;
-                }
-            }
 
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
@@ -155,6 +134,28 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             int rand_select = pseudoRandNumGen() % equal_count; // 相等tabu_delta随机选择
             cerr << "random select: " << rand_select <<endl;
             cerr << "random select index: " << equal_delta[rand_select] <<endl;
+
+            for(int j=0;j<num_vertex;j++) // consider only one set;
+            {
+                boost::dynamic_bitset<> this_intersection = dbs_uncovered & center_cover_vertex[j];
+                unsigned long long this_intersection_size = this_intersection.count();
+
+                if(this_intersection_size > dbs_max_overlap_size)
+                {
+                    dbs_max_overlap_size = this_intersection_size;
+                    max_overlap_index = j;
+
+                    dbs_equal_count = 0;
+                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    dbs_equal_count++;
+                }
+                else if(this_intersection.size() == dbs_max_overlap_size)
+                {
+                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    dbs_equal_count++;
+                }
+            }
+
 
             selected.push_back(max_overlap_index);
             vector<int> union_result;

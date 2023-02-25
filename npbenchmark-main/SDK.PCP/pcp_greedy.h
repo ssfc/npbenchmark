@@ -35,6 +35,7 @@ private:
     boost::dynamic_bitset<> dbs_uncovered;
 
     int equal_delta[2000]; //非禁忌相同delta值
+    int dbs_equal_delta[2000]; //非禁忌相同delta值
     long long int iter;
 public:
     PCP_Greedy(int input_num_vertex, int input_num_center, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
