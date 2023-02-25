@@ -17,7 +17,8 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
-:moved{-1, -1}
+                       :dbs_covered(input_num_vertex)
+                       ,moved{-1, -1}
 {
     initRand(input_seed); // initialize random generator;
 
@@ -70,6 +71,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     universe.resize(input_num_vertex, 0);
     covered.resize(input_num_vertex, 0);
+    dbs_covered.reset(); // set dbs_covered all 0;
     uncovered.resize(input_num_vertex, 0);
 
     tabu_tenure_table.resize(num_vertex, 0);
