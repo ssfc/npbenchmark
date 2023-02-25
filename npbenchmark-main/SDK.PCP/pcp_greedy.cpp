@@ -105,8 +105,8 @@ void PCP_Greedy::greedy_search()
 
             cerr << "dbs equal count: " << dbs_equal_count << endl;
             int dbs_rand_select = pseudoRandNumGen() % dbs_equal_count; // 相等tabu_delta随机选择
-            cerr << "dbs random select: " << dbs_rand_select <<endl;
-            cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
+            cerr << "dbs random select: " << dbs_rand_select << endl;
+            cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] << endl;
 
             dbs_solution.push_back(dbs_equal_delta[dbs_rand_select]);
 
