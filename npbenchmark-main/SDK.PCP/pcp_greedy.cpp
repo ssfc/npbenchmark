@@ -13,7 +13,8 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
-                       :dbs_uncovered(input_num_vertex)
+                       :dbs_solution(input_num_vertex)
+                       ,dbs_uncovered(input_num_vertex)
                        ,dbs_equal_delta{}
                        ,equal_delta{}
 {
@@ -62,6 +63,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
         }
     }
 
+    dbs_solution.reset(); // set dbs_solution all 0;
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
     iter = 0;

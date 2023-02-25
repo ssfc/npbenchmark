@@ -28,6 +28,7 @@ private:
     vector<vector<int>> nodes_with_drops;
 
     vector<int> selected; // centers selected;
+    boost::dynamic_bitset<> dbs_solution; // centers selected;
 
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
