@@ -13,8 +13,7 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
-                       :dbs_solution(input_num_vertex)
-                       ,dbs_uncovered(input_num_vertex)
+                       :dbs_uncovered(input_num_vertex)
                        ,dbs_equal_delta{}
                        ,equal_delta{}
 {
@@ -63,7 +62,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
         }
     }
 
-    dbs_solution.reset(); // set dbs_solution all 0;
+    dbs_solution.resize(input_num_center, 0); // set dbs_solution all 0;
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
     iter = 0;
@@ -165,10 +164,12 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 
             cerr << "dbs_max_overlap_index: " << dbs_max_overlap_index <<endl;
             int dbs_rand_select = rand_select; // 相等tabu_delta随机选择
-            cerr << "random select: " << dbs_rand_select <<endl;
-            cerr << "random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
+            cerr << "dbs random select: " << dbs_rand_select <<endl;
+            cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
 
             selected.push_back(max_overlap_index);
+            dbs_solution.push_back(dbs_max_overlap_index);
+
             vector<int> union_result;
             set_union(covered.begin(),covered.end(),
                       input_coverages[max_overlap_index].begin(),input_coverages[max_overlap_index].end(),
@@ -201,7 +202,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             iter++;
         }
 
-        cerr << "Point selected are: ";
+        cerr << "Center selected are: ";
         for (int & it : selected)
             cerr << it << " ";
         cerr << endl;
