@@ -46,7 +46,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
 PCP_Greedy::~PCP_Greedy()
 = default;
 
-void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
+void PCP_Greedy::greedy_search()
 {
     if(nodes_with_drops.empty())
     {
@@ -82,7 +82,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             {
                 vector<int> this_intersection;
                 set_intersection(uncovered.begin(),uncovered.end(),
-                                 input_coverages[j].begin(),input_coverages[j].end(),
+                                 center_coverages[j].begin(),center_coverages[j].end(),
                                  back_inserter(this_intersection));
 
                 if(this_intersection.size() > max_overlap_size)
@@ -111,7 +111,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             selected.push_back(max_overlap_index);
             vector<int> union_result;
             set_union(covered.begin(),covered.end(),
-                      input_coverages[max_overlap_index].begin(),input_coverages[max_overlap_index].end(),
+                      center_coverages[max_overlap_index].begin(),center_coverages[max_overlap_index].end(),
                       back_inserter(union_result));
 
             cerr << "The results of union "<<max_overlap_index<<" are: ";
