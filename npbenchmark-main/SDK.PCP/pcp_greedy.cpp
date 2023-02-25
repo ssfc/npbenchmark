@@ -189,7 +189,9 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
                 cerr << it << " ";
             cerr << endl;
 
-            // dbs_covered = dbs_covered | dbs_equal_delta[dbs_rand_select];
+            dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
+            cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
+            cerr << dbs_covered << endl;
 
             vector<int> difference_result;
             set_difference(universe.begin(),universe.end(),
