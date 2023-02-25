@@ -27,16 +27,11 @@ private:
     vector<boost::dynamic_bitset<>> vertex_reach_center;
     vector<vector<int>> nodes_with_drops;
 
-    vector<int> selected; // centers selected;
     vector<int> dbs_solution; // centers selected;
 
-    vector<int> universe; // all points;
-    vector<int> covered; // points already covered by set;
     boost::dynamic_bitset<> dbs_covered;
-    vector<int> uncovered; // points has not been covered by set;
     boost::dynamic_bitset<> dbs_uncovered;
 
-    int equal_delta[2000]; //非禁忌相同delta值
     int dbs_equal_delta[2000]; //非禁忌相同delta值
     long long int iter;
 public:

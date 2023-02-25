@@ -16,7 +16,6 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        :dbs_covered(input_num_vertex)
                        ,dbs_uncovered(input_num_vertex)
                        ,dbs_equal_delta{}
-                       ,equal_delta{}
 {
     initRand(seed); // initialize random generator;
 
@@ -76,18 +75,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 {
     if(nodes_with_drops.empty())
     {
-        int equal_count = 0;
         int dbs_equal_count = 0;
-
-        for(int i=0;i<num_vertex;i++)
-        {
-            universe.push_back(i);
-        }
-
-        for(int i=0;i<num_vertex;i++)
-        {
-            uncovered.push_back(i);
-        }
 
         /* // test whether union two sets is correct or not;
         vector<int> test_merge;
@@ -100,44 +88,12 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
         cerr << endl;
         */
 
-        while(selected.size()<num_center && covered.size()!=num_vertex) // do one iteration;
+        while(dbs_solution.size()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
-            int max_overlap_size = 0;
-            int max_overlap_index = 0;
 
             unsigned long long dbs_max_overlap_size = 0;
             int dbs_max_overlap_index = 0;
-
-            for(int j=0;j<num_vertex;j++) // consider only one set;
-            {
-                vector<int> this_intersection;
-                set_intersection(uncovered.begin(),uncovered.end(),
-                                 input_coverages[j].begin(),input_coverages[j].end(),
-                                 back_inserter(this_intersection));
-
-                if(this_intersection.size() > max_overlap_size)
-                {
-                    max_overlap_size = this_intersection.size();
-                    max_overlap_index = j;
-
-                    equal_count = 0;
-                    equal_delta[equal_count] = j; // j is index of center;
-                    equal_count++;
-                }
-                else if(this_intersection.size() == max_overlap_size)
-                {
-                    equal_delta[equal_count] = j; // j is index of center;
-                    equal_count++;
-                }
-            }
-
-            cerr << "equal count: " << equal_count << endl;
-
-            cerr << "max_overlap_index: " << max_overlap_index <<endl;
-            int rand_select = pseudoRandNumGen() % equal_count; // 相等tabu_delta随机选择
-            cerr << "random select: " << rand_select <<endl;
-            cerr << "random select index: " << equal_delta[rand_select] <<endl;
 
             // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
@@ -164,45 +120,15 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             cerr << "dbs equal count: " << dbs_equal_count << endl;
 
             cerr << "dbs_max_overlap_index: " << dbs_max_overlap_index <<endl;
-            int dbs_rand_select = rand_select; // 相等tabu_delta随机选择
+            int dbs_rand_select = pseudoRandNumGen() % dbs_equal_count; // 相等tabu_delta随机选择
             cerr << "dbs random select: " << dbs_rand_select <<endl;
             cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
 
-            selected.push_back(equal_delta[rand_select]);
             dbs_solution.push_back(dbs_equal_delta[dbs_rand_select]);
-
-            vector<int> union_result;
-            set_union(covered.begin(),covered.end(),
-                      input_coverages[max_overlap_index].begin(),input_coverages[max_overlap_index].end(),
-                      back_inserter(union_result));
-
-            cerr << "The results of union "<<max_overlap_index<<" are: ";
-            for (int & it : union_result)
-                cerr << it << " ";
-            cerr << endl;
-
-            covered.assign(union_result.begin(), union_result.end());
-
-            cerr << "Cover after union size (" << covered.size() << "): ";
-            for (int & it : union_result)
-                cerr << it << " ";
-            cerr << endl;
 
             dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
             cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
             cerr << dbs_covered << endl;
-
-            vector<int> difference_result;
-            set_difference(universe.begin(),universe.end(),
-                           covered.begin(),covered.end(),
-                           back_inserter(difference_result));
-
-            cerr << "Uncover after union are: ";
-            for (int & it : difference_result)
-                cerr << it << " ";
-            cerr << endl;
-
-            uncovered.assign(difference_result.begin(), difference_result.end());
 
             dbs_uncovered = ~dbs_covered;
 
@@ -211,11 +137,6 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 
             iter++;
         }
-
-        cerr << "Center selected are: ";
-        for (int & it : selected)
-            cerr << it << " ";
-        cerr << endl;
 
         cerr << "DBS Center selected are: ";
         for (int & it : dbs_solution)
