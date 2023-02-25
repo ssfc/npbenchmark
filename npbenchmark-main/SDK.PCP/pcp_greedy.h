@@ -32,6 +32,7 @@ private:
 
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
+    boost::dynamic_bitset<> dbs_covered;
     vector<int> uncovered; // points has not been covered by set;
     boost::dynamic_bitset<> dbs_uncovered;
 
