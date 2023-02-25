@@ -19,12 +19,34 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
 
     num_vertex = input_num_vertex;
     num_center = input_num_center;
+
+    center_coverages.resize(input_num_vertex);
+    for(int i=0;i<input_coverages.size();i++)
+    {
+        center_coverages[i].resize(input_num_vertex);
+        for(int j=0;j<input_coverages[i].size();j++)
+        {
+            int index = input_coverages[i][j];
+            center_coverages[i][index] = 1;
+        }
+    }
+
+    nodes_with_drops.resize(input_nodesWithDrops.size());
+    for(int i=0;i<input_nodesWithDrops.size();i++)
+    {
+        for(int j=0;j<input_nodesWithDrops[i].size();j++)
+        {
+            nodes_with_drops[i].push_back(input_nodesWithDrops[i][j]);
+        }
+    }
+
+    iter = 0;
 }
 
 PCP_Greedy::~PCP_Greedy()
 = default;
 
-void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops)
 {
 
 
