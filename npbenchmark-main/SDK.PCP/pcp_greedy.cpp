@@ -62,6 +62,8 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
         }
     }
 
+    dbs_uncovered.set(); // set dbs_uncovered all 1;
+
     iter = 0;
 }
 
@@ -135,6 +137,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             cerr << "random select: " << rand_select <<endl;
             cerr << "random select index: " << equal_delta[rand_select] <<endl;
 
+            // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
                 boost::dynamic_bitset<> this_intersection = dbs_uncovered & center_cover_vertex[j];
@@ -143,19 +146,25 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
                 if(this_intersection_size > dbs_max_overlap_size)
                 {
                     dbs_max_overlap_size = this_intersection_size;
-                    max_overlap_index = j;
+                    dbs_max_overlap_index = j;
 
                     dbs_equal_count = 0;
                     dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
                     dbs_equal_count++;
                 }
-                else if(this_intersection.size() == dbs_max_overlap_size)
+                else if(this_intersection_size == dbs_max_overlap_size)
                 {
                     dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
                     dbs_equal_count++;
                 }
             }
 
+            cerr << "dbs equal count: " << dbs_equal_count << endl;
+
+            cerr << "dbs_max_overlap_index: " << dbs_max_overlap_index <<endl;
+            int dbs_rand_select = rand_select; // 相等tabu_delta随机选择
+            cerr << "random select: " << dbs_rand_select <<endl;
+            cerr << "random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
 
             selected.push_back(max_overlap_index);
             vector<int> union_result;
