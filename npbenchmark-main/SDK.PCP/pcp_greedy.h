@@ -12,6 +12,8 @@ using namespace std;
 class PCP_Greedy
 {
 private:
+    int num_vertex;
+    int num_center;
     vector<int> selected; // centers selected;
 
     vector<int> universe; // all points;
@@ -20,7 +22,7 @@ private:
 
     int equal_delta[2000]; //非禁忌相同delta值
 public:
-    PCP_Greedy(int input_nodeNum, int input_centerNum, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
+    PCP_Greedy(int input_num_vertex, int input_num_center, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
     ~PCP_Greedy();
 
     void greedy_search(int input_nodeNum, int input_centerNum, vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
