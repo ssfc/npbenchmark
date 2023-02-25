@@ -46,11 +46,9 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
 PCP_Greedy::~PCP_Greedy()
 = default;
 
-void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops)
+void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 {
-
-
-    if(input_nodesWithDrops.empty())
+    if(nodes_with_drops.empty())
     {
         int equal_count = 0;
 

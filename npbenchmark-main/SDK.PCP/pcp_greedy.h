@@ -29,7 +29,7 @@ public:
     PCP_Greedy(int input_num_vertex, int input_num_center, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
     ~PCP_Greedy();
 
-    void greedy_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops);
+    void greedy_search(vector<vector<int>> &input_coverages);
 };
 
 #endif //SDK_PCP_PCP_GREEDY_H
