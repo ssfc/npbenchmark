@@ -71,7 +71,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
 PCP_Greedy::~PCP_Greedy()
 = default;
 
-void PCP_Greedy::greedy_search()
+void PCP_Greedy::greedy_construct()
 {
     if(nodes_with_drops.empty())
     {
