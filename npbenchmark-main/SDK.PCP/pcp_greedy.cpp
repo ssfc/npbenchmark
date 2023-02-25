@@ -205,6 +205,11 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 
             uncovered.assign(difference_result.begin(), difference_result.end());
 
+            dbs_uncovered = ~dbs_covered;
+
+            cerr << "DBS Uncover after union are: " << endl;
+            cerr << dbs_uncovered << endl;
+
             iter++;
         }
 
