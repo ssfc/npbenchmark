@@ -37,11 +37,11 @@ public:
 		// TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
         // 1: greedy method;
-        PCP_Greedy test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-        test_graph.greedy_search();
+        // PCP_Greedy test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
+        // test_graph.greedy_search();
 
         // 2: local search method;
-        /*
+
         PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test.local_search();
 
@@ -49,7 +49,7 @@ public:
         {
             output[i] = test.get_solution(i);
         }
-        */
+
 	}
 
 	void reduceRadius(PCenter& input, Nodes nodesWithDrop) {
