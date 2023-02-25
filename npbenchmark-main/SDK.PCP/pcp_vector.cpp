@@ -68,21 +68,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     conflict = 0;
     best_conflict = 0;
 
-    for(int i=0;i<input_num_vertex;i++)
-    {
-        universe.push_back(i);
-    }
-
-    covered.resize(input_num_vertex);
-    for(int i=0;i<input_num_vertex;i++)
-    {
-        covered[i] = 0;
-    }
-
-    for(int i=0;i<input_num_vertex;i++)
-    {
-        uncovered.push_back(i);
-    }
+    universe.resize(input_num_vertex, 0);
+    covered.resize(input_num_vertex, 0);
+    uncovered.resize(input_num_vertex, 0);
 
     tabu_tenure_table.resize(num_vertex, 0);
     min_delta = INT_MAX;
