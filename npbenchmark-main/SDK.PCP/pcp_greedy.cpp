@@ -73,9 +73,9 @@ void PCP_Greedy::greedy_search()
         cerr << endl;
         */
 
-        for(int i=0; selected.size()<num_center && covered.size()!=num_vertex; i++) // do one iteration;
+        while(selected.size()<num_center && covered.size()!=num_vertex) // do one iteration;
         {
-            cerr<<"iteration: "<<i<<endl;
+            cerr<<"iteration: " << iter << endl;
             int max_overlap_size = 0;
             int max_overlap_index = 0;
             for(int j=0;j<num_vertex;j++) // consider only one set;
@@ -145,6 +145,7 @@ void PCP_Greedy::greedy_search()
             cerr << it << " ";
         cerr << endl;
 
+        iter++;
     }
 
 
