@@ -92,8 +92,6 @@ void PCP_Greedy::greedy_search()
                 if(this_intersection_size > dbs_max_overlap_size)
                 {
                     dbs_max_overlap_size = this_intersection_size;
-                    dbs_max_overlap_index = j;
-
                     dbs_equal_count = 0;
                     dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
                     dbs_equal_count++;
