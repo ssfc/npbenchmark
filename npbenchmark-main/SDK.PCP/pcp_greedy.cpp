@@ -31,6 +31,26 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
         }
     }
 
+    // assign value to center_cover_vertex and vertex_reach_center;
+    center_cover_vertex.resize(input_num_vertex, boost::dynamic_bitset<>(input_num_vertex));
+    vertex_reach_center.resize(input_num_vertex, boost::dynamic_bitset<>(input_num_vertex));
+    for(int i=0;i<input_coverages.size();i++) // i is center name;
+    {
+        for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
+        {
+            int index = input_coverages[i][j];
+            center_cover_vertex[i].set(index, true);
+            vertex_reach_center[index].set(i, true);
+        }
+        // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
+    }
+    // cerr << endl;
+
+    // debug the assignment of center_cover_vertex and vertex_reach_center;
+    // cerr << "center_cover_vertex[0]: " << center_cover_vertex[0] << endl;
+    // cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
+    // cerr << "vertex_reach_center[0]: " << vertex_reach_center[0] << endl;
+
     nodes_with_drops.resize(input_nodesWithDrops.size());
     for(int i=0;i<input_nodesWithDrops.size();i++)
     {
