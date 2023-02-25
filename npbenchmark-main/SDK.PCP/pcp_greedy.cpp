@@ -24,8 +24,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
 PCP_Greedy::~PCP_Greedy()
 = default;
 
-void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum,
-                               vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
+void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
 {
 
 
@@ -33,12 +32,12 @@ void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum,
     {
         int equal_count = 0;
 
-        for(int i=0;i<input_nodeNum;i++)
+        for(int i=0;i<num_vertex;i++)
         {
             universe.push_back(i);
         }
 
-        for(int i=0;i<input_nodeNum;i++)
+        for(int i=0;i<num_vertex;i++)
         {
             uncovered.push_back(i);
         }
@@ -54,12 +53,12 @@ void PCP_Greedy::greedy_search(int input_nodeNum, int input_centerNum,
         cerr << endl;
         */
 
-        for(int i=0; selected.size()<input_centerNum && covered.size()!=input_nodeNum; i++) // do one iteration;
+        for(int i=0; selected.size()<num_center && covered.size()!=num_vertex; i++) // do one iteration;
         {
             cerr<<"iteration: "<<i<<endl;
             int max_overlap_size = 0;
             int max_overlap_index = 0;
-            for(int j=0;j<input_nodeNum;j++) // consider only one set;
+            for(int j=0;j<num_vertex;j++) // consider only one set;
             {
                 vector<int> this_intersection;
                 set_intersection(uncovered.begin(),uncovered.end(),
