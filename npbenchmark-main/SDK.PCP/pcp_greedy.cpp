@@ -169,8 +169,8 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             cerr << "dbs random select: " << dbs_rand_select <<endl;
             cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] <<endl;
 
-            selected.push_back(max_overlap_index);
-            dbs_solution.push_back(dbs_max_overlap_index);
+            selected.push_back(equal_delta[rand_select]);
+            dbs_solution.push_back(dbs_equal_delta[dbs_rand_select]);
 
             vector<int> union_result;
             set_union(covered.begin(),covered.end(),
@@ -188,6 +188,8 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             for (int & it : union_result)
                 cerr << it << " ";
             cerr << endl;
+
+            // dbs_covered = dbs_covered | dbs_equal_delta[dbs_rand_select];
 
             vector<int> difference_result;
             set_difference(universe.begin(),universe.end(),
