@@ -51,35 +51,35 @@ build cmake_object_order_depends_target_SDK_PCP: phony || CMakeFiles/SDK_PCP.dir
 
 build CMakeFiles/SDK_PCP.dir/Main.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/Main.cpp || cmake_object_order_depends_target_SDK_PCP
   DEP_FILE = CMakeFiles\SDK_PCP.dir\Main.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -O3 -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/boost_1_81_0
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
   OBJECT_FILE_DIR = CMakeFiles\SDK_PCP.dir
 
 build CMakeFiles/SDK_PCP.dir/PCenter.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/PCenter.cpp || cmake_object_order_depends_target_SDK_PCP
   DEP_FILE = CMakeFiles\SDK_PCP.dir\PCenter.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -O3 -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/boost_1_81_0
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
   OBJECT_FILE_DIR = CMakeFiles\SDK_PCP.dir
 
 build CMakeFiles/SDK_PCP.dir/pcp_greedy.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.cpp || cmake_object_order_depends_target_SDK_PCP
   DEP_FILE = CMakeFiles\SDK_PCP.dir\pcp_greedy.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -O3 -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/boost_1_81_0
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
   OBJECT_FILE_DIR = CMakeFiles\SDK_PCP.dir
 
 build CMakeFiles/SDK_PCP.dir/pcp_local_search.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/pcp_local_search.cpp || cmake_object_order_depends_target_SDK_PCP
   DEP_FILE = CMakeFiles\SDK_PCP.dir\pcp_local_search.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -O3 -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/boost_1_81_0
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
   OBJECT_FILE_DIR = CMakeFiles\SDK_PCP.dir
 
 build CMakeFiles/SDK_PCP.dir/pcp_vector.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/pcp_vector.cpp || cmake_object_order_depends_target_SDK_PCP
   DEP_FILE = CMakeFiles\SDK_PCP.dir\pcp_vector.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++14
+  FLAGS = -O3 -g -fdiagnostics-color=always -std=gnu++14
   INCLUDES = -IC:/boost_1_81_0
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
   OBJECT_FILE_DIR = CMakeFiles\SDK_PCP.dir
@@ -93,7 +93,7 @@ build CMakeFiles/SDK_PCP.dir/pcp_vector.cpp.obj: CXX_COMPILER__SDK_PCP_Debug C$:
 # Link the executable SDK_PCP.exe
 
 build SDK_PCP.exe: CXX_EXECUTABLE_LINKER__SDK_PCP_Debug CMakeFiles/SDK_PCP.dir/Main.cpp.obj CMakeFiles/SDK_PCP.dir/PCenter.cpp.obj CMakeFiles/SDK_PCP.dir/pcp_greedy.cpp.obj CMakeFiles/SDK_PCP.dir/pcp_local_search.cpp.obj CMakeFiles/SDK_PCP.dir/pcp_vector.cpp.obj
-  FLAGS = -g
+  FLAGS = -O3 -g
   LINK_FLAGS = -static-libgcc -static-libstdc++
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SDK_PCP.dir
