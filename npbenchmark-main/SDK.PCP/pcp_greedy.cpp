@@ -73,7 +73,7 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
         cerr << endl;
         */
 
-        while(selected.size()<num_center && covered.size()!=num_vertex) // do one iteration;
+        while(selected.size()<num_center && covered.size()!=num_vertex && iter<1) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
             int max_overlap_size = 0;
@@ -138,14 +138,13 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
 
             uncovered.assign(difference_result.begin(), difference_result.end());
 
+            iter++;
         }
 
         cerr << "Point selected are: ";
         for (int & it : selected)
             cerr << it << " ";
         cerr << endl;
-
-        iter++;
     }
 
 
