@@ -32,6 +32,7 @@ private:
     vector<int> universe; // all points;
     vector<int> covered; // points already covered by set;
     vector<int> uncovered; // points has not been covered by set;
+    boost::dynamic_bitset<> dbs_uncovered;
 
     int equal_delta[2000]; //非禁忌相同delta值
     long long int iter;

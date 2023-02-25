@@ -13,7 +13,8 @@ void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)
-                       :equal_delta{}
+                       :dbs_uncovered(input_num_vertex)
+                       ,equal_delta{}
 {
     initRand(seed); // initialize random generator;
 
@@ -98,6 +99,33 @@ void PCP_Greedy::greedy_search(vector<vector<int>> &input_coverages)
             cerr << "iteration: " << iter << endl;
             int max_overlap_size = 0;
             int max_overlap_index = 0;
+
+            int dbs_overlap_size = 0;
+            int dbs_max_overlap_index = 0;
+
+            for(int j=0;j<num_vertex;j++) // consider only one set;
+            {
+                vector<int> this_intersection;
+                set_intersection(uncovered.begin(),uncovered.end(),
+                                 input_coverages[j].begin(),input_coverages[j].end(),
+                                 back_inserter(this_intersection));
+
+                if(this_intersection.size() > max_overlap_size)
+                {
+                    max_overlap_size = this_intersection.size();
+                    max_overlap_index = j;
+
+                    equal_count = 0;
+                    equal_delta[equal_count] = j; // j is index of center;
+                    equal_count++;
+                }
+                else if(this_intersection.size() == max_overlap_size)
+                {
+                    equal_delta[equal_count] = j; // j is index of center;
+                    equal_count++;
+                }
+            }
+
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
                 vector<int> this_intersection;
