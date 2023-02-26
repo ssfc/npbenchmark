@@ -39,7 +39,7 @@ private: // member variables.
     vector<vector<int>> nodes_with_drops;
 
     vector<unsigned int> solution; // index of selected center; dimension, num_center;
-    vector<int> dbs_solution; // centers selected;
+    boost::dynamic_bitset<> dbs_solution; // centers selected;
     unsigned int conflict;
     unsigned int best_conflict;
 

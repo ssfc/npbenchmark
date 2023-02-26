@@ -10,7 +10,8 @@ using namespace std;
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
-                       :dbs_covered(input_num_vertex)
+                       :dbs_solution(input_num_vertex)
+                       ,dbs_covered(input_num_vertex)
                        ,dbs_uncovered(input_num_vertex)
                        ,moved{-1, -1}
                        ,dbs_equal_delta{}
@@ -61,6 +62,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     solution.resize(num_center, 0);
     for (int i = 0; i < num_center; i++)
         solution[i] = rand_generate() % num_vertex;
+    dbs_solution.reset(); // initialize solution all 0;
     conflict = 0;
     best_conflict = 0;
 
@@ -105,7 +107,7 @@ void PCP_Vector::greedy_construct()
     if(nodes_with_drops.empty())
     {
         int dbs_equal_count = 0;
-        while(dbs_solution.size()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
+        while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
 
@@ -133,11 +135,11 @@ void PCP_Vector::greedy_construct()
             }
 
             cerr << "dbs equal count: " << dbs_equal_count << endl;
-            int dbs_rand_select = rand_generate() % dbs_equal_count; // 相等tabu_delta随机选择
+            unsigned int dbs_rand_select = rand_generate() % dbs_equal_count; // 相等tabu_delta随机选择
             cerr << "dbs random select: " << dbs_rand_select << endl;
             cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] << endl;
 
-            dbs_solution.push_back(dbs_equal_delta[dbs_rand_select]);
+            dbs_solution.set(dbs_equal_delta[dbs_rand_select]);
 
             dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
             cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
@@ -152,9 +154,7 @@ void PCP_Vector::greedy_construct()
         }
 
         cerr << "DBS Center selected are: ";
-        for (int & it : dbs_solution)
-            cerr << it << " ";
-        cerr << endl;
+        cerr << dbs_solution << endl;
     }
 
     iter = 0;
@@ -274,7 +274,7 @@ void PCP_Vector::local_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    // greedy_construct();
+    greedy_construct();
 
     if(nodes_with_drops.empty())
     {
