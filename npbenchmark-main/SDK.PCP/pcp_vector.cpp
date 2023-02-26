@@ -282,7 +282,7 @@ void PCP_Vector::local_search()
         best_conflict = conflict;
         cerr << "number of uncovered in the initial solution: " << conflict << endl;
 
-        while(conflict!=0)
+        while(conflict!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
             find_move();
