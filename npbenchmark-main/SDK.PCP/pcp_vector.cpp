@@ -150,6 +150,7 @@ void PCP_Vector::greedy_construct()
 
             cerr << "DBS Uncover after union are: " << endl;
             cerr << dbs_uncovered << endl;
+            print_index1("DBS Uncover after union are: ", dbs_uncovered);
 
             iter++;
         }
@@ -284,7 +285,6 @@ void PCP_Vector::local_search()
         // X*: history best solution;
         // X: initial solution generated (a set of centers);
         best_solution = dbs_solution;
-        cerr << "best_solution: " << best_solution << endl;
         print_index1("best_solution", best_solution);
 
         conflict = count(covered.begin(), covered.end(), 0);
