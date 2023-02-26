@@ -47,7 +47,7 @@ public:
     void greedy_construct();
 
     // debug functions;
-    void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
+    void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
 };
 
 #endif //SDK_PCP_PCP_GREEDY_H

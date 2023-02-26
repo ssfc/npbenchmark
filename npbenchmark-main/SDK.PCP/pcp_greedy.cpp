@@ -12,7 +12,7 @@ PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        ,dbs_uncovered(input_num_vertex)
                        ,dbs_equal_delta{}
 {
-    initRand(seed); // initialize random generator;
+    init_rand(seed); // initialize random generator;
 
     num_vertex = input_num_vertex;
     num_center = input_num_center;

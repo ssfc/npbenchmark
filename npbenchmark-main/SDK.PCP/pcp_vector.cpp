@@ -13,7 +13,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        :dbs_covered(input_num_vertex)
                        ,moved{-1, -1}
 {
-    initRand(input_seed); // initialize random generator;
+    init_rand(input_seed); // initialize random generator;
 
     num_vertex = input_num_vertex;
     num_center = input_num_center;
