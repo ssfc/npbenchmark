@@ -154,9 +154,8 @@ void PCP_Vector::greedy_construct()
 
             iter++;
         }
-
-        cerr << "DBS Center selected are: ";
-        cerr << dbs_solution << endl;
+        
+        print_index1("DBS Center selected are: ", dbs_solution);
     }
 
     iter = 0;
