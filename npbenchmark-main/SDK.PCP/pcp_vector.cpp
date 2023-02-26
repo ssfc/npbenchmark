@@ -11,6 +11,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        int input_seed)
                        :dbs_solution(input_num_vertex)
                        ,best_solution(input_num_vertex)
+                       ,prev_solution(input_num_vertex)
                        ,dbs_covered(input_num_vertex)
                        ,dbs_uncovered(input_num_vertex)
                        ,moved{-1, -1}
@@ -64,6 +65,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
         solution[i] = rand_generate() % num_vertex;
     dbs_solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
+    prev_solution.reset(); // initialize prev solution all 0;
     conflict = 0;
     best_conflict = 0;
 
