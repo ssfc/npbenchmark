@@ -279,6 +279,14 @@ void PCP_Vector::local_search()
 
     if(nodes_with_drops.empty())
     {
+        // LINE 2:
+        // X* <- X
+        // X*: history best solution;
+        // X: initial solution generated (a set of centers);
+        best_solution = dbs_solution;
+        cerr << "best_solution: " << best_solution << endl;
+        print_index1("best_solution", best_solution);
+
         conflict = count(covered.begin(), covered.end(), 0);
         best_conflict = conflict;
         cerr << "number of uncovered in the initial solution: " << conflict << endl;
@@ -311,6 +319,17 @@ void PCP_Vector::local_search()
 unsigned int PCP_Vector::get_solution(int i)
 {
     return solution[i];
+}
+
+void PCP_Vector::print_index1(string name, boost::dynamic_bitset<> dbs)
+{
+    cerr << name << ": ";
+    for (size_t i = dbs.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs.find_next(i))
+    {
+        cerr << i << " ";
+    }
+
+    cerr << endl;
 }
 
 // debug function;
