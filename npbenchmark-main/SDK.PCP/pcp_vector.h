@@ -42,6 +42,7 @@ private: // member variables.
     vector<unsigned int> solution; // index of selected center; dimension, num_center;
     boost::dynamic_bitset<> dbs_solution; // centers selected;
     boost::dynamic_bitset<> best_solution; // best solution in the history;
+    boost::dynamic_bitset<> prev_solution; // previous solution;
     unsigned int conflict;
     unsigned int best_conflict;
 
