@@ -53,6 +53,7 @@ private: // member variables.
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_node;
     int min_delta; // 移动增量
     vector<Move> equal_delta; //非禁忌相同delta值
+    int dbs_equal_delta[2000]; //非禁忌相同delta值
     long long int iter;
 
     // debug variables:

@@ -11,7 +11,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
                        :dbs_covered(input_num_vertex)
+                       ,dbs_uncovered(input_num_vertex)
                        ,moved{-1, -1}
+                       ,dbs_equal_delta{}
 {
     init_rand(input_seed); // initialize random generator;
 
