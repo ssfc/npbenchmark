@@ -5,8 +5,11 @@
 #ifndef SDK_PCP_PCP_GREEDY_H
 #define SDK_PCP_PCP_GREEDY_H
 
+# include <algorithm>
+# include <iostream>
+# include <random>
 # include <vector>
-#include <boost/dynamic_bitset.hpp>
+# include <boost/dynamic_bitset.hpp>
 
 using namespace std;
 

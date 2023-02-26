@@ -2,9 +2,7 @@
 // Created by take_ on 2022/12/10.
 //
 # include "pcp_greedy.h"
-# include <algorithm>
-# include <iostream>
-# include <random>
+
 
 using namespace std;
 
