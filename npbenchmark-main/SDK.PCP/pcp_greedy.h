@@ -37,11 +37,17 @@ private:
 
     int dbs_equal_delta[2000]; //非禁忌相同delta值
     long long int iter;
+
+    // debug variables;
+    mt19937 pseudoRandNumGen;
 public:
     PCP_Greedy(int input_num_vertex, int input_num_center, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
     ~PCP_Greedy();
 
     void greedy_construct();
+
+    // debug functions;
+    void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 };
 
 #endif //SDK_PCP_PCP_GREEDY_H

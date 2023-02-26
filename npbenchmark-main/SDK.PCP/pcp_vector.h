@@ -56,6 +56,7 @@ private: // member variables.
     long long int iter;
 
     // debug variables:
+    mt19937 pseudoRandNumGen;
     double start_time;
 
 public: // member functions.
@@ -70,6 +71,7 @@ public: // member functions.
     unsigned int get_solution(int i);
 
     // debug functions;
+    void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
     void print_tabu_tenure_table();
     long long int get_iteration();
 };

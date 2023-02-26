@@ -3,11 +3,8 @@
 //
 # include "pcp_greedy.h"
 
-
 using namespace std;
 
-mt19937 pseudoRandNumGen;
-void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
 
 PCP_Greedy::PCP_Greedy(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed)

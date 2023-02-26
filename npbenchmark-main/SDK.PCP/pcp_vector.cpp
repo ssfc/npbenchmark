@@ -3,11 +3,9 @@
 //
 # include "pcp_vector.h"
 
-
 using namespace std;
 
-mt19937 pseudoRandNumGen;
-void initRand(int seed) { pseudoRandNumGen = mt19937(seed); }
+
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
