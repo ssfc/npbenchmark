@@ -144,17 +144,15 @@ void PCP_Vector::greedy_construct()
 
             dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
             cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
-            cerr << dbs_covered << endl;
+            print_index1("", dbs_covered);
 
             dbs_uncovered = ~dbs_covered;
 
-            cerr << "DBS Uncover after union are: " << endl;
-            cerr << dbs_uncovered << endl;
             print_index1("DBS Uncover after union are: ", dbs_uncovered);
 
             iter++;
         }
-        
+
         print_index1("DBS Center selected are: ", dbs_solution);
     }
 
