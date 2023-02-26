@@ -100,6 +100,66 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 PCP_Vector::~PCP_Vector()
 = default;
 
+void PCP_Vector::greedy_construct()
+{
+    if(nodes_with_drops.empty())
+    {
+        int dbs_equal_count = 0;
+        while(dbs_solution.size()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
+        {
+            cerr << "iteration: " << iter << endl;
+
+            unsigned long long dbs_max_overlap_size = 0;
+            int dbs_max_overlap_index = 0;
+
+            // cerr << "dbs_uncovered" << dbs_uncovered << endl;
+            for(int j=0;j<num_vertex;j++) // consider only one set;
+            {
+                boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & dbs_uncovered;
+                unsigned long long this_intersection_size = this_intersection.count();
+
+                if(this_intersection_size > dbs_max_overlap_size)
+                {
+                    dbs_max_overlap_size = this_intersection_size;
+                    dbs_equal_count = 0;
+                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    dbs_equal_count++;
+                }
+                else if(this_intersection_size == dbs_max_overlap_size)
+                {
+                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    dbs_equal_count++;
+                }
+            }
+
+            cerr << "dbs equal count: " << dbs_equal_count << endl;
+            int dbs_rand_select = rand_generate() % dbs_equal_count; // 相等tabu_delta随机选择
+            cerr << "dbs random select: " << dbs_rand_select << endl;
+            cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] << endl;
+
+            dbs_solution.push_back(dbs_equal_delta[dbs_rand_select]);
+
+            dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
+            cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
+            cerr << dbs_covered << endl;
+
+            dbs_uncovered = ~dbs_covered;
+
+            cerr << "DBS Uncover after union are: " << endl;
+            cerr << dbs_uncovered << endl;
+
+            iter++;
+        }
+
+        cerr << "DBS Center selected are: ";
+        for (int & it : dbs_solution)
+            cerr << it << " ";
+        cerr << endl;
+    }
+
+    iter = 0;
+}
+
 void PCP_Vector::swap_center()
 {
     for(int i=0;i<covered.size();i++)
@@ -207,6 +267,8 @@ void PCP_Vector::make_move()
 
 void PCP_Vector::local_search()
 {
+    greedy_construct();
+
     if(nodes_with_drops.empty())
     {
         conflict = count(covered.begin(), covered.end(), 0);

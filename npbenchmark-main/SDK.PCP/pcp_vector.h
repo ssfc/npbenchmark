@@ -65,6 +65,7 @@ public: // member functions.
                vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int input_seed);
     ~PCP_Vector();
 
+    void greedy_construct();
     void swap_center();
     void find_move();
     void make_move();
