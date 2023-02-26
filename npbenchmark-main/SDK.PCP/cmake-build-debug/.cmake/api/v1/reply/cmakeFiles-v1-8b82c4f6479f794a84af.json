@@ -144,6 +144,21 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.24/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.24/Modules/FindBoost.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.24/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.24/Modules/FindPackageMessage.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

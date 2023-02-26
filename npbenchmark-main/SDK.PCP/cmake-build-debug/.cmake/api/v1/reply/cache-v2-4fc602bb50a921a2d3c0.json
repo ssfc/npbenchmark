@@ -6,11 +6,15 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
 					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "PATH",
 			"value" : "C:\\boost_1_81_0"
 		},
 		{
@@ -1314,6 +1318,18 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_Boost",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Details about finding Boost"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "[C:/boost_1_81_0][c ][v1.81.0()]"
+		},
+		{
 			"name" : "SDK_PCP_BINARY_DIR",
 			"properties" : 
 			[
@@ -1348,6 +1364,66 @@
 			],
 			"type" : "STATIC",
 			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP"
+		},
+		{
+			"name" : "_BOOST_ROOT_LAST",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Last used BOOST_ROOT value."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:\\boost_1_81_0"
+		},
+		{
+			"name" : "_Boost_COMPONENTS_SEARCHED",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Components requested for this build tree."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : ""
+		},
+		{
+			"name" : "_Boost_INCLUDE_DIR_LAST",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Last used Boost_INCLUDE_DIR value."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "C:/boost_1_81_0"
+		},
+		{
+			"name" : "_Boost_NAMESPACE_LAST",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Last used Boost_NAMESPACE value."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "boost"
+		},
+		{
+			"name" : "_Boost_USE_MULTITHREADED_LAST",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Last used Boost_USE_MULTITHREADED value."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "TRUE"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
