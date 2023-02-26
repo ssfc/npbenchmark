@@ -1,5 +1,5 @@
 # include "PCenter.h"
-//# include "pcp_greedy.h"
+# include "pcp_greedy.h"
 # include "pcp_vector.h"
 
 # include <algorithm>
@@ -41,7 +41,7 @@ public:
         // test_graph.greedy_construct();
 
         // 2: local search method;
-
+        ///*
         PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test.local_search();
 
@@ -49,6 +49,7 @@ public:
         {
             output[i] = test.get_solution(i);
         }
+         //*/
 	}
 
 	void reduceRadius(PCenter& input, Nodes nodesWithDrop) {
