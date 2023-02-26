@@ -6,11 +6,11 @@
 using namespace std;
 
 
-
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
                        :dbs_solution(input_num_vertex)
+                       ,best_solution(input_num_vertex)
                        ,dbs_covered(input_num_vertex)
                        ,dbs_uncovered(input_num_vertex)
                        ,moved{-1, -1}
@@ -63,6 +63,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     for (int i = 0; i < num_center; i++)
         solution[i] = rand_generate() % num_vertex;
     dbs_solution.reset(); // initialize solution all 0;
+    best_solution.reset(); // initialize best solution all 0;
     conflict = 0;
     best_conflict = 0;
 
@@ -335,4 +336,5 @@ long long int PCP_Vector::get_iteration()
 // debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
 // debug on laptop by g++ in command line:
+// cd C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP
 // g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
