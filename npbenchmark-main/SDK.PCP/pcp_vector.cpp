@@ -274,7 +274,7 @@ void PCP_Vector::local_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    greedy_construct();
+    // greedy_construct();
 
     if(nodes_with_drops.empty())
     {
