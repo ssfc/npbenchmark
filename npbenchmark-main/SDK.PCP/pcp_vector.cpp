@@ -267,7 +267,13 @@ void PCP_Vector::make_move()
 
 void PCP_Vector::local_search()
 {
-    // LINE 1: X <- init(G, p, rq);
+    // LINE 1:
+    // X <- init(G, p, rq);
+    // X: initial solution generated;
+    // G: graph;
+    // p: centers;
+    // rq: 最小化的最大服务半径;
+    // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
     greedy_construct();
 
     if(nodes_with_drops.empty())
