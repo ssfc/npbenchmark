@@ -261,4 +261,5 @@ long long int PCP_Vector::get_iteration()
     return iter;
 }
 
-
+// debug on laptop: 
+// .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
