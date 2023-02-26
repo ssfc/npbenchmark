@@ -13,4 +13,4 @@ include_directories(C:/boost_1_81_0)
 add_executable(SDK_PCP
         Main.cpp
         PCenter.cpp
-        PCenter.h pcp_greedy.h pcp_greedy.cpp pcp_local_search.h pcp_local_search.cpp pcp_vector.h pcp_vector.cpp)
+        PCenter.h pcp_greedy.h pcp_greedy.cpp pcp_vector.h pcp_vector.cpp)
