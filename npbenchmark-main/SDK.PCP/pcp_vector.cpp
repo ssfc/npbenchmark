@@ -267,6 +267,7 @@ void PCP_Vector::make_move()
 
 void PCP_Vector::local_search()
 {
+    // LINE 1: X <- init(G, p, rq);
     greedy_construct();
 
     if(nodes_with_drops.empty())
