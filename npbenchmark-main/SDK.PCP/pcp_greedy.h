@@ -39,7 +39,7 @@ private:
     long long int iter;
 
     // debug variables;
-    mt19937 pseudoRandNumGen;
+    mt19937 rand_generate;
 public:
     PCP_Greedy(int input_num_vertex, int input_num_center, vector<vector<int>>& input_coverages, vector<vector<int>> &input_nodesWithDrops, int seed);
     ~PCP_Greedy();
@@ -47,7 +47,7 @@ public:
     void greedy_construct();
 
     // debug functions;
-    void init_rand(int seed) { pseudoRandNumGen = mt19937(seed); }
+    void init_rand(int seed) { rand_generate = mt19937(seed); }
 };
 
 #endif //SDK_PCP_PCP_GREEDY_H

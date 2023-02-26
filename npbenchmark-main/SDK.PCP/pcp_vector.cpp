@@ -58,7 +58,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     solution.resize(num_center, 0);
     for (int i = 0; i < num_center; i++)
-        solution[i] = pseudoRandNumGen() % num_vertex;
+        solution[i] = rand_generate() % num_vertex;
     conflict = 0;
     best_conflict = 0;
 
@@ -181,7 +181,7 @@ void PCP_Vector::find_move()
         }
     }
 
-    unsigned int rand_select = pseudoRandNumGen() % equal_count; // equal_delta随机选择
+    unsigned int rand_select = rand_generate() % equal_count; // equal_delta随机选择
     moved = equal_delta[rand_select];
 }
 
