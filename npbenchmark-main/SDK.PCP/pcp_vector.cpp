@@ -115,7 +115,7 @@ void PCP_Vector::greedy_construct()
     if(nodes_with_drops.empty())
     {
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
-        int dbs_equal_count = 0;
+        int equal_count_in_construct = 0;
         while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
             cerr << "iteration: " << iter << endl;
@@ -132,19 +132,19 @@ void PCP_Vector::greedy_construct()
                 if(this_intersection_size > dbs_max_overlap_size)
                 {
                     dbs_max_overlap_size = this_intersection_size;
-                    dbs_equal_count = 0;
-                    equal_delta_in_construct[dbs_equal_count] = j; // j is index of center;
-                    dbs_equal_count++;
+                    equal_count_in_construct = 0;
+                    equal_delta_in_construct[equal_count_in_construct] = j; // j is index of center;
+                    equal_count_in_construct++;
                 }
                 else if(this_intersection_size == dbs_max_overlap_size)
                 {
-                    equal_delta_in_construct[dbs_equal_count] = j; // j is index of center;
-                    dbs_equal_count++;
+                    equal_delta_in_construct[equal_count_in_construct] = j; // j is index of center;
+                    equal_count_in_construct++;
                 }
             }
 
-            cerr << "dbs equal count: " << dbs_equal_count << endl;
-            unsigned int dbs_rand_select = rand_generate() % dbs_equal_count; // 相等tabu_delta随机选择
+            cerr << "equal count in construct: " << equal_count_in_construct << endl;
+            unsigned int dbs_rand_select = rand_generate() % equal_count_in_construct; // 相等tabu_delta随机选择
             cerr << "dbs random select: " << dbs_rand_select << endl;
             cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
