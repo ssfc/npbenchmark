@@ -286,6 +286,12 @@ void PCP_Vector::local_search()
         best_solution = dbs_solution;
         print_index1("best_solution", best_solution);
 
+        // X_prev <- X;
+        // X_prev: solution of the previous iteration;
+        // X: initial solution generated;
+        prev_solution = dbs_solution;
+        print_index1("prev_solution", prev_solution);
+
         conflict = count(covered.begin(), covered.end(), 0);
         best_conflict = conflict;
         cerr << "number of uncovered in the initial solution: " << conflict << endl;
