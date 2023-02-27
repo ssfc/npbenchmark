@@ -114,7 +114,7 @@ void PCP_Vector::greedy_construct()
 {
     if(nodes_with_drops.empty())
     {
-        int dbs_equal_delta[2000] = {0}; //非禁忌相同delta值
+        int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int dbs_equal_count = 0;
         while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
@@ -133,12 +133,12 @@ void PCP_Vector::greedy_construct()
                 {
                     dbs_max_overlap_size = this_intersection_size;
                     dbs_equal_count = 0;
-                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    equal_delta_in_construct[dbs_equal_count] = j; // j is index of center;
                     dbs_equal_count++;
                 }
                 else if(this_intersection_size == dbs_max_overlap_size)
                 {
-                    dbs_equal_delta[dbs_equal_count] = j; // j is index of center;
+                    equal_delta_in_construct[dbs_equal_count] = j; // j is index of center;
                     dbs_equal_count++;
                 }
             }
@@ -146,11 +146,11 @@ void PCP_Vector::greedy_construct()
             cerr << "dbs equal count: " << dbs_equal_count << endl;
             unsigned int dbs_rand_select = rand_generate() % dbs_equal_count; // 相等tabu_delta随机选择
             cerr << "dbs random select: " << dbs_rand_select << endl;
-            cerr << "dbs random select index: " << dbs_equal_delta[dbs_rand_select] << endl;
+            cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
-            dbs_solution.set(dbs_equal_delta[dbs_rand_select]);
+            dbs_solution.set(equal_delta_in_construct[dbs_rand_select]);
 
-            dbs_covered = dbs_covered | center_cover_vertex[dbs_equal_delta[dbs_rand_select]];
+            dbs_covered = dbs_covered | center_cover_vertex[equal_delta_in_construct[dbs_rand_select]];
             cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
             print_index1("", dbs_covered);
 
