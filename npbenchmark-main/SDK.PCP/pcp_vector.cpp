@@ -265,6 +265,11 @@ void PCP_Vector::find_pair()
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     // print_equal_pair();
+
+    // LINE 3:
+    // The best objective value obj <- +INF;
+    // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
+    int obj = INT_MAX;
 }
 
 void PCP_Vector::make_move()
