@@ -305,7 +305,7 @@ void PCP_Vector::local_search()
             ///* debug: tabu tenure;
             cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
             cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
-            // print_tabu_tenure_table();
+            print_tabu_tenure_table();
              //*/
 
             iter++;
@@ -343,12 +343,9 @@ void PCP_Vector::print_tabu_tenure_table()
     cerr << "tabu tenure table: " << endl;
     for(int i=0;i<num_vertex;i++)
     {
-        for(int j=0;j<num_vertex;j++)
-        {
-            cerr << tabu_tenure_table[i] << " ";
-        }
-        cerr << endl;
+        cerr << tabu_tenure_table[i] << " ";
     }
+    cerr << endl;
 }
 
 // debug function;
