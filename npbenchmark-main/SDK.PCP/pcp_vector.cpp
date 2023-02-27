@@ -257,6 +257,11 @@ void PCP_Vector::find_move()
     moved = equal_delta[rand_select];
 }
 
+void PCP_Vector::find_pair()
+{
+    
+}
+
 void PCP_Vector::make_move()
 {
     for(int i=0;i<num_center;i++)
