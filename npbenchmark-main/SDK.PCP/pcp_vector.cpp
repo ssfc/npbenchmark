@@ -76,6 +76,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
     tabu_tenure_table.resize(num_vertex, 0);
+    dbs_tabu_tenure_table.resize(num_vertex, 0);
     min_delta = INT_MAX;
     equal_delta.resize(2000, {0, 0});
     iter = 0;
