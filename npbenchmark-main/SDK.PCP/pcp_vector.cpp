@@ -15,7 +15,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        ,dbs_covered(input_num_vertex)
                        ,dbs_uncovered(input_num_vertex)
                        ,moved{-1, -1}
-                       ,dbs_equal_delta{}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -115,6 +114,7 @@ void PCP_Vector::greedy_construct()
 {
     if(nodes_with_drops.empty())
     {
+        int dbs_equal_delta[2000] = {0}; //非禁忌相同delta值
         int dbs_equal_count = 0;
         while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
@@ -259,7 +259,7 @@ void PCP_Vector::find_move()
 
 void PCP_Vector::find_pair()
 {
-    
+
 }
 
 void PCP_Vector::make_move()
