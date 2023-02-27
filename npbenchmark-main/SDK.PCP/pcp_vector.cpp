@@ -67,6 +67,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
     weight.resize(num_vertex, 1);
+    print_vector("weight", weight);
     conflict = 0;
     best_conflict = 0;
 
@@ -360,6 +361,17 @@ void PCP_Vector::print_tabu_tenure_table()
 long long int PCP_Vector::get_iteration()
 {
     return iter;
+}
+
+// debug function:
+void PCP_Vector::print_vector(string name, vector<unsigned int> &vect)
+{
+    cerr << name << ": ";
+    for(unsigned int i : vect)
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
 }
 
 // debug on laptop by clion:

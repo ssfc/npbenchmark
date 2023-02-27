@@ -82,6 +82,7 @@ public: // member functions.
     void print_index1(string name, boost::dynamic_bitset<> dbs);
     void print_tabu_tenure_table();
     long long int get_iteration();
+    static void print_vector(string name, vector<unsigned int> &vect);
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H
