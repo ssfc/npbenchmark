@@ -66,7 +66,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
     weight.resize(num_vertex, 1);
-    print_vector("weight", weight);
+    // print_vector("weight", weight);
     conflict = 0;
     best_conflict = 0;
 
@@ -119,7 +119,7 @@ void PCP_Vector::greedy_construct()
         int equal_count_in_construct = 0;
         while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
         {
-            cerr << "iteration: " << iter << endl;
+            // cerr << "iteration: " << iter << endl;
 
             unsigned long long dbs_max_overlap_size = 0;
             int dbs_max_overlap_index = 0;
@@ -144,20 +144,20 @@ void PCP_Vector::greedy_construct()
                 }
             }
 
-            cerr << "equal count in construct: " << equal_count_in_construct << endl;
+            // cerr << "equal count in construct: " << equal_count_in_construct << endl;
             unsigned int dbs_rand_select = rand_generate() % equal_count_in_construct; // 相等tabu_delta随机选择
-            cerr << "dbs random select: " << dbs_rand_select << endl;
-            cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
+            // cerr << "dbs random select: " << dbs_rand_select << endl;
+            // cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
             dbs_solution.set(equal_delta_in_construct[dbs_rand_select]);
 
             dbs_covered = dbs_covered | center_cover_vertex[equal_delta_in_construct[dbs_rand_select]];
-            cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
-            print_index1("", dbs_covered);
+            // cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
+            // print_index1("", dbs_covered);
 
             dbs_uncovered = ~dbs_covered;
 
-            print_index1("DBS Uncover after union are: ", dbs_uncovered);
+            // print_index1("DBS Uncover after union are: ", dbs_uncovered);
 
             iter++;
         }
@@ -270,6 +270,8 @@ void PCP_Vector::find_pair()
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     int obj = INT_MAX;
+
+    print_index1("uncovered: ", dbs_uncovered);
 }
 
 void PCP_Vector::make_move()
