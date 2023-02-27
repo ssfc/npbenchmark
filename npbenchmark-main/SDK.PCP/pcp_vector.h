@@ -80,10 +80,11 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { rand_generate = mt19937(seed); }
-    void print_index1(string name, boost::dynamic_bitset<> dbs);
+    static void print_index1(string name, boost::dynamic_bitset<> dbs);
     void print_tabu_tenure_table();
     long long int get_iteration();
     static void print_vector(string name, vector<unsigned int> &vect);
+    void print_equal_pair();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H

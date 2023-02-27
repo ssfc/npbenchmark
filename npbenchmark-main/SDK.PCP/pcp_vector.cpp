@@ -260,7 +260,11 @@ void PCP_Vector::find_move()
 
 void PCP_Vector::find_pair()
 {
-
+    // LINE 2:
+    // The set of best swap moves M <- NULL;
+    // M: the set of best swap moves;
+    fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
+    print_equal_pair();
 }
 
 void PCP_Vector::make_move()
@@ -315,6 +319,7 @@ void PCP_Vector::local_search()
         {
             cerr << "iteration: " << iter << endl;
             find_move();
+            find_pair();
             make_move();
 
             ///* debug: tabu tenure;
@@ -379,6 +384,19 @@ void PCP_Vector::print_vector(string name, vector<unsigned int> &vect)
     }
     cerr << endl;
 }
+
+// debug function:
+void PCP_Vector::print_equal_pair()
+{
+    cerr << "Equal pair: ";
+    for(Move i : equal_pair)
+    {
+        cerr << "{" << i.center_in << ", ";
+        cerr << i.center_out << "}";
+    }
+    cerr << endl;
+}
+
 
 // debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
