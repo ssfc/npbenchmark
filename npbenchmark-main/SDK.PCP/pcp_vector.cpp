@@ -76,7 +76,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
     tabu_tenure_table.resize(num_vertex, 0);
-    // LINE 2: 
+    // LINE 2:
     // tabu list TL <- NULL;
     // TL: tabu list;
     dbs_tabu_tenure_table.resize(num_vertex, 0);
@@ -162,6 +162,9 @@ void PCP_Vector::greedy_construct()
         print_index1("DBS Center selected are: ", dbs_solution);
     }
 
+    // LINE 2:
+    // iter <- 1;
+    // iter: current iteration;
     iter = 0;
 }
 
