@@ -264,7 +264,7 @@ void PCP_Vector::find_pair()
     // The set of best swap moves M <- NULL;
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
-    print_equal_pair();
+    // print_equal_pair();
 }
 
 void PCP_Vector::make_move()
