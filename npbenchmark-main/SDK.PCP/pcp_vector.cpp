@@ -305,9 +305,14 @@ void PCP_Vector::find_pair()
     cerr << "Cv list: ";
     for (size_t i = Cv.find_first(); i != boost::dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        cerr << i << " "; // i is center name; 
+        cerr << i << " "; // i is center name;
     }
     cerr << endl;
+}
+
+void PCP_Vector::try_open_center(unsigned int center)
+{
+
 }
 
 void PCP_Vector::make_move()

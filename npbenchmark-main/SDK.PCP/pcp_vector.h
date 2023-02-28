@@ -77,6 +77,7 @@ public: // member functions.
     ~PCP_Vector();
 
     void greedy_construct();
+    void try_open_center(unsigned int center);
     void swap_center();
     void find_move();
     void find_pair();
