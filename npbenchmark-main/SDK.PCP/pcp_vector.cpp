@@ -407,6 +407,7 @@ void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>&
     cerr << endl;
 }
 
+// debug function: construct random solution;
 void PCP_Vector::random_construct()
 {
     size_t num_selected = 0;
