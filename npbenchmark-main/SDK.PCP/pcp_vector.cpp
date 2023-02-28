@@ -116,6 +116,12 @@ void PCP_Vector::greedy_construct()
 {
     if(nodes_with_drops.empty())
     {
+        for(int i=0;i<center_covered_weights.size();i++)
+        {
+            center_covered_weights[i] = center_cover_vertex[i].count();
+        }
+        print_vector("center_covered_weights: ", center_covered_weights);
+
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
         while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
