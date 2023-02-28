@@ -90,7 +90,7 @@ public: // member functions.
     static void print_index1(const string& name, const boost::dynamic_bitset<>& dbs);
     void random_construct(); // construct random solution;
     void print_tabu_tenure_table();
-    long long int get_iteration();
+    long long int get_iteration() const;
     static void print_vector(const string& name, vector<unsigned int> &vect);
     void print_equal_pair();
 };
