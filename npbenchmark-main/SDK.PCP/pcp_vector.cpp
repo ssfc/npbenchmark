@@ -3,7 +3,6 @@
 //
 # include "pcp_vector.h"
 
-using namespace std;
 
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
@@ -322,14 +321,21 @@ void PCP_Vector::try_open_center(unsigned int center)
     cerr << "Vi" << ": ";
     for (size_t v = Vi.find_first(); v != boost::dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
-        cerr << v << " ";
+        // cerr << v << " ";
         // LINE 3:
         // if |X 交 Cv| = 1 then
         // X: current center set;
         // v: vertex
         // Cv: 覆盖顶点v的中心集合;
         // |X 交 Cv|: number of centers covering v in X;
-        // if (dbs_solution & )
+        boost::dynamic_bitset<> Cv = vertex_reach_center[v];
+        boost::dynamic_bitset<> intersection = dbs_solution & Cv;
+        if (intersection.count() == 1)
+        {
+            cerr << "find one: ";
+            print_index1("dbs solution", dbs_solution);
+            print_index1("Cv", Cv);
+        }
     }
     cerr << endl;
 }
