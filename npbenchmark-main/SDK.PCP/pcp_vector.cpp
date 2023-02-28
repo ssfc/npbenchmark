@@ -342,7 +342,9 @@ void PCP_Vector::local_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    greedy_construct();
+    // greedy_construct();
+    random_construct();
+    print_index1("random construct solution", dbs_solution);
 
     if(nodes_with_drops.empty())
     {
@@ -403,6 +405,20 @@ void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>&
     }
 
     cerr << endl;
+}
+
+void PCP_Vector::random_construct()
+{
+    size_t num_selected = 0;
+    while (num_selected < num_center)
+    {
+        size_t random_index = generated_random() % num_vertex;
+        if (!dbs_solution[random_index])
+        {
+            dbs_solution.set(random_index);
+            num_selected++;
+        }
+    }
 }
 
 // debug function;

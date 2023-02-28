@@ -88,6 +88,7 @@ public: // member functions.
     // debug functions;
     void init_rand(int seed) { generated_random = mt19937(seed); }
     static void print_index1(const string& name, const boost::dynamic_bitset<>& dbs);
+    void random_construct();
     void print_tabu_tenure_table();
     long long int get_iteration();
     static void print_vector(string name, vector<unsigned int> &vect);
