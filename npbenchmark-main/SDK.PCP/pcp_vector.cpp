@@ -302,17 +302,29 @@ void PCP_Vector::find_pair()
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     boost::dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
-    cerr << "Cv list: ";
+    cerr << "Cv list: " << endl;
     for (size_t i = Cv.find_first(); i != boost::dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        cerr << i << " "; // i is center name;
+        cerr << i << endl; // i is center name;
+        try_open_center(i);
     }
-    cerr << endl;
 }
 
 void PCP_Vector::try_open_center(unsigned int center)
 {
-
+    // LINE 2:
+    // for all v属于Vi do:
+    // v: 顶点名称;
+    // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
+    // V(i): the set of vertex that center i can serve;
+    // print_index1("Vi", center_cover_vertex[center]);
+    boost::dynamic_bitset<> Vi = center_cover_vertex[center];
+    cerr << "Vi" << ": ";
+    for (size_t i = Vi.find_first(); i != boost::dynamic_bitset<>::npos; i = Vi.find_next(i))
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
 }
 
 void PCP_Vector::make_move()
@@ -342,8 +354,8 @@ void PCP_Vector::local_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    // greedy_construct();
-    random_construct();
+    greedy_construct();
+    // random_construct();
     print_index1("random construct solution", dbs_solution);
 
     if(nodes_with_drops.empty())
