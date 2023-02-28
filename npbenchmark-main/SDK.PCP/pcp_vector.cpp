@@ -284,6 +284,15 @@ void PCP_Vector::find_pair()
     size_t random_uncovered_index = generated_random() % uncovered_indices.size();
     cerr << "random select index: " << uncovered_indices[random_uncovered_index] << endl;
 
+    // LINE 5:
+    // for j属于C do
+    //    delta_j_prev <- delta_j,
+    // delta_j_prev: previous move;
+    // delta_j: current move;
+    // j: 中心序号;
+    // C: 中心集;
+    // Meaning: backup before trial moves;
+    prev_center_covered_weights = center_covered_weights;
 }
 
 void PCP_Vector::make_move()
