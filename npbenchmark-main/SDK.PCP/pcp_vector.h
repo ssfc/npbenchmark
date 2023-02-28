@@ -57,7 +57,12 @@ private: // member variables.
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     vector<unsigned int> dbs_tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     int min_delta; // 移动增量
-    vector<int> center_covered_weights; // dimension, num_vertex;
+    // dimension: num_vertex;
+    // meaning: element j is sum of the weights of the vertices which can only be served by center j.
+    vector<int> center_covered_weights;
+    // dimension: num_vertex;
+    // meaning: element j is sum of the weights of the vertices which can only be served by center j.
+    vector<int> prev_center_covered_weights;
     vector<Move> equal_delta; //非禁忌相同delta值
     vector<Move> equal_pair;
     long long int iter;
