@@ -281,8 +281,9 @@ void PCP_Vector::find_pair()
     {
         uncovered_vertices.push_back(i);
     }
-    size_t random_uncovered_vertex = generated_random() % uncovered_vertices.size();
-    cerr << "random uncovered vertex: " << uncovered_vertices[random_uncovered_vertex] << endl;
+    size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
+    unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
+    cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // LINE 5:
     // for j属于C do
@@ -293,6 +294,13 @@ void PCP_Vector::find_pair()
     // C: 中心集;
     // Meaning: backup before trial moves;
     prev_center_covered_weights = center_covered_weights;
+
+    // LINE 6:
+    // for all i属于Cv do /* Cv: candidates covering v */
+    // i: Cv中的中心序号;
+    // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
+    // Cv: 覆盖顶点v的中心集合;
+    print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
 }
 
 void PCP_Vector::make_move()
