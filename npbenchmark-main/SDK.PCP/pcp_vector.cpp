@@ -276,13 +276,13 @@ void PCP_Vector::find_pair()
     // LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
     print_index1("uncovered: ", dbs_uncovered);
-    vector<size_t> uncovered_indices;
+    vector<size_t> uncovered_vertices;
     for (size_t i = dbs_uncovered.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs_uncovered.find_next(i))
     {
-        uncovered_indices.push_back(i);
+        uncovered_vertices.push_back(i);
     }
-    size_t random_uncovered_index = generated_random() % uncovered_indices.size();
-    cerr << "random select index: " << uncovered_indices[random_uncovered_index] << endl;
+    size_t random_uncovered_vertex = generated_random() % uncovered_vertices.size();
+    cerr << "random uncovered vertex: " << uncovered_vertices[random_uncovered_vertex] << endl;
 
     // LINE 5:
     // for j属于C do
