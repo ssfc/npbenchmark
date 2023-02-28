@@ -271,7 +271,17 @@ void PCP_Vector::find_pair()
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     int obj = INT_MAX;
 
+    // LINE 4:
+    // v <- a randomly picked uncovered vertex in U(X);
     print_index1("uncovered: ", dbs_uncovered);
+    vector<size_t> uncovered_indices;
+    for (size_t i = dbs_uncovered.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs_uncovered.find_next(i))
+    {
+        uncovered_indices.push_back(i);
+    }
+    size_t random_uncovered_index = rand_generate() % uncovered_indices.size();
+    cerr << "random select index: " << uncovered_indices[random_uncovered_index] << endl;
+
 }
 
 void PCP_Vector::make_move()
