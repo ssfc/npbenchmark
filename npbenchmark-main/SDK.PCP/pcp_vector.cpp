@@ -64,7 +64,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     dbs_solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
-    weight.resize(num_vertex, 1);
+    vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
     conflict = 0;
     best_conflict = 0;

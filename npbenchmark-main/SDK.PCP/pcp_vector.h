@@ -43,7 +43,7 @@ private: // member variables.
     boost::dynamic_bitset<> dbs_solution; // centers selected;
     boost::dynamic_bitset<> best_solution; // best solution in the history;
     boost::dynamic_bitset<> prev_solution; // previous solution;
-    vector<unsigned int> weight; // weight of each vertex; dimension, num_vertex;
+    vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
     unsigned int conflict;
     unsigned int best_conflict;
 
