@@ -82,6 +82,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     // TL: tabu list;
     dbs_tabu_tenure_table.resize(num_vertex, 0);
     min_delta = INT_MAX;
+    center_covered_weights.resize(num_vertex, 0);
     equal_delta.resize(2000, {0, 0});
     equal_pair.resize(2000, {0, 0});
     iter = 0;

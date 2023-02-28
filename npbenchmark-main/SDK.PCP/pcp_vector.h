@@ -57,6 +57,7 @@ private: // member variables.
     vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     vector<unsigned int> dbs_tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     int min_delta; // 移动增量
+    vector<int> center_covered_weights; // dimension, num_vertex;
     vector<Move> equal_delta; //非禁忌相同delta值
     vector<Move> equal_pair;
     long long int iter;
