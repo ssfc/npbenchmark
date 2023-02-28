@@ -91,7 +91,7 @@ public: // member functions.
     void random_construct(); // construct random solution;
     void print_tabu_tenure_table();
     long long int get_iteration();
-    static void print_vector(string name, vector<unsigned int> &vect);
+    static void print_vector(const string& name, vector<unsigned int> &vect);
     void print_equal_pair();
 };
 

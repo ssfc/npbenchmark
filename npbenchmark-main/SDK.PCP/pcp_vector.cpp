@@ -440,7 +440,7 @@ long long int PCP_Vector::get_iteration()
 }
 
 // debug function:
-void PCP_Vector::print_vector(string name, vector<unsigned int> &vect)
+void PCP_Vector::print_vector(const string& name, vector<unsigned int> &vect)
 {
     cerr << name << ": ";
     for(unsigned int i : vect)
