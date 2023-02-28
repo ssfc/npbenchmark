@@ -300,7 +300,14 @@ void PCP_Vector::find_pair()
     // i: Cv中的中心序号;
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // Cv: 覆盖顶点v的中心集合;
-    print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
+    // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
+    boost::dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
+    cerr << "Cv list: ";
+    for (size_t i = Cv.find_first(); i != boost::dynamic_bitset<>::npos; i = Cv.find_next(i))
+    {
+        cerr << i << " "; // i is center name; 
+    }
+    cerr << endl;
 }
 
 void PCP_Vector::make_move()
