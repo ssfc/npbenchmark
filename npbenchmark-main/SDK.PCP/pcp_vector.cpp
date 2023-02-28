@@ -374,7 +374,7 @@ unsigned int PCP_Vector::get_solution(int i)
     return solution[i];
 }
 
-void PCP_Vector::print_index1(string name, boost::dynamic_bitset<> dbs)
+void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>& dbs)
 {
     cerr << name << ": ";
     for (size_t i = dbs.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs.find_next(i))
