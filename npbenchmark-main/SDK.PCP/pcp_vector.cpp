@@ -320,9 +320,15 @@ void PCP_Vector::try_open_center(unsigned int center)
     // print_index1("Vi", center_cover_vertex[center]);
     boost::dynamic_bitset<> Vi = center_cover_vertex[center];
     cerr << "Vi" << ": ";
-    for (size_t i = Vi.find_first(); i != boost::dynamic_bitset<>::npos; i = Vi.find_next(i))
+    for (size_t v = Vi.find_first(); v != boost::dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
-        cerr << i << " ";
+        cerr << v << " ";
+        // LINE 3:
+        // if |X 交 Cv| = 1 then
+        // X: current center set;
+        // Cv: 覆盖顶点v的中心集合;
+        // |X 交 Cv|: number of centers covering v in X;
+        // if (dbs_solution & )
     }
     cerr << endl;
 }
@@ -356,7 +362,7 @@ void PCP_Vector::local_search()
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
     greedy_construct();
     // random_construct();
-    print_index1("random construct solution", dbs_solution);
+    // print_index1("random construct solution", dbs_solution);
 
     if(nodes_with_drops.empty())
     {
