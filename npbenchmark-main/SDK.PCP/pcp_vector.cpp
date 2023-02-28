@@ -61,7 +61,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     solution.resize(num_center, 0);
     for (int i = 0; i < num_center; i++)
-        solution[i] = rand_generate() % num_vertex;
+        solution[i] = generated_random() % num_vertex;
     dbs_solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
@@ -145,7 +145,7 @@ void PCP_Vector::greedy_construct()
             }
 
             // cerr << "equal count in construct: " << equal_count_in_construct << endl;
-            unsigned int dbs_rand_select = rand_generate() % equal_count_in_construct; // 相等tabu_delta随机选择
+            unsigned int dbs_rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
             // cerr << "dbs random select: " << dbs_rand_select << endl;
             // cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
@@ -254,7 +254,7 @@ void PCP_Vector::find_move()
         }
     }
 
-    unsigned int rand_select = rand_generate() % equal_count; // equal_delta随机选择
+    unsigned int rand_select = generated_random() % equal_count; // equal_delta随机选择
     moved = equal_delta[rand_select];
 }
 
@@ -279,7 +279,7 @@ void PCP_Vector::find_pair()
     {
         uncovered_indices.push_back(i);
     }
-    size_t random_uncovered_index = rand_generate() % uncovered_indices.size();
+    size_t random_uncovered_index = generated_random() % uncovered_indices.size();
     cerr << "random select index: " << uncovered_indices[random_uncovered_index] << endl;
 
 }

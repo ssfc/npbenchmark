@@ -62,7 +62,7 @@ private: // member variables.
     long long int iter;
 
     // debug variables:
-    mt19937 rand_generate;
+    mt19937 generated_random;
     double start_time;
 
 public: // member functions.
@@ -79,7 +79,7 @@ public: // member functions.
     unsigned int get_solution(int i);
 
     // debug functions;
-    void init_rand(int seed) { rand_generate = mt19937(seed); }
+    void init_rand(int seed) { generated_random = mt19937(seed); }
     static void print_index1(string name, boost::dynamic_bitset<> dbs);
     void print_tabu_tenure_table();
     long long int get_iteration();
