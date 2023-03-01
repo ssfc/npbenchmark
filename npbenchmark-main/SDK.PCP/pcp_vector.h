@@ -81,7 +81,6 @@ public: // member functions.
 
     void greedy_construct();
     void try_open_center(unsigned int center);
-    void find_move();
     void find_pair();
     void local_search();
     void get_solution(std::vector<NodeId>& output);

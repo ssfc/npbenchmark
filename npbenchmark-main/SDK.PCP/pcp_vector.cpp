@@ -179,80 +179,6 @@ void PCP_Vector::greedy_construct()
 }
 
 
-void PCP_Vector::find_move()
-{
-    min_delta = INT_MAX;
-
-    int equal_count = 0;
-
-    vector<int> solution_vector; // make solution as 001010, in which solution member is 1's index;
-    vector<int> set_selected;
-    vector<int> set_unselected;
-
-    solution_vector.resize(num_vertex);
-    for(int i=0;i<num_center;i++)
-    {
-        solution_vector[solution[i]] = 1;
-    }
-
-    for(int i=0;i<solution_vector.size();i++)
-    {
-        if(solution_vector[i]==0)
-        {
-            set_unselected.push_back(i);
-        }
-        else
-        {
-            set_selected.push_back(i);
-        }
-    }
-
-    for(int i : set_selected) // center out;
-    {
-        for(int j : set_unselected) // center in;
-        {
-            vector<int> temp; // dim, num_vertex;
-            temp.resize(covered.size());
-            temp.assign(covered.begin(), covered.end());
-
-            for(int k=0;k<temp.size();k++)
-            {
-                temp[k] += center_coverages[j][k];
-            }
-
-            for(int k=0;k<temp.size();k++)
-            {
-                temp[k] -= center_coverages[i][k];
-            }
-
-            int this_delta = count(temp.begin(), temp.end(), 0) - conflict;
-            if (tabu_tenure_table[i] <= iter && tabu_tenure_table[j] <= iter) //非禁忌移动;
-            {
-                if(this_delta < min_delta) // the less the better;
-                {
-                    equal_count = 0;
-                    min_delta = this_delta;
-
-                    equal_delta[equal_count].center_out = i; // i is center out;
-                    equal_delta[equal_count].center_in = j; // j is center in;
-
-                    equal_count++;
-                }
-                else if(this_delta == min_delta) // the less the better;
-                {
-                    equal_delta[equal_count].center_out = i; // i is center out;
-                    equal_delta[equal_count].center_in = j; // j is center in;
-
-                    equal_count++;
-                }
-            }
-        }
-    }
-
-    unsigned int rand_select = generated_random() % equal_count; // equal_delta随机选择
-    moved = equal_delta[rand_select];
-}
-
 void PCP_Vector::find_pair()
 {
     // LINE 2:
@@ -371,7 +297,6 @@ void PCP_Vector::local_search()
         while(dbs_uncovered.count()!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
-            find_move();
             find_pair();
 
             ///* debug: tabu tenure;
