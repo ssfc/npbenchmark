@@ -31,15 +31,12 @@ private: // member variables.
     // Element: true/false;
     // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> center_cover_vertex;
-
     // Dimension: num_vertex * num_vertex
     // Element: true/false;
     // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
-
     std::vector<std::vector<int>> nodes_with_drops;
 
-    std::vector<unsigned int> solution; // index of selected center; dimension, num_center;
     boost::dynamic_bitset<> dbs_solution; // centers selected;
     boost::dynamic_bitset<> best_solution; // best solution in the history;
     boost::dynamic_bitset<> prev_solution; // previous solution;

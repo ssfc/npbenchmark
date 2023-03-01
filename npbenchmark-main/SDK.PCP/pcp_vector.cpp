@@ -58,9 +58,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
         }
     }
 
-    solution.resize(num_center, 0);
-    for (int i = 0; i < num_center; i++)
-        solution[i] = generated_random() % num_vertex;
     dbs_solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
