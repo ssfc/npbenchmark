@@ -169,13 +169,17 @@ void PCP_Vector::greedy_construct()
             }
             cerr << endl;
 
-            // Open selected center;
+            // LINE 9:
+            // X <- X U {i} - {j}
+            // X: current center set;
+            // i: center swapped in;
+            // Meaning: Open selected center;
             solution.set(selected_center);
             covered = covered | center_cover_vertex[selected_center];
             // cerr << "Cover after union size (" << covered.count() << "): " << endl;
-            // print_index1("", covered);
+            // print_index1("Covered", covered);
             uncovered = ~covered;
-            // print_index1("Uncover after union are: ", uncovered);
+            // print_index1("Uncovered", uncovered);
 
             iter++;
         }
