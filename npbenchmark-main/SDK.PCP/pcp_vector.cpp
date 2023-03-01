@@ -97,11 +97,11 @@ void PCP_Vector::greedy_construct()
 
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
-        while(solution.count()<num_center && covered.count()!=num_vertex) // do one iteration;
+        while(solution.count()<num_center) // do one iteration;
         {
             // cerr << "iteration: " << iter << endl;
 
-            unsigned long long dbs_max_overlap_size = 0;
+            unsigned long long max_overlap_size = 0;
 
             // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
@@ -109,14 +109,14 @@ void PCP_Vector::greedy_construct()
                 boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
                 unsigned long long this_intersection_size = this_intersection.count();
 
-                if(this_intersection_size > dbs_max_overlap_size)
+                if(this_intersection_size > max_overlap_size)
                 {
-                    dbs_max_overlap_size = this_intersection_size;
+                    max_overlap_size = this_intersection_size;
                     equal_count_in_construct = 0;
                     equal_delta_in_construct[equal_count_in_construct] = j; // j is index of center;
                     equal_count_in_construct++;
                 }
-                else if(this_intersection_size == dbs_max_overlap_size)
+                else if(this_intersection_size == max_overlap_size)
                 {
                     equal_delta_in_construct[equal_count_in_construct] = j; // j is index of center;
                     equal_count_in_construct++;
