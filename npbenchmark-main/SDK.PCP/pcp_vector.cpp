@@ -70,7 +70,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     universe.resize(input_num_vertex, 0);
     covered.resize(input_num_vertex, 0);
     dbs_covered.reset(); // set dbs_covered all 0;
-    uncovered.resize(input_num_vertex, 0);
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
     tabu_tenure_table.resize(num_vertex, 0);

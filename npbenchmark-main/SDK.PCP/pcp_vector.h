@@ -48,7 +48,6 @@ private: // member variables.
     std::vector<int> universe; // all points;
     std::vector<int> covered; // points already covered by set;
     boost::dynamic_bitset<> dbs_covered;
-    std::vector<int> uncovered; // points has not been covered by set;
     boost::dynamic_bitset<> dbs_uncovered;
 
     Move moved;
