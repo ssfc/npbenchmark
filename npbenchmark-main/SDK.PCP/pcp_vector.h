@@ -51,7 +51,6 @@ private: // member variables.
     Move moved;
     std::vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     std::vector<unsigned int> dbs_tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
-    int min_delta; // 移动增量
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
     // Therefore, it can evaluate the importance of this center.
