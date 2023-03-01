@@ -128,7 +128,7 @@ void PCP_Vector::greedy_construct()
             unsigned int rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
             unsigned int selected_center = equal_delta_in_construct[rand_select];
             // cerr << "random select: " << rand_select << endl;
-            // cerr << "random select index: " << equal_delta_in_construct[rand_select] << endl;
+            cerr << "selected center: " << selected_center << endl;
 
             // Open selected center;
             solution.set(selected_center);
@@ -139,12 +139,36 @@ void PCP_Vector::greedy_construct()
             // print_index1("Uncover after union are: ", uncovered);
 
             // consequences of opening selected center;
+            // LINE 2:
+            // for all v属于Vi do
+            // V(i): the set of vertex that center i can serve; index is center, result is vertex;
+            // Meaning: consequences of opening i
+            dynamic_bitset<> Vi = center_cover_vertex[selected_center];
+            for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+            {
+                // cerr << v << " ";
+                // LINE 3:
+                // if |X 交 Cv| = 1 then
+                // X: current center set;
+                // v: vertex
+                // Cv: 覆盖顶点v的中心集合;
+                // |X 交 Cv|: number of centers covering v in X;
+                dynamic_bitset<> Cv = vertex_reach_center[v];
+                dynamic_bitset<> intersection = solution & Cv;
+                if (intersection.count() == 1)
+                {
+                    cerr << "find one: ";
+                    print_index1("solution", solution);
+                    print_index1("Cv", Cv);
+                }
 
+            }
+            cerr << endl;
 
             iter++;
         }
 
-        print_index1("DBS Center selected are: ", solution);
+        print_index1("Center selected are: ", solution);
     }
 
     // LINE 2:
@@ -229,7 +253,7 @@ void PCP_Vector::try_open_center(unsigned int center)
         if (intersection.count() == 1)
         {
             cerr << "find one: ";
-            print_index1("dbs solution", solution);
+            print_index1("solution", solution);
             print_index1("Cv", Cv);
         }
     }
