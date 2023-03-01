@@ -97,9 +97,9 @@ void PCP_Vector::greedy_construct()
         print_vector("center_weights before", center_weights);
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
-        while(solution.count()<num_center && iter<2) // do one iteration;
+        while(solution.count()<num_center) // do one iteration;
         {
-            cerr << "Construct iteration: " << iter << endl;
+            // cerr << "Construct iteration: " << iter << endl;
 
             unsigned long long max_overlap_size = 0;
 
@@ -127,7 +127,7 @@ void PCP_Vector::greedy_construct()
             unsigned int rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
             unsigned int selected_center = equal_delta_in_construct[rand_select];
             // cerr << "random select: " << rand_select << endl;
-            cerr << "selected center: " << selected_center << endl;
+            // cerr << "selected center: " << selected_center << endl;
 
             // consequences of opening selected center;
             // LINE 2:
