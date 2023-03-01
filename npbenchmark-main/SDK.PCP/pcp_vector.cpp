@@ -205,7 +205,7 @@ void PCP_Vector::find_pair()
 
     // LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
-    print_index1("uncovered: ", uncovered);
+    print_index1("uncovered", uncovered);
     vector<size_t> uncovered_vertices;
     for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
