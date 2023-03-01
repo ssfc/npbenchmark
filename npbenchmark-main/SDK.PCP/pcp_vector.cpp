@@ -257,7 +257,7 @@ void PCP_Vector::find_pair()
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
-    // LINE 5:
+    // A2 LINE 5:
     // for j属于C do
     //    delta_j_prev <- delta_j,
     // delta_j_prev: previous move;
@@ -274,11 +274,17 @@ void PCP_Vector::find_pair()
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
-    // cerr << "Cv list: " << endl;
+    cerr << "Cv list: " << endl;
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        // cerr << i << endl; // i is center name;
+        cerr << i << endl; // i is center name;
         try_open_center(i);
+
+        // A2 LINE 18:
+        // for j属于C do
+        //    delta_j <- delta_j_previous,
+        // Meaning: restore after trial moves;
+        center_weights = prev_center_weights;
     }
 }
 
