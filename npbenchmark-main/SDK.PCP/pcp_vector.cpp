@@ -3,7 +3,7 @@
 //
 # include "pcp_vector.h"
 
-
+using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
