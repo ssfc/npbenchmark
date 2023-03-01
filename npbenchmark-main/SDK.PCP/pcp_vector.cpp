@@ -180,7 +180,7 @@ void PCP_Vector::greedy_construct()
             iter++;
         }
 
-        print_index1("Center selected are: ", solution);
+        print_index1("Center selected", solution);
     }
 
     // LINE 2:
