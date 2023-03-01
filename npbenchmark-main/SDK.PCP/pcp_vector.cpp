@@ -190,13 +190,10 @@ void PCP_Vector::greedy_construct()
                     for (size_t l = Cv_i.find_first(); l != dynamic_bitset<>::npos; l = Cv_i.find_next(l))
                     {
                         // cerr << "l: " << l << endl;
-
                         center_weights[l] = center_weights[l] - vertex_weights[v];
-
                     }
                     // cerr << endl;
                 }
-
             }
             cerr << endl;
             print_vector("center weights after", center_weights);
