@@ -99,7 +99,7 @@ void PCP_Vector::greedy_construct()
         int equal_count_in_construct = 0;
         while(solution.count()<num_center) // do one iteration;
         {
-            // cerr << "iteration: " << iter << endl;
+            cerr << "Construct iteration: " << iter << endl;
 
             unsigned long long max_overlap_size = 0;
 
