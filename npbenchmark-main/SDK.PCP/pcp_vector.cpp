@@ -72,7 +72,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     // tabu list TL <- NULL;
     // TL: tabu list;
     center_weights.resize(num_vertex, 0);
-    prev_center_covered_weights.resize(num_vertex, 0);
+    prev_center_weights.resize(num_vertex, 0);
     equal_delta.resize(2000, {0, 0});
     equal_pair.resize(2000, {0, 0});
     iter = 0;
@@ -88,6 +88,7 @@ void PCP_Vector::greedy_construct()
 {
     if(nodes_with_drops.empty())
     {
+        // center_weights start with each center's coverage;
         for(int i=0;i<center_weights.size();i++)
         {
             center_weights[i] = center_cover_vertex[i].count();
@@ -185,7 +186,7 @@ void PCP_Vector::find_pair()
     // j: 中心序号;
     // C: 中心集;
     // Meaning: backup before trial moves;
-    prev_center_covered_weights = center_weights;
+    prev_center_weights = center_weights;
 
     // LINE 6:
     // for all i属于Cv do /* Cv: candidates covering v */
