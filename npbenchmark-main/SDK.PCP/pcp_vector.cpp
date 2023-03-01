@@ -79,17 +79,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     // debug variables;
     start_time = clock();
-
-    // compute initial conflict of random solution;
-    // 62 59 98 41 77
-    /*
-    solution[0] = 62;
-    solution[1] = 59;
-    solution[2] = 98;
-    solution[3] = 41;
-    solution[4] = 77;
-     */
-
 }
 
 PCP_Vector::~PCP_Vector()
