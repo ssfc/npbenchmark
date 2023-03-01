@@ -130,14 +130,6 @@ void PCP_Vector::greedy_construct()
             // cerr << "random select: " << rand_select << endl;
             cerr << "selected center: " << selected_center << endl;
 
-            // Open selected center;
-            solution.set(selected_center);
-            covered = covered | center_cover_vertex[selected_center];
-            // cerr << "Cover after union size (" << covered.count() << "): " << endl;
-            // print_index1("", covered);
-            uncovered = ~covered;
-            // print_index1("Uncover after union are: ", uncovered);
-
             // consequences of opening selected center;
             // LINE 2:
             // for all v属于Vi do
@@ -160,7 +152,7 @@ void PCP_Vector::greedy_construct()
                     // print_index1("solution", solution);
                     // print_index1("Cv", Cv);
                     unsigned long long intersect_center = intersection.find_first();
-                    // cerr << "find intersect one: " << intersect_center << endl;
+                    cerr << "find intersect one: " << intersect_center << endl;
 
                     // for l 属于 X交Cv:
                     //     delta_l <- delta_l - wv,
@@ -169,13 +161,21 @@ void PCP_Vector::greedy_construct()
                     // Meaning: cancel penalty for deleting center l;
                     // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
                     // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
-                    // print_vector("center weights before", center_weights);
+                    print_vector("center weights before", center_weights);
                     center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
-                    // print_vector("center weights after", center_weights);
+                    print_vector("center weights after", center_weights);
                 }
 
             }
             cerr << endl;
+
+            // Open selected center;
+            solution.set(selected_center);
+            covered = covered | center_cover_vertex[selected_center];
+            // cerr << "Cover after union size (" << covered.count() << "): " << endl;
+            // print_index1("", covered);
+            uncovered = ~covered;
+            // print_index1("Uncover after union are: ", uncovered);
 
             iter++;
         }
