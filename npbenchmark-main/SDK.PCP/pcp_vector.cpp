@@ -178,18 +178,6 @@ void PCP_Vector::greedy_construct()
     iter = 0;
 }
 
-void PCP_Vector::swap_center()
-{
-    for(int i=0;i<covered.size();i++)
-    {
-        covered[i] += center_coverages[moved.center_in][i];
-    }
-
-    for(int i=0;i<covered.size();i++)
-    {
-        covered[i] -= center_coverages[moved.center_out][i];
-    }
-}
 
 void PCP_Vector::find_move()
 {
