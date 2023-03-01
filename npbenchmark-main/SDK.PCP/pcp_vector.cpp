@@ -94,11 +94,11 @@ void PCP_Vector::greedy_construct()
         {
             center_weights[i] = center_cover_vertex[i].count();
         }
-        print_vector("center_covered_weights: ", center_weights);
+        print_vector("center_covered_weights", center_weights);
 
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
-        while(solution.count()<num_center) // do one iteration;
+        while(solution.count()<num_center && iter<1) // do one iteration;
         {
             cerr << "Construct iteration: " << iter << endl;
 
@@ -161,7 +161,17 @@ void PCP_Vector::greedy_construct()
                     // print_index1("Cv", Cv);
                     unsigned long long intersect_center = intersection.find_first();
                     // cerr << "find intersect one: " << intersect_center << endl;
-                    
+
+                    // for l 属于 X交Cv:
+                    //     delta_l <- delta_l - wv,
+                    // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+                    // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量; (在里面越小越好);
+                    // Meaning: cancel penalty for deleting center l;
+                    // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
+                    // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
+                    // print_vector("center weights before", center_weights);
+                    center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
+                    // print_vector("center weights after", center_weights);
                 }
 
             }
@@ -223,10 +233,10 @@ void PCP_Vector::find_pair()
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
-    cerr << "Cv list: " << endl;
+    // cerr << "Cv list: " << endl;
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        cerr << i << endl; // i is center name;
+        // cerr << i << endl; // i is center name;
         try_open_center(i);
     }
 }
@@ -240,7 +250,7 @@ void PCP_Vector::try_open_center(unsigned int center)
     // V(i): the set of vertex that center i can serve;
     // print_index1("Vi", center_cover_vertex[center]);
     dynamic_bitset<> Vi = center_cover_vertex[center];
-    cerr << "Vi" << ": ";
+    // cerr << "Vi" << ": ";
     for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
         // cerr << v << " ";
@@ -254,12 +264,12 @@ void PCP_Vector::try_open_center(unsigned int center)
         dynamic_bitset<> intersection = solution & Cv;
         if (intersection.count() == 1)
         {
-            cerr << "find one: ";
-            print_index1("solution", solution);
-            print_index1("Cv", Cv);
+            // cerr << "find one: ";
+            // print_index1("solution", solution);
+            // print_index1("Cv", Cv);
         }
     }
-    cerr << endl;
+    // cerr << endl;
 }
 
 
