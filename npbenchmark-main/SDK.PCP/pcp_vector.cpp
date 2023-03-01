@@ -130,6 +130,7 @@ void PCP_Vector::greedy_construct()
             // cerr << "random select: " << rand_select << endl;
             cerr << "selected center: " << selected_center << endl;
 
+            print_vector("center weights before", center_weights);
             // consequences of opening selected center;
             // LINE 2:
             // for all v属于Vi do
@@ -181,21 +182,27 @@ void PCP_Vector::greedy_construct()
                     // Meaning: cancel reward for adding center l;
                     // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
                     // print_index1("solution", solution);
-                    print_index1("Cv", Cv);
+                    // print_index1("Cv", Cv);
                     dynamic_bitset<> Cv_i = Cv; // cv_i means Cv-{i}
                     Cv_i.reset(selected_center); // implement Cv-{i}
                     // print_index1("Cv-{i}", Cv_i);
                     // cerr << "Cv-{i}: ";
                     for (size_t l = Cv_i.find_first(); l != dynamic_bitset<>::npos; l = Cv_i.find_next(l))
                     {
-                        // cerr << l <<" ";
+                        // cerr << "l: " << l << endl;
+
                         center_weights[l] = center_weights[l] - vertex_weights[v];
+
                     }
-                    cerr << endl;
+                    // cerr << endl;
                 }
 
             }
             cerr << endl;
+            print_vector("center weights after", center_weights);
+
+            // dynamic_bitset<> test_0_59 = center_cover_vertex[0] & center_cover_vertex[59];
+            // cerr << "0 intersect 59: " << test_0_59.count() << endl;
 
             // LINE 9:
             // X <- X U {i} - {j}
