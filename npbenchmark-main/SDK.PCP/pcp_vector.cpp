@@ -94,11 +94,10 @@ void PCP_Vector::greedy_construct()
         {
             center_weights[i] = center_cover_vertex[i].count();
         }
-        print_vector("center_covered_weights", center_weights);
-
+        print_vector("center_weights before", center_weights);
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
-        while(solution.count()<num_center && iter<1) // do one iteration;
+        while(solution.count()<num_center && iter<2) // do one iteration;
         {
             cerr << "Construct iteration: " << iter << endl;
 
@@ -130,7 +129,6 @@ void PCP_Vector::greedy_construct()
             // cerr << "random select: " << rand_select << endl;
             cerr << "selected center: " << selected_center << endl;
 
-            print_vector("center weights before", center_weights);
             // consequences of opening selected center;
             // LINE 2:
             // for all v属于Vi do
@@ -153,7 +151,7 @@ void PCP_Vector::greedy_construct()
                     // print_index1("solution", solution);
                     // print_index1("Cv", Cv);
                     unsigned long long intersect_center = intersection.find_first();
-                    cerr << "find intersect one: " << intersect_center << endl;
+                    // cerr << "find intersect one: " << intersect_center << endl;
 
                     // for l 属于 X交Cv:
                     //     delta_l <- delta_l - wv,
@@ -195,11 +193,15 @@ void PCP_Vector::greedy_construct()
                     // cerr << endl;
                 }
             }
-            cerr << endl;
-            print_vector("center weights after", center_weights);
+            // cerr << endl;
 
+            // Evaluate A4 LINE 6:
             // dynamic_bitset<> test_0_59 = center_cover_vertex[0] & center_cover_vertex[59];
             // cerr << "0 intersect 59: " << test_0_59.count() << endl;
+
+            // Evaluate A4 LINE 4:
+            // dynamic_bitset<> test_0_59_12 = center_cover_vertex[0] & (center_cover_vertex[59] | center_cover_vertex[12]);
+            // cerr << "0 intersect (59 U 12): " << test_0_59_12.count() << endl;
 
             // LINE 9:
             // X <- X U {i} - {j}
@@ -217,6 +219,7 @@ void PCP_Vector::greedy_construct()
 
             iter++;
         }
+        print_vector("center weights after", center_weights);
 
         print_index1("Center selected", solution);
     }
