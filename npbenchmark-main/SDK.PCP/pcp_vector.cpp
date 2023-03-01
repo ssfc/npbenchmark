@@ -305,9 +305,23 @@ void PCP_Vector::try_open_center(unsigned int center)
         dynamic_bitset<> intersection = solution & Cv;
         if (intersection.count() == 1)
         {
+            // A3 L5
             // cerr << "find one: ";
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
+            unsigned long long intersect_center = intersection.find_first();
+            // cerr << "find intersect one: " << intersect_center << endl;
+            // for l 属于 X交Cv:
+            //     delta_l <- delta_l - wv,
+            // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+            // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量; (在里面越小越好);
+            // Meaning: cancel penalty for deleting center l;
+            // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
+            // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
+            print_vector("center weights before", center_weights);
+            center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
+            print_vector("center weights after", center_weights);
+
         }
     }
     // cerr << endl;
