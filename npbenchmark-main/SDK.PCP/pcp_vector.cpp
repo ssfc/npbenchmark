@@ -174,6 +174,8 @@ void PCP_Vector::greedy_construct()
                 {
                     // print_index1("solution", solution);
                     // print_index1("Cv", Cv);
+                    dynamic_bitset<> Cv_i = Cv; // cv_i means Cv-{i}
+                    Cv_i.reset(selected_center);
                 }
 
             }
