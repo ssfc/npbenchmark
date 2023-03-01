@@ -102,7 +102,6 @@ void PCP_Vector::greedy_construct()
             // cerr << "iteration: " << iter << endl;
 
             unsigned long long dbs_max_overlap_size = 0;
-            int dbs_max_overlap_index = 0;
 
             // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
