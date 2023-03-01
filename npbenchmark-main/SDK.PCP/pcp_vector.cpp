@@ -64,8 +64,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
-    covered.reset(); // set dbs_covered all 0;
-    uncovered.set(); // set dbs_uncovered all 1;
+    covered.reset(); // set covered all 0;
+    uncovered.set(); // set uncovered all 1;
 
     tabu_tenure_table.resize(num_vertex, 0);
     // LINE 2:
@@ -103,7 +103,7 @@ void PCP_Vector::greedy_construct()
 
             unsigned long long max_overlap_size = 0;
 
-            // cerr << "dbs_uncovered" << dbs_uncovered << endl;
+            // cerr << "uncovered" << uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
                 boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
@@ -125,18 +125,18 @@ void PCP_Vector::greedy_construct()
 
             // cerr << "equal count in construct: " << equal_count_in_construct << endl;
             unsigned int rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
-            // cerr << "dbs random select: " << dbs_rand_select << endl;
-            // cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
+            // cerr << "dbs random select: " << rand_select << endl;
+            // cerr << "dbs random select index: " << equal_delta_in_construct[rand_select] << endl;
 
             solution.set(equal_delta_in_construct[rand_select]);
 
             covered = covered | center_cover_vertex[equal_delta_in_construct[rand_select]];
-            // cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
-            // print_index1("", dbs_covered);
+            // cerr << "DBS Cover after union size (" << covered.count() << "): " << endl;
+            // print_index1("", covered);
 
             uncovered = ~covered;
 
-            // print_index1("DBS Uncover after union are: ", dbs_uncovered);
+            // print_index1("DBS Uncover after union are: ", uncovered);
 
             iter++;
         }
@@ -245,7 +245,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
     greedy_construct();
     // random_construct();
-    // print_index1("random construct solution", dbs_solution);
+    // print_index1("random construct solution", solution);
 
     if(nodes_with_drops.empty())
     {
