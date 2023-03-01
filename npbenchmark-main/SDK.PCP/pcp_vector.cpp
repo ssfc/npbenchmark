@@ -68,7 +68,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     // print_vector("weight", weight);
 
     universe.resize(input_num_vertex, 0);
-    covered.resize(input_num_vertex, 0);
     dbs_covered.reset(); // set dbs_covered all 0;
     dbs_uncovered.set(); // set dbs_uncovered all 1;
 
@@ -97,13 +96,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     solution[4] = 77;
      */
 
-    for(int i=0;i<num_center;i++)
-    {
-        for(int j=0;j<covered.size();j++)
-        {
-            covered[j] += center_coverages[solution[i]][j];
-        }
-    }
 }
 
 PCP_Vector::~PCP_Vector()
