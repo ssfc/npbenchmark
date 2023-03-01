@@ -157,10 +157,11 @@ void PCP_Vector::greedy_construct()
                 dynamic_bitset<> intersection = solution & Cv;
                 if (intersection.count() == 1)
                 {
-                    print_index1("solution", solution);
-                    print_index1("Cv", Cv);
+                    // print_index1("solution", solution);
+                    // print_index1("Cv", Cv);
                     unsigned long long intersect_center = intersection.find_first();
-                    cerr << "find intersect one: " << intersect_center << endl;
+                    // cerr << "find intersect one: " << intersect_center << endl;
+                    
                 }
 
             }
