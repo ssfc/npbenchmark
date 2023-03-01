@@ -361,8 +361,16 @@ void PCP_Vector::vertex_weight_tabu_search()
         // print_tabu_tenure_table();
 
         double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-        cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-             << " frequency:" << double (iter) / elapsed_time << endl;
+        if(uncovered.count()==0)
+        {
+            cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+                 << " frequency:" << double (iter) / elapsed_time << endl;
+        }
+        else
+        {
+            cerr << "not found, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+                 << " frequency:" << double (iter) / elapsed_time << endl;
+        }
     }
 }
 
