@@ -172,8 +172,8 @@ void PCP_Vector::greedy_construct()
                 // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
                 else if(intersection.count() == 0)
                 {
-                    print_index1("solution", solution);
-                    print_index1("Cv", Cv);
+                    // print_index1("solution", solution);
+                    // print_index1("Cv", Cv);
                 }
 
             }
