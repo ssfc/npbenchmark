@@ -3,6 +3,7 @@
 //
 # include "pcp_vector.h"
 
+using namespace boost;
 using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
@@ -31,8 +32,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
         }
     }
 
-    center_cover_vertex.resize(input_num_vertex, boost::dynamic_bitset<>(input_num_vertex));
-    vertex_reach_center.resize(input_num_vertex, boost::dynamic_bitset<>(input_num_vertex));
+    center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
+    vertex_reach_center.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
     for(int i=0;i<input_coverages.size();i++) // i is center name;
     {
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
@@ -106,7 +107,7 @@ void PCP_Vector::greedy_construct()
             // cerr << "uncovered" << uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
-                boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
+                dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
                 unsigned long long this_intersection_size = this_intersection.count();
 
                 if(this_intersection_size > max_overlap_size)
@@ -170,7 +171,7 @@ void PCP_Vector::find_pair()
     // v <- a randomly picked uncovered vertex in U(X);
     print_index1("uncovered: ", uncovered);
     vector<size_t> uncovered_vertices;
-    for (size_t i = uncovered.find_first(); i != boost::dynamic_bitset<>::npos; i = uncovered.find_next(i))
+    for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
         uncovered_vertices.push_back(i);
     }
@@ -195,9 +196,9 @@ void PCP_Vector::find_pair()
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
-    boost::dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
+    dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
     cerr << "Cv list: " << endl;
-    for (size_t i = Cv.find_first(); i != boost::dynamic_bitset<>::npos; i = Cv.find_next(i))
+    for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
         cerr << i << endl; // i is center name;
         try_open_center(i);
@@ -212,9 +213,9 @@ void PCP_Vector::try_open_center(unsigned int center)
     // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
     // V(i): the set of vertex that center i can serve;
     // print_index1("Vi", center_cover_vertex[center]);
-    boost::dynamic_bitset<> Vi = center_cover_vertex[center];
+    dynamic_bitset<> Vi = center_cover_vertex[center];
     cerr << "Vi" << ": ";
-    for (size_t v = Vi.find_first(); v != boost::dynamic_bitset<>::npos; v = Vi.find_next(v))
+    for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
         // cerr << v << " ";
         // LINE 3:
@@ -223,8 +224,8 @@ void PCP_Vector::try_open_center(unsigned int center)
         // v: vertex
         // Cv: 覆盖顶点v的中心集合;
         // |X 交 Cv|: number of centers covering v in X;
-        boost::dynamic_bitset<> Cv = vertex_reach_center[v];
-        boost::dynamic_bitset<> intersection = solution & Cv;
+        dynamic_bitset<> Cv = vertex_reach_center[v];
+        dynamic_bitset<> intersection = solution & Cv;
         if (intersection.count() == 1)
         {
             cerr << "find one: ";
@@ -292,7 +293,7 @@ void PCP_Vector::vertex_weight_tabu_search()
 void PCP_Vector::get_solution(vector<NodeId>& output)
 {
     int count = 0;
-    for (size_t i = solution.find_first(); i != boost::dynamic_bitset<>::npos; i = solution.find_next(i))
+    for (size_t i = solution.find_first(); i != dynamic_bitset<>::npos; i = solution.find_next(i))
     {
         output[count] = i;
         count++;
@@ -300,10 +301,10 @@ void PCP_Vector::get_solution(vector<NodeId>& output)
 }
 
 // debug function:
-void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>& dbs)
+void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
 {
     cerr << name << ": ";
-    for (size_t i = dbs.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs.find_next(i))
+    for (size_t i = dbs.find_first(); i != dynamic_bitset<>::npos; i = dbs.find_next(i))
     {
         cerr << i << " ";
     }
