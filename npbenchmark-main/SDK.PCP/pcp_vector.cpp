@@ -262,7 +262,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 }
 
 
-void PCP_Vector::local_search()
+void PCP_Vector::vertex_weight_tabu_search()
 {
     // LINE 1:
     // X <- init(G, p, rq);

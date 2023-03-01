@@ -82,7 +82,7 @@ public: // member functions.
     void greedy_construct();
     void try_open_center(unsigned int center);
     void find_pair();
-    void local_search();
+    void vertex_weight_tabu_search();
     void get_solution(std::vector<NodeId>& output);
 
     // debug functions;
