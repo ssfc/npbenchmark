@@ -286,7 +286,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     }
 }
 
-// get solution;
+// output solution;
 void PCP_Vector::get_solution(vector<NodeId>& output)
 {
     int count = 0;
@@ -297,6 +297,7 @@ void PCP_Vector::get_solution(vector<NodeId>& output)
     }
 }
 
+// debug function:
 void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>& dbs)
 {
     cerr << name << ": ";
