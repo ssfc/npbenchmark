@@ -8,11 +8,11 @@ using namespace std;
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
-                       :dbs_solution(input_num_vertex)
+                       :solution(input_num_vertex)
                        ,best_solution(input_num_vertex)
                        ,prev_solution(input_num_vertex)
-                       ,dbs_covered(input_num_vertex)
-                       ,dbs_uncovered(input_num_vertex)
+                       ,covered(input_num_vertex)
+                       ,uncovered(input_num_vertex)
                        ,moved{-1, -1}
 {
     init_rand(input_seed); // initialize random generator;
@@ -58,14 +58,14 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
         }
     }
 
-    dbs_solution.reset(); // initialize solution all 0;
+    solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
-    dbs_covered.reset(); // set dbs_covered all 0;
-    dbs_uncovered.set(); // set dbs_uncovered all 1;
+    covered.reset(); // set dbs_covered all 0;
+    uncovered.set(); // set dbs_uncovered all 1;
 
     tabu_tenure_table.resize(num_vertex, 0);
     // LINE 2:
@@ -107,7 +107,7 @@ void PCP_Vector::greedy_construct()
 
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
-        while(dbs_solution.count()<num_center && dbs_covered.count()!=num_vertex) // do one iteration;
+        while(solution.count()<num_center && covered.count()!=num_vertex) // do one iteration;
         {
             // cerr << "iteration: " << iter << endl;
 
@@ -117,7 +117,7 @@ void PCP_Vector::greedy_construct()
             // cerr << "dbs_uncovered" << dbs_uncovered << endl;
             for(int j=0;j<num_vertex;j++) // consider only one set;
             {
-                boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & dbs_uncovered;
+                boost::dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
                 unsigned long long this_intersection_size = this_intersection.count();
 
                 if(this_intersection_size > dbs_max_overlap_size)
@@ -139,20 +139,20 @@ void PCP_Vector::greedy_construct()
             // cerr << "dbs random select: " << dbs_rand_select << endl;
             // cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
-            dbs_solution.set(equal_delta_in_construct[dbs_rand_select]);
+            solution.set(equal_delta_in_construct[dbs_rand_select]);
 
-            dbs_covered = dbs_covered | center_cover_vertex[equal_delta_in_construct[dbs_rand_select]];
+            covered = covered | center_cover_vertex[equal_delta_in_construct[dbs_rand_select]];
             // cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
             // print_index1("", dbs_covered);
 
-            dbs_uncovered = ~dbs_covered;
+            uncovered = ~covered;
 
             // print_index1("DBS Uncover after union are: ", dbs_uncovered);
 
             iter++;
         }
 
-        print_index1("DBS Center selected are: ", dbs_solution);
+        print_index1("DBS Center selected are: ", solution);
     }
 
     // LINE 2:
@@ -177,9 +177,9 @@ void PCP_Vector::find_pair()
 
     // LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
-    print_index1("uncovered: ", dbs_uncovered);
+    print_index1("uncovered: ", uncovered);
     vector<size_t> uncovered_vertices;
-    for (size_t i = dbs_uncovered.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs_uncovered.find_next(i))
+    for (size_t i = uncovered.find_first(); i != boost::dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
         uncovered_vertices.push_back(i);
     }
@@ -233,11 +233,11 @@ void PCP_Vector::try_open_center(unsigned int center)
         // Cv: 覆盖顶点v的中心集合;
         // |X 交 Cv|: number of centers covering v in X;
         boost::dynamic_bitset<> Cv = vertex_reach_center[v];
-        boost::dynamic_bitset<> intersection = dbs_solution & Cv;
+        boost::dynamic_bitset<> intersection = solution & Cv;
         if (intersection.count() == 1)
         {
             cerr << "find one: ";
-            print_index1("dbs solution", dbs_solution);
+            print_index1("dbs solution", solution);
             print_index1("Cv", Cv);
         }
     }
@@ -264,17 +264,17 @@ void PCP_Vector::vertex_weight_tabu_search()
         // X* <- X
         // X*: history best solution;
         // X: initial solution generated (a set of centers);
-        best_solution = dbs_solution;
+        best_solution = solution;
         print_index1("best_solution", best_solution);
 
         // X_prev <- X;
         // X_prev: solution of the previous iteration;
         // X: initial solution generated;
-        prev_solution = dbs_solution;
+        prev_solution = solution;
         print_index1("prev_solution", prev_solution);
 
 
-        while(dbs_uncovered.count()!=0 && iter<1)
+        while(uncovered.count()!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
             find_pair();
@@ -301,7 +301,7 @@ void PCP_Vector::vertex_weight_tabu_search()
 void PCP_Vector::get_solution(vector<NodeId>& output)
 {
     int count = 0;
-    for (size_t i = dbs_solution.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs_solution.find_next(i))
+    for (size_t i = solution.find_first(); i != boost::dynamic_bitset<>::npos; i = solution.find_next(i))
     {
         output[count] = i;
         count++;
@@ -326,9 +326,9 @@ void PCP_Vector::random_construct()
     while (num_selected < num_center)
     {
         size_t random_index = generated_random() % num_vertex;
-        if (!dbs_solution[random_index])
+        if (!solution[random_index])
         {
-            dbs_solution.set(random_index);
+            solution.set(random_index);
             num_selected++;
         }
     }

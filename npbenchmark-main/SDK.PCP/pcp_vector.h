@@ -37,13 +37,13 @@ private: // member variables.
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
     std::vector<std::vector<int>> nodes_with_drops;
 
-    boost::dynamic_bitset<> dbs_solution; // centers selected;
+    boost::dynamic_bitset<> solution; // centers selected;
     boost::dynamic_bitset<> best_solution; // best solution in the history;
     boost::dynamic_bitset<> prev_solution; // previous solution;
     std::vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
-    boost::dynamic_bitset<> dbs_covered;
-    boost::dynamic_bitset<> dbs_uncovered;
+    boost::dynamic_bitset<> covered;
+    boost::dynamic_bitset<> uncovered;
 
     Move moved;
     std::vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
