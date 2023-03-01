@@ -45,7 +45,6 @@ private: // member variables.
     boost::dynamic_bitset<> prev_solution; // previous solution;
     std::vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
-    std::vector<int> universe; // all points;
     boost::dynamic_bitset<> dbs_covered;
     boost::dynamic_bitset<> dbs_uncovered;
 
