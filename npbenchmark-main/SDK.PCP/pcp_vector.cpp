@@ -129,15 +129,16 @@ void PCP_Vector::greedy_construct()
             // cerr << "random select: " << rand_select << endl;
             // cerr << "random select index: " << equal_delta_in_construct[rand_select] << endl;
 
+            // Open selected center;
             solution.set(selected_center);
-
             covered = covered | center_cover_vertex[selected_center];
             // cerr << "Cover after union size (" << covered.count() << "): " << endl;
             // print_index1("", covered);
-
             uncovered = ~covered;
+            // print_index1("Uncover after union are: ", uncovered);
 
-            // print_index1("DBS Uncover after union are: ", uncovered);
+            // consequences of opening selected center;
+
 
             iter++;
         }
