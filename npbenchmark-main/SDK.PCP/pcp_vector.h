@@ -84,7 +84,6 @@ public: // member functions.
     void swap_center();
     void find_move();
     void find_pair();
-    void make_move();
     void local_search();
     void get_solution(std::vector<NodeId>& output);
 

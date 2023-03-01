@@ -347,23 +347,6 @@ void PCP_Vector::try_open_center(unsigned int center)
     cerr << endl;
 }
 
-void PCP_Vector::make_move()
-{
-    for(int i=0;i<num_center;i++)
-    {
-        if(solution[i] == moved.center_out)
-        {
-            solution[i] = moved.center_in;
-        }
-    }
-    swap_center();
-    conflict = min_delta + conflict;
-    if (conflict < best_conflict)
-        best_conflict = conflict; // update minimum conflict of history;
-
-    tabu_tenure_table[moved.center_out] = iter + 1; //更新禁忌表
-    tabu_tenure_table[moved.center_in] = iter + 1; //更新禁忌表
-}
 
 void PCP_Vector::local_search()
 {
@@ -402,7 +385,6 @@ void PCP_Vector::local_search()
             cerr << "iteration: " << iter << endl;
             find_move();
             find_pair();
-            make_move();
 
             ///* debug: tabu tenure;
             cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
