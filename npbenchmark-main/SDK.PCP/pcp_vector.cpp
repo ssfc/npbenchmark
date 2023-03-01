@@ -286,6 +286,7 @@ void PCP_Vector::find_pair()
     {
         uncovered_vertices.push_back(i);
     }
+
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
@@ -396,7 +397,7 @@ void PCP_Vector::local_search()
         best_conflict = conflict;
         cerr << "number of uncovered in the initial solution: " << conflict << endl;
 
-        while(conflict!=0 && iter<1)
+        while(dbs_uncovered.count()!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
             find_move();
