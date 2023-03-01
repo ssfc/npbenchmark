@@ -13,7 +13,7 @@
 # include <vector>
 # include <boost/dynamic_bitset.hpp>
 
-
+using NodeId = int;
 
 struct Move {
     int center_in;
@@ -86,7 +86,7 @@ public: // member functions.
     void find_pair();
     void make_move();
     void local_search();
-    unsigned int get_solution(int i);
+    void get_solution(std::vector<NodeId>& output);
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }

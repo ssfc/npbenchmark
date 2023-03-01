@@ -44,11 +44,15 @@ public:
         ///*
         PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test.local_search();
+        test.get_solution(output);
 
-        for (int i = 0;i < input.centerNum;i++)
+        cerr << "Evaluate output: ";
+        for(int i=0;i<input.centerNum;i++)
         {
-            output[i] = test.get_solution(i);
+            cerr << output[i] << " ";
         }
+        cerr << endl;
+
          //*/
 	}
 

@@ -423,9 +423,14 @@ void PCP_Vector::local_search()
 }
 
 // get solution;
-unsigned int PCP_Vector::get_solution(int i)
+void PCP_Vector::get_solution(vector<NodeId>& output)
 {
-    return solution[i];
+    int count = 0;
+    for (size_t i = dbs_solution.find_first(); i != boost::dynamic_bitset<>::npos; i = dbs_solution.find_next(i))
+    {
+        output[count] = i;
+        count++;
+    }
 }
 
 void PCP_Vector::print_index1(const string& name, const boost::dynamic_bitset<>& dbs)
