@@ -165,6 +165,15 @@ void PCP_Vector::greedy_construct()
                     center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
                     print_vector("center weights after", center_weights);
                 }
+                // LINE 5:
+                // else if |X 交 Cv| = 0 then
+                // X: current center set;
+                // Cv: center set covering vertex v;
+                // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
+                else if(intersection.count() == 0)
+                {
+
+                }
 
             }
             cerr << endl;
@@ -180,6 +189,8 @@ void PCP_Vector::greedy_construct()
             // print_index1("Covered", covered);
             uncovered = ~covered;
             // print_index1("Uncovered", uncovered);
+
+
 
             iter++;
         }
