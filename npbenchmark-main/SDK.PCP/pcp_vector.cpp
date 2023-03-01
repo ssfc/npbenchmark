@@ -124,13 +124,13 @@ void PCP_Vector::greedy_construct()
             }
 
             // cerr << "equal count in construct: " << equal_count_in_construct << endl;
-            unsigned int dbs_rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
+            unsigned int rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
             // cerr << "dbs random select: " << dbs_rand_select << endl;
             // cerr << "dbs random select index: " << equal_delta_in_construct[dbs_rand_select] << endl;
 
-            solution.set(equal_delta_in_construct[dbs_rand_select]);
+            solution.set(equal_delta_in_construct[rand_select]);
 
-            covered = covered | center_cover_vertex[equal_delta_in_construct[dbs_rand_select]];
+            covered = covered | center_cover_vertex[equal_delta_in_construct[rand_select]];
             // cerr << "DBS Cover after union size (" << dbs_covered.count() << "): " << endl;
             // print_index1("", dbs_covered);
 
