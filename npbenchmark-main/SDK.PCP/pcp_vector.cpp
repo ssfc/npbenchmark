@@ -66,7 +66,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     prev_solution.reset(); // initialize prev solution all 0;
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
-    conflict = 0;
 
     universe.resize(input_num_vertex, 0);
     covered.resize(input_num_vertex, 0);
@@ -289,8 +288,6 @@ void PCP_Vector::vertex_weight_tabu_search()
         prev_solution = dbs_solution;
         print_index1("prev_solution", prev_solution);
 
-        conflict = count(covered.begin(), covered.end(), 0);
-        cerr << "number of uncovered in the initial solution: " << conflict << endl;
 
         while(dbs_uncovered.count()!=0 && iter<1)
         {
