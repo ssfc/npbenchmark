@@ -251,12 +251,12 @@ void PCP_Vector::find_pair()
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     // print_equal_pair();
 
-    // LINE 3:
+    // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     int obj = INT_MAX;
 
-    // LINE 4:
+    // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
     print_index1("uncovered", uncovered);
     vector<size_t> uncovered_vertices;
@@ -279,7 +279,7 @@ void PCP_Vector::find_pair()
     // Meaning: backup before trial moves;
     prev_center_weights = center_weights;
 
-    // LINE 6:
+    // A2 LINE 6:
     // for all i属于Cv do /* Cv: candidates covering v */
     // i: Cv中的中心序号;
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
