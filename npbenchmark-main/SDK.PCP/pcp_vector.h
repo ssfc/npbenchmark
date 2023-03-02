@@ -5,13 +5,14 @@
 #ifndef SDK_PCP_PCP_VECTOR_H
 #define SDK_PCP_PCP_VECTOR_H
 
-# include <algorithm>
-# include <climits>
-# include <iostream>
-# include <random>
-# include <string>
-# include <vector>
-# include <boost/dynamic_bitset.hpp>
+#include <algorithm>
+#include <climits>
+#include <iostream>
+#include <numeric>
+#include <random>
+#include <string>
+#include <vector>
+#include <boost/dynamic_bitset.hpp>
 
 using NodeId = int;
 
