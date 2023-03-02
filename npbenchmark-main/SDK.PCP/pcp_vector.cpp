@@ -269,6 +269,7 @@ void PCP_Vector::find_pair()
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
+    // Compute f(X), which will be used in obj computation;
     unsigned int f_X = 0;
     // cerr << "u: ";
     for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
