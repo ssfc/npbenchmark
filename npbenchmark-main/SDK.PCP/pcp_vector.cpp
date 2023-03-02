@@ -278,7 +278,7 @@ void PCP_Vector::find_pair()
         // cerr << u;
         f_X = f_X + vertex_weights[u];
     }
-    cerr << "f(X): " << f_X << endl;
+    // cerr << "f(X): " << f_X << endl;
 
     // A2 LINE 5:
     // for j属于C do
@@ -389,7 +389,7 @@ void PCP_Vector::find_pair()
             // end for
         }
         // cerr << endl;
-        
+
         // A2 LINE 18:
         // for j属于C do
         //    delta_j <- delta_j_previous,
