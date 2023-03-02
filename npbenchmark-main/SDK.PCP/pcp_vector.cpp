@@ -380,7 +380,13 @@ void PCP_Vector::find_pair()
                     // A5 LINE 15:
                     // end if
                 }
+
+                // A2 LINE 16:
+                // end if
             }
+
+            // A2 LINE 17:
+            // end for
         }
         cerr << endl;
 
@@ -397,6 +403,9 @@ void PCP_Vector::find_pair()
         //    delta_j <- delta_j_previous,
         // Meaning: restore after trial moves;
         center_weights = prev_center_weights;
+
+        // A2 LINE 19:
+        // end for
     }
 
     //
