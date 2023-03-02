@@ -301,7 +301,13 @@ void PCP_Vector::find_pair()
         // j: 中心序号;
         // Comment: 打算swap_out的中心序号;
         // X: 当前解;
-
+        // print_index1("X", solution);
+        cerr << "X: ";
+        for (size_t j = solution.find_first(); j != dynamic_bitset<>::npos; j = solution.find_next(j))
+        {
+            cerr << j << " ";
+        }
+        cerr << endl;
 
         // A2 LINE 18:
         // for j属于C do
