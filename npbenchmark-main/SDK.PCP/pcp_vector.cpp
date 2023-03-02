@@ -306,6 +306,16 @@ void PCP_Vector::find_pair()
         for (size_t j = solution.find_first(); j != dynamic_bitset<>::npos; j = solution.find_next(j))
         {
             cerr << j << " ";
+            // A2 LINE 9:
+            // if {i, j}交TL = NULL then
+            // i: center swap in;
+            // j: center swap out;
+            // TL: tabu list;
+            // Meaning: not tabu move;
+            if(tabu_tenure_table[i] <= iter && tabu_tenure_table[j] <= iter)
+            {
+
+            }
         }
         cerr << endl;
 
@@ -315,6 +325,7 @@ void PCP_Vector::find_pair()
         // j: center swap out;
         // TL: tabu list;
         // Meaning: not tabu move;
+
 
         // A2 LINE 18:
         // for j属于C do
