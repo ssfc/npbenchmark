@@ -532,6 +532,16 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: cancel reward for adding center l;
             // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
+            dynamic_bitset<> Cv_i = Cv; // cv_i means Cv-{i}
+            Cv_i.reset(i); // implement Cv-{i}
+            // print_index1("Cv-{i}", Cv_i);
+            // cerr << "Cv-{i}: ";
+            for (size_t l = Cv_i.find_first(); l != dynamic_bitset<>::npos; l = Cv_i.find_next(l))
+            {
+                cerr << l << " ";
+                center_weights[l] = center_weights[l] - vertex_weights[v];
+            }
+            // cerr << endl;
 
         }
 
