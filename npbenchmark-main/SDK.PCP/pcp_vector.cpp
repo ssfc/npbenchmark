@@ -300,6 +300,10 @@ void PCP_Vector::find_pair()
     }
 }
 
+// Algorithm 3: Open a center virtually
+// A3 LINE 1:
+// function TRY_TO_OPEN_CENTER(i)
+// i: center swap in;
 void PCP_Vector::try_open_center(unsigned int center)
 {
     // LINE 2:
