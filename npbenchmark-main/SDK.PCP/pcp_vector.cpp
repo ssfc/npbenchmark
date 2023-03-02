@@ -231,16 +231,16 @@ void PCP_Vector::greedy_construct()
         print_index1("Center selected", solution);
     }
 
-    // LINE 2:
+    // A1 LINE 2:
     // iter <- 1;
     // iter: current iteration;
     iter = 0;
 }
 
-
+// Algorithm 2
 void PCP_Vector::find_pair()
 {
-    // LINE 2:
+    // A2 LINE 2:
     // The set of best swap moves M <- NULL;
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
@@ -343,6 +343,13 @@ void PCP_Vector::try_open_center(unsigned int center)
 }
 
 // Algorithm 1
+// A1 LINE 1: /* (Section 3.1) */
+// X <- init(G, p, rq);
+// X: initial solution generated;
+// G: graph;
+// p: centers;
+// rq: 最小化的最大服务半径;
+// Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
 void PCP_Vector::vertex_weight_tabu_search()
 {
     // A1 LINE 1:
