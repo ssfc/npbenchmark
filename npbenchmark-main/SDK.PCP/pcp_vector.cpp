@@ -342,6 +342,7 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     obj = f_X_i_j;
+                    // cerr << "obj: " << obj << endl;
                 }
             }
         }
