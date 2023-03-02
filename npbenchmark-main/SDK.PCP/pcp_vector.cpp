@@ -470,7 +470,18 @@ void PCP_Vector::try_open_center(unsigned int center)
     // end function;
 }
 
-// Algorithm 1
+// Algorithm 4 Make a swap move
+// Comment: 注意到make_move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
+// LINE 1:
+// function make_move(i, j)
+// i: center swapped in;
+// j: center swapped out;
+void PCP_Vector::make_move()
+{
+
+}
+
+// Algorithm 1 The main framework of the VWTS algorithm
 // A1 LINE 1: /* (Section 3.1) */
 // X <- init(G, p, rq);
 // X: initial solution generated;
