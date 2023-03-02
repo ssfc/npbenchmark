@@ -476,7 +476,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 // function make_move(i, j)
 // i: center swapped in;
 // j: center swapped out;
-void PCP_Vector::make_move()
+void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
 
 }

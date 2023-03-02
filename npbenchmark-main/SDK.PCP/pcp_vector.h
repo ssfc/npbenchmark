@@ -73,7 +73,7 @@ public: // member functions.
     void greedy_construct();
     void try_open_center(unsigned int center);
     void find_pair();
-    void make_move();
+    void make_move(unsigned long long i, unsigned long long j);
     void vertex_weight_tabu_search();
     void get_solution(std::vector<NodeId>& output);
 
