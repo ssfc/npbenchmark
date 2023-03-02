@@ -17,8 +17,8 @@
 using NodeId = int;
 
 struct Move {
-    int center_in;
-    int center_out;
+    unsigned long long center_in;
+    unsigned long long center_out;
 };
 
 
@@ -56,7 +56,7 @@ private: // member variables.
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
     std::vector<unsigned int> prev_center_weights;
     std::vector<Move> equal_pair;
-    long long int iter;
+    long long iter;
 
     // debug variables:
     std::mt19937 generated_random;

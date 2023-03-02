@@ -14,7 +14,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        ,prev_solution(input_num_vertex)
                        ,covered(input_num_vertex)
                        ,uncovered(input_num_vertex)
-                       ,moved{-1, -1}
+                       ,moved{0, 0}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -254,6 +254,7 @@ void PCP_Vector::find_pair()
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     unsigned int obj = INT_MAX;
+    int equal_count = 0;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
@@ -349,6 +350,10 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: change best move to (i, j);
+                    equal_count = 0;
+                    equal_pair[equal_count].center_in = i;
+                    equal_pair[equal_count].center_out = j;
+                    equal_count++;
                 }
             }
         }
