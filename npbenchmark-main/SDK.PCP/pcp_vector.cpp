@@ -376,6 +376,9 @@ void PCP_Vector::find_pair()
                     equal_pair[equal_pair_count].center_in = i;
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
+
+                    // A5 LINE 15:
+                    // end if
                 }
             }
         }
