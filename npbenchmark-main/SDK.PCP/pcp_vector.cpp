@@ -254,7 +254,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    int obj = INT_MAX;
+    unsigned int obj = INT_MAX;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
@@ -331,7 +331,18 @@ void PCP_Vector::find_pair()
                 // j: center swap out;
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
-
+                unsigned int f_X_i_j = f_X - center_weights[i] + center_weights[j];
+                if(f_X_i_j < obj)
+                {
+                    // LINE 11:
+                    // obj <- f(X直和Swap(i, j))
+                    // obj: num of vertices that has not been covered;
+                    // f(): objective function;
+                    // X: current center set;
+                    // i: center swap in;
+                    // j: center swap out;
+                    obj = f_X_i_j;
+                }
             }
         }
         cerr << endl;
