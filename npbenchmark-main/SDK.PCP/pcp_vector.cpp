@@ -377,6 +377,9 @@ void PCP_Vector::find_pair()
         // Meaning: restore after trial moves;
         center_weights = prev_center_weights;
     }
+
+    // 
+    print_equal_pair();
 }
 
 // Algorithm 3: Open a center virtually
