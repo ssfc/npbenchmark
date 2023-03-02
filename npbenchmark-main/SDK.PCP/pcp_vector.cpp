@@ -367,7 +367,15 @@ void PCP_Vector::find_pair()
                 // j: center swap out;
                 else if(f_X_i_j == obj)
                 {
-
+                    // LINE 14:
+                    // M <- M U (i, j)
+                    // M: the set of best swap moves;
+                    // i: center swap in;
+                    // j: center swap out;
+                    // Meaning: equal move list;
+                    equal_pair[equal_pair_count].center_in = i;
+                    equal_pair[equal_pair_count].center_out = j;
+                    equal_pair_count++;
                 }
             }
         }
