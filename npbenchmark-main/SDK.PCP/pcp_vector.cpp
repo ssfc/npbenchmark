@@ -334,7 +334,7 @@ void PCP_Vector::find_pair()
                 unsigned int f_X_i_j = f_X - center_weights[i] + center_weights[j];
                 if(f_X_i_j < obj)
                 {
-                    // LINE 11:
+                    // A2 LINE 11:
                     // obj <- f(X直和Swap(i, j))
                     // obj: num of vertices that has not been covered;
                     // f(): objective function;
@@ -343,6 +343,13 @@ void PCP_Vector::find_pair()
                     // j: center swap out;
                     obj = f_X_i_j;
                     // cerr << "obj: " << obj << endl;
+
+                    // LINE 12:
+                    // M <- {Swap(i, j)}
+                    // M: the set of best swap moves;
+                    // i: center swap in;
+                    // j: center swap out;
+                    // Meaning: change best move to (i, j);
                 }
             }
         }
