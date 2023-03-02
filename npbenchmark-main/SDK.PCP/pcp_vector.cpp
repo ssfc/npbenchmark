@@ -469,6 +469,10 @@ void PCP_Vector::vertex_weight_tabu_search()
         prev_solution = solution;
         print_index1("prev_solution", prev_solution);
 
+        // Evaluate A2 LINE 11:
+        // 测试f(X+{i}-{j})的计算是否准确
+        // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[66] | center_cover_vertex[31]| center_cover_vertex[59]| center_cover_vertex[77];
+        // cerr << "uncovered number: " << num_vertex - union_result.count() << endl;
 
         while(uncovered.count()!=0 && iter<1)
         {
