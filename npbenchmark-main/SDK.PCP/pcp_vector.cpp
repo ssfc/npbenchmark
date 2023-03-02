@@ -62,16 +62,18 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     solution.reset(); // initialize solution all 0;
     best_solution.reset(); // initialize best solution all 0;
     prev_solution.reset(); // initialize prev solution all 0;
+    // A1 LINE 3
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
     covered.reset(); // set covered all 0;
     uncovered.set(); // set uncovered all 1;
 
-    tabu_tenure_table.resize(num_vertex, 0);
-    // LINE 2:
+    // A1 LINE 2:
     // tabu list TL <- NULL;
     // TL: tabu list;
+    tabu_tenure_table.resize(num_vertex, 0);
+
     center_weights.resize(num_vertex, 0);
     prev_center_weights.resize(num_vertex, 0);
     equal_delta.resize(2000, {0, 0});
@@ -196,6 +198,9 @@ void PCP_Vector::greedy_construct()
                     // Refer to A4 LINE 7:
                     // end if
                 }
+
+                // Refer to A4 LINE 8:
+                // end for
             }
             // cerr << endl;
 
@@ -207,8 +212,8 @@ void PCP_Vector::greedy_construct()
             // dynamic_bitset<> test_0_59_12 = center_cover_vertex[0] & (center_cover_vertex[59] | center_cover_vertex[12]);
             // cerr << "0 intersect (59 U 12): " << test_0_59_12.count() << endl;
 
-            // LINE 9:
-            // X <- X U {i} - {j}
+            // Refer to A4 LINE 9:
+            // X <- X U {i}
             // X: current center set;
             // i: center swapped in;
             // Meaning: Open selected center;
@@ -218,8 +223,6 @@ void PCP_Vector::greedy_construct()
             // print_index1("Covered", covered);
             uncovered = ~covered;
             // print_index1("Uncovered", uncovered);
-
-
 
             iter++;
         }
@@ -339,10 +342,10 @@ void PCP_Vector::try_open_center(unsigned int center)
     // cerr << endl;
 }
 
-
+// Algorithm 1
 void PCP_Vector::vertex_weight_tabu_search()
 {
-    // LINE 1:
+    // A1 LINE 1:
     // X <- init(G, p, rq);
     // X: initial solution generated;
     // G: graph;
@@ -355,7 +358,7 @@ void PCP_Vector::vertex_weight_tabu_search()
 
     if(nodes_with_drops.empty())
     {
-        // LINE 2:
+        // A1 LINE 2:
         // X* <- X
         // X*: history best solution;
         // X: initial solution generated (a set of centers);
