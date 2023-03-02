@@ -553,6 +553,17 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // end for
     }
     // cerr << endl;
+
+    // A4 LINE 9:
+    // X <- X U {i} - {j}
+    // X: current center set;
+    // i: center swapped in;
+    // j: center swapped out;
+    // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
+    print_index1("solution before A4 LINE 9", solution);
+    solution.set(i);
+    solution.reset(j);
+    print_index1("solution after A4 LINE 9", solution);
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
