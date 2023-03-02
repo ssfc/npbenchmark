@@ -77,6 +77,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     center_weights.resize(num_vertex, 0);
     prev_center_weights.resize(num_vertex, 0);
     equal_pair.resize(2000, {0, 0});
+    equal_pair_count = 0;
     iter = 0;
 
     // debug variables;
@@ -254,7 +255,7 @@ void PCP_Vector::find_pair()
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     unsigned int obj = INT_MAX;
-    int equal_pair_count = 0;
+
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);

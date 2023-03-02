@@ -56,6 +56,7 @@ private: // member variables.
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
     std::vector<unsigned int> prev_center_weights;
     std::vector<Move> equal_pair;
+    int equal_pair_count = 0;
     long long iter;
 
     // debug variables:
