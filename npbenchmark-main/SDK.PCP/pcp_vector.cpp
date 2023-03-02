@@ -408,8 +408,15 @@ void PCP_Vector::find_pair()
         // end for
     }
 
-    //
+    // Evaluate A2 LINE 12 & LINE 14
     print_equal_pair();
+
+    // LINE 20:
+    // return a randomly picked move in M
+    // M: the set of best swap moves;
+    unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
+    // cerr << "random select tabu: " << rand_select << endl;
+    moved = equal_pair[rand_equal_index];
 }
 
 // Algorithm 3: Open a center virtually
