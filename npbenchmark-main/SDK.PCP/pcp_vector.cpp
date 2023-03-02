@@ -314,6 +314,13 @@ void PCP_Vector::find_pair()
             // Meaning: not tabu move;
             if(tabu_tenure_table[i] <= iter && tabu_tenure_table[j] <= iter)
             {
+                // A2 LINE 10:
+                // if f(X直和Swap(i, j)) < obj then
+                // X: current solution;
+                // i: center swap in;
+                // j: center swap out;
+                // obj: num of vertices that has not been covered;
+                // Meaning: this move is better than history best;
 
             }
         }
