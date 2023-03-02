@@ -576,10 +576,10 @@ void PCP_Vector::print_vector(const string& name, vector<unsigned int> &vect)
 void PCP_Vector::print_equal_pair()
 {
     cerr << "Equal pair: ";
-    for(Move i : equal_pair)
+    for(int i=0;i<equal_pair_count;i++)
     {
-        cerr << "{" << i.center_in << ", ";
-        cerr << i.center_out << "}";
+        cerr << "{" << equal_pair[i].center_in << ", ";
+        cerr << equal_pair[i].center_out << "}";
     }
     cerr << endl;
 }
