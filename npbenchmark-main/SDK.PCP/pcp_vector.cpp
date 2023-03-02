@@ -306,7 +306,7 @@ void PCP_Vector::find_pair()
 // i: center swap in;
 void PCP_Vector::try_open_center(unsigned int center)
 {
-    // LINE 2:
+    // A3 LINE 2:
     // for all v属于Vi do:
     // v: 顶点名称;
     // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
@@ -317,7 +317,7 @@ void PCP_Vector::try_open_center(unsigned int center)
     for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
         // cerr << v << " ";
-        // LINE 3:
+        // A3 LINE 3:
         // if |X 交 Cv| = 1 then
         // X: current center set;
         // v: vertex
@@ -347,6 +347,8 @@ void PCP_Vector::try_open_center(unsigned int center)
             // A3 LINE 6:
             // end if
         }
+        // A3 LINE 7:
+        // end for
     }
     // cerr << endl;
 }
