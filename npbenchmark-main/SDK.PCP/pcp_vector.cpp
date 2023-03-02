@@ -478,7 +478,17 @@ void PCP_Vector::try_open_center(unsigned int center)
 // j: center swapped out;
 void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
-
+    // A4 LINE 2:
+    // for all v属于Vi do
+    // V(i): the **set** of vertex that center i can serve;
+    // Meaning: consequences of opening i
+    dynamic_bitset<> Vi = center_cover_vertex[i];
+    cerr << "Vi" << ": ";
+    for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+    {
+        cerr << v << " ";
+    }
+    cerr << endl;
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -526,6 +536,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         {
             cerr << "iteration: " << iter << endl;
             find_pair();
+            make_move(moved.center_in, moved.center_out);
 
             ///* debug: tabu tenure;
             cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
