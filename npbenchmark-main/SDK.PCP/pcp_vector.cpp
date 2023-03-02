@@ -333,9 +333,9 @@ void PCP_Vector::find_pair()
                 // j: center swap out;
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
-                cerr << endl << "i " << i << " j " << j;
+                // cerr << endl << "i " << i << " j " << j;
                 unsigned int f_X_i_j = f_X - center_weights[i] + center_weights[j];
-                cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
+                // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(f_X_i_j < obj)
                 {
                     // A2 LINE 11:
