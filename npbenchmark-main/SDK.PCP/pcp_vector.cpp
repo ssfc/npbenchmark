@@ -254,7 +254,7 @@ void PCP_Vector::find_pair()
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     unsigned int obj = INT_MAX;
-    int equal_count = 0;
+    int equal_pair_count = 0;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
@@ -353,10 +353,10 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: change best move to (i, j);
-                    equal_count = 0;
-                    equal_pair[equal_count].center_in = i;
-                    equal_pair[equal_count].center_out = j;
-                    equal_count++;
+                    equal_pair_count = 0;
+                    equal_pair[equal_pair_count].center_in = i;
+                    equal_pair[equal_pair_count].center_out = j;
+                    equal_pair_count++;
                 }
             }
         }
