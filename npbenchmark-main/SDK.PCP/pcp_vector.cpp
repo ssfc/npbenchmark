@@ -351,6 +351,8 @@ void PCP_Vector::try_open_center(unsigned int center)
         // end for
     }
     // cerr << endl;
+    // A3 LINE 8:
+    // end function;
 }
 
 // Algorithm 1
