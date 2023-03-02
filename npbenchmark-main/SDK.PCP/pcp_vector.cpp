@@ -359,6 +359,16 @@ void PCP_Vector::find_pair()
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
                 }
+                // LINE 13:
+                // else if f(X直和Swap(i, j)) == obj then
+                // f(): objective function; weight sum of uncovered vertices;
+                // X: current center set;
+                // i: center swap in;
+                // j: center swap out;
+                else if(f_X_i_j == obj)
+                {
+
+                }
             }
         }
         cerr << endl;
@@ -378,7 +388,7 @@ void PCP_Vector::find_pair()
         center_weights = prev_center_weights;
     }
 
-    // 
+    //
     print_equal_pair();
 }
 
