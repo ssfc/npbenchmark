@@ -311,12 +311,12 @@ void PCP_Vector::try_open_center(unsigned int center)
         dynamic_bitset<> intersection = solution & Cv;
         if (intersection.count() == 1)
         {
-            // A3 L5
+            // A3 L4 & L5
             // cerr << "find one: ";
-            // print_index1("solution", solution);
-            // print_index1("Cv", Cv);
+            print_index1("solution", solution);
+            print_index1("Cv", Cv);
             unsigned long long intersect_center = intersection.find_first();
-            // cerr << "find intersect one: " << intersect_center << endl;
+            cerr << "find intersect one: " << intersect_center << endl;
             // for l 属于 X交Cv:
             //     delta_l <- delta_l - wv,
             // l: X交Cv里面的中心; 现有解中覆盖V的中心;
@@ -328,6 +328,8 @@ void PCP_Vector::try_open_center(unsigned int center)
             center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
             print_vector("center weights after", center_weights);
 
+            // A3 LINE 6:
+            // end if
         }
     }
     // cerr << endl;
