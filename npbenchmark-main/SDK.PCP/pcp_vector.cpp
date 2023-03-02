@@ -309,6 +309,13 @@ void PCP_Vector::find_pair()
         }
         cerr << endl;
 
+        // A2 LINE 9:
+        // if {i, j}交TL = NULL then
+        // i: center swap in;
+        // j: center swap out;
+        // TL: tabu list;
+        // Meaning: not tabu move;
+
         // A2 LINE 18:
         // for j属于C do
         //    delta_j <- delta_j_previous,
