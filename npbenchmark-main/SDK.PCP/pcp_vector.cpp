@@ -418,6 +418,9 @@ void PCP_Vector::find_pair()
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
     cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+
+    // LINE 21:
+    // end function
 }
 
 // Algorithm 3: Open a center virtually
