@@ -129,8 +129,8 @@ void PCP_Vector::greedy_construct()
             // cerr << "random select: " << rand_select << endl;
             // cerr << "selected center: " << selected_center << endl;
 
-            // consequences of opening selected center;
-            // LINE 2:
+            // consequences of opening selected center, this part refers to Algorithm 3;
+            // Refer to A4 LINE 2:
             // for all v属于Vi do
             // V(i): the set of vertex that center i can serve; index is center, result is vertex;
             // Meaning: consequences of opening i
@@ -138,7 +138,7 @@ void PCP_Vector::greedy_construct()
             for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
             {
                 // cerr << v << " ";
-                // LINE 3:
+                // Reference A4 LINE 3:
                 // if |X 交 Cv| = 1 then
                 // X: current center set;
                 // v: vertex
@@ -153,6 +153,7 @@ void PCP_Vector::greedy_construct()
                     unsigned long long intersect_center = intersection.find_first();
                     // cerr << "find intersect one: " << intersect_center << endl;
 
+                    // Refer to A4 LINE 4:
                     // for l 属于 X交Cv:
                     //     delta_l <- delta_l - wv,
                     // l: X交Cv里面的中心; 现有解中覆盖V的中心;
@@ -164,14 +165,14 @@ void PCP_Vector::greedy_construct()
                     center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
                     // print_vector("center weights after", center_weights);
                 }
-                // LINE 5:
+                // Refer to A4 LINE 5:
                 // else if |X 交 Cv| = 0 then
                 // X: current center set;
                 // Cv: center set covering vertex v;
                 // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
                 else if(intersection.count() == 0)
                 {
-                    // LINE 6:
+                    // Refer to A4 LINE 6:
                     // for l 属于 Cv-{i}:
                     //     delta_l <- delta_l - wv
                     // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
@@ -191,6 +192,9 @@ void PCP_Vector::greedy_construct()
                         center_weights[l] = center_weights[l] - vertex_weights[v];
                     }
                     // cerr << endl;
+
+                    // Refer to A4 LINE 7:
+                    // end if
                 }
             }
             // cerr << endl;
