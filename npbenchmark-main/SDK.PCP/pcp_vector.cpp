@@ -289,12 +289,19 @@ void PCP_Vector::find_pair()
     cerr << "Cv list: " << endl;
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        cerr << i << endl; // i is center name;
+        cerr << "center: " << i << endl; // i is center name;
         // A2 LINE 7:
         // TryToOpenCenter(i) /* (Algorithm 3) */
         // Meaning 1: tries to open each candidate center which covers vertex k
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
         try_open_center(i);
+
+        // A2 LINE 8:
+        // for all j 属于 X do /* evaluate closing center j */
+        // j: 中心序号;
+        // Comment: 打算swap_out的中心序号;
+        // X: 当前解;
+
 
         // A2 LINE 18:
         // for j属于C do
