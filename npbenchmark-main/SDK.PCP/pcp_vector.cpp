@@ -565,7 +565,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     solution.reset(j);
     // print_index1("solution after A4 LINE 9", solution);
 
-    // LINE 10:
+    // A4 LINE 10:
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
