@@ -312,10 +312,10 @@ void PCP_Vector::find_pair()
         // Comment: 打算swap_out的中心序号;
         // X: 当前解;
         // print_index1("X", solution);
-        cerr << "X: ";
+        // cerr << "X: ";
         for (size_t j = solution.find_first(); j != dynamic_bitset<>::npos; j = solution.find_next(j))
         {
-            cerr << j << " ";
+            // cerr << j << " ";
             // A2 LINE 9:
             // if {i, j}交TL = NULL then
             // i: center swap in;
@@ -331,7 +331,9 @@ void PCP_Vector::find_pair()
                 // j: center swap out;
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
+                cerr << endl << "i " << i << " j " << j;
                 unsigned int f_X_i_j = f_X - center_weights[i] + center_weights[j];
+                cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(f_X_i_j < obj)
                 {
                     // A2 LINE 11:
@@ -581,7 +583,7 @@ void PCP_Vector::print_equal_pair()
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
 // (2) debug on laptop by g++ in command line:
 // cd C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP
-// g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
+// g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.txt
 // (3) debug on ubuntu gdb:
 // g++ Main.cpp PCenter.cpp pcp_vector.cpp -g && gdb a.out
 // r 999999 1 999999 1 <./data/pmed01.n100p005.txt >sln.txt

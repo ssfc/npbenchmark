@@ -42,6 +42,7 @@ public:
 
         // 2: local search method;
         ///*
+        // input.centerNum = 4;
         PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
         test.vertex_weight_tabu_search();
         test.get_solution(output);
