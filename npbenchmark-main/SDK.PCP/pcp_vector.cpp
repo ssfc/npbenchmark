@@ -514,6 +514,17 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
             // print_vector("center weights after", center_weights);
         }
+        // A4 LINE 5:
+        // else if |X 交 Cv| = 0 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
+        else if(intersection.count() == 0)
+        {
+            print_index1("solution", solution);
+            print_index1("Cv", Cv);
+
+        }
 
     }
     // cerr << endl;
