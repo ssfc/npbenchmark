@@ -521,8 +521,17 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
         else if(intersection.count() == 0)
         {
-            print_index1("solution", solution);
-            print_index1("Cv", Cv);
+            // print_index1("solution", solution);
+            // print_index1("Cv", Cv);
+
+            // A4 LINE 6:
+            // for l 属于 Cv-{i}:
+            //     delta_l <- delta_l - wv
+            // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
+            // Cv: 覆盖顶点v的中心集合;
+            // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
+            // Meaning: cancel reward for adding center l;
+            // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
 
         }
 
