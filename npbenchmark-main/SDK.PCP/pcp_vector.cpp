@@ -569,7 +569,13 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    
+    dynamic_bitset<> Vj = center_cover_vertex[j];
+    cerr << "Vj" << ": ";
+    for (size_t v = Vj.find_first(); v != dynamic_bitset<>::npos; v = Vj.find_next(v))
+    {
+        cerr << v << " ";
+
+    }
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
