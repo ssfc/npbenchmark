@@ -483,12 +483,28 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // V(i): the **set** of vertex that center i can serve;
     // Meaning: consequences of opening i
     dynamic_bitset<> Vi = center_cover_vertex[i];
-    cerr << "Vi" << ": ";
+    // cerr << "Vi" << ": ";
     for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
-        cerr << v << " ";
+        // cerr << v << " ";
+        // A4 LINE 3:
+        // if |X 交 Cv| = 1 then /* (Algorithm 3) */
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果即将加入X的中心i所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
+        dynamic_bitset<> Cv = vertex_reach_center[v];
+        dynamic_bitset<> intersection = solution & Cv;
+        if (intersection.count() == 1)
+        {
+            // Evaluate A4 LINE 3
+            print_index1("solution", solution);
+            print_index1("Cv", Cv);
+            unsigned long long intersect_center = intersection.find_first();
+            cerr << "find intersect one: " << intersect_center << endl;
+        }
+
     }
-    cerr << endl;
+    // cerr << endl;
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
