@@ -549,6 +549,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // end if
         }
 
+        // A4 LINE 8:
+        // end for
     }
     // cerr << endl;
 }
