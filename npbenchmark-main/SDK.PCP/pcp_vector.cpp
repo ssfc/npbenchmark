@@ -298,10 +298,10 @@ void PCP_Vector::find_pair()
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
-    cerr << "Cv list: " << endl;
+    // cerr << "Cv list: " << endl;
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
-        cerr << "center: " << i << endl; // i is center name;
+        // cerr << "center: " << i << endl; // i is center name;
         // A2 LINE 7:
         // TryToOpenCenter(i) /* (Algorithm 3) */
         // Meaning 1: tries to open each candidate center which covers vertex k
@@ -388,16 +388,8 @@ void PCP_Vector::find_pair()
             // A2 LINE 17:
             // end for
         }
-        cerr << endl;
-
-        // A2 LINE 9:
-        // if {i, j}交TL = NULL then
-        // i: center swap in;
-        // j: center swap out;
-        // TL: tabu list;
-        // Meaning: not tabu move;
-
-
+        // cerr << endl;
+        
         // A2 LINE 18:
         // for j属于C do
         //    delta_j <- delta_j_previous,
