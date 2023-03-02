@@ -417,6 +417,7 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
+    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
 }
 
 // Algorithm 3: Open a center virtually
