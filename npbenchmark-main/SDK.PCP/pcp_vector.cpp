@@ -321,7 +321,14 @@ void PCP_Vector::find_pair()
                 // j: center swap out;
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
-
+                unsigned int f_X = 0;
+                // cerr << "u: ";
+                for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
+                {
+                    // cerr << u;
+                    f_X = f_X + vertex_weights[u];
+                }
+                cerr << "f(X): " << f_X << endl;
             }
         }
         cerr << endl;
