@@ -570,10 +570,15 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
     dynamic_bitset<> Vj = center_cover_vertex[j];
-    cerr << "Vj" << ": ";
+    // cerr << "Vj" << ": ";
     for (size_t v = Vj.find_first(); v != dynamic_bitset<>::npos; v = Vj.find_next(v))
     {
-        cerr << v << " ";
+        // cerr << v << " ";
+        // A4 LINE 11:
+        // if |X 交 Cv| = 0 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果X中没有能够覆盖顶点v的中心;
 
     }
 }
