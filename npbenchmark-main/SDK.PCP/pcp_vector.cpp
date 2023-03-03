@@ -259,7 +259,7 @@ void PCP_Vector::find_pair()
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
-    print_index1("uncovered", uncovered);
+    // print_index1("uncovered", uncovered);
     vector<size_t> uncovered_vertices;
     for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
@@ -268,7 +268,7 @@ void PCP_Vector::find_pair()
 
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
-    cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
+    // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // Compute f(X), which will be used in obj computation;
     unsigned int f_X = 0;
@@ -401,7 +401,7 @@ void PCP_Vector::find_pair()
     }
 
     // Evaluate A2 LINE 12 & LINE 14
-    print_equal_pair();
+    // print_equal_pair();
 
     // LINE 20:
     // return a randomly picked move in M
@@ -409,7 +409,7 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
-    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
 
     // LINE 21:
     // end function
@@ -566,7 +566,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // print_index1("solution before A4 LINE 9", solution);
     solution.set(i);
     solution.reset(j);
-    print_index1("solution after swap", solution);
+    // print_index1("solution after swap", solution);
 
     // A4 LINE 10:
     // for all v 属于 Vj do
@@ -654,8 +654,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 
     // A4 LINE 17:
     // end function
-    print_index1("covered after swap", covered);
-    print_index1("uncovered after swap", uncovered);
+    // print_index1("covered after swap", covered);
+    // print_index1("uncovered after swap", uncovered);
     num_uncovered = uncovered.count();
 }
 
@@ -708,9 +708,9 @@ void PCP_Vector::vertex_weight_tabu_search()
         // A1 LINE 4:
         // while termination condition is not met do
         // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-        while(num_uncovered!=0 && iter<1)
+        while(num_uncovered!=0 && iter<300)
         {
-            cerr << "iteration: " << iter << endl;
+            // cerr << "iteration: " << iter << endl;
             // A1 LINE 5:
             // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
             // (i, j): pair swapped
@@ -753,6 +753,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
             else if(num_uncovered >= prev_num_uncovered)
             {
+                cerr << "num_uncovered A1 LINE 9: " << num_uncovered << endl;
+                cerr << "prev_num_uncovered A1 LINE 9: " << prev_num_uncovered << endl;
 
                 // A1 LINE 11:
                 // end if /* more uncovered clients than last solution */
