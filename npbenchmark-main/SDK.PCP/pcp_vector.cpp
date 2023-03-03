@@ -756,6 +756,15 @@ void PCP_Vector::vertex_weight_tabu_search()
                 cerr << "num_uncovered A1 LINE 9: " << num_uncovered << endl;
                 cerr << "prev_num_uncovered A1 LINE 9: " << prev_num_uncovered << endl;
 
+                // A1 LINE 10 /* (Section 3.2) */
+                // for v belongs to U(X) do
+                //    wv <- wv + 1
+                // wv: weight of vertex that uncovered by X;
+                // Meaning 1: If stagnation (停滞) occurs, the weight of each uncovered client is adjusted; (2023年2月17日)
+                // Meaning 2: when the tabu search is **trapped in local optimal** solution X, the VWTS algorithm increases the weight wi of each uncovered client i属于U(X) by one unit; (2023年2月18日)
+                // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
+
+                
                 // A1 LINE 11:
                 // end if /* more uncovered clients than last solution */
             }
