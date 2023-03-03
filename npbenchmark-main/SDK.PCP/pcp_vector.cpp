@@ -521,8 +521,11 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
         else if(intersection.count() == 0)
         {
-            // print_index1("solution", solution);
-            // print_index1("Cv", Cv);
+            // print_index1("solution after opening i", solution);
+            // print_index1("Cv after opening i", Cv);
+
+            covered.set(v);
+            uncovered.reset(v);
 
             // A4 LINE 6:
             // for l 属于 Cv-{i}:
@@ -583,8 +586,11 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         dynamic_bitset<> intersection = solution & Cv;
         if(intersection.count() == 0)
         {
-            // print_index1("solution after close", solution);
-            // print_index1("Cv after close", Cv);
+            // print_index1("solution after close j", solution);
+            // print_index1("Cv after close j", Cv);
+
+            covered.reset(v);
+            uncovered.set(v);
 
             // LINE 12:
             // for l 属于 Cv - {j} do
