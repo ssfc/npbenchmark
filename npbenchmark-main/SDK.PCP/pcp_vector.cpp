@@ -788,8 +788,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // TL: tabu list;
             // (i, j): pairs found;
             // Meaning: update tabu list; (2023年2月17日)
-            tabu_tenure_table[moved.center_in] = iter + 2;
-            tabu_tenure_table[moved.center_out] = iter + 2;
+            tabu_tenure_table[moved.center_in] = iter + 3;
+            tabu_tenure_table[moved.center_out] = iter + 3;
 
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
