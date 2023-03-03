@@ -733,8 +733,17 @@ void PCP_Vector::vertex_weight_tabu_search()
             // X*: history best solution;
             // |U(X*)|: the set of clients uncovered by X*;
             // Meaning: If the current solution X improves the best solution found so far
-
-
+            if(num_uncovered < best_num_uncovered)
+            {
+                // A1 LINE 8:
+                // X* <- X
+                // X*: history best solution;
+                // X: current solution;
+                // Meaning: then X* is updated with X;
+                cerr << "best_num_uncovered: " << best_num_uncovered << endl;
+                best_num_uncovered = num_uncovered;
+                cerr << "best_num_uncovered: " << best_num_uncovered << endl;
+            }
 
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
