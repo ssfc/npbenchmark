@@ -691,6 +691,9 @@ void PCP_Vector::vertex_weight_tabu_search()
         // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[66] | center_cover_vertex[31]| center_cover_vertex[59]| center_cover_vertex[77];
         // cerr << "uncovered number: " << num_vertex - union_result.count() << endl;
 
+        // A1 LINE 4:
+        // while termination condition is not met do
+        // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
         while(uncovered.count()!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
