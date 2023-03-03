@@ -806,6 +806,16 @@ void PCP_Vector::vertex_weight_tabu_search()
             // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
             iter++;
 
+            if (iter % 1000 == 0)
+            {
+                cerr << "Iteration: " << iter << " ";
+                cerr << "num : " << num_uncovered << " ";
+                cerr << "best num : " << best_num_uncovered << " ";
+                double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+                cerr << " elapsed time(s): " << elapsed_time
+                     << " frequency:" << double(iter) / elapsed_time << endl;
+            }
+
             // A1 LINE 14:
             // end while;
             // Meaning: when the specified termination condition is met, the algorithm terminates and returns the best solution X*; (2023年2月17日)
