@@ -654,8 +654,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 
     // A4 LINE 17:
     // end function
-    print_index1("covered after swap", covered);
-    print_index1("uncovered after swap", uncovered);
+    // print_index1("covered after swap", covered);
+    // print_index1("uncovered after swap", uncovered);
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
