@@ -597,7 +597,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             dynamic_bitset<> Cv_j = Cv; // cv_j means Cv-{j}
             Cv_j.reset(j); // implement Cv-{j}
             // print_index1("Cv-{j}", Cv_j);
-            // cerr << "Cv-{i}: ";
+            // cerr << "Cv-{j}: ";
 
             for (size_t l = Cv_j.find_first(); l != dynamic_bitset<>::npos; l = Cv_j.find_next(l))
             {
