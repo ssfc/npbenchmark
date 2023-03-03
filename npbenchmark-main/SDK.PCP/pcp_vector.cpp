@@ -775,6 +775,14 @@ void PCP_Vector::vertex_weight_tabu_search()
                 // end if /* more uncovered clients than last solution */
             }
 
+            // A1 LINE 12:
+            // TL <- (i, j) /* update tabu list (Section 3.4) */
+            // TL: tabu list;
+            // (i, j): pairs found;
+            // Meaning: update tabu list; (2023年2月17日)
+            tabu_tenure_table[moved.center_in] = iter + 1;
+            tabu_tenure_table[moved.center_out] = iter + 1;
+
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
             // cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
