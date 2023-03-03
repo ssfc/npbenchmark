@@ -697,6 +697,13 @@ void PCP_Vector::vertex_weight_tabu_search()
         while(uncovered.count()!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
+            // A1 LINE 5:
+            // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
+            // (i, j): pair swapped
+            // X_prev: solution of the previous iteration;
+            // TL: tabu list;
+            // iter: current iteration;
+            // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
             find_pair();
             make_move(moved.center_in, moved.center_out);
 
