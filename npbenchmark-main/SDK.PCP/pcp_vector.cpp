@@ -583,8 +583,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         dynamic_bitset<> intersection = solution & Cv;
         if(intersection.count() == 0)
         {
-            print_index1("solution after close", solution);
-            print_index1("Cv after close", Cv);
+            // print_index1("solution after close", solution);
+            // print_index1("Cv after close", Cv);
 
             // LINE 12:
             // for l 属于 Cv - {j} do
@@ -616,7 +616,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
-        
+
     }
 }
 
