@@ -480,7 +480,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
     // A4 LINE 2:
     // for all v属于Vi do
-    // V(i): the **set** of vertex that center i can serve;
+    // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
     dynamic_bitset<> Vi = center_cover_vertex[i];
     // cerr << "Vi" << ": ";
@@ -585,6 +585,30 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         {
             print_index1("solution after close", solution);
             print_index1("Cv after close", Cv);
+
+            // LINE 12:
+            // for l 属于 Cv - {j} do
+            //    delta_l <- delta_l + wv;
+            // l: Cv中除j以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
+            // Cv: 覆盖顶点v的中心集合;
+            // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
+            // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
+            // Comment: 此时的X已经把j删除了, 见LINE 9;
+            dynamic_bitset<> Cv_j = Cv; // cv_j means Cv-{j}
+            Cv_j.reset(j); // implement Cv-{j}
+            // print_index1("Cv-{j}", Cv_j);
+            // cerr << "Cv-{i}: ";
+
+            for (size_t l = Cv_j.find_first(); l != dynamic_bitset<>::npos; l = Cv_j.find_next(l))
+            {
+                cerr << l << endl;
+                print_vector("center weights before", center_weights);
+                cerr << center_weights[l] << endl;
+                center_weights[l] = center_weights[l] + vertex_weights[v];
+                print_vector("center weights after ", center_weights);
+                cerr << center_weights[l] << endl;
+            }
+            cerr << endl;
 
         }
     }
