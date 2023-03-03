@@ -708,7 +708,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // A1 LINE 4:
         // while termination condition is not met do
         // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-        while(num_uncovered!=0 && iter<300)
+        while(num_uncovered!=0 && iter<30)
         {
             // cerr << "iteration: " << iter << endl;
             // A1 LINE 5:
@@ -753,8 +753,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
             else if(num_uncovered >= prev_num_uncovered)
             {
-                cerr << "num_uncovered A1 LINE 9: " << num_uncovered << endl;
-                cerr << "prev_num_uncovered A1 LINE 9: " << prev_num_uncovered << endl;
+                // cerr << "num_uncovered A1 LINE 9: " << num_uncovered << endl;
+                // cerr << "prev_num_uncovered A1 LINE 9: " << prev_num_uncovered << endl;
 
                 // A1 LINE 10 /* (Section 3.2) */
                 // for v belongs to U(X) do
