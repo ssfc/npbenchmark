@@ -14,6 +14,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        ,prev_solution(input_num_vertex)
                        ,covered(input_num_vertex)
                        ,uncovered(input_num_vertex)
+                       ,best_uncovered(input_num_vertex)
                        ,moved{0, 0}
 {
     init_rand(input_seed); // initialize random generator;
@@ -68,6 +69,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     covered.reset(); // set covered all 0;
     uncovered.set(); // set uncovered all 1;
+    best_uncovered.set(); // set uncovered all 1;
+    cerr << best_uncovered << endl;
 
     // A1 LINE 2:
     // tabu list TL <- NULL;
@@ -724,6 +727,16 @@ void PCP_Vector::vertex_weight_tabu_search()
             // (i,j): pair moved found in the previous;
             // Meaning: makes the best move; (2023年2月10日)
             make_move(moved.center_in, moved.center_out);
+
+            // A1 LINE 7:
+            // if |U(X)| < |U(X*)| then
+            // X: current solution;
+            // |U(X)|: the set of clients uncovered by X;
+            // X*: history best solution;
+            // |U(X*)|: the set of clients uncovered by X*;
+            // Meaning: If the current solution X improves the best solution found so far
+
+
 
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;

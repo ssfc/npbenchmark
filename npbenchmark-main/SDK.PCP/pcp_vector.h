@@ -45,6 +45,7 @@ private: // member variables.
 
     boost::dynamic_bitset<> covered;
     boost::dynamic_bitset<> uncovered;
+    boost::dynamic_bitset<> best_uncovered;
 
     Move moved;
     std::vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
