@@ -95,7 +95,7 @@ void PCP_Vector::greedy_construct()
         {
             center_weights[i] = center_cover_vertex[i].count();
         }
-        print_vector("center_weights before", center_weights);
+        // print_vector("center_weights before", center_weights);
         int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
         int equal_count_in_construct = 0;
         while(solution.count()<num_center) // do one iteration;
@@ -225,7 +225,7 @@ void PCP_Vector::greedy_construct()
 
             iter++;
         }
-        print_vector("center weights after", center_weights);
+        // print_vector("center weights after", center_weights);
 
         print_index1("Center selected", solution);
         num_uncovered = uncovered.count();
@@ -417,7 +417,7 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
-    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
 
     // LINE 21:
     // end function
@@ -695,13 +695,13 @@ void PCP_Vector::vertex_weight_tabu_search()
         // X*: history best solution;
         // X: initial solution generated (a set of centers);
         best_num_uncovered = num_uncovered;
-        cerr <<"best_num_uncovered: " << best_num_uncovered << endl;
+        // cerr <<"best_num_uncovered: " << best_num_uncovered << endl;
 
         // X_prev <- X;
         // X_prev: solution of the previous iteration;
         // X: initial solution generated;
         prev_num_uncovered = num_uncovered;
-        cerr <<"prev_num_uncovered: " << prev_num_uncovered << endl;
+        // cerr <<"prev_num_uncovered: " << prev_num_uncovered << endl;
 
         // Evaluate A2 LINE 11:
         // 测试f(X+{i}-{j})的计算是否准确
@@ -716,7 +716,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // A1 LINE 4:
         // while termination condition is not met do
         // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-        while(num_uncovered!=0 && iter<30)
+        while(num_uncovered != 0)
         {
             // cerr << "iteration: " << iter << endl;
             // A1 LINE 5:
