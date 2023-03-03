@@ -300,11 +300,12 @@ void PCP_Vector::find_pair()
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
     // cerr << "Cv list: " << endl;
 
-    cerr << "tabu tenure table: ";
-    for(int temp=0;temp<tabu_tenure_table.size();temp++)
-        if(tabu_tenure_table[temp] > iter)
-            cerr << temp << " ";
-    cerr << endl;
+    // Evaluate A1 LINE 12
+    // cerr << "tabu tenure table: ";
+    // for(int temp=0;temp<tabu_tenure_table.size();temp++)
+    //    if(tabu_tenure_table[temp] > iter)
+    //        cerr << temp << " ";
+    // cerr << endl;
 
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
