@@ -619,10 +619,10 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         else if (intersection.count() == 1)
         {
             // Evaluate A4 LINE 13
-            print_index1("solution", solution);
-            print_index1("Cv", Cv);
+            // print_index1("solution", solution);
+            // print_index1("Cv", Cv);
             unsigned long long intersect_center = intersection.find_first();
-            cerr << "find intersect one: " << intersect_center << endl;
+            // cerr << "find intersect one: " << intersect_center << endl;
 
         }
     }
