@@ -601,14 +601,14 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 
             for (size_t l = Cv_j.find_first(); l != dynamic_bitset<>::npos; l = Cv_j.find_next(l))
             {
-                cerr << l << endl;
-                print_vector("center weights before", center_weights);
-                cerr << center_weights[l] << endl;
+                // cerr << l << endl;
+                // print_vector("center weights before", center_weights);
+                // cerr << center_weights[l] << endl;
                 center_weights[l] = center_weights[l] + vertex_weights[v];
-                print_vector("center weights after ", center_weights);
-                cerr << center_weights[l] << endl;
+                // print_vector("center weights after ", center_weights);
+                // cerr << center_weights[l] << endl;
             }
-            cerr << endl;
+            // cerr << endl;
 
         }
     }
