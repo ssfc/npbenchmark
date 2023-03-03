@@ -744,6 +744,15 @@ void PCP_Vector::vertex_weight_tabu_search()
                 best_num_uncovered = num_uncovered;
                 // cerr << "best_num_uncovered: " << best_num_uncovered << endl;
             }
+            // A1 LINE 9:
+            // else if |U(X)| >= |U(X_prev)| then
+            // X: current solution;
+            // |U(X)|: the set of clients uncovered by X;
+            // X_prev: solution of the previous iteration;
+            // |U(X')|: the set of clients uncovered by X';
+            // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
+
+
 
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
