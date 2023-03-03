@@ -299,6 +299,13 @@ void PCP_Vector::find_pair()
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
     // cerr << "Cv list: " << endl;
+
+    cerr << "tabu tenure table: ";
+    for(int temp=0;temp<tabu_tenure_table.size();temp++)
+        if(tabu_tenure_table[temp] > iter)
+            cerr << temp << " ";
+    cerr << endl;
+
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
         // cerr << "center: " << i << endl; // i is center name;
@@ -409,7 +416,7 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
-    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
 
     // LINE 21:
     // end function
@@ -780,8 +787,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // TL: tabu list;
             // (i, j): pairs found;
             // Meaning: update tabu list; (2023年2月17日)
-            tabu_tenure_table[moved.center_in] = iter + 1;
-            tabu_tenure_table[moved.center_out] = iter + 1;
+            tabu_tenure_table[moved.center_in] = iter + 2;
+            tabu_tenure_table[moved.center_out] = iter + 2;
 
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
