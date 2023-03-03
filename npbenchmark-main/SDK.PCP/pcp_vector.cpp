@@ -705,6 +705,11 @@ void PCP_Vector::vertex_weight_tabu_search()
             // iter: current iteration;
             // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
             find_pair();
+
+            // A1 LINE 6:
+            // MakeMove(i, j) /* (Algorithm 4) */
+            // (i,j): pair moved found in the previous;
+            // Meaning: makes the best move; (2023年2月10日)
             make_move(moved.center_in, moved.center_out);
 
             ///* debug: tabu tenure;
