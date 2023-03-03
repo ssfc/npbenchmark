@@ -563,7 +563,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // print_index1("solution before A4 LINE 9", solution);
     solution.set(i);
     solution.reset(j);
-    // print_index1("solution after A4 LINE 9", solution);
+    print_index1("solution after swap", solution);
 
     // A4 LINE 10:
     // for all v 属于 Vj do
@@ -579,7 +579,14 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果X中没有能够覆盖顶点v的中心;
+        dynamic_bitset<> Cv = vertex_reach_center[v];
+        dynamic_bitset<> intersection = solution & Cv;
+        if(intersection.count() == 0)
+        {
+            print_index1("solution after close", solution);
+            print_index1("Cv after close", Cv);
 
+        }
     }
 }
 
