@@ -39,8 +39,8 @@ private: // member variables.
     std::vector<std::vector<int>> nodes_with_drops;
 
     boost::dynamic_bitset<> solution; // centers selected;
-    boost::dynamic_bitset<> best_solution; // best solution in the history;
-    boost::dynamic_bitset<> prev_solution; // previous solution;
+    boost::dynamic_bitset<> best_solution; // best solution in the history; X*
+    boost::dynamic_bitset<> prev_solution; // previous solution; X'
     std::vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     boost::dynamic_bitset<> covered;
