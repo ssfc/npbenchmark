@@ -654,6 +654,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 
     // A4 LINE 17:
     // end function
+    print_index1("covered after swap", covered);
+    print_index1("uncovered after swap", uncovered);
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -696,6 +698,11 @@ void PCP_Vector::vertex_weight_tabu_search()
         // 测试f(X+{i}-{j})的计算是否准确
         // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[66] | center_cover_vertex[31]| center_cover_vertex[59]| center_cover_vertex[77];
         // cerr << "uncovered number: " << num_vertex - union_result.count() << endl;
+
+        // Evaluate covered and uncovered set in make_move;
+        // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[12] | center_cover_vertex[59];
+        // dynamic_bitset<> union_uncovered = ~union_result;
+        // print_index1("uncovered to evaluate make_move", union_uncovered);
 
         // A1 LINE 4:
         // while termination condition is not met do
