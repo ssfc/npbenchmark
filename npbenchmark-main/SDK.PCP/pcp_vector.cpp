@@ -758,13 +758,17 @@ void PCP_Vector::vertex_weight_tabu_search()
                 // end if /* more uncovered clients than last solution */
             }
 
-
             ///* debug: tabu tenure;
             // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
             // cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
             // print_tabu_tenure_table();
-             //*/
+            //*/
 
+            // A1 LINE 13:
+            // X_prev <- X, iter <- iter + 1;
+            // X_prev: solution of the previous iteration;
+            // X: current solution;
+            prev_num_uncovered = num_uncovered;
             iter++;
         }
 
