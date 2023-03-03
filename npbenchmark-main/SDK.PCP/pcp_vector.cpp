@@ -805,6 +805,10 @@ void PCP_Vector::vertex_weight_tabu_search()
             prev_num_uncovered = num_uncovered;
             // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
             iter++;
+
+            // A1 LINE 14:
+            // end while;
+            // Meaning: when the specified termination condition is met, the algorithm terminates and returns the best solution X*; (2023年2月17日)
         }
 
         // print final tabu_tenure_table;
