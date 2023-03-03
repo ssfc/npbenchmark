@@ -763,13 +763,13 @@ void PCP_Vector::vertex_weight_tabu_search()
                 // Meaning 1: If stagnation (停滞) occurs, the weight of each uncovered client is adjusted; (2023年2月17日)
                 // Meaning 2: when the tabu search is **trapped in local optimal** solution X, the VWTS algorithm increases the weight wi of each uncovered client i属于U(X) by one unit; (2023年2月18日)
                 // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
-                print_index1("uncovered", uncovered);
-                print_vector("vertex weights", vertex_weights);
+                // print_index1("uncovered", uncovered);
+                // print_vector("vertex weights", vertex_weights);
                 for (size_t v = uncovered.find_first(); v != dynamic_bitset<>::npos; v = uncovered.find_next(v))
                 {
                     vertex_weights[v]++;
                 }
-                print_vector("vertex weights", vertex_weights);
+                // print_vector("vertex weights", vertex_weights);
 
                 // A1 LINE 11:
                 // end if /* more uncovered clients than last solution */
