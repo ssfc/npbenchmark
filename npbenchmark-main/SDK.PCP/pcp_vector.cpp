@@ -611,6 +611,12 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // cerr << endl;
 
         }
+        // LINE 13:
+        // else if |X 交 Cv| = 1 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
+        
     }
 }
 
