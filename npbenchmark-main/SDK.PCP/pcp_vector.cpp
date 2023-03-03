@@ -811,7 +811,7 @@ void PCP_Vector::vertex_weight_tabu_search()
                 cerr << "Iteration: " << iter << " ";
                 cerr << "num : " << num_uncovered << " ";
                 cerr << "best num : " << best_num_uncovered << " ";
-                cerr << "moved " << moved.center_in << " " << moved.center_out; 
+                cerr << "moved " << moved.center_in << " " << moved.center_out;
                 double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
                 cerr << " elapsed time(s): " << elapsed_time
                      << " frequency:" << double(iter) / elapsed_time << endl;
