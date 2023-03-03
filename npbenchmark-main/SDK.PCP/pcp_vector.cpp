@@ -726,8 +726,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             make_move(moved.center_in, moved.center_out);
 
             ///* debug: tabu tenure;
-            cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
-            cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
+            // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
+            // cerr << "tabu tenure in: " << tabu_tenure_table[moved.center_in] << endl;
             // print_tabu_tenure_table();
              //*/
 
