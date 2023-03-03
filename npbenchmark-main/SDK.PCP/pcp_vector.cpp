@@ -10,11 +10,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        vector<vector<int>> &input_coverages, vector<vector<int>> &input_nodesWithDrops,
                        int input_seed)
                        :solution(input_num_vertex)
-                       ,best_solution(input_num_vertex)
-                       ,prev_solution(input_num_vertex)
                        ,covered(input_num_vertex)
                        ,uncovered(input_num_vertex)
-                       ,best_uncovered(input_num_vertex)
                        ,moved{0, 0}
 {
     init_rand(input_seed); // initialize random generator;
@@ -61,16 +58,15 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     }
 
     solution.reset(); // initialize solution all 0;
-    best_solution.reset(); // initialize best solution all 0;
-    prev_solution.reset(); // initialize prev solution all 0;
     // A1 LINE 3
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
     covered.reset(); // set covered all 0;
     uncovered.set(); // set uncovered all 1;
-    best_uncovered.set(); // set uncovered all 1;
-    cerr << best_uncovered << endl;
+    num_uncovered = INT_MAX;
+    best_num_uncovered = INT_MAX;
+    prev_num_uncovered = INT_MAX;
 
     // A1 LINE 2:
     // tabu list TL <- NULL;
@@ -232,6 +228,7 @@ void PCP_Vector::greedy_construct()
         print_vector("center weights after", center_weights);
 
         print_index1("Center selected", solution);
+        num_uncovered = uncovered.count();
     }
 
     // A1 LINE 2:
@@ -659,6 +656,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // end function
     print_index1("covered after swap", covered);
     print_index1("uncovered after swap", uncovered);
+    num_uncovered = uncovered.count();
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -688,14 +686,14 @@ void PCP_Vector::vertex_weight_tabu_search()
         // X* <- X
         // X*: history best solution;
         // X: initial solution generated (a set of centers);
-        best_solution = solution;
-        print_index1("best_solution", best_solution);
+        best_num_uncovered = num_uncovered;
+        cerr <<"best_num_uncovered: " << best_num_uncovered << endl;
 
         // X_prev <- X;
         // X_prev: solution of the previous iteration;
         // X: initial solution generated;
-        prev_solution = solution;
-        print_index1("prev_solution", prev_solution);
+        prev_num_uncovered = num_uncovered;
+        cerr <<"prev_num_uncovered: " << prev_num_uncovered << endl;
 
         // Evaluate A2 LINE 11:
         // 测试f(X+{i}-{j})的计算是否准确
@@ -710,7 +708,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // A1 LINE 4:
         // while termination condition is not met do
         // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-        while(uncovered.count()!=0 && iter<1)
+        while(num_uncovered!=0 && iter<1)
         {
             cerr << "iteration: " << iter << endl;
             // A1 LINE 5:
@@ -751,7 +749,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // print_tabu_tenure_table();
 
         double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-        if(uncovered.count()==0)
+        if(num_uncovered == 0)
         {
             cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
                  << " frequency:" << double (iter) / elapsed_time << endl;
