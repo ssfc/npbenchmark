@@ -768,9 +768,9 @@ void PCP_Vector::vertex_weight_tabu_search()
             // X_prev <- X, iter <- iter + 1;
             // X_prev: solution of the previous iteration;
             // X: current solution;
-            cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
+            // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
             prev_num_uncovered = num_uncovered;
-            cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
+            // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
             iter++;
         }
 
