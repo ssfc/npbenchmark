@@ -611,12 +611,20 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // cerr << endl;
 
         }
-        // LINE 13:
+        // A4 LINE 13:
         // else if |X 交 Cv| = 1 then
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
+        else if (intersection.count() == 1)
+        {
+            // Evaluate A4 LINE 13
+            print_index1("solution", solution);
+            print_index1("Cv", Cv);
+            unsigned long long intersect_center = intersection.find_first();
+            cerr << "find intersect one: " << intersect_center << endl;
 
+        }
     }
 }
 
