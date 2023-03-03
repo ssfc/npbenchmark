@@ -632,6 +632,11 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // Meaning: add penalty for deleting center l;
             // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
             // Comment: 由于中心l是当前中心集X中独一无二覆盖顶点v的, 所以它的价值要增加.
+            print_vector("center weights before", center_weights);
+            cerr << center_weights[intersect_center] << endl;
+            center_weights[intersect_center] = center_weights[intersect_center] + vertex_weights[v];
+            print_vector("center weights after", center_weights);
+            cerr << center_weights[intersect_center] << endl;
         }
     }
 }
