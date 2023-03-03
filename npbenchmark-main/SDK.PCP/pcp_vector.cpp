@@ -637,8 +637,17 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             center_weights[intersect_center] = center_weights[intersect_center] + vertex_weights[v];
             // print_vector("center weights after", center_weights);
             // cerr << center_weights[intersect_center] << endl;
+
+            // A4 LINE 15:
+            // end if
         }
+
+        // A4 LINE 16:
+        // end for
     }
+
+    // A4 LINE 17:
+    // end function
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
