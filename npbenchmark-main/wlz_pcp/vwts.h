@@ -55,7 +55,7 @@ public:
     //别的一些过程函数
     void InitialDelta();//初始化delta
     void open_center(int v);//打开节点
-    void Close(int v);//关闭节点
+    void close_center(int v);//关闭节点
     void get_solution(std::vector<NodeId>& output);
 };
 
