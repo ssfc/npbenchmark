@@ -14,7 +14,10 @@
 #include<cmath>
 using namespace std;
 
-VWTS::VWTS()
+VWTS::VWTS(int input_num_vertex, int input_num_center,
+           std::vector<std::vector<int>>& input_coverages,
+           std::vector<std::vector<int>> &input_nodesWithDrops,
+           int input_seed)
 {
     string path = "./data/pmed1.n100p5.txt";
     //读文件
