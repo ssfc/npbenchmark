@@ -19,34 +19,22 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
            std::vector<std::vector<int>> &input_nodesWithDrops,
            int input_seed)
 {
-    string path = "./data/pmed1.n100p5.txt";
-    //读文件
-    string temp;
-    ifstream fin(path);
-    if (!fin)
-    {
-        printf("file %s is opened fail\n", path.c_str());
-    }
-    getline(fin, temp);
-    sscanf(temp.c_str(), "%d%d", &num_vertex, &num_center);
+    num_vertex = input_num_vertex;
+    num_center = input_num_center;
+
     client_cover_num = new int[num_vertex];
     elements = new int* [num_vertex];
 
-    int count_client;
     for (int i = 0; i < num_vertex; ++i)
     {
-        getline(fin, temp);
-        sscanf(temp.c_str(), "%d", &count_client);
+        int count_client = input_coverages[i].size();
         client_cover_num[i] = count_client;
         elements[i] = new int[count_client];
 
-        getline(fin, temp);
-        auto current_list = elements[i];
-        stringstream ss(temp);
         for (int j = 0; j < count_client; ++j)
-            ss >> current_list[j];
+            elements[i][j] = input_coverages[i][j];
     }
-    fin.close();
+
     solution = new bool[num_vertex];
     center = new int[num_center];
     covered_center_num = new int[num_vertex];
