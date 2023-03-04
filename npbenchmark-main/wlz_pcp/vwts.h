@@ -16,7 +16,7 @@ class VWTS
 {
 private:
     //图结构
-    int* client_cover_num;//每个中心能够覆盖的节点数
+    int* num_center_cover;//每个中心能够覆盖的节点数
     int** center_coverages;//每个中心覆盖的节点
     int num_vertex;
     int num_center;//中心数量
