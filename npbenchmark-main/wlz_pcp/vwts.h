@@ -25,7 +25,7 @@ private:
     bool* solution;//是否挑选为中心（求解）
     int* center;//记录中心节点
     int* covered_center_num;//每个元素被多少个中心覆盖
-    int* covered_by;//仅被一个中心覆盖的点
+    int* covered_once;//仅被一个中心覆盖的点
     int num_uncovered;//记录没有被覆盖的节点数，用作uncovered_list的下标
     int* uncovered_list;//记录没有被覆盖的节点
     int* vertex_weights;//每个节点权重，随着未覆盖时间增大逐渐增大
