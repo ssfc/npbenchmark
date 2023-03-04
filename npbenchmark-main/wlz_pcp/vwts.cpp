@@ -120,7 +120,7 @@ void VWTS::greedy_construct()
     int isolx = 0;
     for (int i = 0; i < num_vertex; ++i)
     {
-        if (solution[i] == true)//如果被选为中心，在中心列表中记录
+        if (solution[i])//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_list[num_uncovered++] = i;
