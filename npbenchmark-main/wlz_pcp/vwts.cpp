@@ -13,6 +13,8 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
            std::vector<std::vector<int>>& input_coverages,
            int input_seed)
 {
+    srand(input_seed);
+
     num_vertex = input_num_vertex;
     num_center = input_num_center;
 
@@ -123,10 +125,9 @@ void VWTS::greedy_construct()
     init_delta();
 }
 
-void VWTS::vertex_weight_tabu_search(int rand_seed)
+void VWTS::vertex_weight_tabu_search()
 {
     start_ms = clock();
-    srand(rand_seed);
     greedy_construct();//贪心
 
     int iter;

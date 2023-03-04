@@ -36,9 +36,8 @@ namespace szx {
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
             VWTS test(input.nodeNum, input.centerNum,input.coverages, seed);
-            test.vertex_weight_tabu_search(seed);
+            test.vertex_weight_tabu_search();
             test.get_solution(output);
-
             cerr << "Evaluate output: ";
             for(int i=0;i<input.centerNum;i++)
             {
