@@ -1,7 +1,6 @@
 //
 // Created by take_ on 2023/3/4.
 //
-#pragma warning(disable:4996)
 #include "vwts.h"
 #include <climits>
 #include <cstdlib>
