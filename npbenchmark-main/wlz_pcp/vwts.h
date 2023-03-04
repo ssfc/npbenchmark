@@ -27,7 +27,7 @@ private:
     int* covered_center_num; //每个顶点被多少个中心覆盖
     int* covered_once; //仅被一个中心覆盖的顶点
     int num_uncovered; //没有被覆盖的节点数，用作uncovered_list的下标
-    int* uncovered_list; //记录没有被覆盖的节点
+    int* uncovered_vertices; //记录没有被覆盖的节点
     int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
     int f, best_f, best_delta_f; //f函数，记录加权和
     int* delta; //记录中心i加入X或者删除对f的影响

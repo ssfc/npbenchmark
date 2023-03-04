@@ -35,7 +35,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
     center = new int[num_center];
     covered_center_num = new int[num_vertex];
     covered_once = new int[num_vertex];
-    uncovered_list = new int[num_vertex];
+    uncovered_vertices = new int[num_vertex];
     vertex_weights = new int[num_vertex];
     f = best_f = num_uncovered = num_vertex;
     delta = new int[num_vertex];
@@ -58,7 +58,7 @@ VWTS::~VWTS()
     delete[] center;
     delete[] covered_center_num;
     delete[] covered_once;
-    delete[] uncovered_list;
+    delete[] uncovered_vertices;
     delete[] vertex_weights;
     delete[] delta;
 }
@@ -111,15 +111,15 @@ void VWTS::greedy_construct()
             ++covered_center_num[center_coverages[choose][i]];//该元素被中心覆盖数++
         }
     }
-    //更新未覆盖的节点和中心
+    // 更新未覆盖的节点和中心
     num_uncovered = 0;
     int isolx = 0;
     for (int i = 0; i < num_vertex; ++i)
     {
-        if (solution[i])//如果被选为中心，在中心列表中记录
+        if (solution[i]) //如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
-            uncovered_list[num_uncovered++] = i;
+            uncovered_vertices[num_uncovered++] = i;
     }
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
     InitialDelta();
@@ -157,7 +157,7 @@ void VWTS::Solve(int limit_s, int rand_seed)
         {
             for (int i = 0; i < num_uncovered; ++i)
             {
-                int v = uncovered_list[i];
+                int v = uncovered_vertices[i];
                 ++vertex_weights[v], ++f;
                 for (int ic = 0; ic < num_center_cover[v]; ++ic)  //邻居delta值相应变大
                     ++delta[center_coverages[v][ic]] ;
@@ -186,7 +186,7 @@ void VWTS::InitialDelta()
 
 void VWTS::FindSwap(int& v_open, int& v_close)
 {
-    int choose = uncovered_list[rand() % num_uncovered];
+    int choose = uncovered_vertices[rand() % num_uncovered];
     best_delta_f = INT_MAX;
     vector<int> best_open, best_close;
     int* delta_p = new int[num_center];//记录中心delta，便于还原
@@ -258,10 +258,10 @@ void VWTS::SwapMove(int v_open, int v_close)
     int isolx = 0;
     for (int i = 0; i < num_vertex; ++i)
     {
-        if (solution[i] == true)//如果被选为中心，在中心列表中记录
+        if (solution[i])//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
-            uncovered_list[num_uncovered++] = i;
+            uncovered_vertices[num_uncovered++] = i;
     }
 }
 
