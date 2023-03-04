@@ -3,15 +3,11 @@
 //
 #pragma warning(disable:4996)
 #include "vwts.h"
-#include<iostream>
-#include<climits>
-#include<fstream>
-#include <fstream>
-#include <sstream>
-#include<vector>
-#include<cstdlib>
-#include<ctime>
-#include<cmath>
+#include <climits>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+
 using namespace std;
 
 VWTS::VWTS(int input_num_vertex, int input_num_center,
