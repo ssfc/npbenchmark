@@ -120,7 +120,7 @@ void VWTS::greedy_construct()
             uncovered_vertices[num_uncovered++] = i;
     }
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
-    InitialDelta();
+    init_delta();
 }
 
 void VWTS::vertex_weight_tabu_search(int rand_seed)
@@ -167,7 +167,7 @@ void VWTS::vertex_weight_tabu_search(int rand_seed)
     tempnum = num_uncovered;
 }
 
-void VWTS::InitialDelta()
+void VWTS::init_delta()
 {
     for (int i = 0; i < num_vertex; i++)//o(n^2/p^2) ~ o(n^2)
     {
