@@ -35,12 +35,12 @@ namespace szx {
         void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
-            string path = "./data/pmed1.n100p5.txt";
+
             string output_path = "sln.txt";
             int limit_s = 999999;
             int rand_seed = 1;
 
-            VWTS test(path);
+            VWTS test;
             test.Solve(limit_s, rand_seed);
             test.get_solution(output);
 

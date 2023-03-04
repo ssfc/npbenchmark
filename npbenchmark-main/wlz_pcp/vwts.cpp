@@ -14,8 +14,9 @@
 #include<cmath>
 using namespace std;
 
-VWTS::VWTS(string path)
+VWTS::VWTS()
 {
+    string path = "./data/pmed1.n100p5.txt";
     //读文件
     string temp;
     ifstream fin(path);
@@ -181,7 +182,7 @@ void VWTS::Solve(int limit_s, int rand_seed)
     tempiter = iter;
     tempnum = num_uncovered;
 }
- 
+
 void VWTS::InitialDelta()
 {
     for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
