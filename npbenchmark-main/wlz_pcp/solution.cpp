@@ -14,7 +14,7 @@
 #include<cmath>
 using namespace std;
 
-SolveStruct::SolveStruct(string path,string out)
+PCenter::PCenter(string path,string out)
 {
     //读文件
     string temp;
@@ -61,7 +61,8 @@ SolveStruct::SolveStruct(string path,string out)
         weight[i] = 1;//初始权重全部为1
     }
 }
-SolveStruct::~SolveStruct()
+
+PCenter::~PCenter()
 {
     for (int i = 0; i < nums; ++i)
         delete[] elements[i];
@@ -75,7 +76,7 @@ SolveStruct::~SolveStruct()
     delete[] delta;
 }
 
-void SolveStruct::Greedy()
+void PCenter::Greedy()
 {
     int max_uncovered;//记录最多能覆盖的未被覆盖节点数
     int cur_uncovered;//当前集合能覆盖的未覆盖元素数目
@@ -137,7 +138,7 @@ void SolveStruct::Greedy()
     InitialDelta();
 }
 
-void SolveStruct::Solve(int limit_s, int rand_seed)
+void PCenter::Solve(int limit_s, int rand_seed)
 {
     start_ms = clock();
     this->limit_s = limit_s;
@@ -184,7 +185,7 @@ void SolveStruct::Solve(int limit_s, int rand_seed)
     tempnum = uncovered_num;
 }
 
-void SolveStruct::InitialDelta()
+void PCenter::InitialDelta()
 {
     for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
     {
@@ -198,7 +199,7 @@ void SolveStruct::InitialDelta()
     }
 }
 
-void SolveStruct::FindSwap(int& v_open, int& v_close)
+void PCenter::FindSwap(int& v_open, int& v_close)
 {
     int choose = uncovered_list[rand() % uncovered_num];
     best_delta_f = INT_MAX;
@@ -259,7 +260,7 @@ void SolveStruct::FindSwap(int& v_open, int& v_close)
     }
 }
 
-void SolveStruct::SwapMove(int v_open, int v_close)
+void PCenter::SwapMove(int v_open, int v_close)
 {
     Open(v_open);
     Close(v_close);
@@ -279,7 +280,7 @@ void SolveStruct::SwapMove(int v_open, int v_close)
     }
 }
 
-void SolveStruct::Open(int v)//加入结点v作为中心
+void PCenter::Open(int v)//加入结点v作为中心
 {
     Solution[v] = true;
     //delta[v] = 0;
@@ -302,7 +303,7 @@ void SolveStruct::Open(int v)//加入结点v作为中心
     }
 }
 
-void SolveStruct::Close(int v)
+void PCenter::Close(int v)
 {
     Solution[v] = false;
     //更新邻域delta
@@ -329,7 +330,7 @@ void SolveStruct::Close(int v)
     }
 }
 
-bool SolveStruct::OutputFile()
+bool PCenter::OutputFile()
 {
     ofstream fout(output_path);
     if (!fout)
