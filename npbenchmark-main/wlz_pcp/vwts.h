@@ -30,7 +30,7 @@ private:
     int* uncovered_list;//记录没有被覆盖的节点
     int* vertex_weights;//每个节点权重，随着未覆盖时间增大逐渐增大
     int f, best_f, best_delta_f; //f函数，记录加权和
-    int* delta;//记录结点i加入中心或者删除中心对f的影响
+    int* delta;//记录中心i加入X或者删除对f的影响
     int tabu_open, tabu_close;//禁忌期为1，记录禁忌元素
 public:
     int tempiter;//暂时用于统计迭代次数
