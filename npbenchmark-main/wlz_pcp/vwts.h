@@ -35,7 +35,8 @@ private:
     int best_delta_f; //f函数，记录加权和
 
     int* delta; //记录中心i加入X或者删除对f的影响
-    int tabu_open, tabu_close; //禁忌期为1，记录禁忌元素
+    int tabu_open;
+    int tabu_close; //禁忌期为1，记录禁忌元素
 public:
     int tempiter;//暂时用于统计迭代次数
     int tempnum;//记录uncovered_num
