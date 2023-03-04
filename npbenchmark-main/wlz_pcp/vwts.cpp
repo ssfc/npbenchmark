@@ -144,7 +144,7 @@ void VWTS::Solve(int rand_seed)
     }
     for (iter = 1; num_uncovered != 0; ++iter)
     {
-        FindSwap(v_open, v_close);
+        find_swap(v_open, v_close);
         if (v_open == -1 || v_close == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
         SwapMove(v_open, v_close);//进行move并比较
@@ -183,7 +183,7 @@ void VWTS::InitialDelta()
     }
 }
 
-void VWTS::FindSwap(int& v_open, int& v_close)
+void VWTS::find_swap(int& v_open, int& v_close)
 {
     int choose = uncovered_vertices[rand() % num_uncovered];
     best_delta_f = INT_MAX;
