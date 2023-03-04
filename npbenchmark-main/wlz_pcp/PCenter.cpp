@@ -37,7 +37,7 @@ namespace szx {
 
             VWTS test(input.nodeNum, input.centerNum,
                       input.coverages, input.nodesWithDrops, seed);
-            test.Solve(seed);
+            test.vertex_weight_tabu_search(seed);
             test.get_solution(output);
 
             cerr << "Evaluate output: ";

@@ -125,7 +125,7 @@ void VWTS::greedy_construct()
     InitialDelta();
 }
 
-void VWTS::Solve(int rand_seed)
+void VWTS::vertex_weight_tabu_search(int rand_seed)
 {
     start_ms = clock();
     srand(rand_seed);

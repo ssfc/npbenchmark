@@ -45,7 +45,7 @@ public:
     ~VWTS();
     //主要实现
     void greedy_construct();
-    void Solve(int rand_seed);
+    void vertex_weight_tabu_search(int rand_seed);
     void find_pair(int& v_open, int& v_close);//寻找交换对
     void make_move(int v_open, int v_close);
     //别的一些过程函数
