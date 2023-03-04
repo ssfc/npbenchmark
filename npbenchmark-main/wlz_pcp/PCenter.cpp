@@ -1,6 +1,5 @@
 # include "PCenter.h"
-# include "pcp_greedy.h"
-# include "pcp_vector.h"
+# include "vwts.h"
 
 # include <algorithm>
 # include <ctime>
@@ -36,23 +35,16 @@ namespace szx {
         void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
-            // 1: greedy method;
-            // PCP_Greedy test_graph(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-            // test_graph.greedy_construct();
+            string path = "./data/u1060p10r2273.08.txt";
+            string output_path = "sln.txt";
+            int limit_s = 999999;
+            int rand_seed = 1;
 
-            // 2: local search method;
-            ///*
-            // input.centerNum = 3;
-            PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, input.nodesWithDrops, seed);
-            test.vertex_weight_tabu_search();
-            test.get_solution(output);
+            VWTS sol(path, output_path);
+            sol.Solve(limit_s, rand_seed);
 
-            cerr << "Evaluate output: ";
-            for(int i=0;i<input.centerNum;i++)
-            {
-                cerr << output[i] << " ";
-            }
-            cerr << endl;
+            printf("iter:%d time:%lf  uncovered_num:%d", sol.tempiter,((double)sol.end_ms - (double)sol.start_ms) / 1000.0, sol.tempnum);
+
 
             //*/
         }
