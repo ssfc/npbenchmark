@@ -30,9 +30,9 @@ private:
     int* uncovered_vertices; //记录没有被覆盖的节点
     int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
 
-    int f;
+    int f; //f函数，记录加权和
     int best_f;
-    int best_delta_f; //f函数，记录加权和
+    int best_delta_f;
 
     int* delta; //记录中心i加入X或者删除对f的影响
     int tabu_open;
@@ -42,20 +42,22 @@ public:
     int tempnum;//记录uncovered_num
     int start_ms, end_ms, limit_s;
 
-    //构造函数和析构函数
+
     VWTS(int input_num_vertex, int input_num_center,
          std::vector<std::vector<int>>& input_coverages,
          int input_seed);//读文件并初始化变量
     ~VWTS();
-    //主要实现
+
     void greedy_construct();
     void vertex_weight_tabu_search();
     void find_pair(int& v_open, int& v_close);//寻找交换对
     void make_move(int v_open, int v_close);
-    //别的一些过程函数
-    void init_delta();//初始化delta
-    void open_center(int v);//打开节点
-    void close_center(int v);//关闭节点
+
+    void init_delta();
+    void open_center(int v);
+    void close_center(int v);
+
+    // debug function
     void get_solution(std::vector<NodeId>& output);
 };
 
