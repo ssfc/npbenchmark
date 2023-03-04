@@ -40,10 +40,10 @@ namespace szx {
             int limit_s = 999999;
             int rand_seed = 1;
 
-            VWTS sol(path, output_path);
-            sol.Solve(limit_s, rand_seed);
+            VWTS test(path, output_path);
+            test.Solve(limit_s, rand_seed);
 
-            printf("iter:%d time:%lf  uncovered_num:%d", sol.tempiter,((double)sol.end_ms - (double)sol.start_ms) / 1000.0, sol.tempnum);
+            printf("iter:%d time:%lf  uncovered_num:%d", test.tempiter,((double)test.end_ms - (double)test.start_ms) / 1000.0, test.tempnum);
 
 
             //*/
