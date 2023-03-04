@@ -14,7 +14,7 @@
 #include<cmath>
 using namespace std;
 
-VWTS::VWTS(string path,string out)
+VWTS::VWTS(string path)
 {
     //读文件
     string temp;
@@ -43,7 +43,6 @@ VWTS::VWTS(string path,string out)
             ss >> current_list[j];
     }
     fin.close();
-    output_path = out;
     solution = new bool[nums];
     center = new int[P];
     covered_center_num = new int[nums];

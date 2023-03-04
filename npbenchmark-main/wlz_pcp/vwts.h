@@ -40,7 +40,7 @@ public:
     int start_ms, end_ms, limit_s;
 
     //构造函数和析构函数
-    VWTS(string path,string out);//读文件并初始化变量
+    VWTS(string path);//读文件并初始化变量
     ~VWTS();
     //主要实现
     void Greedy();

@@ -40,7 +40,7 @@ namespace szx {
             int limit_s = 999999;
             int rand_seed = 1;
 
-            VWTS test(path, output_path);
+            VWTS test(path);
             test.Solve(limit_s, rand_seed);
             test.get_solution(output);
 
