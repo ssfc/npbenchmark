@@ -344,3 +344,12 @@ bool VWTS::OutputFile()
     }
     return true;
 }
+
+// output solution;
+void VWTS::get_solution(vector<NodeId>& output)
+{
+    for (int i = 0; i < P; i++)
+    {
+        output[i] = center[i];
+    }
+}

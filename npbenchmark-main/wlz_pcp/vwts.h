@@ -6,8 +6,11 @@
 #define WLZ_PCP_VWTS_H
 
 #pragma once
-#include<iostream>
+#include <iostream>
+#include <vector>
+
 using namespace std;
+using NodeId = int;
 
 class VWTS
 {
@@ -49,6 +52,7 @@ public:
     void Open(int v);//打开节点
     void Close(int v);//关闭节点
     bool OutputFile();//输出文件
+    void get_solution(std::vector<NodeId>& output);
 };
 
 #endif //WLZ_PCP_VWTS_H
