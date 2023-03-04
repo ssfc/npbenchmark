@@ -47,7 +47,7 @@ public:
     void greedy_construct();
     void Solve(int rand_seed);
     void find_pair(int& v_open, int& v_close);//寻找交换对
-    void SwapMove(int v_open, int v_close);
+    void make_move(int v_open, int v_close);
     //别的一些过程函数
     void InitialDelta();//初始化delta
     void Open(int v);//打开节点

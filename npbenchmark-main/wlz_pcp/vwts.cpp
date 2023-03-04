@@ -147,7 +147,7 @@ void VWTS::Solve(int rand_seed)
         find_pair(v_open, v_close);
         if (v_open == -1 || v_close == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
-        SwapMove(v_open, v_close);//进行move并比较
+        make_move(v_open, v_close);//进行move并比较
         if (num_uncovered < last_uncovered_num && num_uncovered < best_uncovered_num)
         {
             best_uncovered_num = num_uncovered;
@@ -244,7 +244,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
     }
 }
 
-void VWTS::SwapMove(int v_open, int v_close)
+void VWTS::make_move(int v_open, int v_close)
 {
     Open(v_open);
     Close(v_close);
