@@ -9,7 +9,7 @@
 #include<iostream>
 using namespace std;
 
-class PCenter
+class VWTS
 {
 private:
     //图结构
@@ -37,8 +37,8 @@ public:
     int start_ms, end_ms, limit_s;
 
     //构造函数和析构函数
-    PCenter(string path,string out);//读文件并初始化变量
-    ~PCenter();
+    VWTS(string path,string out);//读文件并初始化变量
+    ~VWTS();
     //主要实现
     void Greedy();
     void Solve(int limit_s, int rand_seed);

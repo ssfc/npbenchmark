@@ -14,7 +14,7 @@
 #include<cmath>
 using namespace std;
 
-PCenter::PCenter(string path,string out)
+VWTS::VWTS(string path,string out)
 {
     //读文件
     string temp;
@@ -62,7 +62,7 @@ PCenter::PCenter(string path,string out)
     }
 }
 
-PCenter::~PCenter()
+VWTS::~VWTS()
 {
     for (int i = 0; i < nums; ++i)
         delete[] elements[i];
@@ -76,7 +76,7 @@ PCenter::~PCenter()
     delete[] delta;
 }
 
-void PCenter::Greedy()
+void VWTS::Greedy()
 {
     int max_uncovered;//记录最多能覆盖的未被覆盖节点数
     int cur_uncovered;//当前集合能覆盖的未覆盖元素数目
@@ -138,7 +138,7 @@ void PCenter::Greedy()
     InitialDelta();
 }
 
-void PCenter::Solve(int limit_s, int rand_seed)
+void VWTS::Solve(int limit_s, int rand_seed)
 {
     start_ms = clock();
     this->limit_s = limit_s;
@@ -185,7 +185,7 @@ void PCenter::Solve(int limit_s, int rand_seed)
     tempnum = uncovered_num;
 }
 
-void PCenter::InitialDelta()
+void VWTS::InitialDelta()
 {
     for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
     {
@@ -199,7 +199,7 @@ void PCenter::InitialDelta()
     }
 }
 
-void PCenter::FindSwap(int& v_open, int& v_close)
+void VWTS::FindSwap(int& v_open, int& v_close)
 {
     int choose = uncovered_list[rand() % uncovered_num];
     best_delta_f = INT_MAX;
@@ -260,7 +260,7 @@ void PCenter::FindSwap(int& v_open, int& v_close)
     }
 }
 
-void PCenter::SwapMove(int v_open, int v_close)
+void VWTS::SwapMove(int v_open, int v_close)
 {
     Open(v_open);
     Close(v_close);
@@ -280,7 +280,7 @@ void PCenter::SwapMove(int v_open, int v_close)
     }
 }
 
-void PCenter::Open(int v)//加入结点v作为中心
+void VWTS::Open(int v)//加入结点v作为中心
 {
     solution[v] = true;
     //delta[v] = 0;
@@ -303,7 +303,7 @@ void PCenter::Open(int v)//加入结点v作为中心
     }
 }
 
-void PCenter::Close(int v)
+void VWTS::Close(int v)
 {
     solution[v] = false;
     //更新邻域delta
@@ -330,7 +330,7 @@ void PCenter::Close(int v)
     }
 }
 
-bool PCenter::OutputFile()
+bool VWTS::OutputFile()
 {
     ofstream fout(output_path);
     if (!fout)
