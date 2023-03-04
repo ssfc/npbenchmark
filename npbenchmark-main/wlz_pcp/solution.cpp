@@ -44,7 +44,7 @@ PCenter::PCenter(string path,string out)
     }
     fin.close();
     output_path = out;
-    Solution = new bool[nums];
+    solution = new bool[nums];
     center = new int[P];
     covered_center_num = new int[nums];
     covered_by = new int[nums];
@@ -56,7 +56,7 @@ PCenter::PCenter(string path,string out)
     best_delta_f = INT_MAX;
     for (int i = 0; i < nums; ++i)
     {
-        Solution[i] = false;//一开始没有被挑选为中心的点
+        solution[i] = false;//一开始没有被挑选为中心的点
         covered_center_num[i] = 0;//每个点都没有被中心覆盖
         weight[i] = 1;//初始权重全部为1
     }
@@ -67,7 +67,7 @@ PCenter::~PCenter()
     for (int i = 0; i < nums; ++i)
         delete[] elements[i];
     delete[] client_cover_num;
-    delete[] Solution;
+    delete[] solution;
     delete[] center;
     delete[] covered_center_num;
     delete[] covered_by;
@@ -88,7 +88,7 @@ void PCenter::Greedy()
         for (int inum = 0; inum < nums; ++inum)
         {
             //如果未被选为中心就检查
-            if (!Solution[inum])//从未选为中心的结点中找到最好的那些加入列表
+            if (!solution[inum])//从未选为中心的结点中找到最好的那些加入列表
             {
                 //计算当前节点能覆盖多少未被覆盖的节点
                 int res = 0;
@@ -111,7 +111,7 @@ void PCenter::Greedy()
         }
         //从列表中随机选一个并更新
         int choose = best_list[rand() % best_list.size()];
-        Solution[choose] = true;
+        solution[choose] = true;
         for (int i = 0; i < client_cover_num[choose]; ++i)
         {
             if (covered_center_num[elements[choose][i]] == 0)//如果还未被别的中心覆盖
@@ -129,7 +129,7 @@ void PCenter::Greedy()
     int isolx = 0;
     for (int i = 0; i < nums; ++i)
     {
-        if (Solution[i] == true)//如果被选为中心，在中心列表中记录
+        if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_list[uncovered_num++] = i;
@@ -189,7 +189,7 @@ void PCenter::InitialDelta()
 {
     for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
     {
-        int flag = Solution[i] ? 1 : 0;
+        int flag = solution[i] ? 1 : 0;
         //如果是非中心节点，delta为覆盖未覆盖元素数量
         //如果是中心，delta为仅由该中心覆盖元素数量
         delta[i] = 0;
@@ -273,7 +273,7 @@ void PCenter::SwapMove(int v_open, int v_close)
     int isolx = 0;
     for (int i = 0; i < nums; ++i)
     {
-        if (Solution[i] == true)//如果被选为中心，在中心列表中记录
+        if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_list[uncovered_num++] = i;
@@ -282,7 +282,7 @@ void PCenter::SwapMove(int v_open, int v_close)
 
 void PCenter::Open(int v)//加入结点v作为中心
 {
-    Solution[v] = true;
+    solution[v] = true;
     //delta[v] = 0;
     //更新邻域delta
     for (int ic = 0; ic < client_cover_num[v]; ++ic)//o(n/p)
@@ -305,7 +305,7 @@ void PCenter::Open(int v)//加入结点v作为中心
 
 void PCenter::Close(int v)
 {
-    Solution[v] = false;
+    solution[v] = false;
     //更新邻域delta
     for (int ic = 0; ic < client_cover_num[v]; ++ic)
     {
@@ -319,7 +319,7 @@ void PCenter::Close(int v)
         else if (covered_center_num[vc] == 2)//vc周围中心变成唯一覆盖vc
         {
             for (int jc = 0; jc < client_cover_num[vc]; ++jc)
-                if (Solution[elements[vc][jc]])
+                if (solution[elements[vc][jc]])
                 {
                     delta[elements[vc][jc]] += weight[vc];
                     covered_by[vc] = elements[vc][jc];//更新被唯一覆盖中心

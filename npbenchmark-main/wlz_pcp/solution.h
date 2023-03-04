@@ -18,7 +18,7 @@ private:
     int nums, P;//节点数量，中心数量
 
     //记录变量
-    bool* Solution;//是否挑选为中心（求解）
+    bool* solution;//是否挑选为中心（求解）
     int* center;//记录中心节点
     int* covered_center_num;//每个元素被多少个中心覆盖
     int* covered_by;//仅被一个中心覆盖的点
