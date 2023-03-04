@@ -55,8 +55,14 @@ build CMakeFiles/wlz_pcp.dir/main.cpp.obj: CXX_COMPILER__wlz_pcp_Debug C$:/wamp6
   OBJECT_DIR = CMakeFiles\wlz_pcp.dir
   OBJECT_FILE_DIR = CMakeFiles\wlz_pcp.dir
 
-build CMakeFiles/wlz_pcp.dir/solution.cpp.obj: CXX_COMPILER__wlz_pcp_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/wlz_pcp/solution.cpp || cmake_object_order_depends_target_wlz_pcp
-  DEP_FILE = CMakeFiles\wlz_pcp.dir\solution.cpp.obj.d
+build CMakeFiles/wlz_pcp.dir/vwts.cpp.obj: CXX_COMPILER__wlz_pcp_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/wlz_pcp/vwts.cpp || cmake_object_order_depends_target_wlz_pcp
+  DEP_FILE = CMakeFiles\wlz_pcp.dir\vwts.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\wlz_pcp.dir
+  OBJECT_FILE_DIR = CMakeFiles\wlz_pcp.dir
+
+build CMakeFiles/wlz_pcp.dir/PCenter.cpp.obj: CXX_COMPILER__wlz_pcp_Debug C$:/wamp64/www/npbenchmark/npbenchmark-main/wlz_pcp/PCenter.cpp || cmake_object_order_depends_target_wlz_pcp
+  DEP_FILE = CMakeFiles\wlz_pcp.dir\PCenter.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\wlz_pcp.dir
   OBJECT_FILE_DIR = CMakeFiles\wlz_pcp.dir
@@ -69,7 +75,7 @@ build CMakeFiles/wlz_pcp.dir/solution.cpp.obj: CXX_COMPILER__wlz_pcp_Debug C$:/w
 #############################################
 # Link the executable wlz_pcp.exe
 
-build wlz_pcp.exe: CXX_EXECUTABLE_LINKER__wlz_pcp_Debug CMakeFiles/wlz_pcp.dir/main.cpp.obj CMakeFiles/wlz_pcp.dir/solution.cpp.obj
+build wlz_pcp.exe: CXX_EXECUTABLE_LINKER__wlz_pcp_Debug CMakeFiles/wlz_pcp.dir/main.cpp.obj CMakeFiles/wlz_pcp.dir/vwts.cpp.obj CMakeFiles/wlz_pcp.dir/PCenter.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\wlz_pcp.dir

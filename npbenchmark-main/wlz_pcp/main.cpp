@@ -1,22 +1,68 @@
-#include<iostream>
-#include<fstream>
-#include<cstdlib>
-#include<ctime>
-#include<cmath>
-#include "vwts.h"
+#include <iostream>
+#include <string>
+#include <chrono>
+
+#include "PCenter.h"
+
+
 using namespace std;
+using namespace szx;
 
-int main(int argc, char* argv[])
-{
-    //Íâ²¿µ÷ÓÃÊ±²ÎÊý
-    string path = argv[1];
-    string output_path = argv[2];
-    int limit_s = atoi(argv[3]);
-    int rand_seed = atoi(argv[4]);
 
-    VWTS sol(path, output_path);
-    sol.Solve(limit_s, rand_seed);
+void loadInput(istream& is, PCenter& pc) {
+    is >> pc.nodeNum >> pc.centerNum;
+    pc.coverages.resize(pc.nodeNum);
+    for (auto coverage = pc.coverages.begin(); coverage != pc.coverages.end(); ++coverage) {
+        NodeId coveredNodeNum;
+        is >> coveredNodeNum;
+        coverage->resize(coveredNodeNum);
+        for (auto node = coverage->begin(); node != coverage->end(); ++node) { is >> *node; }
+    }
 
-    printf("iter:%d time:%lf  uncovered_num:%d", sol.tempiter,((double)sol.end_ms - (double)sol.start_ms) / 1000.0, sol.tempnum);
+    EdgeId minEdgeLenRank;
+    EdgeId maxEdgeLenRank;
+    is >> maxEdgeLenRank >> minEdgeLenRank;
+    pc.nodesWithDrops.resize(maxEdgeLenRank - minEdgeLenRank);
+    for (auto r = pc.nodesWithDrops.begin(); r != pc.nodesWithDrops.end(); ++r) {
+        NodeId nodeNumToDrop;
+        is >> nodeNumToDrop;
+        r->resize(nodeNumToDrop);
+        for (auto node = r->begin(); node != r->end(); ++node) { is >> *node; }
+    }
+}
+
+void saveOutput(ostream& os, Centers& centers) {
+    for (auto center = centers.begin(); center != centers.end(); ++center) { os << *center << endl; }
+}
+
+void test(istream& inputStream, ostream& outputStream, long long secTimeout, int randSeed) {
+    cerr << "load input." << endl;
+    PCenter pc;
+    loadInput(inputStream, pc);
+
+    cerr << "solve." << endl;
+    chrono::steady_clock::time_point endTime = chrono::steady_clock::now() + chrono::seconds(secTimeout);
+    Centers centers(pc.centerNum);
+    solvePCenter(centers, pc, [&]() -> bool { return endTime < chrono::steady_clock::now(); }, randSeed);
+
+    cerr << "save output." << endl;
+    saveOutput(outputStream, centers);
+}
+void test(istream& inputStream, ostream& outputStream, long long secTimeout) {
+    return test(inputStream, outputStream, secTimeout, static_cast<int>(time(nullptr) + clock()));
+}
+
+
+int main(int argc, char* argv[]) {
+    cerr << "load environment." << endl;
+    if (argc > 2) {
+        long long secTimeout = atoll(argv[1]);
+        int randSeed = atoi(argv[2]);
+        test(cin, cout, secTimeout, randSeed);
+    } else {
+        //ifstream ifs("path/to/instance.txt");
+        //ofstream ofs("path/to/solution.txt");
+        //test(ifs, ofs, 10); // for self-test.
+    }
     return 0;
 }
