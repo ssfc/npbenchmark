@@ -11,7 +11,6 @@ using namespace std;
 
 VWTS::VWTS(int input_num_vertex, int input_num_center,
            std::vector<std::vector<int>>& input_coverages,
-           std::vector<std::vector<int>> &input_nodesWithDrops,
            int input_seed)
 {
     num_vertex = input_num_vertex;

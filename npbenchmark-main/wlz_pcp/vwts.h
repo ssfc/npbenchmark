@@ -45,7 +45,6 @@ public:
     //构造函数和析构函数
     VWTS(int input_num_vertex, int input_num_center,
          std::vector<std::vector<int>>& input_coverages,
-         std::vector<std::vector<int>> &input_nodesWithDrops,
          int input_seed);//读文件并初始化变量
     ~VWTS();
     //主要实现
