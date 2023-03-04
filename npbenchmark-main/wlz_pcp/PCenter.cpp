@@ -38,11 +38,10 @@ namespace szx {
 
             string output_path = "sln.txt";
             int limit_s = 999999;
-            int rand_seed = 1;
 
             VWTS test(input.nodeNum, input.centerNum,
                       input.coverages, input.nodesWithDrops, seed);
-            test.Solve(limit_s, rand_seed);
+            test.Solve(limit_s, seed);
             test.get_solution(output);
 
             cerr << "Evaluate output: ";
