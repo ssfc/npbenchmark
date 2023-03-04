@@ -28,12 +28,12 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
         printf("file %s is opened fail\n", path.c_str());
     }
     getline(fin, temp);
-    sscanf(temp.c_str(), "%d%d", &nums, &P);
-    client_cover_num = new int[nums];
-    elements = new int* [nums];
+    sscanf(temp.c_str(), "%d%d", &num_vertex, &P);
+    client_cover_num = new int[num_vertex];
+    elements = new int* [num_vertex];
 
     int count_client;
-    for (int i = 0; i < nums; ++i)
+    for (int i = 0; i < num_vertex; ++i)
     {
         getline(fin, temp);
         sscanf(temp.c_str(), "%d", &count_client);
@@ -47,17 +47,17 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
             ss >> current_list[j];
     }
     fin.close();
-    solution = new bool[nums];
+    solution = new bool[num_vertex];
     center = new int[P];
-    covered_center_num = new int[nums];
-    covered_by = new int[nums];
-    uncovered_list = new int[nums];
-    weight = new int[nums];
-    f = best_f = num_uncovered = nums;
-    delta = new int[nums];
+    covered_center_num = new int[num_vertex];
+    covered_by = new int[num_vertex];
+    uncovered_list = new int[num_vertex];
+    weight = new int[num_vertex];
+    f = best_f = num_uncovered = num_vertex;
+    delta = new int[num_vertex];
     tabu_open = tabu_close = -1;
     best_delta_f = INT_MAX;
-    for (int i = 0; i < nums; ++i)
+    for (int i = 0; i < num_vertex; ++i)
     {
         solution[i] = false;//一开始没有被挑选为中心的点
         covered_center_num[i] = 0;//每个点都没有被中心覆盖
@@ -67,7 +67,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
 
 VWTS::~VWTS()
 {
-    for (int i = 0; i < nums; ++i)
+    for (int i = 0; i < num_vertex; ++i)
         delete[] elements[i];
     delete[] client_cover_num;
     delete[] solution;
@@ -88,7 +88,7 @@ void VWTS::Greedy()
     {
         max_uncovered = 0;
         best_list.clear();
-        for (int inum = 0; inum < nums; ++inum)
+        for (int inum = 0; inum < num_vertex; ++inum)
         {
             //如果未被选为中心就检查
             if (!solution[inum])//从未选为中心的结点中找到最好的那些加入列表
@@ -130,7 +130,7 @@ void VWTS::Greedy()
     //更新未覆盖的节点和中心
     num_uncovered = 0;
     int isolx = 0;
-    for (int i = 0; i < nums; ++i)
+    for (int i = 0; i < num_vertex; ++i)
     {
         if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
@@ -188,7 +188,7 @@ void VWTS::Solve(int limit_s, int rand_seed)
 
 void VWTS::InitialDelta()
 {
-    for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
+    for (int i = 0; i < num_vertex; ++i)//o(n^2/p^2) ~ o(n^2)
     {
         int flag = solution[i] ? 1 : 0;
         //如果是非中心节点，delta为覆盖未覆盖元素数量
@@ -272,7 +272,7 @@ void VWTS::SwapMove(int v_open, int v_close)
     //更新
     num_uncovered = 0;
     int isolx = 0;
-    for (int i = 0; i < nums; ++i)
+    for (int i = 0; i < num_vertex; ++i)
     {
         if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;

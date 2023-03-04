@@ -18,7 +18,8 @@ private:
     //图结构
     int* client_cover_num;//每个点能够覆盖的节点数
     int** elements;//每个点覆盖的节点
-    int nums, P;//节点数量，中心数量
+    int num_vertex;
+    int P;//节点数量，中心数量
 
     //记录变量
     bool* solution;//是否挑选为中心（求解）
