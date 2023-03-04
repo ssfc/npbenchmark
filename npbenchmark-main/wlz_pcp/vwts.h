@@ -25,7 +25,7 @@ private:
     int* center;//记录中心节点
     int* covered_center_num;//每个元素被多少个中心覆盖
     int* covered_by;//仅被一个中心覆盖的点
-    int uncovered_num;//记录没有被覆盖的节点数，用作uncovered_list的下标
+    int num_uncovered;//记录没有被覆盖的节点数，用作uncovered_list的下标
     int* uncovered_list;//记录没有被覆盖的节点
     int* weight;//每个节点权重，随着未覆盖时间增大逐渐增大
     int f, best_f, best_delta_f; //f函数，记录加权和

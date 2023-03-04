@@ -49,7 +49,7 @@ VWTS::VWTS(string path)
     covered_by = new int[nums];
     uncovered_list = new int[nums];
     weight = new int[nums];
-    f = best_f = uncovered_num = nums;
+    f = best_f = num_uncovered = nums;
     delta = new int[nums];
     tabu_open = tabu_close = -1;
     best_delta_f = INT_MAX;
@@ -117,21 +117,21 @@ void VWTS::Greedy()
             {
                 --f;//加入节点
                 --best_f;
-                --uncovered_num;
+                --num_uncovered;
                 covered_by[elements[choose][i]] = choose;//表示仅被一个中心覆盖的节点
             }
             ++covered_center_num[elements[choose][i]];//该元素被中心覆盖数++
         }
     }
     //更新未覆盖的节点和中心
-    uncovered_num = 0;
+    num_uncovered = 0;
     int isolx = 0;
     for (int i = 0; i < nums; ++i)
     {
         if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
-            uncovered_list[uncovered_num++] = i;
+            uncovered_list[num_uncovered++] = i;
     }
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
     InitialDelta();
@@ -145,31 +145,31 @@ void VWTS::Solve(int limit_s, int rand_seed)
     Greedy();//贪心
 
     int iter;
-    int last_uncovered_num = INT_MAX, best_uncovered_num = uncovered_num;
+    int last_uncovered_num = INT_MAX, best_uncovered_num = num_uncovered;
     int v_open, v_close;
 
-    if (uncovered_num == 0 && (clock() - start_ms) / 1000 < limit_s)//更新
+    if (num_uncovered == 0 && (clock() - start_ms) / 1000 < limit_s)//更新
     {
         end_ms = clock();
         tempiter = 0;
-        tempnum = uncovered_num;
+        tempnum = num_uncovered;
         OutputFile();
         return;
     }
-    for (iter = 1; uncovered_num != 0 && (clock() - start_ms) / 1000 < limit_s; ++iter)
+    for (iter = 1; num_uncovered != 0 && (clock() - start_ms) / 1000 < limit_s; ++iter)
     {
         FindSwap(v_open, v_close);
         if (v_open == -1 || v_close == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
         SwapMove(v_open, v_close);//进行move并比较
-        if (uncovered_num < last_uncovered_num && uncovered_num < best_uncovered_num)
+        if (num_uncovered < last_uncovered_num && num_uncovered < best_uncovered_num)
         {
-            best_uncovered_num = uncovered_num;
+            best_uncovered_num = num_uncovered;
             OutputFile();
         }
         else//比上次结果要坏，权重奖励未覆盖结点
         {
-            for (int i = 0; i < uncovered_num; ++i)
+            for (int i = 0; i < num_uncovered; ++i)
             {
                 int v = uncovered_list[i];
                 ++weight[v], ++f;
@@ -177,11 +177,11 @@ void VWTS::Solve(int limit_s, int rand_seed)
                     ++delta[elements[v][ic]] ;
             }
         }
-        last_uncovered_num = uncovered_num;
+        last_uncovered_num = num_uncovered;
     }
     end_ms = clock();
     tempiter = iter;
-    tempnum = uncovered_num;
+    tempnum = num_uncovered;
 }
 
 void VWTS::InitialDelta()
@@ -200,7 +200,7 @@ void VWTS::InitialDelta()
 
 void VWTS::FindSwap(int& v_open, int& v_close)
 {
-    int choose = uncovered_list[rand() % uncovered_num];
+    int choose = uncovered_list[rand() % num_uncovered];
     best_delta_f = INT_MAX;
     vector<int> best_open, best_close;
     int* delta_p = new int[P];//记录中心delta，便于还原
@@ -268,14 +268,14 @@ void VWTS::SwapMove(int v_open, int v_close)
     tabu_open = v_close;
     tabu_close = v_open;
     //更新
-    uncovered_num = 0;
+    num_uncovered = 0;
     int isolx = 0;
     for (int i = 0; i < nums; ++i)
     {
         if (solution[i] == true)//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
         else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
-            uncovered_list[uncovered_num++] = i;
+            uncovered_list[num_uncovered++] = i;
     }
 }
 
