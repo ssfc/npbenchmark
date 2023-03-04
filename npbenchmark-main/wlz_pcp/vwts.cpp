@@ -28,7 +28,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
         printf("file %s is opened fail\n", path.c_str());
     }
     getline(fin, temp);
-    sscanf(temp.c_str(), "%d%d", &num_vertex, &P);
+    sscanf(temp.c_str(), "%d%d", &num_vertex, &num_center);
     client_cover_num = new int[num_vertex];
     elements = new int* [num_vertex];
 
@@ -48,7 +48,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
     }
     fin.close();
     solution = new bool[num_vertex];
-    center = new int[P];
+    center = new int[num_center];
     covered_center_num = new int[num_vertex];
     covered_by = new int[num_vertex];
     uncovered_list = new int[num_vertex];
@@ -84,7 +84,7 @@ void VWTS::Greedy()
     int max_uncovered;//记录最多能覆盖的未被覆盖节点数
     int cur_uncovered;//当前集合能覆盖的未覆盖元素数目
     vector<int> best_list;//记录能够覆盖最多未覆盖节点的节点列表
-    for (int ip = 0; ip < P; ++ip)
+    for (int ip = 0; ip < num_center; ++ip)
     {
         max_uncovered = 0;
         best_list.clear();
@@ -205,8 +205,8 @@ void VWTS::FindSwap(int& v_open, int& v_close)
     int choose = uncovered_list[rand() % num_uncovered];
     best_delta_f = INT_MAX;
     vector<int> best_open, best_close;
-    int* delta_p = new int[P];//记录中心delta，便于还原
-    for (int i = 0; i < P; ++i)
+    int* delta_p = new int[num_center];//记录中心delta，便于还原
+    for (int i = 0; i < num_center; ++i)
     {
         delta_p[i] = delta[center[i]];
     }
@@ -221,7 +221,7 @@ void VWTS::FindSwap(int& v_open, int& v_close)
                 delta[covered_by[vjc]] -= weight[vjc];
         }
         //更新best_delta_f
-        for (int ip = 0; ip < P; ++ip)
+        for (int ip = 0; ip < num_center; ++ip)
         {
             int cur_delta_f = delta[center[ip]] - delta[vc];//加入节点vc
 
@@ -242,7 +242,7 @@ void VWTS::FindSwap(int& v_open, int& v_close)
                 }
             }
         }
-        for (int ip = 0; ip < P; ++ip)
+        for (int ip = 0; ip < num_center; ++ip)
         {
             delta[center[ip]] = delta_p[ip];
         }
@@ -334,7 +334,7 @@ void VWTS::Close(int v)
 // output solution;
 void VWTS::get_solution(vector<NodeId>& output)
 {
-    for (int i = 0; i < P; i++)
+    for (int i = 0; i < num_center; i++)
     {
         output[i] = center[i];
     }
