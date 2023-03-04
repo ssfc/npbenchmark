@@ -35,8 +35,6 @@ namespace szx {
         void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
-            int limit_s = 999999;
-
             VWTS test(input.nodeNum, input.centerNum,
                       input.coverages, input.nodesWithDrops, seed);
             test.Solve(seed);
