@@ -244,7 +244,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
 
 void VWTS::make_move(int v_open, int v_close)
 {
-    Open(v_open);
+    open_center(v_open);
     Close(v_close);
     f = f + best_delta_f;
     if (f < best_f)best_f = f;
@@ -262,7 +262,7 @@ void VWTS::make_move(int v_open, int v_close)
     }
 }
 
-void VWTS::Open(int v)//加入结点v作为中心
+void VWTS::open_center(int v)//加入结点v作为中心
 {
     solution[v] = true;
     //delta[v] = 0;
