@@ -44,7 +44,7 @@ public:
          int input_seed);//读文件并初始化变量
     ~VWTS();
     //主要实现
-    void Greedy();
+    void greedy_construct();
     void Solve(int limit_s, int rand_seed);
     void FindSwap(int& v_open, int& v_close);//寻找交换对
     void SwapMove(int v_open, int v_close);

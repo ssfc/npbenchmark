@@ -67,7 +67,7 @@ VWTS::~VWTS()
     delete[] delta;
 }
 
-void VWTS::Greedy()
+void VWTS::greedy_construct()
 {
     int max_uncovered;//记录最多能覆盖的未被覆盖节点数
     int cur_uncovered;//当前集合能覆盖的未覆盖元素数目
@@ -134,7 +134,7 @@ void VWTS::Solve(int limit_s, int rand_seed)
     start_ms = clock();
     this->limit_s = limit_s;
     srand(rand_seed);
-    Greedy();//贪心
+    greedy_construct();//贪心
 
     int iter;
     int last_uncovered_num = INT_MAX, best_uncovered_num = num_uncovered;
