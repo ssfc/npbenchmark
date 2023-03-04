@@ -125,10 +125,9 @@ void VWTS::greedy_construct()
     InitialDelta();
 }
 
-void VWTS::Solve(int limit_s, int rand_seed)
+void VWTS::Solve(int rand_seed)
 {
     start_ms = clock();
-    this->limit_s = limit_s;
     srand(rand_seed);
     greedy_construct();//贪心
 
@@ -136,14 +135,14 @@ void VWTS::Solve(int limit_s, int rand_seed)
     int last_uncovered_num = INT_MAX, best_uncovered_num = num_uncovered;
     int v_open, v_close;
 
-    if (num_uncovered == 0 && (clock() - start_ms) / 1000 < limit_s)//更新
+    if (num_uncovered == 0)//更新
     {
         end_ms = clock();
         tempiter = 0;
         tempnum = num_uncovered;
         return;
     }
-    for (iter = 1; num_uncovered != 0 && (clock() - start_ms) / 1000 < limit_s; ++iter)
+    for (iter = 1; num_uncovered != 0; ++iter)
     {
         FindSwap(v_open, v_close);
         if (v_open == -1 || v_close == -1)//没找到非禁忌move，解除禁忌进行下一轮

@@ -39,7 +39,7 @@ namespace szx {
 
             VWTS test(input.nodeNum, input.centerNum,
                       input.coverages, input.nodesWithDrops, seed);
-            test.Solve(limit_s, seed);
+            test.Solve(seed);
             test.get_solution(output);
 
             cerr << "Evaluate output: ";
