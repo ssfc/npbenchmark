@@ -3,7 +3,7 @@
 #include<cstdlib>
 #include<ctime>
 #include<cmath>
-#include "solution.h"
+#include "vwts.h"
 using namespace std;
 
 int main(int argc, char* argv[])

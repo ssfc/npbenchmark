@@ -3,4 +3,4 @@ project(wlz_pcp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(wlz_pcp main.cpp solution.h solution.cpp)
+add_executable(wlz_pcp main.cpp vwts.h vwts.cpp)

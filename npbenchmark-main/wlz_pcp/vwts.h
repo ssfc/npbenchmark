@@ -2,8 +2,8 @@
 // Created by take_ on 2023/3/4.
 //
 
-#ifndef WLZ_PCP_SOLUTION_H
-#define WLZ_PCP_SOLUTION_H
+#ifndef WLZ_PCP_VWTS_H
+#define WLZ_PCP_VWTS_H
 
 #pragma once
 #include<iostream>
@@ -51,4 +51,4 @@ public:
     bool OutputFile();//输出文件
 };
 
-#endif //WLZ_PCP_SOLUTION_H
+#endif //WLZ_PCP_VWTS_H

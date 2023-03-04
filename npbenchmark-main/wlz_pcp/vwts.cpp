@@ -2,7 +2,7 @@
 // Created by take_ on 2023/3/4.
 //
 #pragma warning(disable:4996)
-#include "solution.h"
+#include "vwts.h"
 #include<iostream>
 #include<climits>
 #include<fstream>
