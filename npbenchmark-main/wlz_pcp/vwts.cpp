@@ -153,7 +153,6 @@ void VWTS::Solve(int limit_s, int rand_seed)
         end_ms = clock();
         tempiter = 0;
         tempnum = num_uncovered;
-        OutputFile();
         return;
     }
     for (iter = 1; num_uncovered != 0 && (clock() - start_ms) / 1000 < limit_s; ++iter)
@@ -165,7 +164,6 @@ void VWTS::Solve(int limit_s, int rand_seed)
         if (num_uncovered < last_uncovered_num && num_uncovered < best_uncovered_num)
         {
             best_uncovered_num = num_uncovered;
-            OutputFile();
         }
         else//比上次结果要坏，权重奖励未覆盖结点
         {
@@ -183,7 +181,7 @@ void VWTS::Solve(int limit_s, int rand_seed)
     tempiter = iter;
     tempnum = num_uncovered;
 }
-
+ 
 void VWTS::InitialDelta()
 {
     for (int i = 0; i < nums; ++i)//o(n^2/p^2) ~ o(n^2)
@@ -327,21 +325,6 @@ void VWTS::Close(int v)
         }
         --covered_center_num[vc];
     }
-}
-
-bool VWTS::OutputFile()
-{
-    ofstream fout(output_path);
-    if (!fout)
-    {
-        printf("output error :%s\n",output_path.c_str());
-        return false;
-    }
-    for (int i = 0; i < P; ++i)
-    {
-        fout << center[i] << " ";
-    }
-    return true;
 }
 
 // output solution;

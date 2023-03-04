@@ -31,9 +31,6 @@ private:
     int f, best_f, best_delta_f; //f函数，记录加权和
     int* delta;//记录结点i加入中心或者删除中心对f的影响
     int tabu_open, tabu_close;//禁忌期为1，记录禁忌元素
-
-    //输出文件路径和时间限制
-    string output_path;
 public:
     int tempiter;//暂时用于统计迭代次数
     int tempnum;//记录uncovered_num
@@ -51,7 +48,6 @@ public:
     void InitialDelta();//初始化delta
     void Open(int v);//打开节点
     void Close(int v);//关闭节点
-    bool OutputFile();//输出文件
     void get_solution(std::vector<NodeId>& output);
 };
 
