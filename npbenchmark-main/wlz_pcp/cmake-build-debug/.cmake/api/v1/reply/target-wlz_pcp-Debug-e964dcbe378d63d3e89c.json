@@ -13,7 +13,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -27,7 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 13,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 11,
 				"parent" : 0
 			}
 		]
@@ -38,7 +45,17 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : " -O3 -g -fdiagnostics-color=always"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "C:/boost_1_81_0"
 				}
 			],
 			"language" : "CXX",
@@ -48,7 +65,7 @@
 				[
 					1
 				],
-				"standard" : "17"
+				"standard" : "14"
 			},
 			"sourceIndexes" : 
 			[
@@ -64,11 +81,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-O3 -g",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "-static-libgcc -static-libstdc++",
 				"role" : "flags"
 			},
 			{

@@ -6,6 +6,7 @@
 #define WLZ_PCP_VWTS_H
 
 #pragma once
+#include <boost/dynamic_bitset.hpp>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -29,7 +30,7 @@ private:
     vector<int> num_center_cover; //每个中心能够覆盖的节点数
 
     //记录变量
-    vector<bool> solution; //是否挑选为中心（求解）
+    boost::dynamic_bitset<> solution; //是否挑选为中心（求解）
     vector<int> center; //记录中心节点
 
     int* num_covered_center; //每个顶点被多少个中心覆盖

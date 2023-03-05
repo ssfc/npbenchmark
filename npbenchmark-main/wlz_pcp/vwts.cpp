@@ -11,6 +11,7 @@ using namespace std;
 VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
            std::vector<std::vector<int>>& input_coverages,
            int input_seed)
+           :solution(input_num_vertex)
 {
     init_rand(input_seed); // initialize random generator;;
 
@@ -31,7 +32,6 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
             center_coverages[i][j] = input_coverages[i][j];
     }
 
-    solution.resize(num_vertex, false);
     center.resize(num_center, 0);
     num_covered_center = new int[num_vertex];
     covered_once = new int[num_vertex];
@@ -49,9 +49,9 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     center_weights.resize(num_vertex, 0);
     tabu_open = tabu_close = -1;
     min_delta = INT_MAX;
+    solution.reset();
     for (int i = 0; i < num_vertex; i++)
     {
-        solution[i] = false;//一开始没有被挑选为中心的点
         num_covered_center[i] = 0;//每个点都没有被中心覆盖
     }
 
@@ -103,7 +103,7 @@ void VWTS::greedy_construct()
         }
         //从列表中随机选一个并更新
         int choose = best_list[generated_random() % best_list.size()];
-        solution[choose] = true;
+        solution.set(choose);
         for (int i = 0; i < num_center_cover[choose]; i++)
         {
             if (num_covered_center[center_coverages[choose][i]] == 0)//如果还未被别的中心覆盖
@@ -368,7 +368,7 @@ void VWTS::make_move(int v_open, int v_close)
 
 void VWTS::open_center(int i) //在X中加入中心i
 {
-    solution[i] = true;
+    solution.set(i);
     //delta[v] = 0;
     //更新邻域delta
     for (int ic = 0; ic < num_center_cover[i]; ic++)//o(n/p)
@@ -391,7 +391,7 @@ void VWTS::open_center(int i) //在X中加入中心i
 
 void VWTS::close_center(int j)
 {
-    solution[j] = false;
+    solution.reset(j);
     //更新邻域delta
     for (int ic = 0; ic < num_center_cover[j]; ic++)
     {
