@@ -32,7 +32,7 @@ private:
     int num_uncovered; //没有被覆盖的节点数，用作uncovered_list的下标
     int* uncovered_vertices; //记录没有被覆盖的节点
 
-    int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
+    vector<int> vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
     vector<int> center_weights; //记录X加入中心i或者删除中心i对f(X)的影响
 
     int tabu_open;
