@@ -763,9 +763,15 @@ void PCP_Vector::vertex_weight_tabu_search()
             // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
             // print_index1("uncovered", uncovered);
             // print_vector("vertex weights", vertex_weights);
-            for (size_t v = uncovered.find_first(); v != dynamic_bitset<>::npos; v = uncovered.find_next(v))
+            for (size_t iv = uncovered.find_first(); iv != dynamic_bitset<>::npos; iv = uncovered.find_next(iv))
             {
-                vertex_weights[v]++;
+                vertex_weights[iv]++;
+                dynamic_bitset<> Cv = vertex_reach_center[iv];
+                // cerr << "Cv list: " << endl;
+                for (size_t ic = Cv.find_first(); ic != dynamic_bitset<>::npos; ic = Cv.find_next(ic))
+                {
+                    center_weights[ic]++;
+                }
             }
             // print_vector("vertex weights", vertex_weights);
 
