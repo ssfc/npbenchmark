@@ -274,14 +274,14 @@ void VWTS::make_move(int v_open, int v_close)
     }
 }
 
-void VWTS::open_center(int v)//加入结点v作为中心
+void VWTS::open_center(int i)//加入结点i作为中心
 {
-    solution[v] = true;
+    solution[i] = true;
     //delta[v] = 0;
     //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[v]; ic++)//o(n/p)
+    for (int ic = 0; ic < num_center_cover[i]; ic++)//o(n/p)
     {
-        int vc = center_coverages[v][ic];
+        int vc = center_coverages[i][ic];
         if (covered_center_num[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
             center_weights[covered_once[vc]] -= vertex_weights[vc];
         else if (covered_center_num[vc] == 0)//新覆盖结点的邻居delta--
@@ -290,8 +290,8 @@ void VWTS::open_center(int v)//加入结点v作为中心
             {
                 center_weights[center_coverages[vc][jc]] -= vertex_weights[vc];
             }
-            covered_once[vc] = v;
-            center_weights[v] += vertex_weights[vc];
+            covered_once[vc] = i;
+            center_weights[i] += vertex_weights[vc];
         }
         covered_center_num[vc]++;
     }
