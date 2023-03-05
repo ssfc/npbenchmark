@@ -87,6 +87,7 @@ public: // member functions.
     long long int get_iteration() const;
     static void print_vector(const std::string& name, std::vector<unsigned int> &vect);
     void print_equal_pair();
+    unsigned compute_sum_uncovered_weight();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H

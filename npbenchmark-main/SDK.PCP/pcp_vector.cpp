@@ -261,16 +261,8 @@ void PCP_Vector::find_pair()
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
-
-    // Compute f(X), which will be used in obj computation;
-    // unsigned int f_X = 0;
-    // cerr << "u: ";
-    // for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
-    // {
-        // cerr << u;
-        // f_X = f_X + vertex_weights[u];
-    // }
-    // cerr << "f(X): " << f_X << endl;
+    
+    cerr << "f(X): " << compute_sum_uncovered_weight() << endl;
     cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     // A2 LINE 5:
@@ -917,6 +909,17 @@ void PCP_Vector::print_equal_pair()
     cerr << endl;
 }
 
+// debug func: this func is to test whether sum_uncovered_weight is correct or not;
+unsigned PCP_Vector::compute_sum_uncovered_weight()
+{
+    unsigned int f_X = 0;
+    for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
+    {
+        f_X = f_X + vertex_weights[u];
+    }
+
+    return f_X;
+}
 
 // (1) debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
