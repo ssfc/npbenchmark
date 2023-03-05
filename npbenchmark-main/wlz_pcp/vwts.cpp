@@ -18,7 +18,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     num_center = input_num_center;
     current_radius = input_radius;
 
-    num_center_cover = new int[num_vertex];
+    num_center_cover.resize(num_vertex, 0);
     center_coverages = new int* [num_vertex];
 
     for (int i = 0; i < num_vertex; i++)
@@ -56,7 +56,6 @@ VWTS::~VWTS()
 {
     for (int i = 0; i < num_vertex; i++)
         delete[] center_coverages[i];
-    delete[] num_center_cover;
     delete[] solution;
     delete[] num_covered_center;
     delete[] covered_once;
@@ -154,7 +153,7 @@ void VWTS::vertex_weight_tabu_search()
                     center_weights[center_coverages[v][ic]]++ ;
             }
         }
-        
+
         prev_num_uncovered = num_uncovered;
 
         if (iter % 100000 == 0)

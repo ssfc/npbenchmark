@@ -26,7 +26,7 @@ private:
     int num_center; //中心数量
     int current_radius;
     int** center_coverages; //每个中心覆盖的节点
-    int* num_center_cover; //每个中心能够覆盖的节点数
+    vector<int> num_center_cover; //每个中心能够覆盖的节点数
 
     //记录变量
     bool* solution; //是否挑选为中心（求解）
