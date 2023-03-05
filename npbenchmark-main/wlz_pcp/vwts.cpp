@@ -133,6 +133,13 @@ void VWTS::greedy_construct()
 // X*: history best solution;
 void VWTS::vertex_weight_tabu_search()
 {
+    // A1 LINE 1: /* (Section 3.1) */
+    // X <- init(G, p, rq);
+    // X: initial solution generated;
+    // G: graph;
+    // p: centers;
+    // rq: 最小化的最大服务半径;
+    // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
     greedy_construct();
 
     int iter;
