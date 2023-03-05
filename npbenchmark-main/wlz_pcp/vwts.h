@@ -63,7 +63,7 @@ public:
     void find_pair(int& v_open, int& v_close);//寻找交换对
     void make_move(int v_open, int v_close);
 
-    void init_delta();
+    void init_center_weights();
     void open_center(int v);
     void close_center(int v);
 

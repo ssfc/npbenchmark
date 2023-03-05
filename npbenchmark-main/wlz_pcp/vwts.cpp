@@ -124,7 +124,7 @@ void VWTS::greedy_construct()
             uncovered_vertices[num_uncovered++] = i;
     }
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
-    init_delta();
+    init_center_weights();
 }
 
 // Algorithm 1;
@@ -267,7 +267,7 @@ void VWTS::vertex_weight_tabu_search()
     }
 }
 
-void VWTS::init_delta()
+void VWTS::init_center_weights()
 {
     for (int i = 0; i < num_vertex; i++)//o(n^2/p^2) ~ o(n^2)
     {
