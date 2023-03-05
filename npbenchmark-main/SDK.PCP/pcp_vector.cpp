@@ -261,7 +261,7 @@ void PCP_Vector::find_pair()
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
-    
+
     cerr << "f(X): " << compute_sum_uncovered_weight() << endl;
     cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
@@ -912,13 +912,13 @@ void PCP_Vector::print_equal_pair()
 // debug func: this func is to test whether sum_uncovered_weight is correct or not;
 unsigned PCP_Vector::compute_sum_uncovered_weight()
 {
-    unsigned int f_X = 0;
+    unsigned int sum = 0;
     for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
     {
-        f_X = f_X + vertex_weights[u];
+        sum += vertex_weights[u];
     }
 
-    return f_X;
+    return sum;
 }
 
 // (1) debug on laptop by clion:
