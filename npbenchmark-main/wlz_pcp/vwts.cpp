@@ -3,7 +3,6 @@
 //
 #include "vwts.h"
 #include <climits>
-#include <cstdlib>
 #include <ctime>
 #include <vector>
 
@@ -33,7 +32,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     }
 
     solution = new bool[num_vertex];
-    center = new int[num_center];
+    center.resize(num_center, 0);
     covered_center_num = new int[num_vertex];
     covered_once = new int[num_vertex];
     uncovered_vertices = new int[num_vertex];
@@ -59,7 +58,6 @@ VWTS::~VWTS()
         delete[] center_coverages[i];
     delete[] num_center_cover;
     delete[] solution;
-    delete[] center;
     delete[] covered_center_num;
     delete[] covered_once;
     delete[] uncovered_vertices;

@@ -25,7 +25,7 @@ private:
 
     //记录变量
     bool* solution; //是否挑选为中心（求解）
-    int* center; //记录中心节点
+    vector<int> center; //记录中心节点
 
     int* covered_center_num; //每个顶点被多少个中心覆盖
     int* covered_once; //仅被一个中心覆盖的顶点
