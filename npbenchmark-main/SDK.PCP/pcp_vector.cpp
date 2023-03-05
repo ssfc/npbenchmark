@@ -221,7 +221,7 @@ void PCP_Vector::greedy_construct()
     print_index1("Center selected", solution);
     num_uncovered = uncovered.count();
     sum_uncovered_weight = num_uncovered;
-    cerr << "f(X) = " << sum_uncovered_weight << endl;
+    cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     // A1 LINE 2:
     // iter <- 1;
@@ -763,6 +763,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
             // print_index1("uncovered", uncovered);
             // print_vector("vertex weights", vertex_weights);
+            print_index1("uncovered", uncovered);
+            print_vector("center weights", center_weights);
             for (size_t iv = uncovered.find_first(); iv != dynamic_bitset<>::npos; iv = uncovered.find_next(iv))
             {
                 vertex_weights[iv]++;
@@ -774,6 +776,7 @@ void PCP_Vector::vertex_weight_tabu_search()
                 }
             }
             // print_vector("vertex weights", vertex_weights);
+            print_vector("center weights", center_weights);
 
             // A1 LINE 11:
             // end if /* more uncovered clients than last solution */
