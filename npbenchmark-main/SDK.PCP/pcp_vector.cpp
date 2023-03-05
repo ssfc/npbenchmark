@@ -709,7 +709,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
     while(num_uncovered != 0 && iter<2)
     {
-        // cerr << "iteration: " << iter << endl;
+        cerr << "iteration: " << iter << endl;
         // A1 LINE 5:
         // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
         // (i, j): pair swapped
