@@ -171,6 +171,13 @@ void VWTS::vertex_weight_tabu_search()
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
     for (iter = 1; num_uncovered != 0; iter++)
     {
+        // A1 LINE 5:
+        // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
+        // (i, j): pair swapped
+        // X_prev: solution of the previous iteration;
+        // TL: tabu list;
+        // iter: current iteration;
+        // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
         find_pair(moved.center_in, moved.center_out);
         if (moved.center_in == -1 || moved.center_out == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
