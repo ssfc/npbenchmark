@@ -142,9 +142,21 @@ void VWTS::vertex_weight_tabu_search()
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
     greedy_construct();
 
-    int iter;
-    int prev_num_uncovered = INT_MAX;
+    // A1 LINE 2:
+    // X* <- X,
+    // X*: history best solution;
+    // X: initial solution generated (a set of centers);
     int best_num_uncovered = num_uncovered;
+
+    // X_prev <- X;
+    // X_prev: solution of the previous iteration;
+    // X: initial solution generated;
+    int prev_num_uncovered = INT_MAX;
+
+    // iter <- 1;
+    // iter: current iteration;
+    int iter = 1;
+
     Move moved{0, 0};
 
     for (iter = 1; num_uncovered != 0; iter++)
