@@ -263,14 +263,14 @@ void PCP_Vector::find_pair()
     // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // Compute f(X), which will be used in obj computation;
-    unsigned int f_X = 0;
+    // unsigned int f_X = 0;
     // cerr << "u: ";
-    for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
-    {
+    // for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
+    // {
         // cerr << u;
-        f_X = f_X + vertex_weights[u];
-    }
-    cerr << "f(X): " << f_X << endl;
+        // f_X = f_X + vertex_weights[u];
+    // }
+    // cerr << "f(X): " << f_X << endl;
     cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     // A2 LINE 5:
@@ -335,7 +335,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                unsigned int f_X_i_j = f_X - center_weights[i] + center_weights[j];
+                unsigned int f_X_i_j = sum_uncovered_weight - center_weights[i] + center_weights[j];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(f_X_i_j < obj)
                 {
