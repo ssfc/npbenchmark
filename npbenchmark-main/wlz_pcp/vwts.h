@@ -24,16 +24,18 @@ private:
     //记录变量
     bool* solution; //是否挑选为中心（求解）
     int* center; //记录中心节点
+
     int* covered_center_num; //每个顶点被多少个中心覆盖
     int* covered_once; //仅被一个中心覆盖的顶点
     int num_uncovered; //没有被覆盖的节点数，用作uncovered_list的下标
     int* uncovered_vertices; //记录没有被覆盖的节点
+
     int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
     int* center_weights; //记录X加入中心i或者删除中心i对f(X)的影响
 
     int tabu_open;
     int tabu_close; //禁忌期为1，记录禁忌元素
-    
+
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
     int min_history_sum_uncovered_weight; // f(X) 的历史最小值;
     int min_delta; // 最好的swap进行后, f(X)值的变化;
