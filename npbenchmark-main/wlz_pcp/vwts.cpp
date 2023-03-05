@@ -197,9 +197,21 @@ void VWTS::vertex_weight_tabu_search()
         // Meaning: If the current solution X improves the best solution found so far
         if(num_uncovered < best_num_uncovered)
         {
+            // A1 LINE 8:
+            // X* <- X
+            // X*: history best solution;
+            // X: current solution;
+            // Meaning: then X* is updated with X;
             best_num_uncovered = num_uncovered;
         }
-        else if(num_uncovered >= prev_num_uncovered) //比上次结果要坏，权重奖励未覆盖结点
+        // A1 LINE 9:
+        // else if |U(X)| >= |U(X_prev)| then
+        // X: current solution;
+        // |U(X)|: the set of clients uncovered by X;
+        // X_prev: solution of the previous iteration;
+        // |U(X')|: the set of clients uncovered by X';
+        // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
+        else if(num_uncovered >= prev_num_uncovered)
         {
             for (int i = 0; i < num_uncovered; i++)
             {
