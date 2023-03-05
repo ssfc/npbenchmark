@@ -241,6 +241,10 @@ void VWTS::vertex_weight_tabu_search()
         tabu_open = moved.center_out;
         tabu_close = moved.center_in;
 
+        // A1 LINE 13:
+        // X_prev <- X, iter <- iter + 1;
+        // X_prev: solution of the previous iteration;
+        // X: current solution;
         prev_num_uncovered = num_uncovered;
 
         if (iter % 100000 == 0)
@@ -250,6 +254,10 @@ void VWTS::vertex_weight_tabu_search()
             cerr << " elapsed time(s): " << elapsed_time
                  << " frequency:" << double(iter) / elapsed_time << endl;
         }
+
+        // A1 LINE 14:
+        // end while;
+        // Meaning: when the specified termination condition is met, the algorithm terminates and returns the best solution X*; (2023年2月17日)
     }
 
     if (num_uncovered == 0)//更新
