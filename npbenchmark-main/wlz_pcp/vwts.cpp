@@ -297,18 +297,18 @@ void VWTS::open_center(int i)//加入结点i作为中心
     }
 }
 
-void VWTS::close_center(int v)
+void VWTS::close_center(int j)
 {
-    solution[v] = false;
+    solution[j] = false;
     //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[v]; ic++)
+    for (int ic = 0; ic < num_center_cover[j]; ic++)
     {
-        int vc = center_coverages[v][ic];
+        int vc = center_coverages[j][ic];
         if (covered_center_num[vc] == 1)//vc变成未覆盖结点
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
                 center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
-            center_weights[v] -= vertex_weights[vc];
+            center_weights[j] -= vertex_weights[vc];
         }
         else if (covered_center_num[vc] == 2)//vc周围中心变成唯一覆盖vc
         {
