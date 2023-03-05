@@ -13,6 +13,11 @@
 using namespace std;
 using NodeId = int;
 
+struct Move {
+    int center_in;
+    int center_out;
+};
+
 class VWTS
 {
 private:
