@@ -33,7 +33,7 @@ private:
     boost::dynamic_bitset<> solution; //是否挑选为中心（求解）
     vector<int> center; //记录中心节点
 
-    int* num_covered_center; //每个顶点被多少个中心覆盖
+    vector<int> num_covered_center; //每个顶点被多少个中心覆盖
     vector<int> covered_once; //仅被一个中心覆盖的顶点
     vector<int> uncovered_vertices; //记录没有被覆盖的节点
     int num_uncovered; //没有被覆盖的节点数，用作uncovered_vertices的下标

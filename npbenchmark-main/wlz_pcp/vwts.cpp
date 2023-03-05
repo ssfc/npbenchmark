@@ -33,7 +33,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     }
 
     center.resize(num_center, 0);
-    num_covered_center = new int[num_vertex];
+    num_covered_center.resize(num_vertex, 0);
     covered_once.resize(num_vertex, 0);
     uncovered_vertices.resize(num_vertex, 0);
 
@@ -63,7 +63,6 @@ VWTS::~VWTS()
 {
     for (int i = 0; i < num_vertex; i++)
         delete[] center_coverages[i];
-    delete[] num_covered_center;
 }
 
 void VWTS::greedy_construct()
