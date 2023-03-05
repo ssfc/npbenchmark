@@ -233,6 +233,14 @@ void VWTS::vertex_weight_tabu_search()
             // end if /* more uncovered clients than last solution */
         }
 
+        // A1 LINE 12:
+        // TL <- (i, j) /* update tabu list (Section 3.4) */
+        // TL: tabu list;
+        // (i, j): pairs found;
+        // Meaning: update tabu list; (2023年2月17日)
+        tabu_open = moved.center_out;
+        tabu_close = moved.center_in;
+
         prev_num_uncovered = num_uncovered;
 
         if (iter % 100000 == 0)
@@ -337,13 +345,6 @@ void VWTS::make_move(int v_open, int v_close)
     if (sum_uncovered_weight < min_history_sum_uncovered_weight)
         min_history_sum_uncovered_weight = sum_uncovered_weight;
 
-    // A1 LINE 12:
-    // TL <- (i, j) /* update tabu list (Section 3.4) */
-    // TL: tabu list;
-    // (i, j): pairs found;
-    // Meaning: update tabu list; (2023年2月17日)
-    tabu_open = v_close;
-    tabu_close = v_open;
     //更新
     num_uncovered = 0;
     int isolx = 0;
