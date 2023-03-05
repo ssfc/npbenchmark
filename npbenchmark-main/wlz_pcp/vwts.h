@@ -29,7 +29,7 @@ private:
     vector<int> num_center_cover; //每个中心能够覆盖的节点数
 
     //记录变量
-    bool* solution; //是否挑选为中心（求解）
+    vector<bool> solution; //是否挑选为中心（求解）
     vector<int> center; //记录中心节点
 
     int* num_covered_center; //每个顶点被多少个中心覆盖
