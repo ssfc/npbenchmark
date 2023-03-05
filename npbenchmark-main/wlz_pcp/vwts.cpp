@@ -124,6 +124,13 @@ void VWTS::greedy_construct()
     init_delta();
 }
 
+// Algorithm 1;
+// Input symbol:
+// G: graph;
+// p: center number;
+// rq: covering radius;
+// Output symbol:
+// X*: history best solution;
 void VWTS::vertex_weight_tabu_search()
 {
     greedy_construct();
