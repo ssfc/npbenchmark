@@ -704,7 +704,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0)
+    while(num_uncovered != 0 && iter<2)
     {
         // cerr << "iteration: " << iter << endl;
         // A1 LINE 5:
@@ -776,8 +776,8 @@ void PCP_Vector::vertex_weight_tabu_search()
         // TL: tabu list;
         // (i, j): pairs found;
         // Meaning: update tabu list; (2023年2月17日)
-        tabu_tenure_table[moved.center_in] = iter + 3;
-        tabu_tenure_table[moved.center_out] = iter + 3;
+        tabu_tenure_table[moved.center_in] = iter + 2;
+        tabu_tenure_table[moved.center_out] = iter + 2;
 
         ///* debug: tabu tenure;
         // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
@@ -794,7 +794,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 10000 == 0)
+        if (iter % 1 == 0)
         {
             cerr << "Iteration: " << iter << " ";
             cerr << "num : " << num_uncovered << " ";
