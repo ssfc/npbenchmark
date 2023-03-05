@@ -213,6 +213,14 @@ void VWTS::vertex_weight_tabu_search()
         // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
         else if(num_uncovered >= prev_num_uncovered)
         {
+            // A1 LINE 10:
+            /* (Section 3.2) */
+            // for v belongs to U(X) do
+            //    wv <- wv + 1
+            // wv: weight of vertex that uncovered by X;
+            // Meaning 1: If stagnation (停滞) occurs, the weight of each uncovered client is adjusted; (2023年2月17日)
+            // Meaning 2: when the tabu search is **trapped in local optimal** solution X, the VWTS algorithm increases the weight wi of each uncovered client i属于U(X) by one unit; (2023年2月18日)
+            // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
             for (int i = 0; i < num_uncovered; i++)
             {
                 int v = uncovered_vertices[i];
@@ -220,6 +228,9 @@ void VWTS::vertex_weight_tabu_search()
                 for (int ic = 0; ic < num_center_cover[v]; ic++)  //邻居delta值相应变大
                     center_weights[center_coverages[v][ic]]++ ;
             }
+
+            // A1 LINE 11:
+            // end if /* more uncovered clients than last solution */
         }
 
         prev_num_uncovered = num_uncovered;
@@ -325,6 +336,12 @@ void VWTS::make_move(int v_open, int v_close)
     sum_uncovered_weight = sum_uncovered_weight + min_delta;
     if (sum_uncovered_weight < min_history_sum_uncovered_weight)
         min_history_sum_uncovered_weight = sum_uncovered_weight;
+
+    // A1 LINE 12:
+    // TL <- (i, j) /* update tabu list (Section 3.4) */
+    // TL: tabu list;
+    // (i, j): pairs found;
+    // Meaning: update tabu list; (2023年2月17日)
     tabu_open = v_close;
     tabu_close = v_open;
     //更新
