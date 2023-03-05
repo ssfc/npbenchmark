@@ -69,7 +69,7 @@ void VWTS::greedy_construct()
 {
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
     init_center_weights();
-    
+
     int max_uncovered;//记录最多能覆盖的未被覆盖节点数
     int cur_uncovered;//当前集合能覆盖的未覆盖元素数目
     vector<int> best_list;//记录能够覆盖最多未覆盖节点的节点列表
@@ -116,6 +116,7 @@ void VWTS::greedy_construct()
             num_covered_center[center_coverages[choose][i]]++;//该元素被中心覆盖数++
         }
     }
+    
     // 更新未覆盖的节点和中心
     num_uncovered = 0;
     int isolx = 0;
