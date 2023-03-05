@@ -57,6 +57,9 @@ private: // member variables.
     std::vector<unsigned int> prev_center_weights;
     std::vector<Move> equal_pair;
     int equal_pair_count = 0;
+
+    int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
+
     long long iter;
 
     // debug variables:

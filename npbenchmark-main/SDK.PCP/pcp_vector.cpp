@@ -67,6 +67,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
     prev_center_weights.resize(num_vertex, 0);
     equal_pair.resize(2000, {0, 0});
     equal_pair_count = 0;
+
+    sum_uncovered_weight = 0;
+
     iter = 0;
 
     // debug variables;
