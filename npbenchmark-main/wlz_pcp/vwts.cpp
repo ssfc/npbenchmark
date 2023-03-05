@@ -130,7 +130,7 @@ void VWTS::vertex_weight_tabu_search()
     greedy_construct();
 
     int iter;
-    int last_uncovered_num = INT_MAX;
+    int prev_num_uncovered = INT_MAX;
     int best_num_uncovered = num_uncovered;
     Move moved{0, 0};
 
@@ -140,7 +140,7 @@ void VWTS::vertex_weight_tabu_search()
         if (moved.center_in == -1 || moved.center_out == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
         make_move(moved.center_in, moved.center_out);//进行move并比较
-        if (num_uncovered < last_uncovered_num && num_uncovered < best_num_uncovered)
+        if (num_uncovered < prev_num_uncovered && num_uncovered < best_num_uncovered)
         {
             best_num_uncovered = num_uncovered;
         }
@@ -154,7 +154,8 @@ void VWTS::vertex_weight_tabu_search()
                     center_weights[center_coverages[v][ic]]++ ;
             }
         }
-        last_uncovered_num = num_uncovered;
+        
+        prev_num_uncovered = num_uncovered;
 
         if (iter % 100000 == 0)
         {
