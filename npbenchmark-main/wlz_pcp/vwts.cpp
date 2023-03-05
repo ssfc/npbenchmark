@@ -166,6 +166,9 @@ void VWTS::vertex_weight_tabu_search()
 
     Move moved{0, 0};
 
+    // A1 LINE 4:
+    // while termination condition is not met do
+    // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
     for (iter = 1; num_uncovered != 0; iter++)
     {
         find_pair(moved.center_in, moved.center_out);
