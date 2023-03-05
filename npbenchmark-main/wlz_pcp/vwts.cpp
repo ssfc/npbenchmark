@@ -35,7 +35,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     center.resize(num_center, 0);
     num_covered_center = new int[num_vertex];
     covered_once = new int[num_vertex];
-    uncovered_vertices = new int[num_vertex];
+    uncovered_vertices.resize(num_vertex, 0);
 
     // A1 LINE 3: /* (Section 3.2) */
     // for all i属于V do
@@ -65,7 +65,6 @@ VWTS::~VWTS()
         delete[] center_coverages[i];
     delete[] num_covered_center;
     delete[] covered_once;
-    delete[] uncovered_vertices;
 }
 
 void VWTS::greedy_construct()
