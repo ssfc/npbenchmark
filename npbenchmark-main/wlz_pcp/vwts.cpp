@@ -205,19 +205,19 @@ void VWTS::find_pair(int& v_open, int& v_close)
         //更新best_delta_f
         for (int ip = 0; ip < num_center; ip++)
         {
-            int cur_delta_f = center_weights[center[ip]] - center_weights[vc];//加入节点vc
+            int this_iter_delta = center_weights[center[ip]] - center_weights[vc];//加入节点vc
 
-            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - cur_delta_f < min_history_sum_uncovered_weight)
+            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - this_iter_delta < min_history_sum_uncovered_weight)
             {
-                if (cur_delta_f < min_delta)//重计最好值列表
+                if (this_iter_delta < min_delta)//重计最好值列表
                 {
-                    min_delta = cur_delta_f;
+                    min_delta = this_iter_delta;
                     best_open.clear();
                     best_open.push_back(vc);
                     best_close.clear();
                     best_close.push_back(center[ip]);
                 }
-                else if (cur_delta_f == min_delta)//加入最好值列表
+                else if (this_iter_delta == min_delta)//加入最好值列表
                 {
                     best_open.push_back(vc);
                     best_close.push_back(center[ip]);
