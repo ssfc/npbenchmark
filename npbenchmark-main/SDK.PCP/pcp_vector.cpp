@@ -262,9 +262,6 @@ void PCP_Vector::find_pair()
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
     // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
-    cerr << "f(X): " << compute_sum_uncovered_weight() << endl;
-    cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
-
     // A2 LINE 5:
     // for j属于C do
     //    delta_j_prev <- delta_j,
@@ -699,9 +696,13 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<2)
+    while(num_uncovered != 0 && iter<3)
     {
         cerr << "iteration: " << iter << endl;
+
+        cerr << "f(X): " << compute_sum_uncovered_weight() << endl;
+        cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
+
         // A1 LINE 5:
         // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
         // (i, j): pair swapped
@@ -756,8 +757,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // Meaning 3: prevent vertices from being repeatedly uncovered and diversify the search in an adaptive manner; (2023年2月18日)
             // print_index1("uncovered", uncovered);
             // print_vector("vertex weights", vertex_weights);
-            print_index1("uncovered", uncovered);
-            print_vector("center weights", center_weights);
+            // print_index1("uncovered", uncovered);
+            // print_vector("center weights", center_weights);
             for (size_t iv = uncovered.find_first(); iv != dynamic_bitset<>::npos; iv = uncovered.find_next(iv))
             {
                 vertex_weights[iv]++;
@@ -770,7 +771,7 @@ void PCP_Vector::vertex_weight_tabu_search()
                 }
             }
             // print_vector("vertex weights", vertex_weights);
-            print_vector("center weights", center_weights);
+            // print_vector("center weights", center_weights);
 
             // A1 LINE 11:
             // end if /* more uncovered clients than last solution */
