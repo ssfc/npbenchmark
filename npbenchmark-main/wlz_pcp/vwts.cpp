@@ -38,7 +38,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
     uncovered_vertices = new int[num_vertex];
     vertex_weights = new int[num_vertex];
     sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
-    delta = new int[num_vertex];
+    center_weights = new int[num_vertex];
     tabu_open = tabu_close = -1;
     best_delta_f = INT_MAX;
     for (int i = 0; i < num_vertex; i++)
@@ -60,7 +60,7 @@ VWTS::~VWTS()
     delete[] covered_once;
     delete[] uncovered_vertices;
     delete[] vertex_weights;
-    delete[] delta;
+    delete[] center_weights;
 }
 
 void VWTS::greedy_construct()
@@ -158,7 +158,7 @@ void VWTS::vertex_weight_tabu_search()
                 int v = uncovered_vertices[i];
                 vertex_weights[v]++, sum_uncovered_weight++;
                 for (int ic = 0; ic < num_center_cover[v]; ic++)  //邻居delta值相应变大
-                    delta[center_coverages[v][ic]]++ ;
+                    center_weights[center_coverages[v][ic]]++ ;
             }
         }
         last_uncovered_num = num_uncovered;
@@ -175,10 +175,10 @@ void VWTS::init_delta()
         int flag = solution[i] ? 1 : 0;
         //如果是非中心节点，delta为覆盖未覆盖元素数量
         //如果是中心，delta为仅由该中心覆盖元素数量
-        delta[i] = 0;
+        center_weights[i] = 0;
         for (int j = 0; j < num_center_cover[i]; j++)
             if (covered_center_num[center_coverages[i][j]] == flag)
-                delta[i]++;
+                center_weights[i]++;
     }
 }
 
@@ -190,7 +190,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
     int* delta_p = new int[num_center];//记录中心delta，便于还原
     for (int i = 0; i < num_center; i++)
     {
-        delta_p[i] = delta[center[i]];
+        delta_p[i] = center_weights[center[i]];
     }
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
@@ -200,12 +200,12 @@ void VWTS::find_pair(int& v_open, int& v_close)
         {
             int vjc = center_coverages[vc][jc];
             if (covered_center_num[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
-                delta[covered_once[vjc]] -= vertex_weights[vjc];
+                center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
         //更新best_delta_f
         for (int ip = 0; ip < num_center; ip++)
         {
-            int cur_delta_f = delta[center[ip]] - delta[vc];//加入节点vc
+            int cur_delta_f = center_weights[center[ip]] - center_weights[vc];//加入节点vc
 
             if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - cur_delta_f < min_history_sum_uncovered_weight)
             {
@@ -226,7 +226,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
         }
         for (int ip = 0; ip < num_center; ip++)
         {
-            delta[center[ip]] = delta_p[ip];
+            center_weights[center[ip]] = delta_p[ip];
         }
     }
     delete[]delta_p;
@@ -273,15 +273,15 @@ void VWTS::open_center(int v)//加入结点v作为中心
     {
         int vc = center_coverages[v][ic];
         if (covered_center_num[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
-            delta[covered_once[vc]] -= vertex_weights[vc];
+            center_weights[covered_once[vc]] -= vertex_weights[vc];
         else if (covered_center_num[vc] == 0)//新覆盖结点的邻居delta--
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
             {
-                delta[center_coverages[vc][jc]] -= vertex_weights[vc];
+                center_weights[center_coverages[vc][jc]] -= vertex_weights[vc];
             }
             covered_once[vc] = v;
-            delta[v] += vertex_weights[vc];
+            center_weights[v] += vertex_weights[vc];
         }
         covered_center_num[vc]++;
     }
@@ -297,15 +297,15 @@ void VWTS::close_center(int v)
         if (covered_center_num[vc] == 1)//vc变成未覆盖结点
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
-                delta[center_coverages[vc][jc]] += vertex_weights[vc];
-            delta[v] -= vertex_weights[vc];
+                center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
+            center_weights[v] -= vertex_weights[vc];
         }
         else if (covered_center_num[vc] == 2)//vc周围中心变成唯一覆盖vc
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
                 if (solution[center_coverages[vc][jc]])
                 {
-                    delta[center_coverages[vc][jc]] += vertex_weights[vc];
+                    center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
                     covered_once[vc] = center_coverages[vc][jc];//更新被唯一覆盖中心
                     break;
                 }
