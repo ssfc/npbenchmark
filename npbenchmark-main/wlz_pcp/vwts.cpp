@@ -181,12 +181,25 @@ void VWTS::vertex_weight_tabu_search()
         find_pair(moved.center_in, moved.center_out);
         if (moved.center_in == -1 || moved.center_out == -1)//没找到非禁忌move，解除禁忌进行下一轮
             continue;
+
+        // A1 LINE 6:
+        // MakeMove(i, j) /* (Algorithm 4) */
+        // (i,j): pair moved found in the previous;
+        // Meaning: makes the best move; (2023年2月10日)
         make_move(moved.center_in, moved.center_out);//进行move并比较
-        if (num_uncovered < prev_num_uncovered && num_uncovered < best_num_uncovered)
+
+        // A1 LINE 7:
+        // if |U(X)| < |U(X*)| then
+        // X: current solution;
+        // |U(X)|: the set of clients uncovered by X;
+        // X*: history best solution;
+        // |U(X*)|: the set of clients uncovered by X*;
+        // Meaning: If the current solution X improves the best solution found so far
+        if(num_uncovered < best_num_uncovered)
         {
             best_num_uncovered = num_uncovered;
         }
-        else//比上次结果要坏，权重奖励未覆盖结点
+        else if(num_uncovered >= prev_num_uncovered) //比上次结果要坏，权重奖励未覆盖结点
         {
             for (int i = 0; i < num_uncovered; i++)
             {
