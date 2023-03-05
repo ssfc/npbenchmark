@@ -38,7 +38,8 @@ namespace szx {
         void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
             // TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 
-            VWTS test(input.nodeNum, input.centerNum,input.coverages, seed);
+            VWTS test(input.nodeNum, input.centerNum, input.current_radius,
+                      input.coverages, seed);
             test.vertex_weight_tabu_search();
             test.get_solution(output);
             /*

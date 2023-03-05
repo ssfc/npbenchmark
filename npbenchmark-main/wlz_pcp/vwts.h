@@ -18,6 +18,7 @@ private:
     //图结构
     int num_vertex;
     int num_center; //中心数量
+    int current_radius;
     int** center_coverages; //每个中心覆盖的节点
     int* num_center_cover; //每个中心能够覆盖的节点数
 
@@ -44,7 +45,7 @@ private:
     double start_time;
 
 public:
-    VWTS(int input_num_vertex, int input_num_center,
+    VWTS(int input_num_vertex, int input_num_center, int input_radius,
          std::vector<std::vector<int>>& input_coverages,
          int input_seed);//读文件并初始化变量
     ~VWTS();

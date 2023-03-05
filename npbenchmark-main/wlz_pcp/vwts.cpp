@@ -9,7 +9,7 @@
 
 using namespace std;
 
-VWTS::VWTS(int input_num_vertex, int input_num_center,
+VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
            std::vector<std::vector<int>>& input_coverages,
            int input_seed)
 {
@@ -17,6 +17,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
 
     num_vertex = input_num_vertex;
     num_center = input_num_center;
+    current_radius = input_radius;
 
     num_center_cover = new int[num_vertex];
     center_coverages = new int* [num_vertex];
@@ -160,7 +161,7 @@ void VWTS::vertex_weight_tabu_search()
 
         if (iter % 100000 == 0)
         {
-            cerr << "Iteration: " << iter << " ";
+            cerr << "radius: " << current_radius << " iter: " << iter << " ";
             double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
             cerr << " elapsed time(s): " << elapsed_time
                  << " frequency:" << double(iter) / elapsed_time << endl;
@@ -170,8 +171,8 @@ void VWTS::vertex_weight_tabu_search()
     if (num_uncovered == 0)//更新
     {
         double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-        cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-             << " frequency:" << double (iter) / elapsed_time << endl;
+        cerr << "success, radius: " << current_radius << " iter: " << iter
+             << " elapsed_time(s): " << elapsed_time << " frequency:" << double (iter) / elapsed_time << endl;
         return;
     }
 }
