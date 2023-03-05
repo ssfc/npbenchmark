@@ -34,7 +34,7 @@ private:
     int min_history_sum_uncovered_weight; // f(X) 的历史最小值;
     int best_delta_f;
 
-    int* center_weights; //记录中心i加入X或者删除对f的影响
+    int* center_weights; //记录X加入中心i或者删除中心i对f(X)的影响
     int tabu_open;
     int tabu_close; //禁忌期为1，记录禁忌元素
 public:
