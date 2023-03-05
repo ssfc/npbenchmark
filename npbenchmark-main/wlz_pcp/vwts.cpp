@@ -37,7 +37,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
     covered_once = new int[num_vertex];
     uncovered_vertices = new int[num_vertex];
     vertex_weights = new int[num_vertex];
-    sum_uncovered_weight = best_f = num_uncovered = num_vertex;
+    sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
     delta = new int[num_vertex];
     tabu_open = tabu_close = -1;
     best_delta_f = INT_MAX;
@@ -104,7 +104,7 @@ void VWTS::greedy_construct()
             if (covered_center_num[center_coverages[choose][i]] == 0)//如果还未被别的中心覆盖
             {
                 --sum_uncovered_weight;//加入节点
-                --best_f;
+                --min_history_sum_uncovered_weight;
                 --num_uncovered;
                 covered_once[center_coverages[choose][i]] = choose;//表示仅被一个中心覆盖的节点
             }
@@ -207,7 +207,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
         {
             int cur_delta_f = delta[center[ip]] - delta[vc];//加入节点vc
 
-            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - cur_delta_f < best_f)
+            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - cur_delta_f < min_history_sum_uncovered_weight)
             {
                 if (cur_delta_f < best_delta_f)//重计最好值列表
                 {
@@ -248,7 +248,8 @@ void VWTS::make_move(int v_open, int v_close)
     open_center(v_open);
     close_center(v_close);
     sum_uncovered_weight = sum_uncovered_weight + best_delta_f;
-    if (sum_uncovered_weight < best_f)best_f = sum_uncovered_weight;
+    if (sum_uncovered_weight < min_history_sum_uncovered_weight)
+        min_history_sum_uncovered_weight = sum_uncovered_weight;
     tabu_open = v_close;
     tabu_close = v_open;
     //更新

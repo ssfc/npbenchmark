@@ -31,7 +31,7 @@ private:
     int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
 
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
-    int best_f;
+    int min_history_sum_uncovered_weight; // f(X) 的历史最小值;
     int best_delta_f;
 
     int* delta; //记录中心i加入X或者删除对f的影响
