@@ -22,6 +22,9 @@ void loadInput(istream& is, PCenter& pc) {
     EdgeId minEdgeLenRank;
     EdgeId maxEdgeLenRank;
     is >> maxEdgeLenRank >> minEdgeLenRank;
+    cerr << "maxEdgeLenRank: " << maxEdgeLenRank << endl;
+    cerr << "minEdgeLenRank: " << minEdgeLenRank << endl;
+    pc.current_radius = maxEdgeLenRank;
     pc.nodesWithDrops.resize(maxEdgeLenRank - minEdgeLenRank);
     for (auto r = pc.nodesWithDrops.begin(); r != pc.nodesWithDrops.end(); ++r) {
         NodeId nodeNumToDrop;
