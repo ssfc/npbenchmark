@@ -224,7 +224,8 @@ void VWTS::vertex_weight_tabu_search()
             for (int i = 0; i < num_uncovered; i++)
             {
                 int v = uncovered_vertices[i];
-                vertex_weights[v]++, sum_uncovered_weight++;
+                vertex_weights[v]++;
+                sum_uncovered_weight++;
                 for (int ic = 0; ic < num_center_cover[v]; ic++)  //邻居delta值相应变大
                     center_weights[center_coverages[v][ic]]++ ;
             }
