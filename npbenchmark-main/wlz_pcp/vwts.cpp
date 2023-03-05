@@ -33,7 +33,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
 
     solution = new bool[num_vertex];
     center.resize(num_center, 0);
-    covered_center_num = new int[num_vertex];
+    num_covered_center = new int[num_vertex];
     covered_once = new int[num_vertex];
     uncovered_vertices = new int[num_vertex];
     vertex_weights.resize(num_vertex, 0);
@@ -44,7 +44,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     for (int i = 0; i < num_vertex; i++)
     {
         solution[i] = false;//一开始没有被挑选为中心的点
-        covered_center_num[i] = 0;//每个点都没有被中心覆盖
+        num_covered_center[i] = 0;//每个点都没有被中心覆盖
         vertex_weights[i] = 1;//初始权重全部为1
     }
 
@@ -58,7 +58,7 @@ VWTS::~VWTS()
         delete[] center_coverages[i];
     delete[] num_center_cover;
     delete[] solution;
-    delete[] covered_center_num;
+    delete[] num_covered_center;
     delete[] covered_once;
     delete[] uncovered_vertices;
 }
@@ -80,7 +80,7 @@ void VWTS::greedy_construct()
                 //计算当前节点能覆盖多少未被覆盖的节点
                 int res = 0;
                 for (int i = 0; i < num_center_cover[inum]; i++)
-                    if (covered_center_num[center_coverages[inum][i]] == 0)
+                    if (num_covered_center[center_coverages[inum][i]] == 0)
                         res++;
                 cur_uncovered = res;
 
@@ -101,14 +101,14 @@ void VWTS::greedy_construct()
         solution[choose] = true;
         for (int i = 0; i < num_center_cover[choose]; i++)
         {
-            if (covered_center_num[center_coverages[choose][i]] == 0)//如果还未被别的中心覆盖
+            if (num_covered_center[center_coverages[choose][i]] == 0)//如果还未被别的中心覆盖
             {
                 --sum_uncovered_weight;//加入节点
                 --min_history_sum_uncovered_weight;
                 --num_uncovered;
                 covered_once[center_coverages[choose][i]] = choose;//表示仅被一个中心覆盖的节点
             }
-            covered_center_num[center_coverages[choose][i]]++;//该元素被中心覆盖数++
+            num_covered_center[center_coverages[choose][i]]++;//该元素被中心覆盖数++
         }
     }
     // 更新未覆盖的节点和中心
@@ -118,7 +118,7 @@ void VWTS::greedy_construct()
     {
         if (solution[i]) //如果被选为中心，在中心列表中记录
             center[isolx++] = i;
-        else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
+        else if (num_covered_center[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_vertices[num_uncovered++] = i;
     }
     //初始化delta（一开始权重都为1，所以用数量来代替权重和）
@@ -182,7 +182,7 @@ void VWTS::init_delta()
         //如果是中心，delta为仅由该中心覆盖元素数量
         center_weights[i] = 0;
         for (int j = 0; j < num_center_cover[i]; j++)
-            if (covered_center_num[center_coverages[i][j]] == flag)
+            if (num_covered_center[center_coverages[i][j]] == flag)
                 center_weights[i]++;
     }
 }
@@ -204,7 +204,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
         for (int jc = 0; jc < num_center_cover[vc]; jc++)//o(n/p)
         {
             int vjc = center_coverages[vc][jc];
-            if (covered_center_num[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
+            if (num_covered_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
         //更新best_delta_f
@@ -265,7 +265,7 @@ void VWTS::make_move(int v_open, int v_close)
     {
         if (solution[i])//如果被选为中心，在中心列表中记录
             center[isolx++] = i;
-        else if (covered_center_num[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
+        else if (num_covered_center[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_vertices[num_uncovered++] = i;
     }
 }
@@ -278,9 +278,9 @@ void VWTS::open_center(int i) //在X中加入中心i
     for (int ic = 0; ic < num_center_cover[i]; ic++)//o(n/p)
     {
         int vc = center_coverages[i][ic];
-        if (covered_center_num[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
+        if (num_covered_center[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
             center_weights[covered_once[vc]] -= vertex_weights[vc];
-        else if (covered_center_num[vc] == 0)//新覆盖结点的邻居delta--
+        else if (num_covered_center[vc] == 0)//新覆盖结点的邻居delta--
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
             {
@@ -289,7 +289,7 @@ void VWTS::open_center(int i) //在X中加入中心i
             covered_once[vc] = i;
             center_weights[i] += vertex_weights[vc];
         }
-        covered_center_num[vc]++;
+        num_covered_center[vc]++;
     }
 }
 
@@ -300,13 +300,13 @@ void VWTS::close_center(int j)
     for (int ic = 0; ic < num_center_cover[j]; ic++)
     {
         int vc = center_coverages[j][ic];
-        if (covered_center_num[vc] == 1)//vc变成未覆盖结点
+        if (num_covered_center[vc] == 1)//vc变成未覆盖结点
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
                 center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
             center_weights[j] -= vertex_weights[vc];
         }
-        else if (covered_center_num[vc] == 2)//vc周围中心变成唯一覆盖vc
+        else if (num_covered_center[vc] == 2)//vc周围中心变成唯一覆盖vc
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
                 if (solution[center_coverages[vc][jc]])
@@ -316,7 +316,7 @@ void VWTS::close_center(int j)
                     break;
                 }
         }
-        --covered_center_num[vc];
+        --num_covered_center[vc];
     }
 }
 
