@@ -270,7 +270,8 @@ void PCP_Vector::find_pair()
         // cerr << u;
         f_X = f_X + vertex_weights[u];
     }
-    // cerr << "f(X): " << f_X << endl;
+    cerr << "f(X): " << f_X << endl;
+    cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     // A2 LINE 5:
     // for j属于C do
@@ -768,6 +769,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             for (size_t iv = uncovered.find_first(); iv != dynamic_bitset<>::npos; iv = uncovered.find_next(iv))
             {
                 vertex_weights[iv]++;
+                sum_uncovered_weight++;
                 dynamic_bitset<> Cv = vertex_reach_center[iv];
                 // cerr << "Cv list: " << endl;
                 for (size_t ic = Cv.find_first(); ic != dynamic_bitset<>::npos; ic = Cv.find_next(ic))
