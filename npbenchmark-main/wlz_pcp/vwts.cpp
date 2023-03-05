@@ -36,7 +36,15 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     num_covered_center = new int[num_vertex];
     covered_once = new int[num_vertex];
     uncovered_vertices = new int[num_vertex];
-    vertex_weights.resize(num_vertex, 0);
+
+    // A1 LINE 3: /* (Section 3.2) */
+    // for all i属于V do
+    //    Vertex weights wi <- 1,
+    // i: 顶点序号;
+    // wi: vertex weights;
+    // V: vertex set;
+    vertex_weights.resize(num_vertex, 1);
+
     sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
     center_weights.resize(num_vertex, 0);
     tabu_open = tabu_close = -1;
@@ -45,7 +53,6 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     {
         solution[i] = false;//一开始没有被挑选为中心的点
         num_covered_center[i] = 0;//每个点都没有被中心覆盖
-        vertex_weights[i] = 1;//初始权重全部为1
     }
 
     // debug variables;
