@@ -116,7 +116,7 @@ void VWTS::greedy_construct()
             num_covered_center[center_coverages[choose][i]]++;//该元素被中心覆盖数++
         }
     }
-    
+
     // 更新未覆盖的节点和中心
     num_uncovered = 0;
     int isolx = 0;
