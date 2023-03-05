@@ -36,7 +36,6 @@ private: // member variables.
     // Element: true/false;
     // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
-    std::vector<std::vector<int>> nodes_with_drops;
 
     boost::dynamic_bitset<> solution; // centers selected;
     std::vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
@@ -67,7 +66,6 @@ private: // member variables.
 public: // member functions.
     PCP_Vector(int input_num_vertex, int input_num_center,
                std::vector<std::vector<int>>& input_coverages,
-               std::vector<std::vector<int>> &input_nodesWithDrops,
                int input_seed);
     ~PCP_Vector();
 
