@@ -274,7 +274,7 @@ void VWTS::make_move(int v_open, int v_close)
     }
 }
 
-void VWTS::open_center(int i)//加入结点i作为中心
+void VWTS::open_center(int i) //在X中加入中心i
 {
     solution[i] = true;
     //delta[v] = 0;
