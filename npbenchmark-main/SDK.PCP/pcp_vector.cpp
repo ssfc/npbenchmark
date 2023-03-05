@@ -220,6 +220,7 @@ void PCP_Vector::greedy_construct()
 
     print_index1("Center selected", solution);
     num_uncovered = uncovered.count();
+    sum_uncovered_weight = num_uncovered;
 
     // A1 LINE 2:
     // iter <- 1;
