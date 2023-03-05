@@ -41,13 +41,14 @@ namespace szx {
             VWTS test(input.nodeNum, input.centerNum,input.coverages, seed);
             test.vertex_weight_tabu_search();
             test.get_solution(output);
+            /*
             cerr << "Evaluate output: ";
             for(int i=0;i<input.centerNum;i++)
             {
                 cerr << output[i] << " ";
             }
             cerr << endl;
-
+             */
 
             // printf("iter:%d time:%lf  uncovered_num:%d", test.tempiter,((double)test.end_ms - (double)test.start_ms) / 1000.0, test.tempnum);
 
