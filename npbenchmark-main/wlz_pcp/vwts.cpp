@@ -47,6 +47,9 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
         covered_center_num[i] = 0;//每个点都没有被中心覆盖
         vertex_weights[i] = 1;//初始权重全部为1
     }
+
+    // debug variables;
+    start_time = clock();
 }
 
 VWTS::~VWTS()
@@ -127,20 +130,12 @@ void VWTS::greedy_construct()
 
 void VWTS::vertex_weight_tabu_search()
 {
-    start_ms = clock();
     greedy_construct();//贪心
 
     int iter;
     int last_uncovered_num = INT_MAX, best_uncovered_num = num_uncovered;
     int v_open, v_close;
 
-    if (num_uncovered == 0)//更新
-    {
-        end_ms = clock();
-        tempiter = 0;
-        tempnum = num_uncovered;
-        return;
-    }
     for (iter = 1; num_uncovered != 0; iter++)
     {
         find_pair(v_open, v_close);
@@ -162,10 +157,23 @@ void VWTS::vertex_weight_tabu_search()
             }
         }
         last_uncovered_num = num_uncovered;
+
+        if (iter % 100000 == 0)
+        {
+            cerr << "Iteration: " << iter << " ";
+            double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+            cerr << " elapsed time(s): " << elapsed_time
+                 << " frequency:" << double(iter) / elapsed_time << endl;
+        }
     }
-    end_ms = clock();
-    tempiter = iter;
-    tempnum = num_uncovered;
+
+    if (num_uncovered == 0)//更新
+    {
+        double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+        cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+             << " frequency:" << double (iter) / elapsed_time << endl;
+        return;
+    }
 }
 
 void VWTS::init_delta()

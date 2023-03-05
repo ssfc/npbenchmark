@@ -39,12 +39,11 @@ private:
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
     int min_history_sum_uncovered_weight; // f(X) 的历史最小值;
     int min_delta; // 最好的swap进行后, f(X)值的变化;
+
+    // debug variables
+    double start_time;
+
 public:
-    int tempiter;//暂时用于统计迭代次数
-    int tempnum;//记录uncovered_num
-    int start_ms, end_ms, limit_s;
-
-
     VWTS(int input_num_vertex, int input_num_center,
          std::vector<std::vector<int>>& input_coverages,
          int input_seed);//读文件并初始化变量
