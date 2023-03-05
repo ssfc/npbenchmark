@@ -169,7 +169,7 @@ void VWTS::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    for (iter = 1; num_uncovered != 0; iter++)
+    while (num_uncovered != 0)
     {
         // A1 LINE 5:
         // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
@@ -246,6 +246,7 @@ void VWTS::vertex_weight_tabu_search()
         // X_prev: solution of the previous iteration;
         // X: current solution;
         prev_num_uncovered = num_uncovered;
+        iter++;
 
         if (iter % 100000 == 0)
         {
