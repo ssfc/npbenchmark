@@ -13,7 +13,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
            std::vector<std::vector<int>>& input_coverages,
            int input_seed)
 {
-    srand(input_seed);
+    init_rand(input_seed); // initialize random generator;;
 
     num_vertex = input_num_vertex;
     num_center = input_num_center;
@@ -101,7 +101,7 @@ void VWTS::greedy_construct()
             }
         }
         //从列表中随机选一个并更新
-        int choose = best_list[rand() % best_list.size()];
+        int choose = best_list[generated_random() % best_list.size()];
         solution[choose] = true;
         for (int i = 0; i < num_center_cover[choose]; i++)
         {
@@ -193,7 +193,7 @@ void VWTS::init_delta()
 
 void VWTS::find_pair(int& v_open, int& v_close)
 {
-    int choose = uncovered_vertices[rand() % num_uncovered];
+    int choose = uncovered_vertices[generated_random() % num_uncovered];
     min_delta = INT_MAX;
     vector<int> best_open, best_close;
     int* delta_p = new int[num_center];//记录中心delta，便于还原
@@ -238,10 +238,11 @@ void VWTS::find_pair(int& v_open, int& v_close)
             center_weights[center[ip]] = delta_p[ip];
         }
     }
+
     delete[]delta_p;
     if (best_open.size() != 0)//随机选取一个开放
     {
-        choose = rand() % best_open.size();
+        choose = generated_random() % best_open.size();
         v_open = best_open[choose];
         v_close = best_close[choose];
     }

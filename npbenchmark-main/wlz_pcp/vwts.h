@@ -7,6 +7,7 @@
 
 #pragma once
 #include <iostream>
+#include <random>
 #include <vector>
 
 using namespace std;
@@ -42,6 +43,7 @@ private:
     int min_delta; // 最好的swap进行后, f(X)值的变化;
 
     // debug variables
+    std::mt19937 generated_random;
     double start_time;
 
 public:
@@ -60,6 +62,7 @@ public:
     void close_center(int v);
 
     // debug function
+    void init_rand(int seed) { generated_random = std::mt19937(seed); }
     void get_solution(std::vector<NodeId>& output);
 };
 
