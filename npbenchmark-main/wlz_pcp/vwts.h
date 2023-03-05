@@ -33,7 +33,7 @@ private:
     int* uncovered_vertices; //记录没有被覆盖的节点
 
     int* vertex_weights; //每个节点权重，随着未覆盖时间增大逐渐增大
-    int* center_weights; //记录X加入中心i或者删除中心i对f(X)的影响
+    vector<int> center_weights; //记录X加入中心i或者删除中心i对f(X)的影响
 
     int tabu_open;
     int tabu_close; //禁忌期为1，记录禁忌元素

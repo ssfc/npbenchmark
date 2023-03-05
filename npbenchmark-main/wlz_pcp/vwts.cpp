@@ -39,7 +39,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     uncovered_vertices = new int[num_vertex];
     vertex_weights = new int[num_vertex];
     sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
-    center_weights = new int[num_vertex];
+    center_weights.resize(num_vertex, 0);
     tabu_open = tabu_close = -1;
     min_delta = INT_MAX;
     for (int i = 0; i < num_vertex; i++)
@@ -64,7 +64,6 @@ VWTS::~VWTS()
     delete[] covered_once;
     delete[] uncovered_vertices;
     delete[] vertex_weights;
-    delete[] center_weights;
 }
 
 void VWTS::greedy_construct()
