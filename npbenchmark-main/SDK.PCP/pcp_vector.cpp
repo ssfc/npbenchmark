@@ -221,6 +221,7 @@ void PCP_Vector::greedy_construct()
     print_index1("Center selected", solution);
     num_uncovered = uncovered.count();
     sum_uncovered_weight = num_uncovered;
+    cerr << "f(X) = " << sum_uncovered_weight << endl;
 
     // A1 LINE 2:
     // iter <- 1;
