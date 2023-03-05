@@ -40,7 +40,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center,
     sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
     center_weights = new int[num_vertex];
     tabu_open = tabu_close = -1;
-    best_delta_f = INT_MAX;
+    min_delta = INT_MAX;
     for (int i = 0; i < num_vertex; i++)
     {
         solution[i] = false;//一开始没有被挑选为中心的点
@@ -185,7 +185,7 @@ void VWTS::init_delta()
 void VWTS::find_pair(int& v_open, int& v_close)
 {
     int choose = uncovered_vertices[rand() % num_uncovered];
-    best_delta_f = INT_MAX;
+    min_delta = INT_MAX;
     vector<int> best_open, best_close;
     int* delta_p = new int[num_center];//记录中心delta，便于还原
     for (int i = 0; i < num_center; i++)
@@ -209,15 +209,15 @@ void VWTS::find_pair(int& v_open, int& v_close)
 
             if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - cur_delta_f < min_history_sum_uncovered_weight)
             {
-                if (cur_delta_f < best_delta_f)//重计最好值列表
+                if (cur_delta_f < min_delta)//重计最好值列表
                 {
-                    best_delta_f = cur_delta_f;
+                    min_delta = cur_delta_f;
                     best_open.clear();
                     best_open.push_back(vc);
                     best_close.clear();
                     best_close.push_back(center[ip]);
                 }
-                else if (cur_delta_f == best_delta_f)//加入最好值列表
+                else if (cur_delta_f == min_delta)//加入最好值列表
                 {
                     best_open.push_back(vc);
                     best_close.push_back(center[ip]);
@@ -247,7 +247,7 @@ void VWTS::make_move(int v_open, int v_close)
 {
     open_center(v_open);
     close_center(v_close);
-    sum_uncovered_weight = sum_uncovered_weight + best_delta_f;
+    sum_uncovered_weight = sum_uncovered_weight + min_delta;
     if (sum_uncovered_weight < min_history_sum_uncovered_weight)
         min_history_sum_uncovered_weight = sum_uncovered_weight;
     tabu_open = v_close;
