@@ -332,7 +332,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             if (num_reach_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
-        
+
         // A2 LINE 8:
         // for all j 属于 X do /* evaluate closing center j */
         // j: 中心序号;
@@ -342,6 +342,12 @@ void VWTS::find_pair(int& v_open, int& v_close)
         {
             int this_iter_delta = center_weights[center[ip]] - center_weights[vc];//加入节点vc
 
+            // A2 LINE 9:
+            // if {i, j}交TL = NULL then
+            // i: center swap in;
+            // j: center swap out;
+            // TL: tabu list;
+            // Meaning: not tabu move;
             if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - this_iter_delta < min_history_sum_uncovered_weight)
             {
                 if (this_iter_delta < min_delta)//重计最好值列表
