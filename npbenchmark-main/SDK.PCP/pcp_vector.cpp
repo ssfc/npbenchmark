@@ -325,7 +325,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                int this_iter_delta = sum_uncovered_weight - center_weights[i] + center_weights[j];
+                int this_iter_delta = center_weights[j] - center_weights[i];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(this_iter_delta < min_delta)
                 {
@@ -401,8 +401,8 @@ void PCP_Vector::find_pair()
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
     cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
-    cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
-    cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
+    // cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
+    // cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
     // print_vector("center_weights", center_weights);
 
     // LINE 21:
@@ -472,7 +472,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 // j: center swapped out;
 void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
-    sum_uncovered_weight = min_delta;
+    sum_uncovered_weight += min_delta;
 
     // A4 LINE 2:
     // for all v属于Vi do
