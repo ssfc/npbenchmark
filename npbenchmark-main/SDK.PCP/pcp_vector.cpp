@@ -12,7 +12,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        ,covered(input_num_vertex)
                        ,uncovered(input_num_vertex)
                        ,moved{0, 0}
-                       ,obj{INT_MAX}
+                       ,min_delta{INT_MAX}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -247,7 +247,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    obj = INT_MAX;
+    min_delta = INT_MAX;
 
 
     // A2 LINE 4:
@@ -327,7 +327,7 @@ void PCP_Vector::find_pair()
                 // cerr << endl << "i " << i << " j " << j;
                 int f_X_i_j = sum_uncovered_weight - center_weights[i] + center_weights[j];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
-                if(f_X_i_j < obj)
+                if(f_X_i_j < min_delta)
                 {
                     // A2 LINE 11:
                     // obj <- f(X直和Swap(i, j))
@@ -336,7 +336,7 @@ void PCP_Vector::find_pair()
                     // X: current center set;
                     // i: center swap in;
                     // j: center swap out;
-                    obj = f_X_i_j;
+                    min_delta = f_X_i_j;
                     // cerr << "obj: " << obj << endl;
 
                     // LINE 12:
@@ -356,7 +356,7 @@ void PCP_Vector::find_pair()
                 // X: current center set;
                 // i: center swap in;
                 // j: center swap out;
-                else if(f_X_i_j == obj)
+                else if(f_X_i_j == min_delta)
                 {
                     // LINE 14:
                     // M <- M U (i, j)
@@ -472,7 +472,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 // j: center swapped out;
 void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
-    sum_uncovered_weight = obj;
+    sum_uncovered_weight = min_delta;
 
     // A4 LINE 2:
     // for all v属于Vi do

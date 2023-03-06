@@ -47,7 +47,7 @@ private: // member variables.
     int prev_num_uncovered;
 
     Move moved;
-    int obj;
+    int min_delta;
     std::vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
