@@ -293,8 +293,8 @@ void VWTS::find_pair(int& v_open, int& v_close)
     int choose = uncovered_vertices[generated_random() % num_uncovered];
     min_delta = INT_MAX;
 
-    vector<int> delta_p(num_center, 0);//记录中心delta，便于还原
-    delta_p = center_weights;
+    vector<int> prev_center_weights(num_center, 0);//记录中心delta，便于还原
+    prev_center_weights = center_weights;
 
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
@@ -329,9 +329,9 @@ void VWTS::find_pair(int& v_open, int& v_close)
                 }
             }
         }
-        center_weights = delta_p;
+        center_weights = prev_center_weights;
     }
-    
+
     if (equal_pair_count != 0)//随机选取一个开放
     {
         choose = generated_random() % equal_pair_count;
