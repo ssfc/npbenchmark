@@ -222,7 +222,7 @@ void PCP_Vector::greedy_construct()
     print_index1("Center selected", solution);
     num_uncovered = int (uncovered.count());
     sum_uncovered_weight = num_uncovered;
-    cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
+    // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     // A1 LINE 2:
     // iter <- 1;
@@ -252,7 +252,7 @@ void PCP_Vector::find_pair()
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
-    print_index1("uncovered", uncovered);
+    // print_index1("uncovered", uncovered);
     vector<size_t> uncovered_vertices;
     for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
@@ -261,7 +261,7 @@ void PCP_Vector::find_pair()
 
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
-    cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
+    // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // A2 LINE 5:
     // for j属于C do
@@ -279,7 +279,7 @@ void PCP_Vector::find_pair()
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // v: 随机未覆盖顶点;
     // Cv: 覆盖顶点v的中心集合;
-    print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
+    // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
     // cerr << "Cv list: " << endl;
 
@@ -392,7 +392,7 @@ void PCP_Vector::find_pair()
     }
 
     // Evaluate A2 LINE 12 & LINE 14
-    print_equal_pair();
+    // print_equal_pair();
 
     // LINE 20:
     // return a randomly picked move in M
@@ -400,7 +400,7 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
-    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
     // cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
     // cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
     // print_vector("center_weights", center_weights);
@@ -702,12 +702,12 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<3)
+    while(num_uncovered != 0)
     {
-        cerr << "iteration: " << iter << endl;
+        // cerr << "iteration: " << iter << endl;
 
-        cerr << "f(X) before find pair: " << compute_sum_uncovered_weight() << endl;
-        cerr << "sum_uncovered_weight before find pair: " << sum_uncovered_weight << endl;
+        // cerr << "f(X) before find pair: " << compute_sum_uncovered_weight() << endl;
+        // cerr << "sum_uncovered_weight before find pair: " << sum_uncovered_weight << endl;
 
         // A1 LINE 5:
         // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
@@ -718,8 +718,8 @@ void PCP_Vector::vertex_weight_tabu_search()
         // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
         find_pair();
 
-        cerr << "f(X) before make move: " << compute_sum_uncovered_weight() << endl;
-        cerr << "sum_uncovered_weight before make move: " << sum_uncovered_weight << endl;
+        // cerr << "f(X) before make move: " << compute_sum_uncovered_weight() << endl;
+        // cerr << "sum_uncovered_weight before make move: " << sum_uncovered_weight << endl;
 
         // A1 LINE 6:
         // MakeMove(i, j) /* (Algorithm 4) */
@@ -727,8 +727,8 @@ void PCP_Vector::vertex_weight_tabu_search()
         // Meaning: makes the best move; (2023年2月10日)
         make_move(moved.center_in, moved.center_out);
 
-        cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
-        cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
+        // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
+        // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
 
         // A1 LINE 7:
         // if |U(X)| < |U(X*)| then
@@ -812,7 +812,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 1 == 0)
+        if (iter % 1000 == 0)
         {
             cerr << "Iteration: " << iter << " ";
             cerr << "num : " << num_uncovered << " ";
