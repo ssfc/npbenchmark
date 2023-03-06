@@ -81,7 +81,7 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
-    static void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
+    void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
     void random_construct(); // construct random solution;
     void print_tabu_tenure_table();
     long long int get_iteration() const;

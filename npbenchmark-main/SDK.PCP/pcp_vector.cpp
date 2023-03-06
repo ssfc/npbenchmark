@@ -251,7 +251,7 @@ void PCP_Vector::find_pair()
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
-    // print_index1("uncovered", uncovered);
+    print_index1("uncovered", uncovered);
     vector<size_t> uncovered_vertices;
     for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
     {
@@ -260,7 +260,7 @@ void PCP_Vector::find_pair()
 
     size_t random_uncovered_index = generated_random() % uncovered_vertices.size();
     unsigned int random_uncovered_vertex = uncovered_vertices[random_uncovered_index];
-    // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
+    cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // A2 LINE 5:
     // for j属于C do
@@ -278,7 +278,7 @@ void PCP_Vector::find_pair()
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // v: 随机未覆盖顶点;
     // Cv: 覆盖顶点v的中心集合;
-    // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
+    print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
     // cerr << "Cv list: " << endl;
 
@@ -400,8 +400,8 @@ void PCP_Vector::find_pair()
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
     cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
-    cerr << "center_weights[65]: " << center_weights[65] << endl;
-    cerr << "center_weights[59]: " << center_weights[59] << endl;
+    cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
+    cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
     // print_vector("center_weights", center_weights);
 
     // LINE 21:
@@ -860,7 +860,7 @@ void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
     cerr << name << ": ";
     for (size_t i = dbs.find_first(); i != dynamic_bitset<>::npos; i = dbs.find_next(i))
     {
-        cerr << i << " ";
+        cerr << i << "(" << center_weights[i] << ") ";
     }
 
     cerr << endl;
