@@ -438,7 +438,8 @@ void PCP_Vector::try_open_center(unsigned int center)
         // |X 交 Cv|: number of centers covering v in X;
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
-        if (intersection.count() == 1)
+        int intersection_count = intersection.count();
+        if (intersection_count == 1)
         {
             // A3 L4 & L5
             // cerr << "find one: ";
@@ -494,7 +495,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
-        if (intersection.count() == 1)
+        int intersection_count = intersection.count();
+        if (intersection_count == 1)
         {
             // Evaluate A4 LINE 3
             // print_index1("solution", solution);
@@ -519,7 +521,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
-        else if(intersection.count() == 0)
+        else if(intersection_count == 0)
         {
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
@@ -584,7 +586,8 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // Meaning: 如果X中没有能够覆盖顶点v的中心;
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
-        if(intersection.count() == 0)
+        int intersection_count = intersection.count();
+        if(intersection_count == 0)
         {
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
@@ -622,7 +625,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
-        else if (intersection.count() == 1)
+        else if (intersection_count == 1)
         {
             // Evaluate A4 LINE 13
             // print_index1("solution", solution);
