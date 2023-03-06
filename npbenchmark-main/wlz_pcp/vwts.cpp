@@ -279,8 +279,17 @@ void VWTS::init_center_weights()
     }
 }
 
+// Algorithm 2: Find the best swap pair
+// A2 LINE 1:
+// function find_pair(X, TL, iter)
+// X: current solution;
+// TL: tabu list;
+// iter: current iteration;
 void VWTS::find_pair(int& v_open, int& v_close)
 {
+    // A2 LINE 2:
+    // The set of best swap moves M <- NULL;
+    // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     int choose = uncovered_vertices[generated_random() % num_uncovered];
     min_delta = INT_MAX;
