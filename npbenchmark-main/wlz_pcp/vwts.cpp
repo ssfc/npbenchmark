@@ -396,8 +396,17 @@ void VWTS::find_pair(int& v_open, int& v_close)
                     equal_pair[equal_pair_count].center_in = vc;
                     equal_pair[equal_pair_count].center_out = center[ip];
                     equal_pair_count++;
+
+                    // A2 LINE 15:
+                    // end if
                 }
+
+                // A2 LINE 16:
+                // end if
             }
+
+            // A2 LINE 17:
+            // end for
         }
         center_weights = prev_center_weights;
     }
