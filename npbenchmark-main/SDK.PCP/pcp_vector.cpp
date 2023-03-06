@@ -12,6 +12,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
                        ,covered(input_num_vertex)
                        ,uncovered(input_num_vertex)
                        ,moved{0, 0}
+                       ,obj{INT_MAX}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -246,7 +247,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    unsigned int obj = INT_MAX;
+    obj = INT_MAX;
 
 
     // A2 LINE 4:
