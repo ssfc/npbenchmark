@@ -348,8 +348,15 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight - this_iter_delta < min_history_sum_uncovered_weight)
+            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight + this_iter_delta < min_history_sum_uncovered_weight)
             {
+                // A2 LINE 10:
+                // if f(X直和Swap(i, j)) < obj then
+                // X: current solution;
+                // i: center swap in;
+                // j: center swap out;
+                // obj: num of vertices that has not been covered;
+                // Meaning: this move is better than history best;
                 if (this_iter_delta < min_delta)//重计最好值列表
                 {
                     min_delta = this_iter_delta;
