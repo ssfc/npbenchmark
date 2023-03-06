@@ -291,16 +291,32 @@ void VWTS::find_pair(int& v_open, int& v_close)
     // The set of best swap moves M <- NULL;
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
-    int choose = uncovered_vertices[generated_random() % num_uncovered];
 
     // A3 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     min_delta = INT_MAX;
 
+    // A2 LINE 4:
+    // v <- a randomly picked uncovered vertex in U(X);
+    int choose = uncovered_vertices[generated_random() % num_uncovered];
+
+    // A2 LINE 5:
+    // for j属于C do
+    //    delta_j_prev <- delta_j,
+    // delta_j_prev: previous move;
+    // delta_j: current move;
+    // j: 中心序号;
+    // C: 中心集;
+    // Meaning: backup before trial moves;
     vector<int> prev_center_weights(num_center, 0);//记录中心delta，便于还原
     prev_center_weights = center_weights;
 
+    // A2 LINE 6:
+    // for all i属于Cv do /* Cv: candidates covering v */
+    // i: Cv中的中心序号;
+    // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
+    // Cv: 覆盖顶点v的中心集合;
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
