@@ -379,8 +379,20 @@ void VWTS::find_pair(int& v_open, int& v_close)
                     equal_pair[equal_pair_count].center_out = center[ip];
                     equal_pair_count++;
                 }
+                // A2 LINE 13:
+                // else if f(X直和Swap(i, j)) == obj then
+                // f(): objective function;
+                // X: current center set;
+                // i: center swap in;
+                // j: center swap out;
                 else if (this_iter_delta == min_delta)//加入最好值列表
                 {
+                    // A2 LINE 14:
+                    // M <- M U (i, j)
+                    // M: the set of best swap moves;
+                    // i: center swap in;
+                    // j: center swap out;
+                    // Meaning: equal move list;
                     equal_pair[equal_pair_count].center_in = vc;
                     equal_pair[equal_pair_count].center_out = center[ip];
                     equal_pair_count++;
