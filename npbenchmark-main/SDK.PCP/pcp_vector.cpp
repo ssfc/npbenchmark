@@ -293,6 +293,9 @@ void PCP_Vector::find_pair()
 
     for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
     {
+        if(tabu_tenure_table[i] > iter)
+            continue;
+
         // cerr << "center: " << i << endl; // i is center name;
         // A2 LINE 7:
         // TryToOpenCenter(i) /* (Algorithm 3) */
@@ -316,7 +319,7 @@ void PCP_Vector::find_pair()
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if(tabu_tenure_table[i] <= iter && tabu_tenure_table[j] <= iter)
+            if(tabu_tenure_table[j] <= iter)
             {
                 // A2 LINE 10:
                 // if f(X直和Swap(i, j)) < obj then
