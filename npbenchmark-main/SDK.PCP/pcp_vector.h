@@ -38,13 +38,13 @@ private: // member variables.
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
 
     boost::dynamic_bitset<> solution; // centers selected;
-    std::vector<unsigned int> vertex_weights; // weight of each vertex; dimension, num_vertex;
+    std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     boost::dynamic_bitset<> covered;
     boost::dynamic_bitset<> uncovered;
-    unsigned int num_uncovered;
-    unsigned int best_num_uncovered;
-    unsigned int prev_num_uncovered;
+    int num_uncovered;
+    int best_num_uncovered;
+    int prev_num_uncovered;
 
     Move moved;
     int obj;
@@ -59,7 +59,7 @@ private: // member variables.
     std::vector<Move> equal_pair;
     int equal_pair_count = 0;
 
-    unsigned long long sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
+    int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
 
     long long iter;
 

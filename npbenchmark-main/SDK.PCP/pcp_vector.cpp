@@ -32,7 +32,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 
     center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
     vertex_reach_center.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
-    for(int i=0;i<input_coverages.size();i++) // i is center name;
+    for(int i=0;i<input_coverages.size();i++) // i is center name
     {
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
         {
