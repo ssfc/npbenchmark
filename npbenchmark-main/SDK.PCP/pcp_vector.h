@@ -27,6 +27,7 @@ class PCP_Vector
 private: // member variables.
     int num_vertex;
     int num_center;
+    int radius;
     std::vector<std::vector<int>> center_coverages;
     // Dimension: num_vertex * num_vertex
     // Element: true/false;
@@ -68,7 +69,7 @@ private: // member variables.
     double start_time;
 
 public: // member functions.
-    PCP_Vector(int input_num_vertex, int input_num_center,
+    PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                std::vector<std::vector<int>>& input_coverages,
                int input_seed);
     ~PCP_Vector();

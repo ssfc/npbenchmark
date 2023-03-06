@@ -6,7 +6,7 @@
 using namespace boost;
 using namespace std;
 
-PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
+PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed)
                        :solution(input_num_vertex)
                        ,covered(input_num_vertex)
@@ -16,6 +16,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center,
 {
     init_rand(input_seed); // initialize random generator;
 
+    radius = input_radius;
     num_vertex = input_num_vertex;
     num_center = input_num_center;
 
@@ -812,9 +813,10 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 1000 == 0)
+        if (iter % 2000 == 0)
         {
-            cerr << "Iteration: " << iter << " ";
+            cerr << "Radius: " << radius << " ";
+            cerr << "iter: " << iter << " ";
             cerr << "num : " << num_uncovered << " ";
             cerr << "best num : " << best_num_uncovered << " ";
             cerr << "moved " << moved.center_in << " " << moved.center_out;

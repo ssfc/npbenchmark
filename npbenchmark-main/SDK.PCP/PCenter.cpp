@@ -26,9 +26,12 @@ public:
 	void solve(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
 		initRand(seed);
 
+        cerr << "current_radius: " << input.current_radius << endl;
 		coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
 		for (auto r = input.nodesWithDrops.begin(); !isTimeout() && (r != input.nodesWithDrops.end()); ++r) {
 			reduceRadius(input, *r);
+            input.current_radius--;
+            cerr << "current_radius: " << input.current_radius << endl;
 			coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
 		}
 	}
@@ -43,7 +46,7 @@ public:
         // 2: local search method;
         ///*
         // input.centerNum = 4;
-        PCP_Vector test(input.nodeNum, input.centerNum, input.coverages, seed);
+        PCP_Vector test(input.nodeNum, input.centerNum, input.current_radius, input.coverages, seed);
         test.vertex_weight_tabu_search();
         test.get_solution(output);
 
