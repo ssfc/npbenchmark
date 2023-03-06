@@ -325,9 +325,9 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                int f_X_i_j = sum_uncovered_weight - center_weights[i] + center_weights[j];
+                int this_iter_delta = sum_uncovered_weight - center_weights[i] + center_weights[j];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
-                if(f_X_i_j < min_delta)
+                if(this_iter_delta < min_delta)
                 {
                     // A2 LINE 11:
                     // obj <- f(X直和Swap(i, j))
@@ -336,7 +336,7 @@ void PCP_Vector::find_pair()
                     // X: current center set;
                     // i: center swap in;
                     // j: center swap out;
-                    min_delta = f_X_i_j;
+                    min_delta = this_iter_delta;
                     // cerr << "obj: " << obj << endl;
 
                     // LINE 12:
@@ -356,7 +356,7 @@ void PCP_Vector::find_pair()
                 // X: current center set;
                 // i: center swap in;
                 // j: center swap out;
-                else if(f_X_i_j == min_delta)
+                else if(this_iter_delta == min_delta)
                 {
                     // LINE 14:
                     // M <- M U (i, j)
