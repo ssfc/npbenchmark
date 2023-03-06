@@ -472,7 +472,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 // j: center swapped out;
 void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
-    sum_uncovered_weight = sum_uncovered_weight - center_weights[i] + center_weights[j];
+    sum_uncovered_weight = obj;
 
     // A4 LINE 2:
     // for all v属于Vi do
@@ -702,7 +702,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<1)
+    while(num_uncovered != 0 && iter<3)
     {
         cerr << "iteration: " << iter << endl;
 
