@@ -348,7 +348,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if (vc != tabu_open && center[ip] != tabu_close || sum_uncovered_weight + this_iter_delta < min_history_sum_uncovered_weight)
+            if (vc != tabu_open && center[ip] != tabu_close)
             {
                 // A2 LINE 10:
                 // if f(X直和Swap(i, j)) < obj then
@@ -411,17 +411,9 @@ void VWTS::find_pair(int& v_open, int& v_close)
         center_weights = prev_center_weights;
     }
 
-    if (equal_pair_count != 0)//随机选取一个开放
-    {
-        choose = generated_random() % equal_pair_count;
-        v_open = equal_pair[choose].center_in;
-        v_close = equal_pair[choose].center_out;
-    }
-    else
-    {
-        v_open = v_close = -1;
-        tabu_open = tabu_close = -1;
-    }
+    choose = generated_random() % equal_pair_count;
+    v_open = equal_pair[choose].center_in;
+    v_close = equal_pair[choose].center_out;
 }
 
 void VWTS::make_move(int v_open, int v_close)
