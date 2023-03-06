@@ -306,6 +306,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             if (num_covered_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
+
         //更新best_delta_f
         for (int ip = 0; ip < num_center; ip++)
         {
