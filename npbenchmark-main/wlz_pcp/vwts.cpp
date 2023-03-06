@@ -20,13 +20,13 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     current_radius = input_radius;
 
     num_center_cover.resize(num_vertex, 0);
-    center_coverages = new int* [num_vertex];
+    center_coverages.resize(num_vertex);
 
     for (int i = 0; i < num_vertex; i++)
     {
         int count_client = input_coverages[i].size();
         num_center_cover[i] = count_client;
-        center_coverages[i] = new int[count_client];
+        center_coverages[i].resize(count_client);
 
         for (int j = 0; j < count_client; j++)
             center_coverages[i][j] = input_coverages[i][j];
@@ -63,11 +63,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     start_time = clock();
 }
 
-VWTS::~VWTS()
-{
-    for (int i = 0; i < num_vertex; i++)
-        delete[] center_coverages[i];
-}
+VWTS::~VWTS()= default;
 
 void VWTS::greedy_construct()
 {

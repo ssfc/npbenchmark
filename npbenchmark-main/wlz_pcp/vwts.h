@@ -26,7 +26,7 @@ private:
     int num_vertex;
     int num_center; //中心数量
     int current_radius;
-    int** center_coverages; //每个中心覆盖的顶点
+    vector<vector<int>> center_coverages; //每个中心覆盖的顶点
     vector<int> num_center_cover; //每个中心能够覆盖的顶点数
 
     //记录变量
