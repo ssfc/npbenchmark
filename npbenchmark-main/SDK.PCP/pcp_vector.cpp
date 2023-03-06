@@ -85,7 +85,7 @@ void PCP_Vector::greedy_construct()
     // center_weights start with each center's coverage;
     for(int i=0;i<center_weights.size();i++)
     {
-        center_weights[i] = center_cover_vertex[i].count();
+        center_weights[i] = int (center_cover_vertex[i].count());
     }
     // print_vector("center_weights before", center_weights);
     int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
@@ -220,7 +220,7 @@ void PCP_Vector::greedy_construct()
     // print_vector("center weights after", center_weights);
 
     print_index1("Center selected", solution);
-    num_uncovered = uncovered.count();
+    num_uncovered = int (uncovered.count());
     sum_uncovered_weight = num_uncovered;
     cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
@@ -652,7 +652,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // end function
     // print_index1("covered after swap", covered);
     // print_index1("uncovered after swap", uncovered);
-    num_uncovered = uncovered.count();
+    num_uncovered = int (uncovered.count());
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -850,7 +850,7 @@ void PCP_Vector::get_solution(vector<NodeId>& output)
     int count = 0;
     for (size_t i = solution.find_first(); i != dynamic_bitset<>::npos; i = solution.find_next(i))
     {
-        output[count] = i;
+        output[count] = int (i);
         count++;
     }
 }
