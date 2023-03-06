@@ -324,7 +324,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                unsigned int f_X_i_j = sum_uncovered_weight - center_weights[i] + center_weights[j];
+                int f_X_i_j = sum_uncovered_weight - center_weights[i] + center_weights[j];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(f_X_i_j < obj)
                 {
@@ -391,7 +391,7 @@ void PCP_Vector::find_pair()
     }
 
     // Evaluate A2 LINE 12 & LINE 14
-    // print_equal_pair();
+    print_equal_pair();
 
     // LINE 20:
     // return a randomly picked move in M
@@ -399,7 +399,10 @@ void PCP_Vector::find_pair()
     unsigned int rand_equal_index = generated_random() % equal_pair_count; // 相等tabu_delta随机选择
     // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[rand_equal_index];
-    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+    cerr << "center_weights[65]: " << center_weights[65] << endl;
+    cerr << "center_weights[59]: " << center_weights[59] << endl;
+    // print_vector("center_weights", center_weights);
 
     // LINE 21:
     // end function
