@@ -672,6 +672,9 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
 void PCP_Vector::vertex_weight_tabu_search()
 {
+    // print_index1("center cover 0:", center_cover_vertex[0]);
+    // print_index1("0 reach center:", vertex_reach_center[0]);
+
     // A1 LINE 1:
     // X <- init(G, p, rq);
     // X: initial solution generated;
