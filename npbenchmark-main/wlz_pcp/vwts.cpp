@@ -48,6 +48,10 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
     center_weights.resize(num_vertex, 0);
     tabu_open = tabu_close = -1;
+
+    equal_pair.resize(2000, {0, 0});
+    equal_pair_count = 0;
+
     min_delta = INT_MAX;
     solution.reset();
     for (int i = 0; i < num_vertex; i++)
@@ -285,14 +289,16 @@ void VWTS::init_center_weights()
 
 void VWTS::find_pair(int& v_open, int& v_close)
 {
+    fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     int choose = uncovered_vertices[generated_random() % num_uncovered];
     min_delta = INT_MAX;
-    vector<int> best_open, best_close;
+
     int* delta_p = new int[num_center];//记录中心delta，便于还原
     for (int i = 0; i < num_center; i++)
     {
         delta_p[i] = center_weights[center[i]];
     }
+
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
@@ -313,15 +319,16 @@ void VWTS::find_pair(int& v_open, int& v_close)
                 if (this_iter_delta < min_delta)//重计最好值列表
                 {
                     min_delta = this_iter_delta;
-                    best_open.clear();
-                    best_open.push_back(vc);
-                    best_close.clear();
-                    best_close.push_back(center[ip]);
+                    equal_pair_count = 0;
+                    equal_pair[equal_pair_count].center_in = vc;
+                    equal_pair[equal_pair_count].center_out = center[ip];
+                    equal_pair_count++;
                 }
                 else if (this_iter_delta == min_delta)//加入最好值列表
                 {
-                    best_open.push_back(vc);
-                    best_close.push_back(center[ip]);
+                    equal_pair[equal_pair_count].center_in = vc;
+                    equal_pair[equal_pair_count].center_out = center[ip];
+                    equal_pair_count++;
                 }
             }
         }
@@ -332,11 +339,11 @@ void VWTS::find_pair(int& v_open, int& v_close)
     }
 
     delete[]delta_p;
-    if (best_open.size() != 0)//随机选取一个开放
+    if (equal_pair_count != 0)//随机选取一个开放
     {
-        choose = generated_random() % best_open.size();
-        v_open = best_open[choose];
-        v_close = best_close[choose];
+        choose = generated_random() % equal_pair_count;
+        v_open = equal_pair[choose].center_in;
+        v_close = equal_pair[choose].center_out;
     }
     else
     {
