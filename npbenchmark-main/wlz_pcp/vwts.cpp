@@ -317,9 +317,13 @@ void VWTS::find_pair(int& v_open, int& v_close)
     // i: Cv中的中心序号;
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // Cv: 覆盖顶点v的中心集合;
-    // 咱也不知道是什么原因, vertex_reach_center居然等于center_coverages; 
+    // 咱也不知道是什么原因, vertex_reach_center居然等于center_coverages;
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
+        // A2 LINE 7:
+        // TryToOpenCenter(i) /* (Algorithm 3) */
+        // Meaning 1: tries to open each candidate center which covers vertex k
+        // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
         //改变受影响中心的delta
         for (int jc = 0; jc < num_center_cover[vc]; jc++)//o(n/p)
@@ -328,8 +332,12 @@ void VWTS::find_pair(int& v_open, int& v_close)
             if (num_reach_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
-
-        //更新best_delta_f
+        
+        // A2 LINE 8:
+        // for all j 属于 X do /* evaluate closing center j */
+        // j: 中心序号;
+        // Comment: 打算swap_out的中心序号;
+        // X: 当前解;
         for (int ip = 0; ip < num_center; ip++)
         {
             int this_iter_delta = center_weights[center[ip]] - center_weights[vc];//加入节点vc
