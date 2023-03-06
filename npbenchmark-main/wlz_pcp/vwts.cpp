@@ -359,7 +359,21 @@ void VWTS::find_pair(int& v_open, int& v_close)
                 // Meaning: this move is better than history best;
                 if (this_iter_delta < min_delta)//重计最好值列表
                 {
+                    // A2 LINE 11:
+                    // obj <- f(X直和Swap(i, j))
+                    // obj: num of vertices that has not been covered;
+                    // f(): objective function;
+                    // X: current center set;
+                    // i: center swap in;
+                    // j: center swap out;
                     min_delta = this_iter_delta;
+
+                    // A2 LINE 12:
+                    // M <- {Swap(i, j)}
+                    // M: the set of best swap moves;
+                    // i: center swap in;
+                    // j: center swap out;
+                    // Meaning: change best move to (i, j);
                     equal_pair_count = 0;
                     equal_pair[equal_pair_count].center_in = vc;
                     equal_pair[equal_pair_count].center_out = center[ip];
