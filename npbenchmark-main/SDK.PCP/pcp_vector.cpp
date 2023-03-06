@@ -468,6 +468,8 @@ void PCP_Vector::try_open_center(unsigned int center)
 // j: center swapped out;
 void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
 {
+    sum_uncovered_weight = sum_uncovered_weight - center_weights[i] + center_weights[j];
+
     // A4 LINE 2:
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
@@ -696,12 +698,12 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<3)
+    while(num_uncovered != 0 && iter<1)
     {
         cerr << "iteration: " << iter << endl;
 
-        cerr << "f(X): " << compute_sum_uncovered_weight() << endl;
-        cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
+        cerr << "f(X) before find pair: " << compute_sum_uncovered_weight() << endl;
+        cerr << "sum_uncovered_weight before find pair: " << sum_uncovered_weight << endl;
 
         // A1 LINE 5:
         // (i, j) <- FindPair(X_prev, TL, iter) /* (Algorithm 2) */
@@ -712,11 +714,17 @@ void PCP_Vector::vertex_weight_tabu_search()
         // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
         find_pair();
 
+        cerr << "f(X) before make move: " << compute_sum_uncovered_weight() << endl;
+        cerr << "sum_uncovered_weight before make move: " << sum_uncovered_weight << endl;
+
         // A1 LINE 6:
         // MakeMove(i, j) /* (Algorithm 4) */
         // (i,j): pair moved found in the previous;
         // Meaning: makes the best move; (2023年2月10日)
         make_move(moved.center_in, moved.center_out);
+
+        cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
+        cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
 
         // A1 LINE 7:
         // if |U(X)| < |U(X*)| then
