@@ -52,10 +52,10 @@ private: // member variables.
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
     // Therefore, it can evaluate the importance of this center.
-    std::vector<unsigned int> center_weights;
+    std::vector<int> center_weights;
     // dimension: num_vertex;
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
-    std::vector<unsigned int> prev_center_weights;
+    std::vector<int> prev_center_weights;
     std::vector<Move> equal_pair;
     int equal_pair_count = 0;
 

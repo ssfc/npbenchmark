@@ -97,7 +97,7 @@ void PCP_Vector::greedy_construct()
         unsigned long long max_overlap_size = 0;
 
         // cerr << "uncovered" << uncovered << endl;
-        for(int j=0;j<num_vertex;j++) // consider only one set;
+        for(int j=0;j<num_vertex;j++) // consider only one set
         {
             dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
             unsigned long long this_intersection_size = this_intersection.count();
