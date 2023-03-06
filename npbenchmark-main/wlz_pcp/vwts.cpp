@@ -317,6 +317,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
     // i: Cv中的中心序号;
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // Cv: 覆盖顶点v的中心集合;
+    // 咱也不知道是什么原因, vertex_reach_center居然等于center_coverages; 
     for (int ic = 0; ic < num_center_cover[choose]; ic++)//o(n/p)，遍历能够覆盖未覆盖节点的点
     {
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
