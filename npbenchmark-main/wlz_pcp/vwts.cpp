@@ -54,10 +54,6 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
 
     min_delta = INT_MAX;
     solution.reset();
-    for (int i = 0; i < num_vertex; i++)
-    {
-        num_covered_center[i] = 0;//每个点都没有被中心覆盖
-    }
 
     // debug variables;
     start_time = clock();
