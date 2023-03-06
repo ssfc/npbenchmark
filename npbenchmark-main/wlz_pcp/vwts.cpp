@@ -292,6 +292,10 @@ void VWTS::find_pair(int& v_open, int& v_close)
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     int choose = uncovered_vertices[generated_random() % num_uncovered];
+
+    // A3 LINE 3:
+    // The best objective value obj <- +INF;
+    // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     min_delta = INT_MAX;
 
     vector<int> prev_center_weights(num_center, 0);//记录中心delta，便于还原
