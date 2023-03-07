@@ -298,8 +298,9 @@ void PCP_Vector::find_pair()
         // V(i): the set of vertex that center i can serve;
         // print_index1("Vi", center_cover_vertex[center]);
         dynamic_bitset<> Vi = center_cover_vertex[ic];
+        vector<int> Vi_value = center_coverages[ic];
         // cerr << "Vi" << ": ";
-        for (size_t iv = Vi.find_first(); iv != dynamic_bitset<>::npos; iv = Vi.find_next(iv))
+        for (int iv : Vi_value)
         {
             // cerr << v << " ";
             // A3 LINE 3:
