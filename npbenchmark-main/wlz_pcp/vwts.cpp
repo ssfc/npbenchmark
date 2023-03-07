@@ -322,14 +322,24 @@ void VWTS::find_pair(int& v_open, int& v_close)
         // TryToOpenCenter(i) /* (Algorithm 3) */
         // Meaning 1: tries to open each candidate center which covers vertex k
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
-        int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
+        int vu = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
 
-        if (vc == tabu_open) continue;      //禁忌动作
+        if (vu == tabu_open) continue;      //禁忌动作
 
+        // Algorithm 3 Open a center virtually
+        // A3 LINE 1:
+        // function TRY_TO_OPEN_CENTER(i)
+        // i: center swap in;
         //改变受影响中心的delta
-        for (int jc = 0; jc < num_center_cover[vc]; jc++)//o(n/p)
+
+        // A3 LINE 2:
+        // for all v属于Vi do:
+        // v: 顶点名称;
+        // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
+        // V(i): the set of vertex that center i can serve;
+        for (int jc = 0; jc < num_center_cover[vu]; jc++)//o(n/p)
         {
-            int vjc = center_coverages[vc][jc];
+            int vjc = center_coverages[vu][jc];
             if (num_reach_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
@@ -341,7 +351,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
         // X: 当前解;
         for (int ip = 0; ip < num_center; ip++)
         {
-            int this_iter_delta = center_weights[center[ip]] - center_weights[vc];//加入节点vc
+            int this_iter_delta = center_weights[center[ip]] - center_weights[vu];//加入节点vc
 
             // A2 LINE 9:
             // if {i, j}交TL = NULL then
@@ -376,7 +386,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
                     // j: center swap out;
                     // Meaning: change best move to (i, j);
                     equal_pair_count = 0;
-                    equal_pair[equal_pair_count].center_in = vc;
+                    equal_pair[equal_pair_count].center_in = vu;
                     equal_pair[equal_pair_count].center_out = center[ip];
                     equal_pair_count++;
                 }
@@ -394,7 +404,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: equal move list;
-                    equal_pair[equal_pair_count].center_in = vc;
+                    equal_pair[equal_pair_count].center_in = vu;
                     equal_pair[equal_pair_count].center_out = center[ip];
                     equal_pair_count++;
 
