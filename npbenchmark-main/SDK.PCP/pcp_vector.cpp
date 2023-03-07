@@ -9,7 +9,7 @@ using namespace std;
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed)
                        :solution(input_num_vertex)
-                       ,covered(input_num_vertex)
+                       ,covered_vertices(input_num_vertex)
                        ,uncovered(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
@@ -47,7 +47,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
-    covered.reset(); // set covered all 0;
+    covered_vertices.reset(); // set covered all 0;
     uncovered.set(); // set uncovered all 1;
     num_uncovered = INT_MAX;
     best_num_uncovered = INT_MAX;
@@ -200,10 +200,10 @@ void PCP_Vector::greedy_construct()
         // i: center swapped in;
         // Meaning: Open selected center;
         solution.set(selected_center);
-        covered = covered | center_cover_vertex[selected_center];
+        covered_vertices = covered_vertices | center_cover_vertex[selected_center];
         // cerr << "Cover after union size (" << covered.count() << "): " << endl;
         // print_index1("Covered", covered);
-        uncovered = ~covered;
+        uncovered = ~covered_vertices;
         // print_index1("Uncovered", uncovered);
 
         iter++;
@@ -513,7 +513,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            covered.set(v);
+            covered_vertices.set(v);
             uncovered.reset(v);
 
             // A4 LINE 6:
@@ -574,7 +574,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            covered.reset(v);
+            covered_vertices.reset(v);
             uncovered.set(v);
 
             // LINE 12:
