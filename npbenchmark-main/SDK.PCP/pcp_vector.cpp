@@ -289,7 +289,55 @@ void PCP_Vector::find_pair()
         // TryToOpenCenter(i) /* (Algorithm 3) */
         // Meaning 1: tries to open each candidate center which covers vertex k
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
-        try_open_center(ic);
+
+
+        // A3 LINE 2:
+        // for all v属于Vi do:
+        // v: 顶点名称;
+        // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
+        // V(i): the set of vertex that center i can serve;
+        // print_index1("Vi", center_cover_vertex[center]);
+        dynamic_bitset<> Vi = center_cover_vertex[ic];
+        // cerr << "Vi" << ": ";
+        for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+        {
+            // cerr << v << " ";
+            // A3 LINE 3:
+            // if |X 交 Cv| = 1 then
+            // X: current center set;
+            // v: vertex
+            // Cv: 覆盖顶点v的中心集合;
+            // |X 交 Cv|: number of centers covering v in X;
+            dynamic_bitset<> intersection = solution & vertex_reach_center[v];
+            int intersection_count = int (intersection.count());
+            if (intersection_count == 1)
+            {
+                // A3 L4 & L5
+                // cerr << "find one: ";
+                // print_index1("solution", solution);
+                // print_index1("Cv", Cv);
+                unsigned long long intersect_center = intersection.find_first();
+                // cerr << "find intersect one: " << intersect_center << endl;
+                // for l 属于 X交Cv:
+                //     delta_l <- delta_l - wv,
+                // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+                // delta_l: 中心l的权重;
+                // Meaning: cancel penalty for deleting center l;
+                // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
+                // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
+                // print_vector("center weights before", center_weights);
+                center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
+                // print_vector("center weights after", center_weights);
+
+                // A3 LINE 6:
+                // end if
+            }
+            // A3 LINE 7:
+            // end for
+        }
+        // cerr << endl;
+        // A3 LINE 8:
+        // end function;
 
         // A2 LINE 8:
         // for all j 属于 X do /* evaluate closing center j */
@@ -401,60 +449,6 @@ void PCP_Vector::find_pair()
     // end function
 }
 
-// Algorithm 3: Open a center virtually
-// A3 LINE 1:
-// function TRY_TO_OPEN_CENTER(i)
-// i: center swap in;
-void PCP_Vector::try_open_center(unsigned int center)
-{
-    // A3 LINE 2:
-    // for all v属于Vi do:
-    // v: 顶点名称;
-    // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
-    // V(i): the set of vertex that center i can serve;
-    // print_index1("Vi", center_cover_vertex[center]);
-    dynamic_bitset<> Vi = center_cover_vertex[center];
-    // cerr << "Vi" << ": ";
-    for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
-    {
-        // cerr << v << " ";
-        // A3 LINE 3:
-        // if |X 交 Cv| = 1 then
-        // X: current center set;
-        // v: vertex
-        // Cv: 覆盖顶点v的中心集合;
-        // |X 交 Cv|: number of centers covering v in X;
-        dynamic_bitset<> intersection = solution & vertex_reach_center[v];
-        int intersection_count = int (intersection.count());
-        if (intersection_count == 1)
-        {
-            // A3 L4 & L5
-            // cerr << "find one: ";
-            // print_index1("solution", solution);
-            // print_index1("Cv", Cv);
-            unsigned long long intersect_center = intersection.find_first();
-            // cerr << "find intersect one: " << intersect_center << endl;
-            // for l 属于 X交Cv:
-            //     delta_l <- delta_l - wv,
-            // l: X交Cv里面的中心; 现有解中覆盖V的中心;
-            // delta_l: 中心l的权重;
-            // Meaning: cancel penalty for deleting center l;
-            // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
-            // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
-            // print_vector("center weights before", center_weights);
-            center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
-            // print_vector("center weights after", center_weights);
-
-            // A3 LINE 6:
-            // end if
-        }
-        // A3 LINE 7:
-        // end for
-    }
-    // cerr << endl;
-    // A3 LINE 8:
-    // end function;
-}
 
 // Algorithm 4 Make a swap move
 // Comment: 注意到make_move中只计算每个中心权重的变化, 而不计算作为整体的f(X)

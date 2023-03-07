@@ -78,7 +78,6 @@ public: // member functions.
     ~PCP_Vector();
 
     void greedy_construct();
-    void try_open_center(unsigned int center);
     void find_pair();
     void make_move();
     void vertex_weight_tabu_search();
