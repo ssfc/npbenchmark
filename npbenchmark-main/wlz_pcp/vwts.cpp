@@ -356,7 +356,13 @@ void VWTS::find_pair(int& v_open, int& v_close)
                 // Cv: 覆盖顶点v的中心集合;
                 // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量;
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
+
+                // A3 LINE 6:
+                // end if
             }
+
+            // A3 LINE 7:
+            // end for
         }
 
         // A2 LINE 8:
