@@ -472,9 +472,7 @@ void PCP_Vector::make_move()
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
-    dynamic_bitset<> Vi = center_cover_vertex[moved.center_in];
-    // cerr << "Vi" << ": ";
-    for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+    for (int v : center_coverages[moved.center_in])
     {
         // cerr << v << " ";
         // A4 LINE 3:
