@@ -502,10 +502,18 @@ void VWTS::make_move(int v_open, int v_close)
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
         else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
         {
+            // A4 LINE 6:
+            // for l 属于 Cv-{i}:
+            //     delta_l <- delta_l - wv
+            // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
+            // Cv: 覆盖顶点v的中心集合;
+            // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
+            // Meaning: cancel reward for adding center l;
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
             {
                 center_weights[center_coverages[vc][jc]] -= vertex_weights[vc];
             }
+
             covered_once[vc] = v_open;
             center_weights[v_open] += vertex_weights[vc];
         }
