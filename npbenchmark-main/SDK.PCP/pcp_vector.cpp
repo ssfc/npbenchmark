@@ -213,6 +213,12 @@ void PCP_Vector::greedy_construct()
     sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
+    uncovered_value.clear();
+    for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
+    {
+        uncovered_value.push_back(i);
+    }
+
     // A1 LINE 2:
     // iter <- 1;
     // iter: current iteration;
@@ -242,11 +248,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
     // print_index1("uncovered", uncovered);
-    vector<int> uncovered_value;
-    for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
-    {
-        uncovered_value.push_back(i);
-    }
+
 
     size_t random_uncovered_index = generated_random() % uncovered_value.size();
     unsigned int random_uncovered_vertex = uncovered_value[random_uncovered_index];
@@ -707,6 +709,12 @@ void PCP_Vector::vertex_weight_tabu_search()
         // (i,j): pair moved found in the previous;
         // Meaning: makes the best move; (2023年2月10日)
         make_move();
+
+        uncovered_value.clear();
+        for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
+        {
+            uncovered_value.push_back(i);
+        }
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
