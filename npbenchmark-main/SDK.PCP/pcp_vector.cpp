@@ -533,11 +533,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: cancel reward for adding center l;
             // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
-            dynamic_bitset<> Cv_i = Cv; // cv_i means Cv-{i}
-            Cv_i.reset(i); // implement Cv-{i}
-            // print_index1("Cv-{i}", Cv_i);
-            // cerr << "Cv-{i}: ";
-            for (size_t l = Cv_i.find_first(); l != dynamic_bitset<>::npos; l = Cv_i.find_next(l))
+            for (size_t l = Cv.find_first(); l != dynamic_bitset<>::npos; l = Cv.find_next(l))
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -545,6 +541,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
                 // print_vector("center weights after", center_weights);
             }
             // cerr << endl;
+            center_weights[i] = center_weights[i] + vertex_weights[v];
 
             // A4 LINE 7:
             // end if
@@ -599,12 +596,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
             // Comment: 此时的X已经把j删除了, 见LINE 9;
-            dynamic_bitset<> Cv_j = Cv; // cv_j means Cv-{j}
-            Cv_j.reset(j); // implement Cv-{j}
-            // print_index1("Cv-{j}", Cv_j);
-            // cerr << "Cv-{j}: ";
-
-            for (size_t l = Cv_j.find_first(); l != dynamic_bitset<>::npos; l = Cv_j.find_next(l))
+            for (size_t l = Cv.find_first(); l != dynamic_bitset<>::npos; l = Cv.find_next(l))
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -614,6 +606,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
                 // cerr << center_weights[l] << endl;
             }
             // cerr << endl;
+            center_weights[j] = center_weights[j] - vertex_weights[v];
 
         }
         // A4 LINE 13:
