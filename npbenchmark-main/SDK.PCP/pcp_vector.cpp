@@ -20,18 +20,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     num_vertex = input_num_vertex;
     num_center = input_num_center;
 
-    center_coverages.resize(input_num_vertex);
-    for(int i=0;i<input_coverages.size();i++)
-    {
-        center_coverages[i].resize(input_num_vertex);
-        for(int j=0;j<input_coverages[i].size();j++)
-        {
-            int index = input_coverages[i][j];
-            center_coverages[i][index] = 1;
-        }
-    }
-
     center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
+    center_coverages.resize(input_num_vertex);
     vertex_reach_center.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
     vertex_reaching.resize(input_num_vertex);
     for(int i=0;i<input_coverages.size();i++) // i is center name
@@ -40,6 +30,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         {
             int index = input_coverages[i][j];
             center_cover_vertex[i].set(index, true);
+            center_coverages[i].push_back(index);
             vertex_reach_center[index].set(i, true);
             vertex_reaching[index].push_back(i);
         }
@@ -665,6 +656,8 @@ void PCP_Vector::vertex_weight_tabu_search()
 {
     // print_index1("center cover 0:", center_cover_vertex[0]);
     // print_index1("0 reach center:", vertex_reach_center[0]);
+    print_vector("center 0 cover: ", center_coverages[0]);
+    print_vector("vertex 0 reach: ", vertex_reaching[0]);
 
     // A1 LINE 1:
     // X <- init(G, p, rq);
@@ -902,7 +895,7 @@ long long int PCP_Vector::get_iteration() const
 }
 
 // debug function:
-void PCP_Vector::print_vector(const string& name, vector<unsigned int> &vect)
+void PCP_Vector::print_vector(const string& name, vector<int> &vect)
 {
     cerr << name << ": ";
     for(unsigned int i : vect)
