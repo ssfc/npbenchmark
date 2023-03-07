@@ -427,7 +427,7 @@ void PCP_Vector::try_open_center(unsigned int center)
         // Cv: 覆盖顶点v的中心集合;
         // |X 交 Cv|: number of centers covering v in X;
         dynamic_bitset<> intersection = solution & vertex_reach_center[v];
-        int intersection_count = intersection.count();
+        int intersection_count = int (intersection.count());
         if (intersection_count == 1)
         {
             // A3 L4 & L5
@@ -482,7 +482,7 @@ void PCP_Vector::make_move()
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
-        int intersection_count = intersection.count();
+        int intersection_count = int (intersection.count());
         if (intersection_count == 1)
         {
             // Evaluate A4 LINE 3
@@ -567,7 +567,7 @@ void PCP_Vector::make_move()
         // Meaning: 如果X中没有能够覆盖顶点v的中心;
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
-        int intersection_count = intersection.count();
+        int intersection_count = int (intersection.count());
         if(intersection_count == 0)
         {
             // print_index1("solution after close j", solution);
