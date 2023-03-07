@@ -33,6 +33,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 
     center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
     vertex_reach_center.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
+    vertex_reaching.resize(input_num_vertex);
     for(int i=0;i<input_coverages.size();i++) // i is center name
     {
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
@@ -40,6 +41,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
             int index = input_coverages[i][j];
             center_cover_vertex[i].set(index, true);
             vertex_reach_center[index].set(i, true);
+            vertex_reaching[index].push_back(i);
         }
         // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
     }
