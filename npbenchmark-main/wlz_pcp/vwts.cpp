@@ -449,7 +449,6 @@ void VWTS::find_pair(int& v_open, int& v_close)
 
 void VWTS::make_move(int v_open, int v_close)
 {
-    solution.set(v_open);
     //delta[v] = 0;
     //更新邻域delta
     for (int ic = 0; ic < num_center_cover[v_open]; ic++)//o(n/p)
@@ -469,7 +468,7 @@ void VWTS::make_move(int v_open, int v_close)
         num_reach_center[vc]++;
     }
 
-
+    solution.set(v_open);
     solution.reset(v_close);
     //更新邻域delta
     for (int ic = 0; ic < num_center_cover[v_close]; ic++)
