@@ -337,16 +337,16 @@ void VWTS::find_pair(int& v_open, int& v_close)
         // v: 顶点名称;
         // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
         // V(i): the set of vertex that center i can serve;
-        for (int jc = 0; jc < num_center_cover[vu]; jc++)//o(n/p)
+        for (int jc = 0; jc < num_center_cover[vu]; jc++)
         {
-            int vjc = center_coverages[vu][jc];
+            int vjc = center_coverages[vu][jc]; // vu覆盖的第jc个顶点的名字;
 
             // A3 LINE 3:
             // if |X 交 Cv| = 1 then
             // X: current center set;
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
-            if (num_reach_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
+            if (num_reach_center[vjc] == 1) //如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
 
