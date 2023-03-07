@@ -756,9 +756,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 vertex_weights[iv]++;
                 sum_uncovered_weight++;
-                dynamic_bitset<> Cv = vertex_reach_center[iv];
-                // cerr << "Cv list: " << endl;
-                for (size_t ic = Cv.find_first(); ic != dynamic_bitset<>::npos; ic = Cv.find_next(ic))
+                for (int ic : vertex_reaching[iv])
                 {
                     center_weights[ic]++;
                 }
