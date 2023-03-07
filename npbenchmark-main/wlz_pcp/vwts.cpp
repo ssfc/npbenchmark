@@ -173,8 +173,6 @@ void VWTS::vertex_weight_tabu_search()
         // iter: current iteration;
         // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
         find_pair(moved.center_in, moved.center_out);
-        if (moved.center_in == -1 || moved.center_out == -1)//没找到非禁忌move，解除禁忌进行下一轮
-            continue;
 
         // A1 LINE 6:
         // MakeMove(i, j) /* (Algorithm 4) */
@@ -325,6 +323,9 @@ void VWTS::find_pair(int& v_open, int& v_close)
         // Meaning 1: tries to open each candidate center which covers vertex k
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
+
+        if (vc == tabu_open || vc == tabu_close) continue;      //禁忌动作
+
         //改变受影响中心的delta
         for (int jc = 0; jc < num_center_cover[vc]; jc++)//o(n/p)
         {
@@ -348,7 +349,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if (vc != tabu_open && center[ip] != tabu_close)
+            if (center[ip] != tabu_open && center[ip] != tabu_close)
             {
                 // A2 LINE 10:
                 // if f(X直和Swap(i, j)) < obj then
