@@ -656,8 +656,8 @@ void PCP_Vector::vertex_weight_tabu_search()
 {
     // print_index1("center cover 0:", center_cover_vertex[0]);
     // print_index1("0 reach center:", vertex_reach_center[0]);
-    print_vector("center 0 cover: ", center_coverages[0]);
-    print_vector("vertex 0 reach: ", vertex_reaching[0]);
+    // print_vector("center 0 cover: ", center_coverages[0]);
+    // print_vector("vertex 0 reach: ", vertex_reaching[0]);
 
     // A1 LINE 1:
     // X <- init(G, p, rq);
