@@ -495,6 +495,11 @@ void VWTS::make_move(int v_open, int v_close)
             // Meaning: cancel penalty for deleting center l;
             center_weights[covered_once[vc]] -= vertex_weights[vc];
         }
+        // A4 LINE 5:
+        // else if |X 交 Cv| = 0 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
         else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
