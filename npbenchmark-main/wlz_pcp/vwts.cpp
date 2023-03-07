@@ -516,8 +516,15 @@ void VWTS::make_move(int v_open, int v_close)
 
             covered_once[vc] = v_open;
             center_weights[v_open] += vertex_weights[vc];
+
+            // A4 LINE 7:
+            // end if
         }
+
         num_reach_center[vc]++;
+
+        // A4 LINE 8:
+        // end for
     }
 
     solution.set(v_open);
