@@ -48,7 +48,6 @@ private:
     int equal_pair_count = 0;
 
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
-    int min_history_sum_uncovered_weight; // f(X) 的历史最小值;
     int min_delta; // 最好的swap进行后, f(X)值的变化;
 
     // debug variables

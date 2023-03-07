@@ -45,7 +45,7 @@ VWTS::VWTS(int input_num_vertex, int input_num_center, int input_radius,
     // V: vertex set;
     vertex_weights.resize(num_vertex, 1);
 
-    sum_uncovered_weight = min_history_sum_uncovered_weight = num_uncovered = num_vertex;
+    sum_uncovered_weight = num_uncovered = num_vertex;
     center_weights.resize(num_vertex, 0);
     tabu_open = tabu_close = -1;
 
@@ -105,7 +105,6 @@ void VWTS::greedy_construct()
             if (num_reach_center[center_coverages[choose][i]] == 0)//如果还未被别的中心覆盖
             {
                 --sum_uncovered_weight;//加入节点
-                --min_history_sum_uncovered_weight;
                 --num_uncovered;
                 covered_once[center_coverages[choose][i]] = choose;//表示仅被一个中心覆盖的节点
             }
@@ -596,8 +595,6 @@ void VWTS::make_move(int v_open, int v_close)
     }
 
     sum_uncovered_weight = sum_uncovered_weight + min_delta;
-    if (sum_uncovered_weight < min_history_sum_uncovered_weight)
-        min_history_sum_uncovered_weight = sum_uncovered_weight;
 
     //更新
     num_uncovered = 0;
