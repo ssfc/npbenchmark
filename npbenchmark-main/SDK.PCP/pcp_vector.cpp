@@ -344,7 +344,7 @@ void PCP_Vector::find_pair()
         // X: 当前解;
         // print_index1("X", solution);
         // cerr << "X: ";
-        for (size_t j = solution.find_first(); j != dynamic_bitset<>::npos; j = solution.find_next(j))
+        for (int j : solution_value)
         {
             // cerr << j << " ";
             // A2 LINE 9:
@@ -543,11 +543,11 @@ void PCP_Vector::make_move()
     solution.set(moved.center_in);
     solution.reset(moved.center_out);
 
-    for (int i : solution_value)
+    for (int i=0; i<num_center; i++)
     {
-        if (i == moved.center_out)
+        if (solution_value[i] == moved.center_out)
         {
-            i = moved.center_in;
+            solution_value[i] = moved.center_in;
             break;
         }
     }
@@ -842,9 +842,9 @@ void PCP_Vector::vertex_weight_tabu_search()
 void PCP_Vector::get_solution(vector<NodeId>& output)
 {
     int count = 0;
-    for (size_t i = solution.find_first(); i != dynamic_bitset<>::npos; i = solution.find_next(i))
+    for (int i : solution_value)
     {
-        output[count] = int (i);
+        output[count] = i;
         count++;
     }
 }
