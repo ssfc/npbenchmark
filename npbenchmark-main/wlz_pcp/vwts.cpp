@@ -543,23 +543,55 @@ void VWTS::make_move(int v_open, int v_close)
     for (int iv = 0; iv < num_center_cover[v_close]; iv++)
     {
         int vc = center_coverages[v_close][iv];
+
+        // A4 LINE 11:
+        // if |X 交 Cv| = 0 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果X中没有能够覆盖顶点v的中心;
         if (num_reach_center[vc] == 1)//vc变成未覆盖结点
         {
+            // A4 LINE 12:
+            // for l 属于 Cv - {j} do
+            //    delta_l <- delta_l + wv;
+            // l: Cv中除j以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
+            // Cv: 覆盖顶点v的中心集合;
+            // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
+            // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
+            // Comment: 此时的X已经把j删除了, 见LINE 9;
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
                 center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
             center_weights[v_close] -= vertex_weights[vc];
         }
+        // A4 LINE 13:
+        // else if |X 交 Cv| = 1 then
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         else if (num_reach_center[vc] == 2)//vc周围中心变成唯一覆盖vc
         {
+            // A4 LINE 14:
+            // for l 属于 X 交 Cv do
+            //    delta_l <- delta_l + wv;
+            // l: X交Cv里面的中心; 现有解中覆盖v的中心;
+            // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量; (在里面越小越好);
+            // Meaning: add penalty for deleting center l;
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
-                if (solution[center_coverages[vc][jc]])
-                {
+            {
+                if (solution[center_coverages[vc][jc]]) {
                     center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
                     covered_once[vc] = center_coverages[vc][jc];//更新被唯一覆盖中心
                     break;
                 }
+            }
+
+            // A4 LINE 15:
+            // end if
         }
         --num_reach_center[vc];
+
+        // A4 LINE 16:
+        // end for
     }
 
     sum_uncovered_weight = sum_uncovered_weight + min_delta;
@@ -576,6 +608,9 @@ void VWTS::make_move(int v_open, int v_close)
         else if (num_reach_center[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_vertices[num_uncovered++] = i;
     }
+
+    // A4 LINE 17:
+    // end function
 }
 
 // output solution;
