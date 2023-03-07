@@ -464,13 +464,21 @@ void VWTS::find_pair(int& v_open, int& v_close)
     // end function
 }
 
+// Algorithm 4 Make a swap move
+// Comment: 注意到make_move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
+// A4 LINE 1:
+// function make_move(i, j)
+// i: center swapped in;
+// j: center swapped out;
 void VWTS::make_move(int v_open, int v_close)
 {
-    //delta[v] = 0;
-    //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[v_open]; ic++)//o(n/p)
+    // A4 LINE 2:
+    // for all v属于Vi do
+    // V(i): the set of vertex that center i can serve;
+    // Meaning: consequences of opening i
+    for (int iv = 0; iv < num_center_cover[v_open]; iv++)//o(n/p)
     {
-        int vc = center_coverages[v_open][ic];
+        int vc = center_coverages[v_open][iv];
         if (num_reach_center[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
             center_weights[covered_once[vc]] -= vertex_weights[vc];
         else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
