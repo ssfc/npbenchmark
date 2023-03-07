@@ -515,7 +515,7 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: cancel reward for adding center l;
             // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
-            for (size_t l = Cv.find_first(); l != dynamic_bitset<>::npos; l = Cv.find_next(l))
+            for (int l : vertex_reaching[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
