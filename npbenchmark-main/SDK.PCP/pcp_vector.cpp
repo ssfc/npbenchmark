@@ -120,7 +120,7 @@ void PCP_Vector::greedy_construct()
         // V(i): the set of vertex that center i can serve; index is center, result is vertex;
         // Meaning: consequences of opening i
         dynamic_bitset<> Vi = center_cover_vertex[selected_center];
-        for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+        for (int v : center_coverages[selected_center])
         {
             // cerr << v << " ";
             // Reference A4 LINE 3:
