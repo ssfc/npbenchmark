@@ -513,7 +513,6 @@ void PCP_Vector::make_move()
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            covered_vertices.set(v);
             uncovered.reset(v);
 
             // A4 LINE 6:
@@ -574,7 +573,6 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            covered_vertices.reset(v);
             uncovered.set(v);
 
             // LINE 12:
