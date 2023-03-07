@@ -169,7 +169,7 @@ void PCP_Vector::greedy_construct()
                 // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                for (size_t l = Cv.find_first(); l != dynamic_bitset<>::npos; l = Cv.find_next(l))
+                for (int l : vertex_reaching[v])
                 {
                     // cerr << "l: " << l << endl;
                     center_weights[l] = center_weights[l] - vertex_weights[v];
