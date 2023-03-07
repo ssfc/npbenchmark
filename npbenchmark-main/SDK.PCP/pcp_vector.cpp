@@ -270,6 +270,7 @@ void PCP_Vector::find_pair()
     // Cv: 覆盖顶点v的中心集合;
     // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
     dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
+    vector<int> Cv_value = vertex_reaching[random_uncovered_vertex];
     // cerr << "Cv list: " << endl;
 
     // Evaluate A1 LINE 12
@@ -278,8 +279,7 @@ void PCP_Vector::find_pair()
     //    if(tabu_tenure_table[temp] > iter)
     //        cerr << temp << " ";
     // cerr << endl;
-
-    for (size_t ic = Cv.find_first(); ic != dynamic_bitset<>::npos; ic = Cv.find_next(ic))
+    for (int ic : Cv_value)
     {
         if(tabu_tenure_table[ic] > iter)
             continue;
@@ -464,7 +464,8 @@ void PCP_Vector::make_move()
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
-    for (int v : center_coverages[moved.center_in])
+    vector<int> Vi = center_coverages[moved.center_in];
+    for (int v : Vi)
     {
         // cerr << v << " ";
         // A4 LINE 3:
@@ -549,7 +550,8 @@ void PCP_Vector::make_move()
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    for (int v : center_coverages[moved.center_out])
+    vector<int> Vj = center_coverages[moved.center_out];
+    for (int v : Vj)
     {
         // cerr << v << " ";
         // A4 LINE 11:
