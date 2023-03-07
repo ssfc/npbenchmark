@@ -347,7 +347,16 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
             if (num_reach_center[vjc] == 1) //如果当前顶点能被原有中心覆盖一次，再次覆盖就要更新值
+            {
+                // A3 LINE 4 && LINE 5:
+                // for l 属于 X交Cv:
+                //     delta_l <- delta_l - wv,
+                // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+                // X: current center set;
+                // Cv: 覆盖顶点v的中心集合;
+                // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量;
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
+            }
         }
 
         // A2 LINE 8:
