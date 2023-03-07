@@ -582,7 +582,7 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
             // Comment: 此时的X已经把j删除了, 见LINE 9;
-            for (size_t l = Cv.find_first(); l != dynamic_bitset<>::npos; l = Cv.find_next(l))
+            for (int l : vertex_reaching[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -593,7 +593,6 @@ void PCP_Vector::make_move()
             }
             // cerr << endl;
             center_weights[moved.center_out] = center_weights[moved.center_out] - vertex_weights[v];
-
         }
         // A4 LINE 13:
         // else if |X 交 Cv| = 1 then
