@@ -299,7 +299,7 @@ void PCP_Vector::find_pair()
         // print_index1("Vi", center_cover_vertex[center]);
         dynamic_bitset<> Vi = center_cover_vertex[ic];
         // cerr << "Vi" << ": ";
-        for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
+        for (size_t iv = Vi.find_first(); iv != dynamic_bitset<>::npos; iv = Vi.find_next(iv))
         {
             // cerr << v << " ";
             // A3 LINE 3:
@@ -308,7 +308,7 @@ void PCP_Vector::find_pair()
             // v: vertex
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
-            dynamic_bitset<> intersection = solution & vertex_reach_center[v];
+            dynamic_bitset<> intersection = solution & vertex_reach_center[iv];
             int intersection_count = int (intersection.count());
             if (intersection_count == 1)
             {
@@ -326,7 +326,7 @@ void PCP_Vector::find_pair()
                 // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
                 // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
                 // print_vector("center weights before", center_weights);
-                center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
+                center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[iv];
                 // print_vector("center weights after", center_weights);
 
                 // A3 LINE 6:
