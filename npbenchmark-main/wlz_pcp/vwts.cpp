@@ -364,6 +364,8 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // A3 LINE 7:
             // end for
         }
+        // A3 LINE 8:
+        // end function;
 
         // A2 LINE 8:
         // for all j 属于 X do /* evaluate closing center j */
