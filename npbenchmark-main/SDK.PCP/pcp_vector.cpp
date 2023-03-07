@@ -436,8 +436,7 @@ void PCP_Vector::try_open_center(unsigned int center)
         // v: vertex
         // Cv: 覆盖顶点v的中心集合;
         // |X 交 Cv|: number of centers covering v in X;
-        dynamic_bitset<> Cv = vertex_reach_center[v];
-        dynamic_bitset<> intersection = solution & Cv;
+        dynamic_bitset<> intersection = solution & vertex_reach_center[v];
         int intersection_count = intersection.count();
         if (intersection_count == 1)
         {
