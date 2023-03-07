@@ -462,8 +462,7 @@ void PCP_Vector::make_move()
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
-    vector<int> Vi = center_coverages[moved.center_in];
-    for (int v : Vi)
+    for (int v : center_coverages[moved.center_in])
     {
         // cerr << v << " ";
         // A4 LINE 3:
@@ -557,8 +556,7 @@ void PCP_Vector::make_move()
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    vector<int> Vj = center_coverages[moved.center_out];
-    for (int v : Vj)
+    for (int v : center_coverages[moved.center_out])
     {
         // cerr << v << " ";
         // A4 LINE 11:
