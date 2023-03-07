@@ -558,9 +558,7 @@ void PCP_Vector::make_move()
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    dynamic_bitset<> Vj = center_cover_vertex[moved.center_out];
-    // cerr << "Vj" << ": ";
-    for (size_t v = Vj.find_first(); v != dynamic_bitset<>::npos; v = Vj.find_next(v))
+    for (int v : center_coverages[moved.center_out])
     {
         // cerr << v << " ";
         // A4 LINE 11:
