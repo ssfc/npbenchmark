@@ -32,18 +32,19 @@
 32. has PCB3038; (2023年2月18日)
 33. 
 34. Sample of Edward-Elric233: https://github.com/Edward-Elric233/PCenter/tree/603ee061276e4f99e9e76e57f4cecc1dd16b8aa6
-35. 因为算法多次需要计算集合的交集、并集、势、遍历，因此设计一个集合数据结构是算法的核心。作者直接使用boost::dynamic_bitset作为实现集合的数据结构。
-36. 关于boost::dynamic_bitset常用操作, 详见 https://izualzhy.cn/boost-dynamic-bitset#25-%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C 
-37. 
-38. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
-39. only has pmed; (2023年2月18日)
-40. 
-41. Sample of zywang624: https://github.com/zywang624/smartlab 
-42. has PCB3038; (2023年2月18日)
-43. 为了实现集合的交并操作, 王子扬自己写了一个MY_SET: https://github.com/zywang624/smartlab/blob/main/P-center/code/MY_SET 
-44. 
-45. Interface of SDK PCP: 
-46. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-47. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-48. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
-49. 
+35. https://github.com/Edward-Elric233/P_Center
+36. 因为算法多次需要计算集合的交集、并集、势、遍历，因此设计一个集合数据结构是算法的核心。作者直接使用boost::dynamic_bitset作为实现集合的数据结构。
+37. 关于boost::dynamic_bitset常用操作, 详见 https://izualzhy.cn/boost-dynamic-bitset#25-%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C 
+38. 
+39. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
+40. only has pmed; (2023年2月18日)
+41. 
+42. Sample of zywang624: https://github.com/zywang624/smartlab 
+43. has PCB3038; (2023年2月18日)
+44. 为了实现集合的交并操作, 王子扬自己写了一个MY_SET: https://github.com/zywang624/smartlab/blob/main/P-center/code/MY_SET 
+45. 
+46. Interface of SDK PCP: 
+47. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+48. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+49. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+50. 

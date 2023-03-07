@@ -543,13 +543,14 @@ void VWTS::make_move(int v_open, int v_close)
     for (int iv = 0; iv < num_center_cover[v_close]; iv++)
     {
         int vc = center_coverages[v_close][iv];
+        num_reach_center[vc]--;
 
         // A4 LINE 11:
         // if |X 交 Cv| = 0 then
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果X中没有能够覆盖顶点v的中心;
-        if (num_reach_center[vc] == 1)//vc变成未覆盖结点
+        if (num_reach_center[vc] == 0)//vc变成未覆盖结点
         {
             // A4 LINE 12:
             // for l 属于 Cv - {j} do
@@ -568,7 +569,7 @@ void VWTS::make_move(int v_open, int v_close)
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
-        else if (num_reach_center[vc] == 2)//vc周围中心变成唯一覆盖vc
+        else if (num_reach_center[vc] == 1)//vc周围中心变成唯一覆盖vc
         {
             // A4 LINE 14:
             // for l 属于 X 交 Cv do
@@ -588,7 +589,7 @@ void VWTS::make_move(int v_open, int v_close)
             // A4 LINE 15:
             // end if
         }
-        --num_reach_center[vc];
+
 
         // A4 LINE 16:
         // end for
