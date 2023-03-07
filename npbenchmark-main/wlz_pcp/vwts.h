@@ -67,7 +67,6 @@ public:
     void make_move(int v_open, int v_close);
 
     void init_center_weights();
-    void close_center(int v);
 
     // debug function
     void init_rand(int seed) { generated_random = std::mt19937(seed); }

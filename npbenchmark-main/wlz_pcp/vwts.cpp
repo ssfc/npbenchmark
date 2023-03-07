@@ -470,7 +470,29 @@ void VWTS::make_move(int v_open, int v_close)
     }
 
 
-    close_center(v_close);
+    solution.reset(v_close);
+    //更新邻域delta
+    for (int ic = 0; ic < num_center_cover[v_close]; ic++)
+    {
+        int vc = center_coverages[v_close][ic];
+        if (num_reach_center[vc] == 1)//vc变成未覆盖结点
+        {
+            for (int jc = 0; jc < num_center_cover[vc]; jc++)
+                center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
+            center_weights[v_close] -= vertex_weights[vc];
+        }
+        else if (num_reach_center[vc] == 2)//vc周围中心变成唯一覆盖vc
+        {
+            for (int jc = 0; jc < num_center_cover[vc]; jc++)
+                if (solution[center_coverages[vc][jc]])
+                {
+                    center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
+                    covered_once[vc] = center_coverages[vc][jc];//更新被唯一覆盖中心
+                    break;
+                }
+        }
+        --num_reach_center[vc];
+    }
 
     sum_uncovered_weight = sum_uncovered_weight + min_delta;
     if (sum_uncovered_weight < min_history_sum_uncovered_weight)
@@ -485,34 +507,6 @@ void VWTS::make_move(int v_open, int v_close)
             center[isolx++] = i;
         else if (num_reach_center[i] == 0)//如果是客户并且未被覆盖，在未覆盖节点中记录
             uncovered_vertices[num_uncovered++] = i;
-    }
-}
-
-
-void VWTS::close_center(int center_out)
-{
-    solution.reset(center_out);
-    //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[center_out]; ic++)
-    {
-        int vc = center_coverages[center_out][ic];
-        if (num_reach_center[vc] == 1)//vc变成未覆盖结点
-        {
-            for (int jc = 0; jc < num_center_cover[vc]; jc++)
-                center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
-            center_weights[center_out] -= vertex_weights[vc];
-        }
-        else if (num_reach_center[vc] == 2)//vc周围中心变成唯一覆盖vc
-        {
-            for (int jc = 0; jc < num_center_cover[vc]; jc++)
-                if (solution[center_coverages[vc][jc]])
-                {
-                    center_weights[center_coverages[vc][jc]] += vertex_weights[vc];
-                    covered_once[vc] = center_coverages[vc][jc];//更新被唯一覆盖中心
-                    break;
-                }
-        }
-        --num_reach_center[vc];
     }
 }
 
