@@ -527,12 +527,22 @@ void VWTS::make_move(int v_open, int v_close)
         // end for
     }
 
+    // A4 LINE 9:
+    // X <- X U {i} - {j}
+    // X: current center set;
+    // i: center swapped in;
+    // j: center swapped out;
+    // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
     solution.set(v_open);
     solution.reset(v_close);
-    //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[v_close]; ic++)
+
+    // A4 LINE 10:
+    // for all v 属于 Vj do
+    // vj: vertex covered by center j;
+    // Meaning: consequences of closing j
+    for (int iv = 0; iv < num_center_cover[v_close]; iv++)
     {
-        int vc = center_coverages[v_close][ic];
+        int vc = center_coverages[v_close][iv];
         if (num_reach_center[vc] == 1)//vc变成未覆盖结点
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
