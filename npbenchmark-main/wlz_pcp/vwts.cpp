@@ -408,12 +408,26 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // A2 LINE 17:
             // end for
         }
+
+        // A2 LINE 18:
+        // for j属于C do
+        //    delta_j <- delta_j_previous,
+        // Meaning: restore after trial moves;
         center_weights = prev_center_weights;
+
+        // A2 LINE 19:
+        // end for
     }
 
+    // A2 LINE 20:
+    // return a randomly picked move in M
+    // M: the set of best swap moves;
     choose = generated_random() % equal_pair_count;
     v_open = equal_pair[choose].center_in;
     v_close = equal_pair[choose].center_out;
+
+    // A2 LINE 21:
+    // end function
 }
 
 void VWTS::make_move(int v_open, int v_close)
