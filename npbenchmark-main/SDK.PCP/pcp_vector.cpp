@@ -450,9 +450,9 @@ void PCP_Vector::find_pair()
 
 
 // Algorithm 4 Make a swap move
-// Comment: 注意到make_move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
+// Comment: 注意到make__move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
 // LINE 1:
-// function make_move(i, j)
+// function make__move(i, j)
 // i: center swapped in;
 // j: center swapped out;
 void PCP_Vector::make_move()
@@ -675,10 +675,10 @@ void PCP_Vector::vertex_weight_tabu_search()
     // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[66] | center_cover_vertex[31]| center_cover_vertex[59]| center_cover_vertex[77];
     // cerr << "uncovered number: " << num_vertex - union_result.count() << endl;
 
-    // Evaluate covered and uncovered set in make_move;
+    // Evaluate covered and uncovered set in make__move;
     // dynamic_bitset<> union_result = center_cover_vertex[2] | center_cover_vertex[12] | center_cover_vertex[59];
     // dynamic_bitset<> union_uncovered = ~union_result;
-    // print_index1("uncovered to evaluate make_move", union_uncovered);
+    // print_index1("uncovered to evaluate make__move", union_uncovered);
 
     // A1 LINE 4:
     // while termination condition is not met do
