@@ -805,7 +805,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 2000 == 0)
+        if (iter % 3000 == 0)
         {
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
