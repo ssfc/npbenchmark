@@ -542,6 +542,15 @@ void PCP_Vector::make_move()
     // print_index1("solution before A4 LINE 9", solution);
     solution.set(moved.center_in);
     solution.reset(moved.center_out);
+
+    for (int i : solution_value)
+    {
+        if (i == moved.center_out)
+        {
+            i = moved.center_in;
+            break;
+        }
+    }
     // print_index1("solution after swap", solution);
 
     // A4 LINE 10:

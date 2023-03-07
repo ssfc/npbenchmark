@@ -17,8 +17,8 @@
 using NodeId = int;
 
 struct Move {
-    unsigned long long center_in;
-    unsigned long long center_out;
+    int center_in;
+    int center_out;
 };
 
 
