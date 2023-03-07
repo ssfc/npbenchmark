@@ -244,14 +244,10 @@ void PCP_Vector::find_pair()
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
     min_delta = INT_MAX;
 
-
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
     // print_index1("uncovered", uncovered);
-
-
-    size_t random_uncovered_index = generated_random() % uncovered_value.size();
-    unsigned int random_uncovered_vertex = uncovered_value[random_uncovered_index];
+    unsigned int random_uncovered_vertex = uncovered_value[generated_random() % uncovered_value.size()];
     // cerr << "random uncovered vertex: " << random_uncovered_vertex << endl;
 
     // A2 LINE 5:
@@ -760,7 +756,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_vector("vertex weights", vertex_weights);
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
-            for (size_t iv = uncovered.find_first(); iv != dynamic_bitset<>::npos; iv = uncovered.find_next(iv))
+            for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
                 sum_uncovered_weight++;
