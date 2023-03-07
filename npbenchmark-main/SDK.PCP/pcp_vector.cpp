@@ -110,7 +110,8 @@ void PCP_Vector::greedy_construct()
 
         // cerr << "equal count in construct: " << equal_count_in_construct << endl;
         unsigned int rand_select = generated_random() % equal_count_in_construct; // 相等tabu_delta随机选择
-        unsigned int selected_center = equal_delta_in_construct[rand_select];
+        int selected_center = equal_delta_in_construct[rand_select];
+        solution_value.push_back(selected_center);
         // cerr << "random select: " << rand_select << endl;
         // cerr << "selected center: " << selected_center << endl;
 

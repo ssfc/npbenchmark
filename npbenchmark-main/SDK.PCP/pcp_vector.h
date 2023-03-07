@@ -42,6 +42,7 @@ private: // member variables.
     // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
 
+    std::vector<int> solution_value;
     boost::dynamic_bitset<> solution; // centers selected;
     std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
