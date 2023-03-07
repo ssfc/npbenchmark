@@ -464,7 +464,7 @@ void PCP_Vector::try_open_center(unsigned int center)
 // function make_move(i, j)
 // i: center swapped in;
 // j: center swapped out;
-void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
+void PCP_Vector::make_move()
 {
     sum_uncovered_weight += min_delta;
 
@@ -472,7 +472,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
-    dynamic_bitset<> Vi = center_cover_vertex[i];
+    dynamic_bitset<> Vi = center_cover_vertex[moved.center_in];
     // cerr << "Vi" << ": ";
     for (size_t v = Vi.find_first(); v != dynamic_bitset<>::npos; v = Vi.find_next(v))
     {
@@ -534,7 +534,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
                 // print_vector("center weights after", center_weights);
             }
             // cerr << endl;
-            center_weights[i] = center_weights[i] + vertex_weights[v];
+            center_weights[moved.center_in] = center_weights[moved.center_in] + vertex_weights[v];
 
             // A4 LINE 7:
             // end if
@@ -552,15 +552,15 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
     // j: center swapped out;
     // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
     // print_index1("solution before A4 LINE 9", solution);
-    solution.set(i);
-    solution.reset(j);
+    solution.set(moved.center_in);
+    solution.reset(moved.center_out);
     // print_index1("solution after swap", solution);
 
     // A4 LINE 10:
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    dynamic_bitset<> Vj = center_cover_vertex[j];
+    dynamic_bitset<> Vj = center_cover_vertex[moved.center_out];
     // cerr << "Vj" << ": ";
     for (size_t v = Vj.find_first(); v != dynamic_bitset<>::npos; v = Vj.find_next(v))
     {
@@ -599,7 +599,7 @@ void PCP_Vector::make_move(unsigned long long i, unsigned long long j)
                 // cerr << center_weights[l] << endl;
             }
             // cerr << endl;
-            center_weights[j] = center_weights[j] - vertex_weights[v];
+            center_weights[moved.center_out] = center_weights[moved.center_out] - vertex_weights[v];
 
         }
         // A4 LINE 13:
@@ -719,7 +719,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // MakeMove(i, j) /* (Algorithm 4) */
         // (i,j): pair moved found in the previous;
         // Meaning: makes the best move; (2023年2月10日)
-        make_move(moved.center_in, moved.center_out);
+        make_move();
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
