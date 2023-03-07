@@ -45,7 +45,6 @@ private: // member variables.
     boost::dynamic_bitset<> solution; // centers selected;
     std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
-    boost::dynamic_bitset<> covered_vertices;
     boost::dynamic_bitset<> uncovered;
     int num_uncovered;
     int best_num_uncovered;

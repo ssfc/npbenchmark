@@ -9,7 +9,6 @@ using namespace std;
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed)
                        :solution(input_num_vertex)
-                       ,covered_vertices(input_num_vertex)
                        ,uncovered(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
@@ -47,7 +46,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
-    covered_vertices.reset(); // set covered all 0;
     uncovered.set(); // set uncovered all 1;
     num_uncovered = INT_MAX;
     best_num_uncovered = INT_MAX;
@@ -159,6 +157,8 @@ void PCP_Vector::greedy_construct()
             // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
             else if(intersection.count() == 0)
             {
+                uncovered.reset(v);
+
                 // Refer to A4 LINE 6:
                 // for l 属于 Cv-{i}:
                 //     delta_l <- delta_l - wv
@@ -200,10 +200,8 @@ void PCP_Vector::greedy_construct()
         // i: center swapped in;
         // Meaning: Open selected center;
         solution.set(selected_center);
-        covered_vertices = covered_vertices | center_cover_vertex[selected_center];
         // cerr << "Cover after union size (" << covered.count() << "): " << endl;
         // print_index1("Covered", covered);
-        uncovered = ~covered_vertices;
         // print_index1("Uncovered", uncovered);
 
         iter++;
