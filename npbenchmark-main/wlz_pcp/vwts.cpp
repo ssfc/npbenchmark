@@ -324,7 +324,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
         int vc = center_coverages[choose][ic];//try_open结点(能够覆盖未覆盖节点的所有能覆盖的节点)
 
-        if (vc == tabu_open || vc == tabu_close) continue;      //禁忌动作
+        if (vc == tabu_open) continue;      //禁忌动作
 
         //改变受影响中心的delta
         for (int jc = 0; jc < num_center_cover[vc]; jc++)//o(n/p)
@@ -349,7 +349,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if (center[ip] != tabu_open && center[ip] != tabu_close)
+            if (center[ip] != tabu_close)
             {
                 // A2 LINE 10:
                 // if f(X直和Swap(i, j)) < obj then
