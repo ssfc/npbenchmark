@@ -346,7 +346,7 @@ void VWTS::find_pair(int& v_open, int& v_close)
             // X: current center set;
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
-            if (num_reach_center[vjc] == 1) //如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
+            if (num_reach_center[vjc] == 1) //如果当前顶点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
 
@@ -449,8 +449,29 @@ void VWTS::find_pair(int& v_open, int& v_close)
 
 void VWTS::make_move(int v_open, int v_close)
 {
-    open_center(v_open);
+    solution.set(v_open);
+    //delta[v] = 0;
+    //更新邻域delta
+    for (int ic = 0; ic < num_center_cover[v_open]; ic++)//o(n/p)
+    {
+        int vc = center_coverages[v_open][ic];
+        if (num_reach_center[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
+            center_weights[covered_once[vc]] -= vertex_weights[vc];
+        else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
+        {
+            for (int jc = 0; jc < num_center_cover[vc]; jc++)
+            {
+                center_weights[center_coverages[vc][jc]] -= vertex_weights[vc];
+            }
+            covered_once[vc] = v_open;
+            center_weights[v_open] += vertex_weights[vc];
+        }
+        num_reach_center[vc]++;
+    }
+
+
     close_center(v_close);
+
     sum_uncovered_weight = sum_uncovered_weight + min_delta;
     if (sum_uncovered_weight < min_history_sum_uncovered_weight)
         min_history_sum_uncovered_weight = sum_uncovered_weight;
@@ -467,28 +488,6 @@ void VWTS::make_move(int v_open, int v_close)
     }
 }
 
-void VWTS::open_center(int center_in) //在X中加入中心i
-{
-    solution.set(center_in);
-    //delta[v] = 0;
-    //更新邻域delta
-    for (int ic = 0; ic < num_center_cover[center_in]; ic++)//o(n/p)
-    {
-        int vc = center_coverages[center_in][ic];
-        if (num_reach_center[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
-            center_weights[covered_once[vc]] -= vertex_weights[vc];
-        else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
-        {
-            for (int jc = 0; jc < num_center_cover[vc]; jc++)
-            {
-                center_weights[center_coverages[vc][jc]] -= vertex_weights[vc];
-            }
-            covered_once[vc] = center_in;
-            center_weights[center_in] += vertex_weights[vc];
-        }
-        num_reach_center[vc]++;
-    }
-}
 
 void VWTS::close_center(int center_out)
 {

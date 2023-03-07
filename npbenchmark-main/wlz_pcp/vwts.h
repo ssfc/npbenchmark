@@ -67,7 +67,6 @@ public:
     void make_move(int v_open, int v_close);
 
     void init_center_weights();
-    void open_center(int v);
     void close_center(int v);
 
     // debug function
