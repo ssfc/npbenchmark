@@ -281,9 +281,9 @@ void PCP_Vector::find_pair()
     //        cerr << temp << " ";
     // cerr << endl;
 
-    for (size_t i = Cv.find_first(); i != dynamic_bitset<>::npos; i = Cv.find_next(i))
+    for (size_t ic = Cv.find_first(); ic != dynamic_bitset<>::npos; ic = Cv.find_next(ic))
     {
-        if(tabu_tenure_table[i] > iter)
+        if(tabu_tenure_table[ic] > iter)
             continue;
 
         // cerr << "center: " << i << endl; // i is center name;
@@ -291,7 +291,7 @@ void PCP_Vector::find_pair()
         // TryToOpenCenter(i) /* (Algorithm 3) */
         // Meaning 1: tries to open each candidate center which covers vertex k
         // Meaning 2: The sub-routine TryToOpenCenter(i) keeps each delta_j up-to-date to accelerate the calculation of the objective function f(X 直和 Swap(i, j));
-        try_open_center(i);
+        try_open_center(ic);
 
         // A2 LINE 8:
         // for all j 属于 X do /* evaluate closing center j */
@@ -319,7 +319,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                int this_iter_delta = center_weights[j] - center_weights[i];
+                int this_iter_delta = center_weights[j] - center_weights[ic];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(this_iter_delta < min_delta)
                 {
@@ -340,7 +340,7 @@ void PCP_Vector::find_pair()
                     // j: center swap out;
                     // Meaning: change best move to (i, j);
                     equal_pair_count = 0;
-                    equal_pair[equal_pair_count].center_in = i;
+                    equal_pair[equal_pair_count].center_in = ic;
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
                 }
@@ -358,7 +358,7 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: equal move list;
-                    equal_pair[equal_pair_count].center_in = i;
+                    equal_pair[equal_pair_count].center_in = ic;
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
 
