@@ -464,9 +464,9 @@ void VWTS::find_pair(int& v_open, int& v_close)
 }
 
 // Algorithm 4 Make a swap move
-// Comment: 注意到make_move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
+// Comment: 注意到make__move中只计算每个中心权重的变化, 而不计算作为整体的f(X)
 // A4 LINE 1:
-// function make_move(i, j)
+// function make__move(i, j)
 // i: center swapped in;
 // j: center swapped out;
 void VWTS::make_move(int v_open, int v_close)
