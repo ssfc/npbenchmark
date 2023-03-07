@@ -9,7 +9,7 @@ using namespace std;
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed)
                        :solution(input_num_vertex)
-                       ,uncovered(input_num_vertex)
+                       ,uncovered_vertices(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
 {
@@ -46,7 +46,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
-    uncovered.set(); // set uncovered all 1;
+    uncovered_vertices.set(); // set uncovered all 1;
     num_uncovered = INT_MAX;
     best_num_uncovered = INT_MAX;
     prev_num_uncovered = INT_MAX;
@@ -91,7 +91,7 @@ void PCP_Vector::greedy_construct()
         // cerr << "uncovered" << uncovered << endl;
         for(int j=0;j<num_vertex;j++) // consider only one set
         {
-            dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered;
+            dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered_vertices;
             unsigned long long this_intersection_size = this_intersection.count();
 
             if(this_intersection_size > max_overlap_size)
@@ -157,7 +157,7 @@ void PCP_Vector::greedy_construct()
             // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
             else if(intersection.count() == 0)
             {
-                uncovered.reset(v);
+                uncovered_vertices.reset(v);
 
                 // Refer to A4 LINE 6:
                 // for l 属于 Cv-{i}:
@@ -209,12 +209,12 @@ void PCP_Vector::greedy_construct()
     // print_vector("center weights after", center_weights);
 
     print_index1("Center selected", solution);
-    num_uncovered = int (uncovered.count());
+    num_uncovered = int (uncovered_vertices.count());
     sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     uncovered_value.clear();
-    for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
+    for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
     {
         uncovered_value.push_back(i);
     }
@@ -503,7 +503,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            uncovered.reset(v);
+            uncovered_vertices.reset(v);
 
             // A4 LINE 6:
             // for l 属于 Cv-{i}:
@@ -564,7 +564,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            uncovered.set(v);
+            uncovered_vertices.set(v);
 
             // LINE 12:
             // for l 属于 Cv - {j} do
@@ -626,7 +626,7 @@ void PCP_Vector::make_move()
     // end function
     // print_index1("covered after swap", covered);
     // print_index1("uncovered after swap", uncovered);
-    num_uncovered = int (uncovered.count());
+    num_uncovered = int (uncovered_vertices.count());
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -707,7 +707,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         make_move();
 
         uncovered_value.clear();
-        for (size_t i = uncovered.find_first(); i != dynamic_bitset<>::npos; i = uncovered.find_next(i))
+        for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
         {
             uncovered_value.push_back(i);
         }
@@ -910,7 +910,7 @@ void PCP_Vector::print_equal_pair()
 unsigned PCP_Vector::compute_sum_uncovered_weight()
 {
     unsigned int sum = 0;
-    for (size_t u = uncovered.find_first(); u != dynamic_bitset<>::npos; u = uncovered.find_next(u))
+    for (size_t u = uncovered_vertices.find_first(); u != dynamic_bitset<>::npos; u = uncovered_vertices.find_next(u))
     {
         sum += vertex_weights[u];
     }
