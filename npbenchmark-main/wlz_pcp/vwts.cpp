@@ -340,6 +340,12 @@ void VWTS::find_pair(int& v_open, int& v_close)
         for (int jc = 0; jc < num_center_cover[vu]; jc++)//o(n/p)
         {
             int vjc = center_coverages[vu][jc];
+
+            // A3 LINE 3:
+            // if |X 交 Cv| = 1 then
+            // X: current center set;
+            // Cv: 覆盖顶点v的中心集合;
+            // |X 交 Cv|: number of centers covering v in X;
             if (num_reach_center[vjc] == 1)//如果当前节点能被原有中心覆盖一次，再次覆盖就要更新值
                 center_weights[covered_once[vjc]] -= vertex_weights[vjc];
         }
