@@ -479,8 +479,22 @@ void VWTS::make_move(int v_open, int v_close)
     for (int iv = 0; iv < num_center_cover[v_open]; iv++)//o(n/p)
     {
         int vc = center_coverages[v_open][iv];
+
+        // A4 LINE 3:
+        // if |X 交 Cv| = 1 then /* (Algorithm 3) */
+        // X: current center set;
+        // Cv: center set covering vertex v;
+        // Meaning: 如果即将加入X的中心i所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         if (num_reach_center[vc] == 1)//邻居vc原来唯一覆盖的中心delta--, o(1)
+        {
+            // A4 LINE 4:
+            // for l 属于 X交Cv:
+            // delta_l <- delta_l - wv,
+            // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+            // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量; (在里面越小越好);
+            // Meaning: cancel penalty for deleting center l;
             center_weights[covered_once[vc]] -= vertex_weights[vc];
+        }
         else if (num_reach_center[vc] == 0)//新覆盖结点的邻居delta--
         {
             for (int jc = 0; jc < num_center_cover[vc]; jc++)
