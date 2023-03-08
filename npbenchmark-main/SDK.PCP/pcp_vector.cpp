@@ -152,7 +152,7 @@ void PCP_Vector::greedy_construct()
             // X: current center set;
             // Cv: center set covering vertex v;
             // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
-            else if(intersection.count() == 0)
+            else if(num_covered_by[v] == 0)
             {
                 uncovered_vertices.reset(v);
 
@@ -497,7 +497,7 @@ void PCP_Vector::make_move()
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
-        else if(intersection_count == 0)
+        else if(num_covered_by[v] == 0)
         {
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
@@ -570,7 +570,7 @@ void PCP_Vector::make_move()
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
         int intersection_count = int (intersection.count());
-        if(intersection_count == 0)
+        if(num_covered_by[v] == 0)
         {
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
