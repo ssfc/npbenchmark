@@ -957,9 +957,11 @@ unsigned PCP_Vector::compute_sum_uncovered_weight()
 
 // (1) debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
+// .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pcb3038p200r141.txt >sln.pmed01.n100p005.txt
 // (2) debug on laptop by g++ in command line:
 // cd C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP
 // g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.txt
+// g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pcb3038p200r141.txt >sln.txt
 // (3) debug on ubuntu gdb:
 // g++ Main.cpp PCenter.cpp pcp_vector.cpp -g && gdb a.out
 // r 999999 1 <./data/pmed01.n100p005.txt >sln.txt
