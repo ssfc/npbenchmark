@@ -117,7 +117,6 @@ void PCP_Vector::greedy_construct()
         // for all v属于Vi do
         // V(i): the set of vertex that center i can serve; index is center, result is vertex;
         // Meaning: consequences of opening i
-        dynamic_bitset<> Vi = center_cover_vertex[selected_center];
         for (int v : center_coverages[selected_center])
         {
             // cerr << v << " ";
@@ -304,12 +303,11 @@ void PCP_Vector::find_pair()
             // |X 交 Cv|: number of centers covering v in X;
             if (num_reach_solution[iv] == 1)
             {
-                dynamic_bitset<> intersection = solution & vertex_reach_center[iv];
                 // A3 L4 & L5
                 // cerr << "find one: ";
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                int intersect_center = intersection.find_first();
+                int intersect_center = reach_one_solution[iv];
                 // cerr << "find intersect one: " << intersect_center << endl;
                 // for l 属于 X交Cv:
                 //     delta_l <- delta_l - wv,
@@ -599,11 +597,20 @@ void PCP_Vector::make_move()
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         else if (num_reach_solution[v] == 1)
         {
-            dynamic_bitset<> intersection = solution & vertex_reach_center[v];
             // Evaluate A4 LINE 13
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
-            int intersect_center = intersection.find_first();
+            int intersect_center = -1;
+
+            for(int l : vertex_reaching[v])
+            {
+                if(solution[l])
+                {
+                    intersect_center = l;
+                    break;
+                }
+            }
+
             reach_one_solution[v] = intersect_center;
             // cerr << "find intersect one: " << intersect_center << endl;
 
@@ -949,5 +956,6 @@ unsigned PCP_Vector::compute_sum_uncovered_weight()
 // g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.txt
 // (3) debug on ubuntu gdb:
 // g++ Main.cpp PCenter.cpp pcp_vector.cpp -g && gdb a.out
-// r 999999 1 999999 1 <./data/pmed01.n100p005.txt >sln.txt
+// r 999999 1 <./data/pmed01.n100p005.txt >sln.txt
+// r 999999 1 <./data/pcb3038p200r141.txt  >sln.txt
 
