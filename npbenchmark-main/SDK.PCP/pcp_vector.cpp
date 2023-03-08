@@ -351,7 +351,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                int this_iter_delta = center_weights[j] - center_weights[ic];
+                long long int this_iter_delta = center_weights[j] - center_weights[ic];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(this_iter_delta < min_delta)
                 {
@@ -780,6 +780,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_vector("vertex weights", vertex_weights);
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
+
             for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
@@ -825,10 +826,11 @@ void PCP_Vector::vertex_weight_tabu_search()
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
             cerr << "num : " << num_uncovered << " ";
-            cerr << "best num : " << best_num_uncovered << " ";
+            // cerr << "best num : " << best_num_uncovered << " ";
+            cerr << "sum uncovered weight: " << sum_uncovered_weight << " ";
             // cerr << "moved " << moved.center_in << " " << moved.center_out;
             double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-            cerr << " elapsed time(s): " << elapsed_time
+            cerr << " time(s): " << elapsed_time
                  << " frequency:" << double(iter) / elapsed_time << endl;
         }
 
