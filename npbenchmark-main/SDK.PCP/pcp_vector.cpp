@@ -700,7 +700,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<30)
+    while(num_uncovered != 0 && iter<1)
     {
         // cerr << "iteration: " << iter << endl;
 
