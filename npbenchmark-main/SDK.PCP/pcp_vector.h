@@ -59,7 +59,8 @@ private: // member variables.
 
     Move moved;
     int min_delta;
-    std::vector<unsigned int> tabu_tenure_table; // tenure of each pair of swap node; dimension, num_vertex;
+    int tabu_open;
+    int tabu_close;
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
     // Therefore, it can evaluate the importance of this center.
@@ -95,7 +96,6 @@ public: // member functions.
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
     void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
     void random_construct(); // construct random solution;
-    void print_tabu_tenure_table();
     long long int get_iteration() const;
     static void print_vector(const std::string& name, std::vector<int> &vect);
     void print_equal_pair();

@@ -28,7 +28,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         // A1 LINE 2:
         // tabu list TL <- NULL;
         // TL: tabu list;
-        tabu_tenure_table(input_num_vertex, 0),
+        tabu_open{-1},
+        tabu_close{-1},
         center_weights(input_num_vertex, 0),
         prev_center_weights(input_num_vertex, 0),
         equal_pair(2000, {0, 0}),
@@ -272,7 +273,7 @@ void PCP_Vector::find_pair()
     // for (int ic : vertex_reaching[random_uncovered_vertex])
     for (int ic : center_coverages[random_uncovered_vertex])
     {
-        if(tabu_tenure_table[ic] > iter)
+        if(ic == tabu_open || ic == tabu_close)
             continue;
 
         // cerr << "center: " << i << endl; // i is center name;
@@ -342,7 +343,7 @@ void PCP_Vector::find_pair()
             // j: center swap out;
             // TL: tabu list;
             // Meaning: not tabu move;
-            if(tabu_tenure_table[j] <= iter)
+            if(j != tabu_open && j != tabu_close)
             {
                 // A2 LINE 10:
                 // if f(X直和Swap(i, j)) < obj then
@@ -807,8 +808,8 @@ void PCP_Vector::vertex_weight_tabu_search()
         // TL: tabu list;
         // (i, j): pairs found;
         // Meaning: update tabu list; (2023年2月17日)
-        tabu_tenure_table[moved.center_in] = iter + 2;
-        tabu_tenure_table[moved.center_out] = iter + 2;
+        tabu_open = moved.center_in;
+        tabu_close = moved.center_out;
 
         ///* debug: tabu tenure;
         // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
@@ -904,16 +905,6 @@ void PCP_Vector::random_construct()
     }
 }
 
-// debug function;
-void PCP_Vector::print_tabu_tenure_table()
-{
-    cerr << "tabu tenure table: " << endl;
-    for(int i=0;i<num_vertex;i++)
-    {
-        cerr << tabu_tenure_table[i] << " ";
-    }
-    cerr << endl;
-}
 
 // debug function;
 long long int PCP_Vector::get_iteration() const
