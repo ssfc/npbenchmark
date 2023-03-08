@@ -35,7 +35,7 @@ private: // member variables.
     // Dimension: num_vertex;
     // Element: norm
     // Meaning: number of centers that cover vertex i;
-    std::vector<int> num_reach_solution;
+    int* num_reach_solution;
     // Dimension: num_vertex;
     // Element: name of solution center that this vertex can reach;
     // Meaning: number of centers that cover vertex i;
