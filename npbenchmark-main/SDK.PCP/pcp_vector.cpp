@@ -488,6 +488,8 @@ void PCP_Vector::make_move()
             // print_vector("center weights before", center_weights);
             center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
             // print_vector("center weights after", center_weights);
+
+            reach_one_solution[intersect_center] = -1;
         }
         // A4 LINE 5:
         // else if |X 交 Cv| = 0 then
@@ -519,6 +521,7 @@ void PCP_Vector::make_move()
             // cerr << endl;
             center_weights[moved.center_in] = center_weights[moved.center_in] + vertex_weights[v];
 
+            reach_one_solution[v] = moved.center_in;
             // A4 LINE 7:
             // end if
         }
@@ -570,6 +573,7 @@ void PCP_Vector::make_move()
             // print_index1("Cv after close j", Cv);
 
             uncovered_vertices.set(v);
+            reach_one_solution[v] = -1;
 
             // LINE 12:
             // for l 属于 Cv - {j} do
@@ -603,6 +607,7 @@ void PCP_Vector::make_move()
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
             unsigned long long intersect_center = intersection.find_first();
+            reach_one_solution[v] = intersect_center;
             // cerr << "find intersect one: " << intersect_center << endl;
 
             // A4 LINE 14:
@@ -695,7 +700,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<1)
+    while(num_uncovered != 0 && iter<30)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -826,11 +831,12 @@ void PCP_Vector::vertex_weight_tabu_search()
         // Meaning: when the specified termination condition is met, the algorithm terminates and returns the best solution X*; (2023年2月17日)
     }
 
-    // Evaluate covered by after multiple make__move;
-    // print_vector("center[84]", center_coverages[84]);
-    // print_vector("center[7]", center_coverages[7]);
-    // print_vector("center[4]", center_coverages[4]);
+    // Evaluate covered by after 30 make__move;
+    print_vector("center[90]", center_coverages[90]);
+    print_vector("center[3]", center_coverages[3]);
+    print_vector("center[37]", center_coverages[37]);
     // print_vector("num_covered_by", num_covered_by);
+    print_vector("reach one solution", reach_one_solution);
 
     // print final tabu_tenure_table;
     // print_tabu_tenure_table();
