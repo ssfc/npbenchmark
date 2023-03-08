@@ -15,7 +15,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
                         vertex_reaching(input_num_vertex),
                         vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
-                        num_covered_by(input_num_vertex, 0),
+                        num_reach_solution(input_num_vertex, 0),
                         solution(input_num_vertex, 0),
                         // A1 LINE 3
                         vertex_weights(input_num_vertex, 1),
@@ -152,7 +152,7 @@ void PCP_Vector::greedy_construct()
             // X: current center set;
             // Cv: center set covering vertex v;
             // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
-            else if(num_covered_by[v] == 0)
+            else if(num_reach_solution[v] == 0)
             {
                 uncovered_vertices.reset(v);
 
@@ -179,7 +179,7 @@ void PCP_Vector::greedy_construct()
             }
 
             // v is now covered by the selected center;
-            num_covered_by[v]++;
+            num_reach_solution[v]++;
 
             // Refer to A4 LINE 8:
             // end for
@@ -497,7 +497,7 @@ void PCP_Vector::make_move()
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
-        else if(num_covered_by[v] == 0)
+        else if(num_reach_solution[v] == 0)
         {
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
@@ -526,7 +526,7 @@ void PCP_Vector::make_move()
             // end if
         }
 
-        num_covered_by[v]++;
+        num_reach_solution[v]++;
 
         // A4 LINE 8:
         // end for
@@ -559,7 +559,7 @@ void PCP_Vector::make_move()
     // Meaning: consequences of closing j
     for (int v : center_coverages[moved.center_out])
     {
-        num_covered_by[v]--;
+        num_reach_solution[v]--;
 
         // cerr << v << " ";
         // A4 LINE 11:
@@ -570,7 +570,7 @@ void PCP_Vector::make_move()
         dynamic_bitset<> Cv = vertex_reach_center[v];
         dynamic_bitset<> intersection = solution & Cv;
         int intersection_count = int (intersection.count());
-        if(num_covered_by[v] == 0)
+        if(num_reach_solution[v] == 0)
         {
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
