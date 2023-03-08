@@ -433,7 +433,6 @@ void PCP_Vector::find_pair()
     // LINE 20:
     // return a randomly picked move in M
     // M: the set of best swap moves;
-    // cerr << "random select tabu: " << rand_select << endl;
     moved = equal_pair[generated_random() % equal_pair_count];
     // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
     // cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
