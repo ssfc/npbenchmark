@@ -19,6 +19,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                        ,solution(input_num_vertex, 0)
                        ,vertex_weights(num_vertex, 1)
                        ,uncovered_vertices(input_num_vertex)
+                       ,num_uncovered(INT_MAX)
+                       ,best_num_uncovered(INT_MAX)
+                       ,prev_num_uncovered(INT_MAX)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
 {
@@ -47,9 +50,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     // print_vector("weight", weight);
 
     uncovered_vertices.set(); // set uncovered all 1;
-    num_uncovered = INT_MAX;
-    best_num_uncovered = INT_MAX;
-    prev_num_uncovered = INT_MAX;
 
     // A1 LINE 2:
     // tabu list TL <- NULL;

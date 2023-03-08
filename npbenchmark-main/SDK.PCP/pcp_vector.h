@@ -53,8 +53,6 @@ private: // member variables.
     std::vector<int> uncovered_value;
     boost::dynamic_bitset<> uncovered_vertices;
 
-
-
     int num_uncovered;
     int best_num_uncovered;
     int prev_num_uncovered;
