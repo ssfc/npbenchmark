@@ -15,9 +15,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 {
     init_rand(input_seed); // initialize random generator;
 
-    radius = input_radius;
     num_vertex = input_num_vertex;
     num_center = input_num_center;
+    radius = input_radius;
 
     center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
     center_coverages.resize(input_num_vertex);
@@ -37,9 +37,12 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     }
     // cerr << endl;
 
+    // Evaluation
     // cerr << "center_cover_vertex[0]: " << center_cover_vertex[0] << endl;
     // cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
     // cerr << "vertex_reach_center[0]: " << vertex_reach_center[0] << endl;
+
+    num_center_cover.resize(num_vertex, 0);
 
     solution.reset(); // initialize solution all 0;
     // A1 LINE 3

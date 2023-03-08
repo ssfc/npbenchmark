@@ -41,6 +41,10 @@ private: // member variables.
     // Element: true/false;
     // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> vertex_reach_center;
+    // Dimension: num_vertex;
+    // Element: norm
+    // Meaning: number of centers that cover vertex i;
+    std::vector<int> num_center_cover;
 
     std::vector<int> solution_value;
     boost::dynamic_bitset<> solution; // centers selected;
@@ -48,6 +52,9 @@ private: // member variables.
 
     std::vector<int> uncovered_value;
     boost::dynamic_bitset<> uncovered_vertices;
+
+
+
     int num_uncovered;
     int best_num_uncovered;
     int prev_num_uncovered;
