@@ -210,8 +210,6 @@ void PCP_Vector::greedy_construct()
     // print_vector("center weights after", center_weights);
 
     // print_index1("Center selected", solution);
-    num_uncovered = int (uncovered_vertices.count());
-    sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
     uncovered_value.clear();
@@ -219,6 +217,8 @@ void PCP_Vector::greedy_construct()
     {
         uncovered_value.push_back(i);
     }
+    num_uncovered = int (uncovered_value.size());
+    sum_uncovered_weight = num_uncovered;
 }
 
 // Algorithm 2: Find the best swap pair
@@ -647,7 +647,6 @@ void PCP_Vector::make_move()
     // end function
     // print_index1("covered after swap", covered);
     // print_index1("uncovered after swap", uncovered);
-    num_uncovered = int (uncovered_vertices.count());
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -741,6 +740,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         {
             uncovered_value.push_back(i);
         }
+        num_uncovered = int (uncovered_value.size());
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
