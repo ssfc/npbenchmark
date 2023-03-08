@@ -467,11 +467,9 @@ void PCP_Vector::make_move()
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果即将加入X的中心i所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
-        dynamic_bitset<> Cv = vertex_reach_center[v];
-        dynamic_bitset<> intersection = solution & Cv;
-        int intersection_count = int (intersection.count());
-        if (intersection_count == 1)
+        if (num_reach_solution[v] == 1)
         {
+            dynamic_bitset<> intersection = solution & vertex_reach_center[v];
             // Evaluate A4 LINE 3
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
@@ -565,9 +563,6 @@ void PCP_Vector::make_move()
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果X中没有能够覆盖顶点v的中心;
-        dynamic_bitset<> Cv = vertex_reach_center[v];
-        dynamic_bitset<> intersection = solution & Cv;
-        int intersection_count = int (intersection.count());
         if(num_reach_solution[v] == 0)
         {
             // print_index1("solution after close j", solution);
@@ -600,8 +595,9 @@ void PCP_Vector::make_move()
         // X: current center set;
         // Cv: center set covering vertex v;
         // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
-        else if (intersection_count == 1)
+        else if (num_reach_solution[v] == 1)
         {
+            dynamic_bitset<> intersection = solution & vertex_reach_center[v];
             // Evaluate A4 LINE 13
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
