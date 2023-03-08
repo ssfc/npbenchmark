@@ -783,13 +783,13 @@ void PCP_Vector::vertex_weight_tabu_search()
             for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
-                sum_uncovered_weight++;
                 // for (int ic : vertex_reaching[iv])
                 for (int ic : center_coverages[iv])
                 {
                     center_weights[ic]++;
                 }
             }
+            sum_uncovered_weight += num_uncovered;
             // print_vector("vertex weights", vertex_weights);
             // print_vector("center weights", center_weights);
 
