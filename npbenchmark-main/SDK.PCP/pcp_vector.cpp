@@ -32,7 +32,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         center_weights(input_num_vertex, 0),
                         prev_center_weights(input_num_vertex, 0),
                         equal_pair(2000, {0, 0}),
-                        equal_pair_count{0}
+                        equal_pair_count{0},
+                        sum_uncovered_weight{0},
+                        iter{0}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -57,14 +59,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 
     // Evaluate A1 LINE 3
     // print_vector("weight", weight);
-
     uncovered_vertices.set(); // set uncovered all 1;
-
-
-
-    sum_uncovered_weight = 0;
-
-    iter = 0;
 
     // debug variables;
     start_time = clock();
