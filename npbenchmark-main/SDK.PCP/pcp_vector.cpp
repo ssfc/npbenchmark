@@ -268,9 +268,6 @@ void PCP_Vector::find_pair()
     // Comment: 在前面的算法和表达式中, i用来表示顶点序号, 但是这里表示swap_in的中心序号;
     // v: 随机未覆盖顶点;
     // Cv: 覆盖顶点v的中心集合;
-    // print_index1("Cv list", vertex_reach_center[random_uncovered_vertex]);
-    dynamic_bitset<> Cv = vertex_reach_center[random_uncovered_vertex];
-    // cerr << "Cv list: " << endl;
 
     // Evaluate A1 LINE 12
     // cerr << "tabu tenure table: ";
