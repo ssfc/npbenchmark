@@ -648,7 +648,6 @@ void PCP_Vector::make_move()
     // end function
     // print_index1("covered after swap", covered);
     // print_index1("uncovered after swap", uncovered);
-    num_uncovered = int (uncovered_vertices.count());
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -738,6 +737,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         make_move();
 
         uncovered_value.clear();
+        num_uncovered = int (uncovered_vertices.count());
         for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
         {
             uncovered_value.push_back(i);
