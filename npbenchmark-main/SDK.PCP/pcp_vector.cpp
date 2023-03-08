@@ -214,7 +214,7 @@ void PCP_Vector::greedy_construct()
     uncovered_value.clear();
     for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
     {
-        uncovered_value.push_back(i);
+        uncovered_value.push_back(int (i));
     }
     num_uncovered = int (uncovered_value.size());
     sum_uncovered_weight = num_uncovered;
@@ -351,7 +351,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                int this_iter_delta = center_weights[j] - center_weights[ic];
+                long long int this_iter_delta = center_weights[j] - center_weights[ic];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(this_iter_delta < min_delta)
                 {
@@ -732,7 +732,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         uncovered_value.clear();
         for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
         {
-            uncovered_value.push_back(i);
+            uncovered_value.push_back(int (i));
         }
         num_uncovered = int (uncovered_value.size());
 
