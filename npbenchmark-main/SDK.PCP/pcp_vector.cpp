@@ -146,8 +146,6 @@ void PCP_Vector::greedy_construct()
                 // print_vector("center weights before", center_weights);
                 center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
                 // print_vector("center weights after", center_weights);
-
-                reach_one_solution[v] = -1;
             }
                 // Refer to A4 LINE 5:
                 // else if |X 交 Cv| = 0 then
@@ -487,7 +485,6 @@ void PCP_Vector::make_move()
             center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
             // print_vector("center weights after", center_weights);
 
-            reach_one_solution[v] = -1;
         }
             // A4 LINE 5:
             // else if |X 交 Cv| = 0 then
@@ -570,7 +567,6 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            reach_one_solution[v] = -1;
             uncovered_vertices.set(v);
 
             // LINE 12:
