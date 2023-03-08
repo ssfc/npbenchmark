@@ -304,10 +304,9 @@ void PCP_Vector::find_pair()
             // v: vertex
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
-            dynamic_bitset<> intersection = solution & vertex_reach_center[iv];
-            int intersection_count = int (intersection.count());
-            if (intersection_count == 1)
+            if (num_reach_solution[iv] == 1)
             {
+                dynamic_bitset<> intersection = solution & vertex_reach_center[iv];
                 // A3 L4 & L5
                 // cerr << "find one: ";
                 // print_index1("solution", solution);
