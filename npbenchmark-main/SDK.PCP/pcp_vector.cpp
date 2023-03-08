@@ -832,11 +832,12 @@ void PCP_Vector::vertex_weight_tabu_search()
     }
 
     // Evaluate covered by after 30 make__move;
-    print_vector("center[90]", center_coverages[90]);
-    print_vector("center[3]", center_coverages[3]);
-    print_vector("center[37]", center_coverages[37]);
+    // print_vector("center[90]", center_coverages[90]);
+    // print_vector("center[3]", center_coverages[3]);
+    // print_vector("center[37]", center_coverages[37]);
     // print_vector("num_covered_by", num_covered_by);
-    print_vector("reach one solution", reach_one_solution);
+    // print_vector("reach one solution", reach_one_solution);
+    // print_vector("num reach solution", num_reach_solution);
 
     // print final tabu_tenure_table;
     // print_tabu_tenure_table();
