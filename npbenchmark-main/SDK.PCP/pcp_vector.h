@@ -48,7 +48,7 @@ private: // member variables.
 
     std::vector<int> solution_value;
     boost::dynamic_bitset<> solution; // centers selected;
-    std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
+    std::vector<long long int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     std::vector<int> uncovered_value;
     boost::dynamic_bitset<> uncovered_vertices;
