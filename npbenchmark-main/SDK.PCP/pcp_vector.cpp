@@ -15,7 +15,8 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                        ,center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex))
                        ,vertex_reaching(input_num_vertex)
                        ,vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex))
-                       ,solution(input_num_vertex)
+                       ,num_center_cover(num_vertex, 0)
+                       ,solution(input_num_vertex, 0)
                        ,uncovered_vertices(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
@@ -41,9 +42,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     // cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
     // cerr << "vertex_reach_center[0]: " << vertex_reach_center[0] << endl;
 
-    num_center_cover.resize(num_vertex, 0);
-
-    solution.reset(); // initialize solution all 0;
     // A1 LINE 3
     vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
