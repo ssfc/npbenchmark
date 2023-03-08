@@ -30,7 +30,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         // TL: tabu list;
                         tabu_tenure_table(input_num_vertex, 0),
                         center_weights(input_num_vertex, 0),
-                        prev_center_weights(input_num_vertex, 0)
+                        prev_center_weights(input_num_vertex, 0),
+                        equal_pair(2000, {0, 0}),
+                        equal_pair_count{0}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -58,8 +60,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 
     uncovered_vertices.set(); // set uncovered all 1;
 
-    equal_pair.resize(2000, {0, 0});
-    equal_pair_count = 0;
+
 
     sum_uncovered_weight = 0;
 

@@ -68,7 +68,7 @@ private: // member variables.
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
     std::vector<int> prev_center_weights;
     std::vector<Move> equal_pair;
-    int equal_pair_count = 0;
+    int equal_pair_count;
 
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
 
