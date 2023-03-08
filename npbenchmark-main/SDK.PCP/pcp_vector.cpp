@@ -34,6 +34,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         equal_pair(2000, {0, 0}),
         equal_pair_count{0},
         sum_uncovered_weight{0},
+        // A1 LINE 2:
+        // iter <- 1;
+        // iter: current iteration;
         iter{0}
 {
     init_rand(input_seed); // initialize random generator;
@@ -77,7 +80,7 @@ void PCP_Vector::greedy_construct()
     // print_vector("center_weights before", center_weights);
     int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
     int equal_count_in_construct = 0;
-    while(solution.count()<num_center) // do one iteration;
+    for(int i=0;i<num_center;i++) // do one iteration;
     {
         // cerr << "Construct iteration: " << iter << endl;
 
@@ -203,8 +206,6 @@ void PCP_Vector::greedy_construct()
         // cerr << "Cover after union size (" << covered.count() << "): " << endl;
         // print_index1("Covered", covered);
         // print_index1("Uncovered", uncovered);
-
-        iter++;
     }
     // print_vector("center weights after", center_weights);
 
@@ -218,11 +219,6 @@ void PCP_Vector::greedy_construct()
     {
         uncovered_value.push_back(i);
     }
-
-    // A1 LINE 2:
-    // iter <- 1;
-    // iter: current iteration;
-    iter = 0;
 }
 
 // Algorithm 2: Find the best swap pair
