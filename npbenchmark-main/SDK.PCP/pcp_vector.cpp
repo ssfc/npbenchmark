@@ -3,35 +3,39 @@
 //
 # include "pcp_vector.h"
 
-// using namespace boost;
+using namespace boost;
 using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed):
-                        num_vertex(input_num_vertex),
-                        num_center(input_num_center),
-                        radius(input_radius),
-                        center_coverages(input_num_vertex),
-                        //vertex_reaching(input_num_vertex),
-                        solution(input_num_vertex, 0),
-                        // A1 LINE 3
-                        vertex_weights(input_num_vertex, 1),
-                        uncovered_vertices(input_num_vertex, true),
-                        num_uncovered(INT_MAX),
-                        best_num_uncovered(INT_MAX),
-                        prev_num_uncovered(INT_MAX),
-                        moved{0, 0},
-                        min_delta{INT_MAX},
-                        // A1 LINE 2:
-                        // tabu list TL <- NULL;
-                        // TL: tabu list;
-                        tabu_tenure_table(input_num_vertex, 0),
-                        center_weights(input_num_vertex, 0),
-                        prev_center_weights(input_num_vertex, 0),
-                        equal_pair(2000, {0, 0}),
-                        equal_pair_count{0},
-                        sum_uncovered_weight{0},
-                        iter{0}
+        num_vertex(input_num_vertex),
+        num_center(input_num_center),
+        radius(input_radius),
+        center_coverages(input_num_vertex),
+        center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
+        vertex_reaching(input_num_vertex),
+        vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
+        num_reach_solution(input_num_vertex, 0),
+        reach_one_solution(input_num_vertex, -1),
+        solution(input_num_vertex, 0),
+        // A1 LINE 3
+        vertex_weights(input_num_vertex, 1),
+        uncovered_vertices(input_num_vertex),
+        num_uncovered(INT_MAX),
+        best_num_uncovered(INT_MAX),
+        prev_num_uncovered(INT_MAX),
+        moved{0, 0},
+        min_delta{INT_MAX},
+        // A1 LINE 2:
+        // tabu list TL <- NULL;
+        // TL: tabu list;
+        tabu_tenure_table(input_num_vertex, 0),
+        center_weights(input_num_vertex, 0),
+        prev_center_weights(input_num_vertex, 0),
+        equal_pair(2000, {0, 0}),
+        equal_pair_count{0},
+        sum_uncovered_weight{0},
+        iter{0}
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -40,8 +44,10 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
         {
             int index = input_coverages[i][j];
+            center_cover_vertex[i].set(index, true);
             center_coverages[i].push_back(index);
-            // vertex_reaching[index].push_back(i);
+            vertex_reach_center[index].set(i, true);
+            vertex_reaching[index].push_back(i);
         }
         // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
     }
@@ -52,42 +58,28 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     // cerr << "center_cover_vertex[99]: " << center_cover_vertex[99] << endl;
     // cerr << "vertex_reach_center[0]: " << vertex_reach_center[0] << endl;
 
-    num_reach_solution = new int [input_num_vertex];
-    for(int i=0;i<input_num_vertex;i++)
-    {
-        num_reach_solution[i] = 0;
-    }
-
-    reach_one_solution = new int [input_num_vertex];
-    for(int i=0;i<input_num_vertex;i++)
-    {
-        reach_one_solution[i] = -1;
-    }
-
     // Evaluate A1 LINE 3
     // print_vector("weight", weight);
+    uncovered_vertices.set(); // set uncovered all 1;
 
     // debug variables;
     start_time = clock();
 }
 
 PCP_Vector::~PCP_Vector()
-{
-    delete []num_reach_solution;
-    delete []reach_one_solution;
-}
+= default;
 
 void PCP_Vector::greedy_construct()
 {
     // center_weights start with each center's coverage;
     for(int i=0;i<center_weights.size();i++)
     {
-        center_weights[i] = center_coverages[i].size();
+        center_weights[i] = int (center_cover_vertex[i].count());
     }
     // print_vector("center_weights before", center_weights);
     int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
     int equal_count_in_construct = 0;
-    for(int i=0;i<num_center;i++) // do one iteration;
+    while(solution.count()<num_center) // do one iteration;
     {
         // cerr << "Construct iteration: " << iter << endl;
 
@@ -96,14 +88,8 @@ void PCP_Vector::greedy_construct()
         // cerr << "uncovered" << uncovered << endl;
         for(int j=0;j<num_vertex;j++) // consider only one set
         {
-            unsigned long long this_intersection_size = 0;
-            for(int v : center_coverages[j])
-            {
-                if(uncovered_vertices[v])
-                {
-                    this_intersection_size++;
-                }
-            }
+            dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered_vertices;
+            unsigned long long this_intersection_size = this_intersection.count();
 
             if(this_intersection_size > max_overlap_size)
             {
@@ -161,14 +147,14 @@ void PCP_Vector::greedy_construct()
 
                 reach_one_solution[v] = -1;
             }
-            // Refer to A4 LINE 5:
-            // else if |X 交 Cv| = 0 then
-            // X: current center set;
-            // Cv: center set covering vertex v;
-            // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
+                // Refer to A4 LINE 5:
+                // else if |X 交 Cv| = 0 then
+                // X: current center set;
+                // Cv: center set covering vertex v;
+                // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
             else if(num_reach_solution[v] == 0)
             {
-                uncovered_vertices[v] = false;
+                uncovered_vertices.reset(v);
                 reach_one_solution[v] = selected_center;
 
                 // Refer to A4 LINE 6:
@@ -181,8 +167,7 @@ void PCP_Vector::greedy_construct()
                 // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                // for (int l : vertex_reaching[v])
-                for (int l : center_coverages[v])
+                for (int l : vertex_reaching[v])
                 {
                     // cerr << "l: " << l << endl;
                     center_weights[l] = center_weights[l] - vertex_weights[v];
@@ -215,29 +200,25 @@ void PCP_Vector::greedy_construct()
         // X: current center set;
         // i: center swapped in;
         // Meaning: Open selected center;
-        solution[selected_center] = true;
+        solution.set(selected_center);
         // cerr << "Cover after union size (" << covered.count() << "): " << endl;
         // print_index1("Covered", covered);
         // print_index1("Uncovered", uncovered);
+
+        iter++;
     }
     // print_vector("center weights after", center_weights);
 
-    // print_index1("Center selected", solution);
-    uncovered_value.clear();
-    num_uncovered = 0;
-    for (int i = 0; i < uncovered_vertices.size(); i++)
-    {
-        if(uncovered_vertices[i])
-        {
-            uncovered_value.push_back(i);
-            num_uncovered++;
-        }
-    }
-
+    print_index1("Center selected", solution);
+    num_uncovered = int (uncovered_vertices.count());
     sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
-
+    uncovered_value.clear();
+    for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
+    {
+        uncovered_value.push_back(i);
+    }
 
     // A1 LINE 2:
     // iter <- 1;
@@ -293,8 +274,7 @@ void PCP_Vector::find_pair()
     //    if(tabu_tenure_table[temp] > iter)
     //        cerr << temp << " ";
     // cerr << endl;
-    // for (int ic : vertex_reaching[random_uncovered_vertex])
-    for (int ic : center_coverages[random_uncovered_vertex])
+    for (int ic : vertex_reaching[random_uncovered_vertex])
     {
         if(tabu_tenure_table[ic] > iter)
             continue;
@@ -401,12 +381,12 @@ void PCP_Vector::find_pair()
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
                 }
-                // LINE 13:
-                // else if f(X直和Swap(i, j)) == obj then
-                // f(): objective function; weight sum of uncovered vertices;
-                // X: current center set;
-                // i: center swap in;
-                // j: center swap out;
+                    // LINE 13:
+                    // else if f(X直和Swap(i, j)) == obj then
+                    // f(): objective function; weight sum of uncovered vertices;
+                    // X: current center set;
+                    // i: center swap in;
+                    // j: center swap out;
                 else if(this_iter_delta == min_delta)
                 {
                     // LINE 14:
@@ -514,17 +494,17 @@ void PCP_Vector::make_move()
 
             reach_one_solution[v] = -1;
         }
-        // A4 LINE 5:
-        // else if |X 交 Cv| = 0 then
-        // X: current center set;
-        // Cv: center set covering vertex v;
-        // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
+            // A4 LINE 5:
+            // else if |X 交 Cv| = 0 then
+            // X: current center set;
+            // Cv: center set covering vertex v;
+            // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
         else if(num_reach_solution[v] == 0)
         {
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            uncovered_vertices[v] = false;
+            uncovered_vertices.reset(v);
 
             // A4 LINE 6:
             // for l 属于 Cv-{i}:
@@ -534,8 +514,7 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: cancel reward for adding center l;
             // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
-            // for (int l : vertex_reaching[v])
-            for (int l : center_coverages[v])
+            for (int l : vertex_reaching[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -564,8 +543,8 @@ void PCP_Vector::make_move()
     // j: center swapped out;
     // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
     // print_index1("solution before A4 LINE 9", solution);
-    solution[moved.center_in] = true;
-    solution[moved.center_out] = false;
+    solution.set(moved.center_in);
+    solution.reset(moved.center_out);
 
     for (int i=0; i<num_center; i++)
     {
@@ -596,7 +575,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            uncovered_vertices[v] = true;
+            uncovered_vertices.set(v);
             reach_one_solution[v] = -1;
 
             // LINE 12:
@@ -607,8 +586,7 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
             // Comment: 此时的X已经把j删除了, 见LINE 9;
-            // for (int l : vertex_reaching[v])
-            for (int l : center_coverages[v])
+            for (int l : vertex_reaching[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -620,11 +598,11 @@ void PCP_Vector::make_move()
             // cerr << endl;
             center_weights[moved.center_out] = center_weights[moved.center_out] - vertex_weights[v];
         }
-        // A4 LINE 13:
-        // else if |X 交 Cv| = 1 then
-        // X: current center set;
-        // Cv: center set covering vertex v;
-        // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
+            // A4 LINE 13:
+            // else if |X 交 Cv| = 1 then
+            // X: current center set;
+            // Cv: center set covering vertex v;
+            // Meaning: 如果已经被踢出X的中心j所覆盖的顶点v刚好也被另外一个X中的中心覆盖;
         else if (num_reach_solution[v] == 1)
         {
             // Evaluate A4 LINE 13
@@ -632,8 +610,7 @@ void PCP_Vector::make_move()
             // print_index1("Cv", Cv);
             int intersect_center = -1;
 
-            // for(int l : vertex_reaching[v])
-            for(int l : center_coverages[v])
+            for(int l : vertex_reaching[v])
             {
                 if(solution[l])
                 {
@@ -671,6 +648,7 @@ void PCP_Vector::make_move()
     // end function
     // print_index1("covered after swap", covered);
     // print_index1("uncovered after swap", uncovered);
+    num_uncovered = int (uncovered_vertices.count());
 }
 
 // Algorithm 1 The main framework of the VWTS algorithm
@@ -760,14 +738,9 @@ void PCP_Vector::vertex_weight_tabu_search()
         make_move();
 
         uncovered_value.clear();
-        num_uncovered = 0;
-        for (int i = 0; i < uncovered_vertices.size(); i++)
+        for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
         {
-            if(uncovered_vertices[i])
-            {
-                uncovered_value.push_back(i);
-                num_uncovered++;
-            }
+            uncovered_value.push_back(i);
         }
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
@@ -791,13 +764,13 @@ void PCP_Vector::vertex_weight_tabu_search()
             best_num_uncovered = num_uncovered;
             // cerr << "best_num_uncovered: " << best_num_uncovered << endl;
         }
-        // A1 LINE 9:
-        // else if |U(X)| >= |U(X_prev)| then
-        // X: current solution;
-        // |U(X)|: the set of clients uncovered by X;
-        // X_prev: solution of the previous iteration;
-        // |U(X')|: the set of clients uncovered by X';
-        // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
+            // A1 LINE 9:
+            // else if |U(X)| >= |U(X_prev)| then
+            // X: current solution;
+            // |U(X)|: the set of clients uncovered by X;
+            // X_prev: solution of the previous iteration;
+            // |U(X')|: the set of clients uncovered by X';
+            // Meaning: the best move returned by function FindPair() cannot reduce the number of uncovered clients; (2023年2月17日)
         else if(num_uncovered >= prev_num_uncovered)
         {
             // cerr << "num_uncovered A1 LINE 9: " << num_uncovered << endl;
@@ -818,8 +791,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 vertex_weights[iv]++;
                 sum_uncovered_weight++;
-                // for (int ic : vertex_reaching[iv])
-                for (int ic : center_coverages[iv])
+                for (int ic : vertex_reaching[iv])
                 {
                     center_weights[ic]++;
                 }
@@ -854,7 +826,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 30000 == 0)
+        if (iter % 10000 == 0)
         {
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
@@ -907,7 +879,6 @@ void PCP_Vector::get_solution(vector<NodeId>& output)
 }
 
 // debug function:
-/*
 void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
 {
     cerr << name << ": ";
@@ -917,7 +888,7 @@ void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
     }
 
     cerr << endl;
-}*/
+}
 
 // debug function: construct random solution;
 void PCP_Vector::random_construct()
@@ -928,7 +899,7 @@ void PCP_Vector::random_construct()
         size_t random_index = generated_random() % num_vertex;
         if (!solution[random_index])
         {
-            solution[random_index] = true;
+            solution.set(random_index);
             num_selected++;
         }
     }
@@ -975,7 +946,6 @@ void PCP_Vector::print_equal_pair()
 }
 
 // debug func: this func is to test whether sum_uncovered_weight is correct or not;
-/*
 unsigned PCP_Vector::compute_sum_uncovered_weight()
 {
     unsigned int sum = 0;
@@ -986,16 +956,13 @@ unsigned PCP_Vector::compute_sum_uncovered_weight()
 
     return sum;
 }
-*/
+
 // (1) debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
-// .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pcb3038p200r141.txt >sln.pmed01.n100p005.txt
 // (2) debug on laptop by g++ in command line:
 // cd C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP
 // g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.txt
-// g++ -static-libgcc -static-libstdc++ -I C:\boost_1_81_0 Main.cpp PCenter.cpp pcp_vector.cpp -O3 && .\a.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pcb3038p200r141.txt >sln.txt
 // (3) debug on ubuntu gdb:
 // g++ Main.cpp PCenter.cpp pcp_vector.cpp -g && gdb a.out
 // r 999999 1 <./data/pmed01.n100p005.txt >sln.txt
 // r 999999 1 <./data/pcb3038p200r141.txt  >sln.txt
-

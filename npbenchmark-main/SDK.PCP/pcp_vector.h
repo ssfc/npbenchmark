@@ -12,6 +12,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <boost/dynamic_bitset.hpp>
 
 using NodeId = int;
 
@@ -28,25 +29,33 @@ private: // member variables.
     int num_center;
     int radius;
     std::vector<std::vector<int>> center_coverages;
+    // Dimension: num_vertex * num_vertex
+    // Element: true/false;
+    // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
+    std::vector<boost::dynamic_bitset<>> center_cover_vertex;
     // Dimension: num_vertex * (num_center that a vertex can reach);
     // Element: name of center;
     // Meaning: if vertex i can reach center j1, vertex_reach_center[i] = {j1, j2, j3...};
-    // std::vector<std::vector<int>> vertex_reaching;
+    std::vector<std::vector<int>> vertex_reaching;
+    // Dimension: num_vertex * num_vertex
+    // Element: true/false;
+    // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
+    std::vector<boost::dynamic_bitset<>> vertex_reach_center;
     // Dimension: num_vertex;
     // Element: norm
     // Meaning: number of centers that cover vertex i;
-    int* num_reach_solution;
+    std::vector<int> num_reach_solution;
     // Dimension: num_vertex;
     // Element: name of solution center that this vertex can reach;
     // Meaning: number of centers that cover vertex i;
-    int* reach_one_solution;
+    std::vector<int> reach_one_solution;
 
     std::vector<int> solution_value;
-    std::vector<int> solution; // centers selected;
+    boost::dynamic_bitset<> solution; // centers selected;
     std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     std::vector<int> uncovered_value;
-    std::vector<int> uncovered_vertices;
+    boost::dynamic_bitset<> uncovered_vertices;
 
     int num_uncovered;
     int best_num_uncovered;
@@ -88,13 +97,13 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
-    // void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
+    void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
     void random_construct(); // construct random solution;
     void print_tabu_tenure_table();
     long long int get_iteration() const;
     static void print_vector(const std::string& name, std::vector<int> &vect);
     void print_equal_pair();
-    // unsigned compute_sum_uncovered_weight();
+    unsigned compute_sum_uncovered_weight();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H
