@@ -661,9 +661,9 @@ void PCP_Vector::vertex_weight_tabu_search()
     // print_index1("random construct solution", solution);
 
     // Evaluate num_reach_solution after greedy__construct;
-    print_vector("center[2]", center_coverages[2]);
-    print_vector("center[12]", center_coverages[12]);
-    print_vector("center[59]", center_coverages[59]);
+    // print_vector("center[2]", center_coverages[2]);
+    // print_vector("center[12]", center_coverages[12]);
+    // print_vector("center[59]", center_coverages[59]);
     // print_vector("num_reach_solution", num_covered_by);
 
     // Evaluate reach_one_solution after greedy__construct
