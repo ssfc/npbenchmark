@@ -126,10 +126,9 @@ void PCP_Vector::greedy_construct()
             // v: vertex
             // Cv: 覆盖顶点v的中心集合;
             // |X 交 Cv|: number of centers covering v in X;
-            dynamic_bitset<> Cv = vertex_reach_center[v];
-            dynamic_bitset<> intersection = solution & Cv;
-            if (intersection.count() == 1)
+            if (num_reach_solution[v] == 1)
             {
+                dynamic_bitset<> intersection = solution & vertex_reach_center[v];
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
                 unsigned long long intersect_center = intersection.find_first();
