@@ -39,7 +39,7 @@ private: // member variables.
     // Dimension: num_vertex;
     // Element: name of solution center that this vertex can reach;
     // Meaning: number of centers that cover vertex i;
-    std::vector<int> reach_one_solution;
+    int* reach_one_solution;
 
     std::vector<int> solution_value;
     std::vector<int> solution; // centers selected;

@@ -13,7 +13,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         radius(input_radius),
                         center_coverages(input_num_vertex),
                         vertex_reaching(input_num_vertex),
-                        reach_one_solution(input_num_vertex, -1),
                         solution(input_num_vertex, 0),
                         // A1 LINE 3
                         vertex_weights(input_num_vertex, 1),
@@ -59,6 +58,12 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         num_reach_solution[i] = 0;
     }
 
+    reach_one_solution = new int [input_num_vertex];
+    for(int i=0;i<input_num_vertex;i++)
+    {
+        reach_one_solution[i] = -1;
+    }
+
     // Evaluate A1 LINE 3
     // print_vector("weight", weight);
 
@@ -69,6 +74,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 PCP_Vector::~PCP_Vector()
 {
     delete []num_reach_solution;
+    delete []reach_one_solution;
 }
 
 void PCP_Vector::greedy_construct()
