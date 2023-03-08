@@ -17,6 +17,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                        ,vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex))
                        ,num_covered_by(num_vertex, 0)
                        ,solution(input_num_vertex, 0)
+                       ,vertex_weights(num_vertex, 1)
                        ,uncovered_vertices(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
@@ -43,7 +44,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     // cerr << "vertex_reach_center[0]: " << vertex_reach_center[0] << endl;
 
     // A1 LINE 3
-    vertex_weights.resize(num_vertex, 1);
     // print_vector("weight", weight);
 
     uncovered_vertices.set(); // set uncovered all 1;
