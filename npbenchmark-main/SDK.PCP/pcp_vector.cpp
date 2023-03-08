@@ -129,12 +129,9 @@ void PCP_Vector::greedy_construct()
             // |X 交 Cv|: number of centers covering v in X;
             if (num_reach_solution[v] == 1)
             {
-                reach_one_solution[v] = -1;
-
-                dynamic_bitset<> intersection = solution & vertex_reach_center[v];
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                unsigned long long intersect_center = intersection.find_first();
+                int intersect_center = reach_one_solution[v];
                 // cerr << "find intersect one: " << intersect_center << endl;
 
                 // Refer to A4 LINE 4:
@@ -148,6 +145,8 @@ void PCP_Vector::greedy_construct()
                 // print_vector("center weights before", center_weights);
                 center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
                 // print_vector("center weights after", center_weights);
+
+                reach_one_solution[v] = -1;
             }
             // Refer to A4 LINE 5:
             // else if |X 交 Cv| = 0 then
