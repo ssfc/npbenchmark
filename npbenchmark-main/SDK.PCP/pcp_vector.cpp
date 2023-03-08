@@ -12,7 +12,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         num_center(input_num_center),
                         radius(input_radius),
                         center_coverages(input_num_vertex),
-                        vertex_reaching(input_num_vertex),
+                        //vertex_reaching(input_num_vertex),
                         solution(input_num_vertex, 0),
                         // A1 LINE 3
                         vertex_weights(input_num_vertex, 1),
@@ -41,7 +41,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         {
             int index = input_coverages[i][j];
             center_coverages[i].push_back(index);
-            vertex_reaching[index].push_back(i);
+            // vertex_reaching[index].push_back(i);
         }
         // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
     }
@@ -181,7 +181,8 @@ void PCP_Vector::greedy_construct()
                 // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                for (int l : vertex_reaching[v])
+                // for (int l : vertex_reaching[v])
+                for (int l : center_coverages[v])
                 {
                     // cerr << "l: " << l << endl;
                     center_weights[l] = center_weights[l] - vertex_weights[v];
@@ -292,7 +293,8 @@ void PCP_Vector::find_pair()
     //    if(tabu_tenure_table[temp] > iter)
     //        cerr << temp << " ";
     // cerr << endl;
-    for (int ic : vertex_reaching[random_uncovered_vertex])
+    // for (int ic : vertex_reaching[random_uncovered_vertex])
+    for (int ic : center_coverages[random_uncovered_vertex])
     {
         if(tabu_tenure_table[ic] > iter)
             continue;
@@ -532,7 +534,8 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: cancel reward for adding center l;
             // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
-            for (int l : vertex_reaching[v])
+            // for (int l : vertex_reaching[v])
+            for (int l : center_coverages[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -604,7 +607,8 @@ void PCP_Vector::make_move()
             // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
             // Meaning: add reward for adding center l; 因为X中现在谁也不能覆盖顶点v, 所以能够覆盖顶点v的中心l价值要增加;
             // Comment: 此时的X已经把j删除了, 见LINE 9;
-            for (int l : vertex_reaching[v])
+            // for (int l : vertex_reaching[v])
+            for (int l : center_coverages[v])
             {
                 // cerr << l << endl;
                 // print_vector("center weights before", center_weights);
@@ -628,7 +632,8 @@ void PCP_Vector::make_move()
             // print_index1("Cv", Cv);
             int intersect_center = -1;
 
-            for(int l : vertex_reaching[v])
+            // for(int l : vertex_reaching[v])
+            for(int l : center_coverages[v])
             {
                 if(solution[l])
                 {
@@ -813,7 +818,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 vertex_weights[iv]++;
                 sum_uncovered_weight++;
-                for (int ic : vertex_reaching[iv])
+                // for (int ic : vertex_reaching[iv])
+                for (int ic : center_coverages[iv])
                 {
                     center_weights[ic]++;
                 }
