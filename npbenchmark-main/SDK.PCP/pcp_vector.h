@@ -43,7 +43,7 @@ private: // member variables.
     std::vector<int> reach_one_solution;
 
     std::vector<int> solution_value;
-    boost::dynamic_bitset<> solution; // centers selected;
+    std::vector<int> solution; // centers selected;
     std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     std::vector<int> uncovered_value;

@@ -202,14 +202,14 @@ void PCP_Vector::greedy_construct()
         // X: current center set;
         // i: center swapped in;
         // Meaning: Open selected center;
-        solution.set(selected_center);
+        solution[selected_center] = true;
         // cerr << "Cover after union size (" << covered.count() << "): " << endl;
         // print_index1("Covered", covered);
         // print_index1("Uncovered", uncovered);
     }
     // print_vector("center weights after", center_weights);
 
-    print_index1("Center selected", solution);
+    // print_index1("Center selected", solution);
     num_uncovered = int (uncovered_vertices.count());
     sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
@@ -543,8 +543,8 @@ void PCP_Vector::make_move()
     // j: center swapped out;
     // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
     // print_index1("solution before A4 LINE 9", solution);
-    solution.set(moved.center_in);
-    solution.reset(moved.center_out);
+    solution[moved.center_in] = true;
+    solution[moved.center_out] = false;
 
     for (int i=0; i<num_center; i++)
     {
@@ -899,7 +899,7 @@ void PCP_Vector::random_construct()
         size_t random_index = generated_random() % num_vertex;
         if (!solution[random_index])
         {
-            solution.set(random_index);
+            solution[random_index] = true;
             num_selected++;
         }
     }
