@@ -12,7 +12,6 @@
 #include <random>
 #include <string>
 #include <vector>
-#include <boost/dynamic_bitset.hpp>
 
 using NodeId = int;
 
@@ -47,7 +46,7 @@ private: // member variables.
     std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     std::vector<int> uncovered_value;
-    boost::dynamic_bitset<> uncovered_vertices;
+    std::vector<int> uncovered_vertices;
 
     int num_uncovered;
     int best_num_uncovered;
@@ -89,13 +88,13 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
-    void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
+    // void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
     void random_construct(); // construct random solution;
     void print_tabu_tenure_table();
     long long int get_iteration() const;
     static void print_vector(const std::string& name, std::vector<int> &vect);
     void print_equal_pair();
-    unsigned compute_sum_uncovered_weight();
+    // unsigned compute_sum_uncovered_weight();
 };
 
 #endif //SDK_PCP_PCP_VECTOR_H

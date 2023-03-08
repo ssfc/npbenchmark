@@ -3,7 +3,7 @@
 //
 # include "pcp_vector.h"
 
-using namespace boost;
+// using namespace boost;
 using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
@@ -18,7 +18,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         solution(input_num_vertex, 0),
                         // A1 LINE 3
                         vertex_weights(input_num_vertex, 1),
-                        uncovered_vertices(input_num_vertex),
+                        uncovered_vertices(input_num_vertex, true),
                         num_uncovered(INT_MAX),
                         best_num_uncovered(INT_MAX),
                         prev_num_uncovered(INT_MAX),
@@ -56,7 +56,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 
     // Evaluate A1 LINE 3
     // print_vector("weight", weight);
-    uncovered_vertices.set(); // set uncovered all 1;
 
     // debug variables;
     start_time = clock();
@@ -156,7 +155,7 @@ void PCP_Vector::greedy_construct()
             // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
             else if(num_reach_solution[v] == 0)
             {
-                uncovered_vertices.reset(v);
+                uncovered_vertices[v] = false;
                 reach_one_solution[v] = selected_center;
 
                 // Refer to A4 LINE 6:
@@ -210,15 +209,21 @@ void PCP_Vector::greedy_construct()
     // print_vector("center weights after", center_weights);
 
     // print_index1("Center selected", solution);
-    num_uncovered = int (uncovered_vertices.count());
+    uncovered_value.clear();
+    num_uncovered = 0;
+    for (int i = 0; i < uncovered_vertices.size(); i++)
+    {
+        if(uncovered_vertices[i])
+        {
+            uncovered_value.push_back(i);
+            num_uncovered++;
+        }
+    }
+
     sum_uncovered_weight = num_uncovered;
     // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
 
-    uncovered_value.clear();
-    for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
-    {
-        uncovered_value.push_back(i);
-    }
+
 
     // A1 LINE 2:
     // iter <- 1;
@@ -504,7 +509,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            uncovered_vertices.reset(v);
+            uncovered_vertices[v] = false;
 
             // A4 LINE 6:
             // for l 属于 Cv-{i}:
@@ -575,7 +580,7 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            uncovered_vertices.set(v);
+            uncovered_vertices[v] = true;
             reach_one_solution[v] = -1;
 
             // LINE 12:
@@ -737,10 +742,14 @@ void PCP_Vector::vertex_weight_tabu_search()
         make_move();
 
         uncovered_value.clear();
-        num_uncovered = int (uncovered_vertices.count());
-        for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
+        num_uncovered = 0;
+        for (int i = 0; i < uncovered_vertices.size(); i++)
         {
-            uncovered_value.push_back(i);
+            if(uncovered_vertices[i])
+            {
+                uncovered_value.push_back(i);
+                num_uncovered++;
+            }
         }
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
@@ -879,6 +888,7 @@ void PCP_Vector::get_solution(vector<NodeId>& output)
 }
 
 // debug function:
+/*
 void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
 {
     cerr << name << ": ";
@@ -888,7 +898,7 @@ void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
     }
 
     cerr << endl;
-}
+}*/
 
 // debug function: construct random solution;
 void PCP_Vector::random_construct()
@@ -946,6 +956,7 @@ void PCP_Vector::print_equal_pair()
 }
 
 // debug func: this func is to test whether sum_uncovered_weight is correct or not;
+/*
 unsigned PCP_Vector::compute_sum_uncovered_weight()
 {
     unsigned int sum = 0;
@@ -956,7 +967,7 @@ unsigned PCP_Vector::compute_sum_uncovered_weight()
 
     return sum;
 }
-
+*/
 // (1) debug on laptop by clion:
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pmed01.n100p005.txt >sln.pmed01.n100p005.txt
 // .\SDK_PCP.exe 999999 1 <C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.PCP\data\pcb3038p200r141.txt >sln.pmed01.n100p005.txt
