@@ -500,8 +500,6 @@ void PCP_Vector::make_move()
             // print_index1("solution after opening i", solution);
             // print_index1("Cv after opening i", Cv);
 
-            uncovered_vertices.reset(v);
-
             // A4 LINE 6:
             // for l 属于 Cv-{i}:
             //     delta_l <- delta_l - wv
@@ -522,6 +520,7 @@ void PCP_Vector::make_move()
             center_weights[moved.center_in] = center_weights[moved.center_in] + vertex_weights[v];
 
             reach_one_solution[v] = moved.center_in;
+            uncovered_vertices.reset(v);
             // A4 LINE 7:
             // end if
         }
@@ -572,8 +571,8 @@ void PCP_Vector::make_move()
             // print_index1("solution after close j", solution);
             // print_index1("Cv after close j", Cv);
 
-            uncovered_vertices.set(v);
             reach_one_solution[v] = -1;
+            uncovered_vertices.set(v);
 
             // LINE 12:
             // for l 属于 Cv - {j} do
