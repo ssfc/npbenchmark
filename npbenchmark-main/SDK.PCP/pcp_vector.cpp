@@ -222,7 +222,7 @@ void PCP_Vector::greedy_construct()
 
 // Algorithm 2: Find the best swap pair
 // A2 LINE 1:
-// function find_pair(X, TL, iter)
+// function find__pair(X, TL, iter)
 // X: current solution;
 // TL: tabu list;
 // iter: current iteration;
