@@ -129,6 +129,8 @@ void PCP_Vector::greedy_construct()
             // |X 交 Cv|: number of centers covering v in X;
             if (num_reach_solution[v] == 1)
             {
+                reach_one_solution[v] = -1;
+
                 dynamic_bitset<> intersection = solution & vertex_reach_center[v];
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
@@ -155,6 +157,7 @@ void PCP_Vector::greedy_construct()
             else if(num_reach_solution[v] == 0)
             {
                 uncovered_vertices.reset(v);
+                reach_one_solution[v] = selected_center;
 
                 // Refer to A4 LINE 6:
                 // for l 属于 Cv-{i}:
@@ -660,11 +663,14 @@ void PCP_Vector::vertex_weight_tabu_search()
     // random_construct();
     // print_index1("random construct solution", solution);
 
-    // Evaluate covered by after greedy construct;
-    // print_vector("center[2]", center_coverages[2]);
-    // print_vector("center[12]", center_coverages[12]);
-    // print_vector("center[59]", center_coverages[59]);
-    // print_vector("num_covered_by", num_covered_by);
+    // Evaluate num_reach_solution after greedy__construct;
+    print_vector("center[2]", center_coverages[2]);
+    print_vector("center[12]", center_coverages[12]);
+    print_vector("center[59]", center_coverages[59]);
+    // print_vector("num_reach_solution", num_covered_by);
+
+    // Evaluate reach_one_solution after greedy__construct
+    print_vector("reach_one_solution", reach_one_solution);
 
     // A1 LINE 2:
     // X* <- X
@@ -692,7 +698,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0)
+    while(num_uncovered != 0 && iter<1)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -904,7 +910,7 @@ long long int PCP_Vector::get_iteration() const
 void PCP_Vector::print_vector(const string& name, vector<int> &vect)
 {
     cerr << name << ": ";
-    for(unsigned int i : vect)
+    for(int i : vect)
     {
         cerr << i << " ";
     }
