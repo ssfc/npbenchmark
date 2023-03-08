@@ -72,7 +72,7 @@ void PCP_Vector::greedy_construct()
     // center_weights start with each center's coverage;
     for(int i=0;i<center_weights.size();i++)
     {
-        center_weights[i] = int (center_cover_vertex[i].count());
+        center_weights[i] = int (center_coverages[i].size());
     }
     // print_vector("center_weights before", center_weights);
     int equal_delta_in_construct[2000] = {0}; //非禁忌相同delta值
