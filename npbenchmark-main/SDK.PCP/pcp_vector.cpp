@@ -475,8 +475,8 @@ void PCP_Vector::make_move()
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
             int intersect_center = intersection.find_first();
-            cerr << "find intersect one: " << intersect_center << endl;
-            cerr << "reach_one_solution: " << reach_one_solution[v] << endl;
+            // cerr << "find intersect one: " << intersect_center << endl;
+            // cerr << "reach_one_solution: " << reach_one_solution[v] << endl;
 
             // A4 LINE 4:
             // for l 属于 X交Cv:
@@ -673,7 +673,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // print_vector("num_reach_solution", num_covered_by);
 
     // Evaluate reach_one_solution after greedy__construct
-    print_vector("reach_one_solution", reach_one_solution);
+    // print_vector("reach_one_solution", reach_one_solution);
 
     // A1 LINE 2:
     // X* <- X
@@ -701,9 +701,9 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<3)
+    while(num_uncovered != 0)
     {
-        cerr << "iteration: " << iter << endl;
+        // cerr << "iteration: " << iter << endl;
 
         // cerr << "f(X) before find pair: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight before find pair: " << sum_uncovered_weight << endl;
