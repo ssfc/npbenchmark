@@ -399,6 +399,14 @@ void PCP_Vector::find_pair()
                     equal_pair[equal_pair_count].center_out = j;
                     equal_pair_count++;
 
+                    /*
+                    if(equal_pair_count > max_equal_pair_count)
+                    {
+                        max_equal_pair_count = equal_pair_count;
+                        cerr << "Max equal pair count: " << max_equal_pair_count << endl;
+                    }
+                     */
+
                     // A5 LINE 15:
                     // end if
                 }
@@ -818,7 +826,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 3000 == 0)
+        if (iter % 10000 == 0)
         {
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";

@@ -80,6 +80,7 @@ private: // member variables.
 
     // debug variables:
     std::mt19937 generated_random;
+    int max_equal_pair_count;
     double start_time;
 
 public: // member functions.
