@@ -15,7 +15,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                        ,center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex))
                        ,vertex_reaching(input_num_vertex)
                        ,vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex))
-                       ,num_center_cover(num_vertex, 0)
+                       ,num_covered_by(num_vertex, 0)
                        ,solution(input_num_vertex, 0)
                        ,uncovered_vertices(input_num_vertex)
                        ,moved{0, 0}
