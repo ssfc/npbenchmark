@@ -12,7 +12,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         num_center(input_num_center),
                         radius(input_radius),
                         center_coverages(input_num_vertex),
-                        center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
                         vertex_reaching(input_num_vertex),
                         num_reach_solution(input_num_vertex, 0),
                         reach_one_solution(input_num_vertex, -1),
@@ -43,7 +42,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
         {
             int index = input_coverages[i][j];
-            center_cover_vertex[i].set(index, true);
             center_coverages[i].push_back(index);
             vertex_reaching[index].push_back(i);
         }
@@ -86,8 +84,14 @@ void PCP_Vector::greedy_construct()
         // cerr << "uncovered" << uncovered << endl;
         for(int j=0;j<num_vertex;j++) // consider only one set
         {
-            dynamic_bitset<> this_intersection = center_cover_vertex[j] & uncovered_vertices;
-            unsigned long long this_intersection_size = this_intersection.count();
+            unsigned long long this_intersection_size = 0;
+            for(int v : center_coverages[j])
+            {
+                if(uncovered_vertices[v])
+                {
+                    this_intersection_size++;
+                }
+            }
 
             if(this_intersection_size > max_overlap_size)
             {
