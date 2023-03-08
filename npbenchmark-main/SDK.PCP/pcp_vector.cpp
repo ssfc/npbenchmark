@@ -526,6 +526,8 @@ void PCP_Vector::make_move()
             // end if
         }
 
+        num_covered_by[v]++;
+
         // A4 LINE 8:
         // end for
     }
@@ -557,6 +559,8 @@ void PCP_Vector::make_move()
     // Meaning: consequences of closing j
     for (int v : center_coverages[moved.center_out])
     {
+        num_covered_by[v]--;
+
         // cerr << v << " ";
         // A4 LINE 11:
         // if |X 交 Cv| = 0 then
@@ -693,7 +697,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<1)
+    while(num_uncovered != 0 && iter<10)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -823,6 +827,12 @@ void PCP_Vector::vertex_weight_tabu_search()
         // end while;
         // Meaning: when the specified termination condition is met, the algorithm terminates and returns the best solution X*; (2023年2月17日)
     }
+
+    // Evaluate covered by after multiple make__move;
+    print_vector("center[84]", center_coverages[84]);
+    print_vector("center[7]", center_coverages[7]);
+    print_vector("center[4]", center_coverages[4]);
+    print_vector("num_covered_by", num_covered_by);
 
     // print final tabu_tenure_table;
     // print_tabu_tenure_table();
