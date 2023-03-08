@@ -45,6 +45,10 @@ private: // member variables.
     // Element: norm
     // Meaning: number of centers that cover vertex i;
     std::vector<int> num_reach_solution;
+    // Dimension: num_vertex;
+    // Element: name of solution center that this vertex can reach;
+    // Meaning: number of centers that cover vertex i;
+    std::vector<int> reach_one_solution;
 
     std::vector<int> solution_value;
     boost::dynamic_bitset<> solution; // centers selected;

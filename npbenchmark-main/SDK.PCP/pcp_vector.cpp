@@ -16,6 +16,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         vertex_reaching(input_num_vertex),
                         vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
                         num_reach_solution(input_num_vertex, 0),
+                        reach_one_solution(input_num_vertex, -1),
                         solution(input_num_vertex, 0),
                         // A1 LINE 3
                         vertex_weights(input_num_vertex, 1),
