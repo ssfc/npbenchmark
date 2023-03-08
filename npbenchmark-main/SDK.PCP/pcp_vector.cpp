@@ -8,15 +8,14 @@ using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
                        vector<vector<int>> &input_coverages, int input_seed)
-                       :solution(input_num_vertex)
+                       :num_vertex(input_num_vertex)
+                       ,num_center(input_num_center)
+                       ,solution(input_num_vertex)
                        ,uncovered_vertices(input_num_vertex)
                        ,moved{0, 0}
                        ,min_delta{INT_MAX}
 {
     init_rand(input_seed); // initialize random generator;
-
-    num_vertex = input_num_vertex;
-    num_center = input_num_center;
     radius = input_radius;
 
     center_cover_vertex.resize(input_num_vertex, dynamic_bitset<>(input_num_vertex));
