@@ -296,8 +296,6 @@ void PCP_Vector::find_pair()
         // i: 中心序号; i在前面表示顶点序号, 这里却表示中心序号;
         // V(i): the set of vertex that center i can serve;
         // print_index1("Vi", center_cover_vertex[center]);
-        dynamic_bitset<> Vi = center_cover_vertex[ic];
-        // cerr << "Vi" << ": ";
         for (int iv : center_coverages[ic])
         {
             // cerr << v << " ";
