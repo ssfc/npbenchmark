@@ -14,7 +14,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                         center_coverages(input_num_vertex),
                         center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
                         vertex_reaching(input_num_vertex),
-                        vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
                         num_reach_solution(input_num_vertex, 0),
                         reach_one_solution(input_num_vertex, -1),
                         solution(input_num_vertex, 0),
@@ -46,7 +45,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
             int index = input_coverages[i][j];
             center_cover_vertex[i].set(index, true);
             center_coverages[i].push_back(index);
-            vertex_reach_center[index].set(i, true);
             vertex_reaching[index].push_back(i);
         }
         // cerr << "center_cover_vertex[" << i << "] " << center_cover_vertex[i] << endl;
@@ -826,7 +824,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 10000 == 0)
+        if (iter % 30000 == 0)
         {
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";

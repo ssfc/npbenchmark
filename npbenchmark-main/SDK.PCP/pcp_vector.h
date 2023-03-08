@@ -37,10 +37,6 @@ private: // member variables.
     // Element: name of center;
     // Meaning: if vertex i can reach center j1, vertex_reach_center[i] = {j1, j2, j3...};
     std::vector<std::vector<int>> vertex_reaching;
-    // Dimension: num_vertex * num_vertex
-    // Element: true/false;
-    // Meaning: if vertex i can reach center j, vertex_reach_center[i][j] = true; else = false;
-    std::vector<boost::dynamic_bitset<>> vertex_reach_center;
     // Dimension: num_vertex;
     // Element: norm
     // Meaning: number of centers that cover vertex i;
