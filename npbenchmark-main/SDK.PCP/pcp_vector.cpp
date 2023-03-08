@@ -312,7 +312,7 @@ void PCP_Vector::find_pair()
                 // cerr << "find one: ";
                 // print_index1("solution", solution);
                 // print_index1("Cv", Cv);
-                unsigned long long intersect_center = intersection.find_first();
+                int intersect_center = intersection.find_first();
                 // cerr << "find intersect one: " << intersect_center << endl;
                 // for l 属于 X交Cv:
                 //     delta_l <- delta_l - wv,
@@ -474,8 +474,9 @@ void PCP_Vector::make_move()
             // Evaluate A4 LINE 3
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
-            unsigned long long intersect_center = intersection.find_first();
-            // cerr << "find intersect one: " << intersect_center << endl;
+            int intersect_center = intersection.find_first();
+            cerr << "find intersect one: " << intersect_center << endl;
+            cerr << "reach_one_solution: " << reach_one_solution[v] << endl;
 
             // A4 LINE 4:
             // for l 属于 X交Cv:
@@ -606,7 +607,7 @@ void PCP_Vector::make_move()
             // Evaluate A4 LINE 13
             // print_index1("solution", solution);
             // print_index1("Cv", Cv);
-            unsigned long long intersect_center = intersection.find_first();
+            int intersect_center = intersection.find_first();
             reach_one_solution[v] = intersect_center;
             // cerr << "find intersect one: " << intersect_center << endl;
 
@@ -700,9 +701,9 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<1)
+    while(num_uncovered != 0 && iter<3)
     {
-        // cerr << "iteration: " << iter << endl;
+        cerr << "iteration: " << iter << endl;
 
         // cerr << "f(X) before find pair: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight before find pair: " << sum_uncovered_weight << endl;
