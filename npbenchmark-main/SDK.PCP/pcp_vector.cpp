@@ -178,6 +178,9 @@ void PCP_Vector::greedy_construct()
                 // end if
             }
 
+            // v is now covered by the selected center;
+            num_covered_by[v]++;
+
             // Refer to A4 LINE 8:
             // end for
         }
@@ -658,6 +661,12 @@ void PCP_Vector::vertex_weight_tabu_search()
     // random_construct();
     // print_index1("random construct solution", solution);
 
+    // Evaluate covered by after greedy construct;
+    print_vector("center[2]", center_coverages[2]);
+    print_vector("center[12]", center_coverages[12]);
+    print_vector("center[59]", center_coverages[59]);
+    print_vector("num_covered_by", num_covered_by);
+
     // A1 LINE 2:
     // X* <- X
     // X*: history best solution;
@@ -684,7 +693,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0)
+    while(num_uncovered != 0 && iter<1)
     {
         // cerr << "iteration: " << iter << endl;
 

@@ -45,7 +45,7 @@ public:
 
         // 2: local search method;
         ///*
-        // input.centerNum = 4;
+        input.centerNum = 3;
         PCP_Vector test(input.nodeNum, input.centerNum, input.current_radius, input.coverages, seed);
         test.vertex_weight_tabu_search();
         test.get_solution(output);
