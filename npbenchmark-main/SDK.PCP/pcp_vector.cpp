@@ -7,24 +7,28 @@ using namespace boost;
 using namespace std;
 
 PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_radius,
-                       vector<vector<int>> &input_coverages, int input_seed)
-                       :num_vertex(input_num_vertex)
-                       ,num_center(input_num_center)
-                       ,radius(input_radius)
-                       ,center_coverages(input_num_vertex)
-                       ,center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex))
-                       ,vertex_reaching(input_num_vertex)
-                       ,vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex))
-                       ,num_covered_by(num_vertex, 0)
-                       ,solution(input_num_vertex, 0)
-                       // A1 LINE 3
-                       ,vertex_weights(num_vertex, 1)
-                       ,uncovered_vertices(input_num_vertex)
-                       ,num_uncovered(INT_MAX)
-                       ,best_num_uncovered(INT_MAX)
-                       ,prev_num_uncovered(INT_MAX)
-                       ,moved{0, 0}
-                       ,min_delta{INT_MAX}
+                       vector<vector<int>> &input_coverages, int input_seed):
+                        num_vertex(input_num_vertex),
+                        num_center(input_num_center),
+                        radius(input_radius),
+                        center_coverages(input_num_vertex),
+                        center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
+                        vertex_reaching(input_num_vertex),
+                        vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex)),
+                        num_covered_by(input_num_vertex, 0),
+                        solution(input_num_vertex, 0),
+                        // A1 LINE 3
+                        vertex_weights(input_num_vertex, 1),
+                        uncovered_vertices(input_num_vertex),
+                        num_uncovered(INT_MAX),
+                        best_num_uncovered(INT_MAX),
+                        prev_num_uncovered(INT_MAX),
+                        moved{0, 0},
+                        min_delta{INT_MAX},
+                        // A1 LINE 2:
+                        // tabu list TL <- NULL;
+                        // TL: tabu list;
+                        tabu_tenure_table(input_num_vertex, 0)
 {
     init_rand(input_seed); // initialize random generator;
 
@@ -51,11 +55,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
     // print_vector("weight", weight);
 
     uncovered_vertices.set(); // set uncovered all 1;
-
-    // A1 LINE 2:
-    // tabu list TL <- NULL;
-    // TL: tabu list;
-    tabu_tenure_table.resize(num_vertex, 0);
 
     center_weights.resize(num_vertex, 0);
     prev_center_weights.resize(num_vertex, 0);
