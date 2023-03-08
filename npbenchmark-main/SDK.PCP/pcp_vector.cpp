@@ -11,7 +11,9 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
                        :num_vertex(input_num_vertex)
                        ,num_center(input_num_center)
                        ,radius(input_radius)
+                       ,center_coverages(input_num_vertex)
                        ,center_cover_vertex(input_num_vertex, dynamic_bitset<>(input_num_vertex))
+                       ,vertex_reaching(input_num_vertex)
                        ,vertex_reach_center(input_num_vertex, dynamic_bitset<>(input_num_vertex))
                        ,solution(input_num_vertex)
                        ,uncovered_vertices(input_num_vertex)
@@ -20,8 +22,6 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
 {
     init_rand(input_seed); // initialize random generator;
 
-    center_coverages.resize(input_num_vertex);
-    vertex_reaching.resize(input_num_vertex);
     for(int i=0;i<input_coverages.size();i++) // i is center name
     {
         for(int j=0;j<input_coverages[i].size();j++) // j is vertex name;
