@@ -662,10 +662,10 @@ void PCP_Vector::vertex_weight_tabu_search()
     // print_index1("random construct solution", solution);
 
     // Evaluate covered by after greedy construct;
-    print_vector("center[2]", center_coverages[2]);
-    print_vector("center[12]", center_coverages[12]);
-    print_vector("center[59]", center_coverages[59]);
-    print_vector("num_covered_by", num_covered_by);
+    // print_vector("center[2]", center_coverages[2]);
+    // print_vector("center[12]", center_coverages[12]);
+    // print_vector("center[59]", center_coverages[59]);
+    // print_vector("num_covered_by", num_covered_by);
 
     // A1 LINE 2:
     // X* <- X
