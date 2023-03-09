@@ -715,13 +715,13 @@ void PCP_Vector::vertex_weight_tabu_search()
         // LINE 20:
         // return a randomly picked move in M
         // M: the set of best swap moves;
-        if (equal_pair_count==0)
+        if (equal_pair_count == 0)
         {
             tabu_open = -1;
             tabu_close = -1;
             continue;
         }
-        else if(equal_pair_count==1)
+        else if(equal_pair_count == 1)
         {
             moved = equal_pair[0];
         }
