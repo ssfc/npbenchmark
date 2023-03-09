@@ -813,7 +813,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // end if /* more uncovered clients than last solution */
         }
 
-        
+
         /*
         int flag = false;
         for(int i : vertex_weights)
@@ -876,7 +876,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 50000 == 0)
+        if (iter % 100000 == 0)
         {
             // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
             // long long temp_SUW = 0;

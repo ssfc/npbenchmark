@@ -39,22 +39,25 @@
 39. Sample of KailinLi: https://github.com/KailinLi/SmartLab-Training/tree/master/PCenter
 40. only has pmed; (2023年2月18日)
 41. 
-42. Sample of zywang624: https://github.com/zywang624/smartlab 
-43. has PCB3038; (2023年2月18日)
-44. 为了实现集合的交并操作, 王子扬自己写了一个MY_SET: https://github.com/zywang624/smartlab/blob/main/P-center/code/MY_SET 
-45. 
-46. Interface of SDK PCP: 
-47. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
-48. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
-49. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
-50. 
-51. 其他基础训练
-52. FJSP
-53. wusihan: https://github.com/wusihan454/FJSP
-54. wangjingkui: https://github.com/Edward-Elric233/FJSP
-55. 
-56. 
-57. RWA
-58. yuanFang1; 
-59. https://github.com/yuanFang1/RWA
-60. 
+42. Sample of lxily: https://github.com/lxily/Pcenter/tree/master/Instance 
+43. has PCB3038; (2023年3月9日)
+44. 
+45. Sample of zywang624: https://github.com/zywang624/smartlab 
+46. has PCB3038; (2023年2月18日)
+47. 为了实现集合的交并操作, 王子扬自己写了一个MY_SET: https://github.com/zywang624/smartlab/blob/main/P-center/code/MY_SET 
+48. 
+49. Interface of SDK PCP: 
+50. Function in main.cpp: loadinput, nodeNum, centerNum, coverage, minEdgeLenRank, maxEdgeLenRank, nodesWithDrops; 
+51. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
+52. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
+53. 
+54. 其他基础训练
+55. FJSP
+56. wusihan: https://github.com/wusihan454/FJSP
+57. wangjingkui: https://github.com/Edward-Elric233/FJSP
+58. 
+59. 
+60. RWA
+61. yuanFang1; 
+62. https://github.com/yuanFang1/RWA
+63. 
