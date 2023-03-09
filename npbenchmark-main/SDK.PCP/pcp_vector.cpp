@@ -232,6 +232,7 @@ void PCP_Vector::find_pair()
     // The set of best swap moves M <- NULL;
     // M: the set of best swap moves;
     fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
+    equal_pair_count = 0;
     // print_equal_pair();
 
     // A2 LINE 3:
@@ -428,14 +429,6 @@ void PCP_Vector::find_pair()
     // Evaluate A2 LINE 12 & LINE 14
     // print_equal_pair();
 
-    // LINE 20:
-    // return a randomly picked move in M
-    // M: the set of best swap moves;
-    moved = equal_pair[generated_random() % equal_pair_count];
-    // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
-    // cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
-    // cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
-    // print_vector("center_weights", center_weights);
 
     // LINE 21:
     // end function
@@ -704,7 +697,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<362)
+    while(num_uncovered != 0)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -719,6 +712,29 @@ void PCP_Vector::vertex_weight_tabu_search()
         // iter: current iteration;
         // Meaning: find_move; evaluates the neighborhood of the current solution and records the best neighborhood move while respecting their tabu states; (2023年2月10日)
         find_pair();
+
+        // LINE 20:
+        // return a randomly picked move in M
+        // M: the set of best swap moves;
+        if (equal_pair_count==0)
+        {
+            tabu_open = -1;
+            tabu_close = -1;
+            continue;
+        }
+        else if(equal_pair_count==1)
+        {
+            moved = equal_pair[0];
+        }
+        else
+        {
+            moved = equal_pair[generated_random() % equal_pair_count];
+        }
+
+        // cerr << "moved {" << moved.center_in << " " << moved.center_out << "}" << endl;
+        // cerr << "center_weights[in: 65]: " << center_weights[65] << endl;
+        // cerr << "center_weights[out: 59]: " << center_weights[59] << endl;
+        // print_vector("center_weights", center_weights);
 
         // cerr << "f(X) before make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight before make move: " << sum_uncovered_weight << endl;
@@ -863,7 +879,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter>=361 && iter % 1 == 0)
+        if (iter % 10000 == 0)
         {
             // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
             long long temp_SUW = 0;
@@ -876,6 +892,7 @@ void PCP_Vector::vertex_weight_tabu_search()
 
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
+            // cerr << "equal_pair_num: " << equal_pair_count << " ";
             cerr << "num : " << num_uncovered << " ";
             // cerr << "best num : " << best_num_uncovered << " ";
             cerr << "SUW: " << sum_uncovered_weight << " ";
