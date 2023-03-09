@@ -237,7 +237,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    min_delta = LONG_LONG_MAX;
+    min_delta = 999999;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
@@ -704,7 +704,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0 && iter<500)
+    while(num_uncovered != 0 && iter<362)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -863,7 +863,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 50 == 0)
+        if (iter>=361 && iter % 1 == 0)
         {
             // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
             long long temp_SUW = 0;
@@ -880,6 +880,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // cerr << "best num : " << best_num_uncovered << " ";
             cerr << "SUW: " << sum_uncovered_weight << " ";
             cerr << "temp SUW: " << temp_SUW << " ";
+            cerr << "min delta: " << min_delta << " ";
             cerr << "NUV : " << num_uncovered << " ";
             cerr << "temp NUV : " << temp_num_uncovered << " ";
             // cerr << "moved " << moved.center_in << " " << moved.center_out;
