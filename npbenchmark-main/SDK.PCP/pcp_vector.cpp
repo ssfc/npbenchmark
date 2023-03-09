@@ -144,7 +144,7 @@ void PCP_Vector::greedy_construct()
                 // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
                 // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
                 // print_vector("center weights before", center_weights);
-                center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[v];
+                center_weights[intersect_center] -= vertex_weights[v];
                 // print_vector("center weights after", center_weights);
             }
                 // Refer to A4 LINE 5:
@@ -173,7 +173,7 @@ void PCP_Vector::greedy_construct()
                     // cerr << "l: " << l << endl;
                     center_weights[l] = center_weights[l] - vertex_weights[v];
                 }
-                center_weights[selected_center] = center_weights[selected_center] + vertex_weights[v]; // {j} does not need to minus;
+                center_weights[selected_center] += vertex_weights[v]; // {j} does not need to minus;
                 // cerr << endl;
 
                 // Refer to A4 LINE 7:
@@ -312,7 +312,7 @@ void PCP_Vector::find_pair()
                 // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
                 // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
                 // print_vector("center weights before", center_weights);
-                center_weights[intersect_center] = center_weights[intersect_center] - vertex_weights[iv];
+                center_weights[intersect_center] -= vertex_weights[iv];
                 // print_vector("center weights after", center_weights);
 
                 // A3 LINE 6:
