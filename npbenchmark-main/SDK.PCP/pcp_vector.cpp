@@ -390,8 +390,7 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: equal move list;
-                    equal_pair[equal_pair_count].center_in = ic;
-                    equal_pair[equal_pair_count].center_out = j;
+                    equal_pair[equal_pair_count] = Move{ic, j};
                     equal_pair_count++;
 
                     /*
