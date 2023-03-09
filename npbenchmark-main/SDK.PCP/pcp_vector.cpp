@@ -813,7 +813,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // end if /* more uncovered clients than last solution */
         }
 
-
+        
+        /*
         int flag = false;
         for(int i : vertex_weights)
         {
@@ -824,7 +825,6 @@ void PCP_Vector::vertex_weight_tabu_search()
             }
         }
 
-        /*
         if(flag == true)
         {
             cerr << "Upper Overflow!!!" << endl;
