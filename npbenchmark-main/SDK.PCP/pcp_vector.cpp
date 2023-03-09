@@ -24,7 +24,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         best_num_uncovered(INT_MAX),
         prev_num_uncovered(INT_MAX),
         moved{0, 0},
-        min_delta{INT_MAX},
+        min_delta{LONG_LONG_MAX},
         // A1 LINE 2:
         // tabu list TL <- NULL;
         // TL: tabu list;
@@ -237,7 +237,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    min_delta = INT_MAX;
+    min_delta = LONG_LONG_MAX;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
@@ -704,7 +704,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     // A1 LINE 4:
     // while termination condition is not met do
     // Meaning: iteratively improves the incumbent solution by a tabu search procedure; (2023年2月10日)
-    while(num_uncovered != 0)
+    while(num_uncovered != 0 && iter<500)
     {
         // cerr << "iteration: " << iter << endl;
 
@@ -734,7 +734,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         {
             uncovered_value.push_back(int (i));
         }
-        num_uncovered = int (uncovered_value.size());
+        num_uncovered = uncovered_vertices.count();
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
@@ -782,6 +782,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_vector("center weights", center_weights);
 
 
+
             for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
@@ -792,6 +793,7 @@ void PCP_Vector::vertex_weight_tabu_search()
                 }
             }
             sum_uncovered_weight += num_uncovered;
+
             // print_vector("vertex weights", vertex_weights);
             // print_vector("center weights", center_weights);
 
@@ -799,6 +801,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // end if /* more uncovered clients than last solution */
         }
 
+        /*
         int flag = false;
         for(long long int i : vertex_weights)
         {
@@ -809,7 +812,6 @@ void PCP_Vector::vertex_weight_tabu_search()
             }
         }
 
-        /*
         if(flag == true)
         {
             cerr << "true!!!" << endl;
@@ -861,17 +863,30 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 50000 == 0)
+        if (iter % 50 == 0)
         {
+            // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
+            long long temp_SUW = 0;
+            for(int i : uncovered_value)
+            {
+                temp_SUW = temp_SUW + vertex_weights[i];
+            }
+
+            long long temp_num_uncovered = uncovered_value.size();
+
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
             cerr << "num : " << num_uncovered << " ";
             // cerr << "best num : " << best_num_uncovered << " ";
-            cerr << "sum uncovered weight: " << sum_uncovered_weight << " ";
+            cerr << "SUW: " << sum_uncovered_weight << " ";
+            cerr << "temp SUW: " << temp_SUW << " ";
+            cerr << "NUV : " << num_uncovered << " ";
+            cerr << "temp NUV : " << temp_num_uncovered << " ";
             // cerr << "moved " << moved.center_in << " " << moved.center_out;
             double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
             cerr << " time(s): " << elapsed_time
                  << " frequency:" << double(iter) / elapsed_time << endl;
+
         }
 
         // A1 LINE 14:

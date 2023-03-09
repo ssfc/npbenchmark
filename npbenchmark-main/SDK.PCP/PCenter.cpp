@@ -29,10 +29,11 @@ public:
         cerr << "current_radius: " << input.current_radius << endl;
 		coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
         int counter = 0;
-		for (auto r = input.nodesWithDrops.begin(); !isTimeout() && (r != input.nodesWithDrops.end()); ++r) {
+		for (auto r = input.nodesWithDrops.begin(); !isTimeout() && (r != input.nodesWithDrops.end()); ++r)
+        {
 			reduceRadius(input, *r);
             input.current_radius--;
-            if(counter>=0)
+            if(counter<0)
             // if(counter>=56)
             {
                 cerr << "current_radius: " << input.current_radius << endl;
