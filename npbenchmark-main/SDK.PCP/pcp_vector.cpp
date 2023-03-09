@@ -657,8 +657,8 @@ void PCP_Vector::vertex_weight_tabu_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    // greedy_construct();
-    sequence_construct();
+    greedy_construct();
+    // sequence_construct();
     // print_index1("random construct solution", solution);
 
     // Evaluate num_reach_solution after greedy__construct;
@@ -818,9 +818,9 @@ void PCP_Vector::vertex_weight_tabu_search()
 
         /*
         int flag = false;
-        for(long long int i : vertex_weights)
+        for(int i : vertex_weights)
         {
-            if(i >= 65536)
+            if(i >= 65534)
             {
                 flag = true;
                 break;
@@ -845,7 +845,6 @@ void PCP_Vector::vertex_weight_tabu_search()
                     {
                         center_weights[j] = center_weights[j] - half;
                     }
-                    center_weights[i] = center_weights[i] + half;
                 }
             }
 
@@ -854,8 +853,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 sum_uncovered_weight = sum_uncovered_weight + vertex_weights[i];
             }
-
-        }*/
+        }
+         */
 
         // A1 LINE 12:
         // TL <- (i, j) /* update tabu list (Section 3.4) */
@@ -927,7 +926,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     {
         cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
              << " frequency:" << double (iter) / elapsed_time << " SUW " << sum_uncovered_weight << endl;
-        print_vector("vertex weights: ", vertex_weights);
+        // print_vector("vertex weights: ", vertex_weights);
     }
     else
     {
