@@ -231,7 +231,6 @@ void PCP_Vector::find_pair()
     // A2 LINE 2:
     // The set of best swap moves M <- NULL;
     // M: the set of best swap moves;
-    fill(equal_pair.begin(), equal_pair.end(), Move{0,0});
     equal_pair_count = 0;
     // print_equal_pair();
 
@@ -879,7 +878,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         // cerr << "prev_num_uncovered: " << prev_num_uncovered << endl;
         iter++;
 
-        if (iter % 10000 == 0)
+        if (iter % 50000 == 0)
         {
             // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
             // long long temp_SUW = 0;
