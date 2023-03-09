@@ -24,7 +24,7 @@ PCP_Vector::PCP_Vector(int input_num_vertex, int input_num_center, int input_rad
         best_num_uncovered(INT_MAX),
         prev_num_uncovered(INT_MAX),
         moved{0, 0},
-        min_delta{LONG_MAX},
+        min_delta{INT_MAX},
         // A1 LINE 2:
         // tabu list TL <- NULL;
         // TL: tabu list;
@@ -351,7 +351,7 @@ void PCP_Vector::find_pair()
                 // obj: num of vertices that has not been covered;
                 // Meaning: this move is better than history best;
                 // cerr << endl << "i " << i << " j " << j;
-                long int this_iter_delta = center_weights[j] - center_weights[ic];
+                int this_iter_delta = center_weights[j] - center_weights[ic];
                 // cerr << " f(X+{i}-{j}) " << f_X_i_j << endl;
                 if(this_iter_delta < min_delta)
                 {

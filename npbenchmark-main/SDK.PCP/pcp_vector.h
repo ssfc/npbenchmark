@@ -48,7 +48,7 @@ private: // member variables.
 
     std::vector<int> solution_value;
     boost::dynamic_bitset<> solution; // centers selected;
-    std::vector<long int> vertex_weights; // weight of each vertex; dimension, num_vertex;
+    std::vector<int> vertex_weights; // weight of each vertex; dimension, num_vertex;
 
     std::vector<int> uncovered_value;
     boost::dynamic_bitset<> uncovered_vertices;
@@ -58,20 +58,20 @@ private: // member variables.
     int prev_num_uncovered;
 
     Move moved;
-    long int min_delta;
+    int min_delta;
     int tabu_open;
     int tabu_close;
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
     // Therefore, it can evaluate the importance of this center.
-    std::vector<long int> center_weights;
+    std::vector<int> center_weights;
     // dimension: num_vertex;
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
-    std::vector<long int> prev_center_weights;
+    std::vector<int> prev_center_weights;
     std::vector<Move> equal_pair;
     int equal_pair_count;
 
-    long int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
+    int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
 
     long long iter;
 
