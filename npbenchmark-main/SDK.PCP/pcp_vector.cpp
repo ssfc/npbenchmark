@@ -816,7 +816,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // end if /* more uncovered clients than last solution */
         }
 
-        /*
+
         int flag = false;
         for(int i : vertex_weights)
         {
@@ -827,6 +827,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             }
         }
 
+        /*
         if(flag == true)
         {
             cerr << "Upper Overflow!!!" << endl;
@@ -853,8 +854,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 sum_uncovered_weight = sum_uncovered_weight + vertex_weights[i];
             }
-        }
-         */
+        }*/
 
         // A1 LINE 12:
         // TL <- (i, j) /* update tabu list (Section 3.4) */
