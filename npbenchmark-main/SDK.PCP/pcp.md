@@ -48,3 +48,12 @@
 48. Function in PCenter.h: nodeNum, centerNum, coverages, nodesWithDrops; 
 49. Function in PCenter.cpp: random generator; first coverAllNodesUnderFixedRadius, then reduceRadius and coverAllNodesUnderFixedRadius in for loop; 
 50. 
+51. 其他基础训练
+52. FJSP
+53. wusihan;
+54. https://github.com/wusihan454/FJSP
+55. 
+56. RWA
+57. yuanFang1; 
+58. https://github.com/yuanFang1/RWA
+59. 
