@@ -237,7 +237,7 @@ void PCP_Vector::find_pair()
     // A2 LINE 3:
     // The best objective value obj <- +INF;
     // Meaning: objective value should be optimized to zero, so start with infinity; (2023年2月19日)
-    min_delta = 999999;
+    min_delta = INT_MAX;
 
     // A2 LINE 4:
     // v <- a randomly picked uncovered vertex in U(X);
