@@ -820,7 +820,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         int flag = false;
         for(long long int i : vertex_weights)
         {
-            if(i > 10000)
+            if(i >= 65536)
             {
                 flag = true;
                 break;
@@ -829,21 +829,23 @@ void PCP_Vector::vertex_weight_tabu_search()
 
         if(flag == true)
         {
-            cerr << "true!!!" << endl;
+            cerr << "Upper Overflow!!!" << endl;
             for(int i=0;i<vertex_weights.size();i++)
             {
-                long long int half = vertex_weights[i] / 2;
+                int half = vertex_weights[i] / 2;
                 vertex_weights[i] = vertex_weights[i] - half;
-                for (int j : center_coverages[i])
+
+                if(num_reach_solution[i]==1)
                 {
-                    if(num_reach_solution[i]==0)
+                    center_weights[reach_one_solution[i]] = center_weights[reach_one_solution[i]] - half;
+                }
+                else if(num_reach_solution[i]==0)
+                {
+                    for(int j : center_coverages[i])
                     {
                         center_weights[j] = center_weights[j] - half;
                     }
-                    else if(num_reach_solution[i]==1 && reach_one_solution[i]==j)
-                    {
-                        center_weights[j] = center_weights[j] - half;
-                    }
+                    center_weights[i] = center_weights[i] + half;
                 }
             }
 
@@ -852,8 +854,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             {
                 sum_uncovered_weight = sum_uncovered_weight + vertex_weights[i];
             }
-        }
-         */
+
+        }*/
 
         // A1 LINE 12:
         // TL <- (i, j) /* update tabu list (Section 3.4) */
