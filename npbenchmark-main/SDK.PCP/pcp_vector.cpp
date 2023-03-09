@@ -372,8 +372,7 @@ void PCP_Vector::find_pair()
                     // j: center swap out;
                     // Meaning: change best move to (i, j);
                     equal_pair_count = 0;
-                    equal_pair[equal_pair_count].center_in = ic;
-                    equal_pair[equal_pair_count].center_out = j;
+                    equal_pair[equal_pair_count] = make_pair(ic, j);
                     equal_pair_count++;
                 }
                     // LINE 13:
@@ -390,7 +389,7 @@ void PCP_Vector::find_pair()
                     // i: center swap in;
                     // j: center swap out;
                     // Meaning: equal move list;
-                    equal_pair[equal_pair_count] = Move{ic, j};
+                    equal_pair[equal_pair_count] = make_pair(ic, j);
                     equal_pair_count++;
 
                     /*
@@ -447,7 +446,7 @@ void PCP_Vector::make_move()
     // for all v属于Vi do
     // V(i): the set of vertex that center i can serve;
     // Meaning: consequences of opening i
-    for (int v : center_coverages[moved.center_in])
+    for (int v : center_coverages[moved.first])
     {
         // cerr << v << " ";
         // A4 LINE 3:
@@ -504,9 +503,9 @@ void PCP_Vector::make_move()
                 // print_vector("center weights after", center_weights);
             }
             // cerr << endl;
-            center_weights[moved.center_in] += vertex_weights[v];
+            center_weights[moved.first] += vertex_weights[v];
 
-            reach_one_solution[v] = moved.center_in;
+            reach_one_solution[v] = moved.first;
             uncovered_vertices.reset(v);
             // A4 LINE 7:
             // end if
@@ -526,14 +525,14 @@ void PCP_Vector::make_move()
     // j: center swapped out;
     // 加入的时候是先计算中心权重变化再加入, 删除的时候则是先删除再计算中心权重变化; (2023年3月2日)
     // print_index1("solution before A4 LINE 9", solution);
-    solution.set(moved.center_in);
-    solution.reset(moved.center_out);
+    solution.set(moved.first);
+    solution.reset(moved.second);
 
     for (int i=0; i<num_center; i++)
     {
-        if (solution_value[i] == moved.center_out)
+        if (solution_value[i] == moved.second)
         {
-            solution_value[i] = moved.center_in;
+            solution_value[i] = moved.first;
             break;
         }
     }
@@ -543,7 +542,7 @@ void PCP_Vector::make_move()
     // for all v 属于 Vj do
     // vj: vertex covered by center j;
     // Meaning: consequences of closing j
-    for (int v : center_coverages[moved.center_out])
+    for (int v : center_coverages[moved.second])
     {
         num_reach_solution[v]--;
 
@@ -579,7 +578,7 @@ void PCP_Vector::make_move()
                 // cerr << center_weights[l] << endl;
             }
             // cerr << endl;
-            center_weights[moved.center_out] -= vertex_weights[v];
+            center_weights[moved.second] -= vertex_weights[v];
         }
             // A4 LINE 13:
             // else if |X 交 Cv| = 1 then
@@ -858,8 +857,8 @@ void PCP_Vector::vertex_weight_tabu_search()
         // TL: tabu list;
         // (i, j): pairs found;
         // Meaning: update tabu list; (2023年2月17日)
-        tabu_open = moved.center_in;
-        tabu_close = moved.center_out;
+        tabu_open = moved.first;
+        tabu_close = moved.second;
 
         ///* debug: tabu tenure;
         // cerr << "tabu tenure out: " << tabu_tenure_table[moved.center_out] << endl;
@@ -1102,8 +1101,8 @@ void PCP_Vector::print_equal_pair()
     cerr << "Equal pair: ";
     for(int i=0;i<equal_pair_count;i++)
     {
-        cerr << "{" << equal_pair[i].center_in << ", ";
-        cerr << equal_pair[i].center_out << "}";
+        cerr << "{" << equal_pair[i].first << ", ";
+        cerr << equal_pair[i].second << "}";
     }
     cerr << endl;
 }

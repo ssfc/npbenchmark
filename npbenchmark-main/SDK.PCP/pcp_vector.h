@@ -16,11 +16,6 @@
 
 using NodeId = int;
 
-struct Move {
-    int center_in;
-    int center_out;
-};
-
 
 class PCP_Vector
 {
@@ -57,7 +52,7 @@ private: // member variables.
     int best_num_uncovered;
     int prev_num_uncovered;
 
-    Move moved;
+    std::pair<int, int> moved;
     int min_delta;
     int tabu_open;
     int tabu_close;
@@ -68,7 +63,7 @@ private: // member variables.
     // dimension: num_vertex;
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
     std::vector<int> prev_center_weights;
-    std::vector<Move> equal_pair;
+    std::vector<std::pair<int, int>> equal_pair;
     int equal_pair_count;
 
     int sum_uncovered_weight; // f(X), 记录未覆盖顶点的加权和, Eq (11);
