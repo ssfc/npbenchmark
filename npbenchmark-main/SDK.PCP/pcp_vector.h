@@ -95,7 +95,7 @@ public: // member functions.
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
     void print_index1(const std::string& name, const boost::dynamic_bitset<>& dbs);
-    void random_construct(); // construct random solution;
+    void sequence_construct(); // construct random solution;
     long long int get_iteration() const;
     static void print_vector(const std::string& name, std::vector<int> &vect);
     void print_equal_pair();

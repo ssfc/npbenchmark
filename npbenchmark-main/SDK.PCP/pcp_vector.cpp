@@ -657,8 +657,8 @@ void PCP_Vector::vertex_weight_tabu_search()
     // p: centers;
     // rq: 最小化的最大服务半径;
     // Meaning: generates an initial solution X by a greedy algorithm; (2023年2月10日)
-    greedy_construct();
-    // random_construct();
+    // greedy_construct();
+    sequence_construct();
     // print_index1("random construct solution", solution);
 
     // Evaluate num_reach_solution after greedy__construct;
@@ -959,18 +959,126 @@ void PCP_Vector::print_index1(const string& name, const dynamic_bitset<>& dbs)
 }
 
 // debug function: construct random solution;
-void PCP_Vector::random_construct()
+void PCP_Vector::sequence_construct()
 {
-    size_t num_selected = 0;
-    while (num_selected < num_center)
+    // center_weights start with each center's coverage;
+    for(int i=0;i<center_weights.size();i++)
     {
-        size_t random_index = generated_random() % num_vertex;
-        if (!solution[random_index])
-        {
-            solution.set(random_index);
-            num_selected++;
-        }
+        center_weights[i] = int (center_coverages[i].size());
     }
+    // print_vector("center_weights before", center_weights);
+
+    for(int i=0;i<num_center;i++) // do one iteration;
+    {
+        int selected_center = i;
+        solution_value.push_back(selected_center);
+        // cerr << "random select: " << rand_select << endl;
+        // cerr << "selected center: " << selected_center << endl;
+
+        // consequences of opening selected center, this part refers to Algorithm 3;
+        // Refer to A4 LINE 2:
+        // for all v属于Vi do
+        // V(i): the set of vertex that center i can serve; index is center, result is vertex;
+        // Meaning: consequences of opening i
+        for (int v : center_coverages[selected_center])
+        {
+            // cerr << v << " ";
+            // Reference A4 LINE 3:
+            // if |X 交 Cv| = 1 then
+            // X: current center set;
+            // v: vertex
+            // Cv: 覆盖顶点v的中心集合;
+            // |X 交 Cv|: number of centers covering v in X;
+            if (num_reach_solution[v] == 1)
+            {
+                // print_index1("solution", solution);
+                // print_index1("Cv", Cv);
+                int intersect_center = reach_one_solution[v];
+                // cerr << "find intersect one: " << intersect_center << endl;
+
+                // Refer to A4 LINE 4:
+                // for l 属于 X交Cv:
+                //     delta_l <- delta_l - wv,
+                // l: X交Cv里面的中心; 现有解中覆盖V的中心;
+                // delta_l: 既然l属于X, 那么把l删除后, covered的减量, uncovered的增量; (在里面越小越好);
+                // Meaning: cancel penalty for deleting center l;
+                // Comment: 由于|X 交 Cv| = 1, 所以这里面的循环只有一个数, 复杂度O(1).
+                // Comment: 虽然中心l是当前中心集X中独一无二覆盖顶点v的, 但是由于swapped in的中心i也覆盖v, 所以它不再是不可或缺的了, 价值要减小. 这里减去的其实是LINE 14增加的量.
+                // print_vector("center weights before", center_weights);
+                center_weights[intersect_center] -= vertex_weights[v];
+                // print_vector("center weights after", center_weights);
+            }
+                // Refer to A4 LINE 5:
+                // else if |X 交 Cv| = 0 then
+                // X: current center set;
+                // Cv: center set covering vertex v;
+                // Meaning: 如果即将加入X的中心i所覆盖的顶点v无法被X包含的中心们覆盖;
+            else if(num_reach_solution[v] == 0)
+            {
+                uncovered_vertices.reset(v);
+                reach_one_solution[v] = selected_center;
+
+                // Refer to A4 LINE 6:
+                // for l 属于 Cv-{i}:
+                //     delta_l <- delta_l - wv
+                // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
+                // Cv: 覆盖顶点v的中心集合;
+                // delta_l: 既然l不属于X, 那么把l并入X后, covered的增量, uncovered的减量; (在外面越大越好);
+                // Meaning: cancel reward for adding center l;
+                // Comment: 虽然不在X的中心l能够覆盖顶点v而X中的其他中心都不行, 但是由于swapped in的中心i也覆盖v, 所以它不再是必须加入的了, 价值要减小.
+                // print_index1("solution", solution);
+                // print_index1("Cv", Cv);
+                // for (int l : vertex_reaching[v])
+                for (int l : center_coverages[v])
+                {
+                    // cerr << "l: " << l << endl;
+                    center_weights[l] -= vertex_weights[v];
+                }
+                center_weights[selected_center] += vertex_weights[v]; // {j} does not need to minus;
+                // cerr << endl;
+
+                // Refer to A4 LINE 7:
+                // end if
+            }
+
+            // v is now covered by the selected center;
+            num_reach_solution[v]++;
+
+            // Refer to A4 LINE 8:
+            // end for
+        }
+        // cerr << endl;
+
+        // Evaluate A4 LINE 6:
+        // dynamic_bitset<> test_0_59 = center_cover_vertex[0] & center_cover_vertex[59];
+        // cerr << "0 intersect 59: " << test_0_59.count() << endl;
+
+        // Evaluate A4 LINE 4:
+        // dynamic_bitset<> test_0_59_12 = center_cover_vertex[0] & (center_cover_vertex[59] | center_cover_vertex[12]);
+        // cerr << "0 intersect (59 U 12): " << test_0_59_12.count() << endl;
+
+        // Refer to A4 LINE 9:
+        // X <- X U {i}
+        // X: current center set;
+        // i: center swapped in;
+        // Meaning: Open selected center;
+        solution.set(selected_center);
+        // cerr << "Cover after union size (" << covered.count() << "): " << endl;
+        // print_index1("Covered", covered);
+        // print_index1("Uncovered", uncovered);
+    }
+    // print_vector("center weights after", center_weights);
+
+    // print_index1("Center selected", solution);
+    // cerr << "sum_uncovered_weight: " << sum_uncovered_weight << endl;
+
+    uncovered_value.clear();
+    for (size_t i = uncovered_vertices.find_first(); i != dynamic_bitset<>::npos; i = uncovered_vertices.find_next(i))
+    {
+        uncovered_value.push_back(int (i));
+    }
+    num_uncovered = int (uncovered_value.size());
+    sum_uncovered_weight = num_uncovered;
 }
 
 
