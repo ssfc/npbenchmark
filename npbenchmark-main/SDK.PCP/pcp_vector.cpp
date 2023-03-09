@@ -781,7 +781,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
 
-            int flag = false;
+
             for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
@@ -790,47 +790,53 @@ void PCP_Vector::vertex_weight_tabu_search()
                 {
                     center_weights[ic]++;
                 }
-
-                if(vertex_weights[iv] >= 65536)
-                {
-                    flag = true;
-                }
             }
             sum_uncovered_weight += num_uncovered;
-
-
-            if(flag == true)
-            {
-                for(int i=0;i<vertex_weights.size();i++)
-                {
-                    long long int half = vertex_weights[i] / 2;
-                    vertex_weights[i] = vertex_weights[i] - half;
-                    for (int j : center_coverages[i])
-                    {
-                        if(num_reach_solution[i]==0)
-                        {
-                            center_weights[j] = center_weights[j] - half;
-                        }
-                        else if(num_reach_solution[i]==1 && reach_one_solution[i]==j)
-                        {
-                            center_weights[j] = center_weights[j] - half;
-                        }
-                    }
-                }
-
-                sum_uncovered_weight = 0;
-                for(int i : uncovered_value)
-                {
-                    sum_uncovered_weight = sum_uncovered_weight + vertex_weights[i];
-                }
-            }
-
             // print_vector("vertex weights", vertex_weights);
             // print_vector("center weights", center_weights);
 
             // A1 LINE 11:
             // end if /* more uncovered clients than last solution */
         }
+
+        int flag = false;
+        for(long long int i : vertex_weights)
+        {
+            if(i > 10000)
+            {
+                flag = true;
+                break;
+            }
+        }
+
+        /*
+        if(flag == true)
+        {
+            cerr << "true!!!" << endl;
+            for(int i=0;i<vertex_weights.size();i++)
+            {
+                long long int half = vertex_weights[i] / 2;
+                vertex_weights[i] = vertex_weights[i] - half;
+                for (int j : center_coverages[i])
+                {
+                    if(num_reach_solution[i]==0)
+                    {
+                        center_weights[j] = center_weights[j] - half;
+                    }
+                    else if(num_reach_solution[i]==1 && reach_one_solution[i]==j)
+                    {
+                        center_weights[j] = center_weights[j] - half;
+                    }
+                }
+            }
+
+            sum_uncovered_weight = 0;
+            for(int i : uncovered_value)
+            {
+                sum_uncovered_weight = sum_uncovered_weight + vertex_weights[i];
+            }
+        }
+         */
 
         // A1 LINE 12:
         // TL <- (i, j) /* update tabu list (Section 3.4) */
@@ -888,7 +894,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     if(num_uncovered == 0)
     {
         cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-             << " frequency:" << double (iter) / elapsed_time << endl;
+             << " frequency:" << double (iter) / elapsed_time << " SUW " << sum_uncovered_weight << endl;
     }
     else
     {

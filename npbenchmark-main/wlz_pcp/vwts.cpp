@@ -256,8 +256,8 @@ void VWTS::vertex_weight_tabu_search()
     if (num_uncovered == 0)//更新
     {
         double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
-        cerr << "success, radius: " << current_radius << " iter: " << iter
-             << " elapsed_time(s): " << elapsed_time << " frequency:" << double (iter) / elapsed_time << endl;
+        cerr << "success, radius: " << current_radius << " iter: " << iter << " time(s): "
+        << elapsed_time << " frequency:" << double (iter) / elapsed_time << " SUW " << sum_uncovered_weight << endl;
         return;
     }
 }
