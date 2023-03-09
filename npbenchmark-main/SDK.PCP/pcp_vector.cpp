@@ -794,7 +794,7 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_vector("vertex weights", vertex_weights);
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
-            
+
             for (size_t iv : uncovered_value)
             {
                 vertex_weights[iv]++;
