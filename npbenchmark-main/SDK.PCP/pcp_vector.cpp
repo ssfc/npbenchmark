@@ -750,7 +750,7 @@ void PCP_Vector::vertex_weight_tabu_search()
         {
             uncovered_value.push_back(int (i));
         }
-        num_uncovered = uncovered_vertices.count();
+        num_uncovered = uncovered_value.size();
 
         // cerr << "f(X) after make move: " << compute_sum_uncovered_weight() << endl;
         // cerr << "sum_uncovered_weight after make move: " << sum_uncovered_weight << endl;
@@ -882,24 +882,22 @@ void PCP_Vector::vertex_weight_tabu_search()
         if (iter % 10000 == 0)
         {
             // Evaluate whether sum__uncovered__weight and num__uncovered__vertices
-            long long temp_SUW = 0;
-            for(int i : uncovered_value)
-            {
-                temp_SUW = temp_SUW + vertex_weights[i];
-            }
-
-            long long temp_num_uncovered = uncovered_value.size();
+            // long long temp_SUW = 0;
+            // for(int i : uncovered_value)
+            // {
+            //    temp_SUW = temp_SUW + vertex_weights[i];
+            // }
+            //long long temp_num_uncovered = uncovered_value.size();
 
             cerr << "Radius: " << radius << " ";
             cerr << "iter: " << iter << " ";
             // cerr << "equal_pair_num: " << equal_pair_count << " ";
-            cerr << "num : " << num_uncovered << " ";
             // cerr << "best num : " << best_num_uncovered << " ";
             cerr << "SUW: " << sum_uncovered_weight << " ";
-            cerr << "temp SUW: " << temp_SUW << " ";
-            cerr << "min delta: " << min_delta << " ";
+            // cerr << "temp SUW: " << temp_SUW << " ";
+            // cerr << "min delta: " << min_delta << " ";
             cerr << "NUV : " << num_uncovered << " ";
-            cerr << "temp NUV : " << temp_num_uncovered << " ";
+            // cerr << "temp NUV : " << temp_num_uncovered << " ";
             // cerr << "moved " << moved.center_in << " " << moved.center_out;
             double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
             cerr << " time(s): " << elapsed_time
