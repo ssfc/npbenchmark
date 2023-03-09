@@ -927,6 +927,7 @@ void PCP_Vector::vertex_weight_tabu_search()
     {
         cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
              << " frequency:" << double (iter) / elapsed_time << " SUW " << sum_uncovered_weight << endl;
+        print_vector("vertex weights: ", vertex_weights);
     }
     else
     {
