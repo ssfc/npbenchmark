@@ -794,26 +794,25 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
 
-            // if(generated_random() % 3 != 0)
-            // {
-
-            for (size_t iv: uncovered_value)
+            if(generated_random() % 3 != 0)
             {
-                vertex_weights[iv]++;
-                // for (int ic : vertex_reaching[iv])
-                for (int ic: center_coverages[iv])
+                for (size_t iv: uncovered_value)
                 {
-                    center_weights[ic]++;
+                    vertex_weights[iv]++;
+                    // for (int ic : vertex_reaching[iv])
+                    for (int ic: center_coverages[iv])
+                    {
+                        center_weights[ic]++;
+                    }
                 }
-            }
-            sum_uncovered_weight += num_uncovered;
+                sum_uncovered_weight += num_uncovered;
 
                 // print_vector("vertex weights", vertex_weights);
                 // print_vector("center weights", center_weights);
 
                 // A1 LINE 11:
                 // end if /* more uncovered clients than last solution */
-            // }
+            }
         }
 
 
