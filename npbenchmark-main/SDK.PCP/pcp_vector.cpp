@@ -794,8 +794,8 @@ void PCP_Vector::vertex_weight_tabu_search()
             // print_index1("uncovered", uncovered);
             // print_vector("center weights", center_weights);
 
-            if(generated_random() % 3 != 0)
-            {
+            //if(generated_random() % 4 != 0)
+            //{
                 for (size_t iv: uncovered_value)
                 {
                     vertex_weights[iv]++;
@@ -812,7 +812,7 @@ void PCP_Vector::vertex_weight_tabu_search()
 
                 // A1 LINE 11:
                 // end if /* more uncovered clients than last solution */
-            }
+            //}
         }
 
 
