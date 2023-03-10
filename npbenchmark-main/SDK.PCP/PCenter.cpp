@@ -33,11 +33,12 @@ public:
         {
 			reduceRadius(input, *r);
             input.current_radius--;
-            if(counter>=0)
-            // if(counter>=56)
+            // if(counter>=0)
+            if(counter>=55)
             {
                 cerr << "current_radius: " << input.current_radius << endl;
                 coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
+                break;
             }
             counter++;
 		}
