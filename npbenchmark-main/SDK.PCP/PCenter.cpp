@@ -38,13 +38,15 @@ public:
             {
                 reduceRadius(input, *r);
                 input.current_radius--;
+
                 // if(counter>=0)
-                if(counter==56)
+                if(input.centerNum == 200 && counter == 56) // pcb3038p200r141.txt
                 {
                     cerr << "current_radius: " << input.current_radius << endl;
                     coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
                     break;
                 }
+
                 counter++;
             }
         }
