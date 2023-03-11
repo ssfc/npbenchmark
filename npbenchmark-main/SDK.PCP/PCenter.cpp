@@ -41,18 +41,21 @@ public:
 
                 // if(counter>=0)
                 if((input.centerNum == 10 && counter == 125) // pcb3038p010r729.txt ; 125 = 108165-108039-1
-                || (input.centerNum == 200 && counter == 56)) // pcb3038p200r141.txt ; 56 = 4210-4153-1
+                   || (input.centerNum == 20 && counter == 191) // pcb3038p020r494.txt ; 191 = 51004-50812-1
+                   || (input.centerNum == 200 && counter == 56)) // pcb3038p200r141.txt ; 56 = 4210-4153-1
                 {
                     cerr << "current_radius: " << input.current_radius << endl;
                     coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
                     break;
                 }
+
                 /*
                 else
                 {
                     cerr << "current_radius: " << input.current_radius << endl;
                     coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
-                }*/
+                }
+                 */
 
                 counter++;
             }
