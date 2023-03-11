@@ -26,22 +26,28 @@ public:
 	void solve(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
 		initRand(seed);
 
-        cerr << "current_radius: " << input.current_radius << endl;
-		coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
-        int counter = 0;
-		for (auto r = input.nodesWithDrops.begin(); !isTimeout() && (r != input.nodesWithDrops.end()); ++r)
+        if(input.nodeNum != 3038) // pcb3038以外的数据集
         {
-			reduceRadius(input, *r);
-            input.current_radius--;
-            // if(counter>=0)
-            if(counter>=56)
+            cerr << "current_radius: " << input.current_radius << endl;
+            coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
+        }
+        else // pcb3038数据集
+        {
+            int counter = 0;
+            for (auto r = input.nodesWithDrops.begin(); !isTimeout() && (r != input.nodesWithDrops.end()); ++r)
             {
-                cerr << "current_radius: " << input.current_radius << endl;
-                coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
-                break;
+                reduceRadius(input, *r);
+                input.current_radius--;
+                // if(counter>=0)
+                if(counter==56)
+                {
+                    cerr << "current_radius: " << input.current_radius << endl;
+                    coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
+                    break;
+                }
+                counter++;
             }
-            counter++;
-		}
+        }
 	}
 
 	void coverAllNodesUnderFixedRadius(Centers& output, PCenter& input, std::function<bool()> isTimeout, int seed) {
