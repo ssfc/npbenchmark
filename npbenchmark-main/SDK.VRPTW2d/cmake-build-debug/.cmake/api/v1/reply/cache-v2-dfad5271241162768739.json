@@ -947,7 +947,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "SDK_GCP"
+			"value" : "SDK.VRPTW2d"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1324,6 +1324,42 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "SDK.VRPTW2d_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.VRPTW2d/cmake-build-debug"
+		},
+		{
+			"name" : "SDK.VRPTW2d_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "SDK.VRPTW2d_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.VRPTW2d"
 		},
 		{
 			"name" : "SDK_GCP_BINARY_DIR",
