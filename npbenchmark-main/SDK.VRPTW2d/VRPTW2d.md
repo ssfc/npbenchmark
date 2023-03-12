@@ -25,7 +25,12 @@ V 行整数表示 V 辆车 (V ≤ K) 的行驶路径
 3. 
 4. zhou hang: https://github.com/zll-hust
 5. 他(华科管院的)的主页有好多VRPTW的仓库; 
-6. 
+6. 禁忌算法VRPTW (java): https://github.com/zll-hust/Tabu_VRPTW
+7. 蚁群算法VRPTW (java): https://github.com/zll-hust/ACS_VRPTW
+8. 遗传算法VRPTW (c++): https://github.com/zll-hust/GA_VRPTW
+9. 标号法VRPTW (c++): https://github.com/zll-hust/LabelSetingAlgorithmForSPPTW
+10. 
+11. 
 
 
 
