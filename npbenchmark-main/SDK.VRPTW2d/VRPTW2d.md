@@ -19,7 +19,13 @@ V 行整数表示 V 辆车 (V ≤ K) 的行驶路径
 1 2: 车辆 1 从仓库 0 出发后依次经过节点 1 和 2, 最后返回; 
 
 
-
+## Other work
+1. 
+2. 
+3. 
+4. zhou hang: https://github.com/zll-hust
+5. 他(华科管院的)的主页有好多VRPTW的仓库; 
+6. 
 
 
 

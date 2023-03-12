@@ -54,7 +54,7 @@
 54. 其他基础训练
 55. FJSP
 56. wusihan: https://github.com/wusihan454/FJSP
-57. wangjingkui: https://github.com/Edward-Elric233/FJSP
+57. wangjiangkui: https://github.com/Edward-Elric233/FJSP
 58. 
 59. 
 60. RWA
