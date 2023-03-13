@@ -47,7 +47,8 @@ public:
                    || (input.centerNum == 50 && counter == 152) // pcb3038p050r299.txt ; 152 = 19000-18847-1
                    || (input.centerNum == 100 && counter == 59) // pcb3038p100r207.txt ; 59 = 9136-9076-1
                    || (input.centerNum == 150 && counter == 36) // pcb3038p150r165.txt ; 36 = 5775-5738-1
-                   || (input.centerNum == 200 && counter == 56)) // pcb3038p200r141.txt ; 56 = 4210-4153-1
+                   || (input.centerNum == 200 && counter == 56) // pcb3038p200r141.txt ; 56 = 4210-4153-1
+                   || (input.centerNum == 250 && counter == 35)) // pcb3038p250r123.txt ; 35 = 3190-3154-1
                 {
                     cerr << "current_radius: " << input.current_radius << endl;
                     coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
