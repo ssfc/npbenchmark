@@ -27,14 +27,15 @@ V 行整数表示 V 辆车 (V ≤ K) 的行驶路径
 5. zhou hang (周航): https://github.com/zll-hust
 6. 他(华科管院的)的主页有好多VRPTW的仓库; 
 7. 禁忌算法VRPTW (java): https://github.com/zll-hust/Tabu_VRPTW
-8. 蚁群算法VRPTW (java): https://github.com/zll-hust/ACS_VRPTW
-9. 遗传算法VRPTW (c++): https://github.com/zll-hust/GA_VRPTW
-10. 标号法VRPTW (c++): https://github.com/zll-hust/LabelSetingAlgorithmForSPPTW
-11. ALNS VRPTW (java): https://github.com/zll-hust/ALNS_VRPTW
-12. 列生成+pulse algorithm求解VRPTW (java): https://github.com/zll-hust/CG-VRPTW 
-13. 2E-VRPTWSPD (java): https://github.com/zll-hust/2E-VRPTWSPD
-14. 
+8. 蚁群算法ACS_VRPTW (java): https://github.com/zll-hust/ACS_VRPTW
+9. CSDN: https://blog.csdn.net/zll_hust/article/details/104167809
+10. 遗传算法VRPTW (c++): https://github.com/zll-hust/GA_VRPTW
+11. 标号法VRPTW (c++): https://github.com/zll-hust/LabelSetingAlgorithmForSPPTW
+12. ALNS VRPTW (java): https://github.com/zll-hust/ALNS_VRPTW
+13. 列生成+pulse algorithm求解VRPTW (java): https://github.com/zll-hust/CG-VRPTW 
+14. 2E-VRPTWSPD (java): https://github.com/zll-hust/2E-VRPTWSPD
 15. 
+16. 
 
 C101: 
 SU' data first 3 lines;
