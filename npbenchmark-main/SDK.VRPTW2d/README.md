@@ -39,8 +39,8 @@ V 行整数表示 V 辆车 (V ≤ K) 的行驶路径
 C101: 
 SU' data first 3 lines;
 101 25 200
-40 50 0 0 0 1236
-45 68 10 90 912 967
+(x)40 (y)50 (demand)0  (last)0 (ready)0 (due)1236
+(x)45 (y)68 (demand)10 (last)90 (ready)912 (due)967
 
 py-ga's data first 3 lines;
 C101
@@ -50,8 +50,8 @@ NUMBER     CAPACITY
 CUSTOMER
 CUST NO.  XCOORD.   YCOORD.    DEMAND   READY TIME  DUE DATE   SERVICE   TIME
 
-    0      40         50          0          0       1236          0   
-    1      45         68         10        912        967         90   
+    0   (x)40  (y)50  (demand)0     (ready)0      (due)1236    (last)0   
+    1   (x)45  (y)68  (demand)10    (ready)912    (due)967     (last)90   
     2      45         70         30        825        870         90   
 
 Zhou Hang's data first 3 lines;
