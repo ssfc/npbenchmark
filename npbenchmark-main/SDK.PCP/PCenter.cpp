@@ -42,6 +42,9 @@ public:
                 // if(counter>=0)
                 if((input.centerNum == 10 && counter == 125) // pcb3038p010r729.txt ; 125 = 108165-108039-1
                    || (input.centerNum == 20 && counter == 191) // pcb3038p020r494.txt ; 191 = 51004-50812-1
+                   || (input.centerNum == 30 && counter == 77) // pcb3038p030r394.txt ; 77 = 32772-32694-1
+                   || (input.centerNum == 40 && counter == 82) // pcb3038p040r337.txt ; 82 = 24095-24012-1
+                   || (input.centerNum == 50 && counter == 152) // pcb3038p050r299.txt ; 152 = 19000-18847-1
                    || (input.centerNum == 200 && counter == 56)) // pcb3038p200r141.txt ; 56 = 4210-4153-1
                 {
                     cerr << "current_radius: " << input.current_radius << endl;
@@ -55,7 +58,7 @@ public:
                     cerr << "current_radius: " << input.current_radius << endl;
                     coverAllNodesUnderFixedRadius(output, input, isTimeout, seed);
                 }
-                 */
+                 //*/
 
                 counter++;
             }
