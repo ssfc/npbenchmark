@@ -49,6 +49,14 @@ public class InitAndPrint {
             System.exit(-1);
         }
 
+        customers[1].Number=0;
+        customers[1].X=40;
+        customers[1].Y=50;
+        customers[1].Demand=0;
+        customers[1].Begin=0;
+        customers[1].End=1236;
+        customers[1].Service=0;
+
         for ( int i = 1; i <= VehicleNumber; ++i ) {
             if ( routes[i].V.size()!=0 )
                 routes[i].V.clear();

@@ -22,7 +22,8 @@ public class Main {
 
     public static void main (String arg[]) {
 
-        String[] instances = { "C1_4_1", "C1_4_2", "C1_4_3", "C1_4_4" };
+        // String[] instances = { "C1_4_1", "C1_4_2", "C1_4_3", "C1_4_4" };
+        String[] instances = { "C101" };
         String[][] result = new String[instances.length][];
 
         for (int j = 0; j < instances.length; j = j + 1) {
