@@ -14,8 +14,8 @@ public class Solution {
 
     public void cal_tatalCost() {
         totalCost = 0;
-        for (int i = 0; i < routes.size(); i++){
-            totalCost += routes.get(i).distance;
+        for (Route route : routes) {
+            totalCost += route.distance;
         }
     }
 }
