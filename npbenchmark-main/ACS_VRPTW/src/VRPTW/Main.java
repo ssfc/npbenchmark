@@ -1,12 +1,14 @@
 package VRPTW;
 
 public class Main {
-    public static void main (String arg[]) {
+    public static void main (String[] args) {
+        String instance_name = args[0];
+
         long begin_time = System.nanoTime();
 
         Parameter parameter = new Parameter();
         ReadIn readIn = new ReadIn();
-        readIn.Read("c101.txt");
+        readIn.Read(instance_name);
 
         System.out.println("waiting for a while ... ...");
         AntColonySystem ACS = new AntColonySystem(parameter, readIn);
