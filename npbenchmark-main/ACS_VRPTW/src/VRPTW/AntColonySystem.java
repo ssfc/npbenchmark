@@ -213,11 +213,13 @@ public class AntColonySystem {
         }
     }
 
-    public Solution ACS_Strategy() {
+    public Solution ACS_Strategy()
+    {
         bestSolution = new Solution();
         bestSolution.totalCost = Integer.MAX_VALUE;
         init();
-        for (int i = 0; i < IterMax; i++) {
+        for (int i = 0; i < IterMax; i++)
+        {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
             update_pheromone();//更新信息素
