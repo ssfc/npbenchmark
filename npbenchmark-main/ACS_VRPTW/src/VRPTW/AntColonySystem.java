@@ -13,7 +13,7 @@ public class AntColonySystem {
 
     public double[][] Graph;
     public Customer[] customers;
-    public ArrayList<Integer> untreated[]; // 记录每一位agent k未服务过的客户
+    public ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     public int customerNr; // 客户数量
     public int agentNr; // agent数量
     public int capacity; // 车辆容量
