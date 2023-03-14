@@ -19,7 +19,7 @@ public class Main {
         long end_time = System.nanoTime();
         double usedTime= (end_time - begin_time)/(1e9);
         System.out.println();
-        System.out.println("Total run time: "+usedTime+"s");
+        System.out.println("Run time(s): "+usedTime);
     }
 }
 

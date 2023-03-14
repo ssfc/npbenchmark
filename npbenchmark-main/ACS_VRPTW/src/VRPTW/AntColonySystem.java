@@ -223,7 +223,10 @@ public class AntColonySystem {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
             update_pheromone();//更新信息素
-            System.out.println("iteration : " + i + "\tbest solution cost = " + bestSolution.totalCost);
+            if(i % 5 == 0)
+            {
+                System.out.println("iteration : " + i + "\tbest solution cost = " + bestSolution.totalCost);
+            }
         }
         return bestSolution;
     }
