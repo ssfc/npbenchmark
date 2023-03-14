@@ -22,3 +22,9 @@ public class Main {
         System.out.println("Total run time £º"+usedTime+"s");
     }
 }
+
+/*
+ * running command:
+ * home server: javac -d . VRPTW/*.java && java VRPTW.Main
+ *
+ */
