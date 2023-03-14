@@ -6,7 +6,7 @@ public class Main {
 
         Parameter parameter = new Parameter();
         ReadIn readIn = new ReadIn();
-        readIn.Read("c101.txt");
+        readIn.Read("C102.txt");
 
         System.out.println("waiting for a while ... ...");
         AntColonySystem ACS = new AntColonySystem(parameter, readIn);
