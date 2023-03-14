@@ -17,9 +17,9 @@ public class Main {
         print.CheckAns();
 
         long end_time = System.nanoTime();
-        double usedTime= (end_time - begin_time)/(1e9);
+        double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
-        System.out.println("Run time(s): "+usedTime);
+        System.out.println("elapsed time(s): "+ elapsed_time);
     }
 }
 
