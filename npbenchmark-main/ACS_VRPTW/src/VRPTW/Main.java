@@ -2,11 +2,11 @@ package VRPTW;
 
 public class Main {
     public static void main (String arg[]) {
-        long begintime = System.nanoTime();
+        long begin_time = System.nanoTime();
 
         Parameter parameter = new Parameter();
         ReadIn readIn = new ReadIn();
-        readIn.Read("C102.txt");
+        readIn.Read("c101.txt");
 
         System.out.println("waiting for a while ... ...");
         AntColonySystem ACS = new AntColonySystem(parameter, readIn);
@@ -16,10 +16,10 @@ public class Main {
         print.Output();
         print.CheckAns();
 
-        long endtime = System.nanoTime();
-        double usedTime= (endtime - begintime)/(1e9);
+        long end_time = System.nanoTime();
+        double usedTime= (end_time - begin_time)/(1e9);
         System.out.println();
-        System.out.println("Total run time £º"+usedTime+"s");
+        System.out.println("Total run time: "+usedTime+"s");
     }
 }
 
