@@ -6,8 +6,10 @@ public class Customer
     int R;//节点所属车辆路径编号
     int X; //节点横坐标
     int Y; //节点纵坐标
-    int Begin, End, Service;//节点被访问的最早时间，最晚时间以及服务时长
-    int Demand;//节点的需求容量
+    int Begin; //时间窗开始时间;
+    int End; // 时间窗结束时间;
+    int Service; // 服务时长
+    int Demand; //节点的需求容量
 
     public Customer()
     {
