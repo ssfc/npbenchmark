@@ -26,7 +26,7 @@ public class Print
     }
 
     //结果输出
-    public void Output ()
+    public void print_result()
     {
         System.out.println("************************************************************");
         System.out.println("The Minimum Total Distance = "+ bestCost);

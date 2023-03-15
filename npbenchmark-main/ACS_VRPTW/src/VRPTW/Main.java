@@ -23,7 +23,7 @@ public class Main
 
         // print result;
         Print print = new Print(bestSolution, readIn);
-        print.Output();
+        print.print_result();
         print.check_answer();
 
         long end_time = System.nanoTime();
