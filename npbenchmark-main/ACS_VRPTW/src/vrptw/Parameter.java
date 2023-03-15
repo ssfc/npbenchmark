@@ -9,7 +9,7 @@ public class Parameter
 
     Parameter()
     {
-        IterMax = 500;
+        IterMax = 100;
         Alpha = 0.05;
         Beta = 1;
         Sita = 5;
