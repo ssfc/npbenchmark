@@ -1,4 +1,4 @@
-package VRPTW;
+package vrptw;
 
 import java.util.ArrayList;
 

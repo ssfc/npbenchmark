@@ -1,4 +1,4 @@
-package VRPTW;
+package vrptw;
 /*
  * <p>Title: Print</p>
  * <p>Description: </p>
