@@ -9,14 +9,19 @@ public class Main
 
         long begin_time = System.nanoTime();
 
-        Parameter parameter = new Parameter();
+        // read in files;
         ReadIn readIn = new ReadIn();
         readIn.Read(instance_name);
 
+        // set parameters;
+        Parameter parameter = new Parameter();
+
+        // compute result;
         System.out.println("waiting for a while ... ...");
         AntColonySystem ACS = new AntColonySystem(parameter, readIn, seed);
         Solution bestSolution = ACS.ACS_Strategy();
 
+        // print result;
         Print print = new Print(bestSolution, readIn);
         print.Output();
         print.CheckAns();
