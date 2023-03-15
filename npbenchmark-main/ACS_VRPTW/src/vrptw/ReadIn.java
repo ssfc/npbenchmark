@@ -42,7 +42,7 @@ public class ReadIn
                 customers[i].x = in.nextInt();
                 customers[i].y = in.nextInt();
                 customers[i].Demand = in.nextInt();
-                customers[i].Begin = in.nextInt();
+                customers[i].ready_time = in.nextInt();
                 customers[i].End = in.nextInt();
                 customers[i].Service = in.nextInt();
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);

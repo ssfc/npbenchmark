@@ -70,7 +70,7 @@ public class Print
             {
                 time += Graph[bestRoutes.get(i).customers.get(j - 1)][bestRoutes.get(i).customers.get(j)];
                 if (time > customers[bestRoutes.get(i).customers.get(j)].End) checkTime = false;
-                time = Math.max(time, customers[bestRoutes.get(i).customers.get(j)].Begin)
+                time = Math.max(time, customers[bestRoutes.get(i).customers.get(j)].ready_time)
                         + customers[bestRoutes.get(i).customers.get(j)].Service;
             }
         }
