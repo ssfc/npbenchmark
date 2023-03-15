@@ -48,7 +48,7 @@ public class AntColonySystem {
         this.sita = parameter.Sita;
         this.w1 = parameter.w1;
         this.w2 = parameter.w2;
-        this.rand = new Random();
+        this.rand = new Random(1234);
     }
 
     // 初始化总体参数
