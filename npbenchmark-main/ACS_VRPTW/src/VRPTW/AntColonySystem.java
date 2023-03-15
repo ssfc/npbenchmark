@@ -27,7 +27,7 @@ public class AntColonySystem {
     public double pheromone_0; // 信息素初始值
     public double w1, w2; // 计算概率的参数
     public double alpha, beta, sita; // 计算infoPhe的参数，
-    public Random rand;
+    public Random generated_random;
 
     public AntColonySystem(Parameter parameter, ReadIn readIn) {
         this.customerNr = readIn.customerNr;
@@ -48,7 +48,7 @@ public class AntColonySystem {
         this.sita = parameter.Sita;
         this.w1 = parameter.w1;
         this.w2 = parameter.w2;
-        this.rand = new Random(1234);
+        this.generated_random = new Random(1234);
     }
 
     // 初始化总体参数
@@ -153,7 +153,7 @@ public class AntColonySystem {
             sumTime += infoTime[i];
         }
 
-        double rate = rand.nextDouble();
+        double rate = generated_random.nextDouble();
         int next = 0;
         double sum_prob = 0;
 
