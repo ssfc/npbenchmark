@@ -4,8 +4,8 @@ public class Customer
 {
     int Number;//节点自身编号
     int R;//节点所属车辆路径编号
-    int X; //节点横坐标
-    int Y; //节点纵坐标
+    int x; //节点横坐标
+    int y; //节点纵坐标
     int Begin; //时间窗开始时间;
     int End; // 时间窗结束时间;
     int Service; // 服务时长
@@ -18,8 +18,8 @@ public class Customer
         Begin = 0;
         End = 0;
         Service = 0;
-        X = 0;
-        Y = 0;
+        x = 0;
+        y = 0;
         Demand = 0;
     }
 
@@ -31,8 +31,8 @@ public class Customer
         newCustomer.Begin = Begin;
         newCustomer.End = End;
         newCustomer.Service = Service;
-        newCustomer.X = X;
-        newCustomer.Y = Y;
+        newCustomer.x = x;
+        newCustomer.y = y;
         newCustomer.Demand = Demand;
         return newCustomer;
     }

@@ -15,7 +15,7 @@ public class ReadIn
     //计算图上各节点间的距离
     private double Distance ( Customer C1, Customer C2 )
     {
-        return sqrt ( ( C1.X - C2.X ) * ( C1.X - C2.X ) + ( C1.Y - C2.Y ) * ( C1.Y - C2.Y ) );
+        return sqrt ( ( C1.x - C2.x ) * ( C1.x - C2.x ) + ( C1.y - C2.y ) * ( C1.y - C2.y ) );
     }
 
     //读取数据
@@ -38,13 +38,13 @@ public class ReadIn
 
             for ( int i = 0; i <= customerNr; ++i )
             {
-                customers[i].Number=in.nextInt();
-                customers[i].X=in.nextInt();
-                customers[i].Y=in.nextInt();
-                customers[i].Demand=in.nextInt();
-                customers[i].Begin=in.nextInt();
-                customers[i].End=in.nextInt();
-                customers[i].Service=in.nextInt();
+                customers[i].Number = in.nextInt();
+                customers[i].x = in.nextInt();
+                customers[i].y = in.nextInt();
+                customers[i].Demand = in.nextInt();
+                customers[i].Begin = in.nextInt();
+                customers[i].End = in.nextInt();
+                customers[i].Service = in.nextInt();
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }
 
