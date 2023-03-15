@@ -2,7 +2,8 @@ package VRPTW;
 
 public class Main {
     public static void main (String[] args) {
-        String instance_name = args[0];
+        int seed = Integer.parseInt(args[0]);
+        String instance_name = args[1];
 
         long begin_time = System.nanoTime();
 
@@ -11,7 +12,7 @@ public class Main {
         readIn.Read(instance_name);
 
         System.out.println("waiting for a while ... ...");
-        AntColonySystem ACS = new AntColonySystem(parameter, readIn);
+        AntColonySystem ACS = new AntColonySystem(parameter, readIn, seed);
         Solution bestSolution = ACS.ACS_Strategy();
 
         Print print = new Print(bestSolution, readIn);

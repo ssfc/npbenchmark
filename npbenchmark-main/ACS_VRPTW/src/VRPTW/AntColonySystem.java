@@ -29,7 +29,7 @@ public class AntColonySystem {
     public double alpha, beta, sita; // 计算infoPhe的参数，
     public Random generated_random;
 
-    public AntColonySystem(Parameter parameter, ReadIn readIn) {
+    public AntColonySystem(Parameter parameter, ReadIn readIn, int seed) {
         this.customerNr = readIn.customerNr;
         this.agentNr = customerNr;
         this.capacity = readIn.capacity;
@@ -48,7 +48,7 @@ public class AntColonySystem {
         this.sita = parameter.Sita;
         this.w1 = parameter.w1;
         this.w2 = parameter.w2;
-        this.generated_random = new Random(1234);
+        this.generated_random = new Random(seed);
     }
 
     // 初始化总体参数

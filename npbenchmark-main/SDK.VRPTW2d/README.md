@@ -55,8 +55,6 @@ CUST NO.  XCOORD.   YCOORD.    DEMAND   READY TIME  DUE DATE   SERVICE   TIME
     1   (x)45  (y)68  (demand)10    (ready)912    (due)967     (last)90   
     2      45         70         30        825        870         90   
 
-Zhou Hang's data first 3 lines;
-0      40         50          0          0       1236          0   
-1      45         68         10        912        967         90   
+
 
 
