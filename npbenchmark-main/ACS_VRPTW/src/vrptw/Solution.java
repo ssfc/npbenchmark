@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Solution
 {
     public double totalCost;
-    public ArrayList <Route> routes=new ArrayList<>();
+    public ArrayList <Route> routes = new ArrayList<>();
 
     public void cal_tatalCost()
     {
