@@ -1,7 +1,9 @@
 package VRPTW;
 
-public class Main {
-    public static void main (String[] args) {
+public class Main
+{
+    public static void main (String[] args)
+    {
         int seed = Integer.parseInt(args[0]);
         String instance_name = args[1];
 
