@@ -1,5 +1,5 @@
 package VRPTW;
-/**
+/*
  * <p>Title: Print</p>
  * <p>Description: </p>
  * @author zll_hust
@@ -8,42 +8,50 @@ package VRPTW;
 
 import java.util.ArrayList;
 
-public class Print {
-
+public class Print
+{
     private double bestCost;
     public int capacity;
     private ArrayList <Route> bestRoutes=new ArrayList<>();
     private double[][] Graph;
     public Customer[] customers;
 
-    Print(Solution bestSolution, ReadIn readIn){
-        this.bestCost = bestSolution.totalCost;
-        this.bestRoutes = bestSolution.routes;
-        this.Graph = readIn.Graph;
-        this.customers = readIn.customers;
-        this.capacity = readIn.capacity;
+    Print(Solution bestSolution, ReadIn readIn)
+    {
+        bestCost = bestSolution.totalCost;
+        bestRoutes = bestSolution.routes;
+        Graph = readIn.Graph;
+        customers = readIn.customers;
+        capacity = readIn.capacity;
     }
 
     //结果输出
-    public void Output () {
+    public void Output ()
+    {
         System.out.println("************************************************************");
         System.out.println("The Minimum Total Distance = "+ bestCost);
         System.out.println("Concrete Schedule of Each Route as Following : ");
 
         int id = 0;
         for (int i = 1; i < bestRoutes.size(); i++)
-            if ( bestRoutes.get(i).customers.size() > 2 ) {
+        {
+            if (bestRoutes.get(i).customers.size() > 2)
+            {
                 id++;
                 System.out.print("No." + id + " : ");
 
-                for ( int j = 0; j < bestRoutes.get(i).customers.size() - 1; ++j )
-                    System.out.print( bestRoutes.get(i).customers.get(j) + " -> ");
-                System.out.println( bestRoutes.get(i).customers.get(bestRoutes.get(i).customers.size() - 1));
+                for (int j = 0; j < bestRoutes.get(i).customers.size() - 1; ++j)
+                {
+                    System.out.print(bestRoutes.get(i).customers.get(j) + " -> ");
+                }
+                System.out.println(bestRoutes.get(i).customers.get(bestRoutes.get(i).customers.size() - 1));
             }
+        }
         System.out.println("************************************************************");
     }
 
-    public void CheckAns() {
+    public void CheckAns()
+    {
         boolean checkTime = true;
         boolean checkCost = true;
         boolean checkCapacity = true;
@@ -55,9 +63,11 @@ public class Print {
         // 防止精度损失
         if (Math.abs(totalCost - bestCost) > 1) checkCost = false;
 
-        for (int i = 0; i < bestRoutes.size(); i++) {
+        for (int i = 0; i < bestRoutes.size(); i++)
+        {
             int time = 0;
-            for (int j = 1; j < bestRoutes.get(i).customers.size(); ++j) {
+            for (int j = 1; j < bestRoutes.get(i).customers.size(); ++j)
+            {
                 time += Graph[bestRoutes.get(i).customers.get(j - 1)][bestRoutes.get(i).customers.get(j)];
                 if (time > customers[bestRoutes.get(i).customers.get(j)].End) checkTime = false;
                 time = Math.max(time, customers[bestRoutes.get(i).customers.get(j)].Begin)
@@ -65,9 +75,11 @@ public class Print {
             }
         }
 
-        for (int i = 0; i < bestRoutes.size(); i++) {
+        for (int i = 0; i < bestRoutes.size(); i++)
+        {
             int load = 0;
-            for (int j = 1; j < bestRoutes.get(i).customers.size() - 1; ++j) {
+            for (int j = 1; j < bestRoutes.get(i).customers.size() - 1; ++j)
+            {
                 load += customers[bestRoutes.get(i).customers.get(j)].Demand;
             }
             if (load > capacity) checkCapacity = false;
