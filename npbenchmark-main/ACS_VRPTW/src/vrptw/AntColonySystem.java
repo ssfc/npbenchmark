@@ -169,7 +169,7 @@ public class AntColonySystem
             infoPhe[i] =Math.pow(pheromone[r[k]][untreated[k].get(i)], beta)
                     * Math.pow(herustic[r[k]][untreated[k].get(i)], sita);
             infoTime[i] = 1 / (Math.abs(route.time - customers[untreated[k].get(i)].ready_time) +
-                    Math.abs(route.time - customers[untreated[k].get(i)].End));
+                    Math.abs(route.time - customers[untreated[k].get(i)].due_time));
             sumPhe += infoPhe[i];
             sumTime += infoTime[i];
         }
@@ -187,7 +187,7 @@ public class AntColonySystem
                 // 检验合法性
                 double time = route.time + Graph[r[k]][next];
                 double load = route.load + customers[next].Demand;
-                if (time > customers[next].End || load > capacity)
+                if (time > customers[next].due_time || load > capacity)
                     continue;
                 else
                     break;
@@ -196,7 +196,7 @@ public class AntColonySystem
         // 检验合法性
         double time = route.time + Graph[r[k]][next];
         double load = route.load + customers[next].Demand;
-        if (time > customers[next].End || load > capacity) next = 0;
+        if (time > customers[next].due_time || load > capacity) next = 0;
 
         return next;
     }
