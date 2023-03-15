@@ -31,25 +31,26 @@ public class AntColonySystem
 
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
-        this.customerNr = readIn.customerNr;
-        this.agentNr = customerNr;
-        this.capacity = readIn.capacity;
-        this.Graph = readIn.Graph;
-        this.customers = readIn.customers;
-        this.IterMax = parameter.IterMax;
-        this.solutions = new Solution[agentNr + 10]; // 设置agents数量和城市数一样多
-        this.untreated = new ArrayList[agentNr + 10]; // 数组数量等于agents数
-        for (int i = 0; i < agentNr + 10; i++) untreated[i] = new ArrayList<>();
-        this.r = new int[agentNr + 10];
-        this.pheromone = new double[customerNr + 10][customerNr + 10];
-        this.herustic = new double[customerNr + 10][customerNr + 10];
-        this.infoPhe = new double[customerNr + 10][customerNr + 10];
-        this.alpha = parameter.Alpha;
-        this.beta = parameter.Beta;
-        this.sita = parameter.Sita;
-        this.w1 = parameter.w1;
-        this.w2 = parameter.w2;
-        this.generated_random = new Random(seed);
+        customerNr = readIn.customerNr;
+        agentNr = customerNr;
+        capacity = readIn.capacity;
+        Graph = readIn.Graph;
+        customers = readIn.customers;
+        IterMax = parameter.IterMax;
+        solutions = new Solution[agentNr + 10]; // 设置agents数量和城市数一样多
+        untreated = new ArrayList[agentNr + 10]; // 数组数量等于agents数
+        for (int i = 0; i < agentNr + 10; i++)
+            untreated[i] = new ArrayList<>();
+        r = new int[agentNr + 10];
+        pheromone = new double[customerNr + 10][customerNr + 10];
+        herustic = new double[customerNr + 10][customerNr + 10];
+        infoPhe = new double[customerNr + 10][customerNr + 10];
+        alpha = parameter.Alpha;
+        beta = parameter.Beta;
+        sita = parameter.Sita;
+        w1 = parameter.w1;
+        w2 = parameter.w2;
+        generated_random = new Random(seed);
     }
 
     // 初始化总体参数
