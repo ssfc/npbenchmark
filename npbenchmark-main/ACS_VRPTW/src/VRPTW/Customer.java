@@ -8,26 +8,26 @@ public class Customer {
     int Demand;//节点的需求容量
 
     public Customer() {
-        this.Number=0;
-        this.R=0;
-        this.Begin =0;
-        this.End=0;
-        this.Service=0;
-        this.X=0;
-        this.Y=0;
-        this.Demand=0;
+        Number = 0;
+        R = 0;
+        Begin = 0;
+        End = 0;
+        Service = 0;
+        X = 0;
+        Y = 0;
+        Demand = 0;
     }
 
     public Customer copy() {
         Customer newCustomer = new Customer();
-        newCustomer.Number=this.Number;
-        newCustomer.R=this.R;
-        newCustomer.Begin =this.Begin;
-        newCustomer.End=this.End;
-        newCustomer.Service=this.Service;
-        newCustomer.X=this.X;
-        newCustomer.Y=this.Y;
-        newCustomer.Demand=this.Demand;
+        newCustomer.Number = Number;
+        newCustomer.R = R;
+        newCustomer.Begin = Begin;
+        newCustomer.End = End;
+        newCustomer.Service = Service;
+        newCustomer.X = X;
+        newCustomer.Y = Y;
+        newCustomer.Demand = Demand;
         return newCustomer;
     }
 }
