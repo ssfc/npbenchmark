@@ -17,7 +17,7 @@ public class AntColonySystem
     public int customerNr; // 客户数量
     public int agentNr; // agent数量
     public int capacity; // 车辆容量
-    public int IterMax; // 最大迭代次数
+    public int max_iter; // 最大迭代次数
     public Solution[] solutions; // agents
     public Solution bestSolution;
     public int[] r; // agent k 出发位置、当前位置、下一位置
@@ -36,7 +36,7 @@ public class AntColonySystem
         capacity = readIn.capacity;
         Graph = readIn.Graph;
         customers = readIn.customers;
-        IterMax = parameter.IterMax;
+        max_iter = parameter.IterMax;
         solutions = new Solution[agentNr + 10]; // 设置agents数量和城市数一样多
         untreated = new ArrayList[agentNr + 10]; // 数组数量等于agents数
         for (int i = 0; i < agentNr + 10; i++)
@@ -246,7 +246,7 @@ public class AntColonySystem
         bestSolution = new Solution();
         bestSolution.totalCost = Integer.MAX_VALUE;
         init();
-        for (int i = 0; i < IterMax; i++)
+        for (int i = 0; i < max_iter; i++)
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
@@ -256,6 +256,7 @@ public class AntColonySystem
                 System.out.println("iteration : " + i + "\tbest solution cost = " + bestSolution.totalCost);
             }
         }
+
         return bestSolution;
     }
 }
