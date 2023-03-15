@@ -9,8 +9,8 @@ import java.util.Random;
  * @author zll_hust
  * @date 2020年2月2日
  */
-public class AntColonySystem {
-
+public class AntColonySystem
+{
     public double[][] Graph;
     public Customer[] customers;
     public ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
@@ -29,7 +29,8 @@ public class AntColonySystem {
     public double alpha, beta, sita; // 计算infoPhe的参数，
     public Random generated_random;
 
-    public AntColonySystem(Parameter parameter, ReadIn readIn, int seed) {
+    public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
+    {
         this.customerNr = readIn.customerNr;
         this.agentNr = customerNr;
         this.capacity = readIn.capacity;
@@ -52,24 +53,32 @@ public class AntColonySystem {
     }
 
     // 初始化总体参数
-    public void init() {
+    public void init()
+    {
         // 计算信息素初始值
         double totalDistance = 0;
         double num = 0;
-        for (int i = 0; i < customerNr + 1; i++) {
-            for (int j = 0; j < customerNr + 1; j++) {
-                if (i != j) {
+        for (int i = 0; i < customerNr + 1; i++)
+        {
+            for (int j = 0; j < customerNr + 1; j++)
+            {
+                if (i != j)
+                {
                     totalDistance += Graph[i][j];
                     num ++;
                 }
             }
         }
+
         pheromone_0 = num / (totalDistance * (customerNr + 1));
 
         // 初始化信息素、启发值
-        for (int i = 0; i < customerNr + 1; i++) {
-            for (int j = 0; j < customerNr + 1; j++) {
-                if (i != j) {
+        for (int i = 0; i < customerNr + 1; i++)
+        {
+            for (int j = 0; j < customerNr + 1; j++)
+            {
+                if (i != j)
+                {
                     pheromone[i][j] = pheromone[j][i] = pheromone_0;
                     herustic[i][j] = herustic[j][i] = 1 / Graph[i][j];
                 }
@@ -78,16 +87,20 @@ public class AntColonySystem {
     }
 
     // 初始化agent参数
-    public void reset() {
+    public void reset()
+    {
         // 初始化每位agent未服务的客户
-        for (int i = 0; i < agentNr; i++) {
+        for (int i = 0; i < agentNr; i++)
+        {
             untreated[i].clear();
-            for ( int j = 0; j < customerNr; j++) {
+            for ( int j = 0; j < customerNr; j++)
+            {
                 untreated[i].add(j + 1);
             }
         }
         // 初始化起始服务客户
-        for (int i = 0; i < agentNr; i++) {
+        for (int i = 0; i < agentNr; i++)
+        {
             solutions[i] = new Solution();
             r[i] = 0;
         }
@@ -95,18 +108,22 @@ public class AntColonySystem {
     }
 
     // 构造完整解
-    public void construct_solution() {
+    public void construct_solution()
+    {
         // 为每一位agent分别构造解
-        for (int i = 0; i < agentNr; i++) {
+        for (int i = 0; i < agentNr; i++)
+        {
             // 路径开始
             Route route = new Route();
             route.customers.add(0);
 
-            while(untreated[i].size() != 0) {
+            while(untreated[i].size() != 0)
+            {
                 int next = select_next(i, route);
 
                 // 如果下一个选择不合法或客户已配送完毕
-                if (next == 0) {
+                if (next == 0)
+                {
                     route.customers.add(0);
                     route.time += Graph[r[i]][0];
                     route.distance += Graph[r[i]][0];
@@ -116,7 +133,8 @@ public class AntColonySystem {
                     route.customers.add(0);
                     r[i] = 0;
                 }
-                else {
+                else
+                {
                     route.customers.add(next);
                     route.load += customers[next].Demand;
                     route.time = Math.max(route.time + Graph[r[i]][next], customers[next].Begin) + customers[next].Service;
@@ -135,7 +153,8 @@ public class AntColonySystem {
         }
     }
 
-    public int select_next(int k, Route route) {
+    public int select_next(int k, Route route)
+    {
         // 若全部处理完，返回配送中心
         if (untreated[k].size() == 0) return 0;
 
@@ -144,7 +163,8 @@ public class AntColonySystem {
         double sumTime = 0;
         double[] infoPhe = new double[agentNr];
         double[] infoTime = new double[agentNr];
-        for (int i = 0; i < untreated[k].size(); i++) {
+        for (int i = 0; i < untreated[k].size(); i++)
+        {
             infoPhe[i] =Math.pow(pheromone[r[k]][untreated[k].get(i)], beta)
                     * Math.pow(herustic[r[k]][untreated[k].get(i)], sita);
             infoTime[i] = 1 / (Math.abs(route.time - customers[untreated[k].get(i)].Begin) +
@@ -158,7 +178,8 @@ public class AntColonySystem {
         double sum_prob = 0;
 
         // 生成0-1随机数，累加概率，若大于当前累加部分，返回当前城市编号
-        for (int i = 0; i < untreated[k].size(); i++) {
+        for (int i = 0; i < untreated[k].size(); i++)
+        {
             sum_prob += infoPhe[i] * w1 / sumPhe + infoTime[i] * w2 / sumTime;
             if (rate < sum_prob) {
                 next = untreated[k].get(i);
@@ -180,18 +201,22 @@ public class AntColonySystem {
     }
 
     // 更新信息素
-    public void update_pheromone() {
+    public void update_pheromone()
+    {
         Solution now_best = new Solution();
         now_best.totalCost = Integer.MAX_VALUE;
         double delta = 0;
 
         // 查找最优解
-        for (int i = 0; i < agentNr; i++) {
-            if (solutions[i].totalCost < now_best.totalCost) now_best = solutions[i];
+        for (int i = 0; i < agentNr; i++)
+        {
+            if (solutions[i].totalCost < now_best.totalCost)
+                now_best = solutions[i];
         }
 
         // 更新最优解 若当前最优代替历史最优，增加信息素时获得增益
-        if (now_best.totalCost < bestSolution.totalCost) {
+        if (now_best.totalCost < bestSolution.totalCost)
+        {
             delta = (bestSolution.totalCost - now_best.totalCost) / bestSolution.totalCost;
             bestSolution = now_best;
         }
@@ -202,8 +227,10 @@ public class AntColonySystem {
             for (int j = 0; j < customerNr; j ++)
                 pheromone[i][j] *= (1 - alpha);
         // 信息素增加
-        for (int i = 0; i < now_best.routes.size(); i ++){
-            for (int j = 1; j < now_best.routes.get(i).customers.size(); j++) {
+        for (int i = 0; i < now_best.routes.size(); i ++)
+        {
+            for (int j = 1; j < now_best.routes.get(i).customers.size(); j++)
+            {
                 pheromone[now_best.routes.get(i).customers.get(j - 1)][now_best.routes.get(i).customers.get(j)]
                         += (1 / (double)now_best.totalCost) * (1 + delta);
                 // 对称处理
