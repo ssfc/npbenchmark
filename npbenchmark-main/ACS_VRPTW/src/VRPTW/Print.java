@@ -50,7 +50,7 @@ public class Print
         System.out.println("************************************************************");
     }
 
-    public void CheckAns()
+    public void check_answer()
     {
         boolean checkTime = true;
         boolean checkCost = true;

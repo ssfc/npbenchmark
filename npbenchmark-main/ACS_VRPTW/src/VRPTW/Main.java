@@ -24,7 +24,7 @@ public class Main
         // print result;
         Print print = new Print(bestSolution, readIn);
         print.Output();
-        print.CheckAns();
+        print.check_answer();
 
         long end_time = System.nanoTime();
         double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
