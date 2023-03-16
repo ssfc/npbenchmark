@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class Solution
 {
-    public double totalCost;
-    public ArrayList <Route> routes = new ArrayList<>();
+    double totalCost;
+    ArrayList <Route> routes = new ArrayList<>();
 
     public void cal_tatalCost()
     {
