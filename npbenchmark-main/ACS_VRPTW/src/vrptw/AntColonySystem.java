@@ -25,12 +25,14 @@ public class AntColonySystem
     private Solution best_solution;
     private final int[] r; // agent k 出发位置、当前位置、下一位置
     private final double[][] pheromone; // 信息素
-    private double[][] herustic; // 启发值
+    private final double[][] herustic; // 启发值
     private double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
     private double pheromone_0; // 信息素初始值
-    private final double w1;
+    private final double w1; // 计算概率的参数
     private final double w2; // 计算概率的参数
-    private double alpha, beta, sita; // 计算infoPhe的参数，
+    private final double alpha; // 计算infoPhe的参数，
+    private final double beta; // 计算infoPhe的参数，
+    private final double sita; // 计算infoPhe的参数，
     private final Random generated_random;
 
     // member functions;
