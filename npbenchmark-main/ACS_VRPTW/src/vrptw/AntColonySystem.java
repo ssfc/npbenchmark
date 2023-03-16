@@ -1,5 +1,6 @@
 package vrptw;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -247,6 +248,7 @@ public class AntColonySystem
 
     public void ACS_Strategy()
     {
+        DecimalFormat df = new DecimalFormat("#.##");
         long begin_time = System.nanoTime();
         best_solution = new Solution();
         best_solution.totalCost = Integer.MAX_VALUE;
@@ -259,8 +261,9 @@ public class AntColonySystem
             if(iter % 5 == 0)
             {
                 double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
-                System.out.println("iteration : " + iter + "\tbest solution cost = " + best_solution.totalCost
-                                 + " elapsed time(s): " + elapsed_time + " frequency:" + (double) iter / elapsed_time);
+                System.out.println("iteration : " + iter + "\tbest solution cost = " + df.format(best_solution.totalCost)
+                        + " elapsed time(s): " + df.format(elapsed_time)
+                        + " frequency:" + df.format((double) iter / elapsed_time));
             }
 
             iter++;
@@ -268,8 +271,8 @@ public class AntColonySystem
 
         double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
-        System.out.println("success, iterations: " + iter + " elapsed time(s): " + elapsed_time
-                         + " frequency:" + (double) iter / elapsed_time);
+        System.out.println("success, iterations: " + iter + " elapsed time(s): " + df.format(elapsed_time)
+                         + " frequency:" + df.format((double) iter / elapsed_time));
     }
 
     // debug function
