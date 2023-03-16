@@ -30,7 +30,7 @@ public class Print
     {
         boolean check_time = true;
         boolean check_cost = true;
-        boolean checkCapacity = true;
+        boolean check_capacity = true;
         // 检验距离计算是否正确
         double totalCost = 0;
         for (Route bestRoute : bestRoutes)
@@ -67,11 +67,11 @@ public class Print
                 load += customers[bestRoute.customers.get(j)].Demand;
             }
             if (load > capacity)
-                checkCapacity = false;
+                check_capacity = false;
         }
 
         System.out.println("Check total cost = " + totalCost + "\t" + check_cost);
         System.out.println("Check time windows = " + check_time);
-        System.out.println("Check time capacity = " + checkCapacity);
+        System.out.println("Check time capacity = " + check_capacity);
     }
 }
