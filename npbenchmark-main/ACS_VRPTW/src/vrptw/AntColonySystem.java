@@ -138,7 +138,7 @@ public class AntColonySystem
                 {
                     route.customers.add(next);
                     route.load += customers[next].Demand;
-                    route.time = Math.max(route.time + Graph[r[i]][next], customers[next].ready_time) + customers[next].Service;
+                    route.time = Math.max(route.time + Graph[r[i]][next], customers[next].ready_time) + customers[next].service_time;
                     route.distance += Graph[r[i]][next];
                     r[i] = next;
                     for (int j = 0; j < untreated[i].size(); j++)
@@ -147,7 +147,7 @@ public class AntColonySystem
             }
             // 最后一条路径返回配送中心
             route.customers.add(0);
-            route.time = Math.max(Graph[r[i]][0], customers[0].ready_time) + customers[0].Service;
+            route.time = Math.max(Graph[r[i]][0], customers[0].ready_time) + customers[0].service_time;
             route.distance += Graph[r[i]][0];
             solutions[i].routes.add(route);
             solutions[i].totalCost += route.distance;

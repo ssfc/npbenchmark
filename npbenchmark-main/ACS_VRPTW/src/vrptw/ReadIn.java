@@ -44,7 +44,7 @@ public class ReadIn
                 customers[i].Demand = in.nextInt();
                 customers[i].ready_time = in.nextInt();
                 customers[i].due_time = in.nextInt();
-                customers[i].Service = in.nextInt();
+                customers[i].service_time = in.nextInt();
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }
 

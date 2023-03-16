@@ -69,7 +69,7 @@ public class Print
                 time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
                 if (time > customers[bestRoute.customers.get(j)].due_time) checkTime = false;
                 time = Math.max(time, customers[bestRoute.customers.get(j)].ready_time)
-                        + customers[bestRoute.customers.get(j)].Service;
+                        + customers[bestRoute.customers.get(j)].service_time;
             }
         }
 
