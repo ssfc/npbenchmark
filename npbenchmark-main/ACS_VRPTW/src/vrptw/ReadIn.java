@@ -58,7 +58,11 @@ public class ReadIn
         }
 
         for ( int i = 0; i <= customerNr; ++i )
-            for ( int j = 0; j <= customerNr; ++j )
-                Graph[i][j] = compute_distance ( customers[i], customers[j] );
+        {
+            for (int j = 0; j <= customerNr; ++j)
+            {
+                Graph[i][j] = compute_distance(customers[i], customers[j]);
+            }
+        }
     }
 }
