@@ -26,30 +26,6 @@ public class Print
     }
 
     //结果输出
-    public void print_result()
-    {
-        System.out.println("************************************************************");
-        System.out.println("The Minimum Total Distance = "+ bestCost);
-        System.out.println("Concrete Schedule of Each Route as Following : ");
-
-        int id = 0;
-        for (int i = 1; i < bestRoutes.size(); i++)
-        {
-            if (bestRoutes.get(i).customers.size() > 2)
-            {
-                id++;
-                System.out.print("No." + id + " : ");
-
-                for (int j = 0; j < bestRoutes.get(i).customers.size() - 1; ++j)
-                {
-                    System.out.print(bestRoutes.get(i).customers.get(j) + " -> ");
-                }
-                System.out.println(bestRoutes.get(i).customers.get(bestRoutes.get(i).customers.size() - 1));
-            }
-        }
-        System.out.println("************************************************************");
-    }
-
     public void check_answer()
     {
         boolean checkTime = true;
