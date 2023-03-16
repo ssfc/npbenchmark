@@ -13,9 +13,9 @@ public class ReadIn
     public Customer[] customers; // 存储客户数据
 
     //计算图上各节点间的距离
-    private double compute_distance ( Customer C1, Customer C2 )
+    private double compute_distance ( Customer c1, Customer c2 )
     {
-        return sqrt ( ( C1.x - C2.x ) * ( C1.x - C2.x ) + ( C1.y - C2.y ) * ( C1.y - C2.y ) );
+        return sqrt ( ( c1.x - c2.x ) * ( c1.x - c2.x ) + ( c1.y - c2.y ) * ( c1.y - c2.y ) );
     }
 
     //读取数据
