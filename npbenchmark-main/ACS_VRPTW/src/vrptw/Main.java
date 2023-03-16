@@ -9,7 +9,7 @@ public class Main
 
         // read in files;
         ReadIn read_in = new ReadIn();
-        read_in.Read(instance_name);
+        read_in.read_file(instance_name);
 
         // set parameters;
         Parameter parameter = new Parameter();

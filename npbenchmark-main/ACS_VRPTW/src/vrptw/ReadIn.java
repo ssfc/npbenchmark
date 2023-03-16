@@ -19,7 +19,7 @@ public class ReadIn
     }
 
     //读取数据
-    public void Read(String fileName)
+    public void read_file(String fileName)
     {
         try
         {
