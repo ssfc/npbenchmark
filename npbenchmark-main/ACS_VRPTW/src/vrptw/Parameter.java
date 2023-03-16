@@ -3,14 +3,16 @@ package vrptw;
 // Parameter.java很明显是个结构体类, 就不要硬改private了
 public class Parameter
 {
-    int IterMax;
-    double Alpha, w1, w2;
+    int max_iter;
+    double Alpha;
+    double w1;
+    double w2;
     int Beta, Sita;
     double[][] Graph;
 
     Parameter()
     {
-        IterMax = 50;
+        max_iter = 50;
         Alpha = 0.05;
         Beta = 1;
         Sita = 5;
@@ -20,7 +22,7 @@ public class Parameter
 
     Parameter(int interation, double alpha, int beta, int sita, double input_w1, double input_w2)
     {
-        IterMax = interation;
+        max_iter = interation;
         Alpha = alpha;
         Beta = beta;
         Sita = sita;

@@ -42,7 +42,7 @@ public class AntColonySystem
         Graph = readIn.Graph;
         customers = readIn.customers;
         iter = 0;
-        max_iter = parameter.IterMax;
+        max_iter = parameter.max_iter;
         solutions = new Solution[agentNr + 10]; // 设置agents数量和城市数一样多
         untreated = new ArrayList[agentNr + 10]; // 数组数量等于agents数
         for (int i = 0; i < agentNr + 10; i++)
