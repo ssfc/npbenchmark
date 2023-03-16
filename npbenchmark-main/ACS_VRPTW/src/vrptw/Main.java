@@ -22,6 +22,7 @@ public class Main
         Solution bestSolution = ACS.ACS_Strategy();
 
         // print result;
+        ACS.print_result();
         Print print = new Print(bestSolution, read_in);
         print.print_result();
         print.check_answer();

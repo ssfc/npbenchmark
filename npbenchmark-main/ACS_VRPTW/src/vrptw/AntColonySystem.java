@@ -261,4 +261,28 @@ public class AntColonySystem
 
         return best_solution;
     }
+
+    public void print_result()
+    {
+        System.out.println("************************************************************");
+        System.out.println("The Minimum Total Distance = " + best_solution .totalCost);
+        System.out.println("Concrete Schedule of Each Route as Following : ");
+
+        int id = 0;
+        for (int i = 1; i < best_solution.routes.size(); i++)
+        {
+            if (best_solution.routes.get(i).customers.size() > 2)
+            {
+                id++;
+                System.out.print("No." + id + " : ");
+
+                for (int j = 0; j < best_solution.routes.get(i).customers.size() - 1; ++j)
+                {
+                    System.out.print(best_solution.routes.get(i).customers.get(j) + " -> ");
+                }
+                System.out.println(best_solution.routes.get(i).customers.get(best_solution.routes.get(i).customers.size() - 1));
+            }
+        }
+        System.out.println("************************************************************");
+    }
 }
