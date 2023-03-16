@@ -39,9 +39,11 @@ public class Print
         // 防止精度损失
         if (Math.abs(totalCost - bestCost) > 1) checkCost = false;
 
-        for (Route bestRoute : bestRoutes) {
+        for (Route bestRoute : bestRoutes)
+        {
             int time = 0;
-            for (int j = 1; j < bestRoute.customers.size(); ++j) {
+            for (int j = 1; j < bestRoute.customers.size(); ++j)
+            {
                 time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
                 if (time > customers[bestRoute.customers.get(j)].due_time) checkTime = false;
                 time = Math.max(time, customers[bestRoute.customers.get(j)].ready_time)
@@ -49,12 +51,15 @@ public class Print
             }
         }
 
-        for (Route bestRoute : bestRoutes) {
+        for (Route bestRoute : bestRoutes)
+        {
             int load = 0;
-            for (int j = 1; j < bestRoute.customers.size() - 1; ++j) {
+            for (int j = 1; j < bestRoute.customers.size() - 1; ++j)
+            {
                 load += customers[bestRoute.customers.get(j)].Demand;
             }
-            if (load > capacity) checkCapacity = false;
+            if (load > capacity)
+                checkCapacity = false;
         }
 
         System.out.println("Check total cost = " + totalCost + "\t" + checkCost);
