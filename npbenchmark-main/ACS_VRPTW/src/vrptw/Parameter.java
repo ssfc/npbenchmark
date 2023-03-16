@@ -1,5 +1,6 @@
 package vrptw;
 
+// Parameter.java很明显是个结构体类, 就不要硬改private了
 public class Parameter
 {
     int IterMax;

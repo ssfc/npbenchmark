@@ -1,5 +1,6 @@
 package vrptw;
 
+// Customer.java很明显是个结构体类, 就不要硬改private了
 public class Customer
 {
     // member variables;
