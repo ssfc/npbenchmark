@@ -262,6 +262,7 @@ public class AntColonySystem
         return best_solution;
     }
 
+    // debug function
     public void print_result()
     {
         System.out.println("************************************************************");
