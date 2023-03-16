@@ -38,7 +38,7 @@ public class ReadIn
 
             for ( int i = 0; i <= customerNr; ++i )
             {
-                customers[i].Number = in.nextInt();
+                customers[i].node_number = in.nextInt();
                 customers[i].x = in.nextInt();
                 customers[i].y = in.nextInt();
                 customers[i].Demand = in.nextInt();
