@@ -28,16 +28,23 @@ public class Print
     //结果输出
     public void check_answer()
     {
-        boolean checkTime = true;
-        boolean checkCost = true;
+        boolean check_time = true;
+        boolean check_cost = true;
         boolean checkCapacity = true;
         // 检验距离计算是否正确
         double totalCost = 0;
         for (Route bestRoute : bestRoutes)
+        {
             for (int j = 1; j < bestRoute.customers.size(); ++j)
+            {
                 totalCost += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+            }
+        }
         // 防止精度损失
-        if (Math.abs(totalCost - bestCost) > 1) checkCost = false;
+        if (Math.abs(totalCost - bestCost) > 1)
+        {
+            check_cost = false;
+        }
 
         for (Route bestRoute : bestRoutes)
         {
@@ -45,7 +52,8 @@ public class Print
             for (int j = 1; j < bestRoute.customers.size(); ++j)
             {
                 time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
-                if (time > customers[bestRoute.customers.get(j)].due_time) checkTime = false;
+                if (time > customers[bestRoute.customers.get(j)].due_time)
+                    check_time = false;
                 time = Math.max(time, customers[bestRoute.customers.get(j)].ready_time)
                         + customers[bestRoute.customers.get(j)].service_time;
             }
@@ -62,8 +70,8 @@ public class Print
                 checkCapacity = false;
         }
 
-        System.out.println("Check total cost = " + totalCost + "\t" + checkCost);
-        System.out.println("Check time windows = " + checkTime);
+        System.out.println("Check total cost = " + totalCost + "\t" + check_cost);
+        System.out.println("Check time windows = " + check_time);
         System.out.println("Check time capacity = " + checkCapacity);
     }
 }
