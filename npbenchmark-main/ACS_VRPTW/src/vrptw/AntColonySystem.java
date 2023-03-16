@@ -245,6 +245,7 @@ public class AntColonySystem
 
     public void ACS_Strategy()
     {
+        long begin_time = System.nanoTime();
         best_solution = new Solution();
         best_solution.totalCost = Integer.MAX_VALUE;
         init();
@@ -258,6 +259,11 @@ public class AntColonySystem
                 System.out.println("iteration : " + i + "\tbest solution cost = " + best_solution.totalCost);
             }
         }
+
+        long end_time = System.nanoTime();
+        double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
+        System.out.println();
+        System.out.println("elapsed time(s): "+ elapsed_time);
     }
 
     // debug function
