@@ -158,7 +158,8 @@ public class AntColonySystem
     public int select_next(int k, Route route)
     {
         // 若全部处理完，返回配送中心
-        if (untreated[k].size() == 0) return 0;
+        if (untreated[k].size() == 0)
+            return 0;
 
         // 计算概率
         double sumPhe = 0;
