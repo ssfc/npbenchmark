@@ -19,7 +19,7 @@ public class AntColonySystem
     public int capacity; // 车辆容量
     public int max_iter; // 最大迭代次数
     public Solution[] solutions; // agents
-    public Solution bestSolution;
+    public Solution best_solution;
     public int[] r; // agent k 出发位置、当前位置、下一位置
     public double[][] pheromone; // 信息素
     public double[][] herustic; // 启发值
@@ -217,10 +217,10 @@ public class AntColonySystem
         }
 
         // 更新最优解 若当前最优代替历史最优，增加信息素时获得增益
-        if (now_best.totalCost < bestSolution.totalCost)
+        if (now_best.totalCost < best_solution.totalCost)
         {
-            delta = (bestSolution.totalCost - now_best.totalCost) / bestSolution.totalCost;
-            bestSolution = now_best;
+            delta = (best_solution.totalCost - now_best.totalCost) / best_solution.totalCost;
+            best_solution = now_best;
         }
 
         //更新信息素含量
@@ -244,8 +244,8 @@ public class AntColonySystem
 
     public Solution ACS_Strategy()
     {
-        bestSolution = new Solution();
-        bestSolution.totalCost = Integer.MAX_VALUE;
+        best_solution = new Solution();
+        best_solution.totalCost = Integer.MAX_VALUE;
         init();
         for (int i = 0; i < max_iter; i++)
         {
@@ -254,10 +254,10 @@ public class AntColonySystem
             update_pheromone();//更新信息素
             if(i % 5 == 0)
             {
-                System.out.println("iteration : " + i + "\tbest solution cost = " + bestSolution.totalCost);
+                System.out.println("iteration : " + i + "\tbest solution cost = " + best_solution.totalCost);
             }
         }
 
-        return bestSolution;
+        return best_solution;
     }
 }
