@@ -2,14 +2,14 @@ package vrptw;
 
 public class Parameter
 {
-    public int IterMax;
-    public double Alpha, w1, w2;
-    public int Beta, Sita;
-    public double[][] Graph;
+    int IterMax;
+    double Alpha, w1, w2;
+    int Beta, Sita;
+    double[][] Graph;
 
     Parameter()
     {
-        IterMax = 100;
+        IterMax = 50;
         Alpha = 0.05;
         Beta = 1;
         Sita = 5;
