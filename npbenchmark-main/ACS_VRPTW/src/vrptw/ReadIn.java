@@ -13,7 +13,7 @@ public class ReadIn
     public Customer[] customers; // 存储客户数据
 
     //计算图上各节点间的距离
-    private double Distance ( Customer C1, Customer C2 )
+    private double compute_distance ( Customer C1, Customer C2 )
     {
         return sqrt ( ( C1.x - C2.x ) * ( C1.x - C2.x ) + ( C1.y - C2.y ) * ( C1.y - C2.y ) );
     }
@@ -59,6 +59,6 @@ public class ReadIn
 
         for ( int i = 0; i <= customerNr; ++i )
             for ( int j = 0; j <= customerNr; ++j )
-                Graph[i][j] = Distance ( customers[i], customers[j] );
+                Graph[i][j] = compute_distance ( customers[i], customers[j] );
     }
 }
