@@ -13,27 +13,27 @@ import java.util.Random;
 public class AntColonySystem
 {
     // member variables;
-    private final double[][] Graph;
-    private final Customer[] customers;
-    private final ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
-    private final int customerNr; // 客户数量
-    private final int agentNr; // agent数量
-    private final int capacity; // 车辆容量
-    private int iter;
-    private final int max_iter; // 最大迭代次数
-    private final Solution[] solutions; // agents
-    private Solution best_solution;
-    private final int[] r; // agent k 出发位置、当前位置、下一位置
-    private final double[][] pheromone; // 信息素
-    private final double[][] herustic; // 启发值
-    private double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
-    private double pheromone_0; // 信息素初始值
-    private final double w1; // 计算概率的参数
-    private final double w2; // 计算概率的参数
-    private final double alpha; // 计算infoPhe的参数，
-    private final double beta; // 计算infoPhe的参数，
-    private final double sita; // 计算infoPhe的参数，
-    private final Random generated_random;
+    double[][] Graph;
+    Customer[] customers;
+    ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
+    int customerNr; // 客户数量
+    int agentNr; // agent数量
+    int capacity; // 车辆容量
+    int iter;
+    int max_iter; // 最大迭代次数
+    Solution[] solutions; // agents
+    Solution best_solution;
+    final int[] r; // agent k 出发位置、当前位置、下一位置
+    double[][] pheromone; // 信息素
+    double[][] herustic; // 启发值
+    double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
+    double pheromone_0; // 信息素初始值
+    double w1; // 计算概率的参数
+    double w2; // 计算概率的参数
+    double alpha; // 计算infoPhe的参数，
+    double beta; // 计算infoPhe的参数，
+    double sita; // 计算infoPhe的参数，
+    Random generated_random;
 
     // member functions;
     // constructor;
