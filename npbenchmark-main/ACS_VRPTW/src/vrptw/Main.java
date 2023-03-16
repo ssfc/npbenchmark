@@ -24,6 +24,7 @@ public class Main
         // print result;
         ACS.print_result();
         Print print = new Print(bestSolution, read_in);
+        ACS.check_answer();
         print.check_answer();
 
         long end_time = System.nanoTime();

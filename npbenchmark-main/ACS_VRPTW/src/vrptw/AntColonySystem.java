@@ -286,4 +286,58 @@ public class AntColonySystem
         }
         System.out.println("************************************************************");
     }
+
+    // debug function
+    public void check_answer()
+    {
+        boolean check_time = true;
+        boolean check_cost = true;
+        boolean check_capacity = true;
+        // 检验距离计算是否正确
+        double total_cost = 0;
+        for (Route bestRoute : best_solution.routes)
+        {
+            for (int j = 1; j < bestRoute.customers.size(); ++j)
+            {
+                total_cost += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+            }
+        }
+        // 防止精度损失
+        if (Math.abs(total_cost - best_solution .totalCost) > 1)
+        {
+            check_cost = false;
+        }
+
+        for (Route bestRoute : best_solution.routes)
+        {
+            int time = 0;
+            for (int j = 1; j < bestRoute.customers.size(); ++j)
+            {
+                time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+                if (time > customers[bestRoute.customers.get(j)].due_time)
+                {
+                    check_time = false;
+                }
+                time = Math.max(time, customers[bestRoute.customers.get(j)].ready_time)
+                        + customers[bestRoute.customers.get(j)].service_time;
+            }
+        }
+
+        for (Route bestRoute : best_solution.routes)
+        {
+            int load = 0;
+            for (int j = 1; j < bestRoute.customers.size() - 1; ++j)
+            {
+                load += customers[bestRoute.customers.get(j)].Demand;
+            }
+            if (load > capacity)
+            {
+                check_capacity = false;
+            }
+        }
+
+        System.out.println("Check total cost = " + total_cost + "\t" + check_cost);
+        System.out.println("Check time windows = " + check_time);
+        System.out.println("Check time capacity = " + check_capacity);
+    }
 }
