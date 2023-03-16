@@ -19,7 +19,7 @@ public class Main
         // compute result;
         System.out.println("waiting for a while ... ...");
         AntColonySystem ACS = new AntColonySystem(parameter, read_in, seed);
-        Solution bestSolution = ACS.ACS_Strategy();
+        ACS.ACS_Strategy();
 
         // print result;
         ACS.print_result();

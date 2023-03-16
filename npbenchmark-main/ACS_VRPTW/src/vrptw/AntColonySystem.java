@@ -243,7 +243,7 @@ public class AntColonySystem
         }
     }
 
-    public Solution ACS_Strategy()
+    public void ACS_Strategy()
     {
         best_solution = new Solution();
         best_solution.totalCost = Integer.MAX_VALUE;
@@ -258,8 +258,6 @@ public class AntColonySystem
                 System.out.println("iteration : " + i + "\tbest solution cost = " + best_solution.totalCost);
             }
         }
-
-        return best_solution;
     }
 
     // debug function
