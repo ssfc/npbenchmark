@@ -13,24 +13,25 @@ import java.util.Random;
 public class AntColonySystem
 {
     // member variables;
-    private double[][] Graph;
-    private Customer[] customers;
-    private ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
-    private int customerNr; // 客户数量
-    private int agentNr; // agent数量
-    private int capacity; // 车辆容量
+    private final double[][] Graph;
+    private final Customer[] customers;
+    private final ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
+    private final int customerNr; // 客户数量
+    private final int agentNr; // agent数量
+    private final int capacity; // 车辆容量
     private int iter;
-    private int max_iter; // 最大迭代次数
-    private Solution[] solutions; // agents
+    private final int max_iter; // 最大迭代次数
+    private final Solution[] solutions; // agents
     private Solution best_solution;
-    private int[] r; // agent k 出发位置、当前位置、下一位置
-    private double[][] pheromone; // 信息素
+    private final int[] r; // agent k 出发位置、当前位置、下一位置
+    private final double[][] pheromone; // 信息素
     private double[][] herustic; // 启发值
     private double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
     private double pheromone_0; // 信息素初始值
-    private double w1, w2; // 计算概率的参数
+    private final double w1;
+    private final double w2; // 计算概率的参数
     private double alpha, beta, sita; // 计算infoPhe的参数，
-    private Random generated_random;
+    private final Random generated_random;
 
     // member functions;
     // constructor;
