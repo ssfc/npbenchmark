@@ -53,7 +53,9 @@ public class Print
             {
                 time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
                 if (time > customers[bestRoute.customers.get(j)].due_time)
+                {
                     check_time = false;
+                }
                 time = Math.max(time, customers[bestRoute.customers.get(j)].ready_time)
                         + customers[bestRoute.customers.get(j)].service_time;
             }
@@ -67,7 +69,9 @@ public class Print
                 load += customers[bestRoute.customers.get(j)].Demand;
             }
             if (load > capacity)
+            {
                 check_capacity = false;
+            }
         }
 
         System.out.println("Check total cost = " + totalCost + "\t" + check_cost);
