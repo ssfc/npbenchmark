@@ -249,21 +249,26 @@ public class AntColonySystem
         best_solution = new Solution();
         best_solution.totalCost = Integer.MAX_VALUE;
         init();
-        for (int i = 0; i < max_iter; i++)
+        int iter = 0;
+        while (iter < max_iter)
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
             update_pheromone();//更新信息素
-            if(i % 5 == 0)
+            if(iter % 5 == 0)
             {
-                System.out.println("iteration : " + i + "\tbest solution cost = " + best_solution.totalCost);
+                System.out.println("iteration : " + iter + "\tbest solution cost = " + best_solution.totalCost);
             }
+
+            iter++;
         }
 
         long end_time = System.nanoTime();
         double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
-        System.out.println("elapsed time(s): "+ elapsed_time);
+        System.out.println("elapsed time(s): " + elapsed_time);
+        // cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+        //        << " frequency:" << double (iter) / elapsed_time << endl;
     }
 
     // debug function
