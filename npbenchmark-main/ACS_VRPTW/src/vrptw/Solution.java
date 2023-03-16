@@ -13,7 +13,7 @@ public class Solution
     double totalCost;
     ArrayList <Route> routes = new ArrayList<>();
 
-    public void cal_tatalCost()
+    public void compute_tatalCost()
     {
         totalCost = 0;
         for (Route route : routes)
