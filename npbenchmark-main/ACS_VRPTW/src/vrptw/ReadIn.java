@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class ReadIn
 {
-    public int customerNr; // 客户数量
-    public int capacity; // 车辆容量
-    public double[][] Graph; // 记录图
-    public Customer[] customers; // 存储客户数据
+    int customerNr; // 客户数量
+    int capacity; // 车辆容量
+    double[][] Graph; // 记录图
+    Customer[] customers; // 存储客户数据
 
     //计算图上各节点间的距离
     private double compute_distance ( Customer c1, Customer c2 )
