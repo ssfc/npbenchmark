@@ -267,9 +267,8 @@ public class AntColonySystem
         long end_time = System.nanoTime();
         double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
-        System.out.println("elapsed time(s): " + elapsed_time);
-        // cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
-        //        << " frequency:" << double (iter) / elapsed_time << endl;
+        System.out.println("success, iterations: " + iter + " elapsed time(s): " + elapsed_time
+                         + " frequency:" + (double) iter / elapsed_time);
     }
 
     // debug function
