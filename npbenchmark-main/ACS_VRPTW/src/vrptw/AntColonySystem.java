@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class AntColonySystem
 {
+    // member variables;
     private double[][] Graph;
     private Customer[] customers;
     private ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
@@ -25,12 +26,13 @@ public class AntColonySystem
     private int[] r; // agent k 出发位置、当前位置、下一位置
     private double[][] pheromone; // 信息素
     private double[][] herustic; // 启发值
-    public double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
-    public double pheromone_0; // 信息素初始值
-    public double w1, w2; // 计算概率的参数
-    public double alpha, beta, sita; // 计算infoPhe的参数，
-    public Random generated_random;
+    private double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
+    private double pheromone_0; // 信息素初始值
+    private double w1, w2; // 计算概率的参数
+    private double alpha, beta, sita; // 计算infoPhe的参数，
+    private Random generated_random;
 
+    // member functions;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
         customerNr = readIn.customerNr;
