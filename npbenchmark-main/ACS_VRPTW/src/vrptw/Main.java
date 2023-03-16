@@ -25,7 +25,6 @@ public class Main
         ACS.print_result();
         Print print = new Print(bestSolution, read_in);
         ACS.check_answer();
-        print.check_answer();
 
         long end_time = System.nanoTime();
         double elapsed_time= (end_time - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
