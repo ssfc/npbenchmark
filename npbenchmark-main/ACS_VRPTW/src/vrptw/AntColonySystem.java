@@ -17,6 +17,7 @@ public class AntColonySystem
     public int customerNr; // 客户数量
     public int agentNr; // agent数量
     public int capacity; // 车辆容量
+    public int iter;
     public int max_iter; // 最大迭代次数
     public Solution[] solutions; // agents
     public Solution best_solution;
@@ -36,6 +37,7 @@ public class AntColonySystem
         capacity = readIn.capacity;
         Graph = readIn.Graph;
         customers = readIn.customers;
+        iter = 0;
         max_iter = parameter.IterMax;
         solutions = new Solution[agentNr + 10]; // 设置agents数量和城市数一样多
         untreated = new ArrayList[agentNr + 10]; // 数组数量等于agents数
@@ -249,7 +251,6 @@ public class AntColonySystem
         best_solution = new Solution();
         best_solution.totalCost = Integer.MAX_VALUE;
         init();
-        int iter = 0;
         while (iter < max_iter)
         {
             reset();//初始化agent信息
