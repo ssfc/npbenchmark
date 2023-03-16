@@ -2,6 +2,7 @@ package vrptw;
 
 public class Customer
 {
+    // member variables;
     int Number;//节点自身编号
     int R;//节点所属车辆路径编号
     int x; //节点横坐标
@@ -12,6 +13,8 @@ public class Customer
     int service_time; // 服务时长
     int Demand; //节点的需求容量
 
+    // member functions;
+    // constructor; 
     public Customer()
     {
         Number = 0;

@@ -33,6 +33,7 @@ public class AntColonySystem
     private Random generated_random;
 
     // member functions;
+    // constructor;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
         customerNr = readIn.customerNr;
