@@ -11,7 +11,7 @@ public class Customer
     int ready_time; //时间窗开始时间;
     int due_time; // 时间窗结束时间;
     int service_time; // 服务时长
-    int Demand; //节点的需求容量
+    int demand; //节点的需求容量
 
     // member functions;
     // constructor;
@@ -24,7 +24,7 @@ public class Customer
         service_time = 0;
         x = 0;
         y = 0;
-        Demand = 0;
+        demand = 0;
     }
 
     public Customer copy()
@@ -37,7 +37,7 @@ public class Customer
         newCustomer.service_time = service_time;
         newCustomer.x = x;
         newCustomer.y = y;
-        newCustomer.Demand = Demand;
+        newCustomer.demand = demand;
         return newCustomer;
     }
 }

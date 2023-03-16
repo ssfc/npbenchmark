@@ -41,7 +41,7 @@ public class ReadIn
                 customers[i].node_number = in.nextInt();
                 customers[i].x = in.nextInt();
                 customers[i].y = in.nextInt();
-                customers[i].Demand = in.nextInt();
+                customers[i].demand = in.nextInt();
                 customers[i].ready_time = in.nextInt();
                 customers[i].due_time = in.nextInt();
                 customers[i].service_time = in.nextInt();
