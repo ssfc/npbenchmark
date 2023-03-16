@@ -258,12 +258,14 @@ public class AntColonySystem
             update_pheromone();//更新信息素
             if(iter % 5 == 0)
             {
-                System.out.println("iteration : " + iter + "\tbest solution cost = " + best_solution.totalCost);
+                double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
+                System.out.println("iteration : " + iter + "\tbest solution cost = " + best_solution.totalCost
+                                 + " elapsed time(s): " + elapsed_time + " frequency:" + (double) iter / elapsed_time);
             }
 
             iter++;
         }
-        
+
         double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
         System.out.println("success, iterations: " + iter + " elapsed time(s): " + elapsed_time
