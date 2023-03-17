@@ -13,7 +13,7 @@ import java.util.Random;
 public class AntColonySystem
 {
     // member variables;
-    double[][] Graph;
+    double[][] graph;
     Customer[] customers;
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int customerNr; // 客户数量
@@ -42,7 +42,7 @@ public class AntColonySystem
         customerNr = readIn.customerNr;
         agentNr = customerNr;
         capacity = readIn.capacity;
-        Graph = readIn.graph;
+        graph = readIn.graph;
         customers = readIn.customers;
         iter = 0;
         max_iter = parameter.max_iter;
@@ -74,7 +74,7 @@ public class AntColonySystem
             {
                 if (i != j)
                 {
-                    totalDistance += Graph[i][j];
+                    totalDistance += graph[i][j];
                     num ++;
                 }
             }
@@ -90,7 +90,7 @@ public class AntColonySystem
                 if (i != j)
                 {
                     pheromone[i][j] = pheromone[j][i] = pheromone_0;
-                    herustic[i][j] = herustic[j][i] = 1 / Graph[i][j];
+                    herustic[i][j] = herustic[j][i] = 1 / graph[i][j];
                 }
             }
         }
@@ -135,8 +135,8 @@ public class AntColonySystem
                 if (next == 0)
                 {
                     route.customers.add(0);
-                    route.time += Graph[agent_position[i]][0];
-                    route.distance += Graph[agent_position[i]][0];
+                    route.time += graph[agent_position[i]][0];
+                    route.distance += graph[agent_position[i]][0];
                     solutions[i].routes.add(route);
                     solutions[i].totalCost += route.distance;
                     route = new Route();
@@ -147,8 +147,8 @@ public class AntColonySystem
                 {
                     route.customers.add(next);
                     route.load += customers[next].demand;
-                    route.time = Math.max(route.time + Graph[agent_position[i]][next], customers[next].ready_time) + customers[next].service_time;
-                    route.distance += Graph[agent_position[i]][next];
+                    route.time = Math.max(route.time + graph[agent_position[i]][next], customers[next].ready_time) + customers[next].service_time;
+                    route.distance += graph[agent_position[i]][next];
                     agent_position[i] = next;
                     for (int j = 0; j < untreated[i].size(); j++)
                         if (untreated[i].get(j) == next)
@@ -157,8 +157,8 @@ public class AntColonySystem
             }
             // 最后一条路径返回配送中心
             route.customers.add(0);
-            route.time = Math.max(Graph[agent_position[i]][0], customers[0].ready_time) + customers[0].service_time;
-            route.distance += Graph[agent_position[i]][0];
+            route.time = Math.max(graph[agent_position[i]][0], customers[0].ready_time) + customers[0].service_time;
+            route.distance += graph[agent_position[i]][0];
             solutions[i].routes.add(route);
             solutions[i].totalCost += route.distance;
         }
@@ -196,7 +196,7 @@ public class AntColonySystem
             if (rate < sum_prob) {
                 next = untreated[k].get(i);
                 // 检验合法性
-                double time = route.time + Graph[agent_position[k]][next];
+                double time = route.time + graph[agent_position[k]][next];
                 double load = route.load + customers[next].demand;
                 if (time > customers[next].due_time || load > capacity)
                     continue;
@@ -205,7 +205,7 @@ public class AntColonySystem
             }
         }
         // 检验合法性
-        double time = route.time + Graph[agent_position[k]][next];
+        double time = route.time + graph[agent_position[k]][next];
         double load = route.load + customers[next].demand;
         if (time > customers[next].due_time || load > capacity) next = 0;
 
@@ -318,7 +318,7 @@ public class AntColonySystem
         {
             for (int j = 1; j < bestRoute.customers.size(); ++j)
             {
-                total_cost += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+                total_cost += graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
             }
         }
         // 防止精度损失
@@ -332,7 +332,7 @@ public class AntColonySystem
             int time = 0;
             for (int j = 1; j < bestRoute.customers.size(); ++j)
             {
-                time += Graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+                time += graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
                 if (time > customers[bestRoute.customers.get(j)].due_time)
                 {
                     check_time = false;
