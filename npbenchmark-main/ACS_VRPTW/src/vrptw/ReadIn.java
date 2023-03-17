@@ -29,9 +29,9 @@ public class ReadIn
             customerNr = in.nextInt();
             capacity = in.nextInt();
 
-            customers = new Customer[customerNr + 10];
-            graph = new double[customerNr + 10][customerNr + 10];
-            for(int i = 0; i < customerNr + 10; i++)
+            customers = new Customer[customerNr + 9];
+            graph = new double[customerNr + 9][customerNr + 9];
+            for(int i = 0; i < customerNr + 9; i++)
             {
                 customers[i] = new Customer();
             }
