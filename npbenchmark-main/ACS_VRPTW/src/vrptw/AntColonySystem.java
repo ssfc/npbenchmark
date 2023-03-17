@@ -42,7 +42,7 @@ public class AntColonySystem
         customerNr = readIn.customerNr;
         agentNr = customerNr;
         capacity = readIn.capacity;
-        Graph = readIn.Graph;
+        Graph = readIn.graph;
         customers = readIn.customers;
         iter = 0;
         max_iter = parameter.max_iter;

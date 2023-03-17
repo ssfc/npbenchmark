@@ -9,7 +9,7 @@ public class ReadIn
 {
     int customerNr; // 客户数量
     int capacity; // 车辆容量
-    double[][] Graph; // 记录图
+    double[][] graph; // 记录图
     Customer[] customers; // 存储客户数据
 
     //计算图上各节点间的距离
@@ -30,7 +30,7 @@ public class ReadIn
             capacity = in.nextInt();
 
             customers = new Customer[customerNr + 10];
-            Graph = new double[customerNr + 10][customerNr + 10];
+            graph = new double[customerNr + 10][customerNr + 10];
             for(int i = 0; i < customerNr + 10; i++)
             {
                 customers[i] = new Customer();
@@ -61,7 +61,7 @@ public class ReadIn
         {
             for (int j = 0; j <= customerNr; ++j)
             {
-                Graph[i][j] = compute_distance(customers[i], customers[j]);
+                graph[i][j] = compute_distance(customers[i], customers[j]);
             }
         }
     }
