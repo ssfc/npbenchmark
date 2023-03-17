@@ -36,7 +36,7 @@ public class ReadIn
                 customers[i] = new Customer();
             }
 
-            for ( int i = 0; i < customerNr + 1; i++ )
+            for ( int i = 0; i < customerNr + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
                 customers[i].node_number = in.nextInt();
                 customers[i].x = in.nextInt();
@@ -57,9 +57,9 @@ public class ReadIn
             System.exit(-1);
         }
 
-        for ( int i = 0; i < customerNr + 1; i++ )
+        for ( int i = 0; i < customerNr + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
         {
-            for (int j = 0; j < customerNr + 1; j++)
+            for (int j = 0; j < customerNr + 1; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
                 graph[i][j] = compute_distance(customers[i], customers[j]);
             }
