@@ -36,7 +36,7 @@ public class ReadIn
                 customers[i] = new Customer();
             }
 
-            for ( int i = 0; i <= customerNr; ++i )
+            for ( int i = 0; i < customerNr + 1; i++ )
             {
                 customers[i].node_number = in.nextInt();
                 customers[i].x = in.nextInt();
@@ -57,9 +57,9 @@ public class ReadIn
             System.exit(-1);
         }
 
-        for ( int i = 0; i <= customerNr; ++i )
+        for ( int i = 0; i < customerNr + 1; i++ )
         {
-            for (int j = 0; j <= customerNr; ++j)
+            for (int j = 0; j < customerNr + 1; j++)
             {
                 graph[i][j] = compute_distance(customers[i], customers[j]);
             }
