@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class ReadIn
 {
     int num_customers; // 客户数量
+    int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
     double[][] graph; // 记录图
     Customer[] customers; // 存储客户数据
@@ -27,6 +28,7 @@ public class ReadIn
 
             in.next();
             num_customers = in.nextInt() - 1;
+            max_num_agents = in.nextInt();
             capacity = in.nextInt();
 
             customers = new Customer[num_customers + 1];
