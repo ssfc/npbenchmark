@@ -27,18 +27,4 @@ public class Customer
         y = 0;
         demand = 0;
     }
-
-    public Customer copy()
-    {
-        Customer newCustomer = new Customer();
-        newCustomer.node_number = node_number;
-        newCustomer.route_number = route_number;
-        newCustomer.ready_time = ready_time;
-        newCustomer.due_time = due_time;
-        newCustomer.service_time = service_time;
-        newCustomer.x = x;
-        newCustomer.y = y;
-        newCustomer.demand = demand;
-        return newCustomer;
-    }
 }
