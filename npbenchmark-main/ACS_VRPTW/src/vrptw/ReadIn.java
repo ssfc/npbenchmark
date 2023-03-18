@@ -14,7 +14,7 @@ public class ReadIn
     Customer[] customers; // 存储客户数据
 
     //计算图上各节点间的距离
-    private double compute_distance ( Customer c1, Customer c2 )
+    private double compute_distance(Customer c1, Customer c2)
     {
         return sqrt ( ( c1.x - c2.x ) * ( c1.x - c2.x ) + ( c1.y - c2.y ) * ( c1.y - c2.y ) );
     }
@@ -50,16 +50,16 @@ public class ReadIn
 
             in.close();
         }
-        catch (FileNotFoundException e)
+        catch(FileNotFoundException e)
         {
             // 未找到文件
             System.out.println("File not found!");
             System.exit(-1);
         }
 
-        for ( int i = 0; i < num_nodes; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
+        for(int i = 0; i < num_nodes; i++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
         {
-            for (int j = 0; j < num_nodes; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
+            for(int j = 0; j < num_nodes; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
                 graph[i][j] = compute_distance(customers[i], customers[j]);
             }
