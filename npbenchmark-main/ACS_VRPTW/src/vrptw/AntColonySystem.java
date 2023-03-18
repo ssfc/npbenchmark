@@ -18,6 +18,7 @@ public class AntColonySystem
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int num_customers; // 客户数量
     int num_agents; // agent数量
+    int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
     int iter;
     int max_iter; // 最大迭代次数
@@ -41,6 +42,7 @@ public class AntColonySystem
     {
         num_customers = readIn.num_customers;
         num_agents = num_customers;
+        max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
         graph = readIn.graph;
         customers = readIn.customers;
