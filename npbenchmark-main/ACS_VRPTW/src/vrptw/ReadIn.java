@@ -40,7 +40,6 @@ public class ReadIn
 
             for ( int i = 0; i < num_customers + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
-                customers[i].node_index = in.nextInt();
                 customers[i].x = in.nextInt();
                 customers[i].y = in.nextInt();
                 customers[i].demand = in.nextInt();
