@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ReadIn
 {
-    int customerNr; // 客户数量
+    int num_customers; // 客户数量
     int capacity; // 车辆容量
     double[][] graph; // 记录图
     Customer[] customers; // 存储客户数据
@@ -26,17 +26,17 @@ public class ReadIn
             Scanner in = new Scanner(new FileReader(fileName));
 
             in.next();
-            customerNr = in.nextInt();
+            num_customers = in.nextInt();
             capacity = in.nextInt();
 
-            customers = new Customer[customerNr + 9];
-            graph = new double[customerNr + 9][customerNr + 9];
-            for(int i = 0; i < customerNr + 9; i++)
+            customers = new Customer[num_customers + 9];
+            graph = new double[num_customers + 9][num_customers + 9];
+            for(int i = 0; i < num_customers + 9; i++)
             {
                 customers[i] = new Customer();
             }
 
-            for ( int i = 0; i < customerNr + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
+            for ( int i = 0; i < num_customers + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
                 customers[i].node_number = in.nextInt();
                 customers[i].x = in.nextInt();
@@ -57,9 +57,9 @@ public class ReadIn
             System.exit(-1);
         }
 
-        for ( int i = 0; i < customerNr + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
+        for ( int i = 0; i < num_customers + 1; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
         {
-            for (int j = 0; j < customerNr + 1; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
+            for (int j = 0; j < num_customers + 1; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
                 graph[i][j] = compute_distance(customers[i], customers[j]);
             }

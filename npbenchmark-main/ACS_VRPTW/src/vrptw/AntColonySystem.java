@@ -39,7 +39,7 @@ public class AntColonySystem
     // constructor;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
-        customerNr = readIn.customerNr;
+        customerNr = readIn.num_customers;
         agentNr = customerNr;
         capacity = readIn.capacity;
         graph = readIn.graph;
