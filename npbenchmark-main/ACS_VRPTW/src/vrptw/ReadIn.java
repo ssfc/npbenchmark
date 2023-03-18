@@ -25,8 +25,7 @@ public class ReadIn
         try
         {
             Scanner in = new Scanner(new FileReader(fileName));
-
-            in.next();
+            
             num_customers = in.nextInt() - 1;
             max_num_agents = in.nextInt();
             capacity = in.nextInt();
@@ -43,9 +42,9 @@ public class ReadIn
                 customers[i].x = in.nextInt();
                 customers[i].y = in.nextInt();
                 customers[i].demand = in.nextInt();
+                customers[i].service_time = in.nextInt();
                 customers[i].ready_time = in.nextInt();
                 customers[i].due_time = in.nextInt();
-                customers[i].service_time = in.nextInt();
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }
 
