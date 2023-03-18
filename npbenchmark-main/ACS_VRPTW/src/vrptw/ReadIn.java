@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ReadIn
 {
-    int num_nodes; // 客户数量+1
+    int num_nodes; // 客户数量+1, 因为算上了仓库;
     int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
     double[][] graph; // 记录图
