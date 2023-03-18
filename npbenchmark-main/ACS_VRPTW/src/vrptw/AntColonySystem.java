@@ -151,8 +151,12 @@ public class AntColonySystem
                     route.distance += graph[agent_position[i]][next];
                     agent_position[i] = next;
                     for (int j = 0; j < untreated[i].size(); j++)
+                    {
                         if (untreated[i].get(j) == next)
+                        {
                             untreated[i].remove(j);
+                        }
+                    }
                 }
             }
             // 最后一条路径返回配送中心
