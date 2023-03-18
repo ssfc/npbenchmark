@@ -283,9 +283,10 @@ public class AntColonySystem
             if(iter % 5 == 0)
             {
                 double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
-                System.out.println("iteration : " + iter + "\tbest solution cost = " + df.format(best_solution.totalCost)
-                        + " elapsed time(s): " + df.format(elapsed_time)
-                        + " frequency:" + df.format((double) iter / elapsed_time));
+                System.out.println("iter: " + iter + "\tnum agents: " + best_solution.routes.size()
+                        + "\tbest solution cost: " + df.format(best_solution.totalCost)
+                        + "\telapsed time(s): " + df.format(elapsed_time)
+                        + "\tfrequency: " + df.format((double) iter / elapsed_time));
             }
 
             iter++;
@@ -293,8 +294,9 @@ public class AntColonySystem
 
         double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
-        System.out.println("success, iterations: " + iter + " elapsed time(s): " + df.format(elapsed_time)
-                         + " frequency:" + df.format((double) iter / elapsed_time));
+        System.out.println("success, iterations: " + iter + "\tnum agents: " + best_solution.routes.size()
+                         + "\telapsed time(s): " + df.format(elapsed_time)
+                         + "\tfrequency: " + df.format((double) iter / elapsed_time));
     }
 
     // debug function
@@ -328,6 +330,7 @@ public class AntColonySystem
         boolean check_time = true;
         boolean check_cost = true;
         boolean check_capacity = true;
+        boolean check_num_agents = true;
         // 检验距离计算是否正确
         double total_cost = 0;
         for (Route bestRoute : best_solution.routes)
@@ -371,8 +374,14 @@ public class AntColonySystem
             }
         }
 
+        if(best_solution.routes.size() > max_num_agents)
+        {
+            check_num_agents = false;
+        }
+
         System.out.println("Check total cost = " + total_cost + "\t" + check_cost);
         System.out.println("Check time windows = " + check_time);
         System.out.println("Check time capacity = " + check_capacity);
+        System.out.println("Check num agents = " + check_num_agents);
     }
 }
