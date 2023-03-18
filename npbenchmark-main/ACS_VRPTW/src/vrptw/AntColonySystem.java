@@ -16,7 +16,7 @@ public class AntColonySystem
     double[][] graph;
     Customer[] customers;
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
-    int customerNr; // 客户数量
+    int num_customers; // 客户数量
     int agentNr; // agent数量
     int capacity; // 车辆容量
     int iter;
@@ -39,8 +39,8 @@ public class AntColonySystem
     // constructor;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
-        customerNr = readIn.num_customers;
-        agentNr = customerNr;
+        num_customers = readIn.num_customers;
+        agentNr = num_customers;
         capacity = readIn.capacity;
         graph = readIn.graph;
         customers = readIn.customers;
@@ -51,9 +51,9 @@ public class AntColonySystem
         for (int i = 0; i < agentNr + 9; i++)
             untreated[i] = new ArrayList<>();
         agent_position = new int[agentNr + 9];
-        pheromone = new double[customerNr + 9][customerNr + 9];
-        herustic = new double[customerNr + 9][customerNr + 9];
-        infoPhe = new double[customerNr + 9][customerNr + 9];
+        pheromone = new double[num_customers + 9][num_customers + 9];
+        herustic = new double[num_customers + 9][num_customers + 9];
+        infoPhe = new double[num_customers + 9][num_customers + 9];
         alpha = parameter.Alpha;
         beta = parameter.Beta;
         sita = parameter.Sita;
@@ -68,9 +68,9 @@ public class AntColonySystem
         // 计算信息素初始值
         double totalDistance = 0;
         double num = 0;
-        for (int i = 0; i < customerNr + 1; i++)
+        for (int i = 0; i < num_customers + 1; i++)
         {
-            for (int j = 0; j < customerNr + 1; j++)
+            for (int j = 0; j < num_customers + 1; j++)
             {
                 if (i != j)
                 {
@@ -80,12 +80,12 @@ public class AntColonySystem
             }
         }
 
-        pheromone_0 = num / (totalDistance * (customerNr + 1));
+        pheromone_0 = num / (totalDistance * (num_customers + 1));
 
         // 初始化信息素、启发值
-        for (int i = 0; i < customerNr + 1; i++)
+        for (int i = 0; i < num_customers + 1; i++)
         {
-            for (int j = 0; j < customerNr + 1; j++)
+            for (int j = 0; j < num_customers + 1; j++)
             {
                 if (i != j)
                 {
@@ -103,7 +103,7 @@ public class AntColonySystem
         for (int i = 0; i < agentNr; i++)
         {
             untreated[i].clear();
-            for ( int j = 0; j < customerNr; j++)
+            for ( int j = 0; j < num_customers; j++)
             {
                 untreated[i].add(j + 1);
             }
@@ -235,8 +235,8 @@ public class AntColonySystem
 
         //更新信息素含量
         // 信息素挥发
-        for (int i = 0; i < customerNr; i ++)
-            for (int j = 0; j < customerNr; j ++)
+        for (int i = 0; i < num_customers; i ++)
+            for (int j = 0; j < num_customers; j ++)
                 pheromone[i][j] *= (1 - alpha);
         // 信息素增加
         for (int i = 0; i < now_best.routes.size(); i ++)
