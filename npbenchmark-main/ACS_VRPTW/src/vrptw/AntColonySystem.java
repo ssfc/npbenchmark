@@ -17,7 +17,7 @@ public class AntColonySystem
     Customer[] customers;
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int num_customers; // 客户数量
-    int agentNr; // agent数量
+    int num_agents; // agent数量
     int capacity; // 车辆容量
     int iter;
     int max_iter; // 最大迭代次数
@@ -40,17 +40,17 @@ public class AntColonySystem
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
         num_customers = readIn.num_customers;
-        agentNr = num_customers;
+        num_agents = num_customers;
         capacity = readIn.capacity;
         graph = readIn.graph;
         customers = readIn.customers;
         iter = 0;
         max_iter = parameter.max_iter;
-        solutions = new Solution[agentNr + 2]; // 设置agents数量和城市数一样多
-        untreated = new ArrayList[agentNr + 2]; // 数组数量等于agents数
-        for (int i = 0; i < agentNr + 2; i++)
+        solutions = new Solution[num_agents + 2]; // 设置agents数量和城市数一样多
+        untreated = new ArrayList[num_agents + 2]; // 数组数量等于agents数
+        for (int i = 0; i < num_agents + 2; i++)
             untreated[i] = new ArrayList<>();
-        agent_position = new int[agentNr + 2];
+        agent_position = new int[num_agents + 2];
         pheromone = new double[num_customers + 2][num_customers + 2];
         herustic = new double[num_customers + 2][num_customers + 2];
         infoPhe = new double[num_customers + 2][num_customers + 2];
@@ -100,7 +100,7 @@ public class AntColonySystem
     public void reset()
     {
         // 初始化每位agent未服务的客户
-        for (int i = 0; i < agentNr; i++)
+        for (int i = 0; i < num_agents; i++)
         {
             untreated[i].clear();
             for ( int j = 0; j < num_customers; j++)
@@ -109,7 +109,7 @@ public class AntColonySystem
             }
         }
         // 初始化起始服务客户
-        for (int i = 0; i < agentNr; i++)
+        for (int i = 0; i < num_agents; i++)
         {
             solutions[i] = new Solution();
             agent_position[i] = 0;
@@ -121,7 +121,7 @@ public class AntColonySystem
     public void construct_solution()
     {
         // 为每一位agent分别构造解
-        for (int i = 0; i < agentNr; i++)
+        for (int i = 0; i < num_agents; i++)
         {
             // 路径开始
             Route route = new Route();
@@ -179,8 +179,8 @@ public class AntColonySystem
         // 计算概率
         double sumPhe = 0;
         double sumTime = 0;
-        double[] infoPhe = new double[agentNr];
-        double[] infoTime = new double[agentNr];
+        double[] infoPhe = new double[num_agents];
+        double[] infoTime = new double[num_agents];
         for (int i = 0; i < untreated[k].size(); i++)
         {
             infoPhe[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
@@ -230,7 +230,7 @@ public class AntColonySystem
         double delta = 0;
 
         // 查找最优解
-        for (int i = 0; i < agentNr; i++)
+        for (int i = 0; i < num_agents; i++)
         {
             if (solutions[i].totalCost < now_best.totalCost)
                 now_best = solutions[i];
