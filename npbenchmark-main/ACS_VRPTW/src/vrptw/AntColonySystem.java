@@ -172,7 +172,9 @@ public class AntColonySystem
     {
         // 若全部处理完，返回配送中心
         if (untreated[k].size() == 0)
+        {
             return 0;
+        }
 
         // 计算概率
         double sumPhe = 0;
@@ -197,7 +199,8 @@ public class AntColonySystem
         for (int i = 0; i < untreated[k].size(); i++)
         {
             sum_prob += infoPhe[i] * w1 / sumPhe + infoTime[i] * w2 / sumTime;
-            if (rate < sum_prob) {
+            if (rate < sum_prob)
+            {
                 next = untreated[k].get(i);
                 // 检验合法性
                 double time = route.time + graph[agent_position[k]][next];
@@ -211,7 +214,10 @@ public class AntColonySystem
         // 检验合法性
         double time = route.time + graph[agent_position[k]][next];
         double load = route.load + customers[next].demand;
-        if (time > customers[next].due_time || load > capacity) next = 0;
+        if (time > customers[next].due_time || load > capacity)
+        {
+            next = 0;
+        }
 
         return next;
     }
@@ -240,8 +246,12 @@ public class AntColonySystem
         //更新信息素含量
         // 信息素挥发
         for (int i = 0; i < num_customers; i ++)
-            for (int j = 0; j < num_customers; j ++)
+        {
+            for (int j = 0; j < num_customers; j++)
+            {
                 pheromone[i][j] *= (1 - alpha);
+            }
+        }
         // 信息素增加
         for (int i = 0; i < now_best.routes.size(); i ++)
         {
