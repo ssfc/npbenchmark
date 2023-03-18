@@ -45,7 +45,7 @@ public class AntColonySystem
         max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
         graph = readIn.graph;
-        customers = readIn.customers;
+        customers = readIn.nodes;
         iter = 0;
         max_iter = parameter.max_iter;
         solutions = new Solution[num_agents + 1]; // 设置初始agents数量和城市数一样多, 后面会慢慢减小;

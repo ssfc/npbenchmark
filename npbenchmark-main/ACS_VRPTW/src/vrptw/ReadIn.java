@@ -16,7 +16,7 @@ public class ReadIn
     double[][] graph;
     // Dimension: 节点数 == 客户数量+1
     // Meaning: 存储客户数据
-    Node[] customers;
+    Node[] nodes;
 
     //计算图上各节点间的距离
     private double compute_distance(Node c1, Node c2)
@@ -35,21 +35,21 @@ public class ReadIn
             max_num_agents = in.nextInt();
             capacity = in.nextInt();
 
-            customers = new Node[num_nodes];
+            nodes = new Node[num_nodes];
             graph = new double[num_nodes][num_nodes];
             for(int i = 0; i < num_nodes; i++)
             {
-                customers[i] = new Node();
+                nodes[i] = new Node();
             }
 
             for ( int i = 0; i < num_nodes; i++ ) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
-                customers[i].x = in.nextInt();
-                customers[i].y = in.nextInt();
-                customers[i].demand = in.nextInt();
-                customers[i].service_time = in.nextInt();
-                customers[i].ready_time = in.nextInt();
-                customers[i].due_time = in.nextInt();
+                nodes[i].x = in.nextInt();
+                nodes[i].y = in.nextInt();
+                nodes[i].demand = in.nextInt();
+                nodes[i].service_time = in.nextInt();
+                nodes[i].ready_time = in.nextInt();
+                nodes[i].due_time = in.nextInt();
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }
 
@@ -66,7 +66,7 @@ public class ReadIn
         {
             for(int j = 0; j < num_nodes; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
-                graph[i][j] = compute_distance(customers[i], customers[j]);
+                graph[i][j] = compute_distance(nodes[i], nodes[j]);
             }
         }
     }
