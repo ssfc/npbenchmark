@@ -26,7 +26,7 @@ public class ReadIn
             Scanner in = new Scanner(new FileReader(fileName));
 
             in.next();
-            num_customers = in.nextInt();
+            num_customers = in.nextInt() - 1;
             capacity = in.nextInt();
 
             customers = new Customer[num_customers + 1];
