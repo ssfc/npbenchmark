@@ -1,7 +1,7 @@
 package vrptw;
 
 // Customer.java很明显是个结构体类, 就不要硬改private了
-public class Customer
+public class Node
 {
     // member variables;
     int route_number;//节点所属车辆路径编号
@@ -15,7 +15,7 @@ public class Customer
 
     // member functions;
     // constructor;
-    public Customer()
+    public Node()
     {
         route_number = 0;
         ready_time = 0;

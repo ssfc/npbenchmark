@@ -14,7 +14,7 @@ public class AntColonySystem
 {
     // member variables;
     double[][] graph;
-    Customer[] customers;
+    Node[] customers;
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int num_customers; // 客户数量
     int num_agents; // agent数量
