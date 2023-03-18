@@ -40,7 +40,7 @@ public class AntColonySystem
     // constructor;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
-        num_customers = readIn.num_customers;
+        num_customers = readIn.num_customers - 1;
         num_agents = num_customers;
         max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
