@@ -25,7 +25,7 @@ public class ReadIn
         try
         {
             Scanner in = new Scanner(new FileReader(fileName));
-            
+
             num_customers = in.nextInt() - 1;
             max_num_agents = in.nextInt();
             capacity = in.nextInt();
