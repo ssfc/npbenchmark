@@ -16,7 +16,7 @@ public class ReadIn
     //计算图上各节点间的距离
     private double compute_distance(Customer c1, Customer c2)
     {
-        return sqrt ( ( c1.x - c2.x ) * ( c1.x - c2.x ) + ( c1.y - c2.y ) * ( c1.y - c2.y ) );
+        return sqrt((c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y));
     }
 
     //读取数据
