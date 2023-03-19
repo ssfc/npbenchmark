@@ -5,9 +5,10 @@ public class Parameter
 {
     int max_iter;
     double Alpha;
+    int Beta;
+    int Sita;
     double w1;
     double w2;
-    int Beta, Sita;
     double[][] Graph;
 
     Parameter()
