@@ -14,6 +14,7 @@ public class AntColonySystem
 {
     // member variables;
     int num_customers; // 客户数量
+    int num_nodes; // 客户数量+1, 因为算上了仓库; 101
     int num_agents; // agent数量
     int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
@@ -65,6 +66,7 @@ public class AntColonySystem
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
         num_customers = readIn.num_nodes - 1;
+        num_nodes = readIn.num_nodes;
         num_agents = num_customers;
         max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
