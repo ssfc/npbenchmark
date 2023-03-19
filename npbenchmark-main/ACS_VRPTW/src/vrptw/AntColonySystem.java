@@ -361,11 +361,11 @@ public class AntColonySystem
         boolean check_num_agents = true;
         // 检验距离计算是否正确
         double total_cost = 0;
-        for (Route bestRoute : best_solution.routes)
+        for (Route best_route : best_solution.routes)
         {
-            for (int j = 1; j < bestRoute.customers.size(); ++j)
+            for (int j = 1; j < best_route.customers.size(); ++j)
             {
-                total_cost += graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
+                total_cost += graph[best_route.customers.get(j - 1)][best_route.customers.get(j)];
             }
         }
         // 防止精度损失

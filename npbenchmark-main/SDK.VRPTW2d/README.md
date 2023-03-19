@@ -21,7 +21,7 @@ V 行整数表示 V 辆车 (V ≤ K) 的行驶路径
 
 ## Other work
 1. 
-2. adzen: https://github.com/adzen/VRPTW
+2. adzen(c++): https://github.com/adzen/VRPTW
 3. 
 4. 
 5. zhou hang (周航): https://github.com/zll-hust
