@@ -374,27 +374,27 @@ public class AntColonySystem
             check_cost = false;
         }
 
-        for (Route bestRoute : best_solution.routes)
+        for (Route best_route : best_solution.routes)
         {
             int time = 0;
-            for (int j = 1; j < bestRoute.customers.size(); ++j)
+            for (int j = 1; j < best_route.customers.size(); ++j)
             {
-                time += graph[bestRoute.customers.get(j - 1)][bestRoute.customers.get(j)];
-                if (time > nodes[bestRoute.customers.get(j)].due_time)
+                time += graph[best_route.customers.get(j - 1)][best_route.customers.get(j)];
+                if (time > nodes[best_route.customers.get(j)].due_time)
                 {
                     check_time = false;
                 }
-                time = Math.max(time, nodes[bestRoute.customers.get(j)].ready_time)
-                        + nodes[bestRoute.customers.get(j)].service_time;
+                time = Math.max(time, nodes[best_route.customers.get(j)].ready_time)
+                        + nodes[best_route.customers.get(j)].service_time;
             }
         }
 
-        for (Route bestRoute : best_solution.routes)
+        for (Route best_route : best_solution.routes)
         {
             int load = 0;
-            for (int j = 1; j < bestRoute.customers.size() - 1; ++j)
+            for (int j = 1; j < best_route.customers.size() - 1; ++j)
             {
-                load += nodes[bestRoute.customers.get(j)].demand;
+                load += nodes[best_route.customers.get(j)].demand;
             }
             if (load > capacity)
             {
