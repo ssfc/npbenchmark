@@ -119,8 +119,10 @@ public class AntColonySystem
             {
                 if (i != j)
                 {
-                    pheromone[i][j] = pheromone[j][i] = pheromone_0;
-                    herustic[i][j] = herustic[j][i] = 1 / graph[i][j];
+                    pheromone[i][j] = pheromone_0;
+                    pheromone[j][i] = pheromone_0;
+                    herustic[i][j] = 1 / graph[i][j];
+                    herustic[j][i] = 1 / graph[i][j];
                 }
             }
         }
