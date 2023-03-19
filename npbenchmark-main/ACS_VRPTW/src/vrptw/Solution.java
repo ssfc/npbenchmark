@@ -10,15 +10,15 @@ import java.util.ArrayList;
  */
 public class Solution
 {
-    double totalCost;
+    double total_cost;
     ArrayList <Route> routes = new ArrayList<>();
 
     public void compute_tatalCost()
     {
-        totalCost = 0;
+        total_cost = 0;
         for (Route route : routes)
         {
-            totalCost += route.distance;
+            total_cost += route.distance;
         }
     }
 }

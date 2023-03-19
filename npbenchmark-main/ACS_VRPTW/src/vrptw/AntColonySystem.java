@@ -168,7 +168,7 @@ public class AntColonySystem
                     route.time += graph[agent_position[i]][0];
                     route.distance += graph[agent_position[i]][0];
                     solutions[i].routes.add(route);
-                    solutions[i].totalCost += route.distance;
+                    solutions[i].total_cost += route.distance;
                     route = new Route();
                     route.customers.add(0);
                     agent_position[i] = 0;
@@ -194,7 +194,7 @@ public class AntColonySystem
             route.time = Math.max(graph[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
             route.distance += graph[agent_position[i]][0];
             solutions[i].routes.add(route);
-            solutions[i].totalCost += route.distance;
+            solutions[i].total_cost += route.distance;
         }
     }
 
@@ -256,20 +256,20 @@ public class AntColonySystem
     public void update_pheromone()
     {
         Solution now_best = new Solution();
-        now_best.totalCost = Integer.MAX_VALUE;
+        now_best.total_cost = Integer.MAX_VALUE;
         double delta = 0;
 
         // 查找最优解
         for (int i = 0; i < num_agents; i++)
         {
-            if (solutions[i].totalCost < now_best.totalCost)
+            if (solutions[i].total_cost < now_best.total_cost)
                 now_best = solutions[i];
         }
 
         // 更新最优解 若当前最优代替历史最优，增加信息素时获得增益
-        if (now_best.totalCost < best_solution.totalCost)
+        if (now_best.total_cost < best_solution.total_cost)
         {
-            delta = (best_solution.totalCost - now_best.totalCost) / best_solution.totalCost;
+            delta = (best_solution.total_cost - now_best.total_cost) / best_solution.total_cost;
             best_solution = now_best;
         }
 
@@ -288,7 +288,7 @@ public class AntColonySystem
             for (int j = 1; j < now_best.routes.get(i).customers.size(); j++)
             {
                 pheromone[now_best.routes.get(i).customers.get(j - 1)][now_best.routes.get(i).customers.get(j)]
-                        += (1 / (double)now_best.totalCost) * (1 + delta);
+                        += (1 / (double)now_best.total_cost) * (1 + delta);
                 // 对称处理
                 pheromone[now_best.routes.get(i).customers.get(j)][now_best.routes.get(i).customers.get(j - 1)]
                         = pheromone[now_best.routes.get(i).customers.get(j - 1)][now_best.routes.get(i).customers.get(j)];
@@ -301,7 +301,7 @@ public class AntColonySystem
         DecimalFormat df = new DecimalFormat("#.##");
         long begin_time = System.nanoTime();
         best_solution = new Solution();
-        best_solution.totalCost = Integer.MAX_VALUE;
+        best_solution.total_cost = Integer.MAX_VALUE;
         init();
         while (iter < max_iter)
         {
@@ -312,7 +312,7 @@ public class AntColonySystem
             {
                 double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
                 System.out.println("iter: " + iter + "\tnum agents: " + best_solution.routes.size()
-                        + "\tbest solution cost: " + df.format(best_solution.totalCost)
+                        + "\tbest solution cost: " + df.format(best_solution.total_cost)
                         + "\telapsed time(s): " + df.format(elapsed_time)
                         + "\tfrequency: " + df.format((double) iter / elapsed_time));
             }
@@ -331,7 +331,7 @@ public class AntColonySystem
     public void print_result()
     {
         System.out.println("************************************************************");
-        System.out.println("The Minimum Total Distance = " + best_solution .totalCost);
+        System.out.println("The Minimum Total Distance = " + best_solution .total_cost);
         System.out.println("Concrete Schedule of Each Route as Following : ");
 
         int id = 0;
@@ -369,7 +369,7 @@ public class AntColonySystem
             }
         }
         // 防止精度损失
-        if (Math.abs(total_cost - best_solution .totalCost) > 1)
+        if (Math.abs(total_cost - best_solution .total_cost) > 1)
         {
             check_cost = false;
         }
