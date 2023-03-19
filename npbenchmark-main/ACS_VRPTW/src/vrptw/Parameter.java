@@ -21,9 +21,9 @@ public class Parameter
         w2 = 0.1;
     }
 
-    Parameter(int interation, double input_alpha, int input_beta, int input_theta, double input_w1, double input_w2)
+    Parameter(int input_max_iter, double input_alpha, int input_beta, int input_theta, double input_w1, double input_w2)
     {
-        max_iter = interation;
+        max_iter = input_max_iter;
         alpha = input_alpha;
         beta = input_beta;
         theta = input_theta;
