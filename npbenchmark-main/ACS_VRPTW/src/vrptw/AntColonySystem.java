@@ -82,8 +82,8 @@ public class AntColonySystem
         }
         agent_position = new int[num_nodes];
         pheromone = new double[num_nodes][num_nodes];
-        herustic = new double[num_customers + 1][num_customers + 1];
-        infoPhe = new double[num_customers + 1][num_customers + 1];
+        herustic = new double[num_nodes][num_nodes];
+        infoPhe = new double[num_nodes][num_nodes];
         alpha = parameter.Alpha;
         beta = parameter.Beta;
         sita = parameter.Sita;
@@ -98,9 +98,9 @@ public class AntColonySystem
         // 计算信息素初始值
         double totalDistance = 0;
         double num = 0;
-        for (int i = 0; i < num_customers + 1; i++)
+        for (int i = 0; i < num_nodes; i++)
         {
-            for (int j = 0; j < num_customers + 1; j++)
+            for (int j = 0; j < num_nodes; j++)
             {
                 if (i != j)
                 {
