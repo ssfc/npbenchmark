@@ -76,7 +76,7 @@ public class AntColonySystem
         max_iter = parameter.max_iter;
         solutions = new Solution[num_nodes]; // 设置初始agents数量和城市数一样多, 后面会慢慢减小;
         untreated = new ArrayList[num_nodes]; // 数组数量等于agents数
-        for (int i = 0; i < num_agents + 1; i++)
+        for (int i = 0; i < num_nodes; i++)
         {
             untreated[i] = new ArrayList<>();
         }
