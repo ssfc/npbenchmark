@@ -82,7 +82,7 @@ public class AntColonySystem
         pheromone = new double[num_nodes][num_nodes];
         heuristic = new double[num_nodes][num_nodes];
         infoPhe = new double[num_nodes][num_nodes];
-        alpha = parameter.Alpha;
+        alpha = parameter.alpha;
         beta = parameter.Beta;
         sita = parameter.Sita;
         w1 = parameter.w1;
