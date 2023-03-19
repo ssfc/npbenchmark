@@ -13,7 +13,6 @@ import java.util.Random;
 public class AntColonySystem
 {
     // member variables;
-    int num_customers; // 客户数量
     int num_nodes; // 客户数量+1, 因为算上了仓库; 101
     int num_agents; // agent数量
     int max_num_agents; // 最大可用车辆
@@ -65,7 +64,6 @@ public class AntColonySystem
     // constructor;
     public AntColonySystem(Parameter parameter, ReadIn readIn, int seed)
     {
-        num_customers = readIn.num_nodes - 1;
         num_nodes = readIn.num_nodes;
         num_agents = readIn.num_nodes - 1;
         max_num_agents = readIn.max_num_agents;
@@ -135,7 +133,7 @@ public class AntColonySystem
         for (int i = 0; i < num_agents; i++)
         {
             untreated[i].clear();
-            for ( int j = 1; j < num_nodes; j++) // 之所以从1开始算, 是因为0是仓库, 1开始才是客户; 
+            for ( int j = 1; j < num_nodes; j++) // 之所以从1开始算, 是因为0是仓库, 1开始才是客户;
             {
                 untreated[i].add(j);
             }
@@ -277,9 +275,9 @@ public class AntColonySystem
 
         //更新信息素含量
         // 信息素挥发
-        for (int i = 0; i < num_customers; i ++)
+        for (int i = 0; i < num_nodes-1; i ++) // 这里难道不应该是node__nodes吗? 为什么少一个?
         {
-            for (int j = 0; j < num_customers; j++)
+            for (int j = 0; j < num_nodes-1; j++)
             {
                 pheromone[i][j] *= (1 - alpha);
             }
