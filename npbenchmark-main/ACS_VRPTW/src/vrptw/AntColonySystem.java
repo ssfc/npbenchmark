@@ -67,7 +67,7 @@ public class AntColonySystem
     {
         num_customers = readIn.num_nodes - 1;
         num_nodes = readIn.num_nodes;
-        num_agents = num_customers;
+        num_agents = readIn.num_nodes - 1;
         max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
         graph = readIn.graph;
