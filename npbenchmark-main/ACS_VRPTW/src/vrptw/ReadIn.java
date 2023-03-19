@@ -12,7 +12,7 @@ public class ReadIn
     int capacity; // 车辆容量; 200
 
     // Dimension: num__nodes == 客户数量+1
-    // Meaning: 存储客户数据
+    // Meaning: 存储客户数据, 就是算例中一行一行的东西;
     Node[] nodes;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)

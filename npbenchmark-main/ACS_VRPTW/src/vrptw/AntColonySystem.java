@@ -18,12 +18,14 @@ public class AntColonySystem
     int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
 
+    // Dimension: num__nodes == 客户数量+1
+    // Meaning: 存储客户数据, 就是算例中一行一行的东西;
     Node[] nodes;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: 记录图
     double[][] graph;
-    
+
     ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int iter;
     int max_iter; // 最大迭代次数
