@@ -110,12 +110,12 @@ public class AntColonySystem
             }
         }
 
-        pheromone_0 = num / (totalDistance * (num_customers + 1));
+        pheromone_0 = num / (totalDistance * num_nodes);
 
         // 初始化信息素、启发值
-        for (int i = 0; i < num_customers + 1; i++)
+        for (int i = 0; i < num_nodes; i++)
         {
-            for (int j = 0; j < num_customers + 1; j++)
+            for (int j = 0; j < num_nodes; j++)
             {
                 if (i != j)
                 {
