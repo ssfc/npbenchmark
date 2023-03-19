@@ -40,8 +40,13 @@ public class AntColonySystem
     // Dimension: num__nodes == 客户数量 + 1
     // Meaning: agent k 出发位置、当前位置、下一位置
     int[] agent_position;
-    double[][] pheromone; // 信息素
-    double[][] herustic; // 启发值
+
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // Meaning: 信息素
+    double[][] pheromone;
+
+    // Meaning: 启发值
+    double[][] herustic;
     double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
     double pheromone_0; // 信息素初始值
     double w1; // 计算概率的参数
