@@ -45,9 +45,13 @@ public class AntColonySystem
     // Meaning: 信息素
     double[][] pheromone;
 
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: 启发值
     double[][] herustic;
-    double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
+
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // Meaning: infoPhe = pheromone ^ beta * herustic ^ sita
+    double[][] infoPhe;
     double pheromone_0; // 信息素初始值
     double w1; // 计算概率的参数
     double w2; // 计算概率的参数
