@@ -80,8 +80,8 @@ public class AntColonySystem
         {
             untreated[i] = new ArrayList<>();
         }
-        agent_position = new int[num_agents + 1];
-        pheromone = new double[num_customers + 1][num_customers + 1];
+        agent_position = new int[num_nodes];
+        pheromone = new double[num_nodes][num_nodes];
         herustic = new double[num_customers + 1][num_customers + 1];
         infoPhe = new double[num_customers + 1][num_customers + 1];
         alpha = parameter.Alpha;
