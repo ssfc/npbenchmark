@@ -96,7 +96,7 @@ public class AntColonySystem
     public void init()
     {
         // 计算信息素初始值
-        double totalDistance = 0;
+        double total_distance = 0;
         double num = 0;
         for (int i = 0; i < num_nodes; i++)
         {
@@ -104,13 +104,13 @@ public class AntColonySystem
             {
                 if (i != j)
                 {
-                    totalDistance += graph[i][j];
+                    total_distance += graph[i][j];
                     num ++;
                 }
             }
         }
 
-        pheromone_0 = num / (totalDistance * num_nodes);
+        pheromone_0 = num / (total_distance * num_nodes);
 
         // 初始化信息素、启发值
         for (int i = 0; i < num_nodes; i++)
