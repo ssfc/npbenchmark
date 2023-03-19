@@ -31,9 +31,15 @@ public class AntColonySystem
     ArrayList<Integer>[] untreated;
     int iter;
     int max_iter; // 最大迭代次数
-    Solution[] solutions; // agents
+
+    // Dimension: num__nodes == 客户数量 + 1
+    // Meaning: agents
+    Solution[] solutions;
     Solution best_solution;
-    int[] agent_position; // agent k 出发位置、当前位置、下一位置
+
+    // Dimension: num__nodes == 客户数量 + 1
+    // Meaning: agent k 出发位置、当前位置、下一位置
+    int[] agent_position;
     double[][] pheromone; // 信息素
     double[][] herustic; // 启发值
     double[][] infoPhe; // infoPhe = pheromone ^ beta * herustic ^ sita
