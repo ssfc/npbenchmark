@@ -135,9 +135,9 @@ public class AntColonySystem
         for (int i = 0; i < num_agents; i++)
         {
             untreated[i].clear();
-            for ( int j = 0; j < num_customers; j++)
+            for ( int j = 1; j < num_nodes; j++) // 之所以从1开始算, 是因为0是仓库, 1开始才是客户; 
             {
-                untreated[i].add(j + 1);
+                untreated[i].add(j);
             }
         }
         // 初始化起始服务客户
