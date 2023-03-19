@@ -83,7 +83,7 @@ public class AntColonySystem
         heuristic = new double[num_nodes][num_nodes];
         infoPhe = new double[num_nodes][num_nodes];
         alpha = parameter.alpha;
-        beta = parameter.Beta;
+        beta = parameter.beta;
         sita = parameter.Sita;
         w1 = parameter.w1;
         w2 = parameter.w2;
