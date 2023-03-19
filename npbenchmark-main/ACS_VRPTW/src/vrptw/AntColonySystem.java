@@ -48,7 +48,7 @@ public class AntColonySystem
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: 启发值
-    double[][] herustic;
+    double[][] heuristic;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: infoPhe = pheromone ^ beta * herustic ^ sita
@@ -82,7 +82,7 @@ public class AntColonySystem
         }
         agent_position = new int[num_nodes];
         pheromone = new double[num_nodes][num_nodes];
-        herustic = new double[num_nodes][num_nodes];
+        heuristic = new double[num_nodes][num_nodes];
         infoPhe = new double[num_nodes][num_nodes];
         alpha = parameter.Alpha;
         beta = parameter.Beta;
@@ -121,8 +121,8 @@ public class AntColonySystem
                 {
                     pheromone[i][j] = pheromone_0;
                     pheromone[j][i] = pheromone_0;
-                    herustic[i][j] = 1 / graph[i][j];
-                    herustic[j][i] = 1 / graph[i][j];
+                    heuristic[i][j] = 1 / graph[i][j];
+                    heuristic[j][i] = 1 / graph[i][j];
                 }
             }
         }
@@ -216,7 +216,7 @@ public class AntColonySystem
         for (int i = 0; i < untreated[k].size(); i++)
         {
             infoPhe[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
-                    * Math.pow(herustic[agent_position[k]][untreated[k].get(i)], sita);
+                    * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], sita);
             infoTime[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].ready_time) +
                     Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
             sumPhe += infoPhe[i];
