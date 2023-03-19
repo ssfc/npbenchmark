@@ -26,7 +26,9 @@ public class AntColonySystem
     // Meaning: 记录图
     double[][] graph;
 
-    ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
+    // Dimension: num__nodes == 客户数量 + 1
+    // Meaning: 记录每一位agent k未服务过的客户
+    ArrayList<Integer>[] untreated;
     int iter;
     int max_iter; // 最大迭代次数
     Solution[] solutions; // agents
