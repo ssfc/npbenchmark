@@ -6,7 +6,7 @@ public class Parameter
     int max_iter;
     double alpha;
     int beta;
-    int Sita;
+    int theta;
     double w1;
     double w2;
     double[][] Graph;
@@ -16,7 +16,7 @@ public class Parameter
         max_iter = 50;
         alpha = 0.05;
         beta = 1;
-        Sita = 5;
+        theta = 5;
         w1 = 0.9;
         w2 = 0.1;
     }
@@ -26,7 +26,7 @@ public class Parameter
         max_iter = interation;
         alpha = input_alpha;
         beta = input_beta;
-        Sita = sita;
+        theta = sita;
         w1 = input_w1;
         w2 = input_w2;
     }

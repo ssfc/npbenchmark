@@ -84,7 +84,7 @@ public class AntColonySystem
         infoPhe = new double[num_nodes][num_nodes];
         alpha = parameter.alpha;
         beta = parameter.beta;
-        sita = parameter.Sita;
+        sita = parameter.theta;
         w1 = parameter.w1;
         w2 = parameter.w2;
         generated_random = new Random(seed);
