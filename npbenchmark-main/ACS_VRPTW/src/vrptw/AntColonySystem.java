@@ -13,15 +13,18 @@ import java.util.Random;
 public class AntColonySystem
 {
     // member variables;
-    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 记录图
-    double[][] graph;
-    Node[] nodes;
-    ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int num_customers; // 客户数量
     int num_agents; // agent数量
     int max_num_agents; // 最大可用车辆
     int capacity; // 车辆容量
+
+    Node[] nodes;
+
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // Meaning: 记录图
+    double[][] graph;
+    
+    ArrayList<Integer>[] untreated; // 记录每一位agent k未服务过的客户
     int iter;
     int max_iter; // 最大迭代次数
     Solution[] solutions; // agents

@@ -11,13 +11,13 @@ public class ReadIn
     int max_num_agents; // 最大可用车辆; 25
     int capacity; // 车辆容量; 200
 
-    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 记录图
-    double[][] graph;
-
     // Dimension: num__nodes == 客户数量+1
     // Meaning: 存储客户数据
     Node[] nodes;
+
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // Meaning: 记录图
+    double[][] graph;
 
     //计算图上各节点间的距离
     private double compute_distance(Node c1, Node c2)
