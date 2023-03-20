@@ -61,7 +61,10 @@ private:
     // variables;
     int num_vertex;
     int num_color;
-    int** adj_list; // adjacency list; dimension, num_vertex * num_vertex;
+
+    // Dimension: num_vertex * num_vertex;
+    // Meaning: adjacency list;
+    int** adj_list;
 
     // dimension: num_vertex;
     // vertex_edge_num[i]: number of edge of vertex i;
