@@ -144,9 +144,8 @@ public class AntColonySystem
         for (int i = 0; i < num_agents; i++)
         {
             solutions[i] = new Solution();
-            agent_position[i] = 0; // 所有车辆的起始位置都是仓库; 
+            agent_position[i] = 0; // 所有车辆的起始位置都是仓库;
         }
-
     }
 
     // 构造完整解
