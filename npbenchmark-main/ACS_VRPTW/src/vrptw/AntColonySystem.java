@@ -27,8 +27,8 @@ public class AntColonySystem
     // Comment: 这也是为什么长度选num__nodes而不是num__customers的原因, 因为仓库和各点之间的距离也需要计算;
     double[][] distance;
 
-    // Dimension: num__agents == num__customers == num__nodes - 1; 
-    // untreated[i]: 记录agent i未服务过的客户
+    // Dimension: num__agents == num__customers == num__nodes - 1;
+    // untreated[i]: 记录agent i尚未服务过的客户
     ArrayList<Integer>[] untreated;
     int iter;
     int max_iter; // 最大迭代次数
