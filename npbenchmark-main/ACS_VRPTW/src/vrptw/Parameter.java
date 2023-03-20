@@ -9,7 +9,6 @@ public class Parameter
     int theta;
     double w1;
     double w2;
-    double[][] Graph;
 
     Parameter()
     {
