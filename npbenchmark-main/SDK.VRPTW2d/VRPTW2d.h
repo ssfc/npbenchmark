@@ -42,7 +42,7 @@ struct VRPTW2d {
 	VehicleId maxVehicleNum;
 	Capacity vehicleCapacity;
 
-    // this corresponds to the line after the first line; 
+    // this corresponds to the line after the first line;
 	std::vector<Node2d> nodes;
 };
 
