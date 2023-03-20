@@ -26,13 +26,11 @@ private: // member variables.
     std::vector<std::vector<int>> center_coverages;
 
     // Dimension: num_vertex * num_vertex
-    // Element: true/false;
-    // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
+    // center_cover_vertex[i][j]: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> center_cover_vertex;
 
     // Dimension: num_vertex * (num_center that a vertex can reach);
-    // Element: name of center;
-    // Meaning: if vertex i can reach center j1, vertex_reach_center[i] = {j1, j2, j3...};
+    // vertex_reach_center[i]: if vertex i can reach center j1, vertex_reach_center[i] = {j1, j2, j3...};
     // std::vector<std::vector<int>> vertex_reaching;
     // Dimension: num_vertex;
     // Element: norm
