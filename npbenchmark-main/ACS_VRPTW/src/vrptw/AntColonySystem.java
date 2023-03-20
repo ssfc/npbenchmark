@@ -47,7 +47,7 @@ public class AntColonySystem
     double[][] pheromone;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 启发值
+    // heuristic[i][j]: 点i到点j路径的启发值
     double[][] heuristic;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
