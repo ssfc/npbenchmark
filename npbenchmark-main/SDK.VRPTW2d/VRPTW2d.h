@@ -37,9 +37,12 @@ struct VRPTW2d {
 
 	static constexpr NodeId DepotId = 0;
 
+    // this corresponds to the first line in the instance;
 	NodeId nodeNum;
 	VehicleId maxVehicleNum;
 	Capacity vehicleCapacity;
+
+    // this corresponds to the line after the first line; 
 	std::vector<Node2d> nodes;
 };
 
