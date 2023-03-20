@@ -39,7 +39,7 @@ public class AntColonySystem
     Solution best_solution;
 
     // Dimension: num__agents == num__nodes - 1
-    // Meaning: agent k 出发位置、当前位置、下一位置
+    // agent[i]: 车辆i当前的位置
     int[] agent_position;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
