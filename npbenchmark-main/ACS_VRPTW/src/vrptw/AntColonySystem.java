@@ -210,15 +210,15 @@ public class AntColonySystem
         // 计算概率
         double sum_pheromone = 0;
         double sum_time = 0;
-        double[] infoPhe = new double[num_agents];
+        double[] info_pheromone = new double[num_agents];
         double[] info_time = new double[num_agents];
         for (int i = 0; i < untreated[k].size(); i++)
         {
-            infoPhe[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
+            info_pheromone[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
                     * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], sita);
             info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].ready_time) +
                     Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
-            sum_pheromone += infoPhe[i];
+            sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
         }
 
@@ -229,7 +229,7 @@ public class AntColonySystem
         // 生成0-1随机数，累加概率，若大于当前累加部分，返回当前城市编号
         for (int i = 0; i < untreated[k].size(); i++)
         {
-            sum_prob += infoPhe[i] * w1 / sum_pheromone + info_time[i] * w2 / sum_time;
+            sum_prob += info_pheromone[i] * w1 / sum_pheromone + info_time[i] * w2 / sum_time;
             if (rate < sum_prob)
             {
                 next = untreated[k].get(i);
