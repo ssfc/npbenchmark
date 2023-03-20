@@ -27,8 +27,8 @@ public class AntColonySystem
     // Comment: 这也是为什么长度选num__nodes而不是num__customers的原因, 因为仓库和各点之间的距离也需要计算;
     double[][] distance;
 
-    // Dimension: num__nodes == 客户数量 + 1
-    // Meaning: 记录每一位agent k未服务过的客户
+    // Dimension: num__agents == num__customers == num__nodes - 1; 
+    // untreated[i]: 记录agent i未服务过的客户
     ArrayList<Integer>[] untreated;
     int iter;
     int max_iter; // 最大迭代次数
@@ -74,8 +74,8 @@ public class AntColonySystem
         iter = 0;
         max_iter = parameter.max_iter;
         solutions = new Solution[num_nodes]; // 设置初始agents数量和城市数一样多, 后面会慢慢减小;
-        untreated = new ArrayList[num_nodes]; // 数组数量等于agents数
-        for (int i = 0; i < num_nodes; i++)
+        untreated = new ArrayList[num_agents]; // 数组数量等于agents数
+        for (int i = 0; i < num_agents; i++)
         {
             untreated[i] = new ArrayList<>();
         }
