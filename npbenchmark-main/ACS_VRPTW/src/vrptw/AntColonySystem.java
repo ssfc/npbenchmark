@@ -224,7 +224,7 @@ public class AntColonySystem
 
         double rate = generated_random.nextDouble();
         int next = 0;
-        double sum_prob = 0;
+        double sum_prob = 0; // Ah... ChatGPT also recommends this name; 
 
         // 生成0-1随机数，累加概率，若大于当前累加部分，返回当前城市编号
         for (int i = 0; i < untreated[k].size(); i++)
