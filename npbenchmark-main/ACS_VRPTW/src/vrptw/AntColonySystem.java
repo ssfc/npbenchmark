@@ -158,7 +158,7 @@ public class AntColonySystem
             Route route = new Route();
             route.nodes.add(0);
 
-            while(untreated[i].size() != 0)
+            while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
             {
                 int next = select_next(i, route);
 
