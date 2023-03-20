@@ -28,18 +28,20 @@ struct Move {
 class Solution_Partition {
 public:
     unsigned int num_vertex;
+
     // dimension, num_vertex;
-    // element: amount of color i the sol;
-    // meaning: sol;
+    // solution[i]: amount of color i the solution;
     vector<unsigned int> solution;
+
     // dimension: num_color * num_vertex;
-    // element: vertex name (i);
-    // meaning: 将属于某颜色的独立集所有成员顶点按顺序排列, 范围之外的置零;
+    // partition[i]: 将属于颜色i的独立集所有成员顶点按顺序排列, 范围之外的置零;
     vector<vector<int>> partition;
+
     // dimension: num_vertex;
     // element: 序号;
     // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该sol中是第几次出现;
     vector<unsigned int> partition_index;
+
     // dimension, num_color;
     // element: num of color i in the sol;
     // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
