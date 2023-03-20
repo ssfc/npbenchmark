@@ -24,10 +24,12 @@ private: // member variables.
     int num_center;
     int radius;
     std::vector<std::vector<int>> center_coverages;
+
     // Dimension: num_vertex * num_vertex
     // Element: true/false;
     // Meaning: if center i covers vertex j, center_cover_vertex[i][j] = true; else = false;
     std::vector<boost::dynamic_bitset<>> center_cover_vertex;
+
     // Dimension: num_vertex * (num_center that a vertex can reach);
     // Element: name of center;
     // Meaning: if vertex i can reach center j1, vertex_reach_center[i] = {j1, j2, j3...};
@@ -36,6 +38,7 @@ private: // member variables.
     // Element: norm
     // Meaning: number of centers that cover vertex i;
     std::vector<int> num_reach_solution;
+
     // Dimension: num_vertex;
     // Element: name of solution center that this vertex can reach;
     // Meaning: number of centers that cover vertex i;
@@ -56,10 +59,12 @@ private: // member variables.
     int min_delta;
     int tabu_open;
     int tabu_close;
+
     // Dimension: num_vertex;
     // Meaning: element j is sum of the weights of the vertices which can only be served by center j.
     // Therefore, it can evaluate the importance of this center.
     std::vector<int> center_weights;
+
     // dimension: num_vertex;
     // meaning: element j is sum of the weights of the vertices which can only be served by center j.
     std::vector<int> prev_center_weights;
