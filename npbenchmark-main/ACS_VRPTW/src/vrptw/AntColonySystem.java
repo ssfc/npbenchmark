@@ -96,7 +96,6 @@ public class AntColonySystem
     {
         // 计算信息素初始值
         double total_distance = 0;
-        double num_paths = 0;
         for (int i = 0; i < num_nodes; i++)
         {
             for (int j = 0; j < num_nodes; j++)
@@ -104,11 +103,11 @@ public class AntColonySystem
                 if (i != j)
                 {
                     total_distance += distance[i][j];
-                    num_paths ++;
                 }
             }
         }
 
+        double num_paths = num_nodes * (num_nodes-1); // 每个node和除自己外的其他node构建路径
         System.out.println("num: " + num_paths);
 
         init_pheromone = num_paths / (total_distance * num_nodes);
