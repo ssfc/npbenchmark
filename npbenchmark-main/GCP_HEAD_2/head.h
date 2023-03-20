@@ -38,8 +38,7 @@ public:
     vector<vector<int>> partition;
 
     // dimension: num_vertex;
-    // element: 序号;
-    // meaning: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该sol中是第几次出现;
+    // partition_index[i]: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该sol中是第几次出现;
     vector<unsigned int> partition_index;
 
     // dimension, num_color;
