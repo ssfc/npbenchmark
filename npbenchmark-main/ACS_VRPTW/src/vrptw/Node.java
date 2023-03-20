@@ -4,7 +4,6 @@ package vrptw;
 public class Node
 {
     // member variables;
-    int route_number;//节点所属车辆路径编号
     int x; //节点横坐标
     // chatGPT: 变量横坐标通常命名为x或者X，具体取决于编程语言的命名规范和开发者的个人喜好。在Java中，一般使用小写字母x来表示变量横坐标值。
     int y; //节点纵坐标
@@ -17,7 +16,6 @@ public class Node
     // constructor;
     public Node()
     {
-        route_number = 0;
         ready_time = 0;
         due_time = 0;
         service_time = 0;
