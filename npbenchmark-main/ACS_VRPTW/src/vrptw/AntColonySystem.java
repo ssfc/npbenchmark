@@ -53,7 +53,7 @@ public class AntColonySystem
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: infoPhe = pheromone ^ beta * herustic ^ sita
     double[][] infoPhe;
-    double pheromone_0; // 信息素初始值
+    double init_pheromone; // 信息素初始值
     double w1; // 计算概率的参数
     double w2; // 计算概率的参数
     double alpha; // 计算infoPhe的参数，
@@ -109,7 +109,7 @@ public class AntColonySystem
             }
         }
 
-        pheromone_0 = num / (total_distance * num_nodes);
+        init_pheromone = num / (total_distance * num_nodes);
 
         // 初始化信息素、启发值
         for (int i = 0; i < num_nodes; i++)
@@ -118,8 +118,8 @@ public class AntColonySystem
             {
                 if (i != j)
                 {
-                    pheromone[i][j] = pheromone_0;
-                    pheromone[j][i] = pheromone_0;
+                    pheromone[i][j] = init_pheromone;
+                    pheromone[j][i] = init_pheromone;
                     heuristic[i][j] = 1 / distance[i][j];
                     heuristic[j][i] = 1 / distance[i][j];
                 }
