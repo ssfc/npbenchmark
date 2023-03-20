@@ -236,10 +236,10 @@ public class AntColonySystem
                 // 检验合法性
                 double time = route.time + distance[agent_position[k]][next];
                 double load = route.load + nodes[next].demand;
-                if (time > nodes[next].due_time || load > capacity)
-                    continue;
-                else
+                if (time <= nodes[next].due_time && load <= capacity)
+                {
                     break;
+                }
             }
         }
         // 检验合法性
