@@ -43,7 +43,7 @@ public class AntColonySystem
     int[] agent_position;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 信息素
+    // pheromone[i][j]: 点i到点j路径的信息素;
     double[][] pheromone;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
