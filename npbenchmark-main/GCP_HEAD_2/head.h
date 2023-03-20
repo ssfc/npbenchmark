@@ -29,7 +29,7 @@ class Solution_Partition {
 public:
     unsigned int num_vertex;
 
-    // dimension, num_vertex;
+    // dimension: num_vertex;
     // solution[i]: amount of color i the solution;
     vector<unsigned int> solution;
 
@@ -41,7 +41,7 @@ public:
     // partition_index[i]: 顶点i在所属颜色独立集中的序号; 另外一种解读是, 该颜色在该sol中是第几次出现;
     vector<unsigned int> partition_index;
 
-    // dimension, num_color;
+    // dimension: num_color;
     // num_colors[i]: 储存一个解中颜色i的顶点数量, 目的是cross_over中计算最大独立集;
     vector<int> num_colors;
 
@@ -62,7 +62,10 @@ private:
     int num_vertex;
     int num_color;
     int** adj_list; // adjacency list; dimension, num_vertex * num_vertex;
-    vector<int> vertex_edge_num; // number of edge of each vertex; dimension, num_vertex;
+
+    // dimension: num_vertex;
+    // vertex_edge_num[i]: number of edge of vertex i;
+    vector<int> vertex_edge_num;
 
     int conflict;
     int best_history_conflict;
