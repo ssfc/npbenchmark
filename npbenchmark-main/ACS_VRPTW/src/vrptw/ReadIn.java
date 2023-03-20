@@ -17,7 +17,7 @@ public class ReadIn
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // graph[i][j]: 点i和点j的距离;
-    double[][] graph;
+    double[][] distance;
 
     //计算图上各节点间的距离
     private double compute_distance(Node c1, Node c2)
@@ -37,7 +37,7 @@ public class ReadIn
             capacity = in.nextInt();
 
             nodes = new Node[num_nodes];
-            graph = new double[num_nodes][num_nodes];
+            distance = new double[num_nodes][num_nodes];
             for(int i = 0; i < num_nodes; i++)
             {
                 nodes[i] = new Node();
@@ -67,7 +67,7 @@ public class ReadIn
         {
             for(int j = 0; j < num_nodes; j++) // 之所以+1, 是因为编号从0开始, 仓库也算作一行;
             {
-                graph[i][j] = compute_distance(nodes[i], nodes[j]);
+                distance[i][j] = compute_distance(nodes[i], nodes[j]);
             }
         }
     }
