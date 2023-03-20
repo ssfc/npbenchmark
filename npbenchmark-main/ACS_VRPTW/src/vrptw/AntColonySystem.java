@@ -107,7 +107,7 @@ public class AntColonySystem
             }
         }
 
-        double num_paths = num_nodes * (num_nodes-1); // 每个node和除自己外的其他node构建路径
+        double num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
         System.out.println("num: " + num_paths);
 
         init_pheromone = num_paths / (total_distance * num_nodes);
