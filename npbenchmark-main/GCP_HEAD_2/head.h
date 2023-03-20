@@ -42,8 +42,7 @@ public:
     vector<unsigned int> partition_index;
 
     // dimension, num_color;
-    // element: num of color i in the sol;
-    // meaning: 储存一个解中每种颜色的顶点数量, 目的是cross_over中计算最大独立集;
+    // num_colors[i]: 储存一个解中颜色i的顶点数量, 目的是cross_over中计算最大独立集;
     vector<int> num_colors;
 
     explicit Solution_Partition(int input_num_vertex, int input_num_color);
