@@ -16,7 +16,7 @@ public class ReadIn
     Node[] nodes;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 记录图
+    // Meaning: graph[i][j], 点i和点j的距离;
     double[][] graph;
 
     //计算图上各节点间的距离

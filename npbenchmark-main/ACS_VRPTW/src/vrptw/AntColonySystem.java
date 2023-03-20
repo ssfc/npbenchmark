@@ -23,7 +23,8 @@ public class AntColonySystem
     Node[] nodes;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: 记录图
+    // Meaning: graph[i][j], 点i和点j的距离;
+    // Comment: 这也是为什么长度选num__nodes而不是num__customers的原因, 因为仓库和各点之间的距离也需要计算;
     double[][] graph;
 
     // Dimension: num__nodes == 客户数量 + 1
