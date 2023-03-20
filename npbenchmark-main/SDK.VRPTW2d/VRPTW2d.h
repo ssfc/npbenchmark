@@ -23,6 +23,7 @@ using Time = int;
 
 using Coord2d = std::array<Coord, 2>;
 
+// this struct corresponds to Node.java;
 struct Node2d {
 	Coord2d coords;
 	Capacity demand;
