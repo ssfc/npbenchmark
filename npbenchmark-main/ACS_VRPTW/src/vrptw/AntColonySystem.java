@@ -284,7 +284,7 @@ public class AntColonySystem
             }
         }
         // 信息素增加
-        for (int i = 0; i < now_best.routes.size(); i ++)
+        for (int i = 0; i < now_best.routes.size(); i++)
         {
             for (int j = 1; j < now_best.routes.get(i).nodes.size(); j++)
             {
