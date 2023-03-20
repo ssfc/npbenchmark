@@ -38,7 +38,7 @@ public class AntColonySystem
     Solution[] solutions;
     Solution best_solution;
 
-    // Dimension: num__nodes == 客户数量 + 1
+    // Dimension: num__agents == num__nodes - 1
     // Meaning: agent k 出发位置、当前位置、下一位置
     int[] agent_position;
 
@@ -79,7 +79,7 @@ public class AntColonySystem
         {
             untreated[i] = new ArrayList<>();
         }
-        agent_position = new int[num_nodes];
+        agent_position = new int[num_agents];
         pheromone = new double[num_nodes][num_nodes];
         heuristic = new double[num_nodes][num_nodes];
         infoPhe = new double[num_nodes][num_nodes];
