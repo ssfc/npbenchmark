@@ -12,11 +12,11 @@ public class ReadIn
     int capacity; // 车辆容量; 200
 
     // Dimension: num__nodes == 客户数量+1
-    // Meaning: 存储客户数据, 就是算例中一行一行的东西;
+    // nodes[i]: 算例中第i行的数据;
     Node[] nodes;
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Element: graph[i][j], 点i和点j的距离;
+    // graph[i][j]: 点i和点j的距离;
     double[][] graph;
 
     //计算图上各节点间的距离
