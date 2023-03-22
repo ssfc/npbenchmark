@@ -50,9 +50,6 @@ public class AntColonySystem
     // heuristic[i][j]: 点i到点j路径的启发值
     double[][] heuristic;
 
-    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
-    // Meaning: infoPhe = pheromone ^ beta * herustic ^ sita
-    double[][] infoPhe;
     double init_pheromone; // 信息素初始值
     double w1; // 计算概率的参数
     double w2; // 计算概率的参数
@@ -82,7 +79,6 @@ public class AntColonySystem
         agent_position = new int[num_agents];
         pheromone = new double[num_nodes][num_nodes];
         heuristic = new double[num_nodes][num_nodes];
-        infoPhe = new double[num_nodes][num_nodes];
         alpha = parameter.alpha;
         beta = parameter.beta;
         sita = parameter.theta;
