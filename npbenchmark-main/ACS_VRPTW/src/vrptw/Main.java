@@ -26,7 +26,7 @@ public class Main
 }
 
 
-// home server path:
+// laptop path:
 // C:\wamp64\www\npbenchmark\npbenchmark-main\ACS_VRPTW\src\vrptw
 //
 // running command:
