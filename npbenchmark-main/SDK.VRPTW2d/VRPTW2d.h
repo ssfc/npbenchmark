@@ -51,6 +51,7 @@ struct Route {
 	std::vector<NodeId> nodes; // `nodes[n]` is the `n`th node in the route.
 };
 
+// this corresponds to solution
 using Routes = std::vector<Route>; // `Routes[v]` is the route for vehicle `v`.
 
 
