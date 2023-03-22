@@ -25,11 +25,11 @@ using Coord2d = std::array<Coord, 2>;
 
 // this struct corresponds to Node.java;
 struct Node2d {
-	Coord2d coords;
-	Capacity demand;
-	Time minStayTime;
-	Time windowBegin;
-	Time windowEnd;
+	Coord2d coords; // double
+	Capacity demand; // int
+	Time minStayTime; // int
+	Time windowBegin; // int
+	Time windowEnd; // int
 };
 
 struct VRPTW2d {
