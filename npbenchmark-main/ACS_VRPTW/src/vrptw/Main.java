@@ -25,10 +25,11 @@ public class Main
     }
 }
 
-/*
- * home server path: C:\wamp64\www\npbenchmark\npbenchmark-main\ACS_VRPTW\src\vrptw
- *
- * running command:
- * home server: javac -d . VRPTW/*.java && java VRPTW.Main
- *
- */
+
+// home server path:
+// C:\wamp64\www\npbenchmark\npbenchmark-main\ACS_VRPTW\src\vrptw
+//
+//
+// running command:
+// home server: javac -d . VRPTW/*.java && java VRPTW.Main
+
