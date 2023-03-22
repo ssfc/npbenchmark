@@ -156,7 +156,7 @@ public class AntColonySystem
         {
             // 路径开始
             Route route = new Route();
-            route.nodes.add(0);
+            route.route.add(0); // 先把仓库加进去;
 
             while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
             {
@@ -165,18 +165,18 @@ public class AntColonySystem
                 // 如果下一个选择不合法或客户已配送完毕
                 if (next == 0)
                 {
-                    route.nodes.add(0);
+                    route.route.add(0);
                     route.time += distance[agent_position[i]][0];
                     route.distance += distance[agent_position[i]][0];
                     solutions[i].routes.add(route);
                     solutions[i].total_cost += route.distance;
                     route = new Route();
-                    route.nodes.add(0);
+                    route.route.add(0);
                     agent_position[i] = 0;
                 }
                 else
                 {
-                    route.nodes.add(next);
+                    route.route.add(next);
                     route.load += nodes[next].demand;
                     route.time = Math.max(route.time + distance[agent_position[i]][next], nodes[next].ready_time) + nodes[next].service_time;
                     route.distance += distance[agent_position[i]][next];
@@ -191,7 +191,7 @@ public class AntColonySystem
                 }
             }
             // 最后一条路径返回配送中心
-            route.nodes.add(0);
+            route.route.add(0);
             route.time = Math.max(distance[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
             route.distance += distance[agent_position[i]][0];
             solutions[i].routes.add(route);
@@ -286,13 +286,13 @@ public class AntColonySystem
         // 信息素增加
         for (int i = 0; i < now_best.routes.size(); i++)
         {
-            for (int j = 1; j < now_best.routes.get(i).nodes.size(); j++)
+            for (int j = 1; j < now_best.routes.get(i).route.size(); j++)
             {
-                pheromone[now_best.routes.get(i).nodes.get(j - 1)][now_best.routes.get(i).nodes.get(j)]
+                pheromone[now_best.routes.get(i).route.get(j - 1)][now_best.routes.get(i).route.get(j)]
                         += (1 / (double)now_best.total_cost) * (1 + delta);
                 // 对称处理
-                pheromone[now_best.routes.get(i).nodes.get(j)][now_best.routes.get(i).nodes.get(j - 1)]
-                        = pheromone[now_best.routes.get(i).nodes.get(j - 1)][now_best.routes.get(i).nodes.get(j)];
+                pheromone[now_best.routes.get(i).route.get(j)][now_best.routes.get(i).route.get(j - 1)]
+                        = pheromone[now_best.routes.get(i).route.get(j - 1)][now_best.routes.get(i).route.get(j)];
             }
         }
     }
@@ -338,16 +338,16 @@ public class AntColonySystem
         int id = 0;
         for (int i = 1; i < best_solution.routes.size(); i++)
         {
-            if (best_solution.routes.get(i).nodes.size() > 2)
+            if (best_solution.routes.get(i).route.size() > 2)
             {
                 id++;
                 System.out.print("No." + id + " : ");
 
-                for (int j = 0; j < best_solution.routes.get(i).nodes.size() - 1; ++j)
+                for (int j = 0; j < best_solution.routes.get(i).route.size() - 1; ++j)
                 {
-                    System.out.print(best_solution.routes.get(i).nodes.get(j) + " -> ");
+                    System.out.print(best_solution.routes.get(i).route.get(j) + " -> ");
                 }
-                System.out.println(best_solution.routes.get(i).nodes.get(best_solution.routes.get(i).nodes.size() - 1));
+                System.out.println(best_solution.routes.get(i).route.get(best_solution.routes.get(i).route.size() - 1));
             }
         }
         System.out.println("************************************************************");
@@ -364,9 +364,9 @@ public class AntColonySystem
         double total_cost = 0;
         for (Route best_route : best_solution.routes)
         {
-            for (int j = 1; j < best_route.nodes.size(); ++j)
+            for (int j = 1; j < best_route.route.size(); ++j)
             {
-                total_cost += distance[best_route.nodes.get(j - 1)][best_route.nodes.get(j)];
+                total_cost += distance[best_route.route.get(j - 1)][best_route.route.get(j)];
             }
         }
         // 防止精度损失
@@ -378,24 +378,24 @@ public class AntColonySystem
         for (Route best_route : best_solution.routes)
         {
             int time = 0;
-            for (int j = 1; j < best_route.nodes.size(); ++j)
+            for (int j = 1; j < best_route.route.size(); ++j)
             {
-                time += distance[best_route.nodes.get(j - 1)][best_route.nodes.get(j)];
-                if (time > nodes[best_route.nodes.get(j)].due_time)
+                time += distance[best_route.route.get(j - 1)][best_route.route.get(j)];
+                if (time > nodes[best_route.route.get(j)].due_time)
                 {
                     check_time = false;
                 }
-                time = Math.max(time, nodes[best_route.nodes.get(j)].ready_time)
-                        + nodes[best_route.nodes.get(j)].service_time;
+                time = Math.max(time, nodes[best_route.route.get(j)].ready_time)
+                        + nodes[best_route.route.get(j)].service_time;
             }
         }
 
         for (Route best_route : best_solution.routes)
         {
             int load = 0;
-            for (int j = 1; j < best_route.nodes.size() - 1; ++j)
+            for (int j = 1; j < best_route.route.size() - 1; ++j)
             {
-                load += nodes[best_route.nodes.get(j)].demand;
+                load += nodes[best_route.route.get(j)].demand;
             }
             if (load > capacity)
             {
