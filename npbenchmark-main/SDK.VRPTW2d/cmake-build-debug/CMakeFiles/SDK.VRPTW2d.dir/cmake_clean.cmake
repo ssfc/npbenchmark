@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SDK.VRPTW2d.dir/AntColony.cpp.obj"
+  "CMakeFiles/SDK.VRPTW2d.dir/AntColony.cpp.obj.d"
   "CMakeFiles/SDK.VRPTW2d.dir/Main.cpp.obj"
   "CMakeFiles/SDK.VRPTW2d.dir/Main.cpp.obj.d"
   "CMakeFiles/SDK.VRPTW2d.dir/VRPTW2d.cpp.obj"

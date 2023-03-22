@@ -128,6 +128,30 @@ SDK.VRPTW2d/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK.VRPTW2d.dir\build.make CMakeFiles/SDK.VRPTW2d.dir/build
 .PHONY : SDK.VRPTW2d/fast
 
+AntColony.obj: AntColony.cpp.obj
+.PHONY : AntColony.obj
+
+# target to build an object file
+AntColony.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK.VRPTW2d.dir\build.make CMakeFiles/SDK.VRPTW2d.dir/AntColony.cpp.obj
+.PHONY : AntColony.cpp.obj
+
+AntColony.i: AntColony.cpp.i
+.PHONY : AntColony.i
+
+# target to preprocess a source file
+AntColony.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK.VRPTW2d.dir\build.make CMakeFiles/SDK.VRPTW2d.dir/AntColony.cpp.i
+.PHONY : AntColony.cpp.i
+
+AntColony.s: AntColony.cpp.s
+.PHONY : AntColony.s
+
+# target to generate assembly for a file
+AntColony.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\SDK.VRPTW2d.dir\build.make CMakeFiles/SDK.VRPTW2d.dir/AntColony.cpp.s
+.PHONY : AntColony.cpp.s
+
 Main.obj: Main.cpp.obj
 .PHONY : Main.obj
 
@@ -185,6 +209,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... SDK.VRPTW2d
+	@echo ... AntColony.obj
+	@echo ... AntColony.i
+	@echo ... AntColony.s
 	@echo ... Main.obj
 	@echo ... Main.i
 	@echo ... Main.s

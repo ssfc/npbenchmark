@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.VRPTW2d/AntColony.cpp">
+			<Option target="SDK.VRPTW2d"/>
+		</Unit>
+		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.VRPTW2d/AntColony.h">
+			<Option target="SDK.VRPTW2d"/>
+		</Unit>
 		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.VRPTW2d/Main.cpp">
 			<Option target="SDK.VRPTW2d"/>
 		</Unit>

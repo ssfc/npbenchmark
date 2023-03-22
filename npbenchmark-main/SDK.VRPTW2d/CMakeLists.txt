@@ -9,4 +9,4 @@ include_directories(.)
 add_executable(SDK.VRPTW2d
         VRPTW2d.cpp
         VRPTW2d.h
-        Main.cpp)
+        Main.cpp AntColony.h AntColony.cpp)
