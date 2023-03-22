@@ -21,6 +21,7 @@ class Solver {
 	int rand(int ub) { return uniform_int_distribution<int>(0, ub - 1)(pseudoRandNumGen); }
 
 public:
+    // 车辆在两个顶点之间的旅行时间
 	static Time travelTime(const Coord2d& src, const Coord2d& dst) {
 		return static_cast<Time>(hypot(src[0] - dst[0], src[1] - dst[1]) * VRPTW2d::Precision);
 	}
