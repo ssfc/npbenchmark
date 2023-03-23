@@ -1,3 +1,4 @@
+#include "AntColony.h"
 #include "VRPTW2d.h"
 
 #include <random>
@@ -51,6 +52,8 @@ public:
 			node.windowBegin *= VRPTW2d::Precision;
 			node.windowEnd *= VRPTW2d::Precision;
 		}
+
+        AntColony test(input.nodeNum, input.maxVehicleNum, seed);
 
 
 	}
