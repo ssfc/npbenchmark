@@ -17,10 +17,10 @@ public class ReadIn
 
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // distance[i][j]: 点i和点j的距离;
-    double[][] distance;
+    int[][] distance;
 
     //计算图上各节点间的距离
-    private double compute_distance(Node c1, Node c2)
+    private int compute_distance(Node c1, Node c2)
     {
         return (int) (10 * sqrt((c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y)));
     }
@@ -37,7 +37,7 @@ public class ReadIn
             capacity = in.nextInt();
 
             nodes = new Node[num_nodes];
-            distance = new double[num_nodes][num_nodes];
+            distance = new int[num_nodes][num_nodes];
             for(int i = 0; i < num_nodes; i++)
             {
                 nodes[i] = new Node();
