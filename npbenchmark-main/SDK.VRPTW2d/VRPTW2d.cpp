@@ -53,7 +53,8 @@ public:
 			node.windowEnd *= VRPTW2d::Precision;
 		}
 
-        AntColony test(input.nodeNum, input.maxVehicleNum, seed);
+        AntColony test(input.nodeNum, input.maxVehicleNum,
+                       input.vehicleCapacity, seed);
 
 
 	}
