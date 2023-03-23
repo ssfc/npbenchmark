@@ -32,13 +32,17 @@ public:
 		// TODO: implement your own solver which fills the `output` to replace the following trivial solver.
 		// sample solver: add nodes to routes randomly (the solution can be infeasible).
 
+        // compute distance between two nodes;
 		vector<vector<Time>> travelTimes(input.nodeNum, vector<Time>(input.nodeNum));
-		for (NodeId n = 0; n < input.nodeNum; ++n) {
+		for (NodeId n = 0; n < input.nodeNum; ++n)
+        {
 			travelTimes[n][n] = 0;
-			for (NodeId m = 0; m < n; ++m) {
+			for (NodeId m = 0; m < n; ++m)
+            {
 				travelTimes[n][m] = travelTimes[m][n] = travelTime(input.nodes[n].coords, input.nodes[m].coords);
 			}
 		}
+        
 		for (auto n = input.nodes.begin(); n != input.nodes.end(); ++n) {
 			n->minStayTime *= VRPTW2d::Precision;
 			n->windowBegin *= VRPTW2d::Precision;
