@@ -13,6 +13,7 @@ class AntColony
 private: // member variables.
     int num_nodes; // 客户数量+1, 因为算上了仓库; 101
     int num_agents; // agent数量
+    int max_num_agents; // 最大agents数量;
 
     // debug variables:
     std::mt19937 generated_random;
