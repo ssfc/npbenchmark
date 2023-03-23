@@ -4,24 +4,13 @@
 
 #ifndef SDK_VRPTW2D_ANTCOLONY_H
 #define SDK_VRPTW2D_ANTCOLONY_H
+#include "VRPTW2d.h"
 #include <array>
 #include <random>
 #include <vector>
 
-using NodeId = int;
-using VehicleId = int;
-using Coord = double;
-using Capacity = int;
-using Time = int;
-using Coord2d = std::array<Coord, 2>;
-// this struct corresponds to Node.java;
-struct Node2d {
-    Coord2d coords; // double
-    Capacity demand; // int
-    Time minStayTime; // int
-    Time windowBegin; // int
-    Time windowEnd; // int
-};
+using namespace szx;
+
 
 class AntColony
 {
@@ -39,8 +28,7 @@ private: // member variables.
     std::mt19937 generated_random;
 
 public: // member functions.
-    AntColony(int input_num_nodes, int input_num_agents, int input_capacity,
-               int input_seed);
+    AntColony(VRPTW2d& input, int input_seed);
     ~AntColony();
 
     // debug functions;
