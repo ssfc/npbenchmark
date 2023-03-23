@@ -43,10 +43,10 @@ public:
 			}
 		}
 
-		for (auto n = input.nodes.begin(); n != input.nodes.end(); ++n) {
-			n->minStayTime *= VRPTW2d::Precision;
-			n->windowBegin *= VRPTW2d::Precision;
-			n->windowEnd *= VRPTW2d::Precision;
+		for (auto & node : input.nodes) {
+			node.minStayTime *= VRPTW2d::Precision;
+			node.windowBegin *= VRPTW2d::Precision;
+			node.windowEnd *= VRPTW2d::Precision;
 		}
 
 		VehicleId vehicleNum = input.maxVehicleNum - rand(input.maxVehicleNum / 2);
