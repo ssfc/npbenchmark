@@ -55,7 +55,8 @@ public:
 		//                       +----[ use the random number generator initialized by the given seed ]
 		//                      +----[ exit before timeout ]
 		//                      |
-		for (NodeId n = 1; !isTimeout() && (n < input.nodeNum); ++n) {
+		for (NodeId n = 1; !isTimeout() && (n < input.nodeNum); ++n)
+        {
 			VehicleId v = rand(vehicleNum);
 			output[v].nodes.push_back(n);
 		}
