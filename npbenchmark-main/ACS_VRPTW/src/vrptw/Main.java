@@ -28,7 +28,8 @@ public class Main
 
 // laptop path:
 // C:\wamp64\www\npbenchmark\npbenchmark-main\ACS_VRPTW\src\vrptw
-//
+// home server path:
+// /home/ssfc/ACS_VRPTW/src/vrptw
 // running command:
 // home server:
 // javac -d . vrptw/*.java && java vrptw.Main 1 ./data/solomon.c101.n101v25c200.txt
