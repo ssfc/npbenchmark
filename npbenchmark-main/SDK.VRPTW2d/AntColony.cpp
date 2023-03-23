@@ -11,7 +11,8 @@ using namespace std;
 AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_travel_times, int input_seed):
                      num_nodes(input.nodeNum),
                      max_num_agents(input.maxVehicleNum),
-                     capacity(input.vehicleCapacity)
+                     capacity(input.vehicleCapacity),
+                     untreated(input.nodeNum, 0)
 {
     init_rand(input_seed); // initialize random generator;
 
