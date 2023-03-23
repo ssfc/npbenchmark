@@ -22,7 +22,7 @@ public class ReadIn
     //计算图上各节点间的距离
     private double compute_distance(Node c1, Node c2)
     {
-        return ((int) 10 * sqrt((c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y)) ) / 10;
+        return ((int) 10 * sqrt((c1.x - c2.x) * (c1.x - c2.x) + (c1.y - c2.y) * (c1.y - c2.y)) ) ;
     }
 
     //读取数据
@@ -48,9 +48,9 @@ public class ReadIn
                 nodes[i].x = in.nextInt();
                 nodes[i].y = in.nextInt();
                 nodes[i].demand = in.nextInt();
-                nodes[i].service_time = in.nextInt();
-                nodes[i].ready_time = in.nextInt();
-                nodes[i].due_time = in.nextInt();
+                nodes[i].service_time = in.nextInt() * 10;
+                nodes[i].ready_time = in.nextInt() * 10;
+                nodes[i].due_time = in.nextInt() * 10;
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }
 
