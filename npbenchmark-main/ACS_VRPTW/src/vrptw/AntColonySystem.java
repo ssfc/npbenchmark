@@ -68,6 +68,9 @@ public class AntColonySystem
         max_num_agents = readIn.max_num_agents;
         capacity = readIn.capacity;
         travel_times = readIn.travel_times;
+
+        System.out.println("travel_times[1][2]: " + travel_times[1][2]);
+
         nodes = readIn.nodes;
         iter = 0;
         max_iter = parameter.max_iter;
