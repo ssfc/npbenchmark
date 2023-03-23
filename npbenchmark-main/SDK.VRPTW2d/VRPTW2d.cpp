@@ -52,22 +52,7 @@ public:
 			node.windowEnd *= VRPTW2d::Precision;
 		}
 
-		VehicleId vehicleNum = input.maxVehicleNum - rand(input.maxVehicleNum / 2);
-		//                       |
-		//                       +----[ use the random number generator initialized by the given seed ]
-		//                      +----[ exit before timeout ]
-		//                      |
-		for (NodeId n = 1; !isTimeout() && (n < input.nodeNum); ++n)
-        {
-			VehicleId v = rand(vehicleNum);
-			output[v].nodes.push_back(n);
-		}
 
-		// TODO: the following code in this function is for illustration only and can be deleted.
-		// print some information for debugging.
-		cerr << input.nodeNum << '\t' << input.maxVehicleNum << '\t' << input.vehicleCapacity << endl;
-		cerr << "vehicle\tnodes" << endl;
-		for (VehicleId v = 0; !isTimeout() && (v < vehicleNum); ++v) { cerr << v << '\t' << output[v].nodes.size() << endl; }
 	}
 };
 
