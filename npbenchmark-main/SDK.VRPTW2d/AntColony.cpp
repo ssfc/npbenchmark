@@ -21,7 +21,11 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
     init_rand(input_seed); // initialize random generator;
 
     nodes = input.nodes;
+    travel_times = input_travel_times;
 
+    cerr << "travel times[1][2]: " << travel_times[1][2] << endl;
+    cerr << "travel times[1][1]: " << travel_times[1][1] << endl;
+    cerr << "travel times[0][0]: " << travel_times[0][0] << endl;
 }
 
 AntColony::~AntColony()
