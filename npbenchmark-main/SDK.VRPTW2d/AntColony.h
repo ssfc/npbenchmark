@@ -24,11 +24,16 @@ private: // member variables.
     // Meaning: 存储客户数据, 就是算例中一行一行的东西;
     std::vector<Node2d> nodes;
 
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // Meaning: distance[i][j], 点i和点j的距离;
+    // Comment: 这也是为什么长度选num__nodes而不是num__customers的原因, 因为仓库和各点之间的距离也需要计算;
+    std::vector<std::vector<int>> travel_times;
+
     // debug variables:
     std::mt19937 generated_random;
 
 public: // member functions.
-    AntColony(VRPTW2d& input, int input_seed);
+    AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_travel_times, int input_seed);
     ~AntColony();
 
     // debug functions;

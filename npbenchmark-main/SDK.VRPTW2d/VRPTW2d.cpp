@@ -53,7 +53,7 @@ public:
 			node.windowEnd *= VRPTW2d::Precision;
 		}
 
-        AntColony test(input, seed);
+        AntColony test(input, travelTimes, seed);
 
 
 	}
