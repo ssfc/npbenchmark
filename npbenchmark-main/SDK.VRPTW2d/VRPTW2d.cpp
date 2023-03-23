@@ -47,7 +47,7 @@ public:
 
 		for (auto & node : input.nodes)
         {
-			node.minStayTime *= VRPTW2d::Precision;
+			node.minStayTime *= VRPTW2d::Precision; // *= 不就是原值*10的意思嘛
 			node.windowBegin *= VRPTW2d::Precision;
 			node.windowEnd *= VRPTW2d::Precision;
 		}
