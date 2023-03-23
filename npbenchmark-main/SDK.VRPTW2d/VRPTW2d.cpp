@@ -43,7 +43,8 @@ public:
 			}
 		}
 
-		for (auto & node : input.nodes) {
+		for (auto & node : input.nodes)
+        {
 			node.minStayTime *= VRPTW2d::Precision;
 			node.windowBegin *= VRPTW2d::Precision;
 			node.windowEnd *= VRPTW2d::Precision;
