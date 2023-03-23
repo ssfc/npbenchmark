@@ -13,12 +13,13 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      max_num_agents(input.maxVehicleNum),
                      capacity(input.vehicleCapacity)
 {
+    init_rand(input_seed); // initialize random generator;
+
     cerr << "num nodes: " << num_nodes << endl;
     num_agents = input.nodeNum - 1;
     cerr << "num cars: " << num_agents << endl;
     cerr << "max cars: " << max_num_agents << endl;
     cerr << "capacity: " << capacity << endl;
-    init_rand(input_seed); // initialize random generator;
 
     nodes = input.nodes;
     travel_times = input_travel_times;
