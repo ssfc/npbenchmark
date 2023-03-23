@@ -25,6 +25,7 @@ public class AntColonySystem
     // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
     // Meaning: distance[i][j], 点i和点j的距离;
     // Comment: 这也是为什么长度选num__nodes而不是num__customers的原因, 因为仓库和各点之间的距离也需要计算;
+    // Comment: 这里的距离已经是10倍后的距离了;
     int[][] distance;
 
     // Dimension: num__agents == num__customers == num__nodes - 1;
