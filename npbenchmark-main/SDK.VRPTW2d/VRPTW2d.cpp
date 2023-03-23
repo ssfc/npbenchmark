@@ -22,11 +22,13 @@ class Solver {
 
 public:
     // 车辆在两个顶点之间的旅行时间
-	static Time travelTime(const Coord2d& src, const Coord2d& dst) {
+	static Time travelTime(const Coord2d& src, const Coord2d& dst)
+    {
 		return static_cast<Time>(hypot(src[0] - dst[0], src[1] - dst[1]) * VRPTW2d::Precision);
 	}
 
-	void solve(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed) {
+	void solve(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed)
+    {
 		initRand(seed);
 
 		// TODO: implement your own solver which fills the `output` to replace the following trivial solver.
