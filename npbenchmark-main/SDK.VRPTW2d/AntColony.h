@@ -37,6 +37,12 @@ private: // member variables.
     // Meaning: agents
     std::vector<Solution> solutions;
 
+    Solution best_solution;
+
+    // Dimension: num__agents == num__nodes - 1
+    // agent[i]: 车辆i当前的位置
+    std::vector<int> agent_position;
+
     int iter;
     int max_iter; // 最大迭代次数
 

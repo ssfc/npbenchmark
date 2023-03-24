@@ -18,7 +18,8 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      untreated(input.nodeNum, 0), // array
                      iter(0),
                      max_iter(50),
-                     solutions(input.nodeNum) // array
+                     solutions(input.nodeNum), // array
+                     agent_position(input.nodeNum - 1)
 {
     init_rand(input_seed); // initialize random generator;
     cerr << "num nodes: " << num_nodes << endl;
