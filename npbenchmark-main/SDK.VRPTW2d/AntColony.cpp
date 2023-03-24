@@ -12,7 +12,8 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      num_nodes(input.nodeNum),
                      max_num_agents(input.maxVehicleNum),
                      capacity(input.vehicleCapacity),
-                     nodes(input.nodeNum),
+                     nodes(input.nodeNum), // array
+                     travel_times(input.nodeNum), // array
                      untreated(input.nodeNum, 0),
                      iter(0),
                      max_iter(50),
