@@ -53,6 +53,12 @@ private: // member variables.
 
     double init_pheromone; // 信息素初始值
 
+    double w1; // 计算概率的参数
+    double w2; // 计算概率的参数
+    double alpha; // 计算infoPhe的参数，
+    double beta; // 计算infoPhe的参数，
+    double theta; // 计算infoPhe的参数，
+
     int iter;
     int max_iter; // 最大迭代次数
 
