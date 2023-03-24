@@ -74,8 +74,6 @@ public class AntColonySystem
         System.out.println("travel_times[1][2]: " + travel_times[1][2]);
 
         nodes = readIn.nodes;
-        iter = 0;
-        max_iter = parameter.max_iter;
         solutions = new Solution[num_nodes]; // 设置初始agents数量和城市数一样多, 后面会慢慢减小;
         untreated = new ArrayList[num_agents]; // 数组数量等于agents数
         for (int i = 0; i < num_agents; i++)
@@ -90,6 +88,8 @@ public class AntColonySystem
         theta = parameter.theta;
         w1 = parameter.w1;
         w2 = parameter.w2;
+        iter = 0;
+        max_iter = parameter.max_iter;
         generated_random = new Random(seed);
     }
 
