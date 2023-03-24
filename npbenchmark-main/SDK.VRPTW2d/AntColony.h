@@ -4,8 +4,10 @@
 
 #ifndef SDK_VRPTW2D_ANTCOLONY_H
 #define SDK_VRPTW2D_ANTCOLONY_H
+
 #include "VRPTW2d.h"
 #include <array>
+#include <climits>
 #include <random>
 #include <vector>
 
@@ -69,6 +71,8 @@ public: // member functions.
     AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_travel_times, int input_seed);
     ~AntColony();
     void init_other();
+
+    void ACS_Strategy();
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
