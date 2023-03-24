@@ -20,7 +20,9 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      max_iter(50),
                      solutions(input.nodeNum), // array
                      agent_position(input.nodeNum - 1), // 1d array
-                     pheromone(num_nodes, vector<double>(num_nodes, 0.0)) // 2d array
+                     pheromone(num_nodes, vector<double>(num_nodes, 0.0)), // 2d array
+                     heuristic(num_nodes, vector<double>(num_nodes, 0.0)), // 2d array
+                     init_pheromone(0)
 {
     init_rand(input_seed); // initialize random generator;
     cerr << "num nodes: " << num_nodes << endl;

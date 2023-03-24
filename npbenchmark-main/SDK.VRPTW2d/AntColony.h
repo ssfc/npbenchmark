@@ -47,6 +47,12 @@ private: // member variables.
     // pheromone[i][j]: 点i到点j路径的信息素;
     std::vector<std::vector<double>> pheromone;
 
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // heuristic[i][j]: 点i到点j路径的启发值
+    std::vector<std::vector<double>> heuristic;
+
+    double init_pheromone; // 信息素初始值
+
     int iter;
     int max_iter; // 最大迭代次数
 
