@@ -54,6 +54,11 @@ struct Route {
 // this corresponds to solution
 using Routes = std::vector<Route>; // `Routes[v]` is the route for vehicle `v`.
 
+struct Solution
+{
+    int total_cost;
+    std::vector<Route> Routes;
+};
 
 void solveVRPTW2d(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed);
 
