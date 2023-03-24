@@ -31,8 +31,6 @@ public class AntColonySystem
     // Dimension: num__agents == num__customers == num__nodes - 1;
     // untreated[i]: 记录agent i尚未服务过的客户
     ArrayList<Integer>[] untreated;
-    int iter;
-    int max_iter; // 最大迭代次数
 
     // Dimension: num__nodes == 客户数量 + 1
     // Meaning: agents
@@ -57,6 +55,10 @@ public class AntColonySystem
     double alpha; // 计算infoPhe的参数，
     double beta; // 计算infoPhe的参数，
     double sita; // 计算infoPhe的参数，
+
+    int iter;
+    int max_iter; // 最大迭代次数
+    
     Random generated_random;
 
     // member functions;
