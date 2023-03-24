@@ -33,12 +33,12 @@ private: // member variables.
     // untreated[i]: 记录agent i尚未服务过的客户
     std::vector<int> untreated;
 
-    int iter;
-    int max_iter; // 最大迭代次数
-
     // Dimension: num__nodes == 客户数量 + 1
     // Meaning: agents
     std::vector<Solution> solutions;
+
+    int iter;
+    int max_iter; // 最大迭代次数
 
     // debug variables:
     std::mt19937 generated_random;
