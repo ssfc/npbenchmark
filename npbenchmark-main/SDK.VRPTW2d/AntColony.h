@@ -31,7 +31,7 @@ private: // member variables.
 
     // Dimension: num__agents == num__customers == num__nodes - 1;
     // untreated[i]: 记录agent i尚未服务过的客户
-    std::vector<int> untreated;
+    std::vector<std::vector<int>> untreated;
 
     // Dimension: num__nodes == 客户数量 + 1
     // Meaning: agents

@@ -15,7 +15,7 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      capacity(input.vehicleCapacity),
                      nodes(input.nodes), // 1d array
                      travel_times(input_travel_times), // 2d array
-                     untreated(input.nodeNum, 0), // 1d array
+                     untreated(input.nodeNum), // 2d array
                      solutions(input.nodeNum), // array
                      agent_position(input.nodeNum - 1), // 1d array
                      pheromone(num_nodes, vector<double>(num_nodes, 0.0)), // 2d array
