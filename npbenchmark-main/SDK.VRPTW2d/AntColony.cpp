@@ -42,3 +42,39 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
 
 AntColony::~AntColony()
 = default;
+
+void AntColony::init_other()
+{
+    // 计算信息素初始值
+    double total_distance = 0;
+    for (int i = 0; i < num_nodes; i++)
+    {
+        for (int j = 0; j < num_nodes; j++)
+        {
+            if (i != j)
+            {
+                total_distance += travel_times[i][j];
+            }
+        }
+    }
+
+    double num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
+    cerr << "num: " << num_paths << endl;
+
+    init_pheromone = num_paths / (total_distance * num_nodes);
+
+    // 初始化信息素、启发值
+    for (int i = 0; i < num_nodes; i++)
+    {
+        for (int j = 0; j < num_nodes; j++)
+        {
+            if (i != j)
+            {
+                pheromone[i][j] = init_pheromone;
+                pheromone[j][i] = init_pheromone;
+                heuristic[i][j] = 1 / (double) travel_times[i][j];
+                heuristic[j][i] = 1 / (double) travel_times[i][j];
+            }
+        }
+    }
+}

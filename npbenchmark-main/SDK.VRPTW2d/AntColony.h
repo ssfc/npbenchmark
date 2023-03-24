@@ -68,6 +68,7 @@ private: // member variables.
 public: // member functions.
     AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_travel_times, int input_seed);
     ~AntColony();
+    void init_other();
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
