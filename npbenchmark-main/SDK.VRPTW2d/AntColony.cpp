@@ -14,10 +14,10 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      capacity(input.vehicleCapacity),
                      nodes(input.nodeNum), // array
                      travel_times(input.nodeNum), // array
-                     untreated(input.nodeNum, 0),
+                     untreated(input.nodeNum, 0), // array
                      iter(0),
                      max_iter(50),
-                     solutions(input.nodeNum)
+                     solutions(input.nodeNum) // array
 {
     init_rand(input_seed); // initialize random generator;
 
