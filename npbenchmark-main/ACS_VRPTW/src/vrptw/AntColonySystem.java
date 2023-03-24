@@ -94,7 +94,7 @@ public class AntColonySystem
     }
 
     // 初始化总体参数
-    public void init()
+    public void init_other()
     {
         // 计算信息素初始值
         double total_distance = 0;
@@ -305,7 +305,7 @@ public class AntColonySystem
         long begin_time = System.nanoTime();
         best_solution = new Solution();
         best_solution.total_cost = Integer.MAX_VALUE;
-        init();
+        init_other();
         while (iter < max_iter)
         {
             reset();//初始化agent信息
