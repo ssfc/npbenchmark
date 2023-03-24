@@ -54,7 +54,7 @@ public:
 		}
 
         AntColony test(input, travelTimes, seed);
-
+        test.ACS_Strategy();
 
 	}
 };
