@@ -54,7 +54,7 @@ public class AntColonySystem
     double w2; // 计算概率的参数
     double alpha; // 计算infoPhe的参数，
     double beta; // 计算infoPhe的参数，
-    double sita; // 计算infoPhe的参数，
+    double theta; // 计算infoPhe的参数，
 
     int iter;
     int max_iter; // 最大迭代次数
@@ -87,7 +87,7 @@ public class AntColonySystem
         heuristic = new double[num_nodes][num_nodes];
         alpha = parameter.alpha;
         beta = parameter.beta;
-        sita = parameter.theta;
+        theta = parameter.theta;
         w1 = parameter.w1;
         w2 = parameter.w2;
         generated_random = new Random(seed);
@@ -217,7 +217,7 @@ public class AntColonySystem
         for (int i = 0; i < untreated[k].size(); i++)
         {
             info_pheromone[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
-                    * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], sita);
+                    * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
             info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].ready_time) +
                     Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
             sum_pheromone += info_pheromone[i];
