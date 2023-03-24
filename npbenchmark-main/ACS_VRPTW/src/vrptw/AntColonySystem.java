@@ -58,7 +58,7 @@ public class AntColonySystem
 
     int iter;
     int max_iter; // 最大迭代次数
-    
+
     Random generated_random;
 
     // member functions;
@@ -272,7 +272,7 @@ public class AntColonySystem
         // 更新最优解 若当前最优代替历史最优，增加信息素时获得增益
         if (now_best.total_cost < best_solution.total_cost)
         {
-            delta = (best_solution.total_cost - now_best.total_cost) / best_solution.total_cost;
+            delta = (double) (best_solution.total_cost - now_best.total_cost) / (double) best_solution.total_cost;
             best_solution = now_best;
         }
 
