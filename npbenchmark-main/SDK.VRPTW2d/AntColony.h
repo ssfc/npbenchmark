@@ -36,6 +36,10 @@ private: // member variables.
     int iter;
     int max_iter; // 最大迭代次数
 
+    // Dimension: num__nodes == 客户数量 + 1
+    // Meaning: agents
+    std::vector<Solution> solutions;
+
     // debug variables:
     std::mt19937 generated_random;
 
