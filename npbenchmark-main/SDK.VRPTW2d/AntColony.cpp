@@ -13,13 +13,14 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      num_agents(input.nodeNum - 1),
                      max_num_agents(input.maxVehicleNum),
                      capacity(input.vehicleCapacity),
-                     nodes(input.nodes), // array
-                     travel_times(input_travel_times), // array
-                     untreated(input.nodeNum, 0), // array
+                     nodes(input.nodes), // 1d array
+                     travel_times(input_travel_times), // 2d array
+                     untreated(input.nodeNum, 0), // 1d array
                      iter(0),
                      max_iter(50),
                      solutions(input.nodeNum), // array
-                     agent_position(input.nodeNum - 1)
+                     agent_position(input.nodeNum - 1), // 1d array
+                     pheromone(num_nodes, vector<double>(num_nodes, 0.0)) // 2d array
 {
     init_rand(input_seed); // initialize random generator;
     cerr << "num nodes: " << num_nodes << endl;

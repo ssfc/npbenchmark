@@ -43,6 +43,10 @@ private: // member variables.
     // agent[i]: 车辆i当前的位置
     std::vector<int> agent_position;
 
+    // Dimension: num__nodes * num__nodes == (客户数量+1) * (客户数量+1)
+    // pheromone[i][j]: 点i到点j路径的信息素;
+    std::vector<std::vector<double>> pheromone;
+
     int iter;
     int max_iter; // 最大迭代次数
 
