@@ -98,6 +98,11 @@ void AntColony::reset()
         }
     }
 
+    // evaluate initial untreated;
+    // for (int i = 0; i < num_agents; i++)
+    // {
+    //     print_vector(to_string(i), untreated[i]);
+    // }
 
     // 初始化起始服务客户
     for (int i = 0; i < num_agents; i++)
