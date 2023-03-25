@@ -48,6 +48,9 @@ struct VRPTW2d {
 
 // this corresponds to route in java class route;
 struct Route {
+    double load;
+    int distance;
+    double time;
 	std::vector<NodeId> route; // `route[n]` is the `n`th node in the route.
 };
 

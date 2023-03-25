@@ -146,7 +146,7 @@ int AntColony::select_next(int k, Route route)
         sum_prob += info_pheromone[i] * w1 / sum_pheromone + info_time[i] * w2 / sum_time;
         if (rate < sum_prob)
         {
-            next = untreated[k].get(i);
+            next = untreated[k][i];
             // 检验合法性
             double time = route.time + travel_times[agent_position[k]][next];
             double load = route.load + nodes[next].demand;
