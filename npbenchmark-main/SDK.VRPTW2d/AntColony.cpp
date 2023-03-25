@@ -184,25 +184,25 @@ void AntColony::construct_solution()
             // 如果下一个选择不合法或客户已配送完毕
             if (next == 0)
             {
-                route.route.add(0);
+                route.route.push_back(0);
                 route.time += travel_times[agent_position[i]][0];
                 route.distance += travel_times[agent_position[i]][0];
-                solutions[i].routes.add(route);
+                solutions[i].Routes.push_back(route);
                 solutions[i].total_cost += route.distance;
-                route = new Route();
-                route.route.add(0);
+                route = Route();
+                route.route.push_back(0);
                 agent_position[i] = 0;
             }
             else
             {
-                route.route.add(next);
+                route.route.push_back(next);
                 route.load += nodes[next].demand;
                 route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].ready_time) + nodes[next].service_time;
                 route.distance += travel_times[agent_position[i]][next];
                 agent_position[i] = next;
                 for (int j = 0; j < untreated[i].size(); j++)
                 {
-                    if (untreated[i].get(j) == next)
+                    if (untreated[i][j] == next)
                     {
                         untreated[i].remove(j);
                     }
@@ -210,10 +210,10 @@ void AntColony::construct_solution()
             }
         }
         // 最后一条路径返回配送中心
-        route.route.add(0);
+        route.route.push_back(0);
         route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
         route.distance += travel_times[agent_position[i]][0];
-        solutions[i].routes.add(route);
+        solutions[i].Routes.push_back(route);
         solutions[i].total_cost += route.distance;
     }
 }
