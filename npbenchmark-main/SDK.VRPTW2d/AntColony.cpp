@@ -136,7 +136,7 @@ int AntColony::select_next(int k, Route route)
         sum_time += info_time[i];
     }
 
-    double rate = generated_random.nextDouble();
+    double rate = generated_random() / double(std::mt19937::max());
     int next = 0;
     double sum_prob = 0; // Ah... ChatGPT also recommends this name;
 
