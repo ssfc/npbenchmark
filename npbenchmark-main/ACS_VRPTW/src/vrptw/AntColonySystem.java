@@ -172,7 +172,7 @@ public class AntColonySystem
         {
             info_pheromone[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
                     * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
-            info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].window_begin) +
+            info_time[i] = 1 / (double) (Math.abs(route.time - nodes[untreated[k].get(i)].window_begin) +
                     Math.abs(route.time - nodes[untreated[k].get(i)].window_end));
             sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
