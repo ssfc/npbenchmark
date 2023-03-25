@@ -113,6 +113,58 @@ void AntColony::reset()
 }
 
 
+void AntColony::construct_solution()
+{/*
+    // 为每一位agent分别构造解
+    for (int i = 0; i < num_agents; i++)
+    {
+        // 路径开始
+        Route route = Route();
+        route.route.add(0); // 先把仓库加进去;
+
+        while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
+        {
+            int next = select_next(i, route);
+
+            // 如果下一个选择不合法或客户已配送完毕
+            if (next == 0)
+            {
+                route.route.add(0);
+                route.time += travel_times[agent_position[i]][0];
+                route.distance += travel_times[agent_position[i]][0];
+                solutions[i].routes.add(route);
+                solutions[i].total_cost += route.distance;
+                route = new Route();
+                route.route.add(0);
+                agent_position[i] = 0;
+            }
+            else
+            {
+                route.route.add(next);
+                route.load += nodes[next].demand;
+                route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].ready_time) + nodes[next].service_time;
+                route.distance += travel_times[agent_position[i]][next];
+                agent_position[i] = next;
+                for (int j = 0; j < untreated[i].size(); j++)
+                {
+                    if (untreated[i].get(j) == next)
+                    {
+                        untreated[i].remove(j);
+                    }
+                }
+            }
+        }
+        // 最后一条路径返回配送中心
+        route.route.add(0);
+        route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
+        route.distance += travel_times[agent_position[i]][0];
+        solutions[i].routes.add(route);
+        solutions[i].total_cost += route.distance;
+    }
+    */
+}
+
+
 void AntColony::ACS_Strategy()
 {
     double begin_time = clock();

@@ -72,7 +72,7 @@ public: // member functions.
     ~AntColony();
     void init_other();
     void reset();
-
+    void construct_solution();
     void ACS_Strategy();
 
     // debug functions;
