@@ -108,7 +108,7 @@ public class AntColonySystem
                 }
             }
         }
-        System.out.println("total distance: " + travel_times);
+        System.out.println("total distance: " + total_distance);
 
         double num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
         System.out.println("num_path: " + num_paths);
