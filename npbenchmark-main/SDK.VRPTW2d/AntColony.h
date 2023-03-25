@@ -77,6 +77,7 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
+    static void print_vector(const std::string& name, std::vector<int> &vect);
 };
 
 

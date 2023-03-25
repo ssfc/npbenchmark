@@ -98,10 +98,11 @@ void AntColony::reset()
         }
     }
 
+
     // 初始化起始服务客户
     for (int i = 0; i < num_agents; i++)
     {
-        solutions[i] = new Solution();
+        solutions[i] = Solution();
         agent_position[i] = 0; // 所有车辆的起始位置都是仓库;
     }
 }
@@ -115,8 +116,9 @@ void AntColony::ACS_Strategy()
 
     while (iter < max_iter && iter < 1)
     {
-        /*
+
         reset();//初始化agent信息
+        /*
         construct_solution();//对于所有的agent构造一个完整的tour
         update_pheromone();//更新信息素
         if(iter % 5 == 0)
@@ -128,8 +130,8 @@ void AntColony::ACS_Strategy()
                                + "\tfrequency: " + df.format((double) iter / elapsed_time));
         }
 
-        iter++;
          */
+        iter++;
     }
 
 
@@ -137,4 +139,15 @@ void AntColony::ACS_Strategy()
     double elapsed_time = (clock() - begin_time)/ CLOCKS_PER_SEC;
     cerr << "success, iterations: " << iter << "\tnum agents: " << best_solution.Routes.size()
     << "\telapsed time(s): " << elapsed_time << "\tfrequency: " << iter / elapsed_time;
+}
+
+// debug function:
+void AntColony::print_vector(const string& name, vector<int> &vect)
+{
+    cerr << name << ": ";
+    for(int i : vect)
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
 }
