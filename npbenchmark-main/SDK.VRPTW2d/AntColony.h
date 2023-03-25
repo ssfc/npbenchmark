@@ -8,6 +8,7 @@
 #include "VRPTW2d.h"
 #include <array>
 #include <climits>
+#include <cmath>
 #include <random>
 #include <vector>
 
