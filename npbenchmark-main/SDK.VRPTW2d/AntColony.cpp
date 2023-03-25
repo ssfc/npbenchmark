@@ -114,13 +114,14 @@ void AntColony::reset()
 
 
 void AntColony::construct_solution()
-{/*
+{
+    /*
     // 为每一位agent分别构造解
     for (int i = 0; i < num_agents; i++)
     {
         // 路径开始
         Route route = Route();
-        route.route.add(0); // 先把仓库加进去;
+        route.route.push_back(0); // 先把仓库加进去;
 
         while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
         {
@@ -161,7 +162,7 @@ void AntColony::construct_solution()
         solutions[i].routes.add(route);
         solutions[i].total_cost += route.distance;
     }
-    */
+     */
 }
 
 
