@@ -116,7 +116,7 @@ void AntColony::reset()
 int AntColony::select_next(int k, Route route)
 {
     // 若车辆k没有尚未访问的客户，返回仓库
-    if (untreated[k].size() == 0)
+    if (untreated[k].empty())
     {
         return 0;
     }
