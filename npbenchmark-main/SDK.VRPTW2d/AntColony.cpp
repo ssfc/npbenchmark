@@ -82,6 +82,7 @@ void AntColony::init_other()
     }
 
     cerr << "pheromone[2][1]: " << pheromone[2][1] << endl;
+    cerr << "heuristic[2][1]: " << heuristic[2][1] << endl;
 }
 
 

@@ -108,11 +108,13 @@ public class AntColonySystem
                 }
             }
         }
+        System.out.println("total distance: " + travel_times);
 
         double num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
-        System.out.println("num: " + num_paths);
+        System.out.println("num_path: " + num_paths);
 
         init_pheromone = num_paths / (total_distance * num_nodes);
+        System.out.println("init_pheromone: " + init_pheromone);
 
         // 初始化信息素、启发值
         for (int i = 0; i < num_nodes; i++)
@@ -128,6 +130,9 @@ public class AntColonySystem
                 }
             }
         }
+
+        System.out.println("pheromone[2][1]: " + pheromone[2][1]);
+        System.out.println("heuristic[2][1]: " + heuristic[2][1]);
     }
 
     // 初始化agent参数
