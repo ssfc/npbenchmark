@@ -72,6 +72,7 @@ public: // member functions.
     ~AntColony();
     void init_other();
     void reset();
+    int select_next(int k, Route route);
     void construct_solution();
     void ACS_Strategy();
 

@@ -113,6 +113,61 @@ void AntColony::reset()
 }
 
 
+int AntColony::select_next(int k, Route route)
+{
+    // 若车辆k没有尚未访问的客户，返回仓库
+    if (untreated[k].size() == 0)
+    {
+        return 0;
+    }
+
+    // 计算概率
+    double sum_pheromone = 0;
+    double sum_time = 0;
+    vector<double> info_pheromone(num_agents, 0);
+    vector<double> info_time(num_agents, 0);
+    for (int i = 0; i < untreated[k].size(); i++)
+    {
+        info_pheromone[i] = Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
+                           * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
+        info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].ready_time) +
+                            Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
+        sum_pheromone += info_pheromone[i];
+        sum_time += info_time[i];
+    }
+
+    double rate = generated_random.nextDouble();
+    int next = 0;
+    double sum_prob = 0; // Ah... ChatGPT also recommends this name;
+
+    // 生成0-1随机数，累加概率，若大于当前累加部分，返回当前城市编号
+    for (int i = 0; i < untreated[k].size(); i++)
+    {
+        sum_prob += info_pheromone[i] * w1 / sum_pheromone + info_time[i] * w2 / sum_time;
+        if (rate < sum_prob)
+        {
+            next = untreated[k].get(i);
+            // 检验合法性
+            double time = route.time + travel_times[agent_position[k]][next];
+            double load = route.load + nodes[next].demand;
+            if (time <= nodes[next].due_time && load <= capacity)
+            {
+                break;
+            }
+        }
+    }
+    // 检验合法性
+    double time = route.time + travel_times[agent_position[k]][next];
+    double load = route.load + nodes[next].demand;
+    if (time > nodes[next].due_time || load > capacity)
+    {
+        next = 0;
+    }
+
+    return next;
+}
+
+
 void AntColony::construct_solution()
 {
     /*
