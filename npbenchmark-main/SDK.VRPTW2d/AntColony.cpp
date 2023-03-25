@@ -128,10 +128,10 @@ int AntColony::select_next(int k, Route route)
     vector<double> info_time(num_agents, 0);
     for (int i = 0; i < untreated[k].size(); i++)
     {
-        info_pheromone[i] = pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
-                           * pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
-        info_time[i] = 1 / (abs(route.time - nodes[untreated[k].get(i)].ready_time) +
-                            abs(route.time - nodes[untreated[k].get(i)].due_time));
+        info_pheromone[i] = pow(pheromone[agent_position[k]][untreated[k][i]], beta)
+                           * pow(heuristic[agent_position[k]][untreated[k][i]], theta);
+        info_time[i] = 1 / (abs(route.time - nodes[untreated[k][i]].ready_time) +
+                            abs(route.time - nodes[untreated[k][i]].due_time));
         sum_pheromone += info_pheromone[i];
         sum_time += info_time[i];
     }

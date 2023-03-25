@@ -49,7 +49,7 @@ public class ReadIn
                 nodes[i].y = in.nextInt();
                 nodes[i].demand = in.nextInt();
                 nodes[i].service_time = in.nextInt() * 10;
-                nodes[i].ready_time = in.nextInt() * 10;
+                nodes[i].window_begin = in.nextInt() * 10;
                 nodes[i].due_time = in.nextInt() * 10;
                 //System.out.println("customerNr X,Y = " + customers[i].X + "\t" + customers[i].Y);
             }

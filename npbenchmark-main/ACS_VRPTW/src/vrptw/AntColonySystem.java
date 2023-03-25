@@ -172,7 +172,7 @@ public class AntColonySystem
         {
             info_pheromone[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
                     * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
-            info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].ready_time) +
+            info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].window_begin) +
                     Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
             sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
@@ -239,7 +239,7 @@ public class AntColonySystem
                 {
                     route.route.add(next);
                     route.load += nodes[next].demand;
-                    route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].ready_time) + nodes[next].service_time;
+                    route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].window_begin) + nodes[next].service_time;
                     route.distance += travel_times[agent_position[i]][next];
                     agent_position[i] = next;
                     for (int j = 0; j < untreated[i].size(); j++)
@@ -253,7 +253,7 @@ public class AntColonySystem
             }
             // 最后一条路径返回配送中心
             route.route.add(0);
-            route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
+            route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].service_time;
             route.distance += travel_times[agent_position[i]][0];
             solutions[i].routes.add(route);
             solutions[i].total_cost += route.distance;
@@ -392,7 +392,7 @@ public class AntColonySystem
                 {
                     check_time = false;
                 }
-                time = Math.max(time, nodes[best_route.route.get(j)].ready_time)
+                time = Math.max(time, nodes[best_route.route.get(j)].window_begin)
                         + nodes[best_route.route.get(j)].service_time;
             }
         }
