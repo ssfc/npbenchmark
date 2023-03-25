@@ -71,6 +71,7 @@ public: // member functions.
     AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_travel_times, int input_seed);
     ~AntColony();
     void init_other();
+    void reset();
 
     void ACS_Strategy();
 
