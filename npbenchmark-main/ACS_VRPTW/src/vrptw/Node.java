@@ -9,7 +9,7 @@ public class Node
     int y; //节点纵坐标
     int window_begin; //时间窗开始时间;
     int window_end; // 时间窗结束时间;
-    int service_time; // 服务时长
+    int min_stay_time; // 服务时长
     int demand; //节点的需求容量
 
     // member functions;
@@ -18,7 +18,7 @@ public class Node
     {
         window_begin = 0;
         window_end = 0;
-        service_time = 0;
+        min_stay_time = 0;
         x = 0;
         y = 0;
         demand = 0;

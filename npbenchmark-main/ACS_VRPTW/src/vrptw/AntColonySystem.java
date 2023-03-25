@@ -239,7 +239,7 @@ public class AntColonySystem
                 {
                     route.route.add(next);
                     route.load += nodes[next].demand;
-                    route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].window_begin) + nodes[next].service_time;
+                    route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].window_begin) + nodes[next].min_stay_time;
                     route.distance += travel_times[agent_position[i]][next];
                     agent_position[i] = next;
                     for (int j = 0; j < untreated[i].size(); j++)
@@ -253,7 +253,7 @@ public class AntColonySystem
             }
             // 最后一条路径返回配送中心
             route.route.add(0);
-            route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].service_time;
+            route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].min_stay_time;
             route.distance += travel_times[agent_position[i]][0];
             solutions[i].routes.add(route);
             solutions[i].total_cost += route.distance;
@@ -393,7 +393,7 @@ public class AntColonySystem
                     check_time = false;
                 }
                 time = Math.max(time, nodes[best_route.route.get(j)].window_begin)
-                        + nodes[best_route.route.get(j)].service_time;
+                        + nodes[best_route.route.get(j)].min_stay_time;
             }
         }
 
