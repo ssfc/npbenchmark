@@ -208,7 +208,7 @@ public class AntColonySystem
 
     public int select_next(int k, Route route)
     {
-        // 若车辆k没有位访问的客户，返回仓库
+        // 若车辆k没有尚未访问的客户，返回仓库
         if (untreated[k].size() == 0)
         {
             return 0;
