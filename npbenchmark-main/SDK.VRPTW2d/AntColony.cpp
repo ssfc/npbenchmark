@@ -58,10 +58,13 @@ void AntColony::init_other()
         }
     }
 
-    double num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
-    cerr << "num: " << num_paths << endl;
+    cerr << "total distance: " << total_distance << endl;
 
-    init_pheromone = num_paths / (total_distance * num_nodes);
+    int num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
+    cerr << "num_path: " << num_paths << endl;
+
+    init_pheromone = double (num_paths) / (total_distance * num_nodes);
+    cerr << "init pheromone: " << init_pheromone << endl;
 
     // 初始化信息素、启发值
     for (int i = 0; i < num_nodes; i++)
@@ -77,6 +80,8 @@ void AntColony::init_other()
             }
         }
     }
+
+    cerr << "pheromone[2][1]: " << pheromone[2][1] << endl;
 }
 
 
