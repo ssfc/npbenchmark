@@ -170,7 +170,6 @@ int AntColony::select_next(int k, Route route)
 
 void AntColony::construct_solution()
 {
-    /*
     // 为每一位agent分别构造解
     for (int i = 0; i < num_agents; i++)
     {
@@ -178,7 +177,7 @@ void AntColony::construct_solution()
         Route route = Route();
         route.route.push_back(0); // 先把仓库加进去;
 
-        while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
+        while(!untreated[i].empty()) // 车辆i还有没有访问的客户
         {
             int next = select_next(i, route);
 
@@ -217,7 +216,6 @@ void AntColony::construct_solution()
         solutions[i].routes.add(route);
         solutions[i].total_cost += route.distance;
     }
-     */
 }
 
 
