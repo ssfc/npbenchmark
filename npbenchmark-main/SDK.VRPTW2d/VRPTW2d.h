@@ -48,7 +48,7 @@ struct VRPTW2d {
 
 // this corresponds to route in java class route;
 struct Route {
-	std::vector<NodeId> nodes; // `nodes[n]` is the `n`th node in the route.
+	std::vector<NodeId> route; // `route[n]` is the `n`th node in the route.
 };
 
 // this corresponds to solution
