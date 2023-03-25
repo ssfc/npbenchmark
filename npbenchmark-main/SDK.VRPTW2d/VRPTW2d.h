@@ -27,7 +27,7 @@ using Coord2d = std::array<Coord, 2>;
 struct Node2d {
 	Coord2d coords; // double
 	Capacity demand; // int
-	Time minStayTime; // int
+	Time min_stay_time; // int
 	Time window_begin; // int
 	Time window_end; // int
 };
@@ -50,7 +50,7 @@ struct VRPTW2d {
 struct Route {
     double load;
     int distance;
-    double time;
+    int time;
 	std::vector<NodeId> route; // `route[n]` is the `n`th node in the route.
 };
 

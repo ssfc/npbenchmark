@@ -197,7 +197,7 @@ void AntColony::construct_solution()
             {
                 route.route.push_back(next);
                 route.load += nodes[next].demand;
-                route.time = Math.max(route.time + travel_times[agent_position[i]][next], nodes[next].ready_time) + nodes[next].service_time;
+                route.time = max(route.time + travel_times[agent_position[i]][next], nodes[next].window_begin) + nodes[next].min_stay_time;
                 route.distance += travel_times[agent_position[i]][next];
                 agent_position[i] = next;
                 for (int j = 0; j < untreated[i].size(); j++)
@@ -211,7 +211,7 @@ void AntColony::construct_solution()
         }
         // 最后一条路径返回配送中心
         route.route.push_back(0);
-        route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].ready_time) + nodes[0].service_time;
+        route.time = max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].min_stay_time;
         route.distance += travel_times[agent_position[i]][0];
         solutions[i].Routes.push_back(route);
         solutions[i].total_cost += route.distance;
