@@ -173,7 +173,7 @@ public class AntColonySystem
             info_pheromone[i] =Math.pow(pheromone[agent_position[k]][untreated[k].get(i)], beta)
                     * Math.pow(heuristic[agent_position[k]][untreated[k].get(i)], theta);
             info_time[i] = 1 / (Math.abs(route.time - nodes[untreated[k].get(i)].window_begin) +
-                    Math.abs(route.time - nodes[untreated[k].get(i)].due_time));
+                    Math.abs(route.time - nodes[untreated[k].get(i)].window_end));
             sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
         }
@@ -192,7 +192,7 @@ public class AntColonySystem
                 // 检验合法性
                 double time = route.time + travel_times[agent_position[k]][next];
                 double load = route.load + nodes[next].demand;
-                if (time <= nodes[next].due_time && load <= capacity)
+                if (time <= nodes[next].window_end && load <= capacity)
                 {
                     break;
                 }
@@ -201,7 +201,7 @@ public class AntColonySystem
         // 检验合法性
         double time = route.time + travel_times[agent_position[k]][next];
         double load = route.load + nodes[next].demand;
-        if (time > nodes[next].due_time || load > capacity)
+        if (time > nodes[next].window_end || load > capacity)
         {
             next = 0;
         }
@@ -388,7 +388,7 @@ public class AntColonySystem
             for (int j = 1; j < best_route.route.size(); ++j)
             {
                 time += travel_times[best_route.route.get(j - 1)][best_route.route.get(j)];
-                if (time > nodes[best_route.route.get(j)].due_time)
+                if (time > nodes[best_route.route.get(j)].window_end)
                 {
                     check_time = false;
                 }

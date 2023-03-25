@@ -8,7 +8,7 @@ public class Node
     // chatGPT: 变量横坐标通常命名为x或者X，具体取决于编程语言的命名规范和开发者的个人喜好。在Java中，一般使用小写字母x来表示变量横坐标值。
     int y; //节点纵坐标
     int window_begin; //时间窗开始时间;
-    int due_time; // 时间窗结束时间;
+    int window_end; // 时间窗结束时间;
     int service_time; // 服务时长
     int demand; //节点的需求容量
 
@@ -17,7 +17,7 @@ public class Node
     public Node()
     {
         window_begin = 0;
-        due_time = 0;
+        window_end = 0;
         service_time = 0;
         x = 0;
         y = 0;
