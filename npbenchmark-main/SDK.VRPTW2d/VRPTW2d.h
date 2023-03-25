@@ -28,8 +28,8 @@ struct Node2d {
 	Coord2d coords; // double
 	Capacity demand; // int
 	Time minStayTime; // int
-	Time windowBegin; // int
-	Time windowEnd; // int
+	Time window_begin; // int
+	Time window_end; // int
 };
 
 struct VRPTW2d {

@@ -130,8 +130,8 @@ int AntColony::select_next(int k, Route route)
     {
         info_pheromone[i] = pow(pheromone[agent_position[k]][untreated[k][i]], beta)
                            * pow(heuristic[agent_position[k]][untreated[k][i]], theta);
-        info_time[i] = 1 / (abs(route.time - nodes[untreated[k][i]].ready_time) +
-                            abs(route.time - nodes[untreated[k][i]].due_time));
+        info_time[i] = 1 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
+                            abs(route.time - nodes[untreated[k][i]].window_end));
         sum_pheromone += info_pheromone[i];
         sum_time += info_time[i];
     }
@@ -150,7 +150,7 @@ int AntColony::select_next(int k, Route route)
             // 检验合法性
             double time = route.time + travel_times[agent_position[k]][next];
             double load = route.load + nodes[next].demand;
-            if (time <= nodes[next].due_time && load <= capacity)
+            if (time <= nodes[next].window_end && load <= capacity)
             {
                 break;
             }
@@ -159,7 +159,7 @@ int AntColony::select_next(int k, Route route)
     // 检验合法性
     double time = route.time + travel_times[agent_position[k]][next];
     double load = route.load + nodes[next].demand;
-    if (time > nodes[next].due_time || load > capacity)
+    if (time > nodes[next].window_end || load > capacity)
     {
         next = 0;
     }
