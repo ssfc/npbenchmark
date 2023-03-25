@@ -311,7 +311,7 @@ public class AntColonySystem
         best_solution = new Solution();
         best_solution.total_cost = Integer.MAX_VALUE;
         init_other();
-        while (iter < max_iter)
+        while (iter < max_iter && iter < 1)
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour

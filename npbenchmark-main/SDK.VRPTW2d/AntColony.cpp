@@ -92,9 +92,9 @@ void AntColony::ACS_Strategy()
     best_solution.total_cost = INT_MAX;
     init_other();
 
-    /*
-    while (iter < max_iter)
+    while (iter < max_iter && iter < 1)
     {
+        /*
         reset();//初始化agent信息
         construct_solution();//对于所有的agent构造一个完整的tour
         update_pheromone();//更新信息素
@@ -108,9 +108,10 @@ void AntColony::ACS_Strategy()
         }
 
         iter++;
+         */
     }
 
-     */
+
 
     double elapsed_time = (clock() - begin_time)/ CLOCKS_PER_SEC;
     cerr << "success, iterations: " << iter << "\tnum agents: " << best_solution.Routes.size()
