@@ -48,9 +48,9 @@ public:
 
 		for (auto & node : input.nodes)
         {
-			node.minStayTime *= VRPTW2d::Precision; // *= 不就是原值*10的意思嘛
-			node.windowBegin *= VRPTW2d::Precision;
-			node.windowEnd *= VRPTW2d::Precision;
+			node.min_stay_time *= VRPTW2d::Precision; // *= 不就是原值*10的意思嘛
+			node.window_begin *= VRPTW2d::Precision;
+			node.window_end *= VRPTW2d::Precision;
 		}
 
         AntColony test(input, travelTimes, seed);

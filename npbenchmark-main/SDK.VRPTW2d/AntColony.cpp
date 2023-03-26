@@ -229,8 +229,9 @@ void AntColony::ACS_Strategy()
     {
 
         reset();//初始化agent信息
-        /*
         construct_solution();//对于所有的agent构造一个完整的tour
+
+        /*
         update_pheromone();//更新信息素
         if(iter % 5 == 0)
         {
