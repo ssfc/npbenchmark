@@ -130,7 +130,7 @@ int AntColony::select_next(int k, Route route)
     {
         info_pheromone[i] = pow(pheromone[agent_position[k]][untreated[k][i]], beta)
                            * pow(heuristic[agent_position[k]][untreated[k][i]], theta);
-        info_time[i] = 1 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
+        info_time[i] = 1.0 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
                             abs(route.time - nodes[untreated[k][i]].window_end));
         sum_pheromone += info_pheromone[i];
         sum_time += info_time[i];
@@ -227,8 +227,8 @@ void AntColony::ACS_Strategy()
 
     while (iter < max_iter && iter < 1)
     {
-
         reset();//初始化agent信息
+        cerr << "reset done" << endl;
         construct_solution();//对于所有的agent构造一个完整的tour
 
         /*
