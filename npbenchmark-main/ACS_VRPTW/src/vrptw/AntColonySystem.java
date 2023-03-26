@@ -214,15 +214,19 @@ public class AntColonySystem
     public void construct_solution()
     {
         // 为每一位agent分别构造解
-        for (int i = 0; i < num_agents; i++)
+        // for (int i = 0; i < num_agents; i++)
+        for (int i = 0; i < 1; i++)
         {
             // 路径开始
             Route this_route = new Route();
             this_route.route.add(0); // 先把仓库加进去;
 
-            while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
+            int debug_counter = 0;
+            // while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
+            while(untreated[i].size() != 0 && debug_counter < 1) // 车辆i还有没有访问的客户
             {
                 int next = select_next(i, this_route);
+                System.out.println("next: " + next);
 
                 // 如果下一个选择不合法或客户已配送完毕
                 if (next == 0)
@@ -251,7 +255,10 @@ public class AntColonySystem
                         }
                     }
                 }
+
+                debug_counter++;
             }
+
             // 最后一条路径返回配送中心
             this_route.route.add(0);
             this_route.time = Math.max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].min_stay_time;

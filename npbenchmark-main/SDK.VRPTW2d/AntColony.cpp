@@ -172,7 +172,7 @@ void AntColony::construct_solution()
 {
     // 为每一位agent分别构造解
     // for (int i = 0; i < num_agents; i++)
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 1; i++) // debug one iter;
     {
         // 路径开始
         Route route = Route();
@@ -182,6 +182,7 @@ void AntColony::construct_solution()
         while(!untreated[i].empty()) // 车辆i还有没有访问的客户
         {
             int next = select_next(i, route);
+            cerr << "next: " << next << endl;
 
             // 如果下一个选择不合法或客户已配送完毕
             if (next == 0)
