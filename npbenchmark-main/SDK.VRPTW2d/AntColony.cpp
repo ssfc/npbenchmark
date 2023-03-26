@@ -131,7 +131,7 @@ int AntColony::select_next(int k, Route route)
     {
         info_pheromone[i] = pow(double (pheromone[agent_position[k]][untreated[k][i]]), beta)
                            * pow(double (heuristic[agent_position[k]][untreated[k][i]]), theta);
-        cerr << "info pheromone: " << info_pheromone[i] << endl;
+        // cerr << "info pheromone: " << info_pheromone[i] << endl;
         info_time[i] = 1.0 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
                             abs(route.time - nodes[untreated[k][i]].window_end));
         sum_pheromone += info_pheromone[i];
