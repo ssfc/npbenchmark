@@ -171,11 +171,13 @@ int AntColony::select_next(int k, Route route)
 void AntColony::construct_solution()
 {
     // 为每一位agent分别构造解
-    for (int i = 0; i < num_agents; i++)
+    // for (int i = 0; i < num_agents; i++)
+    for (int i = 0; i < 1; i++)
     {
         // 路径开始
         Route route = Route();
         route.route.push_back(0); // 先把仓库加进去;
+        print_vector("init route", route.route);
 
         while(!untreated[i].empty()) // 车辆i还有没有访问的客户
         {
