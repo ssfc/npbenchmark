@@ -178,6 +178,8 @@ public class AntColonySystem
             sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
         }
+        System.out.println("sum pheromone: " + sum_pheromone);
+        System.out.println("sum time: " + sum_time);
 
         double rate = generated_random.nextDouble();
         int next = 0;
@@ -225,6 +227,7 @@ public class AntColonySystem
             // while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
             while(untreated[i].size() != 0 && debug_counter < 1) // 车辆i还有没有访问的客户
             {
+                System.out.println("debug counter: " + debug_counter);
                 int next = select_next(i, this_route);
                 System.out.println("next: " + next);
 

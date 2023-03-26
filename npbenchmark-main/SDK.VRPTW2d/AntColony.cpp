@@ -118,6 +118,7 @@ int AntColony::select_next(int k, Route route)
     // 若车辆k没有尚未访问的客户，返回仓库
     if (untreated[k].empty())
     {
+        cerr << "untreated[k] empty!";
         return 0;
     }
 
@@ -128,13 +129,16 @@ int AntColony::select_next(int k, Route route)
     vector<double> info_time(num_agents, 0);
     for (int i = 0; i < untreated[k].size(); i++)
     {
-        info_pheromone[i] = pow(pheromone[agent_position[k]][untreated[k][i]], beta)
-                           * pow(heuristic[agent_position[k]][untreated[k][i]], theta);
+        info_pheromone[i] = pow(double (pheromone[agent_position[k]][untreated[k][i]]), beta)
+                           * pow(double (heuristic[agent_position[k]][untreated[k][i]]), theta);
+        cerr << "info pheromone: " << info_pheromone[i] << endl;
         info_time[i] = 1.0 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
                             abs(route.time - nodes[untreated[k][i]].window_end));
         sum_pheromone += info_pheromone[i];
         sum_time += info_time[i];
     }
+    cerr << "sum pheromone: " << sum_pheromone << endl;
+    cerr << "sum time: " << sum_time << endl;
 
     double rate = generated_random() / double(std::mt19937::max());
     int next = 0;
@@ -181,8 +185,9 @@ void AntColony::construct_solution()
 
         int debug_counter = 0;
         // while(!untreated[i].empty()) // 车辆i还有没有访问的客户
-        while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
+        while(!untreated[i].empty() && debug_counter < 1) // debug first two iterations;
         {
+            cerr << "debug counter: " << debug_counter << endl;
             int next = select_next(i, route);
             cerr << "next: " << next << endl;
 
