@@ -63,7 +63,7 @@ void AntColony::init_other()
     int num_paths = num_nodes * (num_nodes - 1); // 每个node和除自己外的其他node构建路径
     cerr << "num_path: " << num_paths << endl;
 
-    init_pheromone = double (num_paths) / (total_distance * num_nodes);
+    init_pheromone = static_cast<double>(num_paths) / (total_distance * num_nodes);
     cerr << "init pheromone: " << init_pheromone << endl;
 
     // 初始化信息素、启发值
@@ -75,8 +75,8 @@ void AntColony::init_other()
             {
                 pheromone[i][j] = init_pheromone;
                 pheromone[j][i] = init_pheromone;
-                heuristic[i][j] = 1 / (double) travel_times[i][j];
-                heuristic[j][i] = 1 / (double) travel_times[i][j];
+                heuristic[i][j] = 1 / static_cast<double>(travel_times[i][j]);
+                heuristic[j][i] = 1 / static_cast<double>(travel_times[i][j]);
             }
         }
     }
@@ -129,8 +129,8 @@ int AntColony::select_next(int k, Route route)
     vector<double> info_time(num_agents, 0);
     for (int i = 0; i < untreated[k].size(); i++)
     {
-        info_pheromone[i] = pow(double (pheromone[agent_position[k]][untreated[k][i]]), beta)
-                           * pow(double (heuristic[agent_position[k]][untreated[k][i]]), theta);
+        info_pheromone[i] = pow(static_cast<double>(pheromone[agent_position[k]][untreated[k][i]]), beta)
+                           * pow(static_cast<double>(heuristic[agent_position[k]][untreated[k][i]]), theta);
         // cerr << "info pheromone: " << info_pheromone[i] << endl;
         info_time[i] = 1.0 / (abs(route.time - nodes[untreated[k][i]].window_begin) +
                             abs(route.time - nodes[untreated[k][i]].window_end));
@@ -140,7 +140,7 @@ int AntColony::select_next(int k, Route route)
     cerr << "sum pheromone: " << sum_pheromone << endl;
     cerr << "sum time: " << sum_time << endl;
 
-    double rate = generated_random() / double(std::mt19937::max());
+    double rate = generated_random() / static_cast<double>(std::mt19937::max());
     rate = 0.7;
     int next = 0;
     double sum_prob = 0; // Ah... ChatGPT also recommends this name;
