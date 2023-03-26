@@ -315,6 +315,8 @@ public class AntColonySystem
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
+
+            /*
             update_pheromone();//更新信息素
             if(iter % 5 == 0)
             {
@@ -324,6 +326,7 @@ public class AntColonySystem
                         + "\telapsed time(s): " + df.format(elapsed_time)
                         + "\tfrequency: " + df.format((double) iter / elapsed_time));
             }
+             */
 
             iter++;
         }
