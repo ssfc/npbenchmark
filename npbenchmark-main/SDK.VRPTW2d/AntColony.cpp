@@ -204,7 +204,7 @@ void AntColony::construct_solution()
                 {
                     if (untreated[i][j] == next)
                     {
-                        untreated[i].remove(j);
+                        untreated[i].erase(untreated[i].begin() + j);
                     }
                 }
             }
