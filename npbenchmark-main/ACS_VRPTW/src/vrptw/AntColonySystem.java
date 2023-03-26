@@ -182,6 +182,7 @@ public class AntColonySystem
         System.out.println("sum time: " + sum_time);
 
         double rate = generated_random.nextDouble();
+        rate = 0.7;
         int next = 0;
         double sum_prob = 0; // Ah... ChatGPT also recommends this name;
 
@@ -225,7 +226,7 @@ public class AntColonySystem
 
             int debug_counter = 0;
             // while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
-            while(untreated[i].size() != 0 && debug_counter < 1) // 车辆i还有没有访问的客户
+            while(untreated[i].size() != 0 && debug_counter < 2) // 车辆i还有没有访问的客户
             {
                 System.out.println("debug counter: " + debug_counter);
                 int next = select_next(i, this_route);

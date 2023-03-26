@@ -141,6 +141,7 @@ int AntColony::select_next(int k, Route route)
     cerr << "sum time: " << sum_time << endl;
 
     double rate = generated_random() / double(std::mt19937::max());
+    rate = 0.7;
     int next = 0;
     double sum_prob = 0; // Ah... ChatGPT also recommends this name;
 
@@ -185,7 +186,7 @@ void AntColony::construct_solution()
 
         int debug_counter = 0;
         // while(!untreated[i].empty()) // 车辆i还有没有访问的客户
-        while(!untreated[i].empty() && debug_counter < 1) // debug first two iterations;
+        while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
         {
             cerr << "debug counter: " << debug_counter << endl;
             int next = select_next(i, route);
