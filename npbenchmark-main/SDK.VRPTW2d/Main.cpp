@@ -12,15 +12,15 @@ using namespace szx;
 void loadInput(istream& is, VRPTW2d& vrp) {
 	is >> vrp.nodeNum >> vrp.maxVehicleNum >> vrp.vehicleCapacity;
 	vrp.nodes.resize(vrp.nodeNum);
-	for (auto n = vrp.nodes.begin(); n != vrp.nodes.end(); ++n) {
-		is >> n->coords[0] >> n->coords[1] >> n->demand >> n->min_stay_time >> n->window_begin >> n->window_end;
+	for (auto & node : vrp.nodes) {
+		is >> node.coords[0] >> node.coords[1] >> node.demand >> node.min_stay_time >> node.window_begin >> node.window_end;
 	}
 }
 
 void saveOutput(ostream& os, Routes& routes) {
-	for (auto route = routes.begin(); route != routes.end(); ++route) {
-		if (route->route.empty()) { continue; }
-		for (auto node = route->route.begin(); node != route->route.end(); ++node) { os << *node << ' '; }
+	for (auto & route : routes) {
+		if (route.route.empty()) { continue; }
+		for (int & node : route.route) { os << node << ' '; }
 		os << endl;
 	}
 }
