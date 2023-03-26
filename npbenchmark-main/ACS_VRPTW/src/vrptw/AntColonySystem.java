@@ -147,6 +147,7 @@ public class AntColonySystem
                 untreated[i].add(j);
             }
         }
+        
         // 初始化起始服务客户
         for (int i = 0; i < num_agents; i++)
         {
