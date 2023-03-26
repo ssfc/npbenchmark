@@ -118,7 +118,7 @@ int AntColony::select_next(int k, const Route& route)
     // 若车辆k没有尚未访问的客户，返回仓库
     if (untreated[k].empty())
     {
-        cerr << "untreated[k] empty!";
+        // cerr << "untreated[k] empty!";
         return 0;
     }
 
@@ -137,11 +137,11 @@ int AntColony::select_next(int k, const Route& route)
         sum_pheromone += info_pheromone[i];
         sum_time += info_time[i];
     }
-    cerr << "sum pheromone: " << sum_pheromone << endl;
-    cerr << "sum time: " << sum_time << endl;
+    // cerr << "sum pheromone: " << sum_pheromone << endl;
+    // cerr << "sum time: " << sum_time << endl;
 
     double rate = generated_random() / static_cast<double>(std::mt19937::max());
-    rate = 0.7;
+    // rate = 0.7;
     int next = 0;
     double sum_prob = 0; // Ah... ChatGPT also recommends this name;
 
@@ -185,8 +185,8 @@ void AntColony::construct_solution()
         print_vector("init route", this_route.route);
 
         int debug_counter = 0;
-        // while(!untreated[i].empty()) // 车辆i还有没有访问的客户
-        while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
+        while(!untreated[i].empty()) // 车辆i还有没有访问的客户
+        // while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
         {
             cerr << "debug counter: " << debug_counter << endl;
             int next = select_next(i, this_route);
@@ -242,7 +242,7 @@ void AntColony::ACS_Strategy()
     while (iter < max_iter && iter < 1)
     {
         reset();//初始化agent信息
-        cerr << "reset done" << endl;
+        // cerr << "reset done" << endl;
         construct_solution();//对于所有的agent构造一个完整的tour
 
         /*
