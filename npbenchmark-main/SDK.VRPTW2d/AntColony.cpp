@@ -179,7 +179,9 @@ void AntColony::construct_solution()
         route.route.push_back(0); // 先把仓库加进去;
         print_vector("init route", route.route);
 
-        while(!untreated[i].empty()) // 车辆i还有没有访问的客户
+        int debug_counter = 0;
+        // while(!untreated[i].empty()) // 车辆i还有没有访问的客户
+        while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
         {
             int next = select_next(i, route);
             cerr << "next: " << next << endl;
@@ -211,7 +213,10 @@ void AntColony::construct_solution()
                     }
                 }
             }
+
+            debug_counter++;
         }
+
         // 最后一条路径返回配送中心
         route.route.push_back(0);
         route.time = max(travel_times[agent_position[i]][0], nodes[0].window_begin) + nodes[0].min_stay_time;
