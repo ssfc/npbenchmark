@@ -13,7 +13,7 @@ void loadInput(istream& is, VRPTW2d& vrp) {
 	is >> vrp.nodeNum >> vrp.maxVehicleNum >> vrp.vehicleCapacity;
 	vrp.nodes.resize(vrp.nodeNum);
 	for (auto n = vrp.nodes.begin(); n != vrp.nodes.end(); ++n) {
-		is >> n->coords[0] >> n->coords[1] >> n->demand >> n->minStayTime >> n->windowBegin >> n->windowEnd;
+		is >> n->coords[0] >> n->coords[1] >> n->demand >> n->min_stay_time >> n->window_begin >> n->window_end;
 	}
 }
 
