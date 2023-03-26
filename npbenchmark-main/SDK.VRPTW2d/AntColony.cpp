@@ -21,11 +21,11 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      pheromone(num_nodes, vector<double>(num_nodes, 0.0)), // 2d array
                      heuristic(num_nodes, vector<double>(num_nodes, 0.0)), // 2d array
                      init_pheromone(0.0),
-                     w1(0.0),
-                     w2(0.0),
-                     alpha(0.0),
-                     beta(0.0),
-                     theta(0.0),
+                     w1(0.9),
+                     w2(0.1),
+                     alpha(0.05),
+                     beta(1.0),
+                     theta(5.0),
                      iter(0),
                      max_iter(50)
 {
