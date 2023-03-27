@@ -345,8 +345,9 @@ public class AntColonySystem
         double elapsed_time = (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
         System.out.println();
         System.out.println("success, iterations: " + iter + "\tnum agents: " + best_solution.routes.size()
-                         + "\telapsed time(s): " + df.format(elapsed_time)
-                         + "\tfrequency: " + df.format((double) iter / elapsed_time));
+                + "\tbest solution cost: " + df.format(best_solution.total_cost)
+                + "\telapsed time(s): " + df.format(elapsed_time)
+                + "\tfrequency: " + df.format((double) iter / elapsed_time));
     }
 
     // debug function
