@@ -319,3 +319,30 @@ void AntColony::print_vector(const string& name, vector<int> &vect)
     }
     cerr << endl;
 }
+
+
+void AntColony::print_result()
+{
+    cerr << "************************************************************" << endl;
+    cerr << "The Minimum Total Distance = " << best_solution .total_cost << endl;
+    cerr << "Concrete Schedule of Each Route as Following : " << endl;
+
+    int id = 0;
+    for (int i = 1; i < best_solution.Routes.size(); i++)
+    {
+        if (best_solution.Routes[i].route.size() > 2)
+        {
+            id++;
+            cerr << "No." << id << " : ";
+
+            for (int j = 0; j < best_solution.Routes[i].route.size() - 1; ++j)
+            {
+                cerr << best_solution.Routes[i].route[j] << " -> ";
+            }
+
+            cerr << best_solution.Routes[i].route[best_solution.Routes[i].route.size() - 1] << endl;
+        }
+    }
+
+    cerr << "************************************************************" << endl;
+}
