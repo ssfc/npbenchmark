@@ -224,11 +224,11 @@ public class AntColonySystem
             Route this_route = new Route();
             this_route.route.add(0); // 先把仓库加进去;
 
-            int debug_counter = 0;
-            // while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
-            while(untreated[i].size() != 0 && debug_counter < 2) // 车辆i还有没有访问的客户
+            // int debug_counter = 0;
+            while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
+            //while(untreated[i].size() != 0 && debug_counter < 2) // 车辆i还有没有访问的客户
             {
-                System.out.println("debug counter: " + debug_counter);
+                // System.out.println("debug counter: " + debug_counter);
                 int next = select_next(i, this_route);
                 System.out.println("next: " + next);
 
@@ -260,7 +260,7 @@ public class AntColonySystem
                     }
                 }
 
-                debug_counter++;
+                // debug_counter++;
             }
 
             // 最后一条路径返回配送中心

@@ -176,21 +176,21 @@ int AntColony::select_next(int k, const Route& route)
 void AntColony::construct_solution()
 {
     // 为每一位agent分别构造解
-    // for (int i = 0; i < num_agents; i++)
-    for (int i = 0; i < 1; i++) // debug one iter;
+    for (int i = 0; i < num_agents; i++)
+    // for (int i = 0; i < 1; i++) // debug one iter;
     {
         // 路径开始
         Route this_route = Route();
         this_route.route.push_back(0); // 先把仓库加进去;
-        print_vector("init route", this_route.route);
+        // print_vector("init route", this_route.route);
 
-        int debug_counter = 0;
+        // int debug_counter = 0;
         while(!untreated[i].empty()) // 车辆i还有没有访问的客户
         // while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
         {
-            cerr << "debug counter: " << debug_counter << endl;
+            // cerr << "debug counter: " << debug_counter << endl;
             int next = select_next(i, this_route);
-            cerr << "next: " << next << endl;
+            // cerr << "next: " << next << endl;
 
             // 如果下一个选择不合法或客户已配送完毕
             if (next == 0)
@@ -220,7 +220,7 @@ void AntColony::construct_solution()
                 }
             }
 
-            debug_counter++;
+            // debug_counter++;
         }
 
         // 最后一条路径返回配送中心
