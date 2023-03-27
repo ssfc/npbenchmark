@@ -302,10 +302,11 @@ void AntColony::ACS_Strategy()
 
         iter++;
     }
-    
+
     double elapsed_time = (clock() - begin_time)/ CLOCKS_PER_SEC;
     cerr << "success, iterations: " << iter << "\tnum agents: " << best_solution.Routes.size()
-    << "\telapsed time(s): " << elapsed_time << "\tfrequency: " << iter / elapsed_time;
+    << "\tbest solution cost: " << best_solution.total_cost
+    << "\telapsed time(s): " << elapsed_time << "\tfrequency: " << iter / elapsed_time << endl;
 }
 
 // debug function:
