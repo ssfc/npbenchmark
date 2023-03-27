@@ -186,7 +186,7 @@ void AntColony::construct_solution()
 
         // int debug_counter = 0;
         while(!untreated[i].empty()) // 车辆i还有没有访问的客户
-        // while(!untreated[i].empty() && debug_counter < 2) // debug first two iterations;
+        // while(!untreated[i].empty() && debug_counter < 2) // debug one iter;
         {
             // cerr << "debug counter: " << debug_counter << endl;
             int next = select_next(i, this_route);
