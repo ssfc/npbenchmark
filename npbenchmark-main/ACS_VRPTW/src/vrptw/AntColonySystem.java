@@ -324,13 +324,12 @@ public class AntColonySystem
         best_solution.total_cost = Integer.MAX_VALUE;
         init_other();
         while (iter < max_iter)
-        // while (iter < max_iter && iter < 2) // debug one iter; 
+        // while (iter < max_iter && iter < 2) // debug one iter;
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
-
             update_pheromone();//更新信息素
-            /*
+
             if(iter % 5 == 0)
             {
                 double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
@@ -339,7 +338,6 @@ public class AntColonySystem
                         + "\telapsed time(s): " + df.format(elapsed_time)
                         + "\tfrequency: " + df.format((double) iter / elapsed_time));
             }
-             */
 
             iter++;
         }
