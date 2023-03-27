@@ -283,7 +283,8 @@ void AntColony::ACS_Strategy()
     best_solution.total_cost = INT_MAX;
     init_other();
 
-    while (iter < max_iter && iter < 2)
+    while (iter < max_iter)
+    // while (iter < max_iter && iter < 2)
     {
         reset();//初始化agent信息
         // cerr << "reset done" << endl;
