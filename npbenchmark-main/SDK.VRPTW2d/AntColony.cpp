@@ -284,7 +284,7 @@ void AntColony::ACS_Strategy()
     init_other();
 
     while (iter < max_iter)
-    // while (iter < max_iter && iter < 2)
+    // while (iter < max_iter && iter < 2) // debug one iter
     {
         reset();//初始化agent信息
         // cerr << "reset done" << endl;
