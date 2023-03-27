@@ -75,6 +75,7 @@ public: // member functions.
     void reset();
     int select_next(int k, const Route& route);
     void construct_solution();
+    void update_pheromone();
     void ACS_Strategy();
 
     // debug functions;

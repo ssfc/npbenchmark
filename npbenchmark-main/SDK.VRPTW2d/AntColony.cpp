@@ -233,20 +233,63 @@ void AntColony::construct_solution()
 }
 
 
+void AntColony::update_pheromone()
+{
+    Solution now_best = Solution();
+    now_best.total_cost = INT_MAX;
+    double delta = 0;
+
+    // 查找最优解
+    for (int i = 0; i < num_agents; i++)
+    {
+        if (solutions[i].total_cost < now_best.total_cost)
+            now_best = solutions[i];
+    }
+
+    // 更新最优解 若当前最优代替历史最优，增加信息素时获得增益
+    if (now_best.total_cost < best_solution.total_cost)
+    {
+        delta = (double) (best_solution.total_cost - now_best.total_cost) / (double) best_solution.total_cost;
+        best_solution = now_best;
+    }
+
+    //更新信息素含量
+    // 信息素挥发
+    for (int i = 0; i < num_nodes-1; i ++) // 这里难道不应该是node__nodes吗? 为什么少一个?
+    {
+        for (int j = 0; j < num_nodes-1; j++)
+        {
+            pheromone[i][j] *= (1 - alpha);
+        }
+    }
+    // 信息素增加
+    for (int i = 0; i < now_best.Routes.size(); i++)
+    {
+        for (int j = 1; j < now_best.Routes[i].route.size(); j++)
+        {
+            pheromone[now_best.Routes[i].route[j - 1]][now_best.Routes[i].route[j]]
+                    += (1 / (double)now_best.total_cost) * (1 + delta);
+            // 对称处理
+            pheromone[now_best.Routes[i].route[j]][now_best.Routes[i].route[j - 1]]
+                    = pheromone[now_best.Routes[i].route[j - 1]][now_best.Routes[i].route[j]];
+        }
+    }
+}
+
+
 void AntColony::ACS_Strategy()
 {
     double begin_time = clock();
     best_solution.total_cost = INT_MAX;
     init_other();
 
-    while (iter < max_iter && iter < 1)
+    while (iter < max_iter && iter < 2)
     {
         reset();//初始化agent信息
         // cerr << "reset done" << endl;
         construct_solution();//对于所有的agent构造一个完整的tour
-
-        /*
         update_pheromone();//更新信息素
+         /*
         if(iter % 5 == 0)
         {
             double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;

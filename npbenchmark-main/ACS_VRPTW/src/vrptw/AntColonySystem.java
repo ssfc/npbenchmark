@@ -178,11 +178,11 @@ public class AntColonySystem
             sum_pheromone += info_pheromone[i];
             sum_time += info_time[i];
         }
-        System.out.println("sum pheromone: " + sum_pheromone);
-        System.out.println("sum time: " + sum_time);
+        // System.out.println("sum pheromone: " + sum_pheromone);
+        // System.out.println("sum time: " + sum_time);
 
         double rate = generated_random.nextDouble();
-        rate = 0.7;
+        // rate = 0.7;
         int next = 0;
         double sum_prob = 0; // Ah... ChatGPT also recommends this name;
 
@@ -217,8 +217,8 @@ public class AntColonySystem
     public void construct_solution()
     {
         // 为每一位agent分别构造解
-        // for (int i = 0; i < num_agents; i++)
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < num_agents; i++)
+        // for (int i = 0; i < 1; i++)
         {
             // 路径开始
             Route this_route = new Route();
@@ -230,7 +230,7 @@ public class AntColonySystem
             {
                 // System.out.println("debug counter: " + debug_counter);
                 int next = select_next(i, this_route);
-                System.out.println("next: " + next);
+                // System.out.println("next: " + next);
 
                 // 如果下一个选择不合法或客户已配送完毕
                 if (next == 0)
@@ -323,13 +323,13 @@ public class AntColonySystem
         best_solution = new Solution();
         best_solution.total_cost = Integer.MAX_VALUE;
         init_other();
-        while (iter < max_iter && iter < 1)
+        while (iter < max_iter && iter < 2)
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
 
-            /*
             update_pheromone();//更新信息素
+            /*
             if(iter % 5 == 0)
             {
                 double elapsed_time= (System.nanoTime() - begin_time)/(1e9); // 因为是纳秒, 所以除以1e9换算;
