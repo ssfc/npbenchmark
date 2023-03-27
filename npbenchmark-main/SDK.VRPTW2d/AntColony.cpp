@@ -335,11 +335,13 @@ void AntColony::print_result()
             id++;
             cerr << "No." << id << " : ";
 
+            // print element except the last element;
             for (int j = 0; j < best_solution.Routes[i].route.size() - 1; ++j)
             {
                 cerr << best_solution.Routes[i].route[j] << " -> ";
             }
 
+            // print the last element;
             cerr << best_solution.Routes[i].route[best_solution.Routes[i].route.size() - 1] << endl;
         }
     }
