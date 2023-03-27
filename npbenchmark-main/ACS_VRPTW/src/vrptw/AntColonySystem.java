@@ -218,7 +218,7 @@ public class AntColonySystem
     {
         // 为每一位agent分别构造解
         for (int i = 0; i < num_agents; i++)
-        // for (int i = 0; i < 1; i++)
+        // for (int i = 0; i < 1; i++) // debug one iter;
         {
             // 路径开始
             Route this_route = new Route();
@@ -226,7 +226,7 @@ public class AntColonySystem
 
             // int debug_counter = 0;
             while(untreated[i].size() != 0) // 车辆i还有没有访问的客户
-            //while(untreated[i].size() != 0 && debug_counter < 2) // 车辆i还有没有访问的客户
+            //while(untreated[i].size() != 0 && debug_counter < 2) // debug one iter;
             {
                 // System.out.println("debug counter: " + debug_counter);
                 int next = select_next(i, this_route);
@@ -324,7 +324,7 @@ public class AntColonySystem
         best_solution.total_cost = Integer.MAX_VALUE;
         init_other();
         while (iter < max_iter)
-        // while (iter < max_iter && iter < 2)
+        // while (iter < max_iter && iter < 2) // debug one iter; 
         {
             reset();//初始化agent信息
             construct_solution();//对于所有的agent构造一个完整的tour
