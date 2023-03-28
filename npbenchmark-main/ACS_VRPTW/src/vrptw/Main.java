@@ -16,12 +16,12 @@ public class Main
 
         // compute result;
         System.out.println("waiting for a while ... ...");
-        AntColonySystem ACS = new AntColonySystem(parameter, read_in, seed);
-        ACS.ACS_Strategy();
+        AntColonySystem test = new AntColonySystem(parameter, read_in, seed);
+        test.ACS_Strategy();
 
         // print result;
-        ACS.print_result();
-        ACS.check_answer();
+        test.print_result();
+        test.check_answer();
     }
 }
 
