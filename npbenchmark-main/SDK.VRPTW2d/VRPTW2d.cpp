@@ -28,7 +28,7 @@ public:
 		return static_cast<Time>(hypot(src[0] - dst[0], src[1] - dst[1]) * VRPTW2d::Precision);
 	}
 
-	void solve(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed)
+	void solve(Routes& output, VRPTW2d& input, const std::function<bool()>& isTimeout, int seed)
     {
 		initRand(seed);
 
