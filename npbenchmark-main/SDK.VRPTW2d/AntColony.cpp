@@ -348,3 +348,66 @@ void AntColony::print_result()
 
     cerr << "************************************************************" << endl;
 }
+
+
+void AntColony::check_answer()
+{
+    bool check_time = true;
+    bool check_cost = true;
+    bool check_capacity = true;
+    bool check_num_agents = true;
+    // 检验距离计算是否正确
+    double total_cost = 0;
+    for (Route best_route : best_solution.Routes)
+    {
+        for (int j = 1; j < best_route.route.size(); ++j)
+        {
+            total_cost += travel_times[best_route.route[j - 1]][best_route.route[j]];
+        }
+    }
+
+    // 防止精度损失
+    if (abs(total_cost - best_solution .total_cost) > 1)
+    {
+        check_cost = false;
+    }
+
+    for (Route best_route : best_solution.Routes)
+    {
+        int time = 0;
+        for (int j = 1; j < best_route.route.size(); ++j)
+        {
+            time += travel_times[best_route.route[j - 1]][best_route.route[j]];
+            if (time > nodes[best_route.route[j]].window_end)
+            {
+                check_time = false;
+            }
+
+            time = max(time, nodes[best_route.route[j]].window_begin)
+                   + nodes[best_route.route[j]].min_stay_time;
+        }
+    }
+
+    for (Route best_route : best_solution.Routes)
+    {
+        int load = 0;
+        for (int j = 1; j < best_route.route.size() - 1; ++j)
+        {
+            load += nodes[best_route.route[j]].demand;
+        }
+        if (load > capacity)
+        {
+            check_capacity = false;
+        }
+    }
+
+    if(best_solution.Routes.size() > max_num_agents)
+    {
+        check_num_agents = false;
+    }
+
+    cerr << "Check total cost = " << total_cost << "\t" << check_cost << endl;
+    cerr << "Check time windows = " << check_time << endl;
+    cerr << "Check time capacity = " << check_capacity << endl;
+    cerr << "Check num agents = " << check_num_agents << endl;
+}
