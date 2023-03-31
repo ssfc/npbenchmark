@@ -284,7 +284,7 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
     init_other();
 
     while (iter < max_iter && !isTimeout())
-    // while (iter < max_iter && iter < 2) // debug one iter
+    // while (iter < 2) // debug one iter
     {
         // cerr << "Time status: " << isTimeout() << endl;
         reset();//初始化agent信息
