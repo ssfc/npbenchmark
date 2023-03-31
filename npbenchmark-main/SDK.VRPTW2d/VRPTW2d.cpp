@@ -70,9 +70,9 @@ public:
         for (VehicleId v = 0; v < vehicleNum; v++)
         {
             cerr << v << ' ' << output[v].route.size() << ": ";
-            for(int j : output[v].route)
+            for(auto route_node : output[v].route)
             {
-                cerr << j << " ";
+                cerr << route_node << " ";
             }
             cerr << endl;
         }
