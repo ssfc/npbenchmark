@@ -19,10 +19,20 @@ void loadInput(istream& is, VRPTW2d& vrp)
 	}
 }
 
-void saveOutput(ostream& os, Routes& routes) {
-	for (auto & route : routes) {
-		if (route.route.empty()) { continue; }
-		for (int & node : route.route) { os << node << ' '; }
+void saveOutput(ostream& os, Routes& routes)
+{
+	for (auto & route : routes)
+    {
+		if (route.route.empty())
+        {
+            continue;
+        }
+
+		for (int & node : route.route)
+        {
+            os << node << ' ';
+        }
+
 		os << endl;
 	}
 }
