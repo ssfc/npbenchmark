@@ -283,9 +283,10 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
     best_solution.total_cost = INT_MAX;
     init_other();
 
-    while (iter < max_iter && isTimeout)
+    while (iter < max_iter && !isTimeout())
     // while (iter < max_iter && iter < 2) // debug one iter
     {
+        // cerr << "Time status: " << isTimeout() << endl;
         reset();//初始化agent信息
         // cerr << "reset done" << endl;
         construct_solution();//对于所有的agent构造一个完整的tour
