@@ -54,7 +54,7 @@ public:
 		}
 
         AntColony test(input, travelTimes, seed);
-        test.ACS_Strategy();
+        test.ACS_Strategy(isTimeout);
         test.print_result();
         test.check_answer();
 

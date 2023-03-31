@@ -277,7 +277,7 @@ void AntColony::update_pheromone()
 }
 
 
-void AntColony::ACS_Strategy()
+void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
 {
     double begin_time = clock();
     best_solution.total_cost = INT_MAX;

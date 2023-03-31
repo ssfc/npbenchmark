@@ -76,7 +76,7 @@ public: // member functions.
     int select_next(int k, const Route& route);
     void construct_solution();
     void update_pheromone();
-    void ACS_Strategy();
+    void ACS_Strategy(const std::function<bool()>& isTimeout);
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
