@@ -49,6 +49,7 @@ void test(istream& inputStream, ostream& outputStream, long long secTimeout, int
     // 调用 chrono::steady_clock::now() 方法来获取当前时间点。
 	chrono::steady_clock::time_point endTime = chrono::steady_clock::now() + chrono::seconds(secTimeout);
 	Routes routes(vrp.maxVehicleNum);
+    // 定义了一个 lambda 函数，使用了捕获列表 [&]，捕获了当前作用域中的所有变量，并将其作为引用传递给 lambda 函数。lambda 函数的返回类型是 bool，即返回一个布尔值。
 	solveVRPTW2d(routes, vrp, [&]() -> bool { return endTime < chrono::steady_clock::now(); }, randSeed);
 
 	cerr << "save output." << endl;
