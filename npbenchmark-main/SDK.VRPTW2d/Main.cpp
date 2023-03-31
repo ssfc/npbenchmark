@@ -46,6 +46,7 @@ void test(istream& inputStream, ostream& outputStream, long long secTimeout, int
 	loadInput(inputStream, vrp);
 
 	cerr << "solve." << endl;
+    // 调用 chrono::steady_clock::now() 方法来获取当前时间点。
 	chrono::steady_clock::time_point endTime = chrono::steady_clock::now() + chrono::seconds(secTimeout);
 	Routes routes(vrp.maxVehicleNum);
 	solveVRPTW2d(routes, vrp, [&]() -> bool { return endTime < chrono::steady_clock::now(); }, randSeed);
