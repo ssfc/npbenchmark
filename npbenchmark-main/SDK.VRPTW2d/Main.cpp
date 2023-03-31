@@ -53,7 +53,12 @@ int main(int argc, char* argv[]) {
             return 1;
         }
 
-		int randSeed = atoi(argv[2]);
+        long randSeed = strtol(argv[2], &endptr, 10);
+        if (*endptr != '\0') {
+            std::cerr << "Error: Invalid argument '" << argv[2] << "'\n";
+            return 1;
+        }
+        
 		test(cin, cout, secTimeout, randSeed);
 	} else {
 		//ifstream ifs("path/to/instance.txt");
