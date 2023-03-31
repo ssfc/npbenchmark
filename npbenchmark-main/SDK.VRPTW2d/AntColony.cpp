@@ -365,6 +365,7 @@ void AntColony::print_result()
             }
 
             // print the last element;
+            // Comment: 最后一个元素必然是0吧;
             cerr << best_solution.Routes[i].route[best_solution.Routes[i].route.size() - 1] << endl;
         }
     }
