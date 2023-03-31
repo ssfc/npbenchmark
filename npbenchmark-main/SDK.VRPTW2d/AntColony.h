@@ -62,8 +62,7 @@ private: // member variables.
     double beta; // 计算infoPhe的参数，
     double theta; // 计算infoPhe的参数，
 
-    int iter;
-    int max_iter; // 最大迭代次数
+    int iter; // 迭代次数
 
     // debug variables:
     std::mt19937 generated_random;

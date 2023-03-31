@@ -26,8 +26,7 @@ AntColony::AntColony(VRPTW2d& input, std::vector<std::vector<Time>>& input_trave
                      alpha(0.05),
                      beta(1.0),
                      theta(5.0),
-                     iter(0),
-                     max_iter(500)
+                     iter(0)
 {
     init_rand(input_seed); // initialize random generator;
     cerr << "num nodes: " << num_nodes << endl;
@@ -283,7 +282,7 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
     best_solution.total_cost = INT_MAX;
     init_other();
 
-    while (iter < max_iter && !isTimeout())
+    while (!isTimeout())
     // while (iter < 2) // debug one iter
     {
         // cerr << "Time status: " << isTimeout() << endl;
