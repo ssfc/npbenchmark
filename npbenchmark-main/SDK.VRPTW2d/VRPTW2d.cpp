@@ -58,6 +58,20 @@ public:
         test.print_result();
         test.check_answer();
 
+        VehicleId vehicleNum = input.maxVehicleNum - rand(input.maxVehicleNum / 2);
+        for (NodeId n = 1; n < input.nodeNum; ++n)
+        {
+            VehicleId v = rand(vehicleNum);
+            output[v].route.push_back(n);
+        }
+
+        cerr << input.nodeNum << '\t' << input.maxVehicleNum << '\t' << input.vehicleCapacity << endl;
+        cerr << "vehicle\tnodes" << endl;
+        for (VehicleId v = 0; v < vehicleNum; ++v)
+        {
+            cerr << v << '\t' << output[v].route.size() << endl;
+        }
+
 	}
 };
 
