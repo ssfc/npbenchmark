@@ -309,6 +309,12 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
     << "\telapsed time(s): " << elapsed_time << "\tfrequency: " << iter / elapsed_time << endl;
 }
 
+
+void AntColony::get_solution(szx::Routes &output)
+{
+
+}
+
 // debug function:
 void AntColony::print_vector(const string& name, vector<int> &vect)
 {
@@ -320,7 +326,7 @@ void AntColony::print_vector(const string& name, vector<int> &vect)
     cerr << endl;
 }
 
-
+// debug function:
 void AntColony::print_result()
 {
     cerr << "************************************************************" << endl;
@@ -349,7 +355,7 @@ void AntColony::print_result()
     cerr << "************************************************************" << endl;
 }
 
-
+// debug function:
 void AntColony::check_answer()
 {
     bool check_time = true;
