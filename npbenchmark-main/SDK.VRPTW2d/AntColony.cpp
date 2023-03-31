@@ -319,7 +319,7 @@ void AntColony::get_solution(szx::Routes &output)
 void AntColony::print_vector(const string& name, vector<int> &vect)
 {
     cerr << name << ": ";
-    for(int i : vect)
+    for(auto i : vect)
     {
         cerr << i << " ";
     }
