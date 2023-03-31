@@ -62,7 +62,7 @@ public:
 };
 
 // solver.
-void solveVRPTW2d(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed) {
+void solveVRPTW2d(Routes& output, VRPTW2d& input, const std::function<bool()>& isTimeout, int seed) {
 	Solver().solve(output, input, isTimeout, seed);
 }
 

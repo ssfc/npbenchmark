@@ -63,7 +63,7 @@ struct Solution
     std::vector<Route> Routes;
 };
 
-void solveVRPTW2d(Routes& output, VRPTW2d& input, std::function<bool()> isTimeout, int seed);
+void solveVRPTW2d(Routes& output, VRPTW2d& input, const std::function<bool()>& isTimeout, int seed);
 
 }
 
