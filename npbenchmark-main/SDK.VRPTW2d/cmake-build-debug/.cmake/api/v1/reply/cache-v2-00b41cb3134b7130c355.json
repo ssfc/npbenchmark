@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "24"
+			"value" : "25"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -190,7 +190,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/g++.exe"
 		},
 		{
@@ -334,7 +334,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc.exe"
 		},
 		{
@@ -1099,7 +1099,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.24"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.25"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",

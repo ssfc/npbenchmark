@@ -46,7 +46,13 @@ void test(istream& inputStream, ostream& outputStream, long long secTimeout) {
 int main(int argc, char* argv[]) {
 	cerr << "load environment." << endl;
 	if (argc > 2) {
-		long long secTimeout = atoll(argv[1]);
+        char* endptr;
+        long long secTimeout = strtoll(argv[1], &endptr, 10);
+        if (*endptr != '\0') {
+            std::cerr << "Error: Invalid argument '" << argv[1] << "'\n";
+            return 1;
+        }
+
 		int randSeed = atoi(argv[2]);
 		test(cin, cout, secTimeout, randSeed);
 	} else {
@@ -63,5 +69,6 @@ int main(int argc, char* argv[]) {
  * home server path:
  * /home/ssfc/SDK.VRPTW2d
  * Compiling and running command:
- * home server: g++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3 && ./a.out 999999 1 <./data/solomon.c101.n101v25c200.txt  >sln.txt
+ * home server:
+ * g++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3 && ./a.out 999999 1 <./data/solomon.c101.n101v25c200.txt  >sln.txt
  */
