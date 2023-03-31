@@ -69,7 +69,12 @@ public:
         cerr << "vehicle\tnodes" << endl;
         for (VehicleId v = 0; v < vehicleNum; v++)
         {
-            cerr << v << '\t' << output[v].route.size() << endl;
+            cerr << v << ' ' << output[v].route.size() << ": ";
+            for(int j : output[v].route)
+            {
+                cerr << j << " ";
+            }
+            cerr << endl;
         }
 
 	}
