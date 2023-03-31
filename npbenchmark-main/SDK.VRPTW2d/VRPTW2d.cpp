@@ -59,7 +59,7 @@ public:
         test.check_answer();
 
         VehicleId vehicleNum = input.maxVehicleNum - rand(input.maxVehicleNum / 2);
-        for (NodeId n = 1; n < input.nodeNum; n++)
+        for (NodeId n = 1; n < input.nodeNum; n++)  // 把node随机分配给vehicle
         {
             VehicleId v = rand(vehicleNum);
             output[v].route.push_back(n);
