@@ -9,10 +9,12 @@ using namespace std;
 using namespace szx;
 
 
-void loadInput(istream& is, VRPTW2d& vrp) {
+void loadInput(istream& is, VRPTW2d& vrp)
+{
 	is >> vrp.nodeNum >> vrp.maxVehicleNum >> vrp.vehicleCapacity;
 	vrp.nodes.resize(vrp.nodeNum);
-	for (auto & node : vrp.nodes) {
+	for (auto & node : vrp.nodes)
+    {
 		is >> node.coords[0] >> node.coords[1] >> node.demand >> node.min_stay_time >> node.window_begin >> node.window_end;
 	}
 }
