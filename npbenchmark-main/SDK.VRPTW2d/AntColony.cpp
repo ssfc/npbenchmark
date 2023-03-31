@@ -312,10 +312,10 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
 
 void AntColony::get_solution(szx::Routes &output)
 {
-    VehicleId vehicleNum = max_num_agents - rand(max_num_agents / 2);
+    auto vehicleNum = best_solution.Routes.size();
     for (NodeId n = 1; n < num_nodes; n++)  // 把node随机分配给vehicle
     {
-        VehicleId v = rand(vehicleNum);
+        auto v = rand(vehicleNum);
         output[v].route.push_back(n);
     }
 
@@ -323,7 +323,7 @@ void AntColony::get_solution(szx::Routes &output)
     cerr << "vehicle\tnodes" << endl;
     for (VehicleId v = 0; v < vehicleNum; v++)
     {
-        cerr << v << ' ' << output[v].route.size() << ": ";
+        cerr << "No." << v << ": ";
         for(auto route_node : output[v].route)
         {
             cerr << route_node << " ";
