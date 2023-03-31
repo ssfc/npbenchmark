@@ -58,7 +58,7 @@ int main(int argc, char* argv[]) {
             std::cerr << "Error: Invalid argument '" << argv[2] << "'\n";
             return 1;
         }
-        
+
 		test(cin, cout, secTimeout, randSeed);
 	} else {
 		//ifstream ifs("path/to/instance.txt");
