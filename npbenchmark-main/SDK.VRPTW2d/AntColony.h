@@ -80,6 +80,7 @@ public: // member functions.
 
     // debug functions;
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
+    int rand(int ub) { return std::uniform_int_distribution<int>(0, ub - 1)(generated_random); }
     static void print_vector(const std::string& name, std::vector<int> &vect);
     void print_result();
     void check_answer();

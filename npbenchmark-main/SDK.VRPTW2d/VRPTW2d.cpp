@@ -57,25 +57,7 @@ public:
         test.ACS_Strategy(isTimeout);
         test.print_result();
         test.check_answer();
-
-        VehicleId vehicleNum = input.maxVehicleNum - rand(input.maxVehicleNum / 2);
-        for (NodeId n = 1; n < input.nodeNum; n++)  // 把node随机分配给vehicle
-        {
-            VehicleId v = rand(vehicleNum);
-            output[v].route.push_back(n);
-        }
-
-        cerr << input.nodeNum << '\t' << input.maxVehicleNum << '\t' << input.vehicleCapacity << endl;
-        cerr << "vehicle\tnodes" << endl;
-        for (VehicleId v = 0; v < vehicleNum; v++)
-        {
-            cerr << v << ' ' << output[v].route.size() << ": ";
-            for(auto route_node : output[v].route)
-            {
-                cerr << route_node << " ";
-            }
-            cerr << endl;
-        }
+        test.get_solution(output);
 
 	}
 };
