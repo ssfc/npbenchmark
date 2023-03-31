@@ -37,7 +37,8 @@ void saveOutput(ostream& os, Routes& routes)
 	}
 }
 
-void test(istream& inputStream, ostream& outputStream, long long secTimeout, int randSeed) {
+void test(istream& inputStream, ostream& outputStream, long long secTimeout, int randSeed)
+{
 	cerr << "load input." << endl;
 	VRPTW2d vrp;
 	loadInput(inputStream, vrp);
@@ -50,33 +51,42 @@ void test(istream& inputStream, ostream& outputStream, long long secTimeout, int
 	cerr << "save output." << endl;
 	saveOutput(outputStream, routes);
 }
-void test(istream& inputStream, ostream& outputStream, long long secTimeout) {
+
+void test(istream& inputStream, ostream& outputStream, long long secTimeout)
+{
 	return test(inputStream, outputStream, secTimeout, static_cast<int>(time(nullptr) + clock()));
 }
 
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
 	cerr << "load environment." << endl;
-	if (argc > 2) {
+	if (argc > 2)
+    {
         char* endptr;
         long long secTimeout = strtoll(argv[1], &endptr, 10);
-        if (*endptr != '\0') {
+        if (*endptr != '\0')
+        {
             std::cerr << "Error: Invalid argument '" << argv[1] << "'\n";
             return 1;
         }
 
         long randSeed = strtol(argv[2], &endptr, 10);
-        if (*endptr != '\0') {
+        if (*endptr != '\0')
+        {
             std::cerr << "Error: Invalid argument '" << argv[2] << "'\n";
             return 1;
         }
 
 		test(cin, cout, secTimeout, randSeed);
-	} else {
+	}
+    else
+    {
 		//ifstream ifs("path/to/instance.txt");
 		//ofstream ofs("path/to/solution.txt");
 		//test(ifs, ofs, 10); // for self-test.
 	}
+
 	return 0;
 }
 
