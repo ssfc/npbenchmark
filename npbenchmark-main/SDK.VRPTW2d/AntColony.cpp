@@ -310,6 +310,18 @@ void AntColony::ACS_Strategy(const std::function<bool()>& isTimeout)
 }
 
 
+// debug function:
+void AntColony::print_vector(const string& name, vector<int> &vect)
+{
+    cerr << name << ": ";
+    for(auto i : vect)
+    {
+        cerr << i << " ";
+    }
+    cerr << endl;
+}
+
+
 void AntColony::get_solution(szx::Routes &output)
 {
     // assign values to output;
@@ -332,17 +344,6 @@ void AntColony::get_solution(szx::Routes &output)
         }
         cerr << endl;
     }
-}
-
-// debug function:
-void AntColony::print_vector(const string& name, vector<int> &vect)
-{
-    cerr << name << ": ";
-    for(auto i : vect)
-    {
-        cerr << i << " ";
-    }
-    cerr << endl;
 }
 
 // debug function:
