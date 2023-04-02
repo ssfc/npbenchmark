@@ -329,7 +329,7 @@ void AntColony::get_solution(szx::Routes &output)
     for (NodeId n = 1; n < num_nodes; n++)  // 把node随机分配给vehicle
     {
         auto v = rand(vehicleNum);
-        output[v].route.push_back(n);
+        output[v].route.push_back(n);  // v是有可能等于0的;
     }
 
     int route_id = 0;
