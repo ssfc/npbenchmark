@@ -324,7 +324,7 @@ void AntColony::print_vector(const string& name, vector<int> &vect)
 
 void AntColony::get_solution(szx::Routes &output)
 {
-    // assign values to output;
+    // assign values to result;
     auto vehicleNum = best_solution.Routes.size();
 
     /*
@@ -349,7 +349,7 @@ void AntColony::get_solution(szx::Routes &output)
         cerr << endl;
     }
 
-    // print output result;
+    // print final result;
     cerr << num_nodes << '\t' << max_num_agents << '\t' << capacity << endl;
     cerr << "vehicle\tnodes" << endl;
     for (VehicleId v = 0; v < vehicleNum; v++)
