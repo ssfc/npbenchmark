@@ -332,6 +332,26 @@ void AntColony::get_solution(szx::Routes &output)
         output[v].route.push_back(n);
     }
 
+    int route_id = 0;
+    for (int i = 1; i < best_solution.Routes.size(); i++)
+    {
+        if (best_solution.Routes[i].route.size() > 2)
+        {
+            route_id++;
+            cerr << "No." << route_id << " : ";
+
+            // print element except the last element;
+            for (int j = 0; j < best_solution.Routes[i].route.size() - 1; ++j)
+            {
+                cerr << best_solution.Routes[i].route[j] << " -> ";
+            }
+
+            // print the last element;
+            // Comment: 最后一个元素必然是0吧;
+            cerr << best_solution.Routes[i].route[best_solution.Routes[i].route.size() - 1] << endl;
+        }
+    }
+
     // print output result;
     cerr << num_nodes << '\t' << max_num_agents << '\t' << capacity << endl;
     cerr << "vehicle\tnodes" << endl;
