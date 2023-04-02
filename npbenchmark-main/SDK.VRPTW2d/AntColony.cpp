@@ -326,30 +326,27 @@ void AntColony::get_solution(szx::Routes &output)
 {
     // assign values to output;
     auto vehicleNum = best_solution.Routes.size();
+
+    /*
     for (NodeId n = 1; n < num_nodes; n++)  // 把node随机分配给vehicle
     {
         auto v = rand(vehicleNum);
         output[v].route.push_back(n);  // v是有可能等于0的;
-    }
+    }*/
 
-    int route_id = 0;
-    for (int i = 1; i < best_solution.Routes.size(); i++)
+    cerr << "best solution Routes:" << endl;
+    for (int i = 0; i < best_solution.Routes.size(); i++)
     {
-        if (best_solution.Routes[i].route.size() > 2)
+        cerr << "No." << i << " : ";
+
+        // print element except the last element;
+        for (int j=0;j<best_solution.Routes[i].route.size();j++)
         {
-            route_id++;
-            cerr << "No." << route_id << " : ";
-
-            // print element except the last element;
-            for (int j = 0; j < best_solution.Routes[i].route.size() - 1; ++j)
-            {
-                cerr << best_solution.Routes[i].route[j] << " -> ";
-            }
-
-            // print the last element;
-            // Comment: 最后一个元素必然是0吧;
-            cerr << best_solution.Routes[i].route[best_solution.Routes[i].route.size() - 1] << endl;
+            cerr << best_solution.Routes[i].route[j] << " -> ";
+            output[i].route.push_back(best_solution.Routes[i].route[j]);  // v是有可能等于0的;
         }
+
+        cerr << endl;
     }
 
     // print output result;
