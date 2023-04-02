@@ -99,9 +99,11 @@ int main(int argc, char* argv[])
  * C:\wamp64\www\npbenchmark\npbenchmark-main\SDK.VRPTW2d
  * home server path:
  * /home/ssfc/SDK.VRPTW2d
+ *
+ * submit pack:
+ * g++ -static-libgcc -static-libstdc++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3
+ *
  * Compiling and running command:
  * home server:
  * g++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3 && ./a.out 2 1 <./data/solomon.c101.n101v25c200.txt  >sln.txt
- * submit pack:
- * g++ -static-libgcc -static-libstdc++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3
  */
