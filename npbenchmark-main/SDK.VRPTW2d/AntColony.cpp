@@ -340,7 +340,7 @@ void AntColony::get_solution(szx::Routes &output)
         cerr << "No." << i << " : ";
 
         // print element except the last element;
-        for (int j=0;j<best_solution.Routes[i].route.size();j++)
+        for (int j=1;j<best_solution.Routes[i].route.size()-1;j++)
         {
             cerr << best_solution.Routes[i].route[j] << " -> ";
             output[i].route.push_back(best_solution.Routes[i].route[j]);  // v是有可能等于0的;
