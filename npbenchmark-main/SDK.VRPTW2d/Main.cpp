@@ -102,4 +102,6 @@ int main(int argc, char* argv[])
  * Compiling and running command:
  * home server:
  * g++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3 && ./a.out 2 1 <./data/solomon.c101.n101v25c200.txt  >sln.txt
+ * pack and submit:
+ * g++ -static-libgcc -static-libstdc++ Main.cpp VRPTW2d.cpp AntColony.cpp -O3
  */
