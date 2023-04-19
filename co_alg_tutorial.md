@@ -294,3 +294,6 @@ NP问题、NPC问题、NPH问题的关系是这样的：
 
 ![P-NP-NPC-NPH](https://img-blog.csdnimg.cn/20191204202428312.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDgxMDAxNg==,size_16,color_FFFFFF,t_70)
 
+### Q: 也就是说，NPH问题可能无法在多项式时间验证解？
+
+是的，NPH问题不一定是NP问题，所以它可能无法在多项式时间验证解。例如，停机问题就是一个NPH问题，但不是一个NP问题，因为它无法在有限的时间内判断一个程序是否会停止。
