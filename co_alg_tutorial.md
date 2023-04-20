@@ -429,6 +429,8 @@ Mutation 在遗传算法中是一个可选操作，但通常情况下会被加�
 
 衍生品：单调下降的局部搜索算法、模拟退火算法(Simulated Annealing)、禁忌搜索算法(Tabu Search)、迭代局部搜索算法(Iterated Local Search)、动态局部搜索算法(Dynamic Local Search)、变邻域搜索算法(Variable Neighborhood Search)、蚁群算法(Ant Colony Optimization)、GRASP(Greedy Randomized Adaptive Search Procedure)
 
+(1) 邻域设计。
+
 ### 局部搜索可以类比为深度学习中的梯度下降吗？
 
 是的，局部搜索和梯度下降都是一种优化算法，目标是在可能的解空间中找到最优解。在深度学习中，梯度下降是一种常用的优化算法，用于寻找神经网络模型的最优权重参数。梯度下降通过迭代优化来最小化损失函数，从而使模型的预测结果更加准确。类似地，局部搜索算法也是在迭代优化的过程中不断地更新当前解，直到达到最优解或者找不到更优解为止。因此，可以将局部搜索看作是深度学习中梯度下降的一种类比。
