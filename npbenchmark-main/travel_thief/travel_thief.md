@@ -9,3 +9,5 @@
 这个竞赛的目的是为从事多组件优化问题的计算智能研究者提供一个平台。这个竞赛的主要关注点是**TSP和Knapsack问题的组合**。但是，我们计划在未来几年将这种竞赛形式扩展到更复杂的问题组合（这些问题在过去几十年通常是单独处理的）。
 
 这个竞赛使用的一系列基准测试遵循了“旅行窃贼问题”（Mohammad Reza Bonyadi, Zbigniew Michalewicz, Luigi Barone: free PDF, "The travelling thief problem: The first step in the transition from theoretical problems to realistic problems" (IEEE PDF)）的思想。欧几里得2D旅行推销员问题的实例与0-1背包问题的实例相结合，以反映真实世界问题的一些方面；例如，背包中物品的**总重量影响旅行者的行进速度**。这种引入的相互依赖使得TTP与有容量限制的车辆路径问题实例不同，后者不存在这种相互依赖。关于我们的适应度函数和基准测试实例是如何创建的技术细节，请参见手册（免费PDF）（与“A comprehensive benchmark set and heuristics for the traveling thief problem” (ACM PDF)相同）。
+
+## Tracks
