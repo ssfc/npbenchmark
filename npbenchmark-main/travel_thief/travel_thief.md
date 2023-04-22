@@ -11,3 +11,7 @@
 这个竞赛使用的一系列基准测试遵循了“旅行窃贼问题”（Mohammad Reza Bonyadi, Zbigniew Michalewicz, Luigi Barone: free PDF, "The travelling thief problem: The first step in the transition from theoretical problems to realistic problems" (IEEE PDF)）的思想。欧几里得2D旅行推销员问题的实例与0-1背包问题的实例相结合，以反映真实世界问题的一些方面；例如，背包中物品的**总重量影响旅行者的行进速度**。这种引入的相互依赖使得TTP与有容量限制的车辆路径问题实例不同，后者不存在这种相互依赖。关于我们的适应度函数和基准测试实例是如何创建的技术细节，请参见手册（免费PDF）（与“A comprehensive benchmark set and heuristics for the traveling thief problem” (ACM PDF)相同）。
 
 ## Tracks
+
+### Q: 页面中的track是什么意思？
+
+页面中的track是指竞赛的不同类别，根据问题的规模和提交方式进行划分。每个track有不同的评价标准和奖励。
