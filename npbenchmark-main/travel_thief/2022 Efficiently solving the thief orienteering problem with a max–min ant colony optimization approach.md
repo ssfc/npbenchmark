@@ -25,7 +25,11 @@ Thief Orienteering Problem (ThOP)和Thief Traveling Problem (TTP)是两个不同
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么会议？
+这篇文章发表在Optimization Letters这个期刊上²，这是一个关于优化理论和应用的国际期刊。根据CCF推荐国际学术刊物目录¹，这个期刊属于计算机科学理论领域的C类期刊。根据Google Scholar³，这篇文章目前有2次引用。
+
+### Q: Optimization Letters是什么期刊？
+
+Optimization Letters不是一个会议，而是一个期刊。根据网页内容，这是一个关于优化理论和应用的国际期刊，发表了一些关于组合优化、非线性优化、随机优化等方面的研究文章。这个期刊属于计算机科学理论领域的C类期刊，根据CCF推荐国际学术刊物目录。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
