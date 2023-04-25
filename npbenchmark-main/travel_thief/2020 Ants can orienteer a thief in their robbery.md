@@ -14,9 +14,17 @@ https://github.com/jonatasbcchagas/aco_thop
 
 (Prompt: generalize abstract of this article in Chinese)
 
+盗贼定向问题（ThOP）是一种多组分问题，结合了两种经典的组合优化问题：定向问题和背包问题。 ThOP具有挑战性，因为它具有给定的时间限制和组件之间的交互。 我们提出了一种基于蚁群优化算法的方法，并提出了一种新的打包启发式方法，以单独和交互地处理问题组件。 我们的方法在超过90％的基准实例上优于现有工作，平均改进超过300％。
+
+Key: ACO => Thief Orienteering Problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么期刊？
+这篇文章发表在2020年的Operations Research Letters期刊上，该期刊属于CCF计算机科学与工程学科的B类期刊¹。根据网上搜索结果，这篇文章在Google Scholar上的引用次数为6次²。
+
+### Q: Operations Research Letters是什么期刊？
+
+Operations Research Letters是一份双月刊的同行评审学术期刊，涵盖了运筹学的各个方面。它于1981年创刊，由Elsevier出版。现任主编是Amy Ward¹。该期刊的目标是快速审查和发表运筹学和分析领域的短文。除了限制在八页以内，质量、原创性、相关性和清晰度是选择发表文章的唯一标准²。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
