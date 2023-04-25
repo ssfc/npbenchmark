@@ -18,6 +18,10 @@ https://github.com/jonatasbcchagas/wsm_bittp
 
 Keywords: weighted-sum method => bi-objective traveling thief problem
 
+### Q: bi-objective traveling thief problem和traveling thief problem有什么区别？
+
+bi-objective traveling thief problem (BITTP)是一种多目标优化问题，它是在traveling thief problem (TTP)的基础上，将其单一目标分解为两个目标：最大化收集物品的利润和最小化旅行的时间。这两个目标是相互冲突的，因为优化一个目标不一定能优化另一个目标。因此，BITTP的求解需要找到一组帕累托最优解，即在目标空间中没有被其他解支配的解。BITTP是一种具有挑战性的多组件问题，它结合了两个经典的NP难问题：旅行商问题（TSP）和背包问题（KP）。BITTP的研究可以帮助理解多组件问题的交互和权衡关系，也可以为实际应用提供启发。
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 这篇文章发表在Computers & Operations Research (COR) 期刊上，这是一本国际性的期刊，主要涉及计算机和运筹学技术在各个领域的应用问题。根据网络搜索结果²，这本期刊在CCF推荐期刊列表中属于C类，也就是说它是CCF认为值得计算机界研究者们发表研究成果的一个推荐期刊。根据google scholar³，这篇文章截至目前被引用了11次。
