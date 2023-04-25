@@ -26,6 +26,11 @@ Computers & Operations Research (COR) 是一本国际性的期刊，主要涉及
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有两位，分别是：
+
+- Jonatas B. C. Chagas，是巴西奥罗普雷托联邦大学（Universidade Federal de Ouro Preto）的计算机系教授，也是维索萨联邦大学（Universidade Federal de Viçosa）的信息系教授。他的研究方向是组合优化、整数规划、元启发式算法等，主要应用于交通、物流、调度等领域。他在国际期刊和会议上发表了多篇论文，也参与了一些竞赛和项目。
+- Markus Wagner，是澳大利亚阿德莱德大学（The University of Adelaide）的计算机科学学院教授，也是澳大利亚研究委员会未来研究员（ARC Future Fellow）。他的研究方向是进化计算、优化建模、多目标优化等，主要应用于生态、能源、交通等领域。他在国际期刊和会议上发表了多篇论文，也组织了一些竞赛和研讨会。
+
 ## 1. Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
