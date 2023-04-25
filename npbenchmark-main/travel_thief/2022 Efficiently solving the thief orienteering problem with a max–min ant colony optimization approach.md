@@ -35,6 +35,11 @@ Optimization Letters不是一个会议，而是一个期刊。根据网页内容
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有两位，分别是：
+
+- Jonatas B. C. Chagas¹，他是巴西奥罗普雷托联邦大学计算机科学系的博士，主要研究方向是组合优化、整数规划和元启发式算法。他曾经在国际期刊和会议上发表过多篇关于优化问题的文章。
+- Markus Wagner²，他是澳大利亚阿德莱德大学计算机科学学院的副教授，主要研究方向是进化计算、多目标优化和多组件问题。他曾经在国际期刊和会议上发表过多篇关于优化问题的文章，并担任过多个国际会议的程序委员会主席或成员。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
