@@ -41,9 +41,13 @@ Computers & Operations Research (COR) 是一本国际性的期刊，主要涉及
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+本文介绍了一种基于加权和方法的启发式算法，用于解决双目标旅行窃贼问题（BITTP）。BITTP是一种复杂的组合优化问题，它结合了旅行商问题（TSP）和背包问题（KP），并考虑了两者之间的相互影响。本文的主要贡献是：（1）将多目标问题分解为多个单目标问题，利用随机化的启发式策略求解；（2）利用有效的局部搜索算子进行探索和利用，平衡了解空间的多样性和质量；（3）对算法的参数进行了调优和分析，发现了不同参数对算法性能的影响；（4）与文献中的其他算法进行了广泛的比较，证明了本文算法的有效性和优越性。
+
 ## 2. Problem definition
 
 (Prompt: Generalize Section "Problem definition" of this article in Chinese)
+
+本文的问题定义是双目标旅行窃贼问题（BITTP），它是一种将旅行商问题（TSP）和背包问题（KP）结合起来的组合优化问题。BITTP的目标是在访问所有城市的同时，最大化收集物品的利润和最小化旅行时间。这两个目标是相互冲突的，因为优化一个目标不一定能优化另一个目标。因此，不存在一个同时优化两个目标的单一解，而是存在一组非劣解，即在目标值上不被任何其他解支配的解。本文用数学公式和约束条件来描述BITTP的可行解空间和目标函数。
 
 ## 3. Problem-solving methodology
 
