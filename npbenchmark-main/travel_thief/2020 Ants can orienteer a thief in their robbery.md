@@ -55,6 +55,8 @@ Operations Research Letters是一份双月刊的同行评审学术期刊，涵�
 
 (Prompt: Generalize Section "Computational experiments" of this article in Chinese)
 
+这部分介绍了作者进行的一系列实验，用来评估他们提出的算法的性能和效果。作者使用了432个小偷定向问题的实例，根据不同的特征将它们分成48组。作者运行了他们的算法10次，并与文献中已有的方法进行了比较。作者使用了Irace软件包，一个自动参数配置的工具，来寻找最优的参数设置。作者还使用了Wilcoxon符号秩检验，一个统计方法，来验证他们的结果的显著性。作者发现，他们的算法在大多数情况下都能找到更好的解决方案，并且具有更好的收敛性和稳定性。
+
 ## 5 Concluding remarks
 
 (Prompt: Generalize Section "Concluding remarks" of this article in Chinese)
