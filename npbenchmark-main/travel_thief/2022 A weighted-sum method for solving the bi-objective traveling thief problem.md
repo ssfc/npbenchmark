@@ -53,6 +53,8 @@ Computers & Operations Research (COR) 是一本国际性的期刊，主要涉及
 
 (Prompt: Generalize Section "Problem-solving methodology" of this article in Chinese)
 
+本文的问题解决方法是基于加权和方法（weighted-sum method, WSM），一种将多目标优化问题转化为多个单目标问题的策略。WSM通过使用不同的凸组合来生成不同的单目标问题，然后分别求解每个单目标问题，以生成多目标问题的非劣解。本文将BITTP的两个目标函数（6）和（7）转化为加权和目标函数（9），其中α是一个介于0和1之间的实数，用来控制两个目标函数的相对重要性。本文采用了一种启发式方法来求解每个单目标问题，该方法分为两个阶段：第一阶段，使用链式林-科尼汉启发式（Chained-Lin-Kernighan heuristic）为小偷生成一条旅行路径；第二阶段，使用一种随机化的装箱策略为小偷确定要偷取的物品。本文还结合了探索和利用的概念，通过使用2-opt和bit-flip等低级搜索算子来改进当前的解。本文通过对不同的参数值进行调整和分析，以评估算法组件的贡献，并与文献中的其他方法进行比较。
+
 ## 4. Computational experiments
 
 (Prompt: Generalize Section "Computational experiments" of this article in Chinese)
