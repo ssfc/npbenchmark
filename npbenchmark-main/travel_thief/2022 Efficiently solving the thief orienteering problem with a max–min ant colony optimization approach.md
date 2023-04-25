@@ -62,6 +62,8 @@ Optimization Letters不是一个会议，而是一个期刊。根据网页内容
 
 (Prompt: Generalize Section "Computational study" of this article in Chinese)
 
+这篇文章使用了432个ThOP的测试实例来评估不同算法的性能，这些实例是基于TTP的实例生成的，具有不同的城市数量、物品数量、背包大小、物品类型和最大旅行时间。文章使用了**Irace软件包**来自动调整ACO++和其他基于ACO和BRKGA的算法的参数，并分析了参数对算法性能的影响。文章还比较了ACO++和其他已有的算法（ILS，BRKGA，GA和ACO）在测试实例上的解质量，使用了近似比和统计检验等指标。结果表明，ACO++在几乎所有的测试实例上都能找到最优或接近最优的解，而且比其他算法有显著的优势。
+
 ## 5 Conclusions
 
 (Prompt: Generalize Section "Conclusions" of this article in Chinese)
