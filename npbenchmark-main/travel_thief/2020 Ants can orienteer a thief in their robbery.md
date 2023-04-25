@@ -49,6 +49,8 @@ Operations Research Letters是一份双月刊的同行评审学术期刊，涵�
 
 (Prompt: Generalize Section "Stealing items with ants" of this article in Chinese)
 
+这部分介绍了作者提出的一种启发式方法来解决小偷定向问题。作者借鉴了蚂蚁群优化算法（ACO），一种受到真实蚂蚁行为启发的概率搜索技术，来构造小偷的路线。作者使用了一个现成的ACO框架，对其进行了一些调整，使其适应小偷定向问题的特点。作者还设计了一个新的贪心算法，来从固定的路线中选择要偷取的物品。作者通过自动参数配置和实验评估，分析了算法的各个组成部分的重要性和效果，并与文献中已有的方法进行了比较。作者发现，他们的方法在大多数情况下都能找到更好的解决方案，并且具有更好的收敛性。
+
 ## 4 Computational experiments
 
 (Prompt: Generalize Section "Computational experiments" of this article in Chinese)
