@@ -44,6 +44,8 @@ Optimization Letters不是一个会议，而是一个期刊。根据网页内容
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+这篇文章研究了一种叫做Thief Orienteering Problem (ThOP)的学术多组件问题，它结合了两个经典的组合优化问题，即背包问题和定向越野问题。在ThOP中，一个小偷有一个时间限制，在一组城市中偷取分布在城市中的物品。小偷在旅行的过程中收集物品并存放在背包中，这会降低小偷的旅行速度。小偷的目标是在不超过背包容量和时间限制的情况下，最大化偷取物品的总利润。文章介绍了一种基于群智能和随机装箱启发式算法的解决方案，该方案在几乎所有的432个测试实例上都优于现有的工作，并且有显著的改进。
+
 ## 2 Problem definition
 
 (Prompt: Generalize Section "Problem definition" of this article in Chinese)
