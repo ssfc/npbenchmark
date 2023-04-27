@@ -35,6 +35,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2020
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+第一节介绍了动态优化问题的研究背景和动机。文章指出，现实世界中的许多优化问题都涉及动态和随机的组件，而进化算法由于能够适应环境变化而在处理这类问题上具有优势。文章回顾了目前对动态适应度函数和动态约束的研究，以及旅行窃贼问题（TTP）的定义和变体。文章提出了**动态旅行窃贼问题（DynTTP）**的概念，即在TTP中引入物品或城市的可用性变化，从而增加问题的复杂性和实际性。文章概述了本文的主要贡献和结构。
+
 ## 2 The Travelling Thief Problem and its Variants
 
 (Prompt: Generalize Section "The Travelling Thief Problem and its Variants" of this article in Chinese)
