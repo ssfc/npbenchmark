@@ -44,6 +44,8 @@ Journal of Heuristics是一本关于启发式方法的学术期刊，它提供�
 
 (Prompt: Generalize Section "Related Work" of this article in Chinese)
 
+这篇文章回顾了旅行窃贼问题（TTP）的研究进展，主要关注了单目标和双目标的TTP变体。文章介绍了TTP的定义和特点，以及它与旅行商问题（TSP）和背包问题（KP）的相互影响。文章总结了针对**单目标TTP**的各种方法，包括迭代搜索启发式 (iterative search-heuristics)、协同进化 (co-evolutionary)、模拟进化 (memetic approaches)、群智能 (swarm-intelligence based) 和问题特定的搜索算子等。文章也讨论了少数针对多目标TTP的方法，包括使用非支配排序和拥挤距离的方法，以及考虑动态变化的方法。文章还提到了一些更一般的关于多组件问题和相互依赖问题的讨论。文章指出，尽管TSP和KP都是经典的组合优化问题，但是它们的相互作用使得TTP成为一个具有挑战性的问题。
+
 ## 3 Bi-objective Traveling Thief Problem
 
 (Prompt: Generalize Section "Bi-objective Traveling Thief Problem" of this article in Chinese)
