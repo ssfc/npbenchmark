@@ -41,6 +41,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2020
 
 (Prompt: Generalize Section "The Travelling Thief Problem and its Variants" of this article in Chinese)
 
+第二节介绍了旅行窃贼问题（TTP）及其变体的定义和特征。文章详细描述了TTP的组成部分，即旅行商问题（TSP）和背包问题（KP），以及它们之间的相互依赖关系，即小偷的速度取决于背包的重量。文章给出了TTP的解码方式和目标函数，以及一个简单的例子。文章还回顾了TTP的相关文献，包括单目标和多目标的版本，以及不同的算法和评价方法。文章最后提出了动态旅行窃贼问题（DynTTP）的设计思路，即在TTP中引入物品或城市的可用性变化，并给出了两种动态场景的定义。
+
 ## 3 Dynamic Travelling Thief Problem (DynTTP)
 
 (Prompt: Generalize Section "Dynamic Travelling Thief Problem (DynTTP)" of this article in Chinese)
