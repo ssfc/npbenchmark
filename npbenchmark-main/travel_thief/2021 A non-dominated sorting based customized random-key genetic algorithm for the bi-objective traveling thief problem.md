@@ -26,34 +26,23 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2021
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
-## 1 Related Work
+## 2 Related Work
 
 (Prompt: Generalize Section "Related Work" of this article in Chinese)
 
-## 1 Introduction
+## 3 Bi-objective Traveling Thief Problem
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "Bi-objective Traveling Thief Problem" of this article in Chinese)
 
-## 1 Introduction
+## 4 A Customized Non-dominated Sorting Based Genetic Algorithm with Biased Random-Key Encoding
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "A Customized Non-dominated Sorting Based Genetic Algorithm with Biased Random-Key Encoding" of this article in Chinese)
 
-## 1 Introduction
+## 5 Computational Experiments
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "Computational Experiments" of this article in Chinese)
 
-## 1 Introduction
+## 6 Concluding Remarks
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "Concluding Remarks" of this article in Chinese)
 
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
-
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
-
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
