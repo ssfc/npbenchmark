@@ -26,9 +26,9 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2021
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
-## 1 Introduction
+## 1 Related Work
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "Related Work" of this article in Chinese)
 
 ## 1 Introduction
 
