@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2021
 
 在本文中，我们提出了一种用于解决双目标旅行窃贼问题（bi-objective traveling thief problem, BI-TTP）的方法。BI-TTP是TTP的一个双目标版本，其中目标是最小化总旅行时间和最大化收集物品的利润。我们提出的方法基于一个带有定制随机键编码的偏向随机键遗传算法，该算法解决了问题的混合变量特性。我们通过进化算子结合领域知识，利用每个子问题的近似最优解作为初始种群，并使用定制的修复算子避免评估不可行解。问题的双目标方面通过基于非支配等级和拥挤距离提取的精英种群来处理。此外，我们提供了一个全面的研究，展示了每个参数对性能的影响。最后，我们讨论了EMO-2019和GECCO-2019会议上BI-TTP竞赛的结果，我们的方法分别获得了第一和第二名，证明了它能够一致地找到高质量的解。
 
-Keywords: non-dominated sorting based customized random-key genetic algorithm => bi-objective traveling thief problem
+Keywords: 基于一个带有偏向随机键编码的非支配排序遗传算法 (non-dominated sorting based customized random-key genetic algorithm, NDS-BRKGA) => 双目标旅行窃贼问题 (bi-objective traveling thief problem, BI-TTP)
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -37,6 +37,8 @@ Journal of Heuristics是一本关于启发式方法的学术期刊，它提供�
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
+
+这篇文章提出了一种用于解决双目标旅行窃贼问题（bi-objective traveling thief problem, BI-TTP）的方法。BI-TTP是一个组合优化问题，由两个经典的子问题组成：旅行商问题（TSP）和背包问题（KP）。这两个子问题之间存在相互影响，使得优化难度增加。文章的方法基于一个带有偏向随机键编码的非支配排序遗传算法（NDS-BRKGA），结合了针对问题特征的定制化操作。文章利用了各个子问题的现有求解器来生成初始种群，并使用了一个修复算子来避免不可行解的评估。文章还通过非支配排序和拥挤距离来处理问题的双目标性质，并提供了一个全面的参数影响分析。最后，文章讨论了在EMO-2019和GECCO-2019会议上举办的BI-TTP竞赛的结果，证明了该方法能够一致地找到高质量的解决方案。
 
 ## 2 Related Work
 
