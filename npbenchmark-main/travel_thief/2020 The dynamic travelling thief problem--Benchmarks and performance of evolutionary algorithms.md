@@ -55,6 +55,8 @@ Keywords: Dynamic Travelling Thief Problem
 
 (Prompt: Generalize Section "Heuristics for the DynTTP" of this article in Chinese)
 
+第四节介绍了用于动态旅行窃贼问题（DynTTP）的七种启发式算法，分别针对物品可用性切换和城市可用性切换两种动态场景。文章分别描述了每种算法的基本思想和实现细节，以及它们在恢复或重建TTP解时的优缺点。文章使用了一些通用的或问题相关的算法构件，如Bitflip、PackIterative、Insertion、CLK和REAm等。文章还讨论了不同算法之间的概念差异和相似性。
+
 ## 5 Computational Investigation
 
 (Prompt: Generalize Section "Computational Investigation" of this article in Chinese)
