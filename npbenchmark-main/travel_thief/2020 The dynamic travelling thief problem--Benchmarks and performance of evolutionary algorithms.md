@@ -16,7 +16,14 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2020
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么期刊？
+- 这篇文章发表在ICONIP会议上，ICONIP是国际神经网络信息处理会议的缩写，是人工智能领域的一个重要会议。根据CCF推荐的人工智能领域国际学术会议目录²，ICONIP属于C类会议。
+- 这篇文章在Google Scholar上的引用次数为3次³。
+
+### Q: ICONIP是什么会议？
+
+- ICONIP是国际神经网络信息处理会议的缩写，是人工智能领域的一个重要会议。它是亚太神经网络学会（APNNS）组织的年度旗舰会议，旨在促进神经网络和相关领域的研究者、科学家和工业专业人士在亚太地区的交流和合作¹²³。
+- 根据CCF推荐的人工智能领域国际学术会议目录²，ICONIP属于C类会议。
+- 这篇文章在Google Scholar上的引用次数为3次⁴。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
