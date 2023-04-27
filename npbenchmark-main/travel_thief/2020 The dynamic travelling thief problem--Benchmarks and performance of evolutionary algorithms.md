@@ -27,6 +27,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2020
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+- **Ragav Sachdeva**，是澳大利亚阿德莱德大学计算机科学学院的博士研究生，主要研究方向是进化计算和动态优化¹²。
+- **Frank Neumann**，是澳大利亚阿德莱德大学计算机科学学院的教授，主要研究方向是进化计算、组合优化和生物信息学³ 。
+- **Markus Wagner**，是澳大利亚阿德莱德大学计算机科学学院的副教授，主要研究方向是进化计算、多目标优化和实际问题 。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
