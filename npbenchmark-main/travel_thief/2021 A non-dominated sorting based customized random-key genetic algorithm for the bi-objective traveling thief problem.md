@@ -18,7 +18,11 @@ Keywords: non-dominated sorting based customized random-key genetic algorithm =>
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么期刊？
+这篇文章发表在《启发式》（Journal of Heuristics）杂志上，这是一本CCF推荐的C类国际学术刊物³。这篇文章在谷歌学术上的引用次数是11次²。
+
+### Q: Journal of Heuristics是什么期刊？
+
+Journal of Heuristics是一本关于启发式方法的学术期刊，它提供了一个论坛，用于推进理论和实际应用方面的最新进展，解决那些无法精确求解的问题。它促进了启发式解决方案技术的发展、理解和实际应用，用于解决商业、工程和社会问题。它重视与启发式方法的发展相关的理论、实证和实验工作。¹² 这个期刊涵盖了基于人工智能技术的启发式搜索及其在人工智能规划、调度、设计、约束满足和博弈论等方面的应用。它包括了在人工智能中进行系统性和局部搜索的启发式和元启发式方法。³
 
 ### Q: Introduce authors of this article in Chinese one by one
 
