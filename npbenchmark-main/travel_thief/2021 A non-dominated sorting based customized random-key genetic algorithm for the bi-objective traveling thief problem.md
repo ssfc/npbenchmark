@@ -26,6 +26,14 @@ Journal of Heuristics是一本关于启发式方法的学术期刊，它提供�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有以下介绍：
+
+- Jonatas B. C. Chagas是巴西联邦奥鲁普雷托大学计算机科学系的博士，也是巴西联邦维索萨大学信息学系的教授。他的研究兴趣包括组合优化、多目标优化、实际优化问题和启发式方法。他曾在多个国际期刊和会议上发表论文，也参与了多个优化竞赛。¹²
+- Julian Blank是美国密歇根州立大学计算机科学与工程系的博士生，也是COIN实验室的成员。他的研究兴趣包括进化计算、多目标优化、实际优化问题和启发式方法。他曾在多个国际期刊和会议上发表论文，也参与了多个优化竞赛。²³
+- Markus Wagner是澳大利亚阿德莱德大学计算机科学系的副教授，也是Optimisation and Logistics Research Group的成员。他的研究兴趣包括进化计算、元启发式、实际优化问题和启发式搜索。他曾在多个国际期刊和会议上发表论文，也参与了多个优化竞赛。² 
+- Marcone J. F. Souza是巴西联邦奥鲁普雷托大学计算机科学系的教授，也是Operations Research and Computational Intelligence Laboratory (ORCILab)的负责人。他的研究兴趣包括组合优化、整数规划、元启发式、实际优化问题和运筹学。他曾在多个国际期刊和会议上发表论文，也参与了多个优化竞赛。² 
+- Kalyanmoy Deb是美国密歇根州立大学计算机科学与工程系的教授，也是COIN实验室的主任。他是进化计算领域的知名专家，曾获得过多个国际奖项和荣誉，如IEEE Kiyo Tomiyama Award, IEEE CIS Evolutionary Computation Pioneer Award等。他的研究兴趣包括进化计算、多目标优化、实际优化问题和启发式方法。他曾在多个国际期刊和会议上发表论文，也参与了多个优化竞赛。²
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
