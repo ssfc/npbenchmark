@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2020
 
 许多实际优化问题涉及动态和随机的因素。虽然在诸如供应链优化和物流等固有动态领域，存在多个相互作用的组件问题，但大多数关于动态问题的研究都集中在单组件问题上。本文基于旅行窃贼问题，定义了一些场景，以便研究**动态变化**对子组件的影响。我们对72个场景和七种算法进行了研究，结果表明——根据实例、变化的大小和算法组合的不同——重新开始优化或继续使用之前有效的解决方案，两者都有可能是更好的选择。
 
-Keywords: Dynamic Travelling Thief Problem
+Keywords: Heuristics => Dynamic Travelling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -61,6 +61,12 @@ Keywords: Dynamic Travelling Thief Problem
 
 (Prompt: Generalize Section "Computational Investigation" of this article in Chinese)
 
+第五节介绍了动态旅行窃贼问题（DynTTP）的计算实验和结果分析。文章使用了九个不同规模和特征的TTP基准实例，以及四种不同的干扰比例，来测试七种启发式算法在十个时期内的表现。文章使用了热图和统计测试来展示和比较不同算法在不同场景下的相对优劣。文章发现，干扰事件对算法性能有显著影响，而不同的情况需要不同的方法。文章还指出了一些有趣的现象和规律，以及未来的研究方向。
+
 ## 6 Outlook
 
 (Prompt: Generalize Section "Outlook" of this article in Chinese)
+
+本文的展望部分介绍了未来对动态旅行窃贼问题（DynTTP）的可能的研究方向。文章提出了一些改进和扩展的想法，如使用更具问题特性的算法，使用多目标和协同进化的方法，以及平衡解质量和应对干扰事件的能力。文章还提到了本文的研究与另一篇独立进行的关于多目标动态TTP变体的研究的关系，并表示感谢澳大利亚研究委员会的资助。
+
+Keywords: Heuristics => Dynamic Travelling Thief Problem
