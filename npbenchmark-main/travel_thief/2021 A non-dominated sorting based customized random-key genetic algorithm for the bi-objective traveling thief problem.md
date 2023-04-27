@@ -38,7 +38,7 @@ Journal of Heuristics是一本关于启发式方法的学术期刊，它提供�
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
-这篇文章提出了一种用于解决双目标旅行窃贼问题（bi-objective traveling thief problem, BI-TTP）的方法。BI-TTP是一个组合优化问题，由两个经典的子问题组成：旅行商问题（TSP）和背包问题（KP）。这两个子问题之间存在相互影响，使得优化难度增加。文章的方法基于一个带有偏向随机键编码的非支配排序遗传算法（NDS-BRKGA），结合了针对问题特征的定制化操作。文章利用了各个子问题的现有求解器来生成初始种群，并使用了一个修复算子来避免不可行解的评估。文章还通过非支配排序和拥挤距离来处理问题的双目标性质，并提供了一个全面的参数影响分析。最后，文章讨论了在EMO-2019和GECCO-2019会议上举办的BI-TTP竞赛的结果，证明了该方法能够一致地找到高质量的解决方案。
+这篇文章提出了一种用于解决双目标旅行窃贼问题（bi-objective traveling thief problem, BI-TTP）的方法。BI-TTP是一个组合优化问题，由两个经典的子问题组成：旅行商问题（TSP）和背包问题（KP）。这两个子问题之间存在相互影响，使得优化难度增加。文章的方法基于一个带有偏向随机键编码的非支配排序遗传算法（non-dominated sorting based customized random-key genetic algorithm, NDS-BRKGA），结合了针对问题特征的定制化操作。文章利用了各个子问题的现有求解器来生成初始种群，并使用了一个修复算子来避免不可行解的评估。文章还通过非支配排序和拥挤距离来处理问题的双目标性质，并提供了一个全面的参数影响分析。最后，文章讨论了在EMO-2019和GECCO-2019会议上举办的BI-TTP竞赛的结果，证明了该方法能够一致地找到高质量的解决方案。
 
 ## 2 Related Work
 
