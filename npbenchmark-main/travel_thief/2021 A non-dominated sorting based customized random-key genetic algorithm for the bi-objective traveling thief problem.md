@@ -50,6 +50,8 @@ Journal of Heuristics是一本关于启发式方法的学术期刊，它提供�
 
 (Prompt: Generalize Section "Bi-objective Traveling Thief Problem" of this article in Chinese)
 
+这篇文章介绍了双目标旅行窃贼问题（bi-objective traveling thief problem, BI-TTP），它是一个组合优化问题，由两个相互影响的子问题组成：旅行商问题（TSP）和背包问题（KP）。文章描述了TSP和KP的独立定义，以及它们在TTP中的相互作用。文章说明了TTP的目标是最小化窃贼的总旅行时间和最大化收集物品的利润，这两个目标是冲突的。文章还给出了一个例子，展示了如何计算TTP的目标值和如何确定非支配解集。文章指出，尽管TSP和KP都是经典的组合优化问题，但是它们的相互作用使得TTP成为一个具有挑战性的问题。
+
 ## 4 A Customized Non-dominated Sorting Based Genetic Algorithm with Biased Random-Key Encoding
 
 (Prompt: Generalize Section "A Customized Non-dominated Sorting Based Genetic Algorithm with Biased Random-Key Encoding" of this article in Chinese)
