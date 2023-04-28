@@ -46,6 +46,8 @@ Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief
 
 (Prompt: Generalize Section "On the use of hyper-heuristics in combinatorial optimization" of this article in Chinese)
 
+这一节介绍了超启发式算法的背景和相关工作。超启发式算法是一类高级搜索技术，旨在自动化启发式设计过程，提高搜索方法的通用性。超启发式算法可以选择或生成低级启发式算法（Low Level Heuristics, LLH），以解决一系列优化问题。它们**在启发式空间上进行搜索，而不是直接在解空间上进行搜索**。超启发式算法可以分为两大类：**启发式选择**方法和**启发式生成**方法。前者从一组预先存在的、通常是广为人知的启发式算法中选择一个适合当前问题状态的LLH；后者使用已知启发式算法的组件，自动设计新的LLH。超启发式算法还可以根据LLH是从头构造解还是修改现有解，以及是否使用在线或离线学习机制，进行进一步的分类。遗传编程（Genetic Programming, GP）是超启发式算法中最常用的方法之一，通常用于启发式生成方法。本文则探索了GP作为启发式选择方法的可能性，并将其应用于旅行商窃贼问题（TTP），这是一个相对新颖的NP难问题。TTP提供了相互依赖的子问题，这是真实应用中经常遇到的问题特征。
+
 ## 3 The travelling thief problem (TTP)
 
 (Prompt: Generalize Section "The travelling thief problem (TTP)" of this article in Chinese)
