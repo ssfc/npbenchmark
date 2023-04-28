@@ -14,38 +14,30 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: GECCO是什么会议？
+### Q: 是什么会议？
 
 ### Q: Introduce authors of this article in Chinese one by one
 
-## 1 Introduction
+## 1 MOTIVATION
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
 
-## 1 Introduction
+## 2 BACKGROUND AND RELATED WORKS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "BACKGROUND AND RELATED WORKS" of this article in Chinese)
 
-## 1 Introduction
+## 3 LOCAL SEARCH HEURISTICS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "LOCAL SEARCH HEURISTICS" of this article in Chinese)
 
-## 1 Introduction
+## 4 EXPERIMENTAL SETTING
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "EXPERIMENTAL SETTING" of this article in Chinese)
 
-## 1 Introduction
+## 5 RESULTS AND ANALYSIS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "RESULTS AND ANALYSIS" of this article in Chinese)
 
-## 1 Introduction
+## 6 CONCLUSION
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
-
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
-
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "CONCLUSION" of this article in Chinese)
