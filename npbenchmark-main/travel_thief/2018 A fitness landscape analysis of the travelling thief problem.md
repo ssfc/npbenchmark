@@ -64,6 +64,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 (Prompt: Generalize Section "RESULTS AND ANALYSIS" of this article in Chinese)
 
+本节分析了使用局部搜索启发式算法为旅行商窃贼问题生成的局部最优网络，以了解搜索空间的结构。此外，还研究了吸引盆及其与一些局部最优网络特性之间的关系，以寻找更多关于搜索难度的信息。首先，通过观察局部最优网络的各种图形指标，如顶点数、边数、平均度数、聚类系数等，可以初步判断搜索难度。结果表明，背包容量越大，搜索难度越低。其次，通过绘制累积度分布函数，并使用Kolmogorov-Smirnov检验来评估幂律和指数模型的适用性，可以发现局部最优网络具有一些真实网络的特征，如小世界性质和无标度性质。这意味着大多数局部最优解只有少量的连接，而少数局部最优解有很多的连接。这对于设计高效的局部搜索算法是有帮助的。最后，通过计算吸引盆的大小、深度和逃逸能力，并与局部最优网络的其他特征进行相关分析，可以进一步了解不同问题特征对搜索空间结构的影响。
+
 ## 6 CONCLUSION
 
 (Prompt: Generalize Section "CONCLUSION" of this article in Chinese)
