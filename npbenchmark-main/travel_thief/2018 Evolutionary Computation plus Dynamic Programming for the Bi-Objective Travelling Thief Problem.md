@@ -73,6 +73,7 @@ s.t. ϕ (ρ) ≤ C
 ## 4 A hybrid evolutionary approach
 
 (Prompt: Generalize Section "A hybrid evolutionary approach" of this article in Chinese)
+这篇文章提出了一种混合进化算法，将动态规划算法和指标为基础的进化算法相结合，用于解决双目标TTP问题。该算法的个体是旅行路线，而不是完整的TTP解，这样可以减少搜索空间和计算复杂度。该算法的核心是利用动态规划算法为每个旅行路线生成一个DP前沿，然后用指标函数来评估每个前沿对于整体Pareto最优解的贡献。文章设计了两种指标函数：损失表面贡献（Loss of Surface Contribution, LSC）和损失超体积（Loss of Hypervolume, LHV），分别衡量删除一个前沿后，整体Pareto最优解的表面和超体积的损失。文章还研究了八种不同的父代选择机制，来根据指标值选择优良的旅行路线进行交叉和变异操作。文章通过计算实验比较了不同指标和选择机制的组合，发现一些表现较好的组合，如RBS-HAR、AS-BST和FPS。
 
 ## 5 Computational Experiments
 
