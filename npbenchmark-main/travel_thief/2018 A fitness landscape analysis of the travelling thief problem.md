@@ -58,6 +58,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 (Prompt: Generalize Section "EXPERIMENTAL SETTING" of this article in Chinese)
 
+本节介绍了实验的设计和参数。旅行商窃贼问题的实例可以根据以下特征进行分类：城市数量、每个城市的物品数量、物品的重量和利润之间的相关性、背包容量等级。本文主要关注两个非平凡的特征，即背包容量和重量-利润相关性，并根据这两个特征对问题进行分类。为了生成局部最优网络并识别吸引盆，我们使用了7个城市和6个物品（每个城市一个，除了起始城市）的小型实例。我们使用了一个专门的实例生成器来产生可枚举的实例，并根据[20]中的指导进行了设计。对于每个类别，我们生成了100个样本，并分析了它们的适应度景观。
+
 ## 5 RESULTS AND ANALYSIS
 
 (Prompt: Generalize Section "RESULTS AND ANALYSIS" of this article in Chinese)
