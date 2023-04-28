@@ -39,6 +39,8 @@ Springer 是一个全球性的学术出版社和科技服务提供商，总部�
 
 (Prompt: Generalize Section "Motivation" of this article in Chinese) 
 
+这一节的主要动机是探讨进化计算（Evolutionary Computation, EC）领域的研究与实际应用之间的差距，以及如何缩小这一差距。作者指出，过去30年来，EC领域的研究者们致力于设计适合解决难题的优化方法，但是在真实世界中很难找到基于EC的应用。作者分析了造成这种不匹配的原因，其中最主要的是：（a）**实验关注单一组件的基准问题，而忽略了真实世界问题的多组件性和相互依赖性**；（b）运筹学方法在工业界占据主导地位。作者认为，如果EC领域想要发展出强大的真实世界应用，就需要更多地研究多组件问题，并且利用EC技术的灵活性来应对这类问题的复杂性。
+
 ## 2 Two Examples
 
 (Prompt: Generalize Section "Two Examples" of this article in Chinese)
