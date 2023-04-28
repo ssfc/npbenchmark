@@ -40,6 +40,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 (Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
 
+本文的目的是使用基本的局部搜索启发式算法来研究一个组合优化问题的搜索空间结构，该问题具有两个相互依赖的组件，称为旅行商窃贼问题（TTP）。TTP是一个复杂的问题，反映了现实世界优化问题的一些重要方面，如复合结构和相互依赖性。作者通过分析局部最优网络（Local Optima Networks, LON）的特征，来探索TTP实例的难度和影响因素。LON是一种简化的适应度景观模型，将适应度景观表示为连接局部最优的图。作者认为，这些见解不仅有助于设计基于景观的局部搜索启发式算法，而且有助于更好地理解具有相互依赖组件的复杂问题的搜索空间结构。
+
 ## 2 BACKGROUND AND RELATED WORKS
 
 (Prompt: Generalize Section "BACKGROUND AND RELATED WORKS" of this article in Chinese)
