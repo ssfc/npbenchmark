@@ -12,6 +12,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本文研究了使用超启发式方法来解决旅行窃贼问题（TTP）。TTP是一个多组件问题，它由旅行商问题和背包问题组合而成。本文探讨了使用自动在线启发式选择来寻找不同已知启发式的最佳组合。为此，我们提出了一种基于遗传编程的超启发式方法，称为GPHS*，并将其与最先进的算法进行了比较。实验结果表明，该方法在小型和中型TTP实例上具有竞争力。
+
+Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 ### Q: 是什么会议？
