@@ -106,6 +106,8 @@ HyFlex框架可以适用于多种优化问题，例如布局问题、调度问�
 
 (Prompt: Generalize Section "The proposed approach" of this article in Chinese)
 
+提出的方法是使用遗传编程（Genetic Programming, GP）作为启发式选择技术，目的是演化出不同启发式的组合，以寻找TTP问题的优良解。在这一节中，我们解释了这种策略如何实施，并详细描述了提出的算法。选择GP作为启发式选择技术的动机主要是由于GP能够保留子树中终端之间的相关性，并通过交叉操作将相关性传递给后代，从而产生新的树。在本节中，我们介绍了我们对GP的适应细节。我们使用两种类型的函数：连接器和if节点。连接器用于按顺序执行子树，if节点用于表示接受函数。我们使用多种终端，终端是TTP问题的组件启发式或破坏性操作。每个GP个体都被编码为一个树，表示要执行的程序。树的内部节点是函数，叶节点是终端或启发式。树以中序方式解析，得到一系列启发式，然后依次应用于TTP问题实例，从一个初始解开始。个体的适应度由最终得到的TTP解的目标值决定。我们提出了两种变体：一种是离线超启发式，它使用一个实例进行训练阶段以生成一个模型；另一种是在线实现，它一次只处理一个实例。我们将这两种变体分别称为GPHS和GPHS*。
+
 ## 5 Experiments and discussion
 
 (Prompt: Generalize Section "Experiments and discussion" of this article in Chinese)
