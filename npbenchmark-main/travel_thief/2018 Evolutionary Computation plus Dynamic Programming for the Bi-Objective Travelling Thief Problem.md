@@ -26,6 +26,13 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者是四位计算机科学领域的研究者，他们分别是：
+
+- **吴俊华**，阿德莱德大学计算机科学学院的博士后研究员，主要研究方向是进化计算、组合优化和多目标优化¹。
+- **Sergey Polyakovskiy**，迪肯大学信息技术学院的高级讲师，主要研究方向是进化计算、元启发式算法、多组件优化和实际应用²。
+- **Markus Wagner**，阿德莱德大学计算机科学学院的副教授，主要研究方向是进化计算、优化、机器学习和复杂系统³。
+- **Frank Neumann**，阿德莱德大学计算机科学学院的教授，主要研究方向是进化计算、理论分析、组合优化和生物信息学。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
