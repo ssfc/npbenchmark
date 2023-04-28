@@ -56,6 +56,14 @@ Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief
 
 超启发式算法可以应用于各种不同的问题领域，例如调度、路由、布局、网络设计、机器学习、数据挖掘等。它们已被证明可以有效地解决许多复杂的优化问题，而且通常比单一启发式算法更具有灵活性和鲁棒性。
 
+### Q: 举一个超启发式的例子
+
+一个经典的超启发式算法例子是"HyFlex"框架。HyFlex框架由多个启发式算法组成，这些算法被设计用于解决特定类型的问题。HyFlex框架使用一个元启发式（metaheuristic）算法来选择最合适的启发式算法来解决给定的问题实例。
+
+例如，在解决车间调度问题时，HyFlex框架可能会使用贪心启发式算法、遗传算法、模拟退火算法等多个启发式算法来生成多个解决方案。然后，元启发式算法会选择最好的解决方案，或者根据不同的策略进行解决方案的组合和迭代优化，以生成更好的解决方案。
+
+HyFlex框架可以适用于多种优化问题，例如布局问题、调度问题、路径规划问题等。这种超启发式算法可以提高问题求解的效率和准确性，同时也具有很强的通用性和灵活性。
+
 ## 3 The travelling thief problem (TTP)
 
 (Prompt: Generalize Section "The travelling thief problem (TTP)" of this article in Chinese)
