@@ -78,3 +78,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 - J2B算法产生的LON都是连通图，而JIB算法产生的LON有时是非连通图，这对搜索效率有不利影响。
 
 Keywords: fitness landscape (Local Optima Networks) => Travelling Thief Problem
+
+### Q: 吸引盆是什么？
+
+吸引盆 (basins of attraction) 是一种适应度景观的表示方法，它指的是所有通过局部搜索算法从其中开始，最终收敛到同一个局部最优解的解集合。每个吸引盆都有一个局部最优解作为其代表，吸引盆的大小是指其包含的解的数量。吸引盆之间可以通过边来表示连接关系，如果两个吸引盆中至少有一对解是相邻的，就说明它们是相连的。
+
