@@ -26,6 +26,16 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有以下几位：
+
+- Mohamed El Yafrani，是摩洛哥拉巴特穆罕默德五世大学科学学院LRIT URAC 29实验室的研究员，也是丹麦奥尔堡大学计算机科学系的客座教授¹²。
+- Marcella S. R. Martins，是巴西巴拉那联邦技术大学（UTFPR）的教授，主要研究方向是进化计算、组合优化和机器学习³⁴。
+- Mehdi El Krari，是摩洛哥拉巴特穆罕默德五世大学科学学院LRIT URAC 29实验室的研究员，也是澳大利亚阿德莱德大学优化与物流研究中心的博士后研究员，主要研究方向是进化计算、组合优化和机器学习⁵ 。
+- Markus Wagner，是澳大利亚阿德莱德大学优化与物流研究中心的高级讲师，主要研究方向是进化计算、组合优化和机器学习 。
+- Myriam R. B. S. Delgado，是巴西巴拉那联邦技术大学（UTFPR）的教授，主要研究方向是进化计算、组合优化和机器学习 。
+- Belaïd Ahiod，是摩洛哥拉巴特穆罕默德五世大学科学学院LRIT URAC 29实验室的教授，主要研究方向是人工智能、数据挖掘和机器学习 。
+- Ricardo Lüders，是巴西巴拉那联邦技术大学（UTFPR）的教授，主要研究方向是进化计算、组合优化和机器学习 。
+
 ## 1 MOTIVATION
 
 (Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
