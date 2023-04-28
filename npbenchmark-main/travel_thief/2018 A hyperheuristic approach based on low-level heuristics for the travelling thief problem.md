@@ -27,6 +27,15 @@ Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+以下是关于文章的作者的信息：
+
+- Mohamed El Yafrani，摩洛哥拉巴特穆罕默德五世大学LRIT实验室的研究员，主要研究方向是元启发式算法、超启发式算法和进化计算。
+- Marcella Martins，巴西巴拉那联邦技术大学的教授，主要研究方向是进化计算、机器学习和优化。
+- Markus Wagner，澳大利亚阿德莱德大学计算机科学学院的高级讲师，主要研究方向是进化计算、优化和人工智能。
+- Belaïd Ahiod，摩洛哥拉巴特穆罕默德五世大学LRIT实验室的教授，主要研究方向是元启发式算法、超启发式算法和进化计算。
+- Myriam Delgado，巴西巴拉那联邦技术大学的教授，主要研究方向是进化计算、机器学习和优化。
+- Ricardo Lüders，巴西巴拉那联邦技术大学的教授，主要研究方向是进化计算、机器学习和优化。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
