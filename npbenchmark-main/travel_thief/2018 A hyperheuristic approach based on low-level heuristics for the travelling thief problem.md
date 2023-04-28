@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+基于低级启发式的超启发式方法，用于旅行窃贼问题
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018%20A%20hyperheuristic%20approach%20based%20on%20low-level%20heuristics%20for%20the%20travelling%20thief%20problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018%20A%20hyperheuristic%20approach%20based%20on%20low-level%20heuristics%20for%20the%20travelling%20thief%20problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
