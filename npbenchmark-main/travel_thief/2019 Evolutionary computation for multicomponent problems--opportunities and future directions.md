@@ -45,6 +45,8 @@ Springer 是一个全球性的学术出版社和科技服务提供商，总部�
 
 (Prompt: Generalize Section "Two Examples" of this article in Chinese)
 
+这一节给出了两个真实世界的多组件问题的例子，分别是水箱运输问题和葡萄酒供应链问题。水箱运输问题涉及到如何选择水箱，如何打包水箱，如何选择基地，以及如何规划运输路线，以最大化运输的总价值。葡萄酒供应链问题涉及到如何决定葡萄的收获时间，如何安排压榨机，如何分配储存罐，以及如何安排装瓶线，以及时地完成订单并最小化无用的储存。这两个问题都表现出了**不同组件之间的依赖性**和相互影响，因此不能简单地将它们分解为单一组件的问题来求解。
+
 ## 3 Lessons Learned - Dependencies
 
 (Prompt: Generalize Section "Lessons Learned - Dependencies" of this article in Chinese)
