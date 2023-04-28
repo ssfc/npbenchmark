@@ -18,7 +18,12 @@ Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么会议？
+这篇文章发表在Genetic Programming and Evolvable Machines这个期刊上，这个期刊没有被CCF收录，所以没有CCF分类。这篇文章在google scholar上的引用次数是35次。
+
+### Q: Genetic Programming and Evolvable Machines是什么期刊？
+
+- 这是一本由Springer出版的期刊，主要报道软件和硬件自动进化方面的创新和重要进展。该期刊涵盖了硬件实现、人工生命、分子计算和新兴计算技术等领域。
+- 该期刊在2021年的SCImago Journal Rank (SJR)为0.403，五年影响因子为2.194。它在计算机科学应用、硬件和架构、软件和理论计算机科学等领域分别排名Q3和Q2。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
