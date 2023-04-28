@@ -79,6 +79,10 @@ s.t. ϕ (ρ) ≤ C
 
 (Prompt: Generalize Section "Computational Experiments" of this article in Chinese)
 
+这篇文章介绍了计算实验的设置和结果，用于评估混合进化算法的性能。文章从TTP的基准测试集中选择了三种不同类型的实例：有界强相关（Bounded）、无关（Uncorrelated）和无关相似重量（SimilarWeights），分别属于eil51、eil76和eil101三个系列。文章对每个实例运行了30次混合进化算法，每次算法迭代了20,000代，种群大小为50。由于计算成本很高，文章使用了大学的超级计算机来进行实验，总共消耗了约170,000 CPU小时。
+
+文章使用超体积指标来比较不同设置下的最终种群的质量，同时也记录了对应的单目标TTP问题的总利润，与现有的最优方法进行比较。文章使用Welch’s t-test来进行统计分析，比较不同的指标和选择机制与基准方法之间的差异。文章发现，在双目标TTP问题上，混合进化算法在无关实例上表现最好，在有界强相关实例上表现最差。在单目标TTP问题上，混合进化算法在大多数情况下优于现有方法。
+
 ## 6 Conclusion
 
 (Prompt: Generalize Section "Conclusion" of this article in Chinese)
