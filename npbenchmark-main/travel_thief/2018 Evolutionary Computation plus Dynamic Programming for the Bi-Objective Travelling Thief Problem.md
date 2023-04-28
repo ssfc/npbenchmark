@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 这篇文章提出了一种新颖的基于指标的混合进化方法，它结合了近似算法和精确算法。我们将它应用于旅行窃贼问题的一个新的双目标形式，这是一个著名的多组件优化问题，它将两个经典的NP难问题：旅行商问题和0-1背包问题相互联系起来。我们的方法利用了精确的动态规划算法作为双目标进化算法中的一个子程序，来解决背包过程中旅行问题。这种设计利用了动态规划生成的帕累托前沿中提取的数据，来获得更好的解决方案。此外，我们还开发了一些新的指标和选择机制，来增强我们方法中两个算法组件的协同效果。计算实验的结果表明，我们的方法能够超越现有方法在单目标情况下的表现。
 
-Keywords:  => Bi-Objective Travelling Thief Problem
+Keywords: indicator-based hybrid evolutionary approach that combines approximate and exact algorithms => Bi-Objective Travelling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -37,9 +37,22 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+这篇文章提出了一种新颖的指标为基础的混合进化算法，将近似算法和精确算法相结合，用于解决旅行商窃贼问题（TTP）的一个双目标版本。TTP是一个具有挑战性的多组件优化问题，将两个著名的NP难问题：旅行商问题（TSP）和0-1背包问题（KP）耦合在一起。该算法采用了精确的动态规划算法（DP）作为子程序，在一个双目标进化算法中处理背包问题。该算法利用了DP产生的Pareto前沿中的信息，来改进解的质量。此外，该算法还设计了一些新的指标和选择机制，来增强算法两个部分之间的协作效果。计算实验的结果显示，该算法能够在单目标TTP问题上优于现有方法。
+
 ## 2 The Travelling Thief Problem
 
 (Prompt: Generalize Section "The Travelling Thief Problem" of this article in Chinese)
+
+这篇文章介绍了旅行商窃贼问题（TTP）的标准单目标形式和扩展的双目标形式。TTP是一个双组件问题，涉及到n个城市，m个物品，和一个窃贼。窃贼必须做一个旅行路线，恰好访问每个城市一次。每个城市有一些物品，每个物品有一个利润和一个重量。窃贼可以在中间的城市收集任意数量的物品，直到超过背包的容量。选择一个物品会增加总利润，但也会增加运输成本，因为物品的重量会降低窃贼的速度。窃贼在每个时间单位内还要支付一个租金。问题的目标是确定一个旅行路线和一个物品子集，使得总利润和总运输成本之差最小化。
+
+文章将TTP扩展为一个双目标优化问题，其中第二个目标是最小化总重量。这种扩展是自然的，因为在TTP中，人们可能需要在给定重量的情况下最大化利润，或者在给定利润的情况下最小化重量。注意到即使固定了旅行路线，TTP的目标函数也是一个非单调子模函数，这意味着选择更多的物品可能会降低总利润。文章将双目标TTP数学地定义为如下形式：
+
+(π, ρ) =
+arg max f(π, ρ)
+arg min ϕ(ρ)
+s.t. ϕ (ρ) ≤ C
+
+其中π是一个旅行路线，ρ是一个物品选择方案，f是总利润和总运输成本之差，ϕ是总重量。作为一个双目标优化问题，双目标TTP要求找到一组Pareto最优解，即没有任何可行解能够在两个目标上同时改进的解。
 
 ## 3 Prerequisites
 
