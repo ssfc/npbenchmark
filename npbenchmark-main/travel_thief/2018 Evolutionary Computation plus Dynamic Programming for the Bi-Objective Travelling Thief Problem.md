@@ -18,7 +18,11 @@ Keywords:  => Bi-Objective Travelling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: Optimization in Industry: Present Practices and Future Scopes是什么期刊？
+这篇文章是发表在GECCO 2018的会议论文，GECCO是遗传和进化计算领域的重要会议，根据CCF推荐国际学术会议和期刊目录-2022¹，GECCO属于CCF B类会议。根据Google Scholar²，这篇文章截至目前被引用了29次。
+
+### Q: GECCO是什么会议？
+
+GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Conference）的缩写，它是一个自1999年以来展示遗传和进化计算领域最新高质量成果的国际会议³。GECCO涵盖了遗传算法、遗传编程、蚁群优化和群智能、复杂系统、进化组合优化和元启发式、进化机器学习、进化多目标优化、进化数值优化、神经进化、实际应用、基于搜索的软件工程、理论、混合等主题⁴。GECCO每年举办一次，2023年将在葡萄牙里斯本以混合模式举行⁵。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
