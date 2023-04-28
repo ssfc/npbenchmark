@@ -1,4 +1,4 @@
-# The dynamic travelling thief problem--Benchmarks and performance of evolutionary algorithms
+# The dynamic travelling thief problem: Benchmarks and performance of evolutionary algorithms
 
 (Prompt: 翻译本文标题)
 
@@ -70,3 +70,4 @@ Keywords: Heuristics => Dynamic Travelling Thief Problem
 本文的展望部分介绍了未来对动态旅行窃贼问题（DynTTP）的可能的研究方向。文章提出了一些改进和扩展的想法，如使用更具问题特性的算法，使用多目标和协同进化的方法，以及平衡解质量和应对干扰事件的能力。文章还提到了本文的研究与另一篇独立进行的关于多目标动态TTP变体的研究的关系，并表示感谢澳大利亚研究委员会的资助。
 
 Keywords: Heuristics => Dynamic Travelling Thief Problem
+
