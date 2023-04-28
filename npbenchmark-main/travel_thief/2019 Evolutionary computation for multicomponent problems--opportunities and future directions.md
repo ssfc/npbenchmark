@@ -14,6 +14,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2019
 
 本文回顾了过去30年进化计算领域为解决难题而做出的各种尝试，探讨了这些尝试是否仍然符合当初的目标，以及现实世界问题的复杂性是否有所增加。我们给出了一些现代实际问题的例子，讨论了它们为什么难以解决，以及它们与进化计算领域研究的问题之间是否存在不匹配。我们鼓励进化计算社区更多地研究多组分问题，因为这些问题更能反映现实世界的复杂性和依赖性。
 
+Keywords: Evolutionary computation => multicomponent problems
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 Optimization in Industry: Present Practices and Future Scopes; 46 times. 
@@ -64,6 +66,8 @@ Springer 是一个全球性的学术出版社和科技服务提供商，总部�
 (Prompt: Generalize Section "Discussion and Future Directions" of this article in Chinese)
 
 这一节讨论了一些处理多组件问题的挑战和机遇，主要涉及到问题的建模和求解方法。作者指出，多组件问题可以用单一模型或多组件模型来建模，不同的建模方式有各自的优缺点，需要根据问题的特点和现有的知识来选择。作者认为，**进化计算（Evolutionary Computation, EC）**方法在建模多组件问题方面具有很大的灵活性，可以考虑问题的各种因素，如约束，多目标，噪声等。作者建议使用协同协作进化的方法来求解多组件模型，即用多种种群来分别进化每个组件的解，并根据组件之间的依赖性来评估个体的适应度。作者还提出了一些未来的研究方向，如如何判断和度量组件之间的依赖性，如何利用不同的求解器和集成方法来处理不同的组件，以及如何利用双层或多层优化的思想来处理多层次的多组件问题。
+
+Keywords: Evolutionary computation => multicomponent problems
 
 ### Q: 什么是协同进化算法？
 
