@@ -18,7 +18,7 @@ Keywords: Evolutionary computation => multicomponent problems
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-Optimization in Industry: Present Practices and Future Scopes; 46 times. 
+Optimization in Industry: Present Practices and Future Scopes, 不是一个期刊，而是一本书。46 times. 
 
 ### Q: Optimization in Industry: Present Practices and Future Scopes是什么期刊？
 
