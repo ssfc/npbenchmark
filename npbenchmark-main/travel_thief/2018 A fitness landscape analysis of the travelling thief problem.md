@@ -69,3 +69,12 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 ## 6 CONCLUSION
 
 (Prompt: Generalize Section "CONCLUSION" of this article in Chinese)
+
+本文使用局部最优网络（Local Optima Networks, LON）来分析旅行商问题（TTP）的适应度景观，探讨了背包容量和物品利润-重量相关性这两个非平凡的问题特征对搜索空间结构的影响。通过对不同类别的TTP实例生成LON，并使用图论的指标和度量来评估LON的拓扑性质和吸引盆的特征，本文得出了以下主要发现：
+
+- 背包容量越大，LON的节点和边数越少，搜索难度越低。
+- LON具有小世界特性，即局部聚类高，平均路径长度短，这有利于局部搜索算法快速遍历整个图。
+- LON的度分布呈现出幂律或指数分布的特征，表明存在少数高度节点连接整个图，这些节点可以作为搜索过程中的关键点。
+- J2B算法产生的LON都是连通图，而JIB算法产生的LON有时是非连通图，这对搜索效率有不利影响。
+
+Keywords: LOCAL SEARCH HEURISTICS => fitness landscape => Travelling Thief Problem
