@@ -40,6 +40,8 @@ Keywords: (genetic programming based hyper-heuristic, GPHS*) => travelling thief
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+这篇文章研究了超启发式算法在解决旅行商窃贼问题（TTP）中的应用。TTP是一个多组件问题，它由旅行商问题（TSP）和背包问题（KP）组合而成。这种问题更接近于真实的优化问题，因为它们通常包含多个相互依赖的子问题。文章提出了一种基于遗传编程（Genetic Programming, GP）的超启发式算法，称为GPHS*，它能够自动在线地选择低级启发式算法（Low Level Heuristics, LLH），以便找到不同已知启发式算法的最佳组合。文章通过在TTP库的一个子集上进行深入的实验研究，展示了该方法与现有算法的竞争性能。文章还介绍了超启发式算法在组合优化问题中的相关工作，以及TTP及其现有算法的简要历史。
+
 ## 2 On the use of hyper-heuristics in combinatorial optimization
 
 (Prompt: Generalize Section "On the use of hyper-heuristics in combinatorial optimization" of this article in Chinese)
