@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 局部最优网络是一种模型，旨在理解组合景观的结构和特性。适应度景观被探索为一个图，其中节点表示局部最优（或吸引盆），边表示它们之间的连通性。在本文中，我们使用这种表示来研究一个组合优化问题，它有两个相互依赖的组成部分，称为旅行窃贼问题（TTP）。目标是使用基本的局部搜索启发式方法来理解TTP的搜索空间结构，并区分最具影响力的问题特征。我们创建了一大批可枚举的TTP实例，并使用两种爬山法变体为每个实例生成一个局部最优网络。我们研究了两个问题特征，即背包容量和利润-重量相关性。我们的见解不仅对于设计景观感知的局部搜索启发式方法有用，而且对于更好地理解特定启发式方法难以解决的TTP原因也有用。
 
-Keywords: fitness landscape => Travelling Thief Problem
+Keywords: LOCAL SEARCH HEURISTICS => fitness landscape => Travelling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -51,6 +51,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 ## 3 LOCAL SEARCH HEURISTICS
 
 (Prompt: Generalize Section "LOCAL SEARCH HEURISTICS" of this article in Chinese)
+
+本节介绍了一个基本的局部搜索框架，用于解决旅行商窃贼问题。该框架是一个确定性的爬山法，只用于探索问题的搜索空间结构。该框架可以根据选择的邻域操作符有多种实现。本文考虑了两种局部搜索变体，一种使用2-OPT邻域作为旅行商问题的邻域操作符，另一种使用插入操作符。在两种变体中，都使用一位翻转操作符作为背包问题的邻域操作符。
 
 ## 4 EXPERIMENTAL SETTING
 
