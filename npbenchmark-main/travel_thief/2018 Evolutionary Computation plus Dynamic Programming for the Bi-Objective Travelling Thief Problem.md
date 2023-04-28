@@ -22,30 +22,22 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
-## 1 Motivation
+## 2 The Travelling Thief Problem
 
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
+(Prompt: Generalize Section "The Travelling Thief Problem" of this article in Chinese)
 
-## 1 Motivation
+## 3 Prerequisites
 
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
+(Prompt: Generalize Section "Prerequisites" of this article in Chinese)
 
-## 1 Motivation
+## 4 A hybrid evolutionary approach
 
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
+(Prompt: Generalize Section "A hybrid evolutionary approach" of this article in Chinese)
 
-## 1 Motivation
+## 5 Computational Experiments
 
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
+(Prompt: Generalize Section "Computational Experiments" of this article in Chinese)
 
-## 1 Motivation
+## 6 Conclusion
 
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
-
-## 1 Motivation
-
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
-
-## 1 Motivation
-
-(Prompt: Generalize Section "Motivation" of this article in Chinese)
+(Prompt: Generalize Section "Conclusion" of this article in Chinese)
