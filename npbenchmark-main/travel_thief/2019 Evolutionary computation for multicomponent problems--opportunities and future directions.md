@@ -28,6 +28,13 @@ Springer 是一个全球性的学术出版社和科技服务提供商，总部�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有四位，分别是：
+
+- Mohammad Reza Bonyadi，是Rio Tinto公司的数据科学主管顾问，也是昆士兰大学先进成像中心的研究员。他的研究方向是优化算法，机器学习，计算智能等¹²。
+- Zbigniew Michalewicz，是阿德莱德大学计算机科学系的教授，也是波兰科学院计算机科学研究所，波兰日本信息技术学院和Complexica公司的兼职教授。他的研究方向是进化计算，人工智能，优化等¹²³。
+- Frank Neumann，是阿德莱德大学计算机科学系的教授，也是Optimisation and Logistics研究小组的负责人。他的研究方向是进化计算，组合优化，生物信息学等² 。
+- Markus Wagner，是阿德莱德大学计算机科学系的副教授，也是Optimisation and Logistics研究小组的成员。他的研究方向是进化计算，多目标优化，软件工程等² 。
+
 ## 1 Motivation
 
 (Prompt: Generalize Section "Motivation" of this article in Chinese) 
