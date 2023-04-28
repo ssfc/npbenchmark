@@ -100,6 +100,8 @@ HyFlex框架可以适用于多种优化问题，例如布局问题、调度问�
 
 (Prompt: Generalize Section "The travelling thief problem (TTP)" of this article in Chinese)
 
+旅行商窃贼问题（TTP）是一个新近提出的NP难问题，它结合了两个经典的组合优化问题：旅行商问题（TSP）和背包问题（KP）。TTP中，一个窃贼必须按照一条环路访问所有城市，并在途中偷取一些物品放入有限容量的背包中。窃贼的目标是在最小化租金成本的同时，最大化背包中物品的总价值。租金成本与窃贼的旅行时间成正比，而旅行时间又与窃贼的速度成反比。窃贼的速度则取决于背包的重量，背包越重，速度越慢。因此，TTP中存在两个相互依赖的子问题：如何选择一条最短的环路（TSP），以及如何选择一些最有价值的物品（KP）。TTP的解由两部分组成：环路x和拾取计划z。环路x是一个向量，表示城市的访问顺序；拾取计划z是一个二进制向量，表示每个物品是否被拾取（0表示未拾取，1表示拾取）。TTP的目标函数G(x,z)由物品总价值g(z)和租金成本Rf(x,z)之差组成，其中f(x,z)是总旅行时间。TTP是一个具有多个相互依赖组件的问题，它提供了一个更接近真实优化问题的抽象模型。本文介绍了TTP的数学定义，并回顾了一些解决TTP的启发式算法。
+
 ## 4 The proposed approach
 
 (Prompt: Generalize Section "The proposed approach" of this article in Chinese)
