@@ -46,6 +46,8 @@ GECCO是遗传和进化计算会议（Genetic and Evolutionary Computation Confe
 
 (Prompt: Generalize Section "BACKGROUND AND RELATED WORKS" of this article in Chinese)
 
+本节介绍了旅行商窃贼问题的数学表达式，并简要回顾了适应度景观分析的相关研究。适应度景观分析是一种用于研究组合优化问题的搜索空间结构和特征的方法，可以帮助预测启发式搜索算法的性能。局部最优网络（Local Optima Networks, LON）是一种简化的适应度景观模型，将局部最优点和它们之间的连接关系表示为一个图。本文使用两种基于爬山法的局部搜索算法来生成旅行商窃贼问题的局部最优网络，并使用图论的指标来分析它们的拓扑结构。
+
 ## 3 LOCAL SEARCH HEURISTICS
 
 (Prompt: Generalize Section "LOCAL SEARCH HEURISTICS" of this article in Chinese)
