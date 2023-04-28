@@ -86,3 +86,7 @@ s.t. ϕ (ρ) ≤ C
 ## 6 Conclusion
 
 (Prompt: Generalize Section "Conclusion" of this article in Chinese)
+
+这篇文章总结了本文的主要贡献和结论。文章提出了一种新的双目标TTP问题，以及一种混合进化算法来解决它。该算法将精确的动态规划算法和指标为基础的进化算法相结合，利用DP前沿中的信息来指导进化过程。文章设计了一些新的指标和选择机制，来增强算法两个部分之间的协作效果。文章通过计算实验表明，该算法能够有效地解决双目标TTP问题，并且在单目标TTP问题上也优于现有方法。文章还感谢了澳大利亚研究委员会的资助。
+
+Keywords: indicator-based hybrid evolutionary approach that combines approximate and exact algorithms => Bi-Objective Travelling Thief Problem
