@@ -43,6 +43,8 @@ ArXiv.
 
 (Prompt: Generalize Section "Problem Statement" of this article in Chinese)
 
+本文阐述了旅行窃贼问题（Travelling Thief Problem, TTP）的定义和数学模型。TTP是一个组合优化问题，涉及到一位小偷在一组城市中旅行，同时选择一些物品放入背包中，以最大化自己的收益。TTP的难点在于旅行和背包两个子问题之间的相互影响：旅行的路线会影响背包的重量，而背包的重量会影响旅行的速度和成本。TTP是一个NP难问题，因此需要有效的算法来求解。本文的目标是找到一种精确算法或混合方法来求解TTP，并与现有的启发式方法进行比较。
+
 ## 3 Exact Approaches to the TTP
 
 (Prompt: Generalize Section "Exact Approaches to the TTP" of this article in Chinese)
