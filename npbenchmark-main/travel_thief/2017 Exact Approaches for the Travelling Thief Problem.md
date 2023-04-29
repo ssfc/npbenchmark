@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 本文介绍了三种精确算法和一种混合方法，用于解决旅行商偷窃问题（TTP）。TTP是一个结合了旅行商问题（TSP）和0-1背包问题（KP）的组合优化问题。目前，已有许多进化算法和启发式算法用于求解TTP，但由于它们无法找到全局最优解，因此它们的精度是未知的。本文通过与现有的最先进方法进行比较，对小规模的TTP实例进行了全面的精度分析。
 
-Keywords:  => Travelling Thief Problem
+Keywords: 三种精确算法和一个混合方法 => Travelling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -36,6 +36,8 @@ ArXiv.
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
+
+本文介绍了一种新的学术问题，即旅行窃贼问题（Travelling Thief Problem, TTP），它是旅行商问题（TSP）和0-1背包问题（KP）的结合。它反映了现实应用中存在多个NP难问题的复杂性，例如规划、调度和路由等领域。本文提出了三种精确算法和一个混合方法来求解TTP，并与现有的启发式方法进行了全面的比较，以评估它们在小型TTP实例上的准确性。
 
 ## 2 Problem Statement
 
