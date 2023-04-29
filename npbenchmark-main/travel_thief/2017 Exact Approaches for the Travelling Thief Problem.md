@@ -60,3 +60,7 @@ ArXiv.
 ## 5 Conclusion
 
 (Prompt: Generalize Section "Conclusion" of this article in Chinese)
+
+本文介绍和评估了基于动态规划、分支定界和约束编程的TTP的精确方法。我们利用动态规划方法得到的最优解，对当前的启发式TTP求解器进行了评估。我们的研究表明，它们在大多数情况下能够得到接近最优或者最优的解，但是在少数情况下与最优解有超过10%的差距。这些结果为未来的研究提供了一个基准，也揭示了TTP的复杂性和挑战性。
+
+Keywords: 三种精确算法 (Dynamic Programming, Branch and Bound Search, Constraint Programming) 和一个混合方法 => Travelling Thief Problem
