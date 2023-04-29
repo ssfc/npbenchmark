@@ -51,6 +51,12 @@ ArXiv.
 
 本文提出了三种精确算法和一种混合方法来求解旅行窃贼问题（Travelling Thief Problem, TTP）。TTP是一个组合优化问题，涉及到旅行商问题（TSP）和0-1背包问题（KP）的相互作用。TTP的求解难度很高，因为目前没有已知的能够找到全局最优解的算法。本文的精确算法分别基于动态规划（Dynamic Programming, DP）、分支定界（Branch and Bound Search, BnB）和约束编程（Constraint Programming, CP）的思想。动态规划算法利用了一种简化版本的TTP，即边旅行边装包问题（PWT），并结合了Held-Karp算法来求解TSP。分支定界算法采用了一种上界估计来剪枝搜索空间，并利用预先计算的最短路径来改进上界估计。约束编程算法使用了一种基于排列的表示方法来描述旅行路线，并使用了AllDifferent约束来消除子环。本文还提出了一种混合方法，将动态规划算法与启发式方法相结合，以提高启发式方法的精度。本文通过在一系列小规模的实例上比较这些精确算法和现有的启发式方法，对它们的性能进行了全面的评估。
 
+### Q: 什么是分支定界（Branch and Bound Search, BnB）法？
+
+分支定界（Branch and Bound, BnB）是一种求解最优化问题的算法。它通过不断地将问题分解成子问题，并对每个子问题进行优化，从而找到全局最优解。具体来说，BnB算法通过将问题的解空间划分为多个子空间，然后在每个子空间上使用一个界函数（bounding function）来估计每个可能的解的质量，以便确定哪些子空间不可能包含最优解。这些无用的子空间会被排除掉，而对于可能包含最优解的子空间，则继续分解，直到找到全局最优解为止。
+
+BnB算法的主要优点是能够在相对较短的时间内找到最优解，尤其是对于组合优化问题和规划问题。缺点是，由于需要对解空间进行划分和计算界函数，BnB算法的时间复杂度较高，因此不适用于大规模的问题。
+
 ## 4 Computational Experiments
 
 (Prompt: Generalize Section "Computational Experiments" of this article in Chinese)
