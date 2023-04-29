@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+精确方法解决旅行商偷窃问题
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20Exact%20Approaches%20for%20the%20Travelling%20Thief%20Problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20Exact%20Approaches%20for%20the%20Travelling%20Thief%20Problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
