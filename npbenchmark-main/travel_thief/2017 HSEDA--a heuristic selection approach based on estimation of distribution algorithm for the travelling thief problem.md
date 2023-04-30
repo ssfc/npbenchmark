@@ -91,6 +91,8 @@ EDA算法通过观察已知最优解的分布来生成解决方案，然后使�
 
 (Prompt: Generalize Section "RESULTS AND DISCUSSION" of this article in Chinese)
 
+这篇文章的结果和讨论部分分析了HSEDA与其他三种算法在不同的TTP实例上的表现。使用Friedman和Dunn-Sidak的后续检验，作者发现HSEDA与其他算法在多数实例上存在显著的统计差异，且HSEDA在大部分中等规模的实例上优于其他算法。作者还探讨了不同算法的特点和优缺点，以及HSEDA的潜力和局限性。作者指出，HSEDA能够**自动选择合适的启发式组合**，适应不同的TTP实例，但也需要进一步改进其概率模型和替代模型，以提高其效率和鲁棒性。
+
 ## 6 CONCLUDING REMARKS
 
 (Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
