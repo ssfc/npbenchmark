@@ -27,6 +27,14 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者如下：
+
+- **Markus Wagner**是澳大利亚莫纳什大学信息技术学院的副教授/研究员，主要从事启发式优化算法的研究，特别是进化计算和元启发式算法。他曾在哈尔滨工业大学、布朗大学等高校任教或访问¹²。
+- **Marius Lindauer**是德国弗莱堡大学计算机科学系的副教授，主要从事自动化机器学习、算法选择和配置、元启发式算法等领域的研究。他是AutoFolio、Auto-sklearn等开源软件的开发者³。
+- **Mustafa Mısır**是中国南京航空航天大学机器学习与计算智能研究所的教授，主要从事元启发式算法、超启发式算法、自适应优化等领域的研究。他曾在比利时鲁汶大学、新加坡国立大学等高校工作。
+- **Samadhi Nallaperuma**是英国谢菲尔德大学计算机科学系的讲师，主要从事启发式优化算法、软件工程、搜索问题等领域的研究。她曾在澳大利亚阿德莱德大学、新西兰坎特伯雷大学等高校工作。
+- **Frank Hutter**是德国弗莱堡大学计算机科学系的教授，也是加拿大多伦多大学维克托·韦斯特维尔人工智能研究所的首席科学家，主要从事自动化机器学习、元启发式算法、深度强化学习等领域的研究。他是AutoFolio、Auto-sklearn、SMAC等开源软件的开发者。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
