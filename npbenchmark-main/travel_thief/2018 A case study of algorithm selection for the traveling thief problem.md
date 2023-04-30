@@ -94,9 +94,13 @@ AutoFolio 在学术界和工业界都有广泛的应用，已经被证明是一�
 
 (Prompt: Generalize Section "Analysis of Algorithm Complementarity with Shapley Values" of this article in Chinese)
 
+这一部分介绍了作者使用Shapley值来评估不同算法在组合中的贡献度的方法和结果。Shapley值是一种博弈论中的概念，用于衡量一个玩家在一个合作博弈中的平均边际贡献。作者将每个算法视为一个玩家，将每个实例的最优性能视为博弈的收益，然后计算每个算法在所有可能的子集组合中的平均边际贡献。作者发现，Shapley值与算法的单独性能有很强的相关性，但也存在一些例外。例如，CS2SA算法虽然单独性能很差，但在组合中有较高的Shapley值，说明它在某些实例上有很好的互补性。作者还发现，Shapley值可以用来选择最佳的算法组合，即选择Shapley值最高的k个算法作为组合，可以获得接近最优的性能。
+
 ## 8 Analysis of Feature Importance and Their Calculation Time
 
 (Prompt: Generalize Section "Analysis of Feature Importance and Their Calculation Time" of this article in Chinese)
+
+文章的“特征重要性及其计算时间分析”部分讨论了如何衡量不同特征对于预测给定TTP实例的最佳算法的相对重要性。作者使用了一种叫做置换特征重要性的方法，它随机打乱一个特征的值，观察算法选择器的性能变化程度。性能下降得越多，特征就越重要。作者还比较了不同特征的计算时间，发现有些特征比其他特征更耗时。他们建议可以使用特征选择来减少特征的数量，提高算法选择的效率。
 
 ## 9  Concluding Remarks
 
