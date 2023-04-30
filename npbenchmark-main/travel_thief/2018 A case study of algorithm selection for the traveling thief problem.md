@@ -47,6 +47,8 @@ Keywords: => traveling thief problem
 
 (Prompt: Generalize Section "The travelling thief problem (TTP)" of this article in Chinese)
 
+这一部分介绍了TTP的定义和形式化。TTP是一个将TSP和KP两个经典的组合优化问题结合起来的多组件问题，可以模拟现实中存在的多个相互影响的子问题。TTP的目标是在给定一组城市和每个城市中分布的物品的情况下，找到一条旅行路线和一个装包方案，使得窃贼在访问所有城市并偷取部分物品后，能够获得最大的利润。TTP的难点在于TSP和KP两个子问题之间存在着复杂的相互依赖关系，单独优化其中一个子问题并不能保证得到整个问题的最优解。作者也介绍了TTP的动机，即为了系统地研究两个难题之间的交互效应，从而有助于更有效地解决实际问题。
+
 ## 3 Algorithm Selection
 
 (Prompt: Generalize Section "Algorithm Selection" of this article in Chinese)
