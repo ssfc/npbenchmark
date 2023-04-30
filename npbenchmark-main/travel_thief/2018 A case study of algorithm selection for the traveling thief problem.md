@@ -14,6 +14,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 这篇文章研究了旅行窃贼问题（traveling thief problem, TTP）的算法选择问题。TTP是一个组合优化问题，它结合了两个子问题：旅行商问题（TSP）和背包问题（KP）。作者提出了四个贡献：首先，他们创建了一个全面的数据集，包含了21种TTP算法在9720个TTP实例上的性能数据；其次，他们定义了55个TTP实例特征，可以用来选择每个实例的最佳算法；第三，他们利用这些算法和特征构建了第一个TTP算法组合，明显优于单一最佳算法；最后，他们分析了哪些算法对组合的性能贡献最大。
 
+Keywords: => traveling thief problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 - 这篇文章发表的期刊是Journal of Heuristics，它属于中国计算机学会（CCF）推荐的国际学术刊物目录中的B类期刊¹。
@@ -37,7 +39,9 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 ## 1 Introduction
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section 1 of this article in Chinese)
+
+第一部分介绍了旅行商窃贼问题（travelling thief problem, TTP）的定义和动机。TTP是一个由旅行商问题（TSP）和背包问题（KP）组合而成的多组件问题，可以模拟现实中存在的多个相互影响的子问题。作者回顾了TTP的历史发展和已有的求解算法，指出不同的算法在不同的实例上有不同的表现，因此需要利用算法选择技术来根据每个实例选择最佳算法。作者也介绍了算法选择问题的一般框架和常用方法，以及如何将其应用于TTP问题。
 
 ## 2 The travelling thief problem (TTP)
 
