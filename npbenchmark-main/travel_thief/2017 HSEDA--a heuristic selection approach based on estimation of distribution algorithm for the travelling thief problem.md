@@ -18,9 +18,20 @@ Keywords: (heuristic selection approach based on estimation of distribution algo
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: Journal of Heuristics是什么期刊？
+A: 这篇文章发表在GECCO 2017会议上，根据CCF推荐国际学术会议目录²，GECCO属于**人工智能**领域的**C类**会议。根据google scholar⁴，这篇文章截至目前被引用了**32次**。
+
+### Q: GECCO是什么会议？
+
+GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算领域最大的同行评审会议，也是ACM遗传和进化计算特别兴趣小组(SIGEVO)的主要会议¹。GECCO涵盖了遗传算法、遗传编程、蚁群优化和群智能、复杂系统、进化组合优化和元启发式、进化机器学习、进化多目标优化、进化数值优化等多个主题²。GECCO每年举办一次，2023年将在葡萄牙里斯本举行³。
 
 ### Q: Introduce authors of this article in Chinese one by one 
+
+- **Marcella S. R. Martins**，巴西联邦技术大学电子工程系的助理教授，主要研究方向是优化、进化计算和机器学习¹。
+- **Mohamed El Yafrani**，摩洛哥拉巴特穆罕默德五世大学科学学院LRIT实验室的副教授，主要研究方向是元启发式算法、进化计算和机器学习²。
+- **Myriam R. B. S. Delgado**，巴西联邦技术大学电子工程系的教授，主要研究方向是优化、进化计算和机器学习³。
+- **Markus Wagner**，澳大利亚阿德莱德大学优化与物流系的高级讲师，主要研究方向是进化计算、组合优化和多目标优化⁴。
+- **Belaïd Ahiod**，摩洛哥拉巴特穆罕默德五世大学科学学院LRIT实验室的教授，主要研究方向是元启发式算法、进化计算和机器学习²。
+- **Ricardo Lüders**，巴西联邦技术大学电子工程系的教授，主要研究方向是优化、进化计算和机器学习³。
 
 ## 1 INTRODUCTION
 
