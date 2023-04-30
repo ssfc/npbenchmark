@@ -88,6 +88,8 @@ AutoFolio 在学术界和工业界都有广泛的应用，已经被证明是一�
 
 (Prompt: Generalize Section "Experimental Study of Algorithm Selection on TTP" of this article in Chinese)
 
+这一部分介绍了作者使用不同的算法选择方法来构建TTP算法组合的实验过程和结果。作者使用了一个包含9720个TTP实例、21个TTP算法和55个实例特征的数据集，**利用机器学习技术来学习从特征空间到算法的映射**。作者参考了现有的算法选择系统，如SATzilla、ISAC、3S等，并使用了AutoFolio系统来自动寻找最合适的算法选择方法和参数设置。作者发现，使用算法选择方法可以显著提高TTP问题的求解性能，比单一最佳算法有近90%的性能提升。作者还分析了不同算法在组合中的贡献度，发现有些算法在某些实例上表现出色，而在其他实例上则很差，因此需要考虑算法之间的互补性。
+
 ## 7 Analysis of Algorithm Complementarity with Shapley Values
 
 (Prompt: Generalize Section "Analysis of Algorithm Complementarity with Shapley Values" of this article in Chinese)
