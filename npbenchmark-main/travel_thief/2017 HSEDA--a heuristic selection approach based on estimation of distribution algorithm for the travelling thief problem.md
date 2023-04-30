@@ -85,6 +85,8 @@ EDA算法通过观察已知最优解的分布来生成解决方案，然后使�
 
 (Prompt: Generalize Section "EXPERIMENTS" of this article in Chinese)
 
+这篇文章的实验部分展示了 (heuristic selection approach based on estimation of distribution algorithm, HSEDA) 与三种其他的TTP算法（MMAS，MA2B和S5）的比较。实验使用了TTP基准实例库中的135个中等规模的实例，考虑了不同的城市数量、背包类型、每城市物品数量和背包容量等参数。实验为HSEDA设置了一些参数，使用irace包进行离线调优，并使用A-test进行统计分析。实验结果表明，HSEDA在大多数实例上表现出色，超过了其他算法，证明了其在解决TTP问题上的有效性和通用性。
+
 ## 5 RESULTS AND DISCUSSION
 
 (Prompt: Generalize Section "RESULTS AND DISCUSSION" of this article in Chinese)
