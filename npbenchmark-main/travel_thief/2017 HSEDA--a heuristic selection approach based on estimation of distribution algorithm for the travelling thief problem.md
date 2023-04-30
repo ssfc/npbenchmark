@@ -79,6 +79,8 @@ EDA算法通过观察已知最优解的分布来生成解决方案，然后使�
 
 (Prompt: Generalize Section "THE PROPOSED APPROACH" of this article in Chinese)
 
+这篇文章的方法部分详细介绍了 (heuristic selection approach based on estimation of distribution algorithm, HSEDA) 框架的主要特点。HSEDA是一种基于 (Estimation of Distribution Algorithms, EDA) 的启发式选择技术，旨在寻找最佳的启发式组合，以解决TTP问题。HSEDA使用整数向量来表示每个解，向量的元素表示应用的低层启发式算法。HSEDA使用贝叶斯网络作为概率图模型，根据当前最优解的集合来估计网络的结构和参数，并从中采样新的解。为了提高计算效率，HSEDA使用RBFN作为替代模型来近似评估新采样的解，然后再用真实的适应度函数重新评估一部分最优的解。HSEDA通过迭代更新概率模型和生成新的解，直到满足终止条件，最后返回最优解。
+
 ## 4 EXPERIMENTS
 
 (Prompt: Generalize Section "EXPERIMENTS" of this article in Chinese)
