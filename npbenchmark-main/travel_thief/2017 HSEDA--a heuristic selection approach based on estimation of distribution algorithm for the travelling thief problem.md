@@ -37,6 +37,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "INTRODUCTION" of this article in Chinese)
 
+这篇文章的第一部分介绍了超启发式算法的基本概念和应用。**超启发式算法**是一种高层搜索技术，可以通过其他启发式算法或机器学习技术来自动设计或选择低层启发式算法，以解决各种优化问题。文章介绍了基于概率图模型的估计分布算法（Estimation of Distribution Algorithms, EDA）作为一种超启发式算法的框架，以及基于径向基函数网络（Radial Basis Function Network, RBFN）的替代模型，用于近似目标函数。文章以旅行商窃贼问题（travelling thief problem, TTP）为例，展示了EDA在解决具有多个相互依赖组件的问题方面的潜力。
+
 ## 2 BACKGROUND
 
 (Prompt: Generalize Section "BACKGROUND" of this article in Chinese)
