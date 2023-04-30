@@ -12,6 +12,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本文提出了一种基于分布估计算法的启发式选择方法，用于解决旅行商盗贼问题。旅行商盗贼问题是一种新近提出的组合优化问题，它将旅行商问题和背包问题相结合，考虑了两个子问题之间的相互依赖性。本文的方法利用分布估计算法来进化一系列已知的低层启发式，寻找最适合当前问题实例的启发式组合。本文还使用了一种基于径向基函数网络的替代模型，来快速评估分布估计算法采样的新启发式组合。本文将所提出的方法与三种最先进的算法进行了比较，实验结果表明，本文的方法在大多数中等规模的旅行商盗贼问题实例上具有竞争力，优于其他算法。
+
+Keywords: heuristic selection approach based on estimation of distribution algorithm => travelling thief problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 ### Q: Journal of Heuristics是什么期刊？
