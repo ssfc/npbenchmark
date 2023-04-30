@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018
 
 这篇文章研究了旅行窃贼问题（traveling thief problem, TTP）的算法选择问题。TTP是一个组合优化问题，它结合了两个子问题：旅行商问题（TSP）和背包问题（KP）。作者提出了四个贡献：首先，他们创建了一个全面的数据集，包含了21种TTP算法在9720个TTP实例上的性能数据；其次，他们定义了55个TTP实例特征，可以用来选择每个实例的最佳算法；第三，他们利用这些算法和特征构建了第一个TTP算法组合，明显优于单一最佳算法；最后，他们分析了哪些算法对组合的性能贡献最大。
 
-Keywords: => traveling thief problem
+Keywords:  AutoFolio => traveling thief problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -76,9 +76,13 @@ AutoFolio 在学术界和工业界都有广泛的应用，已经被证明是一�
 
 (Prompt: Generalize Section "Benchmarking of TTP Algorithms" of this article in Chinese)
 
+这一部分介绍了作者对21种TTP算法在9720个TTP实例上的实验设置和结果。作者使用了原始的TTP实例集，它包含了不同规模、不同类型、不同特征的实例，以及每个实例上各个算法的目标值。作者**将目标值映射到[0,1]区间**，以便进行比较，并计算了每个算法的平均性能。作者发现，没有一个算法在所有实例上都占优，而且不同的算法在不同大小的实例上有不同的表现。作者还发现，一些算法之间有很强的相关性，而一些算法则相对互补。作者将实验数据集公开分享，以便其他研究者使用。
+
 ## 5 Instance Features for the TTP
 
 (Prompt: Generalize Section "Instance Features for the TTP" of this article in Chinese)
+
+这一部分介绍了作者为TTP实例定义的55个特征，其中47个是从以前的TSP研究中借鉴的，分为七类，包括**距离特征、模式特征、聚类特征、最近邻距离特征、质心特征、最小生成树特征和角度特征**。另外八个特征是与TTP相关的，包括**背包容量、背包类型、物品总数、每个城市的物品数、城市数、租金比率、最小旅行速度和最大旅行速度**。这些特征可以用来选择每个实例上表现最好的算法。作者指出，未来的研究应该考虑更多的TTP特定的特征。
 
 ## 6 Experimental Study of Algorithm Selection on TTP
 
