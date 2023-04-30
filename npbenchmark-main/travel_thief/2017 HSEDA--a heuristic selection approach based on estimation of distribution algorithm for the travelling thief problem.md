@@ -96,3 +96,7 @@ EDA算法通过观察已知最优解的分布来生成解决方案，然后使�
 ## 6 CONCLUDING REMARKS
 
 (Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
+
+这篇文章的结论部分总结了HSEDA的主要思想和优势，即使用EDA作为一种启发式选择技术，结合RBFN作为一种替代模型，来解决具有多个相互依赖组件的TTP问题。作者还提出了一些未来的研究方向，包括使用不同的概率图模型和替代模型，扩展HSEDA到其他多组件问题，以及考虑动态环境和多目标优化的情况。
+
+Keywords: (heuristic selection approach based on estimation of distribution algorithm, HSEDA) => travelling thief problem
