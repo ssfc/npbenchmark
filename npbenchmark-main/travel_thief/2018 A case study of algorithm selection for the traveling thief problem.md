@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+旅行窃贼问题的算法选择案例研究
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018%20A%20case%20study%20of%20algorithm%20selection%20for%20the%20traveling%20thief%20problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2018%20A%20case%20study%20of%20algorithm%20selection%20for%20the%20traveling%20thief%20problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
