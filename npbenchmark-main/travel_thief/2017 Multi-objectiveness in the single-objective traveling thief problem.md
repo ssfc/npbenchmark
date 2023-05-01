@@ -12,6 +12,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本文研究了多组件问题，即由多个相互影响的子问题组成的优化问题。本文以旅行窃贼问题（traveling thief problem, TTP）为例，将其作为一个双目标问题进行探讨。TTP是一个结合了旅行商问题（TSP）和背包问题（KP）的新型基准问题。本文的结果表明，双目标方法可以在与当前最先进的求解器竞争的同时，产生单目标TTP变体的解决方案。
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 ### Q: 是什么会议？
