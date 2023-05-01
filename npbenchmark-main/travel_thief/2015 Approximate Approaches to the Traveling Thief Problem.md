@@ -12,6 +12,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2015
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本研究讨论了最近提出的旅行小偷问题（TTP），它将经典的旅行商问题（TSP）和0-1背包问题（KP）结合起来。这个问题包括一组城市，每个城市都有一些有重量和利润的可用物品。它涉及寻找一种城市访问的排列方式和选择拿走哪些物品的决策。一个被选择的物品以增加运输成本为代价，为总利润做出贡献。目标是最大化最终的利润。我们提出了一些针对特定问题的装箱策略，它们是基于由链式林-科尼汉启发式算法得到的TSP解决方案的。我们在一组基准实例上进行了研究，证明了我们的方法与近似的混合整数规划方法和文献中的最先进的启发式方法相比，具有快速和高效的优势。
+
+Keywords: Chained Lin-Kernighan heuristic => Traveling Thief Problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 ### Q: 是什么会议？
