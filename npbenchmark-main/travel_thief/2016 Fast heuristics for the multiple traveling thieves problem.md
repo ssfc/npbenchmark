@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+多旅行窃贼问题的快速启发式算法
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2016%20Fast%20heuristics%20for%20the%20multiple%20traveling%20thieves%20problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2016%20Fast%20heuristics%20for%20the%20multiple%20traveling%20thieves%20problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
