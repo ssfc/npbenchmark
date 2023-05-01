@@ -14,6 +14,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 本文研究了多组件问题，即由多个相互影响的子问题组成的优化问题。本文以旅行窃贼问题（traveling thief problem, TTP）为例，将其作为一个双目标问题进行探讨。TTP是一个结合了旅行商问题（TSP）和背包问题（KP）的新型基准问题。本文的结果表明，双目标方法可以在与当前最先进的求解器竞争的同时，产生单目标TTP变体的解决方案。
 
+Keywords: Multi-objectiveness => traveling thief problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 根据CCF推荐国际学术会议和期刊目录-2022 ¹，这篇文章发表的会议GECCO（Genetic and Evolutionary Computation Conference）属于CCF C类会议。
@@ -35,6 +37,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 ## 1 MOTIVATION
 
 (Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+
+本文的动机是探讨在处理多个相互依赖的组件时，是否考虑多个目标会更好。为此，本文以旅行窃贼问题（TTP）为例，将其作为一个双目标问题进行研究。TTP是一个结合了旅行商问题（TSP）和背包问题（KP）的新型基准问题，模拟了多组件问题中子问题之间的相互影响。本文认为，单目标TTP模型是一个多目标问题的简单标量化，并且一个不考虑标量化的多目标方法应该能够产生覆盖各种相互依赖情况的解决方案。
 
 ## 2 PROPOSED APPROACH
 
