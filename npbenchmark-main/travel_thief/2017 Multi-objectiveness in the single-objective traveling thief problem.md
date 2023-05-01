@@ -58,3 +58,6 @@ NSGA-II 的核心思想是通过将种群按照非支配关系进行分层，从
 
 (Prompt: Generalize Section "EXPERIMENTS & RESULTS" of this article in Chinese)
 
+本文对EMOA-TTP算法在TTP问题上的表现进行了实验评估，并与当前最先进的求解器进行了比较。本文使用了一种基于Pareto前沿的图形化方法来展示和分析双目标TTP问题的解决方案。本文发现，EMOA-TTP算法能够在时间和利润之间找到一组有效的权衡解，并且最优的TTP分数集中在Pareto前沿的膝部区域。本文还发现，单目标TTP模型中的最佳已知解也可以在EMOA-TTP算法产生的Pareto集区域中找到，甚至有时可以超越它们。这表明，多目标方法可以隐式地求解单目标TTP问题，同时提供更多的选择空间。
+
+Keywords: (Evolutionary Multi-Objective Algorithm, EMOA-TTP) => traveling thief problem
