@@ -20,7 +20,9 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 根据Google Scholar ²，这篇文章截至2023年5月1日的引用次数为15次。
 
-### Q: 是什么会议？
+### Q: GECCO是什么会议？
+
+GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算领域最大的同行评审会议，也是ACM遗传和进化计算特别兴趣小组(SIGEVO)的主要会议¹。GECCO涵盖了遗传算法、遗传编程、蚁群优化和群智能、复杂系统、进化组合优化和元启发式、进化机器学习、进化多目标优化、进化数值优化等多个主题²。GECCO每年举办一次，2023年将在葡萄牙里斯本举行³。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
