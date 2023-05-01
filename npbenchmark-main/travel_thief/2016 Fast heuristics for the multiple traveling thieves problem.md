@@ -12,34 +12,26 @@
 
 ### Q: Introduce authors of this article in Chinese one by one
 
-## 1 MOTIVATION
+## 1. INTRODUCTION
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "INTRODUCTION" of this article in Chinese)
 
-## 1 MOTIVATION
+## 2. TRAVELING THIEF PROBLEM
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
 
-## 1 MOTIVATION
+## 3. PROPOSING A NEW VARIANT OF THE TRAVELING THIEF PROBLEM
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "PROPOSING A NEW VARIANT OF THE TRAVELING THIEF PROBLEM" of this article in Chinese)
 
-## 1 MOTIVATION
+## 4. MTTP LOCAL SEARCH ROUTINES
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "MTTP LOCAL SEARCH ROUTINES" of this article in Chinese)
 
-## 1 MOTIVATION
+## 5. LOCAL SEARCH ALGORITHMS
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "LOCAL SEARCH ALGORITHMS" of this article in Chinese)
 
-## 1 MOTIVATION
+## 6. CONCLUDING REMARKS
 
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
-
-## 1 MOTIVATION
-
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
-
-## 1 MOTIVATION
-
-(Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
+(Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
