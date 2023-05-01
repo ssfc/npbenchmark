@@ -18,6 +18,8 @@ Keywords: Fast heuristics => multiple traveling thieves problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
+发表在2016年的GECCO会议上。GECCO是遗传和进化计算领域的国际会议，根据CCF排名³，它属于C类会议。根据谷歌学术⁸，这篇文章在2023年5月1日时被引用了23次。
+
 ### Q: GECCO是什么会议？
 
 ### Q: Introduce authors of this article in Chinese one by one
