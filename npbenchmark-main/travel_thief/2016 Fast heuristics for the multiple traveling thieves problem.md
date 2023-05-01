@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2016
 
 本文讨论了旅行窃贼问题的现有形式的不足之处，并提出了一个放宽的问题版本，允许多个窃贼在不同的城市旅行，目的是最大化他们的总利润。旅行窃贼问题是一个具有挑战性的组合优化问题，近年来受到了广泛的关注。本文还提出了一些快速启发式算法来求解新提出的多旅行窃贼问题，并进行了评估。
 
-Keywords: Fast heuristics => multiple traveling thieves problem
+Keywords: Fast heuristics => (multiple traveling thieves problem, MTTP)
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -34,6 +34,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 ## 1. INTRODUCTION
 
 (Prompt: Generalize Section "INTRODUCTION" of this article in Chinese)
+
+这篇文章介绍了一种新的组合优化问题，叫做多旅行窃贼问题（MTTP），它是旅行窃贼问题（TTP）的一个变体。TTP是一个将旅行商问题（TSP）和背包问题（KP）结合起来的挑战性问题，其中一个窃贼需要在访问所有城市的同时，选择一些有价值的物品带走。MTTP放宽了TTP的两个假设：只有一个窃贼和必须访问所有城市。MTTP允许多个窃贼参与，且不一定要访问每个城市，从而使问题更接近真实场景。作者讨论了MTTP的定义和特点，并提出了一些启发式算法来求解这个新问题。作者还利用现有的TTP实例来评估算法的性能，并分析了不同因素对结果的影响。
 
 ## 2. TRAVELING THIEF PROBLEM
 
