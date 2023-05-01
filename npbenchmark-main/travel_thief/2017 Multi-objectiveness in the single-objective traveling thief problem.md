@@ -26,6 +26,12 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+- Mohamed El Yafrani，丹麦奥尔堡大学材料与生产系的博士后研究员，主要研究方向是优化算法设计、元启发式、进化计算、机器学习等，曾在GECCO、CEC等会议发表多篇论文 ¹²³。
+- Shelvin Chand，澳大利亚新南威尔士大学的博士生，主要研究方向是多组件问题、旅行窃贼问题、进化计算等，曾在GECCO等会议发表论文 ¹⁴。
+- Aneta Neumann，澳大利亚阿德莱德大学优化与物流系的博士后研究员，主要研究方向是进化计算、机器学习、神经网络等，曾在GECCO、PPSN等会议发表论文 ¹⁴。
+- Belaïd Ahiod，摩洛哥拉巴特穆罕默德五世大学科学系的教授，主要研究方向是元启发式、进化计算、数据挖掘等，曾在GECCO、CEC等会议发表论文 ¹²。
+- Markus Wagner，澳大利亚阿德莱德大学优化与物流系的副教授，主要研究方向是进化计算、多目标优化、旅行窃贼问题等，曾在GECCO、PPSN等会议发表论文，并担任过GECCO的程序委员会主席 ¹⁴。
+
 ## 1 MOTIVATION
 
 (Prompt: Generalize Section "MOTIVATION" of this article in Chinese)
