@@ -12,34 +12,31 @@
 
 ### Q: Introduce authors of this article in Chinese one by one
 
-## 1 Introduction
+## 1. INTRODUCTION
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "INTRODUCTION" of this article in Chinese)
 
-## 1 Introduction
+## 2. TRAVELING THIEF PROBLEM
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
 
-## 1 Introduction
+## 3. LOCAL SEARCH ROUTINES
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "LOCAL SEARCH ROUTINES" of this article in Chinese)
 
-## 1 Introduction
+## 4. LOCAL SEARCH ALGORITHMS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "LOCAL SEARCH ALGORITHMS" of this article in Chinese)
 
-## 1 Introduction
+## 5. PACKING ITEMS WITH A MIP BASED APPROACH
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "PACKING ITEMS WITH A MIP BASED APPROACH" of this article in Chinese)
 
-## 1 Introduction
+## 6. EXPERIMENTAL INVESTIGATIONS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "EXPERIMENTAL INVESTIGATIONS" of this article in Chinese)
 
-## 1 Introduction
+## 7. CONCLUDING REMARKS
 
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
+(Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
 
-## 1 Introduction
-
-(Prompt: Generalize Section "Introduction" of this article in Chinese)
