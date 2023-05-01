@@ -12,6 +12,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2016
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本文讨论了旅行窃贼问题的现有形式的不足之处，并提出了一个放宽的问题版本，允许多个窃贼在不同的城市旅行，目的是最大化他们的总利润。旅行窃贼问题是一个具有挑战性的组合优化问题，近年来受到了广泛的关注。本文还提出了一些快速启发式算法来求解新提出的多旅行窃贼问题，并进行了评估。
+
+Keywords: Fast heuristics => multiple traveling thieves problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 ### Q: GECCO是什么会议？
