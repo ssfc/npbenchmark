@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+旅行小偷问题的近似方法
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2015%20Approximate%20Approaches%20to%20the%20Traveling%20Thief%20Problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2015%20Approximate%20Approaches%20to%20the%20Traveling%20Thief%20Problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
