@@ -18,7 +18,12 @@ Keywords: swarm intelligence approach => travelling thief problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-### Q: 是什么会议？
+- 这篇文章发表在ACM Genetic and Evolutionary Computation Conference (GECCO) 2016上，这是进化计算领域最好的会议之一，但国内认可度不高，CCF的排名给了C¹。
+- 这篇文章在google scholar上的引用次数为48。
+
+### Q: GECCO是什么会议？
+
+GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算领域最大的同行评审会议，也是ACM遗传和进化计算特别兴趣小组(SIGEVO)的主要会议¹。GECCO涵盖了遗传算法、遗传编程、蚁群优化和群智能、复杂系统、进化组合优化和元启发式、进化机器学习、进化多目标优化、进化数值优化等多个主题²。GECCO每年举办一次，2023年将在葡萄牙里斯本举行³。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
