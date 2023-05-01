@@ -16,6 +16,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
+根据CCF推荐国际学术会议和期刊目录-2022 ¹，这篇文章发表的会议GECCO（Genetic and Evolutionary Computation Conference）属于CCF C类会议。
+
+根据Google Scholar ²，这篇文章截至2023年5月1日的引用次数为15次。
+
 ### Q: 是什么会议？
 
 ### Q: Introduce authors of this article in Chinese one by one
