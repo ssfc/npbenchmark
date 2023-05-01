@@ -2,6 +2,12 @@
 
 (Prompt: 翻译本文标题)
 
+用蚂蚁更高效地偷东西：一种基于群体智能的旅行小偷问题的解决方法
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2016%20Stealing%20items%20more%20efficiently%20with%20ants--a%20swarm%20intelligence%20approach%20to%20the%20travelling%20thief%20problem.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20Exact%20Approaches%20for%20the%20Travelling%20Thief%20Problem.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
