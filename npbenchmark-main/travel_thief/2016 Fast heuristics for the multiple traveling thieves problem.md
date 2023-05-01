@@ -117,6 +117,12 @@ According to Google Translate, Section 4.4 of this article can be generalized in
 
 (Prompt: Generalize Section "LOCAL SEARCH ALGORITHMS" of this article in Chinese)
 
+局部搜索算法部分介绍了一些简单和复杂的启发式算法，用于解决MTTP问题。这些算法利用了不同的搜索例程，包括文献中已有的一些算子和本文新提出的一些问题特定的算子。这些算法的目标是在给定的时间限制内找到最优或近似最优的旅行路线和装载方案。作者通过对不同大小和特征的实例进行实验，比较了不同算法和搜索例程的性能，并给出了一些有趣的观察和结论。
+
 ## 6. CONCLUDING REMARKS
 
 (Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
+
+结论部分总结了本文的主要贡献和发现。作者提出了多旅行者窃贼问题（multiple traveling thieves problem, MTTP），这是一种更加现实和复杂的旅行者窃贼问题（TTP）的变体。作者设计了一些启发式算法和问题特定的算子，用于解决MTTP，并在不同类型的实例上进行了实验比较。作者发现，引入多个窃贼可以显著提高目标分数，但不是任意地。此外，作者还发现，TSP部分仍然对MTTP有很大的影响，而且不同的算法和搜索例程对不同的实例有不同的表现。作者认为，MTTP为探索具有相互依赖组件的问题提供了一个简单而有效的平台，并鼓励未来在这一领域进行更多的研究。
+
+Keywords: Fast heuristics => (multiple traveling thieves problem, MTTP)
