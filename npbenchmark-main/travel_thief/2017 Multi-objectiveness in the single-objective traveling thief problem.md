@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017
 
 本文研究了多组件问题，即由多个相互影响的子问题组成的优化问题。本文以旅行窃贼问题（traveling thief problem, TTP）为例，将其作为一个双目标问题进行探讨。TTP是一个结合了旅行商问题（TSP）和背包问题（KP）的新型基准问题。本文的结果表明，双目标方法可以在与当前最先进的求解器竞争的同时，产生单目标TTP变体的解决方案。
 
-Keywords: Multi-objectiveness => traveling thief problem
+Keywords: (Evolutionary Multi-Objective Algorithm, EMOA-TTP) => traveling thief problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
@@ -43,6 +43,16 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 ## 2 PROPOSED APPROACH
 
 (Prompt: Generalize Section "PROPOSED APPROACH" of this article in Chinese)
+
+本文提出了一种基于NSGA-II框架的算法，称为EMOA-TTP，用于求解双目标TTP问题。该算法使用两种破坏性的变异算子和两种局部搜索启发式作为NSGA-II的变异算子。由于缺乏有效的交叉算子，该算法使用空交叉来简单地克隆选中的解。在每一代结束时，根据支配关系对解进行排序（非支配排序算子）。每个前沿中的解进一步根据其拥挤距离进行排序。基于这两个算子，选择下一代的解。
+
+### Q: NSGA-II框架是什么？
+
+NSGA-II (Non-dominated Sorting Genetic Algorithm II) 是一种经典的多目标优化算法，是基于遗传算法的一种改进。它在优化多目标问题方面表现出色，并已经被广泛应用于不同的领域。
+
+NSGA-II 的核心思想是通过将种群按照非支配关系进行分层，从而实现多目标优化问题的求解。具体来说，NSGA-II 通过执行快速非支配排序，计算每个个体的拥挤度，以及采用选择、交叉和变异操作等策略，来实现种群的不断进化和优化。
+
+相较于传统的遗传算法，NSGA-II 通过使用非支配排序和拥挤度计算方法，有效地维护了种群的多样性，从而可以在保持高质量解的同时，探索到更多的解空间。因此，NSGA-II 在多目标优化问题上的表现非常优秀，并已被广泛应用于许多领域，如工程设计、智能制造、自动化控制、机器学习等。
 
 ## 3 EXPERIMENTS & RESULTS
 
