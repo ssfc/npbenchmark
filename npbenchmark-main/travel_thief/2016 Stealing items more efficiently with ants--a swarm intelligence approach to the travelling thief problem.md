@@ -39,6 +39,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "Traveling Thief Problem" of this article in Chinese)
 
+这篇文章的“旅行窃贼问题”部分详细描述了TTP的定义和数学模型。TTP是一个将TSP和KP两个NP难问题相互联系的组合优化问题。TTP的目标是为一个窃贼提供一个旅行路线和一个背包计划，使得窃贼在访问所有给定城市的同时，能够从每个城市中选择一些物品，最大化自己的利润。TTP的难点在于两个子问题之间的相互影响：选择更多的物品会增加背包的重量，从而降低窃贼的速度和增加旅行时间，而旅行时间又会影响背包的租金。因此，单独优化TSP或KP的最优解并不一定能得到TTP的最优解。作者还介绍了TTP的一些相关研究，包括不同类型的启发式算法和实例特征分析。
+
 ## 3 Using ants to steal items
 
 (Prompt: Generalize Section "Using ants to steal items" of this article in Chinese)
