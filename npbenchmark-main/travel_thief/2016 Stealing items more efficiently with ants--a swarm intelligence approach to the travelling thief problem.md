@@ -1,0 +1,1 @@
+# Stealing items more efficiently with ants: a swarm intelligence approach to the travelling thief problem
