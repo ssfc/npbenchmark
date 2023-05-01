@@ -27,6 +27,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+**Markus Wagner**，他是阿德莱德大学计算机科学学院的高级讲师。他的研究兴趣包括进化计算、优化、搜索、元启发式、超启发式、进化机器人、进化艺术和创造力。他曾担任过多个国际会议和期刊的程序委员会成员、主席或编辑³。
+
 ## 1 Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
