@@ -61,6 +61,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "PACKING ITEMS WITH A MIP BASED APPROACH" of this article in Chinese)
 
+这篇文章的“基于MIP的打包方法”部分是对这个问题的一种近似求解方法的介绍。作者采用了一种分段线性近似技术，将非线性的目标函数转化为一个混合整数规划（MIP）问题。作者在给定的城市排列顺序的基础上，用MIP求解器来确定最优的打包方案。作者还提出了一种迭代的过程，每次用旅行商问题（TSP）的启发式算法生成一个新的城市排列顺序，然后用MIP求解器来求解打包问题，最后选择最好的TTP解作为输出。作者通过在一组基准实例上进行实验，比较了这种方法与其他近似算法的性能，并发现这种方法在一些大规模的实例上有很好的表现。
+
 ## 6. EXPERIMENTAL INVESTIGATIONS
 
 (Prompt: Generalize Section "EXPERIMENTAL INVESTIGATIONS" of this article in Chinese)
