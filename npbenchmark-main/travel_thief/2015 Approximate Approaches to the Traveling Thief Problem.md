@@ -20,7 +20,9 @@ Keywords: Chained Lin-Kernighan heuristic => Traveling Thief Problem
 
 GECCO会议是遗传和进化计算领域的顶级会议，属于CCF C类。这篇文章在google scholar的引用次数是65。
 
-### Q: 是什么会议？
+### Q: GECCO是什么会议？
+
+GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算领域最大的同行评审会议，也是ACM遗传和进化计算特别兴趣小组(SIGEVO)的主要会议¹。GECCO涵盖了遗传算法、遗传编程、蚁群优化和群智能、复杂系统、进化组合优化和元启发式、进化机器学习、进化多目标优化、进化数值优化等多个主题²。GECCO每年举办一次，2023年将在葡萄牙里斯本举行³。
 
 ### Q: Introduce authors of this article in Chinese one by one
 
