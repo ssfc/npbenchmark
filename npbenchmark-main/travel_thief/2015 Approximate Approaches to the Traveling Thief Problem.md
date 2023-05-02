@@ -26,6 +26,13 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+这篇文章的作者有四位，分别是：
+
+- **Hayden Faulkner**，是澳大利亚阿德莱德大学计算机科学学院的博士生，主要研究方向是优化和物流²。
+- **Sergey Polyakovskiy**，是澳大利亚阿德莱德大学计算机科学学院的博士后研究员，主要研究方向是组合优化、元启发式算法和多目标优化³。
+- **Tom Schultz**，是澳大利亚阿德莱德大学计算机科学学院的副教授，主要研究方向是进化计算、机器学习和人工智能⁴。
+- **Markus Wagner**，是澳大利亚阿德莱德大学计算机科学学院的高级讲师，主要研究方向是进化计算、优化和搜索。
+
 ## 1. INTRODUCTION
 
 (Prompt: Generalize Section "INTRODUCTION" of this article in Chinese)
