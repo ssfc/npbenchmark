@@ -36,6 +36,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section 1 of this article in Chinese)
 
+本文的第一部分介绍了旅行商问题（TSP）和背包问题（KP）两个经典的NP难优化问题的组合——旅行窃贼问题（TTP）。作者们表示，他们的目标是提供一个基准测试集，促进对问题之间的相互作用和影响的研究。他们还提出了一些简单的启发式算法，用于解决TTP，并给出了他们在基准测试集上的结果。
+
 ## 2. TRAVELING THIEF PROBLEM
 
 (Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
