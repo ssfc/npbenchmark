@@ -18,6 +18,8 @@ Keywords: Chained Lin-Kernighan heuristic => Traveling Thief Problem
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
+GECCO会议是遗传和进化计算领域的顶级会议，属于CCF C类。这篇文章在google scholar的引用次数是65。
+
 ### Q: 是什么会议？
 
 ### Q: Introduce authors of this article in Chinese one by one
