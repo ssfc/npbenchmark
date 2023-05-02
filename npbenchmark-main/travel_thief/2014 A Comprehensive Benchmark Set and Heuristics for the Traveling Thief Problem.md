@@ -48,6 +48,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
 
+本文的“基准集”部分介绍了作者如何根据TSP和KP的著名实例创建了一个TTP的基准集。他们使用了三种类型的KP数据：无关联的，具有相似重量的无关联的，和有界强相关的。他们还改变了每个城市的物品数量和背包容量。他们为每种TSP实例、KP类型、物品因子和容量类别的组合生成了10个实例。
+
 ## 4. HEURISTIC ALGORITHMS
 
 (Prompt: Generalize Section "HEURISTIC ALGORITHMS" of this article in Chinese)
