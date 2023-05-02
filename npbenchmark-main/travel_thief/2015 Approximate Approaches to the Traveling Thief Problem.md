@@ -49,6 +49,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "LOCAL SEARCH ROUTINES" of this article in Chinese)
 
+这篇文章的“局部搜索算法”部分是对这个问题的一些求解方法的介绍和分析。作者提出了几种基于旅行商问题（TSP）的启发式算法来生成城市的排列顺序，然后用不同的打包策略来选择物品。作者还设计了一些局部搜索算法，如Bitflip、Insertion和(1+1)-EA，来对打包方案或城市排列进行微调，以提高目标函数值。作者通过在一组基准实例上进行实验，比较了不同算法的性能，并与文献中的其他算法进行了对比。作者发现，简单的贪心算法在计算效率和解的质量方面都有很好的表现，而且初始的TSP解对最终的TTP解有很大的影响。
+
 ## 4. LOCAL SEARCH ALGORITHMS
 
 (Prompt: Generalize Section "LOCAL SEARCH ALGORITHMS" of this article in Chinese)
