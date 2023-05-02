@@ -30,22 +30,18 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
 
-## 2. TRAVELING THIEF PROBLEM
+## 3. BENCHMARK SET
 
-(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
+(Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
 
-## 2. TRAVELING THIEF PROBLEM
+## 4. HEURISTIC ALGORITHMS
 
-(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
+(Prompt: Generalize Section "HEURISTIC ALGORITHMS" of this article in Chinese)
 
-## 2. TRAVELING THIEF PROBLEM
+## 5. EXPERIMENTS
 
-(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
+(Prompt: Generalize Section "EXPERIMENTS" of this article in Chinese)
 
-## 2. TRAVELING THIEF PROBLEM
+## 6. CONCLUSIONS
 
-(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
-
-## 2. TRAVELING THIEF PROBLEM
-
-(Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
+(Prompt: Generalize Section "CONCLUSIONS" of this article in Chinese)
