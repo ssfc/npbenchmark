@@ -67,6 +67,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "EXPERIMENTAL INVESTIGATIONS" of this article in Chinese)
 
+这篇文章的“实验研究”部分是对不同的近似算法在一组基准实例上的性能进行了比较和分析。作者选择了72个具有不同特征的TTP实例，包括城市数量、物品数量、物品类型和背包容量等。作者设计了一些简单和复杂的局部搜索算法，分别使用了打包策略、位翻转、插入和(1+1)-EA等技术，并与MIP方法和文献中的其他启发式算法进行了对比。作者发现，打包策略的效果受到指数参数的影响，而且不同类型的实例有不同的最优指数。作者还发现，TSP部分的初始解对最终的TTP解有很大的影响，而且简单的贪心算法在计算效率上优于更复杂的算法。
+
 ## 7. CONCLUDING REMARKS
 
 (Prompt: Generalize Section "CONCLUDING REMARKS" of this article in Chinese)
