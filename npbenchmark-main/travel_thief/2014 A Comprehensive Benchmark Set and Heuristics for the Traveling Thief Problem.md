@@ -6,7 +6,7 @@
 
 https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014%20A%20Comprehensive%20Benchmark%20Set%20and%20Heuristics%20for%20the%20Traveling%20Thief%20Problem.pdf
 
-https://github.com/ssfc/papers/blob/main/2014%20A%20comprehensive%20benchmark%20set%20and%20heuristics%20for%20the%20traveling%20thief%20problem.md
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014%20A%20Comprehensive%20Benchmark%20Set%20and%20Heuristics%20for%20the%20Traveling%20Thief%20Problem.md
 
 ## Abstract
 

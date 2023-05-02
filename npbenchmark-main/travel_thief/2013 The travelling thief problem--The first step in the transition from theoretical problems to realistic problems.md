@@ -4,9 +4,9 @@
 
 旅行窃贼问题：从理论问题到现实问题的第一步
 
-https://github.com/ssfc/papers/blob/main/2013%20The%20travelling%20thief%20problem--The%20first%20step%20in%20the%20transition%20from%20theoretical%20problems%20to%20realistic%20problems.pdf
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2013%20The%20travelling%20thief%20problem--The%20first%20step%20in%20the%20transition%20from%20theoretical%20problems%20to%20realistic%20problems.pdf
 
-https://github.com/ssfc/papers/blob/main/2013%20The%20travelling%20thief%20problem--The%20first%20step%20in%20the%20transition%20from%20theoretical%20problems%20to%20realistic%20problems.md
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2013%20The%20travelling%20thief%20problem--The%20first%20step%20in%20the%20transition%20from%20theoretical%20problems%20to%20realistic%20problems.md
 
 ## Abstract
 
