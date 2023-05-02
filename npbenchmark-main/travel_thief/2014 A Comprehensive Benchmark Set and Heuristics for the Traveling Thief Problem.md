@@ -12,6 +12,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014
 
 (Prompt: generalize abstract of this article in Chinese)
 
+本文的目的是提供一个基准套件，促进对问题之间的相互作用和相互影响的研究。我们建立了一个综合的基准套件，用于旅行者窃贼问题（TTP），它结合了旅行商问题和背包问题。我们的基准套件建立在两个子问题的常见基准之上，为检验两个经典问题的组合所带来的潜在难度提供了基础。此外，我们还介绍了一些简单的启发式方法，以及它们在我们的基准套件上的结果。
+
+Keywords: benchmark set => traveling thief problem
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 GECCO 2014, class C; cited by 120 times. 
