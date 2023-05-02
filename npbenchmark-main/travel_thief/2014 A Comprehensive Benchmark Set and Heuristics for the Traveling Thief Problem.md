@@ -26,6 +26,12 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 ### Q: Introduce authors of this article in Chinese one by one
 
+- **Sergey Polyakovskiy**，阿德莱德大学计算机科学学院
+- **Mohammad Reza Bonyadi**，阿德莱德大学计算机科学学院
+- **Markus Wagner**，阿德莱德大学计算机科学学院
+- **Zbigniew Michalewicz**，阿德莱德大学计算机科学学院
+- **Frank Neumann**，阿德莱德大学计算机科学学院
+
 ## 1. INTRODUCTION
 
 (Prompt: Generalize Section 1 of this article in Chinese)
