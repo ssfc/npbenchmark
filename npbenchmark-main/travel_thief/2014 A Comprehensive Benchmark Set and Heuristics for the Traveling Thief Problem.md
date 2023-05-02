@@ -42,6 +42,8 @@ GECCO是**遗传和进化计算会议**的缩写，它是遗传和进化计算�
 
 (Prompt: Generalize Section "TRAVELING THIEF PROBLEM" of this article in Chinese)
 
+本文的“旅行窃贼问题”部分定义了TTP为一个问题，其中窃贼必须恰好访问每个城市一次，并从每个城市中拿走一些物品，而不超过背包的容量。窃贼每单位时间支付一定的租金，他的速度取决于背包的重量。目标是最大化物品的利润减去租金的成本。作者还给出了一个数值例子和一个图来说明这个问题。
+
 ## 3. BENCHMARK SET
 
 (Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
