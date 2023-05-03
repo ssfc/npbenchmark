@@ -14,7 +14,7 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2013
 
 本文提出了一个新的基准问题，叫做旅行窃贼问题 (travelling thief problem)，它是两个著名的优化问题，即背包问题和旅行商问题的组合。本文介绍了现实问题的两个主要特征：组合性和相互依赖性。我们认为现实问题通常由两个或多个相互依赖的子问题组成。这种相互依赖性导致了现实问题的复杂性，而当前的基准问题缺乏这种复杂性。本文**定义了一些参数**来生成旅行窃贼问题的两个实例，并详细讨论了这两个实例中相互依赖性引起的复杂性。最后，给出了生成这两个实例的过程。
 
-Keywords: 旅行窃贼问题 (travelling thief problem)
+Keywords: 第一个提出 旅行窃贼问题 (travelling thief problem)
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
