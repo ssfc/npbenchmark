@@ -6,7 +6,7 @@
 
 https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20Multi-objectiveness%20in%20the%20single-objective%20traveling%20thief%20problem.pdf
 
-https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20HSEDA--a%20heuristic%20selection%20approach%20based%20on%20estimation%20of%20distribution%20algorithm%20for%20the%20travelling%20thief%20problem.md
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2017%20Multi-objectiveness%20in%20the%20single-objective%20traveling%20thief%20problem.md
 
 ## Abstract
 
