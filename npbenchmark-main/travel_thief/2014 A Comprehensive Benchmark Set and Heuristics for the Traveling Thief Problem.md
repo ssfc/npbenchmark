@@ -16,6 +16,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014
 
 Keywords: Traveling Thief Problem benchmark; Simple Heuristic, random local search, 1+1 evolutionary; 
 
+Comment: 为TTP提供了数据集
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 这篇文章发表在GECCO 2014会议上，GECCO是遗传和进化计算领域的国际会议，根据CCF推荐国际学术会议目录¹，GECCO属于C类会议。根据Google Scholar²，这篇文章截至目前被引用了119次。
