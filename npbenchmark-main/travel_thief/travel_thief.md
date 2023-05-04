@@ -8,7 +8,7 @@
 
 这个竞赛的目的是为从事多组件优化问题的计算智能研究者提供一个平台。这个竞赛的主要关注点是**TSP和Knapsack问题的组合**。但是，我们计划在未来几年将这种竞赛形式扩展到更复杂的问题组合（这些问题在过去几十年通常是单独处理的）。
 
-这个竞赛使用的一系列基准测试遵循了“旅行窃贼问题”（Mohammad Reza Bonyadi, Zbigniew Michalewicz, Luigi Barone: free PDF, "The travelling thief problem: The first step in the transition from theoretical problems to realistic problems" (IEEE PDF)）的思想 (已入库)。
+这个竞赛使用的一系列基准测试遵循了“旅行窃贼问题”（Mohammad Reza Bonyadi, Zbigniew Michalewicz, Luigi Barone: free PDF, "The travelling thief problem: The first step in the transition from theoretical problems to realistic problems" (IEEE PDF)）的思想 (already added in mysql)。
 
 https://github.com/ssfc/papers/blob/main/2013%20The%20travelling%20thief%20problem--The%20first%20step%20in%20the%20transition%20from%20theoretical%20problems%20to%20realistic%20problems.md
 
