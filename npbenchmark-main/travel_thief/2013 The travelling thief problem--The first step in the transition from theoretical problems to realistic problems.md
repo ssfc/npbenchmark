@@ -58,6 +58,8 @@ IEEE进化计算大会（CEC）是一个国际性的会议，它汇集了来自�
 
 这一部分介绍了旅行商小偷问题的第一种模型，它有一个目标，就是**最大化总收益**。为了使两个子问题相互依赖，引入了两个新的参数：旅行的速度和背包的租金。**旅行的速度**与**背包的重量**有关，背包越重，速度越慢。**背包的租金**与**旅行的时间**有关，时间越长，租金越高。文章给出了一个具体的例子，并用图表和伪代码说明了如何计算目标函数。文章还分析了两个子问题之间的相互影响，指出单独解决每个子问题并不能保证得到整个问题的最优解。
 
+Comment: To clarify some potential confusion: while the seminal paper by Bonyadi et al. introduced two TTP formulations (TTP1 and TTP2), most researchers (including us) refer to the TTP1 formulation when they talk about the TTP. Hence, for all intents and purposes: TTP=TTP1. 
+
 ## IV. MODEL 2: TTP2
 
 (Prompt: Generalize Section "MODEL 2: TTP2" of this article in Chinese)
