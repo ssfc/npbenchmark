@@ -18,6 +18,26 @@ https://github.com/ssfc/papers/blob/main/2014%20A%20comprehensive%20benchmark%20
 
 ## Tracks
 
+将有许多轨道，因为可用的实例（从 https://dl.acm.org/doi/10.1145/2576768.2598249，http://cs.adelaide.edu.au/~optlog/CEC2014COMP_InstancesNew/）变化很大，并且跨越多个数量级。
+
+**分会场1：**分析考生代码产生的结果。无需代码。
+
+**轨道** **1.1**：三个小实例：a280_n279_bounded-strongly-corr_01.ttp、a280_n1395_uncorr-similar-weights_05.ttp、a280_n2790_uncorr_10.ttp
+
+**Track 1.2**：三个中型实例：fnl4461_n4460_bounded-strongly-corr_01.ttp、fnl4461_n22300_uncorr-similar-weights_05.ttp、fnl4461_n44600_uncorr_10.ttp
+
+**轨道** **1.3**：三个大型实例：pla33810_n33809_bounded-strongly-corr_01.ttp、pla33810_n169045_uncorr-similar-weights_05.ttp、pla33810_n338090_uncorr_10.ttp
+
+注意：这些是下面进一步列出的九个“示例实例”。
+
+**轨道 2：**代码执行。计算资源：1核（云计算CPU），16GiB RAM，10分钟执行时间。
+
+**轨道** **2.1：**三个小实例
+
+**分会场** **2.2..** 三个中型实例
+
+**分会场** **2.3：**三个大型实例
+
 ### Q: 页面中的track是什么意思？
 
 页面中的track是指竞赛的不同类别，根据问题的规模和提交方式进行划分。每个track有不同的评价标准和奖励。
