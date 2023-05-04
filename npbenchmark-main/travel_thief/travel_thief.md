@@ -30,7 +30,7 @@ https://github.com/ssfc/papers/blob/main/2014%20A%20comprehensive%20benchmark%20
 
 请为每个实例仅提供 1 个文件，这意味着您最多提交 9 个文件。
 
-**轨道 2：**代码执行。计算资源：1核（云计算CPU），16GiB RAM，10分钟执行时间。
+**赛道 2：**代码执行。计算资源：1核（云计算CPU），16GiB RAM，10分钟执行时间。
 
 **轨道** **2.1：**三个小实例
 
