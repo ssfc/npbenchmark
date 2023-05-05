@@ -30,3 +30,23 @@ the projects runtime path.
 in the Projects window and choose Properties. Then click Run and enter the
 class name in the Main Class field. Alternatively, you can manually type the
 class name in the manifest Main-Class element.
+
+========================
+构建输出描述
+========================
+
+当您构建一个带有主类的Java应用程序项目时，IDE会自动将项目类路径上的所有JAR文件复制到项目的`dist/lib`文件夹中。IDE还会将每个JAR文件添加到应用程序JAR文件的清单文件（`MANIFEST.MF`）中的Class-Path元素中。
+
+要从命令行运行该项目，请转到`dist`文件夹并键入以下命令：
+
+java -jar "TTP-forDistribution.jar"
+
+要分发此项目，请将`dist`文件夹（包括`lib`文件夹）压缩成ZIP文件并分发。
+
+注意事项：
+
+* 如果项目类路径上有两个同名的JAR文件，只会复制第一个JAR文件到`lib`文件夹中。
+* 只有JAR文件会被复制到`lib`文件夹中。如果类路径包含其他类型的文件或文件夹，这些文件（文件夹）将不会被复制。
+* 如果项目类路径上的库也在清单文件中指定了Class-Path元素，则Class-Path元素的内容必须在项目的运行时路径上。
+* 要在标准Java项目中设置主类，请在项目窗口中右键单击项目节点，然后选择“属性”。然后点击“运行”并在“主类”字段中输入类名。或者，您也可以在清单文件的Main-Class元素中手动输入类名。
+
