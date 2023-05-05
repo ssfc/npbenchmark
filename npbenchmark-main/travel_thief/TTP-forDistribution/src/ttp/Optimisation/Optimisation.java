@@ -1,3 +1,4 @@
+// ttp.Optimisation包含了迭代启发式算法随机局部搜索(RLS)和(1+1)进化算法(EA)。通过参数“mode”，用户可以在RLS(mode==1)和EA(mode==2)之间切换。switch-case语句可以轻松扩展以纳入其他启发式算法。
 package ttp.Optimisation;
 
 
