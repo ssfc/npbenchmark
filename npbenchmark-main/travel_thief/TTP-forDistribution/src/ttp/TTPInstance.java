@@ -127,7 +127,8 @@ public class TTPInstance {
         }
 //        if (debugPrint || true) printInstance(false);
     }
-    
+
+    // 目标函数在TTPInstance.evaluate(...)中实现。基于Bonyadi的Matlab代码的替代实现可以在ttp.Utils.DriverOld中找到。
     /**
      * Translated code of the original "TTP1Objective.m".
      * 
