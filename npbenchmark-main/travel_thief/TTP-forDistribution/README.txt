@@ -31,7 +31,7 @@ can be downloaded from http://cs.adelaide.edu.au/~optlog/CEC2014COMP_Instances/
 
 approach1-10000-600000.txt: a Gridengine batch job file that would execute all
 9720 TTP instances once using RLS, and a maximum of "10000 iterations no 
-improvment" (up to a total time limit of 600000 ms (=10min)).
+improvement" (up to a total time limit of 600000 ms (=10min)).
 
 
 本文介绍了“Traveling Thief Problem”的综合基准集和启发式算法。
