@@ -8,6 +8,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014
 
 https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2014%20A%20Comprehensive%20Benchmark%20Set%20and%20Heuristics%20for%20the%20Traveling%20Thief%20Problem.md
 
+https://cs.adelaide.edu.au/~optlog/research/combinatorial.php
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
