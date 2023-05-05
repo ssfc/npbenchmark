@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TTP-forDistribution">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/TTP-forDistribution.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
