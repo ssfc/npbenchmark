@@ -18,7 +18,7 @@ Keywords: 基于一个带有偏向随机键编码的非支配排序遗传算法 
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
-这篇文章发表在《启发式》（Journal of Heuristics）杂志上，这是一本CCF推荐的C类国际学术刊物³。这篇文章在谷歌学术上的引用次数是11次²。
+这篇文章发表在《启发式》（Journal of Heuristics）杂志上，这是一本CCF推荐的C类国际学术刊物³。这篇文章在谷歌学术上的引用次数是11次²。 
 
 ### Q: Journal of Heuristics是什么期刊？
 
