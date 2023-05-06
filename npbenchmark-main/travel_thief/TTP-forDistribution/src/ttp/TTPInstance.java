@@ -245,18 +245,23 @@ public class TTPInstance {
                 for (int itemNumber=0; itemNumber<itemsPerCity; itemNumber++) {
                 int indexOfPackingPlan = (i-1)*itemsPerCity+itemNumber;
                 if (debugPrint) System.out.print("indexOfPackingPlan="+indexOfPackingPlan+" ");
-                
+
+                System.out.print("currentCity="+currentCity+" ");  // -1
+                System.out.print("itemNumber="+itemNumber+" ");  // 0
+                System.out.print("this.numberOfNodes="+this.numberOfNodes+" "); // 4461
                 // what is the next item's index in items-array?
                 int itemIndex = currentCity+itemNumber*(this.numberOfNodes-1);//* (this.numberOfNodes-1); 
                 if (debugPrint) System.out.print("itemIndex="+itemIndex+" ");
-                
+
+                System.out.print("itemIndex="+itemIndex+" "); // 果然是-1.
+                /*
                 if (z[indexOfPackingPlan]==1) {
                     // pack item
 //                    int itemIndex = currentCity+itemNumber*(this.numberOfNodes-1);//* (this.numberOfNodes-1); 
 //                    int itemIndex = (i-1)+itemNumber* (this.numberOfNodes-1); // GECCO incorrect
                     
 //                    if (debugPrint) System.out.print("itemIndex="+itemIndex+" ");
-                    
+
                     int currentWC = this.items[itemIndex][2];
                     wc=wc+currentWC;
                     
@@ -265,6 +270,8 @@ public class TTPInstance {
                     
                     if (debugPrint) System.out.print("[fp="+currentFP+",wc="+currentWC+"] ");
                 }
+
+                 */
             }
             if (debugPrint) System.out.println();
             
