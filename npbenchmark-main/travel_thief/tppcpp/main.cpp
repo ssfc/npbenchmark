@@ -17,6 +17,7 @@ int main() {
     string line;
     while (getline(file, line)) {
         // Remove leading and trailing whitespace
+        // 这两句代码的作用是去掉字符串 line 开头和结尾的空格、制表符、回车符和换行符，这样可以确保解析读取到的每一行数据时不会出现额外的空格或其他字符。具体来说，这两句代码的含义如下：
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
 
