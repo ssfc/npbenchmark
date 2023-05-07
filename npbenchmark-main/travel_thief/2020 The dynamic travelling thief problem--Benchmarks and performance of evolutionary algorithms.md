@@ -39,6 +39,10 @@ Keywords: Heuristics => Dynamic Travelling Thief Problem
 
 第一节介绍了动态优化问题的研究背景和动机。文章指出，现实世界中的许多优化问题都涉及动态和随机的组件，而进化算法由于能够适应环境变化而在处理这类问题上具有优势。文章回顾了目前对动态适应度函数和动态约束的研究，以及旅行窃贼问题（TTP）的定义和变体。文章提出了**动态旅行窃贼问题（DynTTP）**的概念，即在TTP中引入物品或城市的可用性变化，从而增加问题的复杂性和实际性。文章概述了本文的主要贡献和结构。
 
+### Q: 什么是dynamic travelling thief problem？
+
+dynamic travelling thief problem（动态旅行窃贼问题）是一种组合优化问题，它包含两个子问题，即旅行商问题（TSP）和背包问题（KP）。目标是为一个窃贼提供一个穿越所有城市的路线和一个装包计划，定义在哪个城市应该拿走哪些物品¹²。这个问题的动态变化是指城市中的物品可能会变得可用或不可用，或者窃贼的速度可能会随着时间而改变²³。这些变化使得问题更加复杂和具有挑战性。
+
 ## 2 The Travelling Thief Problem and its Variants
 
 (Prompt: Generalize Section "The Travelling Thief Problem and its Variants" of this article in Chinese)
