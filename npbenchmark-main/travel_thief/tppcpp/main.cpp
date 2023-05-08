@@ -21,7 +21,7 @@ int main() {
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex(" \\t "), "\t");
-        line = regex_replace(line, regex("PROBLEM NAME"), "PROBLEM");
+        line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -34,7 +34,7 @@ int main() {
         istringstream iss(line);
         iss >> key >> value;
 
-        if (key == "PROBLEM:") {
+        if (key == "problem_name:") {
             cout << "Problem name: " << value << endl;
         } else if (key == "KNAPSACK") {
             cout << "Knapsack data type: " << value << endl;
