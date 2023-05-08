@@ -30,6 +30,7 @@ int main()
         line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
         line = regex_replace(line, regex("CAPACITY OF KNAPSACK"), "capacity_of_knapsack");
         line = regex_replace(line, regex("MIN SPEED"), "min_speed");
+        line = regex_replace(line, regex("MAX SPEED"), "max_speed");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -71,7 +72,7 @@ int main()
             float min_speed = stof(value);
             cout << "Min speed: " << min_speed << endl;
         }
-        else if(key == "MAX")
+        else if(key == "max_speed:")
         {
             float max_speed = stof(value);
             cout << "Max speed: " << max_speed << endl;
