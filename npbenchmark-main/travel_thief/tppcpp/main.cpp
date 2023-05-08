@@ -23,6 +23,7 @@ int main() {
         line = regex_replace(line, regex(" \\t "), "\t");
         line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
         line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
+        line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
         // cout << line << endl;
 
         // Skip comments and empty lines
