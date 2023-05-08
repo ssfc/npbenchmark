@@ -24,7 +24,6 @@ int main()
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
-        line = regex_replace(line, regex("MAX SPEED"), "max_speed");
         line = regex_replace(line, regex("RENTING RATIO"), "renting_ratio");
         line = regex_replace(line, regex("(INDEX, X, Y):"), "(index_X_Y):");
         // cout << line << endl;
@@ -74,11 +73,11 @@ int main()
             float min_speed = stof(word_3);
             cout << "MIN SPEED: " << min_speed << endl;
         }
-        else if(word_1 == "max_speed:")
+        else if(word_1 == "MAX")
         {
-            iss >> word_2;
-            float max_speed = stof(word_2);
-            cout << "Max speed: " << max_speed << endl;
+            iss >> word_2 >> word_3;;
+            float max_speed = stof(word_3);
+            cout << "MAX SPEED: " << max_speed << endl;
         }
         else if(word_1 == "renting_ratio:")
         {
