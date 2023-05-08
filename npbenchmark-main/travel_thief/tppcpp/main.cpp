@@ -24,7 +24,6 @@ int main()
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
-        line = regex_replace(line, regex("RENTING RATIO"), "renting_ratio");
         line = regex_replace(line, regex("(INDEX, X, Y):"), "(index_X_Y):");
         // cout << line << endl;
 
@@ -53,7 +52,7 @@ int main()
         {
             iss >> word_2;
             int dimension = stoi(word_2);
-            cout << "Dimension: " << dimension << endl;
+            cout << "DIMENSION: " << dimension << endl;
         }
         else if(word_1 == "NUMBER")
         {
@@ -75,15 +74,15 @@ int main()
         }
         else if(word_1 == "MAX")
         {
-            iss >> word_2 >> word_3;;
+            iss >> word_2 >> word_3;
             float max_speed = stof(word_3);
             cout << "MAX SPEED: " << max_speed << endl;
         }
-        else if(word_1 == "renting_ratio:")
+        else if(word_1 == "RENTING")
         {
-            iss >> word_2;
-            float renting_ratio = stof(word_2);
-            cout << "Renting ratio: " << renting_ratio << endl;
+            iss >> word_2 >> word_3;
+            float renting_ratio = stof(word_3);
+            cout << "RENTING RATIO: " << renting_ratio << endl;
         }
         else if(word_1 == "EDGE_WEIGHT_TYPE:")
         {
