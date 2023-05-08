@@ -23,7 +23,6 @@ int main()
         // Remove leading and trailing whitespace
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
-        line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
         line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
         line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
@@ -41,66 +40,66 @@ int main()
         }
 
         // Parse the line
-        string first, second;
+        string word_1, word_2, word_3;
         istringstream iss(line);
-        iss >> first;
+        iss >> word_1;
 
-        if(first == "problem_name:")
+        if(word_1 == "PROBLEM")
         {
-            iss >> second;
-            cout << "Problem name: " << second << endl;
+            iss >> word_2 >> word_3;
+            cout << "Problem name: " << word_3 << endl;
         }
-        else if(first == "knapsack_data_type:")
+        else if(word_1 == "knapsack_data_type:")
         {
-            iss >> second;
-            cout << "Knapsack data type: " << second << endl;
+            iss >> word_2;
+            cout << "Knapsack data type: " << word_2 << endl;
         }
-        else if(first == "DIMENSION:")
+        else if(word_1 == "DIMENSION:")
         {
-            iss >> second;
-            int dimension = stoi(second);
+            iss >> word_2;
+            int dimension = stoi(word_2);
             cout << "Dimension: " << dimension << endl;
         }
-        else if(first == "number_of_items:")
+        else if(word_1 == "number_of_items:")
         {
-            iss >> second;
-            int num_items = stoi(second);
+            iss >> word_2;
+            int num_items = stoi(word_2);
             cout << "Number of items: " << num_items << endl;
         }
-        else if(first == "capacity_of_knapsack:")
+        else if(word_1 == "capacity_of_knapsack:")
         {
-            iss >> second;
-            int capacity = stoi(second);
+            iss >> word_2;
+            int capacity = stoi(word_2);
             cout << "Capacity of knapsack: " << capacity << endl;
         }
-        else if(first == "min_speed:")
+        else if(word_1 == "min_speed:")
         {
-            iss >> second;
-            float min_speed = stof(second);
+            iss >> word_2;
+            float min_speed = stof(word_2);
             cout << "Min speed: " << min_speed << endl;
         }
-        else if(first == "max_speed:")
+        else if(word_1 == "max_speed:")
         {
-            iss >> second;
-            float max_speed = stof(second);
+            iss >> word_2;
+            float max_speed = stof(word_2);
             cout << "Max speed: " << max_speed << endl;
         }
-        else if(first == "renting_ratio:")
+        else if(word_1 == "renting_ratio:")
         {
-            iss >> second;
-            float renting_ratio = stof(second);
+            iss >> word_2;
+            float renting_ratio = stof(word_2);
             cout << "Renting ratio: " << renting_ratio << endl;
         }
-        else if(first == "EDGE_WEIGHT_TYPE:")
+        else if(word_1 == "EDGE_WEIGHT_TYPE:")
         {
-            iss >> second;
-            cout << "Edge weight type: " << second << endl;
+            iss >> word_2;
+            cout << "Edge weight type: " << word_2 << endl;
         }
-        else if(first == "NODE_COORD_SECTION")
+        else if(word_1 == "NODE_COORD_SECTION")
         {
-            iss >> second;
+            iss >> word_2;
             // Read the node coordinates section
-            cout << "Node coordinates:" << second << endl;
+            cout << "Node coordinates:" << word_2 << endl;
 
             int index;
             float x, y;
@@ -109,9 +108,9 @@ int main()
                 cout << index << " (" << x << ", " << y << ")" << endl;
             }
         }
-        else if(first == "ITEMS")
+        else if(word_1 == "ITEMS")
         {
-            iss >> second;
+            iss >> word_2;
             // Read the node coordinates section
             cout << "Items section:" << endl;
 
