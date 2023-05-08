@@ -22,6 +22,7 @@ int main() {
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex(" \\t "), "\t");
         line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
+        line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -36,7 +37,7 @@ int main() {
 
         if (key == "problem_name:") {
             cout << "Problem name: " << value << endl;
-        } else if (key == "KNAPSACK") {
+        } else if (key == "knapsack_data_type:") {
             cout << "Knapsack data type: " << value << endl;
         } else if (key == "DIMENSION:") {
             int dimension = stoi(value);
