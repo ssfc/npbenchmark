@@ -91,7 +91,7 @@ int main()
         }
         else if(word_1 == "NODE_COORD_SECTION")
         {
-            iss >> word_2;
+            iss >> word_2 >> word_3 >> word_4;
             // Read the node coordinates section
             cout << "Node coordinates:" << word_2 << endl;
 
