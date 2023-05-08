@@ -24,6 +24,7 @@ int main() {
         line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
         line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
+        line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -43,7 +44,7 @@ int main() {
         } else if (key == "DIMENSION:") {
             int dimension = stoi(value);
             cout << "Dimension: " << dimension << endl;
-        } else if (key == "NUMBER") {
+        } else if (key == "number_of_items:") {
             int num_items = stoi(value);
             cout << "Number of items: " << num_items << endl;
         } else if (key == "CAPACITY") {
