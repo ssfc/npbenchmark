@@ -24,7 +24,6 @@ int main()
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
-        line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
         line = regex_replace(line, regex("CAPACITY OF KNAPSACK"), "capacity_of_knapsack");
         line = regex_replace(line, regex("MIN SPEED"), "min_speed");
         line = regex_replace(line, regex("MAX SPEED"), "max_speed");
@@ -59,11 +58,11 @@ int main()
             int dimension = stoi(word_2);
             cout << "Dimension: " << dimension << endl;
         }
-        else if(word_1 == "number_of_items:")
+        else if(word_1 == "NUMBER")
         {
-            iss >> word_2;
-            int num_items = stoi(word_2);
-            cout << "Number of items: " << num_items << endl;
+            iss >> word_2 >> word_3 >> word_4;
+            int num_items = stoi(word_4);
+            cout << "NUMBER OF ITEMS: " << num_items << endl;
         }
         else if(word_1 == "capacity_of_knapsack:")
         {
