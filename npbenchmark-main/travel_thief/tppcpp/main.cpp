@@ -23,7 +23,6 @@ int main()
         // Remove leading and trailing whitespace
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
-        line = regex_replace(line, regex(" \\t "), "\t");
         line = regex_replace(line, regex("PROBLEM NAME"), "problem_name");
         line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
