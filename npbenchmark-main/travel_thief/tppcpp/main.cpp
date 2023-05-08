@@ -32,6 +32,7 @@ int main()
         line = regex_replace(line, regex("MIN SPEED"), "min_speed");
         line = regex_replace(line, regex("MAX SPEED"), "max_speed");
         line = regex_replace(line, regex("RENTING RATIO"), "renting_ratio");
+        line = regex_replace(line, regex("(INDEX, X, Y):"), "(index_X_Y):");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -90,7 +91,7 @@ int main()
         else if(key == "NODE_COORD_SECTION")
         {
             // Read the node coordinates section
-            cout << "Node coordinates:" << endl;
+            cout << "Node coordinates:" << value << endl;
 
             int index;
             float x, y;
