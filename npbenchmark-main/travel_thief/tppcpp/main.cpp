@@ -99,6 +99,19 @@ int main()
                 cout << index << " (" << x << ", " << y << ")" << endl;
             }
         }
+        else if(key == "ITEMS")
+        {
+            // Read the node coordinates section
+            cout << "Items section:" << endl;
+
+            // INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER
+            int index;
+            float profit, weight, assigned_node_number;
+            while (file >> index >> profit >> weight >> assigned_node_number)
+            {
+                cout << index << " (" << profit << ", " << weight << ") " << assigned_node_number << endl;
+            }
+        }
     }
 
     file.close();
