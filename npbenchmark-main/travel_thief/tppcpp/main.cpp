@@ -41,66 +41,66 @@ int main()
         }
 
         // Parse the line
-        string first, value;
+        string first, second;
         istringstream iss(line);
         iss >> first;
 
         if(first == "problem_name:")
         {
-            iss >> value;
-            cout << "Problem name: " << value << endl;
+            iss >> second;
+            cout << "Problem name: " << second << endl;
         }
         else if(first == "knapsack_data_type:")
         {
-            iss >> value;
-            cout << "Knapsack data type: " << value << endl;
+            iss >> second;
+            cout << "Knapsack data type: " << second << endl;
         }
         else if(first == "DIMENSION:")
         {
-            iss >> value;
-            int dimension = stoi(value);
+            iss >> second;
+            int dimension = stoi(second);
             cout << "Dimension: " << dimension << endl;
         }
         else if(first == "number_of_items:")
         {
-            iss >> value;
-            int num_items = stoi(value);
+            iss >> second;
+            int num_items = stoi(second);
             cout << "Number of items: " << num_items << endl;
         }
         else if(first == "capacity_of_knapsack:")
         {
-            iss >> value;
-            int capacity = stoi(value);
+            iss >> second;
+            int capacity = stoi(second);
             cout << "Capacity of knapsack: " << capacity << endl;
         }
         else if(first == "min_speed:")
         {
-            iss >> value;
-            float min_speed = stof(value);
+            iss >> second;
+            float min_speed = stof(second);
             cout << "Min speed: " << min_speed << endl;
         }
         else if(first == "max_speed:")
         {
-            iss >> value;
-            float max_speed = stof(value);
+            iss >> second;
+            float max_speed = stof(second);
             cout << "Max speed: " << max_speed << endl;
         }
         else if(first == "renting_ratio:")
         {
-            iss >> value;
-            float renting_ratio = stof(value);
+            iss >> second;
+            float renting_ratio = stof(second);
             cout << "Renting ratio: " << renting_ratio << endl;
         }
         else if(first == "EDGE_WEIGHT_TYPE:")
         {
-            iss >> value;
-            cout << "Edge weight type: " << value << endl;
+            iss >> second;
+            cout << "Edge weight type: " << second << endl;
         }
         else if(first == "NODE_COORD_SECTION")
         {
-            iss >> value;
+            iss >> second;
             // Read the node coordinates section
-            cout << "Node coordinates:" << value << endl;
+            cout << "Node coordinates:" << second << endl;
 
             int index;
             float x, y;
@@ -111,7 +111,7 @@ int main()
         }
         else if(first == "ITEMS")
         {
-            iss >> value;
+            iss >> second;
             // Read the node coordinates section
             cout << "Items section:" << endl;
 
