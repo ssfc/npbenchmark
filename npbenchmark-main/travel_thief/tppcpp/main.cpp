@@ -24,7 +24,6 @@ int main()
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
-        line = regex_replace(line, regex("MIN SPEED"), "min_speed");
         line = regex_replace(line, regex("MAX SPEED"), "max_speed");
         line = regex_replace(line, regex("RENTING RATIO"), "renting_ratio");
         line = regex_replace(line, regex("(INDEX, X, Y):"), "(index_X_Y):");
@@ -69,11 +68,11 @@ int main()
             int capacity = stoi(word_4);
             cout << "CAPACITY OF KNAPSACK: " << capacity << endl;
         }
-        else if(word_1 == "min_speed:")
+        else if(word_1 == "MIN")
         {
-            iss >> word_2;
-            float min_speed = stof(word_2);
-            cout << "Min speed: " << min_speed << endl;
+            iss >> word_2 >> word_3;
+            float min_speed = stof(word_3);
+            cout << "MIN SPEED: " << min_speed << endl;
         }
         else if(word_1 == "max_speed:")
         {
