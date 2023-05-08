@@ -23,7 +23,6 @@ int main()
         // Remove leading and trailing whitespace
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
-        line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
         line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
         line = regex_replace(line, regex("CAPACITY OF KNAPSACK"), "capacity_of_knapsack");
@@ -40,19 +39,19 @@ int main()
         }
 
         // Parse the line
-        string word_1, word_2, word_3;
+        string word_1, word_2, word_3, word_4;
         istringstream iss(line);
         iss >> word_1;
 
         if(word_1 == "PROBLEM")
         {
             iss >> word_2 >> word_3;
-            cout << "Problem name: " << word_3 << endl;
+            cout << "PROBLEM NAME: " << word_3 << endl;
         }
-        else if(word_1 == "knapsack_data_type:")
+        else if(word_1 == "KNAPSACK")
         {
-            iss >> word_2;
-            cout << "Knapsack data type: " << word_2 << endl;
+            iss >> word_2 >> word_3 >> word_4;
+            cout << "KNAPSACK DATA TYPE: " << word_4 << endl;
         }
         else if(word_1 == "DIMENSION:")
         {
