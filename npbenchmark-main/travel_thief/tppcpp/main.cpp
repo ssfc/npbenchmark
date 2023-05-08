@@ -24,7 +24,6 @@ int main()
         line.erase(line.find_last_not_of(" \t\r\n") + 1);
         line.erase(0, line.find_first_not_of(" \t\r\n"));
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
-        line = regex_replace(line, regex("(INDEX, X, Y):"), "(index_X_Y):");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -93,7 +92,7 @@ int main()
         {
             iss >> word_2 >> word_3 >> word_4;
             // Read the node coordinates section
-            cout << "Node coordinates:" << word_2 << endl;
+            cout << "Node coordinates:" << word_2 << word_3 << word_4 << endl;
 
             int index;
             float x, y;
