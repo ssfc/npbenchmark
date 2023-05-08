@@ -41,62 +41,62 @@ int main()
         }
 
         // Parse the line
-        string key, value;
+        string first, value;
         istringstream iss(line);
-        iss >> key;
+        iss >> first;
 
-        if(key == "problem_name:")
+        if(first == "problem_name:")
         {
             iss >> value;
             cout << "Problem name: " << value << endl;
         }
-        else if(key == "knapsack_data_type:")
+        else if(first == "knapsack_data_type:")
         {
             iss >> value;
             cout << "Knapsack data type: " << value << endl;
         }
-        else if(key == "DIMENSION:")
+        else if(first == "DIMENSION:")
         {
             iss >> value;
             int dimension = stoi(value);
             cout << "Dimension: " << dimension << endl;
         }
-        else if(key == "number_of_items:")
+        else if(first == "number_of_items:")
         {
             iss >> value;
             int num_items = stoi(value);
             cout << "Number of items: " << num_items << endl;
         }
-        else if(key == "capacity_of_knapsack:")
+        else if(first == "capacity_of_knapsack:")
         {
             iss >> value;
             int capacity = stoi(value);
             cout << "Capacity of knapsack: " << capacity << endl;
         }
-        else if(key == "min_speed:")
+        else if(first == "min_speed:")
         {
             iss >> value;
             float min_speed = stof(value);
             cout << "Min speed: " << min_speed << endl;
         }
-        else if(key == "max_speed:")
+        else if(first == "max_speed:")
         {
             iss >> value;
             float max_speed = stof(value);
             cout << "Max speed: " << max_speed << endl;
         }
-        else if(key == "renting_ratio:")
+        else if(first == "renting_ratio:")
         {
             iss >> value;
             float renting_ratio = stof(value);
             cout << "Renting ratio: " << renting_ratio << endl;
         }
-        else if(key == "EDGE_WEIGHT_TYPE:")
+        else if(first == "EDGE_WEIGHT_TYPE:")
         {
             iss >> value;
             cout << "Edge weight type: " << value << endl;
         }
-        else if(key == "NODE_COORD_SECTION")
+        else if(first == "NODE_COORD_SECTION")
         {
             iss >> value;
             // Read the node coordinates section
@@ -109,7 +109,7 @@ int main()
                 cout << index << " (" << x << ", " << y << ")" << endl;
             }
         }
-        else if(key == "ITEMS")
+        else if(first == "ITEMS")
         {
             iss >> value;
             // Read the node coordinates section
