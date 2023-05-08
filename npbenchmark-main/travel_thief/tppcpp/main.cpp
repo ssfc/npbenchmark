@@ -28,6 +28,7 @@ int main()
         line = regex_replace(line, regex("KNAPSACK DATA TYPE"), "knapsack_data_type");
         line = regex_replace(line, regex("bounded strongly corr"), "bounded-strongly-corr");
         line = regex_replace(line, regex("NUMBER OF ITEMS"), "number_of_items");
+        line = regex_replace(line, regex("CAPACITY OF KNAPSACK"), "capacity_of_knapsack");
         // cout << line << endl;
 
         // Skip comments and empty lines
@@ -59,7 +60,7 @@ int main()
             int num_items = stoi(value);
             cout << "Number of items: " << num_items << endl;
         }
-        else if(key == "CAPACITY")
+        else if(key == "capacity_of_knapsack:")
         {
             int capacity = stoi(value);
             cout << "Capacity of knapsack: " << capacity << endl;
