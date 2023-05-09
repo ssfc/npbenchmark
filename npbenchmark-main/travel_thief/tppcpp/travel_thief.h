@@ -16,6 +16,7 @@ class TravelThief{
     int capacity_of_knapsack;
     double min_speed;
     double max_speed;
+    double renting_ratio;
 
 public:
     // debug function
@@ -65,6 +66,13 @@ public:
         max_speed = input_max_speed;
     }
     [[nodiscard]] double get_max_speed() const {
+        return max_speed;
+    }
+
+    void set_renting_ratio(double input_max_speed) {
+        max_speed = input_max_speed;
+    }
+    [[nodiscard]] double get_renting_ratio() const {
         return max_speed;
     }
 };

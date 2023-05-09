@@ -67,7 +67,8 @@ int main()
         else if (line.find("RENTING RATIO:") != string::npos)
         {
             line.erase(0, 14); // 删除"RENTING RATIO: "，保留租金比率
-            cout << "RENTING RATIO:" << line << endl;
+            test.set_renting_ratio(stod(line));
+            cout << "RENTING RATIO:" << test.get_renting_ratio() << endl;
         }
         else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
         {
