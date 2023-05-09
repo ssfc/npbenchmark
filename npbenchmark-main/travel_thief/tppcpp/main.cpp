@@ -33,7 +33,7 @@ int main()
         }
 
         // Parse the line
-        string word_1, word_2, word_3, word_4;
+        string word_1, word_2, word_3, word_4, word_5, word_6;
         istringstream iss(line);
         iss >> word_1;
 
@@ -101,20 +101,7 @@ int main()
                 cout << index << " (" << x << ", " << y << ")" << endl;
             }
         }
-        else if(word_1 == "ITEMS")
-        {
-            iss >> word_2;
-            // Read the node coordinates section
-            cout << "Items section:" << endl;
 
-            // INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER
-            int index;
-            float profit, weight, assigned_node_number;
-            while (file >> index >> profit >> weight >> assigned_node_number)
-            {
-                cout << index << " (" << profit << ", " << weight << ") " << assigned_node_number << endl;
-            }
-        }
     }
 
     file.close();
