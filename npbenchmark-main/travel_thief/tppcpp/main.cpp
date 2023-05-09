@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     TravelThief test;
-    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    string filename = "./data/a280_n279_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
     if(!file.is_open())
@@ -75,7 +75,7 @@ int main()
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
             cout << "EDGE_WEIGHT_TYPE:" << line << endl;
         }
-        else if (line == "NODE_COORD_SECTION\t(INDEX, X, Y): ")
+        else if (line.find("NODE_COORD_SECTION") != string::npos)
         {
             cout << "NODE_COORD_SECTION\t(INDEX, X, Y): " << endl;
             while (getline(file, line))
