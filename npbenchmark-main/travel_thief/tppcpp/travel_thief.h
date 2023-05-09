@@ -70,10 +70,10 @@ public:
     }
 
     void set_renting_ratio(double input_max_speed) {
-        max_speed = input_max_speed;
+        renting_ratio = input_max_speed;
     }
     [[nodiscard]] double get_renting_ratio() const {
-        return max_speed;
+        return renting_ratio;
     }
 };
 
