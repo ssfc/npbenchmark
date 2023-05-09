@@ -81,6 +81,17 @@ int main()
         }
         else if (line == "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): ")
         {
+            cout << "ITEMS SECTION: " << endl;
+            while (getline(file, line))
+            {
+                if (line.empty())
+                {
+                    break; // 节点坐标结束
+                }
+                int index, x, y;
+                sscanf(line.c_str(), "%d %d %d", &index, &x, &y); // 从字符串中解析出节点索引、横坐标、纵坐标
+                cout << index << "\t" << x << "\t" << y << endl; // 输出节点坐标
+            }
         }
 
     }
