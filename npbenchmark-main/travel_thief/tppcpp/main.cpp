@@ -74,7 +74,8 @@ int main()
                 if (line != "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): ")
                 {
                     int index, x, y;
-                    sscanf(line.c_str(), "%d %d %d", &index, &x, &y); // 从字符串中解析出节点索引、横坐标、纵坐标
+                    // 从字符串中解析出节点索引、横坐标、纵坐标
+                    sscanf(line.c_str(), "%d %d %d", &index, &x, &y);
                     cout << index << "\t" << x << "\t" << y << endl; // 输出节点坐标
                 }
                 else
@@ -89,12 +90,12 @@ int main()
                         int index, profit, weight, assigned_node;
                         // 从字符串中解析出节点索引、横坐标、纵坐标
                         sscanf(line.c_str(), "%d %d %d %d", &index, &profit, &weight, &assigned_node);
-                        cout << index << "\t" << profit << "\t" << weight << "\t" << assigned_node << endl; // 输出节点坐标
+                        // 输出节点坐标
+                        cout << index << "\t" << profit << "\t" << weight << "\t" << assigned_node << endl;
                     }
                 }
             }
         }
-
     }
 
     file.close();
