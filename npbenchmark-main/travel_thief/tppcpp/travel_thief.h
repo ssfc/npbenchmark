@@ -13,6 +13,7 @@ class TravelThief{
     std::string knapsack_data_type;
     int dimension;
     int num_items;
+    int capacity_of_knapsack;
 
 public:
     // debug function
@@ -42,6 +43,13 @@ public:
     }
     [[nodiscard]] int get_num_items() const {
         return num_items;
+    }
+
+    void set_capacity_of_knapsack(int input_num_items) {
+        capacity_of_knapsack = input_num_items;
+    }
+    [[nodiscard]] int get_capacity_of_knapsack() const {
+        return capacity_of_knapsack;
     }
 };
 

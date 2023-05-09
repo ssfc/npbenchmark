@@ -49,7 +49,8 @@ int main()
         else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
         {
             line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
-            cout << "CAPACITY OF KNAPSACK:" << line << endl;
+            test.set_capacity_of_knapsack(stoi(line));
+            cout << "CAPACITY OF KNAPSACK:" << test.get_capacity_of_knapsack() << endl;
         }
         else if (line.find("MIN SPEED:") != string::npos)
         {
