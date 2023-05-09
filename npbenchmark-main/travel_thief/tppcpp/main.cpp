@@ -63,7 +63,6 @@ int main()
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
             cout << "EDGE_WEIGHT_TYPE:" << line << endl;
         }
-
         else if (line == "NODE_COORD_SECTION\t(INDEX, X, Y): ")
         {
             cout << "NODE_COORD_SECTION\t(INDEX, X, Y): " << endl;
