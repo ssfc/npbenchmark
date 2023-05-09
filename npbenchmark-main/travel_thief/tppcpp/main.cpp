@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+    TravelThief test;
     string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
@@ -24,7 +25,8 @@ int main()
         if (line.find("PROBLEM NAME:") != string::npos)
         {
             line.erase(0, 14); // 删除"PROBLEM NAME: "，保留问题名称
-            cout << "PROBLEM NAME:" << line << endl;
+            test.set_problem_name(line);
+            cout << "PROBLEM NAME:" << test.get_problem_name() << endl;
         }
         else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
         {

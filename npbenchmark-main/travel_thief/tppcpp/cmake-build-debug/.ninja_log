@@ -1,3 +1,6 @@
 # ninja log v5
 5	579	7053029241639306	CMakeFiles/tppcpp.dir/main.cpp.obj	148c0006ded7b395
 580	737	7053029243174446	tppcpp.exe	a4f991e58576ce70
+12	112	7053240336152158	CMakeFiles/tppcpp.dir/travel_thief.cpp.obj	2a9e386223fc5c04
+6	586	7053240340886586	CMakeFiles/tppcpp.dir/main.cpp.obj	148c0006ded7b395
+586	761	7053240342597354	tppcpp.exe	aa02eaca3e886e9a
