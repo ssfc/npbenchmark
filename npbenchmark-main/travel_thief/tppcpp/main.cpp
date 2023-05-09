@@ -37,7 +37,8 @@ int main()
         else if (line.find("DIMENSION:") != string::npos)
         {
             line.erase(0, 11); // 删除"DIMENSION: "，保留维度
-            cout << "DIMENSION:" << line << endl;
+            test.set_dimension(stoi(line));
+            cout << "DIMENSION:" << test.get_dimension() << endl;
         }
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {

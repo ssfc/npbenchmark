@@ -11,6 +11,7 @@
 class TravelThief{
     std::string problem_name;
     std::string knapsack_data_type;
+    int dimension;
 
 public:
     // debug function
@@ -26,6 +27,13 @@ public:
     }
     std::string get_knapsack_data_type() {
         return knapsack_data_type;
+    }
+
+    void set_dimension(int input_dimension) {
+        dimension = input_dimension;
+    }
+    [[nodiscard]] int get_dimension() const {
+        return dimension;
     }
 };
 
