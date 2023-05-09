@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 
+#include "travel_thief.h"
+
 using namespace std;
 
 int main()
