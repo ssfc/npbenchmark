@@ -3,4 +3,4 @@ project(tppcpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(tppcpp main.cpp)
+add_executable(tppcpp main.cpp travel_thief.h travel_thief.cpp)
