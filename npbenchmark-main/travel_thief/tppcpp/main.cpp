@@ -43,7 +43,8 @@ int main()
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {
             line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
-            cout << "NUMBER OF ITEMS:" << line << endl;
+            test.set_num_items(stoi(line));
+            cout << "NUMBER OF ITEMS:" << test.get_num_items() << endl;
         }
         else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
         {
