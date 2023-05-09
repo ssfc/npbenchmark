@@ -39,22 +39,34 @@ int main()
         {
             line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
             cout << "物品数量：" << line << endl;
-        } else if (line.find("CAPACITY OF KNAPSACK:") != string::npos) {
+        }
+        else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
+        {
             line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
             cout << "背包容量：" << line << endl;
-        } else if (line.find("MIN SPEED:") != string::npos) {
+        }
+        else if (line.find("MIN SPEED:") != string::npos)
+        {
             line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
             cout << "最小速度：" << line << endl;
-        } else if (line.find("MAX SPEED:") != string::npos) {
+        }
+        else if (line.find("MAX SPEED:") != string::npos)
+        {
             line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
             cout << "最大速度：" << line << endl;
-        } else if (line.find("RENTING RATIO:") != string::npos) {
+        }
+        else if (line.find("RENTING RATIO:") != string::npos)
+        {
             line.erase(0, 14); // 删除"RENTING RATIO: "，保留租金比率
             cout << "租金比率：" << line << endl;
-        } else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos) {
+        }
+        else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
+        {
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
             cout << "边权类型：" << line << endl;
-        } else if (line == "NODE_COORD_SECTION  (INDEX, X, Y):") {
+        }
+        else if (line == "NODE_COORD_SECTION  (INDEX, X, Y):")
+        {
             cout << "节点坐标：" << endl;
             while (getline(file, line)) {
                 if (line.empty()) {
