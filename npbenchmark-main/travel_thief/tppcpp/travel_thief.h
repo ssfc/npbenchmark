@@ -15,6 +15,7 @@ class TravelThief{
     int num_items;
     int capacity_of_knapsack;
     double min_speed;
+    double max_speed;
 
 public:
     // debug function
@@ -58,6 +59,13 @@ public:
     }
     [[nodiscard]] double get_min_speed() const {
         return min_speed;
+    }
+
+    void set_max_speed(double input_max_speed) {
+        max_speed = input_max_speed;
+    }
+    [[nodiscard]] double get_max_speed() const {
+        return max_speed;
     }
 };
 

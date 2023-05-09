@@ -61,7 +61,8 @@ int main()
         else if (line.find("MAX SPEED:") != string::npos)
         {
             line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
-            cout << "MAX SPEED:" << line << endl;
+            test.set_max_speed(stod(line));
+            cout << "MAX SPEED:" << test.get_max_speed() << endl;
         }
         else if (line.find("RENTING RATIO:") != string::npos)
         {
