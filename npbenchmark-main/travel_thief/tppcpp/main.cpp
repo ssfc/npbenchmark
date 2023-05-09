@@ -80,7 +80,7 @@ int main()
             cout << "NODE_COORD_SECTION\t(INDEX, X, Y): " << endl;
             while (getline(file, line))
             {
-                if (line != "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): ")
+                if (line.find("ITEMS SECTION") == string::npos)
                 {
                     int index, x, y;
                     // 从字符串中解析出节点索引、横坐标、纵坐标
