@@ -65,9 +65,10 @@ int main()
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
             cout << "EDGE_WEIGHT_TYPE:" << line << endl;
         }
+        /*
         else if (line == "NODE_COORD_SECTION\t(INDEX, X, Y): ")
         {
-            cout << "NODE COORD: " << endl;
+            cout << "NODE_COORD_SECTION\t(INDEX, X, Y): " << endl;
             while (getline(file, line))
             {
                 if (line == "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): ")
@@ -78,19 +79,20 @@ int main()
                 sscanf(line.c_str(), "%d %d %d", &index, &x, &y); // 从字符串中解析出节点索引、横坐标、纵坐标
                 cout << index << "\t" << x << "\t" << y << endl; // 输出节点坐标
             }
-        }
+        }*/
         else if (line == "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): ")
         {
-            cout << "ITEMS SECTION: " << endl;
+            cout << "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): " << endl;
             while (getline(file, line))
             {
                 if (line.empty())
                 {
                     break; // 节点坐标结束
                 }
-                int index, x, y;
-                sscanf(line.c_str(), "%d %d %d", &index, &x, &y); // 从字符串中解析出节点索引、横坐标、纵坐标
-                cout << index << "\t" << x << "\t" << y << endl; // 输出节点坐标
+                int index, profit, weight, assigned_node;
+                // 从字符串中解析出节点索引、横坐标、纵坐标
+                sscanf(line.c_str(), "%d %d %d %d", &index, &profit, &weight, &assigned_node);
+                cout << index << "\t" << profit << "\t" << weight << "\t" << assigned_node << endl; // 输出节点坐标
             }
         }
 
