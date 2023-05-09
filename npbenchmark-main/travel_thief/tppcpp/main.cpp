@@ -31,7 +31,8 @@ int main()
         else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
         {
             line.erase(0, 20); // 删除"KNAPSACK DATA TYPE: "，保留背包数据类型
-            cout << "KNAPSACK DATA TYPE:" << line << endl;
+            test.set_knapsack_data_type(line);
+            cout << "KNAPSACK DATA TYPE:" << test.get_knapsack_data_type() << endl;
         }
         else if (line.find("DIMENSION:") != string::npos)
         {
