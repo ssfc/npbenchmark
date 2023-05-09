@@ -10,6 +10,7 @@
 
 class TravelThief{
     std::string problem_name;
+    std::string knapsack_data_type;
 
 public:
     // debug function
@@ -18,6 +19,13 @@ public:
     }
     std::string get_problem_name() {
         return problem_name;
+    }
+
+    void set_knapsack_data_type(std::string input_knapsack_data_type) {
+        knapsack_data_type = std::move(input_knapsack_data_type);
+    }
+    std::string get_knapsack_data_type() {
+        return knapsack_data_type;
     }
 };
 
