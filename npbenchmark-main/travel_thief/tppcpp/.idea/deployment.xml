@@ -6,7 +6,7 @@
       <paths name="home-server">
         <serverdata>
           <mappings>
-            <mapping deploy="/tppcpp" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/tppcpp/cmake-build-debug" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

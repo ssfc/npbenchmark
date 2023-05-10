@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     TravelThief test;
-    string filename = "./data/a280_n279_bounded-strongly-corr_01.ttp";
+    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
     if(!file.is_open())
