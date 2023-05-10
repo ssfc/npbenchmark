@@ -78,7 +78,8 @@ int main()
         else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
         {
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
-            cout << "EDGE_WEIGHT_TYPE:" << line << endl;
+            test.set_edge_weight_type(line);
+            cout << "EDGE_WEIGHT_TYPE:" << test.get_edge_weight_type() << endl;
         }
         else if (line.find("NODE_COORD_SECTION") != string::npos)
         {
@@ -92,7 +93,7 @@ int main()
                     replace(line.begin(), line.end(), '\t', ' ');
                     istringstream iss(line);
                     iss >> index >> x >> y;
-                    cout << index << " " << x << " " << y << endl; // 输出节点坐标
+                    // cout << index << " " << x << " " << y << endl; // 输出节点坐标
                     test_num_node_cord++;
                 }
                 else
@@ -110,7 +111,7 @@ int main()
                         istringstream iss(line);
                         iss >> index >> profit >> weight >> assigned_node;
                         // 输出节点坐标
-                        cout << index << " " << profit << " " << weight << " " << assigned_node << endl;
+                        // cout << index << " " << profit << " " << weight << " " << assigned_node << endl;
                         test_num_item_section++;
                     }
                 }

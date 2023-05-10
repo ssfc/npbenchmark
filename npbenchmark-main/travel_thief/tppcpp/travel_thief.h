@@ -17,6 +17,7 @@ class TravelThief{
     double min_speed;
     double max_speed;
     double renting_ratio;
+    std::string edge_weight_type;
 
 public:
     // debug function
@@ -74,6 +75,13 @@ public:
     }
     [[nodiscard]] double get_renting_ratio() const {
         return renting_ratio;
+    }
+
+    void set_edge_weight_type(std::string input_edge_weight_type) {
+        edge_weight_type = std::move(input_edge_weight_type);
+    }
+    [[nodiscard]] std::string get_edge_weight_type() const {
+        return edge_weight_type;
     }
 };
 
