@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <algorithm>
 
 #include "travel_thief.h"
 
@@ -19,6 +20,8 @@ int main()
         return 1;
     }
 
+    int test_num_node_cord = 0;
+    int test_num_item_section = 0;
     string line;
     while (getline(file, line))
     {
@@ -79,20 +82,22 @@ int main()
         }
         else if (line.find("NODE_COORD_SECTION") != string::npos)
         {
-            cout << "NODE_COORD_SECTION\t(INDEX, X, Y): " << endl;
+            cout << "NODE_COORD_SECTION (INDEX, X, Y): " << endl;
             while (getline(file, line))
             {
                 if (line.find("ITEMS SECTION") == string::npos)
                 {
                     int index, x, y;
                     // 从字符串中解析出节点索引、横坐标、纵坐标
+                    replace(line.begin(), line.end(), '\t', ' ');
                     istringstream iss(line);
                     iss >> index >> x >> y;
-                    cout << index << "\t" << x << "\t" << y << endl; // 输出节点坐标
+                    cout << index << " " << x << " " << y << endl; // 输出节点坐标
+                    test_num_node_cord++;
                 }
                 else
                 {
-                    cout << "ITEMS SECTION\t(INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): " << endl;
+                    cout << "ITEMS SECTION (INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): " << endl;
                     while (getline(file, line))
                     {
                         if (line.empty())
@@ -101,10 +106,12 @@ int main()
                         }
                         int index, profit, weight, assigned_node;
                         // 从字符串中解析出节点索引、横坐标、纵坐标
+                        replace(line.begin(), line.end(), '\t', ' ');
                         istringstream iss(line);
                         iss >> index >> profit >> weight >> assigned_node;
                         // 输出节点坐标
-                        cout << index << "\t" << profit << "\t" << weight << "\t" << assigned_node << endl;
+                        cout << index << " " << profit << " " << weight << " " << assigned_node << endl;
+                        test_num_item_section++;
                     }
                 }
             }
@@ -112,5 +119,7 @@ int main()
     }
 
     file.close();
+    cout << "test_num_node_cord: " << test_num_node_cord << endl;
+    cout << "test_num_item_section: " << test_num_item_section << endl;
     return 0;
 }
