@@ -54,12 +54,14 @@ int main()
         }
         else if (line.find("MIN SPEED:") != string::npos)
         {
+            cout << "MIN SPEED find" << endl;
             line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
             test.set_min_speed(stod(line));
             cout << "MIN SPEED:" << test.get_min_speed() << endl;
         }
         else if (line.find("MAX SPEED:") != string::npos)
         {
+            cout << "MAX SPEED find" << endl;
             line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
             test.set_max_speed(stod(line));
             cout << "MAX SPEED:" << test.get_max_speed() << endl;
