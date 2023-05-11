@@ -7,6 +7,7 @@
 
 #include <string>
 #include <utility>
+#include <vector>
 
 struct NodeCoord{
     int x;
@@ -26,7 +27,7 @@ class TravelThief{
     std::vector<NodeCoord> node_coords;
 
 public:
-    // debug function
+
     void set_problem_name(std::string input_problem_name) {
         problem_name = std::move(input_problem_name);
     }
@@ -94,6 +95,8 @@ public:
     {
         node_coords.push_back(this_node_coord);
     }
+
+    void print_node_coords();
 };
 
 #endif //TPPCPP_TRAVEL_THIEF_H
