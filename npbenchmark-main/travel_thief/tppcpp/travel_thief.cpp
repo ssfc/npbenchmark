@@ -14,10 +14,10 @@ using namespace std;
 
 void TravelThief::print_node_coords()
 {
-    cout<< "node coords: ";
+    cerr << "num node coords: " << node_coords.size() << endl;
     for(int i=0;i<node_coords.size();i++)
     {
-
+        cerr << i << " " << node_coords[i].x << " " << node_coords[i].y << endl;
     }
 }
 
