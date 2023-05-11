@@ -14,6 +14,12 @@ struct NodeCoord{
     int y;
 };
 
+struct Item{
+    int profit;
+    int weight;
+    int assigned_node;
+};
+
 class TravelThief{
     std::string problem_name;
     std::string knapsack_data_type;
