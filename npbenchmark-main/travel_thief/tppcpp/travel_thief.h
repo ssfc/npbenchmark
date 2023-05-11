@@ -89,6 +89,11 @@ public:
     [[nodiscard]] std::string get_edge_weight_type() const {
         return edge_weight_type;
     }
+
+    void add_node_coords(NodeCoord this_node_coord)
+    {
+        node_coords.push_back(this_node_coord);
+    }
 };
 
 #endif //TPPCPP_TRAVEL_THIEF_H
