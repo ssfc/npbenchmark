@@ -8,6 +8,11 @@
 #include <string>
 #include <utility>
 
+struct NodeCoord{
+    int x;
+    int y;
+};
+
 class TravelThief{
     std::string problem_name;
     std::string knapsack_data_type;
@@ -18,6 +23,7 @@ class TravelThief{
     double max_speed;
     double renting_ratio;
     std::string edge_weight_type;
+    std::vector<NodeCoord> node_coords;
 
 public:
     // debug function

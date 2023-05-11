@@ -93,7 +93,9 @@ int main()
                     replace(line.begin(), line.end(), '\t', ' ');
                     istringstream iss(line);
                     iss >> index >> x >> y;
-                    // cout << index << " " << x << " " << y << endl; // 输出节点坐标
+                    NodeCoord temp = {x, y};
+
+                    // cout << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
                     test_num_node_cord++;
                 }
                 else
