@@ -115,6 +115,8 @@ int main()
                         iss >> index >> profit >> weight >> assigned_node;
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
+                        Item temp = {profit, weight, assigned_node};
+                        test.add_item(temp);
                         test_num_item_section++;
                     }
                 }
@@ -126,6 +128,7 @@ int main()
     // cerr << "test_num_node_cord: " << test_num_node_cord << endl;
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
     test.print_node_coords();
+    test.print_items();
 
     return 0;
 }

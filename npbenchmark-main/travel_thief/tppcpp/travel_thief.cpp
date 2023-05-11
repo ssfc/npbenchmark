@@ -21,4 +21,11 @@ void TravelThief::print_node_coords()
     }
 }
 
-
+void TravelThief::print_items()
+{
+    cerr << "num items: " << items.size() << endl;
+    for(int i=0;i<items.size();i++)
+    {
+        cerr << i << " " << items[i].profit << " " << items[i].weight << " " << items[i].assigned_node << endl;
+    }
+}

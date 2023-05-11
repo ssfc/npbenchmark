@@ -31,6 +31,7 @@ class TravelThief{
     double renting_ratio;
     std::string edge_weight_type;
     std::vector<NodeCoord> node_coords;
+    std::vector<Item> items;
 
 public:
 
@@ -103,6 +104,13 @@ public:
     }
 
     void print_node_coords();
+
+    void add_item(Item this_item)
+    {
+        items.push_back(this_item);
+    }
+
+    void print_items();
 };
 
 #endif //TPPCPP_TRAVEL_THIEF_H
