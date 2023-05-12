@@ -72,6 +72,8 @@ vmax:  maximal speeds that the thief can move
 
 vmin:  minimum speeds that the thief can move
 
+yik = {0, 1}  //  
+
 ## 3. BENCHMARK SET
 
 (Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
