@@ -80,7 +80,7 @@ tour Π = (x1, . . . , xn)  // xi是城市顶点；
 
 packing plan P = (y21, . . . , ynmi )   // yik, binary variable equal to one when the item k is picked up in the city i
 
-
+Z(pai, P) = sum(sum(pik*yik)) + 
 
 ## 3. BENCHMARK SET
 
