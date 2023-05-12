@@ -54,7 +54,7 @@ N = {1, . . . , n}  // a set of cities
 
 dij:  a distance between city i and j
 
-Mi = {1, . . . , mi}  // Every city i but the first contains a set of items
+Mi = {1, . . . , mi}  // items in city i
 
 Iik:  Each item k positioned in the city i 
 
