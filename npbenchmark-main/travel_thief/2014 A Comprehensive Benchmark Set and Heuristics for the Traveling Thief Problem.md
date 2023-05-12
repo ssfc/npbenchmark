@@ -80,7 +80,7 @@ tour Π = (x1, . . . , xn)  // xi是城市顶点；
 
 packing plan P = (y21, . . . , ynmi )   // yik, binary variable equal to one when the item k is picked up in the city i
 
-Z(pai, P) = sum(sum(pik*yik)) - R ( dxnx1/(vmax-vWxn) + sum(dxixi+1) )  // 分母的含义是速度随重量减小
+目标函数: Z(pai, P) = sum(sum(pik*yik)) - R ( dxnx1/(vmax-vWxn) + sum(dxixi+1) )  // 分母的含义是速度随重量减小； 括号里面的是旅行时间。R是指每个时间单位的租金。
 
 ## 3. BENCHMARK SET
 
