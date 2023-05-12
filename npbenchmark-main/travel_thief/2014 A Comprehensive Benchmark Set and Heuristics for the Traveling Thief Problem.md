@@ -72,7 +72,9 @@ vmax:  maximal speeds that the thief can move
 
 vmin:  minimum speeds that the thief can move
 
-yik = {0, 1}  //  
+yik = {0, 1}  // binary variable equal to one when the item k is picked up in the city i
+
+ 
 
 ## 3. BENCHMARK SET
 
