@@ -52,6 +52,10 @@ A: 根据网页正文，本文的作者有：
 
 N = {1, . . . , n}  // a set of cities 
 
+dij:  a distance between city i and j
+
+
+
 ## 3. BENCHMARK SET
 
 (Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
