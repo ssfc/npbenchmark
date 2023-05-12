@@ -56,7 +56,13 @@ dij:  a distance between city i and j
 
 Mi = {1, . . . , mi}  // Every city i but the first contains a set of items
 
+Iik:  Each item k positioned in the city i 
 
+pik:  value of item k positioned in the city i 
+
+wik:  weight of item k positioned in the city i 
+
+Iik ∼ (pik, wik)  
 
 ## 3. BENCHMARK SET
 
