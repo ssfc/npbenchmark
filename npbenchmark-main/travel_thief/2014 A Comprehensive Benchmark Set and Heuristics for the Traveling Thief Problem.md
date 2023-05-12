@@ -74,7 +74,11 @@ vmin:  minimum speeds that the thief can move
 
 yik = {0, 1}  // binary variable equal to one when the item k is picked up in the city i
 
- 
+Wi:  total weight of collected items when the thief leaves the city i
+
+tour Π = (x1, . . . , xn)  // 
+
+packing plan P = (y21, . . . , ynmi )  
 
 ## 3. BENCHMARK SET
 
