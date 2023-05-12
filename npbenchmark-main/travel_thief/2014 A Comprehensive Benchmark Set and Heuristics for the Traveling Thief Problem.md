@@ -64,6 +64,8 @@ wik:  weight of item k positioned in the city i
 
 Iik ∼ (pik, wik)  
 
+W:  maximum possible weight 
+
 
 
 ## 3. BENCHMARK SET
