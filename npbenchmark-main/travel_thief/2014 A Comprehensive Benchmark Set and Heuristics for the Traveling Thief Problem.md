@@ -66,7 +66,11 @@ Iik ∼ (pik, wik)
 
 W:  maximum possible weight 
 
+R: renting rate 
 
+vmax:  maximal speeds that the thief can move
+
+vmin:  minimum speeds that the thief can move
 
 ## 3. BENCHMARK SET
 
