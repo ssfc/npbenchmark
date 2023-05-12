@@ -54,6 +54,8 @@ N = {1, . . . , n}  // a set of cities
 
 dij:  a distance between city i and j
 
+Mi = {1, . . . , mi}  // Every city i but the first contains a set of items
+
 
 
 ## 3. BENCHMARK SET
