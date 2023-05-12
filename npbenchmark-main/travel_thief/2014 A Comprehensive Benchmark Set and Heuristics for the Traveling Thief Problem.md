@@ -64,6 +64,8 @@ wik:  weight of item k positioned in the city i
 
 Iik ∼ (pik, wik)  
 
+
+
 ## 3. BENCHMARK SET
 
 (Prompt: Generalize Section "BENCHMARK SET" of this article in Chinese)
