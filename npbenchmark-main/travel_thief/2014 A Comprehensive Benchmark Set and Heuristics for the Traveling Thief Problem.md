@@ -76,9 +76,11 @@ yik = {0, 1}  // binary variable equal to one when the item k is picked up in th
 
 Wi:  total weight of collected items when the thief leaves the city i
 
-tour Π = (x1, . . . , xn)  // 
+tour Π = (x1, . . . , xn)  // xi是城市顶点； 
 
-packing plan P = (y21, . . . , ynmi )  
+packing plan P = (y21, . . . , ynmi )   // yik, binary variable equal to one when the item k is picked up in the city i
+
+
 
 ## 3. BENCHMARK SET
 
