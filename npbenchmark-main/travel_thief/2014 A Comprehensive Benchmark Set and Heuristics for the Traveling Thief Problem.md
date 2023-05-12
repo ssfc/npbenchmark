@@ -62,6 +62,12 @@ A: 根据网页正文，本文的作者有：
 
 本文的第四节提出了三种启发式算法来求解TTP问题，分别是单纯贪心算法（Simple Heuristic, SH）、随机局部搜索算法（random local search, RLS）和（1+1）进化算法（evolutionary algorithm, EA）。这三种算法都是基于固定的TSP路线来优化背包装载方案的，即假设TSP路线已经由其他高效的算法给出。**SH算法**是一种简单的贪心策略，它按照物品的单位价值从高到低的顺序来选择物品，直到背包装满或者没有更多的物品可选。**RLS算法**是一种局部搜索策略，它从一个空背包开始，每次随机选择一个物品改变其装载状态，如果得到了更好的解就接受，否则就拒绝。**EA算法**是一种进化策略，它也从一个空背包开始，每次对每个物品以一定的概率改变其装载状态，产生一个新的解，如果新解比旧解更好或者相等就替换旧解。
 
+### 4.1 Constructive Heuristic
+
+(Prompt: Generalize Section "4.1 Constructive Heuristic" of this article in Chinese)
+
+4.1节介绍了一种用于旅行商盗贼问题（TTP）的构造启发式算法。TTP是旅行商问题（TSP）和背包问题（KP）的结合。该启发式算法分为两个阶段：第一阶段，使用修改后的链式林-科尼汉算法构造一个TSP路径；第二阶段，使用一个简单的爬山算法将物品装入背包。该启发式算法快速且易于实现，能够为TTP实例生成较好的解决方案。
+
 ## 5. EXPERIMENTS
 
 (Prompt: Generalize Section "EXPERIMENTS" of this article in Chinese)
