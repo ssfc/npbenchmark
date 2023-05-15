@@ -31,6 +31,7 @@ class TravelThief{
     double renting_ratio;
     std::string edge_weight_type;
     std::vector<NodeCoord> node_coords;
+    std::vector<std::vector<double>> distance;
     std::vector<Item> items;
 
 public:
