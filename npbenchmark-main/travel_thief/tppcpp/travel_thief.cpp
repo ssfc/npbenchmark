@@ -8,7 +8,8 @@
 
 using namespace std;
 
-TravelThief::TravelThief()
+TravelThief::TravelThief():
+problem_name("")
 {
 
 }
