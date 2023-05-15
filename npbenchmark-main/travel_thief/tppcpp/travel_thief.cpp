@@ -55,6 +55,13 @@ void TravelThief::compute_distances()
 
 void TravelThief::solver()
 {
+    // distances for sample;
+    distances.resize(4);
+    for(auto & distance : distances)
+    {
+        distance.resize(4, 0);
+    }
+    distances[0][1] = 5;
     
 }
 
