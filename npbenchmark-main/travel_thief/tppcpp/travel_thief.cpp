@@ -3,7 +3,7 @@
 //
 
 #include "travel_thief.h"
-
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -43,9 +43,9 @@ void TravelThief::compute_distances()
     {
         for(int j=0;j<node_coords.size();j++)
         {
-            distances[i][j] = distances[j][i] =
+            distances[i][j] = distances[j][i] = sqrt(
                     (node_coords[i].x - node_coords[j].x) * (node_coords[i].x - node_coords[j].x)
-                    + (node_coords[i].y - node_coords[j].y) * (node_coords[i].y - node_coords[j].y);
+                    + (node_coords[i].y - node_coords[j].y) * (node_coords[i].y - node_coords[j].y));
         }
     }
 
