@@ -50,6 +50,7 @@ void TravelThief::compute_distances()
     }
 
     cerr << "distance 0 and 1: " << distances[0][1] << endl;
+    cerr << "distance 1 and 2: " << distances[1][2] << endl;
 }
 
 void TravelThief::print_items()
