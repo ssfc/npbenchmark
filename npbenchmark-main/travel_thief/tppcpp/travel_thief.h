@@ -31,10 +31,12 @@ class TravelThief{
     double renting_ratio;
     std::string edge_weight_type;
     std::vector<NodeCoord> node_coords;
-    std::vector<std::vector<double>> distance;
+    std::vector<std::vector<double>> distances;
     std::vector<Item> items;
 
 public:
+    TravelThief();
+    ~TravelThief();
 
     void set_problem_name(std::string input_problem_name) {
         problem_name = std::move(input_problem_name);
@@ -110,6 +112,8 @@ public:
     {
         items.push_back(this_item);
     }
+
+    void compute_distances();
 
     void print_items();
 };
