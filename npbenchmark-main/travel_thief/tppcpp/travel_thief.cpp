@@ -9,7 +9,15 @@
 using namespace std;
 
 TravelThief::TravelThief():
-problem_name("")
+problem_name(""),
+knapsack_data_type(""),
+dimension(0),
+num_items(0),
+capacity_of_knapsack(0),
+min_speed(0.0),
+max_speed(0.0),
+renting_ratio(0.0),
+edge_weight_type("")
 {
 
 }
