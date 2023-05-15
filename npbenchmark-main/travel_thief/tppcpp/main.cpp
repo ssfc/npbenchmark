@@ -130,6 +130,7 @@ int main()
     test.print_node_coords();
     // test.print_items();
     test.compute_distances();
+    test.solver();
 
     return 0;
 }

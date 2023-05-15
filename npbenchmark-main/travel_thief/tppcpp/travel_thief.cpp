@@ -53,6 +53,11 @@ void TravelThief::compute_distances()
     cerr << "distance 1 and 2: " << distances[1][2] << endl;
 }
 
+void TravelThief::solver()
+{
+    
+}
+
 void TravelThief::print_items()
 {
     cerr << "num items: " << items.size() << endl;

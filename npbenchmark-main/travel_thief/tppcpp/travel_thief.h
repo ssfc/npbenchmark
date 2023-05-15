@@ -115,6 +115,8 @@ public:
 
     void compute_distances();
 
+    void solver();
+
     void print_items();
 };
 
