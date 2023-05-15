@@ -129,7 +129,7 @@ int main()
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
     test.print_node_coords();
     // test.print_items();
-    // test.compute_distances();
+    test.compute_distances();
 
     return 0;
 }

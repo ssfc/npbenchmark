@@ -33,6 +33,12 @@ void TravelThief::print_node_coords()
 
 void TravelThief::compute_distances()
 {
+    distances.resize(node_coords.size());
+    for(int i=0;i<node_coords.size();i++)
+    {
+        distances[i].resize(node_coords.size(), 0.0);
+    }
+
     for(int i=0;i<node_coords.size();i++)
     {
         for(int j=0;j<node_coords.size();j++)
