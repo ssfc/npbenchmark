@@ -136,7 +136,7 @@ public class TTPInstance {
      * and item numbers start from 0.
      * 
      * @param distances         a n by n matrix that shows the distances between the cities (there are n cities)
-     * @param weights           the weight of each item (1 by m)
+     * @param weights           the weight of each item (1 by m, m is num of items)
      * @param values            the profit of each item (1 by m)
      * @param av                a m by n matrix showing if the ith item is available in the jth city. 
      * @param tour              a 1 by n+1 array showing the tour (a complete tour)

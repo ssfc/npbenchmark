@@ -115,7 +115,7 @@ int main()
                         iss >> index >> profit >> weight >> assigned_node;
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
-                        Item temp = {profit, weight, assigned_node};
+                        Item temp = {profit, weight, assigned_node - 1};
                         test.add_item(temp);
                         test_num_item_section++;
                     }
