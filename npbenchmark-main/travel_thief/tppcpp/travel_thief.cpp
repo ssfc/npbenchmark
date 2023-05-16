@@ -53,7 +53,7 @@ void TravelThief::compute_distances()
     cerr << "distance 1 and 2: " << distances[1][2] << endl;
 }
 
-void TravelThief::solver()
+void TravelThief::sample_solver()
 {
     // sample distances;
     distances.resize(4);
@@ -76,6 +76,9 @@ void TravelThief::solver()
     items[3] = {40, 1,2};
     items[4] = {40, 1,2};
     items[5] = {20, 2,3};
+
+    // capacity
+    capacity_of_knapsack = 3;
 }
 
 void TravelThief::print_items()
