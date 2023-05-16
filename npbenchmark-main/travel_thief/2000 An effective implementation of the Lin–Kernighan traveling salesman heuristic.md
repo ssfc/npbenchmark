@@ -8,6 +8,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000
 
 https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000%20An%20effective%20implementation%20of%20the%20Lin%E2%80%93Kernighan%20traveling%20salesman%20heuristic.md
 
+初始解用现成的LKH算法（因为自己写太复杂了, 据说上万行）；后面调整，搜索阶段点交换。
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
