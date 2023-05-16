@@ -30,7 +30,7 @@ class TravelThief{
     double max_speed;
     double renting_ratio;
     std::string edge_weight_type;
-    std::vector<NodeCoord> node_coords;
+    std::vector<NodeCoord> city_coords;
     std::vector<std::vector<double>> distances;
     std::vector<Item> items;
     std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
@@ -104,7 +104,7 @@ public:
 
     void add_node_coords(NodeCoord this_node_coord)
     {
-        node_coords.push_back(this_node_coord);
+        city_coords.push_back(this_node_coord);
     }
 
     void print_node_coords();

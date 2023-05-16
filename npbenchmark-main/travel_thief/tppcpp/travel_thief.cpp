@@ -24,28 +24,28 @@ TravelThief::~TravelThief()
 
 void TravelThief::print_node_coords()
 {
-    cerr << "num node coords: " << node_coords.size() << endl;
-    for(int i=0;i<node_coords.size();i++)
+    cerr << "num node coords: " << city_coords.size() << endl;
+    for(int i=0; i < city_coords.size(); i++)
     {
-        cerr << i << " " << node_coords[i].x << " " << node_coords[i].y << endl;
+        cerr << i << " " << city_coords[i].x << " " << city_coords[i].y << endl;
     }
 }
 
 void TravelThief::compute_distances()
 {
-    distances.resize(node_coords.size());
-    for(int i=0;i<node_coords.size();i++)
+    distances.resize(city_coords.size());
+    for(int i=0; i < city_coords.size(); i++)
     {
-        distances[i].resize(node_coords.size(), 0.0);
+        distances[i].resize(city_coords.size(), 0.0);
     }
 
-    for(int i=0;i<node_coords.size();i++)
+    for(int i=0; i < city_coords.size(); i++)
     {
-        for(int j=0;j<node_coords.size();j++)
+        for(int j=0; j < city_coords.size(); j++)
         {
             distances[i][j] = distances[j][i] = sqrt(
-                    (node_coords[i].x - node_coords[j].x) * (node_coords[i].x - node_coords[j].x)
-                    + (node_coords[i].y - node_coords[j].y) * (node_coords[i].y - node_coords[j].y));
+                    (city_coords[i].x - city_coords[j].x) * (city_coords[i].x - city_coords[j].x)
+                    + (city_coords[i].y - city_coords[j].y) * (city_coords[i].y - city_coords[j].y));
         }
     }
 
