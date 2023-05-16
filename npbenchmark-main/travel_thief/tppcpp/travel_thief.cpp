@@ -73,7 +73,8 @@ void TravelThief::sample_solver()
     distances[2][3] = distances[3][2] = 4;
 
     // sample items;
-    items.resize(6);
+    num_items = 6;
+    items.resize(num_items);
     items[0] = {20, 2, 1};
     items[1] = {30, 3, 1};
     items[2] = {100, 3,2};
