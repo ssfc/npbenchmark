@@ -95,7 +95,7 @@ lambda-opt; 替换了lambda条边使路径更短
 
 lambda常设为2或3
 
-
+LK算法在执行时变换lambda的值。如果r links被考虑，r+1 links也被考虑。
 
 ## 4. The modified Lin-Kernighan algorithm
 
