@@ -58,16 +58,7 @@ void TravelThief::sample_solver()
     problem_name = "sample name";
     knapsack_data_type = "sample knapsack type";
     num_cities = 4;
-
-    // sample items;
     num_items = 6;
-    items.resize(num_items);
-    items[0] = {20, 2, 1};
-    items[1] = {30, 3, 1};
-    items[2] = {100, 3,2};
-    items[3] = {40, 1,2};
-    items[4] = {40, 1,2};
-    items[5] = {20, 2,3};
 
     capacity = 3; // capacity
     min_speed = 0.1;
@@ -87,6 +78,15 @@ void TravelThief::sample_solver()
     distances[1][2] = distances[2][1] = 5;
     distances[1][3] = distances[3][1] = 6;
     distances[2][3] = distances[3][2] = 4;
+
+    // sample items;
+    items.resize(num_items);
+    items[0] = {20, 2, 1};
+    items[1] = {30, 3, 1};
+    items[2] = {100, 3,2};
+    items[3] = {40, 1,2};
+    items[4] = {40, 1,2};
+    items[5] = {20, 2,3};
 }
 
 void TravelThief::print_items()
