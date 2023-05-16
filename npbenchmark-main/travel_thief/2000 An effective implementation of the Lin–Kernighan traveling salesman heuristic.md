@@ -89,7 +89,7 @@ ci1i2 + ci2i3 + ... + cini1
 
 (Prompt: Generalize Section "3.1 The basic algorithm" of this article in Chinese)
 
-2-opt algorithm; 交换路径中的两条边
+2-opt algorithm; 交叉四个顶点的连接方式
 
 
 
