@@ -56,7 +56,7 @@ void TravelThief::compute_distances()
 void TravelThief::sample_solver()
 {
     problem_name = "sample name";
-    knapsack_data_type = "sample type";
+    knapsack_data_type = "sample knapsack type";
     num_cities = 4;
 
     // sample distances;
@@ -85,6 +85,8 @@ void TravelThief::sample_solver()
     capacity = 3; // capacity
     min_speed = 0.1;
     max_speed = 1;
+    renting_ratio = 1;
+    edge_weight_type = "sample edge type";
 
 }
 
