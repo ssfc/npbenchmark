@@ -55,6 +55,10 @@ void TravelThief::compute_distances()
 
 void TravelThief::sample_solver()
 {
+    problem_name = "sample name";
+    knapsack_data_type = "sample type";
+    dimension = 4;
+
     // sample distances;
     distances.resize(4);
     for(auto & distance : distances)
