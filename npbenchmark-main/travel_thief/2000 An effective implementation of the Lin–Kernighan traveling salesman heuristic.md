@@ -119,7 +119,7 @@ Algorithm:
 4. Choose y1 = (t2, t3 ) 不属于 T such that G1 > 0. If this is not possible, go to Step 12.
 5. Let i = i+1.
 6. Choose xi = (t2i-1,t2i) Î T such that (a) if t2i is joined to t1 , the resulting configuration is a tour, T’, and (b) xi ¹ ys for all s < i. If T’ is a better tour than T, let T = T’ and go to Step 2.  (Comment: 如果在r较短的时候就找到了更优解，就开始下一次迭代)
-7. Choose yi = (t2i,t2i+1) Ï T such that (a) 
+7. Choose yi = (t2i,t2i+1) Ï T such that (a) Gi > 0, (b) yi ¹ xs for all s £ i, and (c) xi+1 exists. 
 
 ## 4. The modified Lin-Kernighan algorithm
 
