@@ -65,6 +65,8 @@ ci1i2 + ci2i3 + ... + cini1
 
 (Prompt: Generalize Section "2.2 Motivation" of this article in Chinese)
 
+这一节介绍了旅行商问题（TSP）的实际意义和应用领域。旅行商问题不仅是一个理论上的难题，也是一个有着广泛应用的问题。例如，在生产计划、物流、晶体学、机器人控制、电路板钻孔、DNA测序等领域，都可以把旅行商问题作为一个子问题来求解。在这些应用中，城市的概念可以表示客户、焊点、DNA片段等，而距离的概念可以表示行驶时间或成本，或者DNA片段之间的相似度。旅行商问题也出现在天文学中，因为天文学家观测多个源时，会希望最小化望远镜在源之间移动的时间；在这种问题中，旅行商问题可以嵌入到一个最优控制问题中。在许多应用中，还可能有额外的约束，如有限的资源或时间窗口。
+
 ## 3. The Lin-Kernighan algorithm
 
 (Prompt: Generalize Section "The Lin-Kernighan algorithm" of this article in Chinese)
