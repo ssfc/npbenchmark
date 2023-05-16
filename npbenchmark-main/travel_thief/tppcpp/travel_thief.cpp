@@ -59,19 +59,6 @@ void TravelThief::sample_solver()
     knapsack_data_type = "sample knapsack type";
     num_cities = 4;
 
-    // sample distances;
-    distances.resize(num_cities);
-    for(auto & distance : distances)
-    {
-        distance.resize(num_cities, 0.0);
-    }
-    distances[0][1] = distances[1][0] = 5;
-    distances[0][2] = distances[2][0] = 6;
-    distances[0][3] = distances[3][0] = 6;
-    distances[1][2] = distances[2][1] = 5;
-    distances[1][3] = distances[3][1] = 6;
-    distances[2][3] = distances[3][2] = 4;
-
     // sample items;
     num_items = 6;
     items.resize(num_items);
@@ -88,6 +75,18 @@ void TravelThief::sample_solver()
     renting_ratio = 1;
     edge_weight_type = "sample edge type";
 
+    // sample distances;
+    distances.resize(num_cities);
+    for(auto & distance : distances)
+    {
+        distance.resize(num_cities, 0.0);
+    }
+    distances[0][1] = distances[1][0] = 5;
+    distances[0][2] = distances[2][0] = 6;
+    distances[0][3] = distances[3][0] = 6;
+    distances[1][2] = distances[2][1] = 5;
+    distances[1][3] = distances[3][1] = 6;
+    distances[2][3] = distances[3][2] = 4;
 }
 
 void TravelThief::print_items()
