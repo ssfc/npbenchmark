@@ -14,7 +14,8 @@ TravelThief::TravelThief():
         capacity(0),
         min_speed(0.0),
         max_speed(0.0),
-        renting_ratio(0.0)
+        renting_ratio(0.0),
+        object_value(0.0)
 {
 
 }
@@ -92,7 +93,7 @@ void TravelThief::sample_solver()
     cerr << "speed capacity ratio: " << speed_capacity_ratio << endl;
 
     // object value of tour (1, 2, 4, 3) and object (0, 0, 0, 1, 1, 0)
-    
+
 }
 
 void TravelThief::print_items()

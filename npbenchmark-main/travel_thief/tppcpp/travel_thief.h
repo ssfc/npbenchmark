@@ -34,6 +34,7 @@ class TravelThief{
     std::vector<std::vector<double>> distances;
     std::vector<Item> items;
     std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
+    double object_value;
 
 public:
     TravelThief();
