@@ -9,12 +9,12 @@
 using namespace std;
 
 TravelThief::TravelThief():
-dimension(0),
-num_items(0),
-capacity_of_knapsack(0),
-min_speed(0.0),
-max_speed(0.0),
-renting_ratio(0.0)
+        dimension(0),
+        num_items(0),
+        capacity(0),
+        min_speed(0.0),
+        max_speed(0.0),
+        renting_ratio(0.0)
 {
 
 }
@@ -78,7 +78,7 @@ void TravelThief::sample_solver()
     items[5] = {20, 2,3};
 
     // capacity
-    capacity_of_knapsack = 3;
+    capacity = 3;
 }
 
 void TravelThief::print_items()

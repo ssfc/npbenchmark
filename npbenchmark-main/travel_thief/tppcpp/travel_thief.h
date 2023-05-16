@@ -25,7 +25,7 @@ class TravelThief{
     std::string knapsack_data_type;
     int dimension;
     int num_items;
-    int capacity_of_knapsack;
+    int capacity;
     double min_speed;
     double max_speed;
     double renting_ratio;
@@ -68,10 +68,10 @@ public:
     }
 
     void set_capacity_of_knapsack(int input_num_items) {
-        capacity_of_knapsack = input_num_items;
+        capacity = input_num_items;
     }
     [[nodiscard]] int get_capacity_of_knapsack() const {
-        return capacity_of_knapsack;
+        return capacity;
     }
 
     void set_min_speed(double input_min_speed) {
