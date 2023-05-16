@@ -97,9 +97,9 @@ lambda常设为2或3
 
 LK算法在执行时变换lambda的值。如果r links被考虑，r+1 links也被考虑。
 
-交换边X和Y是逐步构造的。
+交换边X和Y是逐步构造的。挑选构造零件。
 
-
+(x1, y1, x2, y2, x3, y3) 构成一个链条，两两共享顶点。
 
 ## 4. The modified Lin-Kernighan algorithm
 
