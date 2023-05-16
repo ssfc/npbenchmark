@@ -4,6 +4,10 @@
 
 Lin-Kernighan旅行商问题启发式算法的一种有效实现
 
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000%20An%20effective%20implementation%20of%20the%20Lin%E2%80%93Kernighan%20traveling%20salesman%20heuristic.pdf
+
+https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000%20An%20effective%20implementation%20of%20the%20Lin%E2%80%93Kernighan%20traveling%20salesman%20heuristic.md
+
 ## Abstract
 
 (Prompt: generalize abstract of this article in Chinese)
