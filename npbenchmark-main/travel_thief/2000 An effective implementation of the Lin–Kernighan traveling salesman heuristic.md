@@ -71,6 +71,10 @@ ci1i2 + ci2i3 + ... + cini1
 
 (Prompt: Generalize Section "2.3 Solution algorithms" of this article in Chinese)
 
+#### 2.3.1 Exact algorithm
+
+#### 2.3.2 Approximate algorithms
+
 ## 3. The Lin-Kernighan algorithm
 
 (Prompt: Generalize Section "The Lin-Kernighan algorithm" of this article in Chinese)
