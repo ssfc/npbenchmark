@@ -115,8 +115,8 @@ Algorithm:
 
 1. Generate a random initial tour T
 2. Let i = 1. Choose t1  // Comment: t是顶点，x和y都是边
-3. Choose x1 = (t1 ,t2 ) 属于 T
-4. 
+3. Choose x1 = (t1, t2 ) 属于 T
+4. Choose y1 = (t2, t3 ) 不属于 T such that G1 > 0
 
 ## 4. The modified Lin-Kernighan algorithm
 
