@@ -16,6 +16,10 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000
 
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
+这篇文章发表在《欧洲运筹学杂志》（European Journal of Operational Research），这是一份在运筹学领域有影响力的期刊。根据CCF排名，这份期刊属于C类。²³
+
+这篇文章在google scholar的引用次数是2020，截至2023年5月16日。
+
 ### Q: 是什么会议？
 
 ### Q: 用中文依次介绍本文作者
