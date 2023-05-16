@@ -61,6 +61,10 @@ ci1i2 + ci2i3 + ... + cini1
 - 如果满足三角不等式（cik ≤ cij + cjk对所有的i，j和k），那么问题是度量的。
 - 如果cij是平面上点之间的欧几里得距离，那么问题是欧几里得的。一个欧几里得问题当然也是对称的和度量的。
 
+### 2.2 Motivation
+
+(Prompt: Generalize Section "2.2 Motivation" of this article in Chinese)
+
 ## 3. The Lin-Kernighan algorithm
 
 (Prompt: Generalize Section "The Lin-Kernighan algorithm" of this article in Chinese)
