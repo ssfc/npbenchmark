@@ -20,7 +20,16 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000
 
 这篇文章在google scholar的引用次数是2020，截至2023年5月16日。
 
-### Q: 是什么会议？
+### Q: European Journal of Operational Research是什么期刊？
+
+《欧洲运筹学杂志》（European Journal of Operational Research）是一份在运筹学领域有影响力的期刊，发表了关于运筹学方法论和决策实践的高质量、原创的论文。¹ 这份期刊包括以下类型的论文：
+
+- 邀请综述，向运筹学读者介绍近年来某一运筹学主题的发展；
+- 运筹学的创新应用，描述解决实际问题的新方法；
+- 理论与方法论论文，提出对运筹学方法论和理论基础有贡献的原创研究结果；
+- 短通讯，如果它们纠正了EJOR在过去5年内发表的论文中的重要错误。
+
+这份期刊由欧洲运筹学协会（EURO）与Elsevier出版社合作出版。¹
 
 ### Q: 用中文依次介绍本文作者
 
