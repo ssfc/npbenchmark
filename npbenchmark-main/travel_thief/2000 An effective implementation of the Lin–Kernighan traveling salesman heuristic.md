@@ -33,6 +33,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000
 
 ### Q: 用中文依次介绍本文作者
 
+本文的作者是Keld Helsgaun，他是丹麦罗斯基勒大学的计算机科学名誉副教授。1 他的研究兴趣包括人工智能、组合优化和运筹学。2 他开发了一种有效的实现林-科尼汉旅行商问题启发式算法（LKH），并在多个国际期刊和会议上发表了相关论文。
+
 ## 1. Introduction
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
