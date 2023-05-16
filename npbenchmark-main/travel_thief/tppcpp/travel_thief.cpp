@@ -84,7 +84,7 @@ void TravelThief::sample_solver()
 
     capacity = 3; // capacity
     min_speed = 0.1;
-
+    max_speed = 1;
 
 }
 
