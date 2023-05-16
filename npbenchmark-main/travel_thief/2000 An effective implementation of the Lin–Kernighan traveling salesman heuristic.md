@@ -39,6 +39,8 @@ https://github.com/ssfc/npbenchmark/blob/main/npbenchmark-main/travel_thief/2000
 
 (Prompt: Generalize Section "Introduction" of this article in Chinese)
 
+这篇文章介绍了一种实现Lin-Kernighan启发式算法的方法，这是一种用于求解对称旅行商问题的最有效的方法之一。文章首先回顾了旅行商问题的定义和解法，然后详细描述了原始的Lin-Kernighan算法及其改进，最后提出了一个新的修改版本的算法，并报告了其在各种问题实例上的效果。文章指出，新算法通过对搜索策略和候选集的修正，显著提高了效率和解质量，能够找到所有已知最优解，包括一个7397城市的问题（目前已解决的最大非平凡问题实例）。
+
 ## 2. The traveling salesman problem
 
 (Prompt: Generalize Section "The traveling salesman problem" of this article in Chinese)
