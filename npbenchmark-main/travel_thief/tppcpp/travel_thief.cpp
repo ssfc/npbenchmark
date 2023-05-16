@@ -82,8 +82,10 @@ void TravelThief::sample_solver()
     items[4] = {40, 1,2};
     items[5] = {20, 2,3};
 
-    // capacity
-    capacity = 3;
+    capacity = 3; // capacity
+    min_speed = 0.1;
+
+
 }
 
 void TravelThief::print_items()
