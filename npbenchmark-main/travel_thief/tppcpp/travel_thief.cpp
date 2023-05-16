@@ -60,10 +60,10 @@ void TravelThief::sample_solver()
     num_cities = 4;
 
     // sample distances;
-    distances.resize(4);
+    distances.resize(num_cities);
     for(auto & distance : distances)
     {
-        distance.resize(4, 0.0);
+        distance.resize(num_cities, 0.0);
     }
     distances[0][1] = distances[1][0] = 5;
     distances[0][2] = distances[2][0] = 6;
