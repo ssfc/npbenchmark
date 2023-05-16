@@ -93,6 +93,10 @@ ci1i2 + ci2i3 + ... + cini1
 
 lambda-opt; 替换了lambda条边使路径更短
 
+lambda常设为2或3
+
+
+
 ## 4. The modified Lin-Kernighan algorithm
 
 (Prompt: Generalize Section "The modified Lin-Kernighan algorithm" of this article in Chinese)
