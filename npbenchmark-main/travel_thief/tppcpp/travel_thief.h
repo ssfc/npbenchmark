@@ -23,7 +23,7 @@ struct Item{
 class TravelThief{
     std::string problem_name;
     std::string knapsack_data_type;
-    int dimension;
+    int num_cities;
     int num_items;
     int capacity;
     double min_speed;
@@ -54,10 +54,10 @@ public:
     }
 
     void set_dimension(int input_dimension) {
-        dimension = input_dimension;
+        num_cities = input_dimension;
     }
     [[nodiscard]] int get_dimension() const {
-        return dimension;
+        return num_cities;
     }
 
     void set_num_items(int input_num_items) {

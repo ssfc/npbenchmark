@@ -9,7 +9,7 @@
 using namespace std;
 
 TravelThief::TravelThief():
-        dimension(0),
+        num_cities(0),
         num_items(0),
         capacity(0),
         min_speed(0.0),
@@ -57,7 +57,7 @@ void TravelThief::sample_solver()
 {
     problem_name = "sample name";
     knapsack_data_type = "sample type";
-    dimension = 4;
+    num_cities = 4;
 
     // sample distances;
     distances.resize(4);
