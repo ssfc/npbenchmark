@@ -114,8 +114,9 @@ every partial sum, Gi , must be positive
 Algorithm:
 
 1. Generate a random initial tour T
-2. Let i = 1. Choose t1
-3. 
+2. Let i = 1. Choose t1  // Comment: t是顶点，x和y都是边
+3. Choose x1 = (t1 ,t2 ) 属于 T
+4. 
 
 ## 4. The modified Lin-Kernighan algorithm
 
