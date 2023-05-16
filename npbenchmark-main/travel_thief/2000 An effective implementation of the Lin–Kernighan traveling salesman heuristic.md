@@ -91,7 +91,7 @@ ci1i2 + ci2i3 + ... + cini1
 
 2-opt algorithm; 交叉四个顶点的连接方式
 
-
+lambda-opt; 替换了lambda条边使路径更短
 
 ## 4. The modified Lin-Kernighan algorithm
 
