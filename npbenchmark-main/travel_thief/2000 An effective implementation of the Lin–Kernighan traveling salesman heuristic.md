@@ -47,6 +47,20 @@ Keywords: an implementation of Lin–Kernighan => traveling salesman problem
 
 (Prompt: Generalize Section "The traveling salesman problem" of this article in Chinese)
 
+### 2.1 Formulation
+
+(Prompt: Generalize Section "2.1 Formulation" of this article in Chinese)
+
+这一节定义了旅行商问题（traveling salesman problem, TSP），这是一个组合优化中的经典问题。旅行商问题是给定一组城市和每对城市之间的距离，求一条最短的路径，使得从一个城市出发，恰好访问每个城市一次，然后回到出发城市。这个问题可以用数学语言表述为：给定一个代价矩阵C = (cij)，其中cij表示从城市i到城市j的代价，找到一个排列(i1, i2, ..., in)，使得下式最小化：
+
+ci1i2 + ci2i3 + ... + cini1
+
+根据代价矩阵C的性质，可以对问题进行分类：
+
+- 如果cij = cji对所有的i和j都成立，那么问题是对称的；否则，是非对称的。
+- 如果满足三角不等式（cik ≤ cij + cjk对所有的i，j和k），那么问题是度量的。
+- 如果cij是平面上点之间的欧几里得距离，那么问题是欧几里得的。一个欧几里得问题当然也是对称的和度量的。
+
 ## 3. The Lin-Kernighan algorithm
 
 (Prompt: Generalize Section "The Lin-Kernighan algorithm" of this article in Chinese)
