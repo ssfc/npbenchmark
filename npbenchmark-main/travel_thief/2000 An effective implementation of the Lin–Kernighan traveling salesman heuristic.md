@@ -71,9 +71,15 @@ ci1i2 + ci2i3 + ... + cini1
 
 (Prompt: Generalize Section "2.3 Solution algorithms" of this article in Chinese)
 
+这一节介绍了求解旅行商问题（TSP）的两类算法：精确算法和近似算法。
+
 #### 2.3.1 Exact algorithm
 
+精确算法可以保证找到最优解，但是运行时间很长，只能处理规模较小的问题。常用的精确算法有割平面算法和分支定界算法。
+
 #### 2.3.2 Approximate algorithms
+
+近似算法不能保证找到最优解，但是运行时间较短，可以处理规模较大的问题。常用的近似算法有构造算法、改进算法和复合算法。构造算法逐步建立一个可行解，改进算法对一个可行解进行局部优化，复合算法结合了这两种方法。其中，Lin-Kernighan算法是一种非常有效的改进算法，它基于变换l条边来寻找更短的路径。本文主要介绍了Lin-Kernighan算法及其改进版本，并在一些标准实例上进行了实验比较。
 
 ## 3. The Lin-Kernighan algorithm
 
