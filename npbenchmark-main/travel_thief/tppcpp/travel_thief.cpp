@@ -69,7 +69,13 @@ void TravelThief::solver()
     distances[2][3] = distances[3][2] = 4;
 
     // sample items;
-
+    items.resize(6);
+    items[0] = {20, 2, 1};
+    items[1] = {30, 3, 1};
+    items[2] = {100, 3,2};
+    items[3] = {40, 1,2};
+    items[4] = {40, 1,2};
+    items[5] = {20, 2,3};
 }
 
 void TravelThief::print_items()
