@@ -159,6 +159,10 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 这一部分介绍了如何选择要从旅行路线中断开的边，以进行交换。作者指出，原始算法中的规则（规则 6）有缺陷，因为它可能导致忽略一些有利的交换。作者提出了一种新的规则，根据边的α-近似度来确定是否应该断开它。作者认为，这种规则可以更好地保留最优旅行路线中的边，同时避免过度保守。
 
+### 4.3 Basic moves
+
+(Prompt: Generalize Section "4.3 Basic moves" of this article in Chinese)
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
