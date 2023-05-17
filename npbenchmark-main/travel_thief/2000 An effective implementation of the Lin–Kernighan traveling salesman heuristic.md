@@ -118,7 +118,7 @@ Algorithm:
 1. 生成一个随机的初始路线T。
 2. Let i = 1. Choose t1  // Comment: t是顶点，x和y都是边
 3. 选择T中的一条边x1 = (t1,t2) 
-4. Choose y1 = (t2, t3 ) 不属于 T such that G1 > 0. If this is not possible, go to Step 12.
+4. 选择不在T中的一条边y1=(t2,t3)，使得G1>0，其中G1是交换x1和y1后的路线长度减少量。如果这样做不可能，就跳到步骤12。
 5. Let i = i+1.
 6. Choose xi = (t2i-1,t2i) Î T such that (a) if t2i is joined to t1 , the resulting configuration is a tour, T’, and (b) xi ¹ ys for all s < i. If T’ is a better tour than T, let T = T’ and go to Step 2.  (Comment: 如果在r较短的时候就找到了更优解，就开始下一次迭代)
 7. Choose yi = (t2i,t2i+1) Ï T such that (a) Gi > 0, (b) yi ¹ xs for all s £ i, and (c) xi+1 exists. If such yi exists, go to Step 5.
