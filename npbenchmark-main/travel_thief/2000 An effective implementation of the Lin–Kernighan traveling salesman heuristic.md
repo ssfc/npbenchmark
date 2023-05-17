@@ -165,6 +165,12 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 这一部分介绍了如何选择要加入旅行路线的边，以进行交换。作者指出，原始算法中的规则（规则 8）有缺陷，因为它可能导致忽略一些有利的交换。作者提出了一种新的规则，根据边的α-近似度和长度来确定它们的优先级。作者认为，这种规则可以更好地平衡搜索的广度和深度，同时避免过度贪婪。
 
+### 4.4 Initial tours
+
+(Prompt: Generalize Section "4.4 Initial tours" of this article in Chinese)
+
+这一部分介绍了如何生成初始旅行路线，作为算法的起点。作者指出，初始旅行路线的质量对算法的效果有很大影响。作者提出了一种新的方法，根据α-近似度来构造初始旅行路线。作者认为，这种方法可以生成比最近邻居法更好的初始旅行路线，同时避免过度复杂。
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
