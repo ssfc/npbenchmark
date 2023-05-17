@@ -171,6 +171,10 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 这一部分介绍了如何生成初始旅行路线，作为算法的起点。作者指出，初始旅行路线的质量对算法的效果有很大影响。作者提出了一种新的方法，根据α-近似度来构造初始旅行路线。作者认为，这种方法可以生成比最近邻居法更好的初始旅行路线，同时避免过度复杂。
 
+### 4.5 Specification of the modified algorithm
+
+(Prompt: Generalize Section "4.5 Specification of the modified algorithm" of this article in Chinese)
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
