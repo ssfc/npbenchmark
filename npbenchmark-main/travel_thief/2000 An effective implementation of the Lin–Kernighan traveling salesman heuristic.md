@@ -139,6 +139,18 @@ Algorithm:
 
 (Prompt: Generalize Section "The modified Lin-Kernighan algorithm" of this article in Chinese)
 
+Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，单次试验获得最优解的概率接近100%。对于100个城市的问题，概率下降到20%至30%之间。然而，通过运行几次试验，每次从一个新的随机路径开始，几乎可以确保找到这些问题的最优解。
+
+该算法在一系列问题上进行了评估，其中包括一个包含318个点的钻探问题。由于计算机存储的限制，问题被分成了三个较小的问题。通过分别解决子问题并最后连接三个路径，得到了解决方案。在Lin和Kernighan撰写他们的论文时（1971年），这个问题的最优解是未知的。现在知道最优解后，可以注意到他们的解决方案比最优解高出1.3%。
+
+接下来，介绍了一个修改和扩展版本的算法。这个新算法是对原始算法的显著改进。例如，对于提到的318个城市问题，最优解现在可以在几次试验中找到（大约2次），并且非常快速（在300 MHz G3 Power Macintosh上大约1秒）。总体而言，该算法所达到的解的质量非常令人印象深刻。该算法已能够找到我们能够获取的所有问题实例的最优解，包括一个包含7397个城市的问题（迄今为止解决的最大非平凡问题实例）。
+
+提高效率主要是通过对Lin和Kernighan在限制和引导搜索方面的启发式规则进行修订来实现的。即使他们的启发式规则看起来很自然，但经过批判性分析发现它们存在相当大的缺陷。
+
+### 4.1 Candidate sets
+
+(Prompt: Generalize Section "4.1 Candidate sets" of this article in Chinese)
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
