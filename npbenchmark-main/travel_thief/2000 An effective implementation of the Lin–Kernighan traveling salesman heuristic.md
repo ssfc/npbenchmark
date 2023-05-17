@@ -153,6 +153,12 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 这一部分介绍了如何使用一种基于最小生成树的敏感度分析的方法，来确定哪些边有可能属于最优旅行路线，从而构建候选集。这种方法使用了一种称为α-近似度的度量，来评估每条边属于最优旅行路线的概率。作者提出了一种高效的算法，来计算所有边的α-近似度，并根据这些值来选择候选集。作者认为，使用α-近似度来指定候选集比使用最近邻居要好得多。
 
+### 4.2 Breaking of tour edges
+
+(Prompt: Generalize Section "4.2 Breaking of tour edges" of this article in Chinese)
+
+这一部分介绍了如何选择要从旅行路线中断开的边，以进行交换。作者指出，原始算法中的规则（规则 6）有缺陷，因为它可能导致忽略一些有利的交换。作者提出了一种新的规则，根据边的α-近似度来确定是否应该断开它。作者认为，这种规则可以更好地保留最优旅行路线中的边，同时避免过度保守。
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
