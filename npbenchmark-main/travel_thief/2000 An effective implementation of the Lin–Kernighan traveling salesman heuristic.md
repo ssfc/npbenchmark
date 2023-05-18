@@ -191,6 +191,36 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
 
+修改后的Lin-Kernighan算法已经用C语言实现。该软件大约有4000行代码，完全用ANSI C编写，可以在多种计算机平台和C编译器上移植。以下小节描述了用户界面和实现中使用的最核心的技术。
+
+### Q: ANSI C是什么？
+
+ANSI C是指符合美国国家标准学会（American National Standards Institute，简称ANSI）制定的C语言标准。C语言是一种通用的编程语言，广泛用于系统级编程和应用程序开发。在C语言的发展过程中，为了确保语言的一致性和可移植性，ANSI于1989年发布了C语言的标准，即ANSI C标准，也被称为C89或C90。
+
+ANSI C标准对C语言的语法、语义、库函数等进行了规范，并增加了一些新的特性，使得C语言更具标准化和可移植性。采用ANSI C标准编写的程序可以在符合该标准的各种平台上编译和运行，提高了代码的可移植性和可靠性。
+
+ANSI C标准成为后续C语言标准的基础，如C99和C11。在许多编译器和开发工具中，仍然支持ANSI C标准，因此了解和遵守该标准对于使用C语言进行编程是很重要的。
+
+### Q: 美国国家标准学会（American National Standards Institute，简称ANSI）是什么？
+
+美国国家标准学会（American National Standards Institute，简称ANSI）是美国的一个非营利组织，成立于1918年。它的使命是促进美国国家标准制定，并推动标准在各个行业的应用和采用。
+
+ANSI负责协调和监督美国国家标准制定的过程，并确保标准的质量、一致性和可信度。它与各个利益相关方合作，包括政府机构、工业界、学术界和消费者组织，共同制定和推动标准的发展。
+
+作为一个国家标准组织，ANSI代表美国参与国际标准化组织（ISO）和国际电工委员会（IEC）的标准制定工作。它通过与其他国家和地区的标准化机构合作，促进全球标准的协调和互认。
+
+ANSI的工作范围涵盖各个领域，包括工程和技术标准、信息技术标准、能源和环境标准、建筑和建筑材料标准、医疗设备标准等。通过制定和推广标准，ANSI促进了技术创新、产品质量、安全性和可持续发展。
+
+### Q: ASCII码和ANSI有关系吗？
+
+是的，ASCII码和ANSI（美国国家标准学会）有一定的关系。
+
+ASCII码（American Standard Code for Information Interchange，美国信息交换标准代码）是一种用于表示字符的编码系统。它最初由ANSI于1963年发布，并在之后的几年中进行了修订和扩展。ASCII码使用7位二进制数表示128个字符，包括基本的拉丁字母、数字、标点符号和控制字符。
+
+ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标准化和一致性。ANSI后来还发布了其他标准，包括ASCII的扩展版本和其他字符编码系统，如ANSI编码、ISO-8859编码和Unicode编码。
+
+虽然ASCII码最初是由ANSI发布的，但它已经成为国际上通用的字符编码标准，并被广泛应用于计算机系统和通信领域。尽管ANSI在ASCII码的制定中发挥了重要作用，但ASCII码已经超出了ANSI的范围，成为全球通用的字符编码标准。
+
 ## 6. Computational results
 
 (Prompt: Generalize Section "Computational results" of this article in Chinese)
