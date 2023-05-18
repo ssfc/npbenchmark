@@ -335,6 +335,11 @@ public class TTPInstance {
 //    }
     
     // used to simulate the distance matrix
+    /*
+    函数public double distances(int i, int j)的作用是计算两个节点之间的欧几里得距离。
+    这个函数接受两个整数类型的参数，分别表示两个节点的编号。
+    这个函数会根据节点的坐标，使用勾股定理，计算出两点之间的直线距离，并返回一个双精度浮点数作为结果。
+     */
     public double distances(int i, int j) {
         double result = 0;
         result = Math.sqrt(
