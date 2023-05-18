@@ -228,7 +228,13 @@ public class Optimisation {
             }
         return result;
     }
-    
+
+    /*
+    函数public static void doAllLinkernTours()的作用是对所有的TSP文件使用linkern程序来生成最优解，并将结果保存在文件中。
+    函数先获取instances/tsplibCEIL目录下的所有TSP文件，然后对每个TSP文件，根据文件名生成一个结果文件名，如果结果文件不存在，就调用linkern程序来求解TSP，并将结果保存在结果文件中。
+    linkern程序是Concorde软件包的一部分，它实现了一种称为Chained Lin-Kernighan heuristic的启发式算法，用于求解TSP²。
+    该算法使用可变的k边交换来改进一个初始路径³。该程序不包含在当前网页内容中，需要单独获取和安装。
+     */
     public static void doAllLinkernTours() {
         
         boolean debugPrint = false;
