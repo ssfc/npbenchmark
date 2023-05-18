@@ -18,6 +18,8 @@ SU's suggestion: 初始解用现成的LKH算法（因为自己写太复杂了, �
 
 Keywords: Lin-Kernighan-Helsgaun => traveling salesman problem
 
+Comment: 原来LKH算法中的H指的是作者名字。囧RZ
+
 ### Q: 这篇文章发表会议/期刊属于CCF哪类？这篇文章在google scholar引用次数多少？
 
 这篇文章发表在《欧洲运筹学杂志》（European Journal of Operational Research），这是一份在运筹学领域有影响力的期刊。根据CCF排名，这份期刊属于C类。²³
