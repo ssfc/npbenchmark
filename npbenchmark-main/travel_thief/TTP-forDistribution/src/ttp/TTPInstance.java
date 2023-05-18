@@ -1,3 +1,7 @@
+/*
+定义了一个名为TTPInstance的类。该类有一个main方法和一些与旅行窃贼问题(TTP)相关的字段和方法，旅行窃贼问题是旅行商问题(TSP)和背包问题的结合。
+ */
+
 package ttp;
 
 import java.io.BufferedReader;
@@ -35,6 +39,11 @@ public class TTPInstance {
     
     /* Constructor 
      * reads the instance from the file
+     */
+    /*
+    定义TTPInstance类的构造方法，用来创建一个TTPInstance对象。
+    这个函数接受一个File类型的参数，用来读取一个TTP文件，并从中提取相关的数据，如问题名称、节点数量、物品数量、背包容量、最大最小速度、租金比率等，并将这些数据存储到对象的相应字段中。
+    这个函数还会读取节点坐标和物品信息，并将它们存储到二维数组中。
      */
     public TTPInstance(File file) {
         boolean debugPrint = !true;
