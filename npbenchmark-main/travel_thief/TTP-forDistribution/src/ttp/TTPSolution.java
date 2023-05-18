@@ -71,7 +71,13 @@ public class TTPSolution {
         this.print();
         System.out.println();
     }
-    
+
+    /*
+    函数public void printFull()是TTPSolution类的一个方法，用来将解决方案对象的信息打印到标准输出，并为每个字段和数组加上标签。
+    它以格式化的方式打印wend，wendUsed，fp，ftraw，ft，ob和computationTime这七个字段，并附上它们的名称。
+    然后它打印tspTour和packingPlan这两个数组，并附上它们的名称。
+    这个方法在解决方案对象需要被显示或检查以便调试并通过标签识别时很有用。
+     */
     public void printFull() {
         this.println();
         System.out.println("tspTour "+Arrays.toString(tspTour));
