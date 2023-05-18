@@ -239,6 +239,12 @@ ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标�
 
 本文的这一部分介绍了在用林-科尼汉算法求解旅行商问题时，如何计算城市之间的距离。文章说明了如何根据不同类型的问题，使用不同的距离函数，如欧几里得、几何和伪欧几里得。文章还描述了如何使用查找表和缓存技术来加快距离计算。文章给出了一些例子和伪代码来说明这些方法。
 
+### 5.4 Reduction of checkout time
+
+(Prompt: Generalize Section "5.4 Reduction of checkout time" of this article in Chinese)
+
+本文的第5.4节介绍了如何减少结账时间，即检查是否还有更好的解决方案的时间。作者指出，原始算法中的一个缺陷是，每次找到一个更好的解决方案时，都会重置所有的备选方案，导致重复搜索。为了避免这种情况，作者提出了一种新的方法，即在每次搜索时记录下已经尝试过的备选方案，并在下一次搜索时跳过它们。这样可以大大减少结账时间，提高算法的效率。
+
 ## 6. Computational results
 
 (Prompt: Generalize Section "Computational results" of this article in Chinese)
