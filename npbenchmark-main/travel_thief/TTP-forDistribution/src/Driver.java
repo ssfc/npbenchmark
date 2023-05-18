@@ -1,4 +1,16 @@
-// Driver.java是主驱动程序文件，包含了如何使用代码的几个示例。
+
+/*
+这个文件Driver.java是一个主驱动程序文件，它包含了如何使用TTP问题的代码的几个示例。TTP问题是一种旅行商问题的变体，其中旅行商需要在访问城市的同时收集物品。
+这个文件导入了一些类和包，然后定义了一个Driver类，其中有三个静态方法：
+
+1. main方法：这是程序的入口点，它接受一些参数，如TTP文件的文件夹、文件名模式、优化方法、停止准则等，并调用doBatch方法来处理多个文件。
+2. doBatch方法：这个方法遍历给定文件夹中匹配文件名模式的所有TTP文件，并对每个文件执行以下步骤：
+  - 读取TTP实例
+  - 生成或读取一个Linkern旅行路线（一种启发式算法）
+  - 使用指定的优化方法对旅行路线和物品收集方案进行优化
+  - 将优化结果写入文件并打印到屏幕
+3. runSomeTests方法：这个方法是用来测试一些特定的TTP实例和优化方法的，它不是主要的程序功能，而是用来调试和分析的。
+ */
 
 import java.io.*;
 import ttp.Optimisation.Optimisation;
@@ -16,6 +28,7 @@ import ttp.Utils.Utils;
  *
  * @author wagner
  */
+
 public class Driver {
     
     /* The current sequence of parameters is
