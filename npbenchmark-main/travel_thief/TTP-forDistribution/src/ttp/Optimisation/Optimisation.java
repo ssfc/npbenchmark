@@ -151,7 +151,15 @@ public class Optimisation {
         s.computationTime = duration;
         return s;
     }
-    
+
+    /*
+    函数public static int[] linkernTour(TTPInstance instance)的作用是使用linkern程序来生成TSP的最优解。
+    函数的参数如下：
+    instance: 一个TTPInstance对象，表示TTP的实例，包含了城市、物品、距离、重量、价值等信息。
+    函数的返回值是一个整数数组，表示TSP的一个解，即城市的访问顺序。
+    函数先根据TTP实例的文件名找到对应的TSP文件，然后调用linkern程序来求解TSP，并将结果保存在一个文件中。
+    最后，函数从文件中读取结果，并返回一个整数数组。
+     */
     public static int[] linkernTour(TTPInstance instance) {
         int[] result = new int[instance.numberOfNodes+1];
         
