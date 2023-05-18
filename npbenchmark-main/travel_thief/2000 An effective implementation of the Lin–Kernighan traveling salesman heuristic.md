@@ -255,6 +255,8 @@ ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标�
 
 (Prompt: Generalize Section "Computational results" of this article in Chinese)
 
+本文的计算结果部分介绍了作者的新算法在不同规模和类型的旅行商问题（TSP）上的表现，并与林-科尼汉算法和其他启发式算法进行了    比较。作者使用了一些标准的TSP测试集，包括欧几里得、非欧几里得和随机生成的问题，以及一些实际应用中的问题，如钻孔和车辆路径规划。作者发现，新算法在运行时间和解决质量方面都优于林-科尼汉算法和其他启发式算法。新算法能够找到所有已知最优解，包括一个7397城市的问题（目前已解决的最大非平凡问题）。此外，新算法还改进了一系列未知最优解的大规模问题的最佳已知解，其中包括一个85900城市的问题。
+
 ## 7. Conclusions
 
 (Prompt: Generalize Section "Conclusions" of this article in Chinese)
