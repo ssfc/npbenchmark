@@ -225,6 +225,14 @@ ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标�
 
 (Prompt: Generalize Section "5.1 User interface" of this article in Chinese)
 
+修改后的Lin-Kernighan算法用C语言实现，提供了一个简单的用户界面。用户可以通过命令行参数或配置文件来指定输入文件、输出文件和其他选项。输入文件必须是TSPLIB格式的，即包含城市的坐标或距离矩阵。输出文件包含最优或近似最优的旅行商路径，以及相关的统计信息，如路径长度、运行时间和迭代次数。用户还可以选择是否在屏幕上显示算法的进度和结果。此外，用户可以通过设置一些参数来调整算法的行为，例如候选集的大小、初始路径的生成方式、迭代次数的限制等。
+
+### 5.2 Representation of tours and moves
+
+(Prompt: Generalize Section "5.2 Representation of tours and moves" of this article in Chinese)
+
+本文的这一部分介绍了在用林-科尼汉算法求解旅行商问题时，如何表示路径和移动。路径是一个经过给定图中所有城市的环，移动是一种交换边的方式，用来改变路径。文章说明了如何用位向量和邻接表来高效地存储和操作路径和移动。文章还描述了一些对路径和移动的操作，如反转、连接、插入和删除。文章给出了一些例子和伪代码来说明这些概念。
+
 ## 6. Computational results
 
 (Prompt: Generalize Section "Computational results" of this article in Chinese)
