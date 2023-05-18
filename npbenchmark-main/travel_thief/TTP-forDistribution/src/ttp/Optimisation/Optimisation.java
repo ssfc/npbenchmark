@@ -1,4 +1,10 @@
 // ttp.Optimisation包含了迭代启发式算法随机局部搜索(RLS)和(1+1)进化算法(EA)。通过参数“mode”，用户可以在RLS(mode==1)和EA(mode==2)之间切换。switch-case语句可以轻松扩展以纳入其他启发式算法。
+/*
+该包实现了两种迭代启发式算法：随机局部搜索(RLS)和(1+1)进化算法(EA)。
+这些算法可以用来解决旅行商问题(TSP)和背包问题(KP)的组合，即旅行窃贼问题(TTP)。
+用户可以通过参数“mode”来选择使用RLS(mode==1)或者EA(mode==2)。
+代码文件还包含了一些辅助方法，如使用linkern程序生成TSP的最优解，或者使用stivale2结构初始化物理内存管理器。
+ */
 package ttp.Optimisation;
 
 
