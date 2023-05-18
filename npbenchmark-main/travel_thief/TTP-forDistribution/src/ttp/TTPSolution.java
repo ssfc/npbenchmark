@@ -157,7 +157,13 @@ public class TTPSolution {
     	}
         return Arrays.toString(tourOut) + "\n" + Arrays.toString(packingOut) +  "\n";
     }
-    
+
+    /*
+    函数public void writeResult(String title)是TTPSolution类的一个方法，
+    用来将解决方案对象的字符串表示写入一个以给定标题命名的文件。
+    字符串表示是通过调用answer()方法得到的，它返回城市的排列和打包物品的列表的一个特定格式。
+    这个方法在解决方案对象需要被保存到一个文件以便后续使用或提交时很有用。
+     */
     public void writeResult(String title){
             BufferedWriter writer = null;
             try {
