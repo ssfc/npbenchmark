@@ -326,7 +326,13 @@ public class Optimisation {
         }
         
     }
-    
+
+    /*
+    函数public static void printListOfStrings(List<String> list)的作用是打印一个字符串列表，即将列表中的每个字符串用空格连接起来，并输出到标准输出流。函数的参数如下：
+    - list: 一个字符串列表，表示要打印的字符串集合。
+    函数使用一个字符串变量result来存储列表中的字符串，并用一个for循环来遍历列表，将每个字符串添加到result后面，并在每个字符串后面加上一个空格。
+    最后，函数使用System.out.println方法来输出result。
+     */
     public static void printListOfStrings(List<String> list) {
         String result = "";
         for (String s:list)
