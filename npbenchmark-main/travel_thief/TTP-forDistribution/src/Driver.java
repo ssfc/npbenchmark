@@ -12,17 +12,11 @@
 3. runSomeTests方法：这个方法是用来测试一些特定的TTP实例和优化方法的，它不是主要的程序功能，而是用来调试和分析的。
  */
 
-import java.io.*;
 import ttp.Optimisation.Optimisation;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ttp.TTPInstance;
 import ttp.TTPSolution;
-import ttp.Utils.DeepCopy;
-import ttp.Utils.Utils;
+
+import java.io.File;
 
 /**
  *
