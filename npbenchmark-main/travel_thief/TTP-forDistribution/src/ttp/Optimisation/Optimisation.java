@@ -32,7 +32,20 @@ import ttp.Utils.DeepCopy;
  */
 public class Optimisation {
     
-    
+    /*
+    函数public static TTPSolution hillClimber(TTPInstance instance, int[] tour, int mode, int durationWithoutImprovement, int maxRuntime)
+    的作用是使用随机局部搜索(RLS)或者(1+1)进化算法(EA)来优化旅行窃贼问题(TTP)的解决方案。
+    函数的参数如下：
+- instance: 一个TTPInstance对象，表示TTP的实例，包含了城市、物品、距离、重量、价值等信息。
+- tour: 一个整数数组，表示TSP的一个解，即城市的访问顺序。
+- mode: 一个整数，表示使用RLS(mode==1)或者EA(mode==2)来优化背包问题(KP)的解，即物品的装载方案。
+- durationWithoutImprovement: 一个整数，表示在没有改进的情况下，算法继续运行的次数上限。
+- maxRuntime: 一个整数，表示算法运行的时间上限（毫秒）。
+
+函数的返回值是一个TTPSolution对象，表示TTP的一个解决方案，包含了tour和packingPlan两个属性，分别表示城市的访问顺序和物品的装载方案。函数还计算了该解决方案的目标值(ob)和最终背包剩余容量(wend)，并记录了算法运行的时间(computationTime)。
+
+网络搜索结果显示，随机局部搜索(RLS)和(1+1)进化算法(EA)都是一种启发式搜索方法，它们适用于优化问题，使用局部搜索来寻找最优解¹。它们都是迭代算法，从一个任意的解开始，然后通过对解进行微小的改变来寻找更好的解。如果改变后的解更好，就接受它并继续迭代；否则就拒绝它并尝试其他改变。这两种算法的区别在于改变解的方式：RLS每次只改变解中的一位（即装载或不装载一个物品），而EA每次以一定概率改变解中的每一位（即以1/n的概率装载或不装载每个物品，其中n是物品数量）²。这两种算法都属于贪心方法，即总是朝着目标函数增加（或减少）的方向移动，并且不回溯³。这两种算法对于凸优化问题（目标函数是凸函数）能够找到全局最优解，而对于其他类型的问题通常只能找到局部最优解⁴。
+     */
     public static TTPSolution hillClimber(TTPInstance instance, int[] tour, 
             int mode, 
             int durationWithoutImprovement, int maxRuntime) {
