@@ -233,6 +233,12 @@ ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标�
 
 本文的这一部分介绍了在用林-科尼汉算法求解旅行商问题时，如何表示路径和移动。路径是一个经过给定图中所有城市的环，移动是一种交换边的方式，用来改变路径。文章说明了如何用位向量和邻接表来高效地存储和操作路径和移动。文章还描述了一些对路径和移动的操作，如反转、连接、插入和删除。文章给出了一些例子和伪代码来说明这些概念。
 
+### 5.3 Distance computations
+
+(Prompt: Generalize Section "5.3 Distance computations" of this article in Chinese)
+
+本文的这一部分介绍了在用林-科尼汉算法求解旅行商问题时，如何计算城市之间的距离。文章说明了如何根据不同类型的问题，使用不同的距离函数，如欧几里得、几何和伪欧几里得。文章还描述了如何使用查找表和缓存技术来加快距离计算。文章给出了一些例子和伪代码来说明这些方法。
+
 ## 6. Computational results
 
 (Prompt: Generalize Section "Computational results" of this article in Chinese)
