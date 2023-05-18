@@ -364,6 +364,12 @@ public class TTPInstance {
      *   true   prints a short version in one line
      *   false  prints the node and item data as well
      */
+    /*
+    函数public void printInstance(boolean shortSummary)的作用是打印TTP实例的相关信息。
+    这个函数接受一个布尔类型的参数，表示是否打印简短的摘要。
+    如果参数为true，那么函数只会打印实例的名称、背包类型、节点数量、物品数量、背包容量、最大最小速度、租金比率等信息。
+    如果参数为false，那么函数还会打印节点的坐标和物品的信息。
+     */
     public void printInstance(boolean shortSummary) {
         if (shortSummary) {
             System.out.print("TTP Instance: ");
