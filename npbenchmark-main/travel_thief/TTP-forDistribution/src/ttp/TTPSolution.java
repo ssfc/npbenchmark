@@ -52,7 +52,12 @@ public class TTPSolution {
         wendUsed = Double.POSITIVE_INFINITY;
         computationTime = Long.MAX_VALUE;
     }
-    
+
+    /*
+    函数public void print()是TTPSolution类的一个方法，用来将解决方案对象的信息打印到标准输出。
+    它以格式化的方式打印fp，ft和ob这三个字段，然后打印tspTour和packingPlan这两个数组。
+    这个方法在解决方案对象需要被显示或检查以便调试时很有用。
+     */
     public void print() {
         System.out.print(wend+" "+wendUsed+" "+fp+" "+ftraw+" "+ft+" "+ob +" "+computationTime);
     }
