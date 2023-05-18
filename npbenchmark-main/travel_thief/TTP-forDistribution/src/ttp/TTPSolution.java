@@ -122,6 +122,12 @@ public class TTPSolution {
      *           which means that only the items with the numbers 20 and 113 are picked, and the sequence of visited cities is <1,5,4,2,3,1>. 
      *           Note that this format can easily be achieved in Java with the function Arrays.toString(...). 
      */
+    /*
+    函数private String answer()是TTPSolution类的一个方法，用来返回解决方案对象的一个特定格式的字符串表示。
+    这个格式包括两行：第一行是tspTour数组中城市的排列（每个城市的编号加1），
+    第二行是packingPlan数组中打包的物品的列表（每个物品的编号加1并按升序排序）。
+    这个方法在解决方案对象需要被输出为一个竞赛或一个标准评估时很有用。
+     */
     private String answer() {
     	int[] tourOut = new int[tspTour.length - 1];
     	for (int i = 0; i < tspTour.length - 1; i++){
