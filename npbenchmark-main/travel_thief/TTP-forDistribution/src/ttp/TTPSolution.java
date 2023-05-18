@@ -83,7 +83,12 @@ public class TTPSolution {
         System.out.println("tspTour "+Arrays.toString(tspTour));
         System.out.println("packingPlan "+Arrays.toString(packingPlan));
     }
-    
+
+    /*
+    函数public double getObjective()是TTPSolution类的一个方法，用来返回解决方案对象的目标值。
+    目标值是衡量解决方案对于旅行商偷窃问题的优劣的一个指标。它存储在解决方案对象的ob字段中。
+    这个方法在解决方案对象需要被评估或与其他解决方案比较时很有用。
+     */
     public double getObjective() {
         return this.ob;
     }
