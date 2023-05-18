@@ -160,6 +160,11 @@ public class TTPInstance {
      *          "ob" objective value,
      *          "wend" weight of the knapsack at the end of the tour
      */
+    /*
+    函数public void evaluate(TTPSolution solution)的作用是计算一个TTP解的目标函数值，即旅行窃贼问题的收益。
+    这个函数接受一个TTPSolution类型的参数，用来表示一个TTP解，包括一个TSP路径和一个背包方案。
+    这个函数会根据TTP的定义，计算出解的总收益、总时间、总重量、背包剩余容量等，并将它们存储到solution对象的相应字段中。
+     */
     public void evaluate(TTPSolution solution) {
         
         
