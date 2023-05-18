@@ -42,8 +42,7 @@ public class Optimisation {
     - durationWithoutImprovement: 一个整数，表示在没有改进的情况下，算法继续运行的次数上限。
     - maxRuntime: 一个整数，表示算法运行的时间上限（毫秒）。
 
-    函数的返回值是一个TTPSolution对象，表示TTP的一个解决方案，包含了tour和packingPlan两个属性，
-    分别表示城市的访问顺序和物品的装载方案。
+    函数的返回值是一个TTPSolution对象，表示TTP的一个解决方案，包含了tour和packingPlan两个属性，分别表示城市的访问顺序和物品的装载方案。
     函数还计算了该解决方案的目标值(ob)和最终背包剩余容量(wend)，并记录了算法运行的时间(computationTime)。
 
     随机局部搜索(RLS)和(1+1)进化算法(EA)都是一种启发式搜索方法，它们适用于优化问题，使用局部搜索来寻找最优解¹。
