@@ -223,7 +223,7 @@ ANSI在制定ASCII码时起了重要的作用，确保了该编码系统的标�
 
 ### 5.1 User interface
 
-
+(Prompt: Generalize Section "5.1 User interface" of this article in Chinese)
 
 ## 6. Computational results
 
