@@ -35,7 +35,14 @@ public class TTPSolution {
     public double wend = Double.POSITIVE_INFINITY;
     public double wendUsed = Double.POSITIVE_INFINITY;
     public long computationTime = Long.MAX_VALUE;
-    
+
+    /*
+    函数public void reset()是TTPSolution类的一个方法，用来将解决方案对象的所有字段重置为初始值。
+    例如，它将fp设置为Double.NEGATIVE_INFINITY，
+    ft设置为Double.POSITIVE_INFINITY，
+    ob设置为Double.NEGATIVE_INFINITY等。
+    这个方法在解决方案对象需要被重用或修改为不同的问题实例时很有用。
+     */
     public void reset() {
         fp = Double.NEGATIVE_INFINITY;
         ft = Double.POSITIVE_INFINITY;
