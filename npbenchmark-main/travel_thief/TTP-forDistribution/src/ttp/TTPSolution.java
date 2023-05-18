@@ -92,7 +92,14 @@ public class TTPSolution {
     public double getObjective() {
         return this.ob;
     }
-    
+
+    /*
+    函数public TTPSolution(int[] tspTour, int[] packingPlan)是TTPSolution类的一个构造器(构造函数)，
+    用来根据给定的tspTour和packingPlan数组创建一个新的解决方案对象。
+    tspTour数组是旅行商偷窃问题中要访问的城市的一个排列。
+    packingPlan数组是一个二进制向量，表示要在背包中打包哪些物品。
+    这个构造器在需要从现有的数组创建一个新的解决方案对象时很有用。
+     */
     public TTPSolution(int[] tspTour, int[] packingPlan) {
         this.tspTour = tspTour;
         this.packingPlan = packingPlan;
