@@ -66,6 +66,7 @@ public class Driver {
             String resultTitle = instance.file.getName() + ".NameOfTheAlgorithm." + startTime;
             
             // generate a Linkern tour (or read it if it already exists)
+            // Comment: Ah... 原来路线生成是在Optimisation中完成的。
             int[] tour = Optimisation.linkernTour(instance);
 
             System.out.print(f.getName()+": ");
