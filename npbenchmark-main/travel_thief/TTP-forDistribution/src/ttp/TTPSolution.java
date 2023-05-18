@@ -1,3 +1,9 @@
+/*
+这个文件是一个Java类，定义了一个TTPSolution对象，代表了旅行商偷窃问题（TTP）的一个解决方案。
+这个类有一些字段，比如tspTour，packingPlan，fp，ft，ob等，用来存储解决方案的信息，比如城市的旅行路线，要打包的物品，最终的利润，花费的时间，目标值等。
+这个类还有一些方法，比如reset，print，printFull，getObjective，answer和writeResult，用来对解决方案对象进行各种操作，比如重置字段，打印信息，计算目标值，格式化答案输出，和将结果写入文件。
+ */
+
 package ttp;
 
 import java.io.BufferedWriter;
