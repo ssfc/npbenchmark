@@ -61,6 +61,12 @@ public class TTPSolution {
     public void print() {
         System.out.print(wend+" "+wendUsed+" "+fp+" "+ftraw+" "+ft+" "+ob +" "+computationTime);
     }
+
+    /*
+    函数public void println()是TTPSolution类的一个方法，用来将解决方案对象的信息打印到标准输出，并在末尾加上一个换行符。
+    它以格式化的方式打印fp，ft和ob这三个字段，然后打印tspTour和packingPlan这两个数组。
+    然后它打印一个换行符(“\n”)。这个方法在解决方案对象需要被显示或检查以便调试并与其他输出分隔时很有用。
+     */
     public void println() {
         this.print();
         System.out.println();
