@@ -175,6 +175,8 @@ Lin和Kernighan的原始算法非常有效。对于最多50个城市的问题，
 
 (Prompt: Generalize Section "4.5 Specification of the modified algorithm" of this article in Chinese)
 
+这一部分给出了修改后的算法的详细描述，包括伪代码和注释。作者指出，修改后的算法与原始算法的主要区别在于选择断开和加入旅行路线的边的规则。作者使用了α-近似度和其他一些启发式规则来改进搜索策略。作者还介绍了一些其他的改进，例如使用候选集来加速搜索，使用多重启动来增加找到最优解的概率，以及使用后优化来进一步改善解。
+
 ## 5. Implementation
 
 (Prompt: Generalize Section "Implementation" of this article in Chinese)
