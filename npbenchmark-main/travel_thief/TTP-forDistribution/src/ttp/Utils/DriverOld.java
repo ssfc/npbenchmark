@@ -92,6 +92,13 @@ public class DriverOld {
     }
     
 }
+
+/*
+根据当前的网页内容，class TTP是一个Java类，它的作用是用于求解旅行商窃贼问题（Travelling Thief Problem）。
+这个类有一些属性，如fp，ft，ob，wend，用于存储最终的利润、时间、目标值和背包重量。
+它有一个构造方法，用于根据一些参数，如城市之间的距离矩阵，物品的重量和价值，物品在城市中的可用性，旅行商的行程，窃贼的背包容量，最大和最小速度，背包租金等，计算这些属性的值。
+它还有一个print方法，用于打印这些属性的值。它还有一些私有方法，用于重置属性的值和检查参数的正确性。
+ */
 class TTP {
     double fp   = Double.NEGATIVE_INFINITY;
     double ft   = Double.POSITIVE_INFINITY;
