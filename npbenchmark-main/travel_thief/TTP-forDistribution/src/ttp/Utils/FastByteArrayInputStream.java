@@ -54,6 +54,9 @@ public class FastByteArrayInputStream extends InputStream {
         this.count = count;
     }
 
+    /*
+    用于返回缓冲区中剩余的可读字节数。它没有参数，它返回一个整数，表示缓冲区中的字节数减去已经读取的字节数。
+     */
     public final int available() {
         return count - pos;
     }
