@@ -69,6 +69,12 @@ public class FastByteArrayInputStream extends InputStream {
         return (pos < count) ? (buf[pos++] & 0xff) : -1;
     }
 
+    /*
+    用于将缓冲区中的数据复制到给定的字节数组中，并返回实际复制的字节数。
+    它接受三个参数：一个字节数组b，一个偏移量off和一个长度len。
+    它将缓冲区中从当前位置开始的len个字节的数据复制到b数组中，从off位置开始存放，并将对象的pos属性增加len。
+    如果缓冲区中的可读字节数小于len，则只复制可读的字节数，并返回这个数值。如果缓冲区中没有可读的字节，则返回-1。
+     */
     public final int read(byte[] b, int off, int len) {
         if (pos >= count)
             return -1;
