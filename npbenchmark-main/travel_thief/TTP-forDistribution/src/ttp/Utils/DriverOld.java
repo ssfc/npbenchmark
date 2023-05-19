@@ -121,7 +121,21 @@ class TTP {
     public void print() {
         System.out.println("fp="+fp+" ft="+ft+" ob="+ob+" wend="+wend);
     }
-    
+
+    /*
+    它是TTP类的构造方法。它的作用是根据一些参数，创建一个TTP对象，并计算它的属性。它有十个参数，分别是：
+    distances: 一个二维数组，表示城市之间的距离矩阵
+    weights: 一个一维数组，表示物品的重量
+    values: 一个一维数组，表示物品的价值
+    av: 一个二维数组，表示物品在城市中的可用性 (Comment: available的简称?)
+    tour: 一个一维数组，表示旅行商的行程
+    z: 一个一维数组，表示窃贼从哪个城市偷取哪个物品
+    weightofKnapsack: 一个数值，表示窃贼的背包容量
+    vmax: 一个数值，表示最大速度
+    vmin: 一个数值，表示最小速度
+    rentRate: 一个数值，表示背包租金
+    它没有返回值，但是会给TTP对象赋值fp，ft，ob，wend四个属性。它有一个修饰符，叫做public，它表示这个方法是公开的，可以被其他类访问。
+     */
     /**
      * Translated code of the original "TTP1Objective.m".
      * 
