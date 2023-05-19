@@ -83,6 +83,11 @@ public class FastByteArrayOutputStream extends OutputStream {
         }
     }
 
+    /*
+    根据当前网页内容，函数public int getSize()是一个公共方法，用于返回已经写入的数据的大小。
+    它没有参数，它会返回一个整数，表示缓冲区中的有效数据的长度。
+    这个方法的作用是让用户可以知道输出了多少字节的数据，以便于进行其他的操作，例如读取或压缩等。
+     */
     public int getSize() {
         return size;
     }
