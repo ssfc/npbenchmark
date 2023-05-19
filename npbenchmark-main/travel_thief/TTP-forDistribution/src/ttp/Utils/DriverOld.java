@@ -23,6 +23,12 @@ import java.util.ArrayList;
  *
  * @author wagner
  */
+/*
+public class DriverOld是一个Java类，它的作用是用于测试TTP类的功能。
+它有一个main方法，用于创建一些测试数据，如城市之间的距离矩阵，物品的重量和价值，物品在城市中的可用性，旅行商的行程，窃贼的背包容量，最大和最小速度，背包租金等。
+然后它用这些数据创建一个TTP对象，并调用它的print方法，打印出最终的利润、时间、目标值和背包重量。
+它还有一些额外的测试，用于验证TTP类的一些方面，如不同的租金率，不同的物品选择，不同的物品可用性等。
+ */
 public class DriverOld {
     public static void main (String[] args) {
         
