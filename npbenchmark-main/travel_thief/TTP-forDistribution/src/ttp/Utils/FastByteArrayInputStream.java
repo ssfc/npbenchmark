@@ -45,6 +45,10 @@ public class FastByteArrayInputStream extends InputStream {
      */
     protected int pos = 0;
 
+    /*
+    FastByteArrayInputStream类的构造方法，它用于创建一个FastByteArrayInputStream对象。
+    它接受两个参数：一个字节数组buf和一个整数count。它将这两个参数赋值给对象的属性buf和count，分别表示要读取的数据和数据的长度。
+     */
     public FastByteArrayInputStream(byte[] buf, int count) {
         this.buf = buf;
         this.count = count;
