@@ -51,6 +51,11 @@ public class FastByteArrayOutputStream extends OutputStream {
         this(5 * 1024);
     }
 
+    /*
+    函数public FastByteArrayOutputStream(int initSize)是另一个构造方法，用于创建一个FastByteArrayOutputStream对象。
+    它有一个参数，即initSize，表示缓冲区的初始大小。它会根据这个参数，来创建一个字节数组作为缓冲区。
+    这个缓冲区用于存储输出的字节数据。这个构造方法的作用是提供一个灵活的方式，让用户可以指定缓冲区的大小，以适应不同的数据量。
+     */
     /**
      * Constructs a stream with the given initial size
      */
