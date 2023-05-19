@@ -131,6 +131,12 @@ public class FastByteArrayOutputStream extends OutputStream {
         size += len;
     }
 
+    /*
+    根据当前网页内容，函数public final void write(int b)是又一个公共的最终方法，用于将一个字节写入到缓冲区中。
+    它有一个参数，即b，表示要写入的字节。它会先调用verifyBufferSize方法，检查缓冲区是否足够大，如果不够就扩容。
+    然后，它会将b转换为一个字节，存储到缓冲区中，并更新已经写入的数据的大小。
+    这个方法的作用是重写了OutputStream类的write方法，实现了将一个字节输出的功能。
+     */
     public final void write(int b) {
         verifyBufferSize(size + 1);
         buf[size++] = (byte) b;
