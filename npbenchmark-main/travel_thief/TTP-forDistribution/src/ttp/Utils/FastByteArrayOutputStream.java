@@ -64,6 +64,13 @@ public class FastByteArrayOutputStream extends OutputStream {
         this.buf = new byte[initSize];
     }
 
+    /*
+    函数private void verifyBufferSize(int sz)是一个私有方法，用于检查缓冲区是否足够大，能够容纳给定的数据大小。
+    它有一个参数，即sz，表示要写入的数据的大小。
+    它会比较这个参数和缓冲区的长度，如果sz大于缓冲区的长度，就说明缓冲区不够大，需要扩容。
+    它会创建一个新的字节数组，大小为sz和缓冲区长度的两倍中的较大者，然后把原来缓冲区中的数据复制到新的字节数组中，
+    并把新的字节数组赋值给缓冲区。这个方法的作用是确保缓冲区能够存储所有要输出的数据，避免数组越界的异常。
+     */
     /**
      * Ensures that we have a large enough buffer for the given size.
      */
