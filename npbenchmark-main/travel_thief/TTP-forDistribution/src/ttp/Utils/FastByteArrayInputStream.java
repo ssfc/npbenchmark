@@ -87,6 +87,11 @@ public class FastByteArrayInputStream extends InputStream {
         return len;
     }
 
+    /*
+    用于跳过缓冲区中的指定数量的字节，并返回实际跳过的字节数。它接受一个长整数n作为参数，表示要跳过的字节数。
+    它将对象的pos属性增加n，如果pos加n超过了缓冲区的长度，则将pos设为缓冲区的长度，并返回实际跳过的字节数。
+    如果n小于0，则不跳过任何字节，并返回0。
+     */
     public final long skip(long n) {
         if ((pos + n) > count)
             n = count - pos;
