@@ -104,14 +104,20 @@ class TTP {
     double ft   = Double.POSITIVE_INFINITY;
     double ob   = Double.NEGATIVE_INFINITY;
     double wend = Double.POSITIVE_INFINITY;
-    
+
+    /*
+    它的作用是重置TTP类的属性，即将fp，ft，ob，wend的值分别设为负无穷，正无穷，负无穷，正无穷。
+     */
     private void reset() {
         fp = Double.NEGATIVE_INFINITY;
         ft = Double.POSITIVE_INFINITY;
         ob = Double.NEGATIVE_INFINITY;
         wend = Double.POSITIVE_INFINITY;
     }
-    
+
+    /*
+    打印TTP类的属性，即将fp，ft，ob，wend的值输出到控制台。
+     */
     public void print() {
         System.out.println("fp="+fp+" ft="+ft+" ob="+ob+" wend="+wend);
     }
