@@ -39,6 +39,11 @@ public class FastByteArrayOutputStream extends OutputStream {
     protected byte[] buf = null;
     protected int size = 0;
 
+    /*
+    是一个构造方法，用于创建一个FastByteArrayOutputStream对象。
+    它没有参数，所以它会使用默认的初始大小，即5 * 1024字节，来创建一个字节数组作为缓冲区。这个缓冲区用于存储输出的字节数据。
+    这个构造方法的作用是提供一个简单的方式，让用户不需要指定缓冲区的大小，就可以创建一个FastByteArrayOutputStream对象。
+     */
     /**
      * Constructs a stream with buffer capacity size 5K
      */
