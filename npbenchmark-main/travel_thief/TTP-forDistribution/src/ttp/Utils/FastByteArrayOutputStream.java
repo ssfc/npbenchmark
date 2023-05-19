@@ -92,6 +92,11 @@ public class FastByteArrayOutputStream extends OutputStream {
         return size;
     }
 
+    /*
+    函数public byte[] getByteArray()是一个公共方法，用于返回包含写入数据的字节数组。
+    它没有参数，它会返回一个字节数组，就是缓冲区本身。这个方法的作用是让用户可以直接获取输出的字节数据，而不需要再复制一份。
+    这样可以节省内存和时间，提高效率。
+     */
     /**
      * Returns the byte array containing the written data. Note that this
      * array will almost always be larger than the amount of data actually
