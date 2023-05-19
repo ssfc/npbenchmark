@@ -142,10 +142,20 @@ public class FastByteArrayOutputStream extends OutputStream {
         buf[size++] = (byte) b;
     }
 
+    /*
+    根据当前网页内容，函数public void reset()是一个公共方法，用于将已经写入的数据的大小重置为0。
+    它没有参数，它会将size变量赋值为0。
+    这个方法的作用是让用户可以清空缓冲区中的数据，以便于重新输出新的数据。
+     */
     public void reset() {
         size = 0;
     }
 
+    /*
+    函数public InputStream getInputStream()是一个公共方法，用于返回一个FastByteArrayInputStream对象，用于读取写入的数据。
+    它没有参数，它会创建一个FastByteArrayInputStream对象，传入缓冲区和已经写入的数据的大小作为参数。
+    然后，它会返回这个对象。这个方法的作用是让用户可以方便地从缓冲区中读取输出的字节数据，而不需要再创建一个新的字节数组或输入流。
+     */
     /**
      * Returns a ByteArrayInputStream for reading back the written data
      */
