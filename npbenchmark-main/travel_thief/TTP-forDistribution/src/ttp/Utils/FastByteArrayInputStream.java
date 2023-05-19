@@ -61,6 +61,10 @@ public class FastByteArrayInputStream extends InputStream {
         return count - pos;
     }
 
+    /*
+    用于从缓冲区中读取一个字节的数据，并返回它的值。
+    它没有参数，它返回一个整数，表示缓冲区中下一个字节的值，如果已经到达缓冲区的末尾，则返回-1。
+     */
     public final int read() {
         return (pos < count) ? (buf[pos++] & 0xff) : -1;
     }
