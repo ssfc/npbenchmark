@@ -43,6 +43,16 @@ public class DeepCopy {
      * Returns a copy of the object, or null if the object cannot
      * be serialized.
      */
+    /*
+    这个函数是一个工具方法，用于实现对象的深拷贝。
+    深拷贝是指将一个对象的所有字段和引用的对象都复制一份，而不是只复制引用。这样可以避免修改原对象时影响到复制的对象。
+
+    这个函数的参数是一个Object类型的对象，返回值也是一个Object类型的对象。
+    这个函数的实现是通过序列化和反序列化的方式来进行深拷贝。
+    首先，它创建了一个ByteArrayOutputStream对象，然后用ObjectOutputStream将参数对象写入到字节数组中。
+    然后，它用ObjectInputStream从字节数组中读取一个新的对象，并返回。
+    这个函数要求参数对象实现了Serializable接口，否则会抛出IOException或ClassNotFoundException异常。
+     */
     public static Object copy(Object orig) {
         Object obj = null;
         try {
