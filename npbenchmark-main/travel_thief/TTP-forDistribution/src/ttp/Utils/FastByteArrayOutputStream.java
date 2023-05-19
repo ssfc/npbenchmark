@@ -118,6 +118,13 @@ public class FastByteArrayOutputStream extends OutputStream {
         size += b.length;
     }
 
+    /*
+    函数public final void write(byte b[], int off, int len)是另一个公共的最终方法，用于将一个字节数组的一部分写入到缓冲区中。
+    它有三个参数，即b，off和len，分别表示要写入的字节数组，起始位置和长度。
+    它会先调用verifyBufferSize方法，检查缓冲区是否足够大，如果不够就扩容。
+    然后，它会使用System.arraycopy方法，将b中从off开始的len个字节复制到缓冲区中，并更新已经写入的数据的大小。
+    这个方法的作用是重写了OutputStream类的write方法，实现了将一个字节数组的一部分输出的功能。
+     */
     public final void write(byte b[], int off, int len) {
         verifyBufferSize(size + len);
         System.arraycopy(b, off, buf, size, len);
