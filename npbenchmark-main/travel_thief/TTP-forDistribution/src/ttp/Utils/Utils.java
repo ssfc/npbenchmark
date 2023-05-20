@@ -60,7 +60,16 @@ public class Utils {
 //        System.out.println("[time used: "+timeUsed+"s]") ;
         return timeUsed;
     }
-    
+
+    /*
+    它的作用是根据一个字符串数组参数args，返回一个文件数组。
+    它首先创建一个文件对象f，以args[0]作为路径，然后尝试打印出f的规范路径。
+    然后它调用f的listFiles()方法，传入一个匿名的文件名过滤器对象，该对象的accept()方法判断一个文件名是否包含".ttp"和args[1]，
+    如果是则返回true，否则返回false。
+    这样就可以筛选出符合条件的文件，并存入一个文件数组fa。
+    最后，如果开启了调试打印模式，就遍历fa并打印出每个文件的绝对路径，然后返回fa。
+    这个函数可以用于获取某个目录下的特定类型和名称的文件列表。
+     */
     public static File[] getFileList(final String[] args) {
         
         boolean debugPrint = false;
