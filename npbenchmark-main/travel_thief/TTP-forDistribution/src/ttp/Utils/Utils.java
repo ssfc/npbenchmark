@@ -22,6 +22,12 @@ import java.util.regex.Pattern;
 public class Utils {
     
     public static long startTime = 0;
+
+    /*
+    这个函数是一个静态的长整型方法，名为startTiming()。
+    它的作用是获取当前的系统时间（以毫秒为单位），并将其赋值给一个静态的长整型变量startTime，然后返回startTime的值。
+    这个函数可以用于开始计时某个操作或过程的执行时间。
+     */
     public static long startTiming() {
         startTime = System.currentTimeMillis();
         return startTime;
