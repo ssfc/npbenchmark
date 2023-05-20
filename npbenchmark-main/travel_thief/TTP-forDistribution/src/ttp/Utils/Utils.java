@@ -1,4 +1,9 @@
 /*
+它包含一个叫做Utils的类，定义了一些实用的方法，用于计时、文件列表、排列和创建集群数组。
+它还有一个主方法，调用了createClusterArray方法。
+这段代码似乎与一种涉及旅行商和背包实例的优化问题有关。
+ */
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
