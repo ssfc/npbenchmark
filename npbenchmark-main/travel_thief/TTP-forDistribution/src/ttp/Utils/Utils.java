@@ -45,6 +45,13 @@ public class Utils {
 //        System.out.println("[time used: "+timeUsed+"s]") ;
         return timeUsed;
     }
+
+    /*
+    它的作用是获取当前的系统时间（以毫秒为单位），并将其赋值给一个局部的长整型变量stopTime，然后计算stopTime和startTime之间的差值，
+    即某个操作或过程的执行时间，赋值给一个局部的长整型变量timeUsed，然后在控制台打印出timeUsed的值（以毫秒为单位），
+    并在前面加上"[time used: “，在后面加上"ms]”，最后返回timeUsed的值。
+    这个函数可以用于停止计时并打印出某个操作或过程的执行时间。
+     */
     public static long stopTimingPrint() {
         long stopTime = System.currentTimeMillis(); 
         long timeUsed = (stopTime-startTime);
