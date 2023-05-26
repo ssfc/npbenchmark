@@ -13,7 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="491433fb-865e-44a2-9923-6a90a12a6379" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SRC/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/SRC/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +99,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685081673762</updated>
-      <workItem from="1685081676153" duration="2134000" />
+      <workItem from="1685081676153" duration="5720000" />
     </task>
     <servers />
   </component>
