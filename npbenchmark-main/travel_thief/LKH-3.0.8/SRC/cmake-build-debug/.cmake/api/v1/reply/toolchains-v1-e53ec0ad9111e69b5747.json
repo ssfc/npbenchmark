@@ -35,7 +35,7 @@
 						"gcc"
 					]
 				},
-				"path" : "/usr/bin/gcc.exe",
+				"path" : "gcc",
 				"version" : "11.3.0"
 			},
 			"language" : "C",

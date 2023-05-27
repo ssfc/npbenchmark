@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.25"
+						"string" : "3.22"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SRC::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SRC-Debug-9015f06a5612438eb368.json",
+					"jsonFile" : "target-SRC-Debug-1b50ee245d5958ac9b4c.json",
 					"name" : "SRC",
 					"projectIndex" : 0
 				}

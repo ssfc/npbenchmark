@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 project(SRC C)
 
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_COMPILER gcc)  # 使用gcc作为C编译器
 
 include_directories(INCLUDE)
 
