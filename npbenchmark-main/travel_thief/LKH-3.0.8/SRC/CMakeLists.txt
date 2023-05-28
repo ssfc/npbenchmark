@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
-project(SRC C)
-
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_COMPILER gcc)  # 使用gcc作为C编译器
+
+project(SRC C)
 
 include_directories(INCLUDE)
 
@@ -174,3 +174,5 @@ add_executable(SRC
         WriteCandidates.c
         WritePenalties.c
         WriteTour.c)
+
+target_link_libraries(SRC m)

@@ -14,6 +14,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"include_directories"
 		],
 		"files" : 
@@ -33,6 +34,12 @@
 			},
 			{
 				"command" : 1,
+				"file" : 0,
+				"line" : 178,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
 				"file" : 0,
 				"line" : 7,
 				"parent" : 0
@@ -54,7 +61,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-3.0.8/SRC/INCLUDE"
 				}
 			],
@@ -239,6 +246,11 @@
 			{
 				"fragment" : "-Wl,--enable-auto-import",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lm",
+				"role" : "libraries"
 			}
 		],
 		"language" : "C"
