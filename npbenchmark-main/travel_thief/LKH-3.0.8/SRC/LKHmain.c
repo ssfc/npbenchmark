@@ -6,7 +6,7 @@
  * This file contains the main function of the program.
  */
 
-int main()
+int test_main()
 {
     GainType Cost, OldOptimum;
     double Time, LastTime;

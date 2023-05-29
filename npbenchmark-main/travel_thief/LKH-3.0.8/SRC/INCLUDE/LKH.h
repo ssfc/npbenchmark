@@ -392,6 +392,7 @@ extern PenaltyFunction Penalty;
 /* Function prototypes: */
 
 void hello_world();
+int test_main();
 
 int Distance_1(Node * Na, Node * Nb);
 int Distance_LARGE(Node * Na, Node * Nb);
