@@ -5,6 +5,6 @@
 
 int main()
 {
-    test_main();
+    compute_tsp();
     return 0;
 }

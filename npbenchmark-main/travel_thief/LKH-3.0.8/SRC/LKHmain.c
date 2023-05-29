@@ -6,7 +6,7 @@
  * This file contains the main function of the program.
  */
 
-int test_main()
+int compute_tsp()
 {
     GainType Cost, OldOptimum;
     double Time, LastTime;
