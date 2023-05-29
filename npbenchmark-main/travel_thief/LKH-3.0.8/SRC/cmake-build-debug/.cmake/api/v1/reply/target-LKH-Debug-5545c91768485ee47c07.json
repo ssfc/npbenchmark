@@ -230,7 +230,8 @@
 				163,
 				164,
 				165,
-				166
+				166,
+				167
 			]
 		}
 	],
@@ -440,7 +441,8 @@
 				163,
 				164,
 				165,
-				166
+				166,
+				167
 			]
 		}
 	],
@@ -1434,6 +1436,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "WriteTour.c",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.c",
 			"sourceGroupIndex" : 1
 		}
 	],
