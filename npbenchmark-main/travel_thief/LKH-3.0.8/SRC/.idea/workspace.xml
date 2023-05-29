@@ -21,16 +21,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16c3658d-fb6f-4eac-be86-034c17a637dc" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hello_world.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INCLUDE/LKH.h" beforeDir="false" afterPath="$PROJECT_DIR$/INCLUDE/LKH.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LKHmain.c" beforeDir="false" afterPath="$PROJECT_DIR$/LKHmain.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-407ffbc945bfa9fcae27.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-05-29T06-06-30-0505.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-LKH-Debug-05efea08158bab0c8f7f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-e68d7e7251a8fa24e4b3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-05-29T11-48-58-0568.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-LKH-Debug-5545c91768485ee47c07.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
     </list>
@@ -52,6 +51,9 @@
     <option name="minorVersion" value="1.3" />
   </component>
   <component name="ProjectId" id="2QKOZb3y59uyTIUOuNsaxOe1JV4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -99,7 +101,7 @@
       <workItem from="1685202573098" duration="2401000" />
       <workItem from="1685237571930" duration="1337000" />
       <workItem from="1685272716833" duration="4000" />
-      <workItem from="1685326582818" duration="12232000" />
+      <workItem from="1685326582818" duration="13575000" />
     </task>
     <servers />
   </component>

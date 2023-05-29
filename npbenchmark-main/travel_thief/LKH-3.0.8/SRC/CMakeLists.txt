@@ -173,6 +173,6 @@ add_executable(LKH
         VRPB_Reduce.c
         WriteCandidates.c
         WritePenalties.c
-        WriteTour.c main.c)
+        WriteTour.c main.c hello_world.c)
 
 target_link_libraries(LKH m)

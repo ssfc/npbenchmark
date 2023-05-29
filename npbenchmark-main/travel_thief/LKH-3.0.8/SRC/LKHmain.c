@@ -235,5 +235,8 @@ int main()
         SOP_Report(BestCost);
     }
     printff("\n");
+
+    hello_world();
+
     return EXIT_SUCCESS;
 }
