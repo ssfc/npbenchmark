@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "SRC.exe"
+			"path" : "LKH.exe"
 		},
 		{
-			"path" : "SRC.pdb"
+			"path" : "LKH.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -234,7 +234,7 @@
 			]
 		}
 	],
-	"id" : "SRC::@6890427a1f51a3e7e1df",
+	"id" : "LKH::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -255,8 +255,8 @@
 		],
 		"language" : "C"
 	},
-	"name" : "SRC",
-	"nameOnDisk" : "SRC.exe",
+	"name" : "LKH",
+	"nameOnDisk" : "LKH.exe",
 	"paths" : 
 	{
 		"build" : ".",

@@ -6,7 +6,7 @@ project(SRC C)
 
 include_directories(INCLUDE)
 
-add_executable(SRC
+add_executable(LKH
         INCLUDE/BIT.h
         INCLUDE/CLARIST.h
         INCLUDE/Delaunay.h
@@ -175,4 +175,4 @@ add_executable(SRC
         WritePenalties.c
         WriteTour.c)
 
-target_link_libraries(SRC m)
+target_link_libraries(LKH m)
