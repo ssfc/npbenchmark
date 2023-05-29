@@ -236,7 +236,5 @@ int compute_tsp()
     }
     printff("\n");
 
-    hello_world();
-
     return EXIT_SUCCESS;
 }
