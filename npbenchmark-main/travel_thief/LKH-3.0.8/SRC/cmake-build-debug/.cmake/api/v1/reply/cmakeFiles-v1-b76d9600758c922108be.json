@@ -18,6 +18,10 @@
 			"path" : "cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake"
 		},
 		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake"
+		},
+		{
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/CMakeSystemSpecificInformation.cmake"
@@ -90,6 +94,41 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/Platform/CYGWIN-windres.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/Platform/CYGWIN-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2/Modules/Platform/CYGWIN-GNU.cmake"
 		},
 		{
 			"isCMake" : true,
