@@ -1,0 +1,4 @@
+C:\Users\take_\AppData\Local\JetBrains\CLion2023.1\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/cygdrive/c/Program Files/JetBrains/CLion 2022.2.3/bin/ninja/cygwin/x64/ninja.exe" -DCMAKE_C_COMPILER=/usr/bin/gcc.exe -DCMAKE_CXX_COMPILER=/usr/bin/g++.exe -G Ninja -S /cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/c_and_cpp -B /cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/c_and_cpp/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/c_and_cpp/cmake-build-debug

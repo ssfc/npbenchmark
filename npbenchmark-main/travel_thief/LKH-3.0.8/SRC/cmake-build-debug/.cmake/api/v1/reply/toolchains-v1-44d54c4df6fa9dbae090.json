@@ -82,7 +82,7 @@
 						"gcc"
 					]
 				},
-				"path" : "/usr/bin/g++.exe",
+				"path" : "g++",
 				"version" : "11.3.0"
 			},
 			"language" : "CXX",

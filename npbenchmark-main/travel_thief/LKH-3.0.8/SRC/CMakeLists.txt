@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
-project(SRC)
+project(SRC C CXX)
 
 set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_COMPILER gcc)  # 使用gcc作为C编译器
+set(CMAKE_CXX_COMPILER g++)  # 使用g++作为C++编译器
 
 include_directories(INCLUDE)
 
@@ -173,6 +175,6 @@ add_executable(LKH
         VRPB_Reduce.c
         WriteCandidates.c
         WritePenalties.c
-        WriteTour.c main.c hello_world.c)
+        WriteTour.c main.cpp hello_world.c)
 
 target_link_libraries(LKH m)
