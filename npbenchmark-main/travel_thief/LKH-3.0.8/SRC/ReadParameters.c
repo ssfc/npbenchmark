@@ -1353,6 +1353,7 @@ void ReadParameters()
     LastLine = 0;
 }
 
+// 就是读取文件名嘛，有什么好解读的；
 static char *GetFileName(char *Line)
 {
     char *Rest = strtok(Line, "\n\t\r\f"), *t;
