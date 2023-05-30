@@ -6,7 +6,7 @@ TTP官方提供了许多论文，挑选结果最好的论文进行复现。(2023
 
 NB: ICAPS：国际自动规划与调度会议（International Conference on Automated Planning and Scheduling），是自动规划与调度领域的顶级会议，CCF B类。
 
-在熟悉MAPF问题的大邻域搜索和CBS算法后，尝试用强化学习解决MAPF问题。
+在熟悉MAPF问题的大邻域搜索和CBS算法后，尝试用强化学习解决MAPF问题。因为MAPF也是一个序列决策的过程，所以适合强化学习。
 
 ### Q: 解决MAPF问题的大邻域搜索方法是什么？
 
@@ -51,3 +51,62 @@ Source: Conversation with Bing, 2023/5/30
 (1) CBS(Conflict-Based Search)多机器人路径规划 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/611361907.
 (2) 技术解析 | 多智能体路径规划（MAPF） - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/388982360.
 (3) CBS基于冲突的搜索算法流程和核心 - CSDN博客. https://blog.csdn.net/m0_58135773/article/details/124699226.
+
+### Q: MAPF是一个序列决策的过程吗？
+
+您好，这是Bing。😊
+
+根据我的搜索结果，MAPF是一个序列决策的过程，因为它涉及到多个智能体在离散的时间步中做出动作，以达到各自的目标位置，同时避免与其他智能体发生冲突。¹²
+
+MAPF可以看作是一个协同规划问题（Cooperative Planning Problem），其中每个智能体的动作不仅取决于自身的状态，还取决于其他智能体的状态和动作。¹²
+
+MAPF也可以看作是一个分布式约束优化问题（Distributed Constraint Optimization Problem），其中每个智能体需要在满足一些约束的前提下，最小化自身或全局的代价函数。³
+
+希望这些信息对您有帮助。😊
+
+Source: Conversation with Bing, 2023/5/30
+(1) 多机器人路径规划(MAPF)综述 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/613639712.
+(2) Multi-Agent Pathfinding: Definitions, Variants, and Benchmarks. https://arxiv.org/abs/1906.08291.
+(3) Graph-Based Multi-Robot Path Finding and Planning. https://link.springer.com/article/10.1007/s43154-022-00083-8.
+
+### Q: 序列决策的过程适合用强化学习解决吗？
+
+根据我的搜索结果，序列决策的过程适合用强化学习解决，因为强化学习是一种基于奖励的学习方法，可以让智能体在不断与环境交互的过程中，学习到最优的策略，以最大化累积的奖励。¹²³
+
+强化学习可以处理不同类型的序列决策问题，例如：
+
+- 完全可观测的环境，即智能体可以直接感知环境的状态，如围棋、Atari游戏等。
+- 部分可观测的环境，即智能体只能感知环境的部分观测，如自动驾驶、打牌等。
+- 离散动作空间的环境，即智能体可以采取有限个离散的动作，如走迷宫、下棋等。
+- 连续动作空间的环境，即智能体可以采取实值向量的动作，如控制机器人、飞行器等。
+
+强化学习也有一些挑战和难点，例如：
+
+- 探索与利用的平衡，即智能体如何在利用已知的奖励信息和探索未知的状态动作之间做出合理的抉择。
+- 奖励延迟和折扣，即智能体如何在近期奖励和远期奖励之间做出权衡，并考虑未来奖励的不确定性和衰减。
+- 部分可观测性和记忆，即智能体如何在无法直接感知状态的情况下，利用历史观测和内部状态来做出决策。
+- 多智能体协同与竞争，即智能体如何在与其他智能体共享环境的情况下，学习到合作或对抗的策略。
+
+Source: Conversation with Bing, 2023/5/30
+(1) CS285深度强化学习笔记2——序列决策问题和imitation learning - 知乎. https://zhuanlan.zhihu.com/p/354748682.
+(2) 强化学习笔记2：序列决策(Sequential Decision Making)过程_UQI-LIUWJ的博客-CSDN博客. https://blog.csdn.net/qq_40206371/article/details/119223500.
+(3) 强化学习——简介 - 知乎. https://zhuanlan.zhihu.com/p/32409193.
+
+### Q: 什么是序列决策？
+
+序列决策是一种按时间顺序进行一系列决策的动态决策方式，可用于随机性或不确定性的动态系统最优化。¹²
+
+序列决策的过程可以表示为一个决策代理（decision agent）与离散的时间动态系统进行迭代地交互。²
+
+在每个时间步的开始时，系统会处于某种状态。基于代理的决策规则，它会观察当前的状态，并从有限状态集中选择一个动作。然后，动态系统会进入下一个新的状态并获得一个对应的奖励。这样循环进行状态选择，以获得一组最大化收益。²
+
+序列决策问题可以分为不同的类型，例如：
+
+- 完全可观测的环境，即代理可以直接感知环境的状态，如围棋、Atari游戏等。
+- 部分可观测的环境，即代理只能感知环境的部分观测，如自动驾驶、打牌等。
+- 离散动作空间的环境，即代理可以采取有限个离散的动作，如走迷宫、下棋等。
+- 连续动作空间的环境，即代理可以采取实值向量的动作，如控制机器人、飞行器等。
+
+Source: Conversation with Bing, 2023/5/30
+(1) CS285深度强化学习笔记2——序列决策问题和imitation learning - 知乎. https://zhuanlan.zhihu.com/p/354748682.
+(2) 序贯决策的理解_Coder_Jh的博客-CSDN博客. https://blog.csdn.net/qq_31239371/article/details/115096523.
