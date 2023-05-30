@@ -537,7 +537,7 @@ void ReadParameters()
     MTSPMaxSize = -1;
     MTSPObjective = -1;
     NonsequentialMoveType = -1;
-    Optimum = 378032; // 把Optimum写死了
+    Optimum = 378032; // 把Optimum固定
     PatchingA = 1;
     PatchingC = 0;
     PatchingAExtended = 0;
@@ -553,7 +553,7 @@ void ReadParameters()
     Recombination = IPT;
     RestrictedSearch = 1;
     RohePartitioning = 0;
-    Runs = 10;
+    Runs = 10; // 把RUNS固定
     Salesmen = 1;
     Scale = -1;
     Seed = 1;
