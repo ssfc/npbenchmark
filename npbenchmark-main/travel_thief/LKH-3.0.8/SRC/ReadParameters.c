@@ -537,7 +537,7 @@ void ReadParameters()
     MTSPMaxSize = -1;
     MTSPObjective = -1;
     NonsequentialMoveType = -1;
-    Optimum = MINUS_INFINITY;
+    Optimum = 378032;
     PatchingA = 1;
     PatchingC = 0;
     PatchingAExtended = 0;
@@ -579,29 +579,6 @@ void ReadParameters()
             eprintf("Cannot open PARAMETER_FILE: \"%s\"",
                     ParameterFileName);
         printff("PARAMETER_FILE = %s\n", ParameterFileName);
-    }
-    else
-    {
-        while (1)
-        {
-            printff("PARAMETER_FILE = ");
-            if (!(ParameterFileName = GetFileName(ReadLine(stdin))))
-            {
-                do
-                {
-                    printff("PROBLEM_FILE = ");
-                    ProblemFileName = GetFileName(ReadLine(stdin));
-                }
-                while (!ProblemFileName);
-
-                return;
-            }
-            else if (!(ParameterFile = fopen(ParameterFileName, "r")))
-                printff("Cannot open \"%s\". Please try again.\n",
-                        ParameterFileName);
-            else
-                break;
-        }
     }
 
     while ((Line = ReadLine(ParameterFile)))
@@ -1041,12 +1018,6 @@ void ReadParameters()
                 eprintf("NONSEQUENTIAL_MOVE_TYPE: integer expected");
             if (NonsequentialMoveType < 4)
                 eprintf("NONSEQUENTIAL_MOVE_TYPE: >= 4 expected");
-        }
-        else if (!strcmp(Keyword, "OPTIMUM"))
-        {
-            if (!(Token = strtok(0, Delimiters)) ||
-                !sscanf(Token, GainInputFormat, &Optimum))
-                eprintf("OPTIMUM: integer expected");
         }
         else if (!strcmp(Keyword, "OUTPUT_TOUR_FILE"))
         {
