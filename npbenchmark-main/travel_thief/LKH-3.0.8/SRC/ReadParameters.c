@@ -933,44 +933,56 @@ void ReadParameters()
                         ("(MAX_CANDIDATES) Illegal SYMMETRIC specification");
             }
         }
-        else if (!strcmp(Keyword, "MAX_SWAPS")) {
+        else if (!strcmp(Keyword, "MAX_SWAPS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxSwaps))
                 eprintf("MAX_SWAPS: integer expected");
             if (MaxSwaps < 0)
                 eprintf("MAX_SWAPS: non-negative integer expected");
-        } else if (!strcmp(Keyword, "MAX_TRIALS")) {
+        }
+        else if (!strcmp(Keyword, "MAX_TRIALS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxTrials))
                 eprintf("MAX_TRIALS: integer expected");
             if (MaxTrials < 0)
                 eprintf("MAX_TRIALS: non-negative integer expected");
-        } else if (!strcmp(Keyword, "MERGE_TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "MERGE_TOUR_FILE"))
+        {
             if (!(Name = GetFileName(0)))
                 eprintf("MERGE_TOUR_FILE: string expected");
-            if (MergeTourFiles == 0) {
+            if (MergeTourFiles == 0)
+            {
                 MergeTourFileName = (char **) malloc(sizeof(char *));
                 MergeTourFileName[MergeTourFiles++] = Name;
-            } else {
+            }
+            else
+            {
                 int i;
                 for (i = 0; i < MergeTourFiles; i++)
                     if (!strcmp(Name, MergeTourFileName[i]))
                         break;
-                if (i == MergeTourFiles) {
+                if (i == MergeTourFiles)
+                {
                     MergeTourFileName =
                        (char **) realloc(MergeTourFileName,
                                          (MergeTourFiles + 1) * sizeof(char *));
                     MergeTourFileName[MergeTourFiles++] = Name;
                 }
             }
-        } else if (!strcmp(Keyword, "MOVE_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "MOVE_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MoveType))
                 eprintf("MOVE_TYPE: integer expected");
             if (MoveType < 2)
                 eprintf("MOVE_TYPE: >= 2 expected");
             MoveTypeSpecial = 0;
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "SPECIAL", strlen(Token)))
@@ -982,18 +994,25 @@ void ReadParameters()
                     eprintf("%s", "(MOVE_TYPE) "
                             "SPECIAL, MOVE_TYPE must be 3 or 5");
             }
-        } else if (!strcmp(Keyword, "MTSP_MAX_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "MTSP_MAX_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MTSPMaxSize))
                 eprintf("MTSP_MAX_SIZE: integer expected");
             if (MTSPMaxSize <= 0)
                 eprintf("MTSP_MAX_SIZE: positive integer expected");
-        } else if (!strcmp(Keyword, "MTSP_MIN_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "MTSP_MIN_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MTSPMinSize))
                 eprintf("MTSP_MIN_SIZE: integer expected");
-        } else if (!strcmp(Keyword, "MTSP_OBJECTIVE")) {
-            if ((Token = strtok(0, Delimiters))) {
+        }
+        else if (!strcmp(Keyword, "MTSP_OBJECTIVE"))
+        {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strcmp(Token, "MINMAX"))
@@ -1005,32 +1024,44 @@ void ReadParameters()
                 else
                     eprintf("MTSP_OBJECTIVE: MINMAX, MINMAX_SIZE, or "
                             "MINSUM expected");
-            } else
+            }
+            else
                 eprintf("MTSP_OBJECTIVE: MINMAX, MINMAX_SIZE, or "
                         "MINSUM expected");
-        } else if (!strcmp(Keyword, "MTSP_SOLUTION_FILE")) {
+        }
+        else if (!strcmp(Keyword, "MTSP_SOLUTION_FILE"))
+        {
             if (!(MTSPSolutionFileName = GetFileName(0)))
                 eprintf("MTSP_SOLUTION_FILE: string expected");
-        } else if (!strcmp(Keyword, "NONSEQUENTIAL_MOVE_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "NONSEQUENTIAL_MOVE_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &NonsequentialMoveType))
                 eprintf("NONSEQUENTIAL_MOVE_TYPE: integer expected");
             if (NonsequentialMoveType < 4)
                 eprintf("NONSEQUENTIAL_MOVE_TYPE: >= 4 expected");
-        } else if (!strcmp(Keyword, "OPTIMUM")) {
+        }
+        else if (!strcmp(Keyword, "OPTIMUM"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, GainInputFormat, &Optimum))
                 eprintf("OPTIMUM: integer expected");
-        } else if (!strcmp(Keyword, "OUTPUT_TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "OUTPUT_TOUR_FILE"))
+        {
             if (!(OutputTourFileName = GetFileName(0)))
                 eprintf("OUTPUT_TOUR_FILE: string expected");
-        } else if (!strcmp(Keyword, "PATCHING_A")) {
+        }
+        else if (!strcmp(Keyword, "PATCHING_A"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &PatchingA))
                 eprintf("PATCHING_A: integer expected");
             if (PatchingA < 0)
                 eprintf("PATCHING_A: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "RESTRICTED", strlen(Token)))
@@ -1041,7 +1072,9 @@ void ReadParameters()
                     eprintf("%s", "(PATCHING_A) "
                             "Illegal RESTRICTED or EXTENDED specification");
             }
-        } else if (!strcmp(Keyword, "PATCHING_C")) {
+        }
+        else if (!strcmp(Keyword, "PATCHING_C"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &PatchingC))
                 eprintf("PATCHING_C: integer expected");
@@ -1058,26 +1091,35 @@ void ReadParameters()
                     eprintf("%s", "(PATCHING_C) ",
                             "Illegal RESTRICTED or EXTENDED specification");
             }
-        } else if (!strcmp(Keyword, "PI_FILE")) {
+        }
+        else if (!strcmp(Keyword, "PI_FILE"))
+        {
             if (!(PiFileName = GetFileName(0)))
                 eprintf("PI_FILE: string expected");
-        } else if (!strcmp(Keyword, "POPMUSIC_INITIAL_TOUR")) {
+        }
+        else if (!strcmp(Keyword, "POPMUSIC_INITIAL_TOUR"))
+        {
             if (!ReadYesOrNo(&POPMUSIC_InitialTour))
                 eprintf("POPMUSIC_INITIAL_TOUR: YES or NO expected");
-        } else if (!strcmp(Keyword, "POPMUSIC_MAX_NEIGHBORS")) {
+        }
+        else if (!strcmp(Keyword, "POPMUSIC_MAX_NEIGHBORS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &POPMUSIC_MaxNeighbors))
                 eprintf("POPMUSIC_MAX_NEIGHBORS: integer expected");
             if (POPMUSIC_MaxNeighbors <= 0)
                 eprintf
                     ("POPMUSIC_MAX_NEIGHBORS: positive integer expected");
-        } else if (!strcmp(Keyword, "POPMUSIC_SAMPLE_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "POPMUSIC_SAMPLE_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &POPMUSIC_SampleSize))
                 eprintf("POPMUSIC_SAMPLE_SIZE: integer expected");
             if (POPMUSIC_SampleSize <= 0)
                 eprintf("POPMUSIC_SAMPLE_SIZE: positive integer expected");
-        } else if (!strcmp(Keyword, "POPMUSIC_SOLUTIONS")) {
+        }
+        else if (!strcmp(Keyword, "POPMUSIC_SOLUTIONS")) {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &POPMUSIC_Solutions))
                 eprintf("POPMUSIC_SOLUTIONS: integer expected");
