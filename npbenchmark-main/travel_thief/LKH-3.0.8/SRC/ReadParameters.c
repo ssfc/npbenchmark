@@ -553,7 +553,7 @@ void ReadParameters()
     Recombination = IPT;
     RestrictedSearch = 1;
     RohePartitioning = 0;
-    Runs = 0;
+    Runs = 10;
     Salesmen = 1;
     Scale = -1;
     Seed = 1;
@@ -1141,14 +1141,6 @@ void ReadParameters()
         {
             if (!ReadYesOrNo(&RestrictedSearch))
                 eprintf("RESTRICTED_SEARCH: YES or NO expected");
-        }
-        else if (!strcmp(Keyword, "RUNS"))
-        {
-            if (!(Token = strtok(0, Delimiters)) ||
-                !sscanf(Token, "%d", &Runs))
-                eprintf("RUNS: integer expected");
-            if (Runs <= 0)
-                eprintf("RUNS: positive integer expected");
         }
         else if (!strcmp(Keyword, "SALESMEN") ||
                    !strcmp(Keyword, "VEHICLES"))
