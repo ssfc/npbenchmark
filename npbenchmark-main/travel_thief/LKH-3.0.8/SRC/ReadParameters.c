@@ -490,6 +490,7 @@ void ReadParameters()
     char *Line, *Keyword, *Token, *Name;
     unsigned int i;
 
+    // 下面像是在给文档里介绍的一堆参数初始化
     ProblemFileName = PiFileName = InputTourFileName =
         OutputTourFileName = TourFileName = 0;
     CandidateFiles = MergeTourFiles = 0;
