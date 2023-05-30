@@ -1377,6 +1377,7 @@ static char *GetFileName(char *Line)
     return t;
 }
 
+// 就是按字面意思读取YES或者NO啊
 static char *ReadYesOrNo(int *V)
 {
     char *Token = strtok(0, Delimiters);
