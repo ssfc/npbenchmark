@@ -145,3 +145,19 @@ Source: Conversation with Bing, 2023/5/30
 (1) *多代理寻径：定义、变体和基准 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/339098595.
 (2) 多机器人路径规划(MAPF)综述 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/613639712.
 (3) 技术解析 | 多智能体路径规划（MAPF） - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/388982360.
+
+### Q: MAPF有哪些常见的解决方法？
+
+MAPF问题有很多不同的解决方法，可以根据不同的性能要求和优化目标来选择。一般来说，解决MAPF问题的方法可以分为以下几类：
+
+- 优先级规划（Prioritized Planning）：按照一定的优先级顺序为每个智能体规划路径，忽略后续智能体对当前智能体的影响¹。这种方法很快，但是不完备也不最优，可能会导致死锁或者次优解。
+- 分解搜索（Decoupled Search）：将MAPF问题分解为两个子问题，一个是为每个智能体规划单独的路径，一个是协调智能体之间的冲突¹。这种方法可以保证完备性，但是不一定最优，也可能很慢。
+- 集中式搜索（Centralized Search）：将MAPF问题建模为一个高维的状态空间搜索问题，使用启发式搜索算法来寻找最优解¹²。这种方法可以保证最优性，但是非常耗时，只适合小规模的问题。
+- 近似搜索（Approximate Search）：使用一些近似的技巧来降低搜索空间的复杂度，从而提高搜索效率¹²。这种方法可以保证近似最优性，但是可能牺牲一些完备性或者精度。
+
+这些只是一些常见的解决MAPF问题的方法，还有很多其他的方法，可以根据不同的问题特征和算法特性来选择。
+
+Source: Conversation with Bing, 2023/5/30
+(1) 多机器人路径规划(MAPF)综述 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/613639712.
+(2) Multi-Agent Path Finding – An Overview | SpringerLink. https://link.springer.com/chapter/10.1007/978-3-030-33274-7_6.
+(3) MAPF Benchmarks - Moving AI. https://www.movingai.com/benchmarks/mapf.html.
