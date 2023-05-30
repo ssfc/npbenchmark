@@ -6,7 +6,7 @@
  * This file contains the main function of the program.
  */
 
-int compute_tsp()
+void compute_tsp()
 {
     GainType Cost, OldOptimum;
     double Time, LastTime;
@@ -37,7 +37,7 @@ int compute_tsp()
             SolveSFCSubproblems();
         else
             SolveTourSegmentSubproblems();
-        return EXIT_SUCCESS;
+        return;
     }
     AllocateStructures();
     if (ProblemType == TSPTW)
@@ -235,6 +235,4 @@ int compute_tsp()
         SOP_Report(BestCost);
     }
     printff("\n");
-
-    return EXIT_SUCCESS;
 }
