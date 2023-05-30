@@ -6,14 +6,14 @@
  * This file contains the main function of the program.
  */
 
-void compute_tsp()
+void compute_tsp(char* parameter_file_name)
 {
     GainType Cost, OldOptimum;
     double Time, LastTime;
     Node *N;
     int i;
 
-    ParameterFileName = "pr2392.par";
+    ParameterFileName = parameter_file_name;
     ReadParameters();
     StartTime = LastTime = GetTime();
     MaxMatrixDimension = 20000;
