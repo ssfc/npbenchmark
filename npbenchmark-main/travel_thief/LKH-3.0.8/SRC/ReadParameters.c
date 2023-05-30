@@ -530,7 +530,7 @@ void ReadParameters()
     MaxSwaps = -1;
     MaxTrials = -1;
     MoorePartitioning = 0;
-    MoveType = 5;
+    MoveType = 5; // fix
     MoveTypeSpecial = 0;
     MTSPDepot = 1;
     MTSPMinSize = 1;
@@ -948,28 +948,6 @@ void ReadParameters()
                                          (MergeTourFiles + 1) * sizeof(char *));
                     MergeTourFileName[MergeTourFiles++] = Name;
                 }
-            }
-        }
-        else if (!strcmp(Keyword, "MOVE_TYPE"))
-        {
-            if (!(Token = strtok(0, Delimiters)) ||
-                !sscanf(Token, "%d", &MoveType))
-                eprintf("MOVE_TYPE: integer expected");
-            if (MoveType < 2)
-                eprintf("MOVE_TYPE: >= 2 expected");
-            MoveTypeSpecial = 0;
-            if ((Token = strtok(0, Delimiters)))
-            {
-                for (i = 0; i < strlen(Token); i++)
-                    Token[i] = (char) toupper(Token[i]);
-                if (!strncmp(Token, "SPECIAL", strlen(Token)))
-                    MoveTypeSpecial = 1;
-                else
-                    eprintf("%s", "(MOVE_TYPE) "
-                            "Illegal SPECIAL specification");
-                if (MoveType != 3 && MoveType != 5)
-                    eprintf("%s", "(MOVE_TYPE) "
-                            "SPECIAL, MOVE_TYPE must be 3 or 5");
             }
         }
         else if (!strcmp(Keyword, "MTSP_MAX_SIZE"))
