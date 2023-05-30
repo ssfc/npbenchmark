@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
-project(SRC C CXX)
+project(LKH C CXX)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_COMPILER gcc)  # 使用gcc作为C编译器
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_COMPILER g++)  # 使用g++作为C++编译器
 
 include_directories(INCLUDE)
