@@ -23,6 +23,9 @@
     <list default="true" id="16c3658d-fb6f-4eac-be86-034c17a637dc" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReadParameters.c" beforeDir="false" afterPath="$PROJECT_DIR$/ReadParameters.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +102,7 @@
       <workItem from="1685272716833" duration="4000" />
       <workItem from="1685326582818" duration="17802000" />
       <workItem from="1685370517182" duration="2961000" />
-      <workItem from="1685407689700" duration="9390000" />
+      <workItem from="1685407689700" duration="10424000" />
     </task>
     <servers />
   </component>

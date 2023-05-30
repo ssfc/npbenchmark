@@ -571,50 +571,70 @@ void ReadParameters()
     TraceLevel = 1;
     TSPTW_Makespan = 0;
 
-    if (ParameterFileName) {
+    // 整体而言，这段代码的作用是检查参数文件名的存在，如果存在则尝试打开文件并输出相关信息，
+    // 如果不存在则进入循环，要求用户输入文件名，直到成功打开文件为止。
+    if (ParameterFileName)
+    {
         if (!(ParameterFile = fopen(ParameterFileName, "r")))
             eprintf("Cannot open PARAMETER_FILE: \"%s\"",
                     ParameterFileName);
         printff("PARAMETER_FILE = %s\n", ParameterFileName);
-    } else {
-        while (1) {
+    }
+    else
+    {
+        while (1)
+        {
             printff("PARAMETER_FILE = ");
-            if (!(ParameterFileName = GetFileName(ReadLine(stdin)))) {
-                do {
+            if (!(ParameterFileName = GetFileName(ReadLine(stdin))))
+            {
+                do
+                {
                     printff("PROBLEM_FILE = ");
                     ProblemFileName = GetFileName(ReadLine(stdin));
-                } while (!ProblemFileName);
+                }
+                while (!ProblemFileName);
+
                 return;
-            } else if (!(ParameterFile = fopen(ParameterFileName, "r")))
+            }
+            else if (!(ParameterFile = fopen(ParameterFileName, "r")))
                 printff("Cannot open \"%s\". Please try again.\n",
                         ParameterFileName);
             else
                 break;
         }
     }
-    while ((Line = ReadLine(ParameterFile))) {
+
+    while ((Line = ReadLine(ParameterFile)))
+    {
         if (!(Keyword = strtok(Line, Delimiters)))
             continue;
         if (Keyword[0] == '#')
             continue;
         for (i = 0; i < strlen(Keyword); i++)
             Keyword[i] = (char) toupper(Keyword[i]);
-        if (!strcmp(Keyword, "ASCENT_CANDIDATES")) {
+        if (!strcmp(Keyword, "ASCENT_CANDIDATES"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &AscentCandidates))
                 eprintf("ASCENT_CANDIDATES: integer expected");
             if (AscentCandidates < 2)
                 eprintf("ASCENT_CANDIDATES: >= 2 expected");
-        } else if (!strcmp(Keyword, "BACKBONE_TRIALS")) {
+        }
+        else if (!strcmp(Keyword, "BACKBONE_TRIALS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &BackboneTrials))
                 eprintf("BACKBONE_TRIALS: integer expected");
             if (BackboneTrials < 0)
                 eprintf("BACKBONE_TRIALS: non-negative integer expected");
-        } else if (!strcmp(Keyword, "BACKTRACKING")) {
+        }
+        else if (!strcmp(Keyword, "BACKTRACKING"))
+        {
             if (!ReadYesOrNo(&Backtracking))
                 eprintf("BACKTRACKING: YES or NO expected");
-        } else if (!strcmp(Keyword, "BWTSP")) {
+        }
+        else if (!strcmp(Keyword, "BWTSP"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &BWTSP_B))
                 eprintf("BWTSP: integer expected");
@@ -628,25 +648,33 @@ void ReadParameters()
             if ((Token = strtok(0, Delimiters)) &&
                 !sscanf(Token, "%d", &BWTSP_L))
                 eprintf("BWTSP: third integer expected");
-        } else if (!strcmp(Keyword, "CANDIDATE_FILE")) {
+        }
+        else if (!strcmp(Keyword, "CANDIDATE_FILE"))
+        {
             if (!(Name = GetFileName(0)))
                 eprintf("CANDIDATE_FILE: string expected");
-            if (CandidateFiles == 0) {
+            if (CandidateFiles == 0)
+            {
                 CandidateFileName = (char **) malloc(sizeof(char *));
                 CandidateFileName[CandidateFiles++] = Name;
-            } else {
+            }
+            else
+            {
                 int i;
                 for (i = 0; i < CandidateFiles; i++)
                     if (!strcmp(Name, CandidateFileName[i]))
                         break;
-                if (i == CandidateFiles) {
+                if (i == CandidateFiles)
+                {
                     CandidateFileName =
                        (char **) realloc(CandidateFileName,
                                          (CandidateFiles + 1) * sizeof(char *));
                     CandidateFileName[CandidateFiles++] = Name;
                 }
             }
-        } else if (!strcmp(Keyword, "CANDIDATE_SET_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "CANDIDATE_SET_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)))
                 eprintf("%s", "CANDIDATE_SET_TYPE: "
                         "ALPHA, DELAUNAY, NEAREST-NEIGHBOR, "
@@ -667,8 +695,10 @@ void ReadParameters()
                 eprintf("%s", "CANDIDATE_SET_TYPE: "
                         "ALPHA, DELAUNAY, NEAREST-NEIGHBOR, "
                         "POPMUSIC, or QUADRANT expected");
-            if (CandidateSetType == DELAUNAY) {
-                if ((Token = strtok(0, Delimiters))) {
+            if (CandidateSetType == DELAUNAY)
+            {
+                if ((Token = strtok(0, Delimiters)))
+                {
                     for (i = 0; i < strlen(Token); i++)
                         Token[i] = (char) toupper(Token[i]);
                     if (strncmp(Token, "PURE", strlen(Token)))
@@ -677,59 +707,80 @@ void ReadParameters()
                     DelaunayPure = 1;
                 }
             }
-        } else if (!strcmp(Keyword, "COMMENT")) {
+        }
+        else if (!strcmp(Keyword, "COMMENT"))
+        {
             continue;
-        } else if (!strcmp(Keyword, "DEPOT")) {
+        }
+        else if (!strcmp(Keyword, "DEPOT"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MTSPDepot))
                 eprintf("DEPOT: integer expected");
             if (MTSPDepot <= 0)
                 eprintf("DEPOT: positive integer expected");
-        } else if (!strcmp(Keyword, "DISTANCE")) {
+        }
+        else if (!strcmp(Keyword, "DISTANCE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%lf", &DistanceLimit))
                 eprintf("DISTANCE: real expected");
             if (DistanceLimit < 0)
                 eprintf("DISTANCE: >= 0 expected");
-        } else if (!strcmp(Keyword, "EDGE_FILE")) {
+        }
+        else if (!strcmp(Keyword, "EDGE_FILE"))
+        {
             if (!(Name = GetFileName(0)))
                 eprintf("EDGE_FILE: string expected");
-            if (EdgeFiles == 0) {
+            if (EdgeFiles == 0)
+            {
                 EdgeFileName = (char **) malloc(sizeof(char *));
                 EdgeFileName[EdgeFiles++] = Name;
-            } else {
+            }
+            else
+            {
                 int i;
                 for (i = 0; i < EdgeFiles; i++)
                     if (!strcmp(Name, EdgeFileName[i]))
                         break;
-                if (i == EdgeFiles) {
+                if (i == EdgeFiles)
+                {
                     EdgeFileName =
                        (char **) realloc(EdgeFileName,
                                          (EdgeFiles + 1) * sizeof(char *));
                     EdgeFileName[EdgeFiles++] = Name;
                 }
             }
-        } else if (!strcmp(Keyword, "EOF")) {
+        }
+        else if (!strcmp(Keyword, "EOF"))
+        {
             break;
-        } else if (!strcmp(Keyword, "EXCESS")) {
+        }
+        else if (!strcmp(Keyword, "EXCESS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%lf", &Excess))
                 eprintf("EXCESS: real expected");
             if (Excess < 0)
                 eprintf("EXCESS: non-negeative real expected");
-        } else if (!strcmp(Keyword, "EXTERNAL_SALESMEN")) {
+        }
+        else if (!strcmp(Keyword, "EXTERNAL_SALESMEN"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &ExternalSalesmen))
                 eprintf("%s: integer expected", Keyword);
             if (ExternalSalesmen < 0)
                 eprintf("%s: non-negative integer expected", Keyword);
-        } else if (!strcmp(Keyword, "EXTRA_CANDIDATES")) {
+        }
+        else if (!strcmp(Keyword, "EXTRA_CANDIDATES"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &ExtraCandidates))
                 eprintf("EXTRA_CANDIDATES: integer expected");
             if (ExtraCandidates < 0)
                 eprintf("EXTRA_CANDIDATES: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (strncmp(Token, "SYMMETRIC", strlen(Token)))
@@ -737,7 +788,9 @@ void ReadParameters()
                         ("(EXTRA_CANDIDATES) Illegal SYMMETRIC specification");
                 ExtraCandidateSetSymmetric = 1;
             }
-        } else if (!strcmp(Keyword, "EXTRA_CANDIDATE_SET_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "EXTRA_CANDIDATE_SET_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)))
                 eprintf("%s", "EXTRA_CANDIDATE_SET_TYPE: "
                         "NEAREST-NEIGHBOR, or QUADRANT expected");
@@ -750,25 +803,35 @@ void ReadParameters()
             else
                 eprintf("%s", "EXTRA_CANDIDATE_SET_TYPE: "
                         "NEAREST-NEIGHBOR or QUADRANT expected");
-        } else if (!strcmp(Keyword, "GAIN23")) {
+        }
+        else if (!strcmp(Keyword, "GAIN23"))
+        {
             if (!ReadYesOrNo(&Gain23Used))
                 eprintf("GAIN23: YES or NO expected");
-        } else if (!strcmp(Keyword, "GAIN_CRITERION")) {
+        }
+        else if (!strcmp(Keyword, "GAIN_CRITERION"))
+        {
             if (!ReadYesOrNo(&GainCriterionUsed))
                 eprintf("GAIN_CRITERION: YES or NO expected");
-        } else if (!strcmp(Keyword, "INITIAL_PERIOD")) {
+        }
+        else if (!strcmp(Keyword, "INITIAL_PERIOD"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &InitialPeriod))
                 eprintf("INITIAL_PERIOD: integer expected");
             if (InitialPeriod < 0)
                 eprintf("INITIAL_PERIOD: non-negative integer expected");
-        } else if (!strcmp(Keyword, "INITIAL_STEP_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "INITIAL_STEP_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &InitialStepSize))
                 eprintf("INITIAL_STEP_SIZE: integer expected");
             if (InitialStepSize <= 0)
                 eprintf("INITIAL_STEP_SIZE: positive integer expected");
-        } else if (!strcmp(Keyword, "INITIAL_TOUR_ALGORITHM")) {
+        }
+        else if (!strcmp(Keyword, "INITIAL_TOUR_ALGORITHM"))
+        {
             if (!(Token = strtok(0, Delimiters)))
                 eprintf("INITIAL_TOUR_ALGORITHM: "
                         "BORUVKA, CTSP, CVRP, GREEDY, MOORE, MTSP,\n"
@@ -805,46 +868,62 @@ void ReadParameters()
                         "BORUVKA, CVRP, GREEDY, MOORE, MTSP,\n"
                         "NEAREST-NEIGHBOR, QUICK-BORUVKA, SIERPINSKI, "
                         "SOP, TSPDL, or WALK expected");
-        } else if (!strcmp(Keyword, "INITIAL_TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "INITIAL_TOUR_FILE")) {
             if (!(InitialTourFileName = GetFileName(0)))
                 eprintf("INITIAL_TOUR_FILE: string expected");
-        } else if (!strcmp(Keyword, "INITIAL_TOUR_FRACTION")) {
+        }
+        else if (!strcmp(Keyword, "INITIAL_TOUR_FRACTION"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%lf", &InitialTourFraction))
                 eprintf("INITIAL_TOUR_FRACTION: real expected");
             if (InitialTourFraction < 0 || InitialTourFraction > 1)
                 eprintf("INITIAL_TOUR_FRACTION: >= 0 or <= 1 expected");
-        } else if (!strcmp(Keyword, "INPUT_TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "INPUT_TOUR_FILE"))
+        {
             if (!(InputTourFileName = GetFileName(0)))
                 eprintf("INPUT_TOUR_FILE: string expected");
-        } else if (!strcmp(Keyword, "KICK_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "KICK_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &KickType))
                 eprintf("KICK_TYPE: integer expected");
             if (KickType != 0 && KickType < 4)
                 eprintf("KICK_TYPE: integer >= 4 expected");
-        } else if (!strcmp(Keyword, "KICKS")) {
+        }
+        else if (!strcmp(Keyword, "KICKS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Kicks))
                 eprintf("KICKS: integer expected");
             if (Kicks < 0)
                 eprintf("KICKS: non-negative integer expected");
-        } else if (!strcmp(Keyword, "MAKESPAN")) {
+        }
+        else if (!strcmp(Keyword, "MAKESPAN"))
+        {
             if (!ReadYesOrNo(&TSPTW_Makespan))
                 eprintf("MAKESPAN: YES or NO expected");
-        } else if (!strcmp(Keyword, "MAX_BREADTH")) {
+        }
+        else if (!strcmp(Keyword, "MAX_BREADTH"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxBreadth))
                 eprintf("MAX_BREADTH: integer expected");
             if (MaxBreadth < 0)
                 eprintf("MAX_BREADTH: non-negative integer expected");
-        } else if (!strcmp(Keyword, "MAX_CANDIDATES")) {
+        }
+        else if (!strcmp(Keyword, "MAX_CANDIDATES"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxCandidates))
                 eprintf("MAX_CANDIDATES: integer expected");
             if (MaxCandidates < 0)
                 eprintf("MAX_CANDIDATES: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "SYMMETRIC", strlen(Token)))
@@ -853,7 +932,8 @@ void ReadParameters()
                     eprintf
                         ("(MAX_CANDIDATES) Illegal SYMMETRIC specification");
             }
-        } else if (!strcmp(Keyword, "MAX_SWAPS")) {
+        }
+        else if (!strcmp(Keyword, "MAX_SWAPS")) {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxSwaps))
                 eprintf("MAX_SWAPS: integer expected");
@@ -1166,6 +1246,7 @@ void ReadParameters()
         if ((Token = strtok(0, Delimiters)) && Token[0] != '#')
             eprintf("Junk at end of line: %s", Token);
     }
+
     if (!ProblemFileName)
         eprintf("Problem file name is missing");
     if (SubproblemSize == 0 && SubproblemTourFileName != 0)
