@@ -539,7 +539,7 @@ void ReadParameters()
     NonsequentialMoveType = -1;
     Optimum = 378032; // 把Optimum固定
     PatchingA = 1;
-    PatchingC = 0;
+    PatchingC = 3; // fix
     PatchingAExtended = 0;
     PatchingARestricted = 0;
     PatchingCExtended = 0;
@@ -1041,26 +1041,6 @@ void ReadParameters()
                     PatchingAExtended = 1;
                 else
                     eprintf("%s", "(PATCHING_A) "
-                            "Illegal RESTRICTED or EXTENDED specification");
-            }
-        }
-        else if (!strcmp(Keyword, "PATCHING_C"))
-        {
-            if (!(Token = strtok(0, Delimiters)) ||
-                !sscanf(Token, "%d", &PatchingC))
-                eprintf("PATCHING_C: integer expected");
-            if (PatchingC < 0)
-                eprintf("PATCHING_C: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters)))
-            {
-                for (i = 0; i < strlen(Token); i++)
-                    Token[i] = (char) toupper(Token[i]);
-                if (!strncmp(Token, "RESTRICTED", strlen(Token)))
-                    PatchingCRestricted = 1;
-                else if (!strncmp(Token, "EXTENDED", strlen(Token)))
-                    PatchingCExtended = 1;
-                else
-                    eprintf("%s", "(PATCHING_C) ",
                             "Illegal RESTRICTED or EXTENDED specification");
             }
         }
