@@ -54,15 +54,11 @@ Source: Conversation with Bing, 2023/5/30
 
 ### Q: MAPF是一个序列决策的过程吗？
 
-您好，这是Bing。😊
-
 根据我的搜索结果，MAPF是一个序列决策的过程，因为它涉及到多个智能体在离散的时间步中做出动作，以达到各自的目标位置，同时避免与其他智能体发生冲突。¹²
 
 MAPF可以看作是一个协同规划问题（Cooperative Planning Problem），其中每个智能体的动作不仅取决于自身的状态，还取决于其他智能体的状态和动作。¹²
 
 MAPF也可以看作是一个分布式约束优化问题（Distributed Constraint Optimization Problem），其中每个智能体需要在满足一些约束的前提下，最小化自身或全局的代价函数。³
-
-希望这些信息对您有帮助。😊
 
 Source: Conversation with Bing, 2023/5/30
 (1) 多机器人路径规划(MAPF)综述 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/613639712.
