@@ -87,7 +87,7 @@ add_executable(LKH
         KSwapKick.c
         LinKernighan.c
         LKH.c
-        LKHmain.c
+        ComputeTSP.c
         Make2OptMove.c
         Make3OptMove.c
         Make4OptMove.c

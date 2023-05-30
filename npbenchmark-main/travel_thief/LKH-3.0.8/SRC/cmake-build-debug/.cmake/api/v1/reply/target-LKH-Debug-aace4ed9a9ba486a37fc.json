@@ -930,7 +930,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "LKHmain.c",
+			"path" : "ComputeTSP.c",
 			"sourceGroupIndex" : 1
 		},
 		{
