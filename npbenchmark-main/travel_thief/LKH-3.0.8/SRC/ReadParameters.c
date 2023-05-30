@@ -1080,7 +1080,8 @@ void ReadParameters()
                 eprintf("PATCHING_C: integer expected");
             if (PatchingC < 0)
                 eprintf("PATCHING_C: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "RESTRICTED", strlen(Token)))
