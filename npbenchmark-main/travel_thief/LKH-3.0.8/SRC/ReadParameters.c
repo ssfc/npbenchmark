@@ -1119,30 +1119,41 @@ void ReadParameters()
             if (POPMUSIC_SampleSize <= 0)
                 eprintf("POPMUSIC_SAMPLE_SIZE: positive integer expected");
         }
-        else if (!strcmp(Keyword, "POPMUSIC_SOLUTIONS")) {
+        else if (!strcmp(Keyword, "POPMUSIC_SOLUTIONS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &POPMUSIC_Solutions))
                 eprintf("POPMUSIC_SOLUTIONS: integer expected");
             if (POPMUSIC_Solutions <= 0)
                 eprintf("POPMUSIC_SOLUTIONS: positive integer expected");
-        } else if (!strcmp(Keyword, "POPMUSIC_TRIALS")) {
+        }
+        else if (!strcmp(Keyword, "POPMUSIC_TRIALS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &POPMUSIC_Trials))
                 eprintf("POPMUSIC_TRIALS: integer expected");
             if (POPMUSIC_Trials < 0)
                 eprintf("POPMUSIC_TRIALS: non-negative integer expected");
-        } else if (!strcmp(Keyword, "POPULATION_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "POPULATION_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &MaxPopulationSize))
                 eprintf("POPULATION_SIZE: integer expected");
-        } else if (!strcmp(Keyword, "PRECISION")) {
+        }
+        else if (!strcmp(Keyword, "PRECISION"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Precision))
                 eprintf("PRECISION: integer expected");
-        } else if (!strcmp(Keyword, "PROBLEM_FILE")) {
+        }
+        else if (!strcmp(Keyword, "PROBLEM_FILE"))
+        {
             if (!(ProblemFileName = GetFileName(0)))
                 eprintf("PROBLEM_FILE: string expected");
-        } else if (!strcmp(Keyword, "RECOMBINATION")) {
+        }
+        else if (!strcmp(Keyword, "RECOMBINATION"))
+        {
              if (!(Token = strtok(0, Delimiters)))
                 eprintf("RECOMBINATION: string expected");
             if (!strncmp(Token, "IPT", strlen(Token)))
@@ -1153,56 +1164,79 @@ void ReadParameters()
                 Recombination = CLARIST;
             else
                 eprintf("RECOMBINATION: IPT, GPX2 or CLARIST expected");
-        } else if (!strcmp(Keyword, "RESTRICTED_SEARCH")) {
+        }
+        else if (!strcmp(Keyword, "RESTRICTED_SEARCH"))
+        {
             if (!ReadYesOrNo(&RestrictedSearch))
                 eprintf("RESTRICTED_SEARCH: YES or NO expected");
-        } else if (!strcmp(Keyword, "RUNS")) {
+        }
+        else if (!strcmp(Keyword, "RUNS"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Runs))
                 eprintf("RUNS: integer expected");
             if (Runs <= 0)
                 eprintf("RUNS: positive integer expected");
-        } else if (!strcmp(Keyword, "SALESMEN") ||
-                   !strcmp(Keyword, "VEHICLES")) {
+        }
+        else if (!strcmp(Keyword, "SALESMEN") ||
+                   !strcmp(Keyword, "VEHICLES"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Salesmen))
                 eprintf("%s: integer expected", Keyword);
             if (Salesmen <= 0)
                 eprintf("%s: positive integer expected", Keyword);
-        } else if (!strcmp(Keyword, "SCALE")) {
+        }
+        else if (!strcmp(Keyword, "SCALE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Scale))
                 eprintf("SCALE: integer expected");
-        } else if (!strcmp(Keyword, "SEED")) {
+        }
+        else if (!strcmp(Keyword, "SEED"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%u", &Seed))
                 eprintf("SEED: integer expected");
-        } else if (!strcmp(Keyword, "SPECIAL")) {
+        }
+        else if (!strcmp(Keyword, "SPECIAL"))
+        {
             Gain23Used = 0;
             KickType = 4;
             MaxSwaps = 0;
             MoveType = 5;
             MoveTypeSpecial = 1;
             MaxPopulationSize = 10;
-        } else if (!strcmp(Keyword, "SINTEF_SOLUTION_FILE")) {
+        }
+        else if (!strcmp(Keyword, "SINTEF_SOLUTION_FILE"))
+        {
             if (!(SINTEFSolutionFileName = GetFileName(0)))
                 eprintf("SINTEF_SOLUTION_FILE: string expected");
-        } else if (!strcmp(Keyword, "STOP_AT_OPTIMUM")) {
+        }
+        else if (!strcmp(Keyword, "STOP_AT_OPTIMUM"))
+        {
             if (!ReadYesOrNo(&StopAtOptimum))
                 eprintf("STOP_AT_OPTIMUM: YES or NO expected");
-        } else if (!strcmp(Keyword, "SUBGRADIENT")) {
+        }
+        else if (!strcmp(Keyword, "SUBGRADIENT"))
+        {
             if (!ReadYesOrNo(&Subgradient))
                 eprintf("SUBGRADIENT: YES or NO expected");
-        } else if (!strcmp(Keyword, "SUBPROBLEM_TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "SUBPROBLEM_TOUR_FILE"))
+        {
             if (!(SubproblemTourFileName = GetFileName(0)))
                 eprintf("SUBPROBLEM_TOUR_FILE: string expected");
-        } else if (!strcmp(Keyword, "SUBPROBLEM_SIZE")) {
+        }
+        else if (!strcmp(Keyword, "SUBPROBLEM_SIZE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &SubproblemSize))
                 eprintf("SUBPROBLEM_SIZE: integer expected");
             if (SubproblemSize < 3)
                 eprintf("SUBPROBLEM_SIZE: >= 3 expected");
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "DELAUNAY", strlen(Token)))
@@ -1229,7 +1263,8 @@ void ReadParameters()
                         ("(SUBPROBLEM_SIZE) Illegal DELAUNAY, KARP, K-CENTER, "
                          "K-MEANS, MOORE, ROHE,\n SIERPINSKI, "
                          "BORDERS or COMPRESSED specification");
-                while ((Token = strtok(0, Delimiters))) {
+                while ((Token = strtok(0, Delimiters)))
+                {
                     for (i = 0; i < strlen(Token); i++)
                         Token[i] = (char) toupper(Token[i]);
                     if (!strncmp(Token, "BORDERS", strlen(Token)))
@@ -1242,14 +1277,17 @@ void ReadParameters()
                              "COMPRESSED specification");
                 }
             }
-        } else if (!strcmp(Keyword, "SUBSEQUENT_MOVE_TYPE")) {
+        }
+        else if (!strcmp(Keyword, "SUBSEQUENT_MOVE_TYPE"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &SubsequentMoveType))
                 eprintf("SUBSEQUENT_MOVE_TYPE: integer expected");
             if (SubsequentMoveType != 0 && SubsequentMoveType < 2)
                 eprintf("SUBSEQUENT_MOVE_TYPE: 0 or >= 2 expected");
             SubsequentMoveTypeSpecial = 0;
-            if ((Token = strtok(0, Delimiters))) {
+            if ((Token = strtok(0, Delimiters)))
+            {
                 for (i = 0; i < strlen(Token); i++)
                     Token[i] = (char) toupper(Token[i]);
                 if (!strncmp(Token, "SPECIAL", strlen(Token)))
@@ -1261,29 +1299,40 @@ void ReadParameters()
                     eprintf("%s", "(SUBSEQUENT_MOVE_TYPE) "
                             "SPECIAL, SUBSEQUENT_MOVE_TYPE must be 3 or 5");
             }
-        } else if (!strcmp(Keyword, "SUBSEQUENT_PATCHING")) {
+        }
+        else if (!strcmp(Keyword, "SUBSEQUENT_PATCHING"))
+        {
             if (!ReadYesOrNo(&SubsequentPatching))
                 eprintf("SUBSEQUENT_PATCHING: YES or NO expected");
-        } else if (!strcmp(Keyword, "TIME_LIMIT")) {
+        }
+        else if (!strcmp(Keyword, "TIME_LIMIT"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%lf", &TimeLimit))
                 eprintf("TIME_LIMIT: real expected");
             if (TimeLimit < 0)
                 eprintf("TIME_LIMIT: >= 0 expected");
-        } else if (!strcmp(Keyword, "TOTAL_TIME_LIMIT")) {
+        }
+        else if (!strcmp(Keyword, "TOTAL_TIME_LIMIT"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%lf", &TotalTimeLimit))
                 eprintf("TOTAL_TIME_LIMIT: real expected");
             if (TimeLimit < 0)
                 eprintf("TOTAL_TIME_LIMIT: >= 0 expected");
-        } else if (!strcmp(Keyword, "TOUR_FILE")) {
+        }
+        else if (!strcmp(Keyword, "TOUR_FILE"))
+        {
             if (!(TourFileName = GetFileName(0)))
                 eprintf("TOUR_FILE: string expected");
-        } else if (!strcmp(Keyword, "TRACE_LEVEL")) {
+        }
+        else if (!strcmp(Keyword, "TRACE_LEVEL"))
+        {
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &TraceLevel))
                 eprintf("TRACE_LEVEL: integer expected");
-        } else
+        }
+        else
             eprintf("Unknown keyword: %s", Keyword);
         if ((Token = strtok(0, Delimiters)) && Token[0] != '#')
             eprintf("Junk at end of line: %s", Token);
