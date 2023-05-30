@@ -537,8 +537,8 @@ void ReadParameters()
     MTSPMaxSize = -1;
     MTSPObjective = -1;
     NonsequentialMoveType = -1;
-    Optimum = 378032; // 把Optimum固定
-    PatchingA = 1;
+    Optimum = 378032; // fix
+    PatchingA = 2; // fix
     PatchingC = 3; // fix
     PatchingAExtended = 0;
     PatchingARestricted = 0;
@@ -1023,26 +1023,6 @@ void ReadParameters()
         {
             if (!(OutputTourFileName = GetFileName(0)))
                 eprintf("OUTPUT_TOUR_FILE: string expected");
-        }
-        else if (!strcmp(Keyword, "PATCHING_A"))
-        {
-            if (!(Token = strtok(0, Delimiters)) ||
-                !sscanf(Token, "%d", &PatchingA))
-                eprintf("PATCHING_A: integer expected");
-            if (PatchingA < 0)
-                eprintf("PATCHING_A: non-negative integer expected");
-            if ((Token = strtok(0, Delimiters)))
-            {
-                for (i = 0; i < strlen(Token); i++)
-                    Token[i] = (char) toupper(Token[i]);
-                if (!strncmp(Token, "RESTRICTED", strlen(Token)))
-                    PatchingARestricted = 1;
-                else if (!strncmp(Token, "EXTENDED", strlen(Token)))
-                    PatchingAExtended = 1;
-                else
-                    eprintf("%s", "(PATCHING_A) "
-                            "Illegal RESTRICTED or EXTENDED specification");
-            }
         }
         else if (!strcmp(Keyword, "PI_FILE"))
         {
