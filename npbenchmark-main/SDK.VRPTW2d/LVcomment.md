@@ -6,7 +6,7 @@ TTP官方提供了许多论文，挑选结果最好的论文进行复现。(2023
 
 NB: ICAPS：国际自动规划与调度会议（International Conference on Automated Planning and Scheduling），是自动规划与调度领域的顶级会议，CCF B类。
 
-尝试用强化学习解决MAPF问题。
+在熟悉MAPF问题的大邻域搜索和CBS算法后，尝试用强化学习解决MAPF问题。
 
 ### Q: 解决MAPF问题的大邻域搜索方法是什么？
 
@@ -23,3 +23,5 @@ Source: Conversation with Bing, 2023/5/30
 (4) Google Maps. https://maps.google.ca/.
 (5) My Maps – About – Google Maps. https://www.google.com/maps/about/mymaps/.
 (6) Google Maps - Apps on Google Play. https://play.google.com/store/apps/details?id=com.google.android.apps.maps.
+
+### Q: 
