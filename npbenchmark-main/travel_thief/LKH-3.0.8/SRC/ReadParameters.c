@@ -1396,6 +1396,7 @@ static char *ReadYesOrNo(int *V)
     return Token;
 }
 
+// 返回两个参数中较大的一个
 static size_t max(size_t a, size_t b)
 {
     return a > b ? a : b;
