@@ -537,7 +537,7 @@ void ReadParameters()
     MTSPMaxSize = -1;
     MTSPObjective = -1;
     NonsequentialMoveType = -1;
-    Optimum = 378032;
+    Optimum = 378032; // 把Optimum写死了
     PatchingA = 1;
     PatchingC = 0;
     PatchingAExtended = 0;
