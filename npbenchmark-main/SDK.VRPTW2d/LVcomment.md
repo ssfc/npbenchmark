@@ -10,6 +10,8 @@ NB: ICAPS：国际自动规划与调度会议（International Conference on Auto
 
 当约束条件较少时，适合用组合优化的思路（比如local search）解决；当约束条件较多时，适合用强化学习的思路解决。
 
+调查MAPF问题的变种。
+
 ### Q: 解决MAPF问题的大邻域搜索方法是什么？
 
 根据我的搜索结果，解决MAPF问题的大邻域搜索方法（Large Neighborhood Search，LNS）是一种基于局部搜索的元启发式算法，可以快速地从一个初始解中修复冲突，得到一个可行解或者一个更优解。⁴
@@ -124,3 +126,22 @@ Source: Conversation with Bing, 2023/5/30
 (3) RL4CO，如何用强化学习解决组合优化？ - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/129049617.
 (4) 组合优化+强化学习必读论文列表 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/363995616.
 (5) 强化学习如何处理约束及过程代价？ - 知乎. https://www.zhihu.com/question/501151550.
+
+### Q: MAPF问题有哪些变种？
+
+MAPF问题是多智能体路径规划的问题，即如何为多个智能体规划从起点到终点的无冲突的路径。根据不同的假设和目标，MAPF问题有很多变种，例如：
+
+- 匿名MAPF（Anonymous MAPF）：不区分智能体的身份，只要每个智能体都到达一个终点即可¹。
+- 分组MAPF（Colored MAPF）：将智能体分为不同的组，每个组有自己的终点集合¹。
+- 动态MAPF（Online MAPF）：智能体的起点和终点在运行时动态变化，需要实时更新路径¹²。
+- 有向图MAPF（Directed MAPF）：假设图中的边是有向的，即智能体只能沿着边的方向移动³。
+- 有容量限制的MAPF（Capacity-Constrained MAPF）：假设图中的顶点和边有容量限制，即不能超过一定数量的智能体同时占用³。
+- 有优先级的MAPF（Prioritized MAPF）：假设智能体有不同的优先级，高优先级的智能体可以打断低优先级的智能体的路径³。
+- 有时间窗口的MAPF（Time Window MAPF）：假设智能体有不同的时间窗口，即只能在一定时间内到达终点³。
+
+这些只是一些常见的MAPF变种，还有很多其他的变种，可以根据不同的应用场景和需求来设计。
+
+Source: Conversation with Bing, 2023/5/30
+(1) *多代理寻径：定义、变体和基准 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/339098595.
+(2) 多机器人路径规划(MAPF)综述 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/613639712.
+(3) 技术解析 | 多智能体路径规划（MAPF） - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/388982360.
