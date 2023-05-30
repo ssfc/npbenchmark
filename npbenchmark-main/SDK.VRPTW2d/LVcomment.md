@@ -24,4 +24,30 @@ Source: Conversation with Bing, 2023/5/30
 (5) My Maps – About – Google Maps. https://www.google.com/maps/about/mymaps/.
 (6) Google Maps - Apps on Google Play. https://play.google.com/store/apps/details?id=com.google.android.apps.maps.
 
-### Q: 
+### Q: 解决MAPF问题的CBS方法是什么？
+
+根据我的搜索结果，解决MAPF问题的CBS方法（Conflict-Based Search，基于冲突的搜索）是一种最优的混合MAPF算法，由两层搜索过程组成：¹²
+
+- 底层搜索：为每个智能体搜索出一条有效路径，可以使用任意的单智能体路径规划算法，例如A*算法。
+- 上层搜索：负责检查路径之间是否有冲突，并选择其中代价最小的分支重新进行底层路径规划，直到找到一个无冲突的全局解或者证明不存在这样的解。
+
+上层搜索使用一种称为约束树（Constraint Tree）的数据结构来存储和管理不同的分支。每个节点包含以下信息：¹²
+
+- 约束（Constraints）：根据冲突生成的限制条件，例如(a_i, v, t)表示在时刻t，智能体a_i不能占据顶点v。
+- 全局路径（Solution）：根据当前约束计算出来的每个智能体的路径的集合。
+- 全局代价（Cost）：根据全局路径计算出来的总代价，例如总行走时间或总行走距离。
+
+CBS算法的流程如下：¹²
+
+- 初始化约束树为一个空节点。
+- 从约束树中选择一个代价最小的叶子节点，如果没有这样的节点，则说明不存在无冲突的全局解，算法终止。
+- 根据该节点的约束，为每个智能体进行底层路径规划，得到一个全局路径，并计算其全局代价。
+- 检查全局路径是否有冲突，如果没有，则说明找到了一个无冲突的全局最优解，算法终止。
+- 如果有冲突，则选择一个冲突(a_i, a_j, v, t)，并生成两个新的约束(a_i, v, t)和(a_j, v, t)。
+- 为每个新约束创建一个新的节点，并将其作为当前节点的子节点加入到约束树中，继承当前节点原有的约束，并添加新约束。
+- 回到第二步，重复以上过程。
+
+Source: Conversation with Bing, 2023/5/30
+(1) CBS(Conflict-Based Search)多机器人路径规划 - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/611361907.
+(2) 技术解析 | 多智能体路径规划（MAPF） - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/388982360.
+(3) CBS基于冲突的搜索算法流程和核心 - CSDN博客. https://blog.csdn.net/m0_58135773/article/details/124699226.
