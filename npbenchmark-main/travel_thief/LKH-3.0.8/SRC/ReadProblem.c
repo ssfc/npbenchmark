@@ -385,6 +385,7 @@ void ReadProblem()
     WeightType = WeightFormat = ProblemType = -1;
     ProblemType = TSP; // fix problem type; 吾人只调用TSP计算功能；
     CoordType = NO_COORDS;
+    CoordType = TWOD_COORDS; // fix CoordType; 坐标当然只有2D和3D两种情况了；
     Name = "pr2392";
     Type = EdgeWeightType = EdgeWeightFormat = 0;
     EdgeDataFormat = NodeCoordType = DisplayDataType = 0;
