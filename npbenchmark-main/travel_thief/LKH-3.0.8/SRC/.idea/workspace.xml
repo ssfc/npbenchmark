@@ -22,11 +22,11 @@
   <component name="ChangeListManager">
     <list default="true" id="16c3658d-fb6f-4eac-be86-034c17a637dc" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReadParameters.c" beforeDir="false" afterPath="$PROJECT_DIR$/ReadParameters.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComputeTSP.c" beforeDir="false" afterPath="$PROJECT_DIR$/ComputeTSP.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/LKH.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/pr2392.par" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
       <workItem from="1685272716833" duration="4000" />
       <workItem from="1685326582818" duration="17802000" />
       <workItem from="1685370517182" duration="2961000" />
-      <workItem from="1685407689700" duration="21548000" />
+      <workItem from="1685407689700" duration="24330000" />
     </task>
     <servers />
   </component>
