@@ -356,7 +356,6 @@ static void Read_EDGE_WEIGHT_SECTION(void);
 static void Read_EDGE_WEIGHT_TYPE(void);
 static void Read_FIXED_EDGES_SECTION(void);
 static void Read_GRID_SIZE(void);
-static void Read_NAME(void);
 static void Read_NODE_COORD_SECTION(void);
 static void Read_NODE_COORD_TYPE(void);
 static void Read_PICKUP_AND_DELIVERY_SECTION(void);
@@ -386,7 +385,7 @@ void ReadProblem()
     FirstNode = 0;
     WeightType = WeightFormat = ProblemType = -1;
     CoordType = NO_COORDS;
-    Name = Copy("Unnamed");
+    Name = "pr2392";
     Type = EdgeWeightType = EdgeWeightFormat = 0;
     EdgeDataFormat = NodeCoordType = DisplayDataType = 0;
     Distance = 0;
@@ -436,8 +435,6 @@ void ReadProblem()
             Read_FIXED_EDGES_SECTION();
         else if (!strcmp(Keyword, "GRID_SIZE"))
             Read_GRID_SIZE();
-        else if (!strcmp(Keyword, "NAME"))
-            Read_NAME();
         else if (!strcmp(Keyword, "NODE_COORD_SECTION"))
             Read_NODE_COORD_SECTION();
         else if (!strcmp(Keyword, "NODE_COORD_TYPE"))
@@ -946,13 +943,6 @@ static int FixEdge(Node * Na, Node * Nb)
     else
         return 0;
     return 1;
-}
-
-static void Read_NAME()
-{
-    free(Name);
-    if (!(Name = Copy(strtok(0, Delimiters))))
-        eprintf("NAME: string expected");
 }
 
 static void Read_BACKHAUL_SECTION()

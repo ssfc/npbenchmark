@@ -1,4 +1,3 @@
-NAME : pr2392
 COMMENT : 2392-city problem (Padberg/Rinaldi)
 TYPE : TSP
 DIMENSION : 2392
