@@ -883,6 +883,7 @@ static void CheckSpecificationPart()
                 "asymetric problems");
 }
 
+// 这个函数名为Copy，功能是复制一个字符串。
 static char *Copy(char *S)
 {
     char *Buffer;
