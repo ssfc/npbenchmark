@@ -367,7 +367,6 @@ static void Read_SERVICE_TIME(void);
 static void Read_SERVICE_TIME_SECTION(void);
 static void Read_TIME_WINDOW_SECTION(void);
 static void Read_TOUR_SECTION(FILE ** File);
-static void Read_TYPE(void);
 static int TwoDWeightType(void);
 static int ThreeDWeightType(void);
 static void Convert2FullMatrix(void);
@@ -384,6 +383,7 @@ void ReadProblem()
     FreeStructures();
     FirstNode = 0;
     WeightType = WeightFormat = ProblemType = -1;
+    ProblemType = TSP;
     CoordType = NO_COORDS;
     Name = "pr2392";
     Type = EdgeWeightType = EdgeWeightFormat = 0;
@@ -457,8 +457,6 @@ void ReadProblem()
             Read_TIME_WINDOW_SECTION();
         else if (!strcmp(Keyword, "TOUR_SECTION"))
             Read_TOUR_SECTION(&ProblemFile);
-        else if (!strcmp(Keyword, "TYPE"))
-            Read_TYPE();
         else
             eprintf("Unknown keyword: %s", Keyword);
     }
@@ -1969,109 +1967,6 @@ static void Read_TOUR_SECTION(FILE ** File)
         Dimension *= 2;
     if (TraceLevel >= 1)
         printff("done\n");
-}
-
-static void Read_TYPE()
-{
-    unsigned int i;
-
-    free(Type);
-    if (!(Type = Copy(strtok(0, Delimiters))))
-        eprintf("TYPE: string expected");
-    for (i = 0; i < strlen(Type); i++)
-        Type[i] = (char) toupper(Type[i]);
-    if (!strcmp(Type, "TSP"))
-        ProblemType = TSP;
-    else if (!strcmp(Type, "ATSP"))
-        ProblemType = ATSP;
-    else if (!strcmp(Type, "SOP"))
-        ProblemType = SOP;
-    else if (!strcmp(Type, "HCP"))
-        ProblemType = HCP;
-    else if (!strcmp(Type, "HPP"))
-        ProblemType = HPP;
-    else if (!strcmp(Type, "BWTSP"))
-        ProblemType = BWTSP;
-    else if (!strcmp(Type, "CCVRP"))
-        ProblemType = CCVRP;
-    else if (!strcmp(Type, "CVRP") || !strcmp(Type, "DCVRP"))
-        ProblemType = CVRP;
-    else if (!strcmp(Type, "ACVRP"))
-        ProblemType = ACVRP;
-    else if (!strcmp(Type, "ADCVRP"))
-        ProblemType = ADCVRP;
-    else if (!strcmp(Type, "CVRPTW"))
-        ProblemType = CVRPTW;
-    else if (!strcmp(Type, "MLP"))
-        ProblemType = MLP;
-    else if (!strcmp(Type, "OVRP"))
-        ProblemType = OVRP;
-    else if (!strcmp(Type, "PDPTW"))
-        ProblemType = PDPTW;
-    else if (!strcmp(Type, "PDTSP"))
-        ProblemType = PDTSP;
-    else if (!strcmp(Type, "PDTSPF"))
-        ProblemType = PDTSPF;
-    else if (!strcmp(Type, "PDTSPL"))
-        ProblemType = PDTSPL;
-    else if (!strcmp(Type, "TRP") || !strcmp(Type, "MTRP") ||
-             !strcmp(Type, "MTRPD"))
-        ProblemType = TRP;
-    else if (!strcmp(Type, "RCTVRP"))
-        ProblemType = RCTVRP;
-    else if (!strcmp(Type, "RCTVRPTW"))
-        ProblemType = RCTVRPTW;
-    else if (!strcmp(Type, "STTSP"))
-        ProblemType = STTSP;
-    else if (!strcmp(Type, "TSPTW"))
-        ProblemType = TSPTW;
-    else if (!strcmp(Type, "VRPB"))
-        ProblemType = VRPB;
-    else if (!strcmp(Type, "VRPBTW"))
-        ProblemType = VRPBTW;
-    else if (!strcmp(Type, "VRPSPD") ||
-             !strcmp(Type, "VRPSPDTW") ||
-             !strcmp(Type, "VRPMPD") ||
-             !strcmp(Type, "VRPMPDTW") || !strcmp(Type, "MVRPB"))
-        ProblemType = VRPPD;
-    else if (!strcmp(Type, "1-PDTSP"))
-        ProblemType = ONE_PDTSP;
-    else if (!strcmp(Type, "M-PDTSP"))
-        ProblemType = M_PDTSP;
-    else if (!strcmp(Type, "M1-PDTSP"))
-        ProblemType = M1_PDTSP;
-    else if (!strcmp(Type, "TSPDL"))
-        ProblemType = TSPDL;
-    else if (!strcmp(Type, "CTSP"))
-        ProblemType = CTSP;
-    else if (!strcmp(Type, "TOUR")) {
-        ProblemType = TOUR;
-        eprintf("TYPE: Type not implemented: %s", Type);
-    } else
-        eprintf("Unknown TYPE: %s", Type);
-    Asymmetric =
-        ProblemType == ATSP ||
-        ProblemType == CCVRP ||
-        ProblemType == ACVRP ||
-        ProblemType == ADCVRP ||
-        ProblemType == CVRPTW ||
-        ProblemType == MLP ||
-        ProblemType == M_PDTSP ||
-        ProblemType == M1_PDTSP ||
-        ProblemType == ONE_PDTSP ||
-        ProblemType == OVRP ||
-        ProblemType == PDTSP ||
-        ProblemType == PDTSPF ||
-        ProblemType == PDTSPL ||
-        ProblemType == PDPTW ||
-        ProblemType == RCTVRP ||
-        ProblemType == RCTVRPTW ||
-        ProblemType == SOP ||
-        ProblemType == TRP ||
-        ProblemType == TSPDL ||
-        ProblemType == TSPTW ||
-        ProblemType == VRPB ||
-        ProblemType == VRPBTW || ProblemType == VRPPD;
 }
 
 static void Read_SERVICE_TIME()
