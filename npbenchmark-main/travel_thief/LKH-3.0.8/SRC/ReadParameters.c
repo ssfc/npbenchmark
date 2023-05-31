@@ -493,6 +493,7 @@ void ReadParameters()
     // 下面像是在给文档里介绍的一堆参数初始化
     ProblemFileName = PiFileName = InputTourFileName =
         OutputTourFileName = TourFileName = 0;
+    ProblemFileName = "pr2392.tsp";
     CandidateFiles = MergeTourFiles = 0;
     AscentCandidates = 50;
     BackboneTrials = 0;
@@ -1056,11 +1057,6 @@ void ReadParameters()
             if (!(Token = strtok(0, Delimiters)) ||
                 !sscanf(Token, "%d", &Precision))
                 eprintf("PRECISION: integer expected");
-        }
-        else if (!strcmp(Keyword, "PROBLEM_FILE"))
-        {
-            if (!(ProblemFileName = GetFileName(0)))
-                eprintf("PROBLEM_FILE: string expected");
         }
         else if (!strcmp(Keyword, "RECOMBINATION"))
         {
