@@ -1,4 +1,3 @@
-COMMENT : 2392-city problem (Padberg/Rinaldi)
 TYPE : TSP
 DIMENSION : 2392
 EDGE_WEIGHT_TYPE : EUC_2D

@@ -396,8 +396,7 @@ void ReadProblem()
             continue;
         for (i = 0; i < (int) strlen(Keyword); i++)
             Keyword[i] = (char) toupper(Keyword[i]);
-        if (!strcmp(Keyword, "COMMENT"));
-        else if (!strcmp(Keyword, "BACKHAUL_SECTION"))
+        if (!strcmp(Keyword, "BACKHAUL_SECTION"))
             Read_BACKHAUL_SECTION();
         else if (!strcmp(Keyword, "CAPACITY"))
             Read_CAPACITY();
