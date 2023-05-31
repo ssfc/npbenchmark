@@ -793,6 +793,7 @@ void ReadProblem()
     LastLine = 0;
 }
 
+// 判断二维权重类型是否满足一系列条件，返回相应的布尔值。
 static int TwoDWeightType()
 {
     if (Asymmetric)
@@ -806,6 +807,7 @@ static int TwoDWeightType()
         (WeightType == SPECIAL && CoordType == TWOD_COORDS);
 }
 
+// 判断三维权重类型是否满足一系列条件，返回相应的布尔值。
 static int ThreeDWeightType()
 {
     if (Asymmetric)
@@ -817,6 +819,7 @@ static int ThreeDWeightType()
         (WeightType == SPECIAL && CoordType == THREED_COORDS);
 }
 
+// 检查参数设置的异常情况；
 static void CheckSpecificationPart()
 {
     if (ProblemType == -1)
