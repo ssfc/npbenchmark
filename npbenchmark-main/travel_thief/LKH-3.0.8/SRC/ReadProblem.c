@@ -383,7 +383,7 @@ void ReadProblem()
     FreeStructures();
     FirstNode = 0;
     WeightType = WeightFormat = ProblemType = -1;
-    ProblemType = TSP;
+    ProblemType = TSP; // fix problem type; 吾人只调用TSP计算功能；
     CoordType = NO_COORDS;
     Name = "pr2392";
     Type = EdgeWeightType = EdgeWeightFormat = 0;
