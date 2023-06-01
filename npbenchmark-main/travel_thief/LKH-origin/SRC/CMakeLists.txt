@@ -176,6 +176,6 @@ add_executable(LKH
         VRPB_Reduce.c
         WriteCandidates.c
         WritePenalties.c
-        WriteTour.c main.cpp)
+        WriteTour.c main.cpp travel_thief.h travel_thief.cpp)
 
 target_link_libraries(LKH m)

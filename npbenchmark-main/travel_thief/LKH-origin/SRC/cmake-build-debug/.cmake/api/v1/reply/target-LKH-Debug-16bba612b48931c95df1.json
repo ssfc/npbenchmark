@@ -258,7 +258,8 @@
 			},
 			"sourceIndexes" : 
 			[
-				167
+				167,
+				169
 			]
 		}
 	],
@@ -307,7 +308,8 @@
 				8,
 				9,
 				10,
-				11
+				11,
+				168
 			]
 		},
 		{
@@ -469,7 +471,8 @@
 				164,
 				165,
 				166,
-				167
+				167,
+				169
 			]
 		}
 	],
@@ -1469,6 +1472,17 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 1,
 			"path" : "main.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "travel_thief.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "travel_thief.cpp",
 			"sourceGroupIndex" : 1
 		}
 	],
