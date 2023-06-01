@@ -15,9 +15,6 @@ using namespace std;
 
 int main()
 {
-    // hello_world();
-    compute_tsp();
-
     TravelThief test;
     string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
@@ -139,6 +136,23 @@ int main()
     // test.print_items();
     test.compute_distances();
     test.sample_solver();
+
+    ofstream parameter_file("pr2392.par");
+    if (parameter_file.is_open()) {
+        parameter_file << "PROBLEM_FILE = pr2392.tsp\n";
+        parameter_file << "OPTIMUM = 378032\n";
+        parameter_file << "MOVE_TYPE = 5\n";
+        parameter_file << "PATCHING_C = 3\n";
+        parameter_file << "PATCHING_A = 2\n";
+        parameter_file << "RUNS = 10\n";
+        parameter_file.close();
+        cout << "Parameter file created successfully.\n";
+    } else {
+        cout << "Unable to create parameter file.\n";
+    }
+
+    // hello_world();
+    compute_tsp();
 
     return 0;
 }
