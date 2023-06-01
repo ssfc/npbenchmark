@@ -135,15 +135,14 @@ int main()
     // test.print_node_coords();
     // test.print_items();
     test.compute_distances();
-    test.sample_solver();
-
+    // test.sample_solver();
 
     // construct parameter file;
     ofstream parameter_file("pr2392.par");
     if (parameter_file.is_open())
     {
         parameter_file << "PROBLEM_FILE = pr2392.tsp\n";
-        parameter_file << "OPTIMUM = 378032\n";
+        // parameter_file << "OPTIMUM = 378032\n";
         parameter_file << "MOVE_TYPE = 5\n";
         parameter_file << "PATCHING_C = 3\n";
         parameter_file << "PATCHING_A = 2\n";
@@ -163,9 +162,14 @@ int main()
         tsp_file << "NAME : pr2392\n";
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
-        tsp_file << "DIMENSION : 2392\n";
+        tsp_file << "DIMENSION : " << test.get_dimension() << "\n";
         tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
         tsp_file << "NODE_COORD_SECTION\n";
+        for(int i=0;i<test.get_dimension();i++)
+        {
+            tsp_file << i+1 << "\n";
+        }
+        tsp_file << "EOF\n";
         tsp_file.close();
         cerr << "TSP file created successfully.\n";
     }
@@ -175,7 +179,7 @@ int main()
     }
 
     // hello_world();
-    compute_tsp();
+    // compute_tsp();
 
     return 0;
 }
