@@ -156,18 +156,18 @@ int main()
     }
 
     // construct TSP file;
-    ofstream tsp_file("pr2392temp.tsp");
+    ofstream tsp_file("pr2392.tsp");
     if (tsp_file.is_open())
     {
         tsp_file << "NAME : pr2392\n";
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
         tsp_file << "DIMENSION : " << test.get_dimension() << "\n";
-        tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
+        tsp_file << "EDGE_WEIGHT_TYPE : CEIL_2D\n";
         tsp_file << "NODE_COORD_SECTION\n";
         for(int i=0;i<test.get_dimension();i++)
         {
-            tsp_file << i+1 << " " << "\n";
+            tsp_file << i+1 << " " << test.get_city_coords()[i].x << " " << test.get_city_coords()[i].y << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
@@ -179,7 +179,7 @@ int main()
     }
 
     // hello_world();
-    // compute_tsp();
+    compute_tsp();
 
     return 0;
 }
