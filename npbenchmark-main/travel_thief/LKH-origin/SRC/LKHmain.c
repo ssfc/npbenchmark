@@ -6,7 +6,7 @@
  * This file contains the main function of the program.
  */
 
-int main(int argc, char * argv[])
+int main()
 {
     GainType Cost, OldOptimum;
     double Time, LastTime;
@@ -14,8 +14,7 @@ int main(int argc, char * argv[])
     int i;
 
     /* Read the specification of the problem */
-    if (argc >= 2)
-        ParameterFileName = argv[1];
+    ParameterFileName = "pr2392.par";
     ReadParameters();
     StartTime = LastTime = GetTime();
     MaxMatrixDimension = 20000;

@@ -715,7 +715,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "SRC"
+			"value" : "LKH"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1104,6 +1104,42 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "LKH_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC/cmake-build-debug"
+		},
+		{
+			"name" : "LKH_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "LKH_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC"
 		},
 		{
 			"name" : "SRC_BINARY_DIR",

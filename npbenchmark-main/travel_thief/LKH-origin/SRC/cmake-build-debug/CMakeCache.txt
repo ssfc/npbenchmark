@@ -125,7 +125,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=SRC
+CMAKE_PROJECT_NAME:STATIC=LKH
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib.exe
@@ -206,6 +206,15 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip.exe
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//Value Computed by CMake
+LKH_BINARY_DIR:STATIC=/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC/cmake-build-debug
+
+//Value Computed by CMake
+LKH_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+LKH_SOURCE_DIR:STATIC=/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC
 
 //Value Computed by CMake
 SRC_BINARY_DIR:STATIC=/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC/cmake-build-debug

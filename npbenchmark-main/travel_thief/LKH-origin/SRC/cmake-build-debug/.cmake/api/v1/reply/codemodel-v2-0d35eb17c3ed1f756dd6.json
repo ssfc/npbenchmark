@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "SRC",
+					"name" : "LKH",
 					"targetIndexes" : 
 					[
 						0
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "LKH::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-LKH-Debug-d75a437cf23e073942a1.json",
+					"jsonFile" : "target-LKH-Debug-71b615cd7a0afad707be.json",
 					"name" : "LKH",
 					"projectIndex" : 0
 				}
