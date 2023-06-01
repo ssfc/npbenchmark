@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.22)
 project(SRC C)
 
 set(CMAKE_C_STANDARD 11)
 
 include_directories(INCLUDE)
 
-add_executable(SRC
+add_executable(LKH
         INCLUDE/BIT.h
         INCLUDE/CLARIST.h
         INCLUDE/Delaunay.h
@@ -173,3 +173,5 @@ add_executable(SRC
         WriteCandidates.c
         WritePenalties.c
         WriteTour.c)
+
+target_link_libraries(LKH m)
