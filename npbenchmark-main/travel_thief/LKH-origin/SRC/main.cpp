@@ -138,9 +138,10 @@ int main()
     test.sample_solver();
 
 
-    // construct parameter file; 
+    // construct parameter file;
     ofstream parameter_file("pr2392.par");
-    if (parameter_file.is_open()) {
+    if (parameter_file.is_open())
+    {
         parameter_file << "PROBLEM_FILE = pr2392.tsp\n";
         parameter_file << "OPTIMUM = 378032\n";
         parameter_file << "MOVE_TYPE = 5\n";
@@ -148,9 +149,29 @@ int main()
         parameter_file << "PATCHING_A = 2\n";
         parameter_file << "RUNS = 10\n";
         parameter_file.close();
-        cout << "Parameter file created successfully.\n";
-    } else {
-        cout << "Unable to create parameter file.\n";
+        cerr << "Parameter file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create parameter file.\n";
+    }
+
+    // construct TSP file;
+    ofstream tsp_file("pr2392temp.tsp");
+    if (tsp_file.is_open())
+    {
+        tsp_file << "NAME : pr2392\n";
+        tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
+        tsp_file << "TYPE : TSP\n";
+        tsp_file << "DIMENSION : 2392\n";
+        tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
+        tsp_file << "NODE_COORD_SECTION\n";
+        tsp_file.close();
+        cerr << "TSP file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create TSP file.\n";
     }
 
     // hello_world();
