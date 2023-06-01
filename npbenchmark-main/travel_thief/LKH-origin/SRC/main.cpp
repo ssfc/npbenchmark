@@ -167,7 +167,7 @@ int main()
         tsp_file << "NODE_COORD_SECTION\n";
         for(int i=0;i<test.get_dimension();i++)
         {
-            tsp_file << i+1 << "\n";
+            tsp_file << i+1 << " " << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
