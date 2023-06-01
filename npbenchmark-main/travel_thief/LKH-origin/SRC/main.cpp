@@ -163,7 +163,7 @@ int main()
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
         tsp_file << "DIMENSION : " << test.get_dimension() << "\n";
-        tsp_file << "EDGE_WEIGHT_TYPE : CEIL_2D\n";
+        tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
         tsp_file << "NODE_COORD_SECTION\n";
         for(int i=0;i<test.get_dimension();i++)
         {
