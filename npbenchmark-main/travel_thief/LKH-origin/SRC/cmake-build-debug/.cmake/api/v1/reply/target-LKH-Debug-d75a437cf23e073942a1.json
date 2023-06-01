@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "SRC.exe"
+			"path" : "LKH.exe"
 		},
 		{
-			"path" : "SRC.pdb"
+			"path" : "LKH.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,6 +14,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
 			"include_directories"
 		],
 		"files" : 
@@ -33,6 +34,12 @@
 			},
 			{
 				"command" : 1,
+				"file" : 0,
+				"line" : 177,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
 				"file" : 0,
 				"line" : 6,
 				"parent" : 0
@@ -54,7 +61,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/LKH-origin/SRC/INCLUDE"
 				}
 			],
@@ -227,7 +234,7 @@
 			]
 		}
 	],
-	"id" : "SRC::@6890427a1f51a3e7e1df",
+	"id" : "LKH::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -239,12 +246,17 @@
 			{
 				"fragment" : "-Wl,--enable-auto-import",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lm",
+				"role" : "libraries"
 			}
 		],
 		"language" : "C"
 	},
-	"name" : "SRC",
-	"nameOnDisk" : "SRC.exe",
+	"name" : "LKH",
+	"nameOnDisk" : "LKH.exe",
 	"paths" : 
 	{
 		"build" : ".",

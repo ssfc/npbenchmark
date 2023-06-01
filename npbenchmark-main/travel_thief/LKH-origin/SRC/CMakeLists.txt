@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(SRC C)
+project(LKH C)
 
 set(CMAKE_C_STANDARD 11)
 
