@@ -137,6 +137,8 @@ int main()
     test.compute_distances();
     test.sample_solver();
 
+
+    // construct parameter file; 
     ofstream parameter_file("pr2392.par");
     if (parameter_file.is_open()) {
         parameter_file << "PROBLEM_FILE = pr2392.tsp\n";
