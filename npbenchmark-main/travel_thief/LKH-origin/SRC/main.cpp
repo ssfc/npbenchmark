@@ -189,20 +189,25 @@ int main()
     // string line;
     bool tourSectionReached = false;
 
-    while (getline(inputFile, line)) {
-        if (line.find("COMMENT : Length =") != string::npos) {
+    while (getline(inputFile, line))
+    {
+        if (line.find("COMMENT : Length =") != string::npos)
+        {
             // 提取路径长度
             string lengthStr = line.substr(line.find("=") + 1);
             length = stoi(lengthStr);
         }
 
-        if (line.find("TOUR_SECTION") != string::npos) {
+        if (line.find("TOUR_SECTION") != string::npos)
+        {
             tourSectionReached = true;
             continue;
         }
 
-        if (tourSectionReached) {
-            if (line == "-1" || line == "EOF") {
+        if (tourSectionReached)
+        {
+            if (line == "-1" || line == "EOF")
+            {
                 break;
             }
 
@@ -211,15 +216,16 @@ int main()
         }
     }
 
-    // 输出路径
-    cout << "Path: ";
-    for (int cityId : tour) {
-        cout << cityId << " ";
+    // output tour
+    cerr << "Tour (size " << tour.size() << "): ";
+    for (int cityId : tour)
+    {
+        cerr << cityId << " ";
     }
-    cout << endl;
+    cerr << endl;
 
-    // 输出路径长度
-    cout << "Length: " << length << endl;
+    // output tour length
+    cerr << "Length: " << length << endl;
 
     return 0;
 }
