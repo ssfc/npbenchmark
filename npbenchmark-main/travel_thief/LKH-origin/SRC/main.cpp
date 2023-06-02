@@ -15,7 +15,7 @@ using namespace std;
 
 int main()
 {
-    TravelThief test;
+    TravelThief travel_thief;
     string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
@@ -33,58 +33,58 @@ int main()
         if (line.find("PROBLEM NAME:") != string::npos)
         {
             line.erase(0, 14); // 删除"PROBLEM NAME: "，保留问题名称
-            test.set_problem_name(line);
-            cerr << "PROBLEM NAME:" << test.get_problem_name() << endl;
+            travel_thief.set_problem_name(line);
+            cerr << "PROBLEM NAME:" << travel_thief.get_problem_name() << endl;
         }
         else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
         {
             line.erase(0, 20); // 删除"KNAPSACK DATA TYPE: "，保留背包数据类型
-            test.set_knapsack_data_type(line);
-            cerr << "KNAPSACK DATA TYPE:" << test.get_knapsack_data_type() << endl;
+            travel_thief.set_knapsack_data_type(line);
+            cerr << "KNAPSACK DATA TYPE:" << travel_thief.get_knapsack_data_type() << endl;
         }
         else if (line.find("DIMENSION:") != string::npos)
         {
             line.erase(0, 11); // 删除"DIMENSION: "，保留维度
-            test.set_dimension(stoi(line));
-            cerr << "DIMENSION:" << test.get_dimension() << endl;
+            travel_thief.set_dimension(stoi(line));
+            cerr << "DIMENSION:" << travel_thief.get_dimension() << endl;
         }
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {
             line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
-            test.set_num_items(stoi(line));
-            cerr << "NUMBER OF ITEMS:" << test.get_num_items() << endl;
+            travel_thief.set_num_items(stoi(line));
+            cerr << "NUMBER OF ITEMS:" << travel_thief.get_num_items() << endl;
         }
         else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
         {
             line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
-            test.set_capacity_of_knapsack(stoi(line));
-            cerr << "CAPACITY OF KNAPSACK:" << test.get_capacity_of_knapsack() << endl;
+            travel_thief.set_capacity_of_knapsack(stoi(line));
+            cerr << "CAPACITY OF KNAPSACK:" << travel_thief.get_capacity_of_knapsack() << endl;
         }
         else if (line.find("MIN SPEED:") != string::npos)
         {
             // cerr << "MIN SPEED find" << endl;
             line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
-            test.set_min_speed(stod(line));
-            cerr << "MIN SPEED:" << test.get_min_speed() << endl;
+            travel_thief.set_min_speed(stod(line));
+            cerr << "MIN SPEED:" << travel_thief.get_min_speed() << endl;
         }
         else if (line.find("MAX SPEED:") != string::npos)
         {
             // cerr << "MAX SPEED find" << endl;
             line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
-            test.set_max_speed(stod(line));
-            cerr << "MAX SPEED:" << test.get_max_speed() << endl;
+            travel_thief.set_max_speed(stod(line));
+            cerr << "MAX SPEED:" << travel_thief.get_max_speed() << endl;
         }
         else if (line.find("RENTING RATIO:") != string::npos)
         {
             line.erase(0, 14); // 删除"RENTING RATIO: "，保留租金比率
-            test.set_renting_ratio(stod(line));
-            cerr << "RENTING RATIO:" << test.get_renting_ratio() << endl;
+            travel_thief.set_renting_ratio(stod(line));
+            cerr << "RENTING RATIO:" << travel_thief.get_renting_ratio() << endl;
         }
         else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
         {
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
-            test.set_edge_weight_type(line);
-            cerr << "EDGE_WEIGHT_TYPE:" << test.get_edge_weight_type() << endl;
+            travel_thief.set_edge_weight_type(line);
+            cerr << "EDGE_WEIGHT_TYPE:" << travel_thief.get_edge_weight_type() << endl;
         }
         else if (line.find("NODE_COORD_SECTION") != string::npos)
         {
@@ -99,7 +99,7 @@ int main()
                     istringstream iss(line);
                     iss >> index >> x >> y;
                     NodeCoord temp = {x, y};
-                    test.add_node_coords(temp);
+                    travel_thief.add_node_coords(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
                     test_num_node_cord++;
@@ -121,7 +121,7 @@ int main()
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
                         Item temp = {profit, weight, assigned_node - 1};
-                        test.add_item(temp);
+                        travel_thief.add_item(temp);
                         test_num_item_section++;
                     }
                 }
@@ -134,7 +134,7 @@ int main()
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
     // test.print_node_coords();
     // test.print_items();
-    test.compute_distances();
+    travel_thief.compute_distances();
     // test.sample_solver();
 
     // construct parameter file;
@@ -163,12 +163,12 @@ int main()
         tsp_file << "NAME : pr2392\n";
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
-        tsp_file << "DIMENSION : " << test.get_dimension() << "\n";
+        tsp_file << "DIMENSION : " << travel_thief.get_dimension() << "\n";
         tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
         tsp_file << "NODE_COORD_SECTION\n";
-        for(int i=0;i<test.get_dimension();i++)
+        for(int i=0;i<travel_thief.get_dimension();i++)
         {
-            tsp_file << i+1 << " " << test.get_city_coords()[i].x << " " << test.get_city_coords()[i].y << "\n";
+            tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x << " " << travel_thief.get_city_coords()[i].y << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
@@ -194,7 +194,7 @@ int main()
         if (line.find("COMMENT : Length =") != string::npos)
         {
             // 提取路径长度
-            string lengthStr = line.substr(line.find("=") + 1);
+            string lengthStr = line.substr(line.find('=') + 1);
             length = stoi(lengthStr);
         }
 
