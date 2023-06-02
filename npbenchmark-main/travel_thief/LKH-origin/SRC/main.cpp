@@ -16,7 +16,9 @@ using namespace std;
 int main()
 {
     TravelThief travel_thief;
-    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    // string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
+    string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
     if(!file.is_open())
