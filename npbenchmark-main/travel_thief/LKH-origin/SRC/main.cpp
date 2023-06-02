@@ -182,5 +182,44 @@ int main()
     // hello_world();
     compute_tsp();
 
+    ifstream inputFile("output_tour.txt");
+    vector<int> tour;
+    int length = 0;
+
+    // string line;
+    bool tourSectionReached = false;
+
+    while (getline(inputFile, line)) {
+        if (line.find("COMMENT : Length =") != string::npos) {
+            // 提取路径长度
+            string lengthStr = line.substr(line.find("=") + 1);
+            length = stoi(lengthStr);
+        }
+
+        if (line.find("TOUR_SECTION") != string::npos) {
+            tourSectionReached = true;
+            continue;
+        }
+
+        if (tourSectionReached) {
+            if (line == "-1" || line == "EOF") {
+                break;
+            }
+
+            int cityId = stoi(line);
+            tour.push_back(cityId);
+        }
+    }
+
+    // 输出路径
+    cout << "Path: ";
+    for (int cityId : tour) {
+        cout << cityId << " ";
+    }
+    cout << endl;
+
+    // 输出路径长度
+    cout << "Length: " << length << endl;
+
     return 0;
 }
