@@ -147,6 +147,7 @@ int main()
         parameter_file << "PATCHING_C = 3\n";
         parameter_file << "PATCHING_A = 2\n";
         parameter_file << "RUNS = 10\n";
+        parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
         parameter_file.close();
         cerr << "Parameter file created successfully.\n";
     }
