@@ -183,7 +183,6 @@ int main()
     compute_tsp();
 
     ifstream inputFile("output_tour.txt");
-    vector<int> tour;
 
     // string line;
     bool tourSectionReached = false;
@@ -211,20 +210,15 @@ int main()
             }
 
             int cityId = stoi(line);
-            tour.push_back(cityId);
+            travel_thief.add_tour(cityId);
         }
     }
 
-    // output tour
-    cerr << "Tour (size " << tour.size() << "): ";
-    for (int cityId : tour)
-    {
-        cerr << cityId << " ";
-    }
-    cerr << endl;
-
     // output tour length
     cerr << "Length: " << travel_thief.get_length() << endl;
+
+    // output tour
+    travel_thief.print_tour();
 
     return 0;
 }

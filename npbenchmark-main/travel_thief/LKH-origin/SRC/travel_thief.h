@@ -37,6 +37,7 @@ class TravelThief{
     double object_value;
 
     double length; // tour length of travel thief;
+    std::vector<int> tour; // tsp path generated;
 
 public:
     TravelThief();
@@ -132,11 +133,18 @@ public:
         items.push_back(this_item);
     }
 
+    void print_items();
+
+    void add_tour(int city_id)
+    {
+        tour.push_back(city_id);
+    }
+
+    void print_tour();
+
     void compute_distances();
 
     void sample_solver();
-
-    void print_items();
 };
 
 #endif //LKH_TRAVEL_THIEF_H

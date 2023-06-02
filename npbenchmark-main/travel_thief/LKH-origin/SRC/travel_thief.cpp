@@ -106,3 +106,13 @@ void TravelThief::print_items()
         cerr << i << " " << items[i].profit << " " << items[i].weight << " " << items[i].assigned_node << endl;
     }
 }
+
+void TravelThief::print_tour()
+{
+    cerr << "Tour (size " << tour.size() << "): ";
+    for (int cityId : tour)
+    {
+        cerr << cityId << " ";
+    }
+    cerr << endl;
+}
