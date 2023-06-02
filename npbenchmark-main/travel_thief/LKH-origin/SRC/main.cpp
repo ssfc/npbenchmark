@@ -136,7 +136,7 @@ int main()
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
     // test.print_node_coords();
     // test.print_items();
-    travel_thief.compute_distances();
+    travel_thief.compute_city_distances();
     // test.sample_solver();
 
     // construct parameter file;

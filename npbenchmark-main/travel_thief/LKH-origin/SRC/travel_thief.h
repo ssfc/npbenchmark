@@ -142,7 +142,7 @@ public:
 
     void print_tour();
 
-    void compute_distances();
+    void compute_city_distances();
 
     void sample_solver();
 };

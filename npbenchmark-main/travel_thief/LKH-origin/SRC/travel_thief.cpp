@@ -33,7 +33,7 @@ void TravelThief::print_node_coords()
     }
 }
 
-void TravelThief::compute_distances()
+void TravelThief::compute_city_distances()
 {
     distances.resize(city_coords.size());
     for(int i=0; i < city_coords.size(); i++)
