@@ -36,6 +36,8 @@ class TravelThief{
     std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
     double object_value;
 
+    double length; // tour length of travel thief;
+
 public:
     TravelThief();
     ~TravelThief();
@@ -106,6 +108,16 @@ public:
     std::vector<NodeCoord> get_city_coords()
     {
         return city_coords;
+    }
+
+    void set_length(double input_length)
+    {
+        length = input_length;
+    }
+
+    double get_length() const
+    {
+        return length;
     }
 
     void add_node_coords(NodeCoord this_node_coord)

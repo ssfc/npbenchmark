@@ -184,7 +184,6 @@ int main()
 
     ifstream inputFile("output_tour.txt");
     vector<int> tour;
-    int length = 0;
 
     // string line;
     bool tourSectionReached = false;
@@ -195,7 +194,7 @@ int main()
         {
             // 提取路径长度
             string lengthStr = line.substr(line.find('=') + 1);
-            length = stoi(lengthStr);
+            travel_thief.set_length(stod(lengthStr));
         }
 
         if (line.find("TOUR_SECTION") != string::npos)
@@ -225,7 +224,7 @@ int main()
     cerr << endl;
 
     // output tour length
-    cerr << "Length: " << length << endl;
+    cerr << "Length: " << travel_thief.get_length() << endl;
 
     return 0;
 }
