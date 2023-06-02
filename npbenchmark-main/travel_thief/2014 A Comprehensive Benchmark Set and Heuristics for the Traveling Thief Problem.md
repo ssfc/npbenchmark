@@ -104,6 +104,8 @@ packing plan P = (y21, . . . , ynmi )   // yik, binary variable equal to one whe
 
 4.1节介绍了一种用于旅行商盗贼问题（TTP）的构造启发式算法。TTP是旅行商问题（TSP）和背包问题（KP）的结合。该启发式算法分为两个阶段：第一阶段，使用修改后的链式林-科尼汉算法构造一个TSP路径；第二阶段，使用一个简单的爬山算法将物品装入背包。该启发式算法快速且易于实现，能够为TTP实例生成较好的解决方案。
 
+Ixik:  item k in city xi
+
 
 
 ### 4.2 Iterative Heuristics
