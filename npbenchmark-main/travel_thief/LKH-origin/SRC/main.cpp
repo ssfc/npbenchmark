@@ -16,9 +16,9 @@ using namespace std;
 int main()
 {
     TravelThief travel_thief;
-    // string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
-    string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
+    // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
     ifstream file(filename);
 
     if(!file.is_open())
@@ -170,6 +170,7 @@ int main()
         tsp_file << "NODE_COORD_SECTION\n";
         for(int i=0;i<travel_thief.get_dimension();i++)
         {
+            // LKH官方程序是从1开始算城市的，所以要+1;
             tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x << " " << travel_thief.get_city_coords()[i].y << "\n";
         }
         tsp_file << "EOF\n";
@@ -212,7 +213,8 @@ int main()
             }
 
             int cityId = stoi(line);
-            travel_thief.add_tour(cityId);
+            // LKH官方程序是从1开始算城市的，所以要-1;
+            travel_thief.add_tour(cityId-1);
         }
     }
 
