@@ -3,11 +3,11 @@
 //
 extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
-#include <iostream>
+#include <algorithm>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 
 #include "travel_thief.h"
 
