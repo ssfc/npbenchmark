@@ -55,6 +55,17 @@ void TravelThief::compute_city_distances()
     cerr << "distance 1 and 2: " << distances[1][2] << endl;
 }
 
+double TravelThief::compute_total_distances()
+{
+    double total_distance = 0.0;
+    for(int i=0;i<tour.size()-1;i++)
+    {
+        total_distance += tour[i];
+    }
+
+    return total_distance;
+}
+
 void TravelThief::sample_solver()
 {
     problem_name = "sample name";

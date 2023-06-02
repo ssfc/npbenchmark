@@ -144,6 +144,8 @@ public:
 
     void compute_city_distances();
 
+    double compute_total_distances();
+
     void sample_solver();
 };
 
