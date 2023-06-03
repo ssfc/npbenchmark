@@ -148,7 +148,7 @@ int main()
         parameter_file << "MOVE_TYPE = 5\n";
         parameter_file << "PATCHING_C = 3\n";
         parameter_file << "PATCHING_A = 2\n";
-        parameter_file << "RUNS = 10\n";
+        parameter_file << "RUNS = 1\n";
         parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
         parameter_file.close();
         cerr << "Parameter file created successfully.\n";
@@ -218,11 +218,12 @@ int main()
         }
     }
 
-    // output tour length
-    cerr << "Length: " << travel_thief.get_length() << endl;
-
     // output tour
     travel_thief.print_tour();
+
+    // output tour length
+    cerr << "Length: " << travel_thief.get_length() << endl;
+    cerr << "Length computed: " << travel_thief.compute_total_distances() << endl;
 
     return 0;
 }

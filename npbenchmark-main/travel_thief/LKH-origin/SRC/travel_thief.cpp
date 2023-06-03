@@ -60,8 +60,10 @@ double TravelThief::compute_total_distances()
     double total_distance = 0.0;
     for(int i=0;i<tour.size()-1;i++)
     {
-        total_distance += tour[i];
+        total_distance += city2city_distances[tour[i]][tour[i+1]];
     }
+
+    total_distance += city2city_distances[tour[tour.size()-1]][tour[0]];
 
     return total_distance;
 }
