@@ -35,24 +35,24 @@ void TravelThief::print_node_coords()
 
 void TravelThief::compute_city_distances()
 {
-    distances.resize(city_coords.size());
+    city2city_distances.resize(city_coords.size());
     for(int i=0; i < city_coords.size(); i++)
     {
-        distances[i].resize(city_coords.size(), 0.0);
+        city2city_distances[i].resize(city_coords.size(), 0.0);
     }
 
     for(int i=0; i < city_coords.size(); i++)
     {
         for(int j=0; j < city_coords.size(); j++)
         {
-            distances[i][j] = distances[j][i] = sqrt(
+            city2city_distances[i][j] = city2city_distances[j][i] = sqrt(
                     (city_coords[i].x - city_coords[j].x) * (city_coords[i].x - city_coords[j].x)
                     + (city_coords[i].y - city_coords[j].y) * (city_coords[i].y - city_coords[j].y));
         }
     }
 
-    cerr << "distance 0 and 1: " << distances[0][1] << endl;
-    cerr << "distance 1 and 2: " << distances[1][2] << endl;
+    cerr << "distance 0 and 1: " << city2city_distances[0][1] << endl;
+    cerr << "distance 1 and 2: " << city2city_distances[1][2] << endl;
 }
 
 double TravelThief::compute_total_distances()
@@ -80,17 +80,17 @@ void TravelThief::sample_solver()
     edge_weight_type = "sample edge type";
 
     // sample distances;
-    distances.resize(num_cities);
-    for(auto & distance : distances)
+    city2city_distances.resize(num_cities);
+    for(auto & distance : city2city_distances)
     {
         distance.resize(num_cities, 0.0);
     }
-    distances[0][1] = distances[1][0] = 5;
-    distances[0][2] = distances[2][0] = 6;
-    distances[0][3] = distances[3][0] = 6;
-    distances[1][2] = distances[2][1] = 5;
-    distances[1][3] = distances[3][1] = 6;
-    distances[2][3] = distances[3][2] = 4;
+    city2city_distances[0][1] = city2city_distances[1][0] = 5;
+    city2city_distances[0][2] = city2city_distances[2][0] = 6;
+    city2city_distances[0][3] = city2city_distances[3][0] = 6;
+    city2city_distances[1][2] = city2city_distances[2][1] = 5;
+    city2city_distances[1][3] = city2city_distances[3][1] = 6;
+    city2city_distances[2][3] = city2city_distances[3][2] = 4;
 
     // sample items;
     items.resize(num_items);
