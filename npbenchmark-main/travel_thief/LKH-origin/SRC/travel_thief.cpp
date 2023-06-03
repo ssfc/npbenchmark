@@ -173,8 +173,8 @@ double TravelThief::simple_heuristic()
         else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
         {
             line.erase(0, 20); // 删除"KNAPSACK DATA TYPE: "，保留背包数据类型
-            set_knapsack_data_type(line);
-            cerr << "KNAPSACK DATA TYPE:" << get_knapsack_data_type() << endl;
+            knapsack_data_type = line;
+            cerr << "KNAPSACK DATA TYPE:" << knapsack_data_type << endl;
         }
         else if (line.find("DIMENSION:") != string::npos)
         {
