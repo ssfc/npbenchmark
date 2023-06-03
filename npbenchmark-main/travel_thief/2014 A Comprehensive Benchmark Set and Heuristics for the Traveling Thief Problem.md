@@ -121,6 +121,7 @@ scorexik:  score of item Ixik
 // A1 LINE 1
 Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
 // A1 LINE 2
+Calculate the total traveling time t′
 
 ```
 
