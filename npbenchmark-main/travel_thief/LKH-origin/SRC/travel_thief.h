@@ -148,6 +148,8 @@ public:
     double compute_total_distances();
 
     void sample_solver();
+
+    double simple_heuristic(); // Algorithm 1
 };
 
 #endif //LKH_TRAVEL_THIEF_H

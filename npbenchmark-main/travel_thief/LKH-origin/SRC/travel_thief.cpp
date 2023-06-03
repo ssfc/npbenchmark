@@ -138,3 +138,9 @@ void TravelThief::print_tour()
     }
     cerr << endl;
 }
+
+// Algorithm 1
+double TravelThief::simple_heuristic()
+{
+    return object_value;
+}
