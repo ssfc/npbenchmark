@@ -114,6 +114,8 @@ txik:  total travel time of item Ixik
 
 scorexik:  score of item Ixik
 
+吐槽：NND, 这是病句吧，when only item Ixik is picked and when no items at all are picked，到底有没有pick item? 
+
 ### 4.2 Iterative Heuristics
 
 ## 5. EXPERIMENTS
