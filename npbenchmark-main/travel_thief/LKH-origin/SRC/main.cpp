@@ -196,7 +196,7 @@ int main()
     {
         if (line.find("COMMENT : Length =") != string::npos)
         {
-            // 提取路径长度
+            // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀; 
             string lengthStr = line.substr(line.find('=') + 1);
             travel_thief.set_length(stod(lengthStr));
         }

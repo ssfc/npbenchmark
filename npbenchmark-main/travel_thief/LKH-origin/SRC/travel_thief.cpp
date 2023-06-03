@@ -16,7 +16,7 @@ TravelThief::TravelThief():
         max_speed(0.0),
         renting_ratio(0.0),
         object_value(0.0),
-        tour_length(0.0)
+        tour_length_LKH(0.0)
 {
 
 }

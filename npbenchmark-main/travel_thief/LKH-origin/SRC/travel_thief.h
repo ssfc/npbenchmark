@@ -36,7 +36,7 @@ class TravelThief{
     std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
     double object_value;
 
-    double tour_length; // tour length of travel thief;
+    double tour_length_LKH; // tour length of travel thief;
     std::vector<int> tour; // tsp path generated;
 
 public:
@@ -113,12 +113,12 @@ public:
 
     void set_length(double input_length)
     {
-        tour_length = input_length;
+        tour_length_LKH = input_length;
     }
 
     double get_length() const
     {
-        return tour_length;
+        return tour_length_LKH;
     }
 
     void add_node_coords(NodeCoord this_node_coord)
