@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_problem_name(std::string input_problem_name) {
-        problem_name = std::move(input_problem_name);
-    }
-    std::string get_problem_name() {
-        return problem_name;
-    }
-
     void set_knapsack_data_type(std::string input_knapsack_data_type) {
         knapsack_data_type = std::move(input_knapsack_data_type);
     }

@@ -167,8 +167,8 @@ double TravelThief::simple_heuristic()
         if (line.find("PROBLEM NAME:") != string::npos)
         {
             line.erase(0, 14); // 删除"PROBLEM NAME: "，保留问题名称
-            set_problem_name(line);
-            cerr << "PROBLEM NAME:" << get_problem_name() << endl;
+            problem_name = line;
+            cerr << "PROBLEM NAME:" << problem_name << endl;
         }
         else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
         {
