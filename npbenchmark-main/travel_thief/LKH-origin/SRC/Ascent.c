@@ -1,15 +1,15 @@
 #include "LKH.h"
 
 /* 
- * The Ascent function computes a lower bound on the optimal tour length 
+ * The Ascent function computes a lower bound on the optimal tour length
  * using subgradient optimization. The function also transforms the original 
  * problem into a problem in which the Alpha-values reflect the likelihood 
  * of edges being optimal.
  *
  * The function attempts to find penalties (Pi-values) that maximizes the 
- * lower bound L(T(Pi)) - 2*PiSum, where L(T(Pi)) denotes the length of the 
+ * lower bound L(T(Pi)) - 2*PiSum, where L(T(Pi)) denotes the length of the
  * minimum spanning 1-tree computed from the transformed distances, and PiSum 
- * denotes the sum of Pi-values. If C(i,j) denotes the length of an edge 
+ * denotes the sum of Pi-values. If C(i,j) denotes the length of an edge
  * (i,j), then the transformed distance D(i,j) of an edge is 
  * C(i,j) + Pi(i) + Pi(j).
  *
@@ -88,7 +88,7 @@ GainType Ascent()
     BestW = W0 = W;
     BestNorm = Norm;
     InitialPhase = 1;
-    /* Perform subradient optimization with decreasing period length 
+    /* Perform subradient optimization with decreasing period length
        and decreasing step size */
     for (Period = InitialPeriod, T = InitialStepSize * Precision;
          Period > 0 && T > 0 && Norm != 0; Period /= 2, T /= 2) {

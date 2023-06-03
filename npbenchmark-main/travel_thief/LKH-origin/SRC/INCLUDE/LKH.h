@@ -299,9 +299,9 @@ extern int NonsequentialMoveType; /* Specifies the nonsequential move type to
                                       be used in local search. A value 
                                       L >= 4 signifies that nonsequential
                                       l-opt moves are tried for l <= L */
-extern GainType Optimum;       /* Known optimal tour length. 
+extern GainType Optimum;       /* Known optimal tour length.
                                   If StopAtOptimum is 1, a run will be 
-                                  terminated as soon as a tour length 
+                                  terminated as soon as a tour length
                                   becomes equal this value */
 extern int PatchingA;  /* Specifies the maximum number of alternating
                           cycles to be used for patching disjunct cycles */
