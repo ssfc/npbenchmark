@@ -149,7 +149,7 @@ int main()
         parameter_file << "MOVE_TYPE = 5\n";
         parameter_file << "PATCHING_C = 3\n";
         parameter_file << "PATCHING_A = 2\n";
-        // parameter_file << "PRECISION = 100\n";
+        // parameter_file << "PRECISION = 90\n";
         parameter_file << "RUNS = 1\n";
         parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
         parameter_file.close();
