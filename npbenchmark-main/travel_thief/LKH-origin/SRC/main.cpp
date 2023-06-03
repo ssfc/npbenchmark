@@ -196,7 +196,7 @@ int main()
     {
         if (line.find("COMMENT : Length =") != string::npos)
         {
-            // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀; 
+            // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀;
             string lengthStr = line.substr(line.find('=') + 1);
             travel_thief.set_length(stod(lengthStr));
         }
@@ -216,6 +216,7 @@ int main()
 
             int cityId = stoi(line);
             // LKH官方程序是从1开始算城市的，所以要-1;
+            // A1 LINE 1
             travel_thief.add_tour(cityId-1);
         }
     }
