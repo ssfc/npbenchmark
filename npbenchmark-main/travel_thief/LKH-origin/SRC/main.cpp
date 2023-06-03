@@ -174,6 +174,9 @@ int main()
         {
             // LKH官方程序是从1开始算城市的，所以要+1;
             tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x << " " << travel_thief.get_city_coords()[i].y << "\n";
+
+            // 试着缩放一下坐标；
+            // tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x *100 << " " << travel_thief.get_city_coords()[i].y *100 << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
