@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_knapsack_data_type(std::string input_knapsack_data_type) {
-        knapsack_data_type = std::move(input_knapsack_data_type);
-    }
-    std::string get_knapsack_data_type() {
-        return knapsack_data_type;
-    }
-
     void set_dimension(int input_dimension) {
         num_cities = input_dimension;
     }
