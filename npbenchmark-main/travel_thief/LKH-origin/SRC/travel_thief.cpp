@@ -179,8 +179,8 @@ double TravelThief::simple_heuristic()
         else if (line.find("DIMENSION:") != string::npos)
         {
             line.erase(0, 11); // 删除"DIMENSION: "，保留维度
-            set_dimension(stoi(line));
-            cerr << "DIMENSION:" << get_dimension() << endl;
+            num_cities = stoi(line);
+            cerr << "DIMENSION:" << num_cities << endl;
         }
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {
@@ -298,10 +298,10 @@ double TravelThief::simple_heuristic()
         tsp_file << "NAME : pr2392\n";
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
-        tsp_file << "DIMENSION : " << get_dimension() << "\n";
+        tsp_file << "DIMENSION : " << num_cities << "\n";
         tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
         tsp_file << "NODE_COORD_SECTION\n";
-        for(int i=0;i<get_dimension();i++)
+        for(int i=0;i<num_cities;i++)
         {
             // LKH官方程序是从1开始算城市的，所以要+1;
             tsp_file << i+1 << " " << get_city_coords()[i].x << " " << get_city_coords()[i].y << "\n";

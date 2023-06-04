@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_dimension(int input_dimension) {
-        num_cities = input_dimension;
-    }
-    [[nodiscard]] int get_dimension() const {
-        return num_cities;
-    }
-
     void set_num_items(int input_num_items) {
         num_items = input_num_items;
     }
