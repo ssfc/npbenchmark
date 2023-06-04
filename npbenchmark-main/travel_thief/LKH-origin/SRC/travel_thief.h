@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_edge_weight_type(std::string input_edge_weight_type) {
-        edge_weight_type = std::move(input_edge_weight_type);
-    }
-    [[nodiscard]] std::string get_edge_weight_type() const {
-        return edge_weight_type;
-    }
-
     std::vector<NodeCoord> get_city_coords()
     {
         return city_coords;

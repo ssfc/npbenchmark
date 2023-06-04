@@ -217,8 +217,8 @@ double TravelThief::simple_heuristic()
         else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
         {
             line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
-            set_edge_weight_type(line);
-            cerr << "EDGE_WEIGHT_TYPE:" << get_edge_weight_type() << endl;
+            edge_weight_type = line;
+            cerr << "EDGE_WEIGHT_TYPE:" << edge_weight_type << endl;
         }
         else if (line.find("NODE_COORD_SECTION") != string::npos)
         {
