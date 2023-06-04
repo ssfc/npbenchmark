@@ -185,8 +185,8 @@ double TravelThief::simple_heuristic()
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {
             line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
-            set_num_items(stoi(line));
-            cerr << "NUMBER OF ITEMS:" << get_num_items() << endl;
+            num_items = stoi(line);
+            cerr << "NUMBER OF ITEMS:" << num_items << endl;
         }
         else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
         {
