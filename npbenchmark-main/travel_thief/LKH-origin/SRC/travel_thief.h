@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_max_speed(double input_max_speed) {
-        max_speed = input_max_speed;
-    }
-    [[nodiscard]] double get_max_speed() const {
-        return max_speed;
-    }
-
     void set_renting_ratio(double input_max_speed) {
         renting_ratio = input_max_speed;
     }

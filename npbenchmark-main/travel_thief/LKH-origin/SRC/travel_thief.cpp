@@ -205,8 +205,8 @@ double TravelThief::simple_heuristic()
         {
             // cerr << "MAX SPEED find" << endl;
             line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
-            set_max_speed(stod(line));
-            cerr << "MAX SPEED:" << get_max_speed() << endl;
+            max_speed = stod(line);
+            cerr << "MAX SPEED:" << max_speed << endl;
         }
         else if (line.find("RENTING RATIO:") != string::npos)
         {
