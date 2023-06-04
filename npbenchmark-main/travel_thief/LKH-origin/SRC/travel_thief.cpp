@@ -198,8 +198,8 @@ double TravelThief::simple_heuristic()
         {
             // cerr << "MIN SPEED find" << endl;
             line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
-            set_min_speed(stod(line));
-            cerr << "MIN SPEED:" << get_min_speed() << endl;
+            min_speed = stod(line);
+            cerr << "MIN SPEED:" << min_speed << endl;
         }
         else if (line.find("MAX SPEED:") != string::npos)
         {

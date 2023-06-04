@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_min_speed(double input_min_speed) {
-        min_speed = input_min_speed;
-    }
-    [[nodiscard]] double get_min_speed() const {
-        return min_speed;
-    }
-
     void set_max_speed(double input_max_speed) {
         max_speed = input_max_speed;
     }
