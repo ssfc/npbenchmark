@@ -191,8 +191,8 @@ double TravelThief::simple_heuristic()
         else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
         {
             line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
-            set_capacity_of_knapsack(stoi(line));
-            cerr << "CAPACITY OF KNAPSACK:" << get_capacity_of_knapsack() << endl;
+            capacity = stoi(line);
+            cerr << "CAPACITY OF KNAPSACK:" << capacity << endl;
         }
         else if (line.find("MIN SPEED:") != string::npos)
         {

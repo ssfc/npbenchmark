@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_capacity_of_knapsack(int input_num_items) {
-        capacity = input_num_items;
-    }
-    [[nodiscard]] int get_capacity_of_knapsack() const {
-        return capacity;
-    }
-
     void set_min_speed(double input_min_speed) {
         min_speed = input_min_speed;
     }
