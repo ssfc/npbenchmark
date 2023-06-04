@@ -44,13 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void set_renting_ratio(double input_max_speed) {
-        renting_ratio = input_max_speed;
-    }
-    [[nodiscard]] double get_renting_ratio() const {
-        return renting_ratio;
-    }
-
     void set_edge_weight_type(std::string input_edge_weight_type) {
         edge_weight_type = std::move(input_edge_weight_type);
     }
