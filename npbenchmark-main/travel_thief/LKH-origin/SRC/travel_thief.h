@@ -44,11 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void add_node_coords(NodeCoord this_node_coord)
-    {
-        city_coords.push_back(this_node_coord);
-    }
-
     void print_node_coords();
 
     void add_item(Item this_item)
