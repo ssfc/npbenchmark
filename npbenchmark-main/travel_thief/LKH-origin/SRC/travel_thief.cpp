@@ -277,6 +277,7 @@ double TravelThief::simple_heuristic()
     int move_type = 5;
     int patching_c = 3;
     int patching_a = 2;
+    int runs = 1;
 
     // construct parameter file;
     ofstream parameter_file(parameter_filename);
@@ -288,7 +289,7 @@ double TravelThief::simple_heuristic()
         parameter_file << "PATCHING_C = " << patching_c << "\n";
         parameter_file << "PATCHING_A = " << patching_a << "\n";
         // parameter_file << "PRECISION = 90\n";
-        parameter_file << "RUNS = 1\n";
+        parameter_file << "RUNS = " << runs << "\n";
         parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
         parameter_file.close();
         cerr << "Parameter file created successfully.\n";
