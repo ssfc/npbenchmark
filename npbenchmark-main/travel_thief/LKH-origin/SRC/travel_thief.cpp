@@ -159,7 +159,7 @@ double TravelThief::simple_heuristic()
         return 1;
     }
 
-    int test_num_node_cord = 0;
+    int num_city_coord = 0;
     int test_num_item_section = 0;
     string line;
     while (getline(file, line))
@@ -237,7 +237,7 @@ double TravelThief::simple_heuristic()
                     city_coords.push_back(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
-                    test_num_node_cord++;
+                    num_city_coord++;
                 }
                 else
                 {
