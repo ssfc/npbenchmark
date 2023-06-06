@@ -48,11 +48,6 @@ public:
 
     void print_items();
 
-    void add_tour(int city_id)
-    {
-        tour.push_back(city_id);
-    }
-
     void print_tour();
 
     void compute_city_distances();

@@ -351,7 +351,7 @@ double TravelThief::simple_heuristic()
             int cityId = stoi(line);
             // LKH官方程序是从1开始算城市的，所以要-1;
             // A1 LINE 1
-            add_tour(cityId-1);
+            tour.push_back(cityId-1);
         }
     }
 
