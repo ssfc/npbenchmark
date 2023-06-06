@@ -300,11 +300,14 @@ double TravelThief::simple_heuristic()
         cerr << "Unable to create parameter file.\n";
     }
 
+    // Set problem
+    string tsp_problem_name = "pr2392";
+
     // construct TSP file;
     ofstream tsp_file(problem_filename);
     if (tsp_file.is_open())
     {
-        tsp_file << "NAME : pr2392\n";
+        tsp_file << "NAME : " << tsp_problem_name << "\n";
         tsp_file << "COMMENT : 2392-city problem (Padberg/Rinaldi)\n";
         tsp_file << "TYPE : TSP\n";
         tsp_file << "DIMENSION : " << num_cities << "\n";
