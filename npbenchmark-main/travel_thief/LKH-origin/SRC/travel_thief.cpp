@@ -66,6 +66,7 @@ double TravelThief::compute_total_distances()
     tour_length_computed = 0.0;
 
     tour_length_computed += city2city_distances[tour[0]][tour[tour.size()-1]];
+    cities[tour[tour.size()-1]].travel_distance = tour_length_computed;
 
     for(int i=int(tour.size())-1;i>0;i--)
     {
@@ -74,6 +75,7 @@ double TravelThief::compute_total_distances()
         // double result = static_cast<double>(truncated) / 2;
         // total_distance += result;
         tour_length_computed += city2city_distances[tour[i]][tour[i-1]];
+        cities[tour[i-1]].travel_distance = tour_length_computed;
     }
 
     // cerr << "This distance: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
