@@ -30,7 +30,7 @@ TravelThief::TravelThief():
 TravelThief::~TravelThief()
 = default;
 
-void TravelThief::print_node_coords()
+void TravelThief::print_city_coords()
 {
     cerr << "num node coords: " << city_coords.size() << endl;
     for(int i=0; i < city_coords.size(); i++)

@@ -44,7 +44,7 @@ public:
     TravelThief();
     ~TravelThief();
 
-    void print_node_coords();
+    void print_city_coords();
 
     void print_items();
 
