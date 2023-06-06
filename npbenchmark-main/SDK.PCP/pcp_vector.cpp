@@ -115,7 +115,7 @@ void PCP_Vector::greedy_construct()
         // cerr << "selected center: " << selected_center << endl;
 
         // consequences of opening selected center, this part refers to Algorithm 3;
-        // Refer to A4 LINE 2:
+        // Implement A4 LINE 2:
         // for all v属于Vi do
         // V(i): the set of vertex that center i can serve; index is center, result is vertex;
         // Meaning: consequences of opening i
@@ -135,7 +135,7 @@ void PCP_Vector::greedy_construct()
                 // int intersect_center = reach_one_solution[v];
                 // cerr << "find intersect one: " << intersect_center << endl;
 
-                // Refer to A4 LINE 4:
+                // Implement A4 LINE 4:
                 // for l 属于 X交Cv:
                 //     delta_l <- delta_l - wv,
                 // l: X交Cv里面的中心; 现有解中覆盖V的中心;
@@ -147,7 +147,7 @@ void PCP_Vector::greedy_construct()
                 center_weights[reach_one_solution[v]] -= vertex_weights[v];
                 // print_vector("center weights after", center_weights);
             }
-                // Refer to A4 LINE 5:
+                // Implement A4 LINE 5:
                 // else if |X 交 Cv| = 0 then
                 // X: current center set;
                 // Cv: center set covering vertex v;
@@ -157,7 +157,7 @@ void PCP_Vector::greedy_construct()
                 uncovered_vertices.reset(v);
                 reach_one_solution[v] = selected_center;
 
-                // Refer to A4 LINE 6:
+                // Implement A4 LINE 6:
                 // for l 属于 Cv-{i}:
                 //     delta_l <- delta_l - wv
                 // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
@@ -176,14 +176,14 @@ void PCP_Vector::greedy_construct()
                 center_weights[selected_center] += vertex_weights[v]; // {j} does not need to minus;
                 // cerr << endl;
 
-                // Refer to A4 LINE 7:
+                // Implement A4 LINE 7:
                 // end if
             }
 
             // v is now covered by the selected center;
             num_reach_solution[v]++;
 
-            // Refer to A4 LINE 8:
+            // Implement A4 LINE 8:
             // end for
         }
         // cerr << endl;
@@ -196,7 +196,7 @@ void PCP_Vector::greedy_construct()
         // dynamic_bitset<> test_0_59_12 = center_cover_vertex[0] & (center_cover_vertex[59] | center_cover_vertex[12]);
         // cerr << "0 intersect (59 U 12): " << test_0_59_12.count() << endl;
 
-        // Refer to A4 LINE 9:
+        // Implement A4 LINE 9:
         // X <- X U {i}
         // X: current center set;
         // i: center swapped in;
@@ -976,7 +976,7 @@ void PCP_Vector::sequence_construct()
         // cerr << "selected center: " << selected_center << endl;
 
         // consequences of opening selected center, this part refers to Algorithm 3;
-        // Refer to A4 LINE 2:
+        // Implement A4 LINE 2:
         // for all v属于Vi do
         // V(i): the set of vertex that center i can serve; index is center, result is vertex;
         // Meaning: consequences of opening i
@@ -996,7 +996,7 @@ void PCP_Vector::sequence_construct()
                 int intersect_center = reach_one_solution[v];
                 // cerr << "find intersect one: " << intersect_center << endl;
 
-                // Refer to A4 LINE 4:
+                // Implement A4 LINE 4:
                 // for l 属于 X交Cv:
                 //     delta_l <- delta_l - wv,
                 // l: X交Cv里面的中心; 现有解中覆盖V的中心;
@@ -1008,7 +1008,7 @@ void PCP_Vector::sequence_construct()
                 center_weights[intersect_center] -= vertex_weights[v];
                 // print_vector("center weights after", center_weights);
             }
-                // Refer to A4 LINE 5:
+                // Implement A4 LINE 5:
                 // else if |X 交 Cv| = 0 then
                 // X: current center set;
                 // Cv: center set covering vertex v;
@@ -1018,7 +1018,7 @@ void PCP_Vector::sequence_construct()
                 uncovered_vertices.reset(v);
                 reach_one_solution[v] = selected_center;
 
-                // Refer to A4 LINE 6:
+                // Implement A4 LINE 6:
                 // for l 属于 Cv-{i}:
                 //     delta_l <- delta_l - wv
                 // l: Cv中除i以外的中心; 由于|X 交 Cv| = 0, 所以l不在X中;
@@ -1037,14 +1037,14 @@ void PCP_Vector::sequence_construct()
                 center_weights[selected_center] += vertex_weights[v]; // {j} does not need to minus;
                 // cerr << endl;
 
-                // Refer to A4 LINE 7:
+                // Implement A4 LINE 7:
                 // end if
             }
 
             // v is now covered by the selected center;
             num_reach_solution[v]++;
 
-            // Refer to A4 LINE 8:
+            // Implement A4 LINE 8:
             // end for
         }
         // cerr << endl;
@@ -1057,7 +1057,7 @@ void PCP_Vector::sequence_construct()
         // dynamic_bitset<> test_0_59_12 = center_cover_vertex[0] & (center_cover_vertex[59] | center_cover_vertex[12]);
         // cerr << "0 intersect (59 U 12): " << test_0_59_12.count() << endl;
 
-        // Refer to A4 LINE 9:
+        // Implement A4 LINE 9:
         // X <- X U {i}
         // X: current center set;
         // i: center swapped in;
