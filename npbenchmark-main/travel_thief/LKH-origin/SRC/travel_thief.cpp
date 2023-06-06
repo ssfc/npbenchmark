@@ -278,6 +278,7 @@ double TravelThief::simple_heuristic()
     int patching_c = 3;
     int patching_a = 2;
     int runs = 1;
+    string output_filename = "output_tour.txt";
 
     // construct parameter file;
     ofstream parameter_file(parameter_filename);
@@ -290,7 +291,7 @@ double TravelThief::simple_heuristic()
         parameter_file << "PATCHING_A = " << patching_a << "\n";
         // parameter_file << "PRECISION = 90\n";
         parameter_file << "RUNS = " << runs << "\n";
-        parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
+        parameter_file << "OUTPUT_TOUR_FILE = " << output_filename << "\n";
         parameter_file.close();
         cerr << "Parameter file created successfully.\n";
     }
@@ -300,7 +301,7 @@ double TravelThief::simple_heuristic()
     }
 
     // construct TSP file;
-    ofstream tsp_file("pr2392.tsp");
+    ofstream tsp_file(problem_filename);
     if (tsp_file.is_open())
     {
         tsp_file << "NAME : pr2392\n";
