@@ -134,6 +134,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
 // Ixik:  item k in city xi
 // xi: city id
 // Π: tour path
+// Mxi: items in city xi
     
     // A1 LINE 4
     Calculate txik by using Equation 1
