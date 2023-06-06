@@ -336,7 +336,7 @@ double TravelThief::simple_heuristic()
     // hello_world();
     compute_tsp();
 
-    ifstream inputFile("output_tour.txt");
+    ifstream inputFile(output_filename);
 
     // string line;
     bool tourSectionReached = false;
