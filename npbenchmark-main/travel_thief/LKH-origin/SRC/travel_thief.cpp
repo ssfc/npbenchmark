@@ -393,14 +393,14 @@ double TravelThief::simple_heuristic()
     for(int city_id: tour)
     {
         // show each city contained items
-        ///*
+        /*
         cerr << city_id << ": ";
         for(int item_id : cities[city_id].contained_items)
         {
             cerr << item_id << " ";
         }
         cerr << endl;
-         //*/
+         */
     }
     cerr << endl;
 
