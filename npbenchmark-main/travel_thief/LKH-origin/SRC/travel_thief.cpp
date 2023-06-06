@@ -304,7 +304,7 @@ double TravelThief::simple_heuristic()
         for(int i=0;i<num_cities;i++)
         {
             // LKH官方程序是从1开始算城市的，所以要+1;
-            tsp_file << i+1 << " " << get_city_coords()[i].x << " " << get_city_coords()[i].y << "\n";
+            tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
 
             // 试着缩放一下坐标；
             // tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x *100 << " " << travel_thief.get_city_coords()[i].y *100 << "\n";

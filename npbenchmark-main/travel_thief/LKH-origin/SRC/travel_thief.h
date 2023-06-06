@@ -44,11 +44,6 @@ public:
     TravelThief();
     ~TravelThief();
 
-    std::vector<NodeCoord> get_city_coords()
-    {
-        return city_coords;
-    }
-
     void add_node_coords(NodeCoord this_node_coord)
     {
         city_coords.push_back(this_node_coord);
