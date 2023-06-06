@@ -183,7 +183,6 @@ double TravelThief::simple_heuristic()
             line.erase(0, 11); // 删除"DIMENSION: "，保留维度
             num_cities = stoi(line);
             cerr << "DIMENSION:" << num_cities << endl;
-            city_contained_items.resize(num_cities);
         }
         else if (line.find("NUMBER OF ITEMS:") != string::npos)
         {
@@ -261,7 +260,7 @@ double TravelThief::simple_heuristic()
                         // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
                         Item temp = {profit, weight, assigned_city - 1};
                         items.push_back(temp);
-                        city_contained_items[assigned_city - 1].push_back(this_item_id);
+                        cities[assigned_city - 1].contained_items.push_back(this_item_id);
                         this_item_id++;
                     }
                 }
@@ -394,14 +393,14 @@ double TravelThief::simple_heuristic()
     for(int city_id: tour)
     {
         // show each city contained items
-        /*
+        ///*
         cerr << city_id << ": ";
-        for(int item_id : city_contained_items[city_id])
+        for(int item_id : cities[city_id].contained_items)
         {
             cerr << item_id << " ";
         }
         cerr << endl;
-         */
+         //*/
     }
     cerr << endl;
 

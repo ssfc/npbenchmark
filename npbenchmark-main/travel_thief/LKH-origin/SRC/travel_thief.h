@@ -12,6 +12,7 @@
 struct City{
     int x;
     int y;
+    std::vector<int> contained_items;  // list of items in this city;
     double travel_distance;
 };
 
@@ -36,7 +37,6 @@ class TravelThief{
     std::vector<City> cities;
     std::vector<std::vector<double>> city2city_distances;
     std::vector<Item> items;
-    std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
     double object_value;
 
     double tour_length_LKH; // tour length provided by LKH;
