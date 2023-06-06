@@ -46,11 +46,6 @@ public:
 
     void print_node_coords();
 
-    void add_item(Item this_item)
-    {
-        items.push_back(this_item);
-    }
-
     void print_items();
 
     void add_tour(int city_id)

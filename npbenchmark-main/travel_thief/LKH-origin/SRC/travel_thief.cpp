@@ -255,7 +255,7 @@ double TravelThief::simple_heuristic()
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
                         Item temp = {profit, weight, assigned_node - 1};
-                        add_item(temp);
+                        items.push_back(temp);
                         test_num_item_section++;
                     }
                 }
