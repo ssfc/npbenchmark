@@ -147,6 +147,8 @@ TravelThief::TravelThief():
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
     // test.print_city_coords();
     // test.print_items();
+
+    speed_capacity_ratio = (max_speed - min_speed) / capacity;
 }
 
 TravelThief::~TravelThief()
@@ -243,7 +245,6 @@ void TravelThief::sample_solver()
     items[4] = {40, 1,2};
     items[5] = {20, 2,3};
 
-    speed_capacity_ratio = (max_speed - min_speed) / capacity;
     cerr << "speed capacity ratio: " << speed_capacity_ratio << endl;
 
     // object value of tour (0, 1, 3, 2) and object (0, 0, 0, 1, 1, 0)
@@ -400,7 +401,9 @@ double TravelThief::simple_heuristic()
         cerr << "city " << city_id;
         for(int item_id : cities[city_id].contained_items)
         {
-            items[item_id].travel_time = cities[city_id].travel_distance / items[item_id].weight;
+            // compute txik
+            items[item_id].travel_time = cities[city_id].travel_distance
+                    / (max_speed - speed_capacity_ratio * items[item_id].weight);
             cerr << "\titem " << item_id << "\tdistance " << cities[city_id].travel_distance
                             << "\ttime " << items[item_id].travel_time << endl;
         }
