@@ -25,7 +25,7 @@ TravelThief::TravelThief():
         tour_length_computed(0.0),
         errorFile("error.txt")
 {
-    std::streambuf* cerrBuffer = std::cerr.rdbuf();  // 保存原始的cerr缓冲区
+    cerrBuffer = std::cerr.rdbuf();  // 保存原始的cerr缓冲区
     std::cerr.rdbuf(errorFile.rdbuf());  // 将cerr重定向到文件
 
     // 向屏幕和文件输出错误消息

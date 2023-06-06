@@ -47,6 +47,7 @@ class TravelThief{
 
     // debug variables;
     std::ofstream errorFile;
+    std::streambuf* cerrBuffer;
 
 public:
     TravelThief();
