@@ -19,6 +19,7 @@ struct Item{
     int weight;
     int assigned_city;
     double travel_time;
+    double travel_distance;
 };
 
 class TravelThief{
