@@ -121,7 +121,7 @@ void TravelThief::sample_solver()
     items[4] = {40, 1,2};
     items[5] = {20, 2,3};
 
-    double speed_capacity_ratio = (max_speed - min_speed) / capacity;
+    speed_capacity_ratio = (max_speed - min_speed) / capacity;
     cerr << "speed capacity ratio: " << speed_capacity_ratio << endl;
 
     // object value of tour (0, 1, 3, 2) and object (0, 0, 0, 1, 1, 0)

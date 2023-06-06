@@ -36,6 +36,8 @@ class TravelThief{
     std::vector<City> cities;
     std::vector<std::vector<double>> city2city_distances;
     std::vector<Item> items;
+
+    double speed_capacity_ratio;
     double object_value;
 
     double tour_length_LKH; // tour length provided by LKH;
