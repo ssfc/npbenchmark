@@ -138,6 +138,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     
     // A1 LINE 4
     Calculate txik by using Equation 1
+    // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
 ```
 
 ### 4.2 Iterative Heuristics
