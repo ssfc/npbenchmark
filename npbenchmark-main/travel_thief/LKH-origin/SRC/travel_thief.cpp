@@ -22,21 +22,8 @@ TravelThief::TravelThief():
         renting_ratio(0.0),
         object_value(0.0),
         tour_length_LKH(0.0),
-        tour_length_computed(0.0),
-        errorFile("error.txt")
+        tour_length_computed(0.0)
 {
-    cerrBuffer = std::cerr.rdbuf();  // 保存原始的cerr缓冲区
-    std::cerr.rdbuf(errorFile.rdbuf());  // 将cerr重定向到文件
-
-    // 向屏幕和文件输出错误消息
-    std::cerr << "An error occurred!" << std::endl;
-
-    // 恢复原始的cerr缓冲区
-    std::cerr.rdbuf(cerrBuffer);
-
-    // 关闭文件
-    errorFile.close();
-
     string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
     // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
