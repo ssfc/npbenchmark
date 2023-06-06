@@ -276,6 +276,7 @@ double TravelThief::simple_heuristic()
     string problem_filename = "pr2392.tsp";
     int move_type = 5;
     int patching_c = 3;
+    int patching_a = 2;
 
     // construct parameter file;
     ofstream parameter_file(parameter_filename);
@@ -285,7 +286,7 @@ double TravelThief::simple_heuristic()
         // parameter_file << "OPTIMUM = 378032\n";
         parameter_file << "MOVE_TYPE = " << move_type << "\n";
         parameter_file << "PATCHING_C = " << patching_c << "\n";
-        parameter_file << "PATCHING_A = 2\n";
+        parameter_file << "PATCHING_A = " << patching_a << "\n";
         // parameter_file << "PRECISION = 90\n";
         parameter_file << "RUNS = 1\n";
         parameter_file << "OUTPUT_TOUR_FILE = output_tour.txt\n";
