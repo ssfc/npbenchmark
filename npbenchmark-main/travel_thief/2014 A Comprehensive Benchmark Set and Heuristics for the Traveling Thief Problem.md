@@ -142,7 +142,9 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     
     // A1 LINE 5
     Set t′xik := t′ − dxi + txik
-    // 
+    // t': total traveling time without item
+    // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
+    // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
 ```
 
 ### 4.2 Iterative Heuristics
