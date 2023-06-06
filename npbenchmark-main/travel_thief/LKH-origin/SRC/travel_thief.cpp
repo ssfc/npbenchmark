@@ -395,6 +395,7 @@ double TravelThief::simple_heuristic()
         cerr << city_id << ": ";
         for(int item_id : city_contained_items[city_id])
         {
+            // Ixik:  item k in city xi
             cerr << item_id << " ";
         }
         cerr << endl;
