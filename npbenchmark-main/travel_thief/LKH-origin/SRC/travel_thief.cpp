@@ -32,7 +32,7 @@ TravelThief::~TravelThief()
 
 void TravelThief::print_city_coords()
 {
-    cerr << "num node coords: " << city_coords.size() << endl;
+    cerr << "num city coords: " << city_coords.size() << endl;
     for(int i=0; i < city_coords.size(); i++)
     {
         cerr << i << " " << city_coords[i].x << " " << city_coords[i].y << endl;
@@ -248,16 +248,16 @@ double TravelThief::simple_heuristic()
                         {
                             break; // 节点坐标结束
                         }
-                        int index, profit, weight, assigned_node;
+                        int index, profit, weight, assigned_city;
                         // 从字符串中解析出节点索引、横坐标、纵坐标
                         replace(line.begin(), line.end(), '\t', ' ');
                         istringstream iss(line);
-                        iss >> index >> profit >> weight >> assigned_node;
+                        iss >> index >> profit >> weight >> assigned_city;
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
-                        Item temp = {profit, weight, assigned_node - 1};
+                        Item temp = {profit, weight, assigned_city - 1};
                         items.push_back(temp);
-                        city_contained_items[assigned_node - 1].push_back(test_num_item_section);
+                        city_contained_items[assigned_city - 1].push_back(test_num_item_section);
                         test_num_item_section++;
                     }
                 }
