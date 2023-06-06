@@ -32,28 +32,28 @@ TravelThief::~TravelThief()
 
 void TravelThief::print_city_coords()
 {
-    cerr << "num city coords: " << city_coords.size() << endl;
-    for(int i=0; i < city_coords.size(); i++)
+    cerr << "num city coords: " << cities.size() << endl;
+    for(int i=0; i < cities.size(); i++)
     {
-        cerr << i << " " << city_coords[i].x << " " << city_coords[i].y << endl;
+        cerr << i << " " << cities[i].x << " " << cities[i].y << endl;
     }
 }
 
 void TravelThief::compute_city_distances()
 {
-    city2city_distances.resize(city_coords.size());
-    for(int i=0; i < city_coords.size(); i++)
+    city2city_distances.resize(cities.size());
+    for(int i=0; i < cities.size(); i++)
     {
-        city2city_distances[i].resize(city_coords.size(), 0.0);
+        city2city_distances[i].resize(cities.size(), 0.0);
     }
 
-    for(int i=0; i < city_coords.size(); i++)
+    for(int i=0; i < cities.size(); i++)
     {
-        for(int j=0; j < city_coords.size(); j++)
+        for(int j=0; j < cities.size(); j++)
         {
             city2city_distances[i][j] = city2city_distances[j][i] = sqrt(
-                    (city_coords[i].x - city_coords[j].x) * (city_coords[i].x - city_coords[j].x)
-                    + (city_coords[i].y - city_coords[j].y) * (city_coords[i].y - city_coords[j].y));
+                    (cities[i].x - cities[j].x) * (cities[i].x - cities[j].x)
+                    + (cities[i].y - cities[j].y) * (cities[i].y - cities[j].y));
         }
     }
 
@@ -238,7 +238,7 @@ double TravelThief::simple_heuristic()
                     City temp{};
                     temp.x = x;
                     temp.y = y;
-                    city_coords.push_back(temp);
+                    cities.push_back(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
                     num_city_coord++;
@@ -329,7 +329,7 @@ double TravelThief::simple_heuristic()
             // tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
 
             // 试着缩放一下坐标；
-            tsp_file << i+1 << " " << city_coords[i].x * scale << " " << city_coords[i].y * scale << "\n";
+            tsp_file << i+1 << " " << cities[i].x * scale << " " << cities[i].y * scale << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
