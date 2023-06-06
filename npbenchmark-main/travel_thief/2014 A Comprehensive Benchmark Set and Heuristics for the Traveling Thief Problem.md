@@ -114,6 +114,8 @@ txik:  total travel time of item Ixik
 
 scorexik:  score of item Ixik
 
+Mxi = {1, . . . , mi}  // items in city xi
+
 吐槽：NND, 这是病句吧，when only item Ixik is picked and when no items at all are picked，到底有没有pick item? 
 
 ```c++
@@ -123,7 +125,7 @@ Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
 // A1 LINE 2
 Calculate the total traveling time t′
 // A1 LINE 3
-for all items Ixik, xi ∈ Π, k ∈ Mxi do
+for all items Ixik, xi ∈ Π, k ∈ Mxi do 
 ```
 
 ### 4.2 Iterative Heuristics
