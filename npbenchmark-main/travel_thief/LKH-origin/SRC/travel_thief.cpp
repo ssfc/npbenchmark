@@ -305,7 +305,7 @@ double TravelThief::simple_heuristic()
     string tsp_comment = "2392-city problem (Padberg/Rinaldi)";
     string tsp_type = "TSP";
     string tsp_edge_weight_type = "EUC_2D";
-    int scale = 10; // 坐标放大倍数
+    int scale = 100; // 坐标放大倍数
 
     // construct TSP file;
     ofstream tsp_file(problem_filename);
@@ -375,7 +375,7 @@ double TravelThief::simple_heuristic()
     print_tour();
 
     // output tour length
-    cerr << "Length: " << tour_length_LKH << endl;
+    cerr << "Length: " << tour_length_LKH / scale << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
     return object_value;
