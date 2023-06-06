@@ -271,13 +271,18 @@ double TravelThief::simple_heuristic()
     compute_city_distances();
     // test.sample_solver();
 
+    // Set parameters;
+    string parameter_filename = "pr2392.par";
+    string problem_filename = "pr2392.tsp";
+    int move_type = 5;
+
     // construct parameter file;
-    ofstream parameter_file("pr2392.par");
+    ofstream parameter_file(parameter_filename);
     if (parameter_file.is_open())
     {
-        parameter_file << "PROBLEM_FILE = pr2392.tsp\n";
+        parameter_file << "PROBLEM_FILE = " << problem_filename << "\n";
         // parameter_file << "OPTIMUM = 378032\n";
-        parameter_file << "MOVE_TYPE = 5\n";
+        parameter_file << "MOVE_TYPE = " << move_type << "\n";
         parameter_file << "PATCHING_C = 3\n";
         parameter_file << "PATCHING_A = 2\n";
         // parameter_file << "PRECISION = 90\n";
