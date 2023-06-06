@@ -374,7 +374,6 @@ double TravelThief::simple_heuristic()
     }
 
     // output tour
-    // tour Π = (x1, . . . , xn)  // xi是城市顶点, 描述旅行商路径；
     print_tour();
 
     // output tour length
@@ -395,7 +394,6 @@ double TravelThief::simple_heuristic()
         cerr << city_id << ": ";
         for(int item_id : city_contained_items[city_id])
         {
-            // Ixik:  item k in city xi
             cerr << item_id << " ";
         }
         cerr << endl;
