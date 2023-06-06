@@ -372,7 +372,7 @@ double TravelThief::simple_heuristic()
 
             int cityId = stoi(line);
             // LKH官方程序是从1开始算城市的，所以要-1;
-            // A1 LINE 1
+            // Implement A1 LINE 1
             // Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
             // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
             // xi: city id
@@ -380,7 +380,7 @@ double TravelThief::simple_heuristic()
         }
     }
 
-    // output tour
+    // Evaluate A1 LINE 1
     print_tour();
 
     // output tour length
