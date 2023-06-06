@@ -49,16 +49,6 @@ public:
         return city_coords;
     }
 
-    void set_length(double input_length)
-    {
-        tour_length_LKH = input_length;
-    }
-
-    double get_length() const
-    {
-        return tour_length_LKH;
-    }
-
     void add_node_coords(NodeCoord this_node_coord)
     {
         city_coords.push_back(this_node_coord);

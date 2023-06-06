@@ -332,7 +332,7 @@ double TravelThief::simple_heuristic()
         {
             // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀;
             string lengthStr = line.substr(line.find('=') + 1);
-            set_length(stod(lengthStr));
+            tour_length_LKH = stod(lengthStr);
         }
 
         if (line.find("TOUR_SECTION") != string::npos)
@@ -359,7 +359,7 @@ double TravelThief::simple_heuristic()
     print_tour();
 
     // output tour length
-    cerr << "Length: " << get_length() << endl;
+    cerr << "Length: " << tour_length_LKH << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
     return object_value;
