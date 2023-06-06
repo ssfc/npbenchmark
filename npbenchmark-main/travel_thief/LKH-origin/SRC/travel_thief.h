@@ -5,6 +5,7 @@
 #ifndef LKH_TRAVEL_THIEF_H
 #define LKH_TRAVEL_THIEF_H
 
+#include <fstream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -43,6 +44,9 @@ class TravelThief{
     double tour_length_LKH; // tour length provided by LKH;
     std::vector<int> tour; // tsp path generated;
     double tour_length_computed; // tour length added by myself;
+
+    // debug variables;
+    std::ofstream errorFile;
 
 public:
     TravelThief();
