@@ -383,7 +383,12 @@ double TravelThief::simple_heuristic()
     // Evaluate A1 LINE 2
     cerr << "total traveling time: " << total_traveling_time << endl;
     // Implement A1 LINE 3
-    
+    cerr << "tour city: " << endl;
+    for(int city_id: tour)
+    {
+        cerr << city_id << " ";
+    }
+    cerr << endl;
 
     return object_value;
 }
