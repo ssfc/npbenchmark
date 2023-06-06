@@ -24,7 +24,129 @@ TravelThief::TravelThief():
         tour_length_LKH(0.0),
         tour_length_computed(0.0)
 {
+    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
+    // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
+    // string filename = "../data/pla33810_n33809_bounded-strongly-corr_01.ttp";
+    ifstream file(filename);
 
+    if(!file.is_open())
+    {
+        cerr << "Failed to open file " << filename << endl;
+    }
+
+    int num_city_coord = 0;
+    int this_item_id = 0;
+    string line;
+    while (getline(file, line))
+    {
+        if (line.find("PROBLEM NAME:") != string::npos)
+        {
+            line.erase(0, 14); // 删除"PROBLEM NAME: "，保留问题名称
+            problem_name = line;
+            cerr << "PROBLEM NAME:" << problem_name << endl;
+        }
+        else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
+        {
+            line.erase(0, 20); // 删除"KNAPSACK DATA TYPE: "，保留背包数据类型
+            knapsack_data_type = line;
+            cerr << "KNAPSACK DATA TYPE:" << knapsack_data_type << endl;
+        }
+        else if (line.find("DIMENSION:") != string::npos)
+        {
+            line.erase(0, 11); // 删除"DIMENSION: "，保留维度
+            num_cities = stoi(line);
+            cerr << "DIMENSION:" << num_cities << endl;
+        }
+        else if (line.find("NUMBER OF ITEMS:") != string::npos)
+        {
+            line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
+            num_items = stoi(line);
+            cerr << "NUMBER OF ITEMS:" << num_items << endl;
+        }
+        else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
+        {
+            line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
+            capacity = stoi(line);
+            cerr << "CAPACITY OF KNAPSACK:" << capacity << endl;
+        }
+        else if (line.find("MIN SPEED:") != string::npos)
+        {
+            // cerr << "MIN SPEED find" << endl;
+            line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
+            min_speed = stod(line);
+            cerr << "MIN SPEED:" << min_speed << endl;
+        }
+        else if (line.find("MAX SPEED:") != string::npos)
+        {
+            // cerr << "MAX SPEED find" << endl;
+            line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
+            max_speed = stod(line);
+            cerr << "MAX SPEED:" << max_speed << endl;
+        }
+        else if (line.find("RENTING RATIO:") != string::npos)
+        {
+            line.erase(0, 14); // 删除"RENTING RATIO: "，保留租金比率
+            renting_ratio = stod(line);
+            cerr << "RENTING RATIO:" << renting_ratio << endl;
+        }
+        else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
+        {
+            line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
+            edge_weight_type = line;
+            cerr << "EDGE_WEIGHT_TYPE:" << edge_weight_type << endl;
+        }
+        else if (line.find("NODE_COORD_SECTION") != string::npos)
+        {
+            cerr << "NODE_COORD_SECTION (INDEX, X, Y): " << endl;
+            while (getline(file, line))
+            {
+                if (line.find("ITEMS SECTION") == string::npos)
+                {
+                    int index, x, y;
+                    // 从字符串中解析出节点索引、横坐标、纵坐标
+                    replace(line.begin(), line.end(), '\t', ' ');
+                    istringstream iss(line);
+                    iss >> index >> x >> y;
+                    City temp{};
+                    temp.x = x;
+                    temp.y = y;
+                    cities.push_back(temp);
+
+                    // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
+                    num_city_coord++;
+                }
+                else
+                {
+                    cerr << "ITEMS SECTION (INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): " << endl;
+                    while (getline(file, line))
+                    {
+                        if (line.empty())
+                        {
+                            break; // 节点坐标结束
+                        }
+                        int index, profit, weight, assigned_city;
+                        // 从字符串中解析出节点索引、横坐标、纵坐标
+                        replace(line.begin(), line.end(), '\t', ' ');
+                        istringstream iss(line);
+                        iss >> index >> profit >> weight >> assigned_city;
+                        // 输出节点坐标
+                        // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
+                        Item temp = {profit, weight, assigned_city - 1};
+                        items.push_back(temp);
+                        cities[assigned_city - 1].contained_items.push_back(this_item_id);
+                        this_item_id++;
+                    }
+                }
+            }
+        }
+    }
+
+    file.close();
+    // cerr << "num_city_coord: " << num_city_coord << endl;
+    // cerr << "test_num_item_section: " << test_num_item_section << endl;
+    // test.print_city_coords();
+    // test.print_items();
 }
 
 TravelThief::~TravelThief()
@@ -151,130 +273,6 @@ void TravelThief::print_tour()
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
-    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
-    // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
-    // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
-    // string filename = "../data/pla33810_n33809_bounded-strongly-corr_01.ttp";
-    ifstream file(filename);
-
-    if(!file.is_open())
-    {
-        cerr << "Failed to open file " << filename << endl;
-        return 1;
-    }
-
-    int num_city_coord = 0;
-    int this_item_id = 0;
-    string line;
-    while (getline(file, line))
-    {
-        if (line.find("PROBLEM NAME:") != string::npos)
-        {
-            line.erase(0, 14); // 删除"PROBLEM NAME: "，保留问题名称
-            problem_name = line;
-            cerr << "PROBLEM NAME:" << problem_name << endl;
-        }
-        else if (line.find("KNAPSACK DATA TYPE:") != string::npos)
-        {
-            line.erase(0, 20); // 删除"KNAPSACK DATA TYPE: "，保留背包数据类型
-            knapsack_data_type = line;
-            cerr << "KNAPSACK DATA TYPE:" << knapsack_data_type << endl;
-        }
-        else if (line.find("DIMENSION:") != string::npos)
-        {
-            line.erase(0, 11); // 删除"DIMENSION: "，保留维度
-            num_cities = stoi(line);
-            cerr << "DIMENSION:" << num_cities << endl;
-        }
-        else if (line.find("NUMBER OF ITEMS:") != string::npos)
-        {
-            line.erase(0, 17); // 删除"NUMBER OF ITEMS: "，保留物品数量
-            num_items = stoi(line);
-            cerr << "NUMBER OF ITEMS:" << num_items << endl;
-        }
-        else if (line.find("CAPACITY OF KNAPSACK:") != string::npos)
-        {
-            line.erase(0, 22); // 删除"CAPACITY OF KNAPSACK: "，保留背包容量
-            capacity = stoi(line);
-            cerr << "CAPACITY OF KNAPSACK:" << capacity << endl;
-        }
-        else if (line.find("MIN SPEED:") != string::npos)
-        {
-            // cerr << "MIN SPEED find" << endl;
-            line.erase(0, 11); // 删除"MIN SPEED: "，保留最小速度
-            min_speed = stod(line);
-            cerr << "MIN SPEED:" << min_speed << endl;
-        }
-        else if (line.find("MAX SPEED:") != string::npos)
-        {
-            // cerr << "MAX SPEED find" << endl;
-            line.erase(0, 11); // 删除"MAX SPEED: "，保留最大速度
-            max_speed = stod(line);
-            cerr << "MAX SPEED:" << max_speed << endl;
-        }
-        else if (line.find("RENTING RATIO:") != string::npos)
-        {
-            line.erase(0, 14); // 删除"RENTING RATIO: "，保留租金比率
-            renting_ratio = stod(line);
-            cerr << "RENTING RATIO:" << renting_ratio << endl;
-        }
-        else if (line.find("EDGE_WEIGHT_TYPE:") != string::npos)
-        {
-            line.erase(0, 18); // 删除"EDGE_WEIGHT_TYPE: "，保留边权类型
-            edge_weight_type = line;
-            cerr << "EDGE_WEIGHT_TYPE:" << edge_weight_type << endl;
-        }
-        else if (line.find("NODE_COORD_SECTION") != string::npos)
-        {
-            cerr << "NODE_COORD_SECTION (INDEX, X, Y): " << endl;
-            while (getline(file, line))
-            {
-                if (line.find("ITEMS SECTION") == string::npos)
-                {
-                    int index, x, y;
-                    // 从字符串中解析出节点索引、横坐标、纵坐标
-                    replace(line.begin(), line.end(), '\t', ' ');
-                    istringstream iss(line);
-                    iss >> index >> x >> y;
-                    City temp{};
-                    temp.x = x;
-                    temp.y = y;
-                    cities.push_back(temp);
-
-                    // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
-                    num_city_coord++;
-                }
-                else
-                {
-                    cerr << "ITEMS SECTION (INDEX, PROFIT, WEIGHT, ASSIGNED NODE NUMBER): " << endl;
-                    while (getline(file, line))
-                    {
-                        if (line.empty())
-                        {
-                            break; // 节点坐标结束
-                        }
-                        int index, profit, weight, assigned_city;
-                        // 从字符串中解析出节点索引、横坐标、纵坐标
-                        replace(line.begin(), line.end(), '\t', ' ');
-                        istringstream iss(line);
-                        iss >> index >> profit >> weight >> assigned_city;
-                        // 输出节点坐标
-                        // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
-                        Item temp = {profit, weight, assigned_city - 1};
-                        items.push_back(temp);
-                        cities[assigned_city - 1].contained_items.push_back(this_item_id);
-                        this_item_id++;
-                    }
-                }
-            }
-        }
-    }
-
-    file.close();
-    // cerr << "num_city_coord: " << num_city_coord << endl;
-    // cerr << "test_num_item_section: " << test_num_item_section << endl;
-    // test.print_city_coords();
-    // test.print_items();
     compute_city_distances();
     // test.sample_solver();
 
@@ -349,6 +347,7 @@ double TravelThief::simple_heuristic()
     // string line;
     bool tourSectionReached = false;
 
+    string line;
     while (getline(inputFile, line))
     {
         if (line.find("COMMENT : Length =") != string::npos)
