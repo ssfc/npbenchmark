@@ -304,6 +304,7 @@ double TravelThief::simple_heuristic()
     string tsp_problem_name = "pr2392";
     string tsp_comment = "2392-city problem (Padberg/Rinaldi)";
     string tsp_type = "TSP";
+    string tsp_edge_weight_type = "EUC_2D";
 
     // construct TSP file;
     ofstream tsp_file(problem_filename);
@@ -313,7 +314,7 @@ double TravelThief::simple_heuristic()
         tsp_file << "COMMENT : " << tsp_comment << "\n";
         tsp_file << "TYPE : " << tsp_type << "\n";
         tsp_file << "DIMENSION : " << num_cities << "\n";
-        tsp_file << "EDGE_WEIGHT_TYPE : EUC_2D\n";
+        tsp_file << "EDGE_WEIGHT_TYPE : " << tsp_edge_weight_type << "\n";
         tsp_file << "NODE_COORD_SECTION\n";
         for(int i=0;i<num_cities;i++)
         {
