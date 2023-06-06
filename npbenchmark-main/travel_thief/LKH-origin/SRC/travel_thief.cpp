@@ -384,11 +384,18 @@ double TravelThief::simple_heuristic()
     cerr << "total traveling time: " << total_traveling_time << endl;
     // Implement A1 LINE 3
     cerr << "tour city: " << endl;
+    /*
     for(int city_id: tour)
     {
-        cerr << city_id << " ";
+        cerr << city_id << ": ";
+        for(int item_id : city_contained_items[city_id])
+        {
+            cerr << item_id << " ";
+        }
+        cerr << endl;
     }
     cerr << endl;
+     */
 
     return object_value;
 }
