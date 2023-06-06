@@ -305,6 +305,7 @@ double TravelThief::simple_heuristic()
     string tsp_comment = "2392-city problem (Padberg/Rinaldi)";
     string tsp_type = "TSP";
     string tsp_edge_weight_type = "EUC_2D";
+    int scale = 10; // 坐标放大倍数
 
     // construct TSP file;
     ofstream tsp_file(problem_filename);
@@ -319,10 +320,10 @@ double TravelThief::simple_heuristic()
         for(int i=0;i<num_cities;i++)
         {
             // LKH官方程序是从1开始算城市的，所以要+1;
-            tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
+            // tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
 
             // 试着缩放一下坐标；
-            // tsp_file << i+1 << " " << travel_thief.get_city_coords()[i].x *100 << " " << travel_thief.get_city_coords()[i].y *100 << "\n";
+            tsp_file << i+1 << " " << city_coords[i].x * scale << " " << city_coords[i].y * scale << "\n";
         }
         tsp_file << "EOF\n";
         tsp_file.close();
