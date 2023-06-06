@@ -126,6 +126,8 @@ Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
 Calculate the total traveling time t′
 // A1 LINE 3
 for all items Ixik, xi ∈ Π, k ∈ Mxi do 
+    // A1 LINE 4
+    Calculate txik by using Equation 1
 ```
 
 ### 4.2 Iterative Heuristics
