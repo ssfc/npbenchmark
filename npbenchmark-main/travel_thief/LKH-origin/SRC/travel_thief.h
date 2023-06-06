@@ -17,7 +17,7 @@ struct CityCoord{
 struct Item{
     int profit;
     int weight;
-    int assigned_node;
+    int assigned_city;
 };
 
 class TravelThief{

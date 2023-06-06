@@ -130,7 +130,7 @@ void TravelThief::print_items()
     cerr << "num items: " << items.size() << endl;
     for(int i=0;i<items.size();i++)
     {
-        cerr << i << " " << items[i].profit << " " << items[i].weight << " " << items[i].assigned_node << endl;
+        cerr << i << " " << items[i].profit << " " << items[i].weight << " " << items[i].assigned_city << endl;
     }
 }
 
