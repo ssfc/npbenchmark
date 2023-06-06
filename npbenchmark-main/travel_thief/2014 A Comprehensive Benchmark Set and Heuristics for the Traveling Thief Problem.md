@@ -108,9 +108,9 @@ tour Π = (x1, . . . , xn)  // xi是城市顶点, 描述旅行商路径；
 
 Ixik:  item k in city xi
 
-dxi:  total travel distance of item Ixik
+dxi:  total travel distance of item Ixik // 这个显然要从被捡起来开始算。
 
-txik:  total travel time of item Ixik
+txik:  total travel time of item Ixik  // 这个显然要从被捡起来开始算。
 
 scorexik:  score of item Ixik
 
