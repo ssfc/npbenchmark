@@ -123,7 +123,7 @@ Mxi = {1, . . . , mi}  // items in city xi
 // A1 LINE 1
 Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
 // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
-// xi: 城市顶点, 描述旅行商路径；
+// xi: city id
 
 // A1 LINE 2
 Calculate the total traveling time t′
@@ -131,6 +131,10 @@ Calculate the total traveling time t′
     
 // A1 LINE 3
 for all items Ixik, xi ∈ Π, k ∈ Mxi do 
+// Ixik:  item k in city xi
+// xi: city id
+// Π: tour path
+    
     // A1 LINE 4
     Calculate txik by using Equation 1
 ```
