@@ -254,7 +254,7 @@ double TravelThief::simple_heuristic()
                         istringstream iss(line);
                         iss >> index >> profit >> weight >> assigned_city;
                         // 输出节点坐标
-                        // cerr << index << " " << profit << " " << weight << " " << assigned_node << endl;
+                        // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
                         Item temp = {profit, weight, assigned_city - 1};
                         items.push_back(temp);
                         city_contained_items[assigned_city - 1].push_back(test_num_item_section);
@@ -266,9 +266,9 @@ double TravelThief::simple_heuristic()
     }
 
     file.close();
-    // cerr << "test_num_node_cord: " << test_num_node_cord << endl;
+    // cerr << "num_city_coord: " << num_city_coord << endl;
     // cerr << "test_num_item_section: " << test_num_item_section << endl;
-    // test.print_node_coords();
+    // test.print_city_coords();
     // test.print_items();
     compute_city_distances();
     // test.sample_solver();
