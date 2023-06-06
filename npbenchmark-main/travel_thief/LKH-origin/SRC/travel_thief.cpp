@@ -374,6 +374,7 @@ double TravelThief::simple_heuristic()
     }
 
     // output tour
+    // tour Π = (x1, . . . , xn)  // xi是城市顶点, 描述旅行商路径；
     print_tour();
 
     // output tour length
