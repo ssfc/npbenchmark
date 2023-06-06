@@ -233,7 +233,7 @@ double TravelThief::simple_heuristic()
                     replace(line.begin(), line.end(), '\t', ' ');
                     istringstream iss(line);
                     iss >> index >> x >> y;
-                    NodeCoord temp = {x, y};
+                    CityCoord temp = {x, y};
                     city_coords.push_back(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标

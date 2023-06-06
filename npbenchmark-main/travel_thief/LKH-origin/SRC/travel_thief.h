@@ -9,7 +9,7 @@
 #include <utility>
 #include <vector>
 
-struct NodeCoord{
+struct CityCoord{
     int x;
     int y;
 };
@@ -30,7 +30,7 @@ class TravelThief{
     double max_speed;
     double renting_ratio;
     std::string edge_weight_type;
-    std::vector<NodeCoord> city_coords;
+    std::vector<CityCoord> city_coords;
     std::vector<std::vector<double>> city2city_distances;
     std::vector<Item> items;
     std::vector<std::vector<int>> city_contained_items;  // city_contained_items[i] are list of items in city i
