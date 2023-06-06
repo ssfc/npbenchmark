@@ -160,7 +160,7 @@ double TravelThief::simple_heuristic()
     }
 
     int num_city_coord = 0;
-    int test_num_item_section = 0;
+    int this_item_id = 0;
     string line;
     while (getline(file, line))
     {
@@ -257,8 +257,8 @@ double TravelThief::simple_heuristic()
                         // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
                         Item temp = {profit, weight, assigned_city - 1};
                         items.push_back(temp);
-                        city_contained_items[assigned_city - 1].push_back(test_num_item_section);
-                        test_num_item_section++;
+                        city_contained_items[assigned_city - 1].push_back(this_item_id);
+                        this_item_id++;
                     }
                 }
             }
