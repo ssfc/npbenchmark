@@ -410,7 +410,9 @@ double TravelThief::simple_heuristic()
         cerr << "city " << city_id;
         for(int item_id : cities[city_id].contained_items)
         {
-            // compute txik
+            // Implement A1 LINE 4
+            // Calculate txik by using Equation 1
+            // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
             items[item_id].travel_time = cities[city_id].travel_distance
                     / (max_speed - speed_capacity_ratio * items[item_id].weight);
             cerr << "\titem " << item_id << "\tdistance " << cities[city_id].travel_distance
