@@ -388,6 +388,8 @@ double TravelThief::simple_heuristic()
     cerr << "Length computed: " << compute_total_distances() << endl;
 
     // Implement A1 LINE 2
+    // Calculate the total traveling time t′
+    // t': total traveling time without item
     double total_traveling_time = tour_length_LKH / scale; // 因为最大速度是1, 所以不除了;
     // Evaluate A1 LINE 2
     cerr << "total traveling time: " << total_traveling_time << endl;
