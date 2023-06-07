@@ -417,17 +417,19 @@ double TravelThief::simple_heuristic()
             items[item_id].item_travel_time = cities[city_id].distance_to_dest
                     / (max_speed - speed_capacity_ratio * items[item_id].weight);
 
-            // Evaluate A1 LINE 4
-            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
-                            << "\ttime " << items[item_id].item_travel_time << endl;
-
             // Implement A1 LINE 5
             // Set t′xik := t′ − dxi + txik
             // t': total traveling time without item
             // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
             // meaning: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
-            items[item_id].thief_travel_time_withonlythis = total_traveling_time;
+            items[item_id].thief_travel_time_withonlythis = total_traveling_time
+                    - cities[city_id].distance_to_dest + items[item_id].item_travel_time;
+
+            // Evaluate A1 LINE 4 and LINE 5;
+            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
+                 << "\ttime " << items[item_id].item_travel_time
+                 << "\tthief time " << items[item_id].thief_travel_time_withonlythis << endl;
         }
         // cerr << endl;
 
