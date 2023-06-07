@@ -150,6 +150,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // A1 LINE 6
     Set scorexik := pxik − R × txik
     // scorexik: 给每个物品打分
+    // xi: city id
     // pxik: 物品原本价值
     // R: 单位时间租金
     // txik: travel time of item Ixik from being picked up to being transported to the destination
