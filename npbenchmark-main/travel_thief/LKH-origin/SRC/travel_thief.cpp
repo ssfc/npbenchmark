@@ -439,12 +439,6 @@ double TravelThief::simple_heuristic()
             // meaning: 物品经过时间贬值后剩下多少
             items[item_id].score = items[item_id].value - renting_ratio * items[item_id].item_travel_time;
 
-            // Evaluate A1 LINE 4 LINE 5 LINE 6;
-            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
-                 << "\ttime " << items[item_id].item_travel_time
-                 << "\tthief time " << items[item_id].thief_travel_time_withonlythis
-                 << "\tscore " << items[item_id].score << endl;
-
             // A1 LINE 7
             // Set uxik := R × t′ + (pxik − R × t′xik)
             // R: 单位时间租金
@@ -452,7 +446,15 @@ double TravelThief::simple_heuristic()
             // pxik: value of item Ixik
             // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
             // meaning: fitness value
+            items[item_id].fitness = renting_ratio * total_traveling_time + (items[item_id].value
+                    - renting_ratio * items[item_id].thief_travel_time_withonlythis);
 
+            // Evaluate A1 LINE 4 LINE 5 LINE 6 LINE 7;
+            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
+                 << "\ttime " << items[item_id].item_travel_time
+                 << "\tthief time " << items[item_id].thief_travel_time_withonlythis
+                 << "\tscore " << items[item_id].score
+                 << "\tfitness " << items[item_id].fitness << endl;
         }
         // cerr << endl;
 
