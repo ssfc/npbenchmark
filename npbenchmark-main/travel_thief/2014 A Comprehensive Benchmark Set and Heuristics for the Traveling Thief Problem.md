@@ -138,7 +138,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     
     // A1 LINE 4
     Calculate txik by using Equation 1
-    // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
+    // txik: travel time of item Ixik from being picked up to being transported to the destination
     
     // A1 LINE 5
     Set t′xik := t′ − dxi + txik
@@ -146,6 +146,13 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
     // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
     // meaning: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
+        
+    // A1 LINE 6
+    Set scorexik := pxik − R × txik
+    // scorexik: 给每个物品打分
+    // pxik: 物品原本价值
+    // R: 单位时间租金
+    // txik: travel time of item Ixik from being picked up to being transported to the destination
 ```
 
 ### 4.2 Iterative Heuristics
