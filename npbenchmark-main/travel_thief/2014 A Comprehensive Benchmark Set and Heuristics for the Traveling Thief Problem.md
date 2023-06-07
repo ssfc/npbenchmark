@@ -151,9 +151,15 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     Set scorexik := pxik − R × txik
     // scorexik: 给每个物品打分
     // xi: city id
-    // pxik: 物品原本价值
+    // pxik: value of item Ixik
     // R: 单位时间租金
     // txik: travel time of item Ixik from being picked up to being transported to the destination
+        
+    // A1 LINE 7
+    Set uxik := R × t′ + (pxik − R × t′xik)
+    // R: 单位时间租金
+    // t': total traveling time without item
+    // pxik: value of item Ixik
 ```
 
 ### 4.2 Iterative Heuristics
