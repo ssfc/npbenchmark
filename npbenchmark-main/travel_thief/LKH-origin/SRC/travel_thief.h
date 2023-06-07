@@ -21,6 +21,7 @@ struct Item{
     int weight;
     int assigned_city;
     double item_travel_time;
+    double thief_travel_time_withonlythis; // 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
 };
 
 class TravelThief{
