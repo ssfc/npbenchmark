@@ -428,11 +428,6 @@ double TravelThief::simple_heuristic()
             items[item_id].thief_travel_time_withonlythis = total_traveling_time
                     - cities[city_id].distance_to_dest + items[item_id].item_travel_time;
 
-            // Evaluate A1 LINE 4 and LINE 5;
-            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
-                 << "\ttime " << items[item_id].item_travel_time
-                 << "\tthief time " << items[item_id].thief_travel_time_withonlythis << endl;
-
             // Implement A1 LINE 6;
             // A1 LINE 6
             // Set scorexik := pxik − R × txik
@@ -441,7 +436,13 @@ double TravelThief::simple_heuristic()
             // pxik: 物品原本价值
             // R: 单位时间租金
             // txik: travel time of item Ixik from being picked up to being transported to the destination
-            items[item_id].score = items[item_id].value;
+            // meaning: 物品经过时间贬值后剩下多少
+            items[item_id].score = items[item_id].value - renting_ratio * items[item_id].item_travel_time;
+
+            // Evaluate A1 LINE 4 LINE 5 LINE 6;
+            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
+                 << "\ttime " << items[item_id].item_travel_time
+                 << "\tthief time " << items[item_id].thief_travel_time_withonlythis << endl;
         }
         // cerr << endl;
 
