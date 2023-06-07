@@ -192,7 +192,7 @@ double TravelThief::compute_total_distances()
     tour_length_computed = 0.0;
 
     tour_length_computed += city2city_distances[tour[0]][tour[tour.size()-1]];
-    cities[tour[tour.size()-1]].travel_distance = tour_length_computed;
+    cities[tour[tour.size()-1]].distance_to_dest = tour_length_computed;
 
     for(int i=int(tour.size())-1;i>0;i--)
     {
@@ -201,7 +201,7 @@ double TravelThief::compute_total_distances()
         // double result = static_cast<double>(truncated) / 2;
         // total_distance += result;
         tour_length_computed += city2city_distances[tour[i]][tour[i-1]];
-        cities[tour[i-1]].travel_distance = tour_length_computed;
+        cities[tour[i-1]].distance_to_dest = tour_length_computed;
     }
 
     // cerr << "This distance: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
@@ -414,11 +414,11 @@ double TravelThief::simple_heuristic()
             // Implement A1 LINE 4
             // Calculate txik by using Equation 1
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
-            items[item_id].item_travel_time = cities[city_id].travel_distance
+            items[item_id].item_travel_time = cities[city_id].distance_to_dest
                     / (max_speed - speed_capacity_ratio * items[item_id].weight);
 
             // Evaluate A1 LINE 4
-            cerr << "\titem " << item_id << "\tdistance " << cities[city_id].travel_distance
+            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
                             << "\ttime " << items[item_id].item_travel_time << endl;
 
             // Implement A1 LINE 5
@@ -427,7 +427,7 @@ double TravelThief::simple_heuristic()
             // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
             // meaning: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
-            items[item_id].thief_travel_time_withonlythis = 0;
+            items[item_id].thief_travel_time_withonlythis = total_traveling_time;
         }
         // cerr << endl;
 

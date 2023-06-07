@@ -13,7 +13,7 @@ struct City{
     int x;
     int y;
     std::vector<int> contained_items;  // list of items in this city;
-    double travel_distance;
+    double distance_to_dest;
 };
 
 struct Item{
