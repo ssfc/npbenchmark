@@ -22,7 +22,8 @@ TravelThief::TravelThief():
         renting_ratio(0.0),
         object_value(0.0),
         tour_length_LKH(0.0),
-        tour_length_computed(0.0)
+        tour_length_computed(0.0),
+        total_traveling_time(0.0)
 {
     string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
@@ -390,7 +391,7 @@ double TravelThief::simple_heuristic()
     // Implement A1 LINE 2
     // Calculate the total traveling time t′
     // t': total traveling time without item
-    double total_traveling_time = tour_length_LKH / scale; // 因为最大速度是1, 所以不除了;
+    total_traveling_time = tour_length_LKH / scale; // 因为最大速度是1, 所以不除了;
     // Evaluate A1 LINE 2
     cerr << "total traveling time: " << total_traveling_time << endl;
 

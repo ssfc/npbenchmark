@@ -47,6 +47,7 @@ class TravelThief{
     double tour_length_LKH; // tour length provided by LKH;
     std::vector<int> tour; // tsp path generated;
     double tour_length_computed; // tour length added by myself;
+    double total_traveling_time; // total travel time with no item;
 
 public:
     TravelThief();
