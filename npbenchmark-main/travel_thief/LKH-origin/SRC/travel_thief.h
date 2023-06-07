@@ -47,7 +47,7 @@ class TravelThief{
     double tour_length_LKH; // tour length provided by LKH;
     std::vector<int> tour; // tsp path generated;
     double tour_length_computed; // tour length added by myself;
-    double total_traveling_time; // total travel time with no item;
+    double total_traveling_time; // total travel time with no item, 不难看出在路径构筑后这是一个恒定值;
 
 public:
     TravelThief();
