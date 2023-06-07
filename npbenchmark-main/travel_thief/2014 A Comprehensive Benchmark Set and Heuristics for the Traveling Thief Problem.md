@@ -162,6 +162,10 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // pxik: value of item Ixik
     // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
     // meaning: fitness value
+        
+    // A1 LINE 8
+    Create the joint set of items I and sort them in descending order score values
+    
 ```
 
 ### 4.2 Iterative Heuristics
