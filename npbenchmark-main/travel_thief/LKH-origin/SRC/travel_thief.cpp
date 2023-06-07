@@ -430,6 +430,15 @@ double TravelThief::simple_heuristic()
             cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
                  << "\ttime " << items[item_id].item_travel_time
                  << "\tthief time " << items[item_id].thief_travel_time_withonlythis << endl;
+
+            // Implement A1 LINE 6;
+            // A1 LINE 6
+            // Set scorexik := pxik − R × txik
+            // scorexik: 给每个物品打分
+            // xi: city id
+            // pxik: 物品原本价值
+            // R: 单位时间租金
+            // txik: travel time of item Ixik from being picked up to being transported to the destination
         }
         // cerr << endl;
 
