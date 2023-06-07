@@ -406,7 +406,6 @@ double TravelThief::simple_heuristic()
         // evaluate travel distance of each city on the tour;
         // cerr << city_id << " (" << cities[city_id].travel_distance << ") ";
         // show each city contained items
-
         cerr << "city " << city_id;
         for(int item_id : cities[city_id].contained_items)
         {
