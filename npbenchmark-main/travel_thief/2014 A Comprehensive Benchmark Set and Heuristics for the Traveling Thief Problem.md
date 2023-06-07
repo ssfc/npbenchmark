@@ -160,6 +160,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // R: 单位时间租金
     // t': total traveling time without item
     // pxik: value of item Ixik
+    // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
 ```
 
 ### 4.2 Iterative Heuristics
