@@ -212,6 +212,7 @@ double TravelThief::compute_total_distances()
     return tour_length_computed;
 }
 
+/*
 void TravelThief::sample_solver()
 {
     problem_name = "sample name";
@@ -251,6 +252,7 @@ void TravelThief::sample_solver()
     object_value = 40 + 40 - 1 * (6/(1-0.3*2) + 5/1.0 + 6/1.0 + 4/1.0);
     cerr << "object value: " << object_value << endl;
 }
+ */
 
 void TravelThief::print_items()
 {

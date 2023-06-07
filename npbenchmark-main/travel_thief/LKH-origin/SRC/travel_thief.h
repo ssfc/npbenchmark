@@ -22,6 +22,7 @@ struct Item{
     int assigned_city;
     double item_travel_time;
     double thief_travel_time_withonlythis; // 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
+    double score;
 };
 
 class TravelThief{
@@ -63,7 +64,7 @@ public:
 
     double compute_total_distances();
 
-    void sample_solver();
+    // void sample_solver();
 
     double simple_heuristic(); // Algorithm 1
 };
