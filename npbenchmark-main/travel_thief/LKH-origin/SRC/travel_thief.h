@@ -25,7 +25,7 @@ struct Item{
 };
 
 class TravelThief{
-    // parameter get from file;
+    // parameter directly from file;
     std::string problem_name;
     std::string knapsack_data_type;
     int num_cities;
@@ -43,6 +43,7 @@ class TravelThief{
     double speed_capacity_ratio;
     double object_value;
 
+    // concerning LKH;
     double tour_length_LKH; // tour length provided by LKH;
     std::vector<int> tour; // tsp path generated;
     double tour_length_computed; // tour length added by myself;
