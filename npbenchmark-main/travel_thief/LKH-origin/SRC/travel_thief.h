@@ -17,7 +17,7 @@ struct City{
 };
 
 struct Item{
-    int profit;
+    int value;
     int weight;
     int assigned_city;
     double item_travel_time;

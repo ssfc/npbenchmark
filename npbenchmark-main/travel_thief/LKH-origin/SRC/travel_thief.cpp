@@ -126,14 +126,14 @@ TravelThief::TravelThief():
                         {
                             break; // 节点坐标结束
                         }
-                        int index, profit, weight, assigned_city;
+                        int index, value, weight, assigned_city;
                         // 从字符串中解析出节点索引、横坐标、纵坐标
                         replace(line.begin(), line.end(), '\t', ' ');
                         istringstream iss(line);
-                        iss >> index >> profit >> weight >> assigned_city;
+                        iss >> index >> value >> weight >> assigned_city;
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
-                        Item temp = {profit, weight, assigned_city - 1};
+                        Item temp = {value, weight, assigned_city - 1};
                         items.push_back(temp);
                         cities[assigned_city - 1].contained_items.push_back(this_item_id);
                         this_item_id++;
@@ -259,7 +259,7 @@ void TravelThief::print_items()
     cerr << "num items: " << items.size() << endl;
     for(int i=0;i<items.size();i++)
     {
-        cerr << i << " " << items[i].profit << " " << items[i].weight << " " << items[i].assigned_city << endl;
+        cerr << i << " " << items[i].value << " " << items[i].weight << " " << items[i].assigned_city << endl;
     }
 }
 
@@ -441,6 +441,7 @@ double TravelThief::simple_heuristic()
             // pxik: 物品原本价值
             // R: 单位时间租金
             // txik: travel time of item Ixik from being picked up to being transported to the destination
+            items[item_id].score = items[item_id].value;
         }
         // cerr << endl;
 
