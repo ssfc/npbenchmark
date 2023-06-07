@@ -444,6 +444,15 @@ double TravelThief::simple_heuristic()
                  << "\ttime " << items[item_id].item_travel_time
                  << "\tthief time " << items[item_id].thief_travel_time_withonlythis
                  << "\tscore " << items[item_id].score << endl;
+
+            // A1 LINE 7
+            // Set uxik := R × t′ + (pxik − R × t′xik)
+            // R: 单位时间租金
+            // t': total traveling time without item
+            // pxik: value of item Ixik
+            // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
+            // meaning: fitness value
+            
         }
         // cerr << endl;
 
