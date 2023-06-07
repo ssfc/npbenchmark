@@ -20,7 +20,7 @@ struct Item{
     int profit;
     int weight;
     int assigned_city;
-    double travel_time;
+    double item_travel_time;
 };
 
 class TravelThief{
