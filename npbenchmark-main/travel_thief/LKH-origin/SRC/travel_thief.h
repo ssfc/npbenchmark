@@ -25,6 +25,7 @@ struct Item{
 };
 
 class TravelThief{
+    // parameter get from file;
     std::string problem_name;
     std::string knapsack_data_type;
     int num_cities;
@@ -38,6 +39,7 @@ class TravelThief{
     std::vector<std::vector<double>> city2city_distances;
     std::vector<Item> items;
 
+    // computed from the above;
     double speed_capacity_ratio;
     double object_value;
 
