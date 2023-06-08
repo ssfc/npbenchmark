@@ -171,7 +171,7 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
         
     // A1 LINE 10
     for all items Ixik ∈ I do
-    // Ixik:  item k in city xi
+    // Ixik: item k in city xi
         
         
 ```
