@@ -513,6 +513,7 @@ double TravelThief::simple_heuristic()
             // Wc: used capacity
             // wxik: weight of item Ixik
             used_capacity += this_item.weight;
+            total_value += this_item.value;
         }
 
         // Implement A1 LINE 14
