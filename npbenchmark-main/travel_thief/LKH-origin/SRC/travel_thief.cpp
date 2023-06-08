@@ -573,6 +573,8 @@ double TravelThief::simple_heuristic()
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
             / (max_speed - speed_capacity_ratio * used_capacity);
     cerr << "back time: " << back_time << endl;
+    object_value = total_value - renting_ratio * (back_time + collect_time);
+    cerr << "object value: " << object_value << endl;
 
     return object_value;
 }
