@@ -138,7 +138,7 @@ TravelThief::TravelThief():
                         temp.weight = weight;
                         temp.assigned_city = assigned_city - 1;
                         items.push_back(temp);
-                        cities[assigned_city - 1].contained_items.push_back(temp.index);
+                        cities[temp.assigned_city].contained_items.push_back(temp.index);
                     }
                 }
             }
