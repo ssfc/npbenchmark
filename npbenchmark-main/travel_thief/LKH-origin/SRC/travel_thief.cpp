@@ -133,7 +133,11 @@ TravelThief::TravelThief():
                         iss >> index >> value >> weight >> assigned_city;
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
-                        Item temp = {value, weight, assigned_city - 1};
+                        Item temp{};
+                        temp.index = index-1;
+                        temp.value = value;
+                        temp.weight = weight;
+                        temp.assigned_city = assigned_city - 1;
                         items.push_back(temp);
                         cities[assigned_city - 1].contained_items.push_back(this_item_id);
                         this_item_id++;

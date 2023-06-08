@@ -17,6 +17,7 @@ struct City{
 };
 
 struct Item{
+    int index;
     int value;
     int weight;
     int assigned_city;
