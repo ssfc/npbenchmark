@@ -522,6 +522,9 @@ double TravelThief::simple_heuristic()
         if(used_capacity == capacity)
         {
             cerr << "equal capacity" << endl;
+            // Implement A1 LINE 15
+            // Exit the loop
+            break;
         }
     }
 

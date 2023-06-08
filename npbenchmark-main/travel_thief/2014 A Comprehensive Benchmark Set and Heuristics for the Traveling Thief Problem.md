@@ -194,6 +194,8 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     if (Wc = W) then
     // Wc: used capacity
     // W: capacity
+        // A1 LINE 15
+        Exit the loop
 ```
 
 ### 4.2 Iterative Heuristics
