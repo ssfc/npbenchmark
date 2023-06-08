@@ -542,6 +542,21 @@ double TravelThief::simple_heuristic()
     }
     cerr << endl;
 
+    cerr << "tour with picked items: ";
+    for(int city_id : tour)
+    {
+        if(!cities[city_id].picked_items.empty())
+        {
+            cerr << city_id << " (";
+            for(int item_id : cities[city_id].picked_items)
+            {
+                cerr << item_id << " ";
+            }
+            cerr << ") ";
+        }
+    }
+    cerr << endl;
+
     // 从最后一个城市返回出发点的时间
     cerr << "used capacity: " << used_capacity << endl;
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
