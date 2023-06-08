@@ -170,9 +170,9 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     Set the current used capacity variable Wc := 0
     // Wc: current used capacity
         
-    // A1 LINE 10
-    for all items Ixik ∈ I do
-    // Ixik: item k in city xi
+// A1 LINE 10
+for all items Ixik ∈ I do
+// Ixik: item k in city xi
         
     // A1 LINE 11
     if (Wc + wxik < W) and (uxik > 0) then
@@ -196,6 +196,8 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // W: capacity
         // A1 LINE 15
         Exit the loop
+
+// Implement A1 LINE 16; 
 ```
 
 ### 4.2 Iterative Heuristics
