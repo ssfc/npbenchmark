@@ -13,6 +13,7 @@ struct City{
     int x;
     int y;
     std::vector<int> contained_items;  // list of items in this city;
+    std::vector<int> picked_items;
     double distance_to_dest;
 };
 
