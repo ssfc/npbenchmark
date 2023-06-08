@@ -558,6 +558,13 @@ double TravelThief::simple_heuristic()
             cerr << ") ";
         }
         cerr << "weight " << weight_leaving << " ";
+
+        if(i != tour.size()-1)
+        {
+            collect_time += city2city_distances[i][i+1] / (max_speed - speed_capacity_ratio * weight_leaving);
+        }
+
+        cerr << "collect time " << collect_time << " ";
     }
     cerr << endl;
 
