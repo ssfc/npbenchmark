@@ -486,6 +486,7 @@ double TravelThief::simple_heuristic()
     // Ixik: item k in city xi
     for(Item this_item : items)
     {
+        // Evaluate A1 LINE 10
         cerr << this_item.score << " ";
     }
     cerr << endl;
