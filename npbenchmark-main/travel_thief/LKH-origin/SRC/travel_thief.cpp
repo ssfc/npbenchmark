@@ -543,6 +543,7 @@ double TravelThief::simple_heuristic()
     cerr << endl;
 
     double weight_leaving = 0.0;
+    double collect_time = 0.0;
     cerr << "tour with picked items: ";
     for(int city_id : tour)
     {
