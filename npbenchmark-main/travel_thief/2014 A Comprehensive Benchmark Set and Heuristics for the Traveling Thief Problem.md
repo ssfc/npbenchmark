@@ -163,12 +163,12 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
     // meaning: fitness value
         
-    // A1 LINE 8
-    Create the joint set of items I and sort them in descending order score values
+// A1 LINE 8
+Create the joint set of items I and sort them in descending order score values
     
-    // A1 LINE 9
-    Set the current used capacity variable Wc := 0
-    // Wc: current used capacity
+// A1 LINE 9
+Set the current used capacity variable Wc := 0
+// Wc: current used capacity
         
 // A1 LINE 10
 for all items Ixik ∈ I do
