@@ -508,6 +508,9 @@ double TravelThief::simple_heuristic()
             // Ixik: item
             packing_plan.push_back(this_item.index);
 
+            // Add this item to city picked items;
+            cities[this_item.assigned_city].picked_items.push_back(this_item.index);
+
             // Implement A1 LINE 13
             // Increase the used capacity variable Wc := Wc + wxik
             // Wc: used capacity
