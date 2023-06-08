@@ -545,12 +545,12 @@ double TravelThief::simple_heuristic()
     double weight_leaving = 0.0;
     double collect_time = 0.0;
     cerr << "tour with picked items: ";
-    for(int city_id : tour)
+    for(int i=0; i<tour.size(); i++)
     {
-        if(!cities[city_id].picked_items.empty())
+        if(!cities[tour[i]].picked_items.empty())
         {
-            cerr << "city " << city_id << " (";
-            for(int item_id : cities[city_id].picked_items)
+            cerr << "city " << tour[i] << " (";
+            for(int item_id : cities[tour[i]].picked_items)
             {
                 cerr << item_id << " ";
                 weight_leaving += original_items[item_id].weight;
