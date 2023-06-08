@@ -463,6 +463,8 @@ double TravelThief::simple_heuristic()
 
     }
 
+    vector<Item> original_items = items;  // 使用赋值操作符将 items 赋值给 originalItems
+
     // Implement A1 LINE 8;
     // Create the joint set of items I and sort them in descending order score values
     std::sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
@@ -473,7 +475,7 @@ double TravelThief::simple_heuristic()
     cerr << "Sort by score descending: ";
     for(Item this_item : items)
     {
-        cerr << this_item.score << " ";
+        // cerr << this_item.index << " (" << this_item.score << ") ";
     }
     cerr << endl;
 
@@ -503,14 +505,31 @@ double TravelThief::simple_heuristic()
             // Add the item Ixik to the packing plan P
             // Ixik: item
             packing_plan.push_back(this_item.index);
+
+            // Implement A1 LINE 13
+            // Increase the used capacity variable Wc := Wc + wxik
+            // Wc: used capacity
+            // wxik: weight of item Ixik
+            used_capacity = used_capacity + this_item.weight;
+        }
+
+        // Implement A1 LINE 14
+        // if (Wc = W) then
+        // Wc: used capacity
+        // W: capacity
+        // Evaluate A1 LINE 14
+        // used_capacity = capacity;
+        if(used_capacity == capacity)
+        {
+            cerr << "equal capacity" << endl;
         }
     }
 
     cerr << "Packing plan: ";
     for(int this_item_index : packing_plan)
     {
-        cerr << this_item_index << " ";
-        // cerr << this_item_index << " (" << items[this_item_index].score << ") ";
+        // cerr << this_item_index << " ";
+        cerr << this_item_index << " (" << original_items[this_item_index].fitness << ") ";
     }
     cerr << endl;
 

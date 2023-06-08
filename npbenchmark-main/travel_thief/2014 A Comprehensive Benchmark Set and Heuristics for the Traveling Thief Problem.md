@@ -189,6 +189,11 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
         Increase the used capacity variable Wc := Wc + wxik
         // Wc: used capacity
         // wxik: weight of item Ixik
+            
+    // A1 LINE 14
+    if (Wc = W) then
+    // Wc: used capacity
+    // W: capacity
 ```
 
 ### 4.2 Iterative Heuristics
