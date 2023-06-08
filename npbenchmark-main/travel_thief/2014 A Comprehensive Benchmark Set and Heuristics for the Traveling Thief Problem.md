@@ -177,6 +177,9 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // A1 LINE 11
     if (Wc + wxik < W) and (uxik > 0) then
     // Wc: current used capacity
+    // wxik: weight of item Ixik
+    // W: max capacity allowed
+    // uxik: fitness value
 ```
 
 ### 4.2 Iterative Heuristics
