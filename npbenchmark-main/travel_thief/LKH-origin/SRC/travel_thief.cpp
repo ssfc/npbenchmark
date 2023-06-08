@@ -20,7 +20,7 @@ TravelThief::TravelThief():
         min_speed(0.0),
         max_speed(0.0),
         renting_ratio(0.0),
-        current_used_capacity(0),
+        used_capacity(0),
         object_value(0.0),
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
@@ -478,8 +478,8 @@ double TravelThief::simple_heuristic()
     cerr << endl;
 
     // Implement A1 LINE 9 (and Evaluate A1 LINE 9)
-    // Set the current used capacity variable Wc := 0
-    current_used_capacity = 0;
+    // Set the used capacity variable Wc := 0
+    used_capacity = 0;
 
     // Implement A1 LINE 10
     // for all items Ixik ∈ I do
@@ -491,11 +491,11 @@ double TravelThief::simple_heuristic()
 
         // A1 LINE 11
         // if (Wc + wxik < W) and (uxik > 0) then
-        // Wc: current used capacity
+        // Wc: used capacity
         // wxik: weight of item Ixik
         // W: max capacity allowed
         // uxik: fitness value
-        if(current_used_capacity + this_item.weight < capacity && this_item.fitness > 0)
+        if(used_capacity + this_item.weight < capacity && this_item.fitness > 0)
         {
             // cerr << this_item.fitness << " ";
 

@@ -184,6 +184,11 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
         // A1 LINE 12
         Add the item Ixik to the packing plan P
         // Ixik: item
+        
+        // A1 LINE 13
+        Increase the used capacity variable Wc := Wc + wxik
+        // Wc: used capacity
+        // wxik: weight of item Ixik
 ```
 
 ### 4.2 Iterative Heuristics
