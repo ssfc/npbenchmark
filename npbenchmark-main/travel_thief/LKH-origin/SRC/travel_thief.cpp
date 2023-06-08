@@ -539,5 +539,11 @@ double TravelThief::simple_heuristic()
     }
     cerr << endl;
 
+    // 从最后一个城市返回出发点的时间
+    cerr << "used capacity: " << used_capacity << endl;
+    double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
+            / (max_speed - speed_capacity_ratio * used_capacity);
+    cerr << "back time: " << back_time << endl;
+
     return object_value;
 }
