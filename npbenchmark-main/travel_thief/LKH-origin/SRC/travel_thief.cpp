@@ -268,9 +268,9 @@ void TravelThief::print_items()
 void TravelThief::print_tour()
 {
     cerr << "Tour (size " << tour.size() << "): ";
-    for (int cityId : tour)
+    for (int city_index : tour)
     {
-        cerr << cityId << " ";
+        cerr << city_index << " ";
     }
     cerr << endl;
 }
@@ -380,7 +380,7 @@ double TravelThief::simple_heuristic()
             // Implement A1 LINE 1
             // Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
             // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
-            // xi: city id
+            // xi: city index
             tour.push_back(city_index-1);
         }
     }
