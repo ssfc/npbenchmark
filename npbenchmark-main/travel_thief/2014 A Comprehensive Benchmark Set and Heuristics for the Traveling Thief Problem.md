@@ -180,6 +180,10 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // wxik: weight of item Ixik
     // W: max capacity allowed
     // uxik: fitness value
+        
+        // A1 LINE 12
+        Add the item Ixik to the packing plan P
+        // Ixik: item
 ```
 
 ### 4.2 Iterative Heuristics
