@@ -477,7 +477,7 @@ double TravelThief::simple_heuristic()
     }
     cerr << endl;
 
-    // Implement A1 LINE 9
+    // Implement A1 LINE 9 (and Evaluate A1 LINE 9)
     // Set the current used capacity variable Wc := 0
     current_used_capacity = 0;
 
