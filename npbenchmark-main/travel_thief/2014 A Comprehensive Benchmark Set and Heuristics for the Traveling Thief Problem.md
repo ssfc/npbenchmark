@@ -168,6 +168,12 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     
     // A1 LINE 9
     Set the current used capacity variable Wc := 0
+        
+    // A1 LINE 10
+    for all items Ixik ∈ I do
+    // Ixik:  item k in city xi
+        
+        
 ```
 
 ### 4.2 Iterative Heuristics
