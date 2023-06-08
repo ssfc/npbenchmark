@@ -570,11 +570,23 @@ double TravelThief::simple_heuristic()
 
     // 从最后一个城市返回出发点的时间
     cerr << "used capacity: " << used_capacity << endl;
+
+    // Implement A1 LINE 16
+    // Set the resulting objective value
+    // Z∗:= max (Z(Π, P), −R × t′)
+    // Z*: object value
+    // Z(Π, P): 扣除租金物品的价值
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
             / (max_speed - speed_capacity_ratio * used_capacity);
     cerr << "back time: " << back_time << endl;
     object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "object value: " << object_value << endl;
+
+    double no_item_value = - renting_ratio*total_traveling_time;
+    if(object_value < no_item_value)
+    {
+        object_value = no_item_value;
+    }
 
     return object_value;
 }
