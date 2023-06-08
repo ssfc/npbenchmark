@@ -402,23 +402,23 @@ double TravelThief::simple_heuristic()
     // Implement A1 LINE 3
     // for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // Ixik:  item k in city xi
-    // xi: city id
+    // xi: city index
     // Π: tour path
     // Mxi: items in city xi
     cerr << "tour city: " << endl;
-    for(int city_id: tour)
+    for(int city_index: tour)
     {
         // Evaluate A1 LINE 3
         // evaluate travel distance of each city on the tour;
         // cerr << city_id << " (" << cities[city_id].travel_distance << ") ";
         // show each city contained items
-        cerr << "city " << city_id;
-        for(int item_id : cities[city_id].contained_items)
+        cerr << "city " << city_index;
+        for(int item_id : cities[city_index].contained_items)
         {
             // Implement A1 LINE 4
             // Calculate txik by using Equation 1
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
-            items[item_id].item_travel_time = cities[city_id].distance_to_dest
+            items[item_id].item_travel_time = cities[city_index].distance_to_dest
                     / (max_speed - speed_capacity_ratio * items[item_id].weight);
 
             // Implement A1 LINE 5
@@ -428,7 +428,7 @@ double TravelThief::simple_heuristic()
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
             // meaning: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
             items[item_id].thief_travel_time_withonlythis = total_traveling_time
-                    - cities[city_id].distance_to_dest + items[item_id].item_travel_time;
+                    - cities[city_index].distance_to_dest + items[item_id].item_travel_time;
 
             // Implement A1 LINE 6;
             // A1 LINE 6
@@ -452,7 +452,7 @@ double TravelThief::simple_heuristic()
                     - renting_ratio * items[item_id].thief_travel_time_withonlythis);
 
             // Evaluate A1 LINE 4 LINE 5 LINE 6 LINE 7;
-            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_id].distance_to_dest
+            cerr << "\titem " << item_id << "\tdistance to dest " << cities[city_index].distance_to_dest
                  << "\ttime " << items[item_id].item_travel_time
                  << "\tthief time " << items[item_id].thief_travel_time_withonlythis
                  << "\tscore " << items[item_id].score
