@@ -461,6 +461,18 @@ double TravelThief::simple_heuristic()
         // cerr << endl;
 
     }
+
+    // Implement A1 LINE 8;
+    std::sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
+        return item1.score > item2.score;
+    });
+
+    // Evaluate A1 LINE 8;
+    cerr << "Sort by score descending: ";
+    for(Item this_item : items)
+    {
+        cerr << this_item.score << " ";
+    }
     cerr << endl;
 
     return object_value;
