@@ -112,6 +112,7 @@ TravelThief::TravelThief():
                     City temp{};
                     temp.x = x;
                     temp.y = y;
+                    temp.weight_leaving = 0;
                     cities.push_back(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标

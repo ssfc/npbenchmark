@@ -14,7 +14,7 @@ struct City{
     int y;
     std::vector<int> contained_items;  // list of items in this city;
     std::vector<int> picked_items;
-    int weight_leaving; // 当离开这座城市时，小偷的背包重量; 
+    int weight_leaving; // 当离开这座城市时，小偷的背包重量;
     double distance_to_dest;
 };
 
