@@ -201,7 +201,7 @@ for all items Ixik ∈ I do
 Set the resulting objective value
 Z∗:= max (Z(Π, P), −R × t′)    
 // Z*: object value
-
+// Z(Π, P): 扣除租金物品的价值
 ```
 
 ### 4.2 Iterative Heuristics
