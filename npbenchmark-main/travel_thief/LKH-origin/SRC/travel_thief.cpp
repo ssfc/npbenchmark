@@ -487,7 +487,18 @@ double TravelThief::simple_heuristic()
     for(Item this_item : items)
     {
         // Evaluate A1 LINE 10
-        cerr << this_item.score << " ";
+        // cerr << this_item.score << " ";
+
+        // A1 LINE 11
+        // if (Wc + wxik < W) and (uxik > 0) then
+        // Wc: current used capacity
+        // wxik: weight of item Ixik
+        // W: max capacity allowed
+        // uxik: fitness value
+        if(current_used_capacity + this_item.weight < capacity && this_item.fitness > 0)
+        {
+            // cerr << this_item.fitness << " ";
+        }
     }
     cerr << endl;
 
