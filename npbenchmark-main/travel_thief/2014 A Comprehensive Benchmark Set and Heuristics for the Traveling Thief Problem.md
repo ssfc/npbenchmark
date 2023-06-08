@@ -166,6 +166,8 @@ for all items Ixik, xi ∈ Π, k ∈ Mxi do
     // A1 LINE 8
     Create the joint set of items I and sort them in descending order score values
     
+    // A1 LINE 9
+    Set the current used capacity variable Wc := 0
 ```
 
 ### 4.2 Iterative Heuristics

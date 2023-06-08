@@ -463,6 +463,7 @@ double TravelThief::simple_heuristic()
     }
 
     // Implement A1 LINE 8;
+    // Create the joint set of items I and sort them in descending order score values
     std::sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
         return item1.score > item2.score;
     });
