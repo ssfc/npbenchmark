@@ -197,7 +197,9 @@ for all items Ixik ∈ I do
         // A1 LINE 15
         Exit the loop
 
-// Implement A1 LINE 16; 
+// A1 LINE 16
+Set the resulting objective value
+Z∗:= max (Z(Π, P), −R × t′)    
 ```
 
 ### 4.2 Iterative Heuristics
