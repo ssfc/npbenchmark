@@ -482,6 +482,8 @@ double TravelThief::simple_heuristic()
     // Implement A1 LINE 9 (and Evaluate A1 LINE 9)
     // Set the used capacity variable Wc := 0
     used_capacity = 0;
+    object_value = 0.0;
+    double total_value = 0.0; // 偷盗物品的总价值
 
     // Implement A1 LINE 10
     // for all items Ixik ∈ I do
@@ -510,7 +512,7 @@ double TravelThief::simple_heuristic()
             // Increase the used capacity variable Wc := Wc + wxik
             // Wc: used capacity
             // wxik: weight of item Ixik
-            used_capacity = used_capacity + this_item.weight;
+            used_capacity += this_item.weight;
         }
 
         // Implement A1 LINE 14
