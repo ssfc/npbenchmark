@@ -112,7 +112,6 @@ TravelThief::TravelThief():
                     City temp{};
                     temp.x = x;
                     temp.y = y;
-                    temp.weight_leaving = 0;
                     cities.push_back(temp);
 
                     // cerr << index << " " << temp.x << " " << temp.y << endl; // 输出节点坐标
@@ -543,18 +542,21 @@ double TravelThief::simple_heuristic()
     }
     cerr << endl;
 
+    double weight_leaving = 0.0;
     cerr << "tour with picked items: ";
     for(int city_id : tour)
     {
         if(!cities[city_id].picked_items.empty())
         {
-            cerr << city_id << " (";
+            cerr << "city " << city_id << " (";
             for(int item_id : cities[city_id].picked_items)
             {
                 cerr << item_id << " ";
+                weight_leaving += original_items[item_id].weight;
             }
             cerr << ") ";
         }
+        cerr << "weight " << weight_leaving << " ";
     }
     cerr << endl;
 
