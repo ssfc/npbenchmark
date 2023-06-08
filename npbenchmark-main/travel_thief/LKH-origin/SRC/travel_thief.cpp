@@ -481,5 +481,14 @@ double TravelThief::simple_heuristic()
     // Set the current used capacity variable Wc := 0
     current_used_capacity = 0;
 
+    // Implement A1 LINE 10
+    // for all items Ixik ∈ I do
+    // Ixik: item k in city xi
+    for(Item this_item : items)
+    {
+        cerr << this_item.score << " ";
+    }
+    cerr << endl;
+
     return object_value;
 }
