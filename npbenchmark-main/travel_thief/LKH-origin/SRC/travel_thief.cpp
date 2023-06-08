@@ -498,7 +498,19 @@ double TravelThief::simple_heuristic()
         if(current_used_capacity + this_item.weight < capacity && this_item.fitness > 0)
         {
             // cerr << this_item.fitness << " ";
+
+            // Implement A1 LINE 12
+            // Add the item Ixik to the packing plan P
+            // Ixik: item
+            packing_plan.push_back(this_item.index);
         }
+    }
+
+    cerr << "Packing plan: ";
+    for(int this_item_index : packing_plan)
+    {
+        cerr << this_item_index << " ";
+        // cerr << this_item_index << " (" << items[this_item_index].score << ") ";
     }
     cerr << endl;
 
