@@ -37,7 +37,6 @@ TravelThief::TravelThief():
     }
 
     int num_city_coord = 0;
-    int this_item_id = 0;
     string line;
     while (getline(file, line))
     {
@@ -139,8 +138,7 @@ TravelThief::TravelThief():
                         temp.weight = weight;
                         temp.assigned_city = assigned_city - 1;
                         items.push_back(temp);
-                        cities[assigned_city - 1].contained_items.push_back(this_item_id);
-                        this_item_id++;
+                        cities[assigned_city - 1].contained_items.push_back(temp.index);
                     }
                 }
             }
