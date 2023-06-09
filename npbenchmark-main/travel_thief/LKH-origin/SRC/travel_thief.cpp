@@ -488,7 +488,6 @@ double TravelThief::simple_heuristic()
     // Set the used capacity variable Wc := 0
     used_capacity = 0;
     object_value = 0.0;
-    double total_value = 0.0; // 偷盗物品的总价值
 
     // Implement A1 LINE 10
     // for all items Ixik ∈ I do
@@ -522,7 +521,6 @@ double TravelThief::simple_heuristic()
             // Wc: used capacity
             // wxik: weight of item Ixik
             used_capacity += this_item.weight;
-            total_value += this_item.value;
         }
 
         // Implement A1 LINE 14
@@ -550,6 +548,7 @@ double TravelThief::simple_heuristic()
 
     double weight_leaving = 0.0;
     double collect_time = 0.0;
+    double total_value = 0.0; // 偷盗物品的总价值
     cerr << "tour with picked items: ";
     for(int i=0; i<tour.size(); i++)
     {
@@ -560,6 +559,7 @@ double TravelThief::simple_heuristic()
             {
                 cerr << this_item.index << " ";
                 weight_leaving += this_item.weight;
+                total_value += this_item.value;
             }
             cerr << ") ";
         }
