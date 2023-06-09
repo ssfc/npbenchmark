@@ -222,8 +222,9 @@ Z∗:= max (Z(Π, P), −R × t′)
 
 ```c++
 // Algorithm 2 Random Local Search (RLS)
+// A2 LINE 1
 1: Initialize P∗ such that no items are packed.
-// p*: original packing plan
+// p*: original packing status
 
 ```
 

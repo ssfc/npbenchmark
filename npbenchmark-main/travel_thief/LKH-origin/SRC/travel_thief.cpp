@@ -138,6 +138,7 @@ TravelThief::TravelThief():
                         temp.value = value;
                         temp.weight = weight;
                         temp.assigned_city = assigned_city - 1;
+                        temp.packing_status = false;
                         items.push_back(temp);
                         cities[temp.assigned_city].contained_items.push_back(temp.index);
                     }
@@ -152,8 +153,6 @@ TravelThief::TravelThief():
     // test.print_city_coords();
     // test.print_items();
 
-    packing_status.resize(items.size(), 0);
-    cerr << "packing size: " << packing_status.size() << endl;
     speed_capacity_ratio = (max_speed - min_speed) / capacity;
     cerr << "speed capacity ratio: " << speed_capacity_ratio << endl;
 }
@@ -559,7 +558,7 @@ double TravelThief::simple_heuristic()
             // Add the item Ixik to the packing plan P
             // Ixik: item
             packing_plan.push_back(this_item);
-            packing_status[this_item.index] = 1;
+            this_item.packing_status = true;
 
             // Add this item to city picked items;
             cities[this_item.assigned_city].picked_items.push_back(this_item);
@@ -716,7 +715,7 @@ double TravelThief::random_local_search()
     cerr << "Length: " << tour_length_LKH / scale << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
-    
+
 
     return object_value;
 }

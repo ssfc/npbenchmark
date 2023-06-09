@@ -18,6 +18,7 @@ struct Item{
     double thief_travel_time_withonlythis; // 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
     double score;
     double fitness; // uxik
+    bool packing_status;
 };
 
 struct City{
@@ -47,7 +48,6 @@ class TravelThief{
     double speed_capacity_ratio;
     int used_capacity; // Wc
     std::vector<Item> packing_plan;
-    std::vector<int> packing_status;
     double object_value;
 
     // concerning LKH;

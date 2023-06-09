@@ -16,8 +16,8 @@ using namespace std;
 int main()
 {
     TravelThief travel_thief;
-    // travel_thief.simple_heuristic();
-    travel_thief.random_local_search();
+    travel_thief.simple_heuristic();
+    // travel_thief.random_local_search();
 
     return 0;
 }
