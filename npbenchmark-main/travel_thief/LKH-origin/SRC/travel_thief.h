@@ -9,14 +9,6 @@
 #include <utility>
 #include <vector>
 
-struct City{
-    int x;
-    int y;
-    std::vector<int> contained_items;  // list of items in this city;
-    std::vector<int> picked_items;
-    double distance_to_dest;
-};
-
 struct Item{
     int index;
     int value;
@@ -26,6 +18,14 @@ struct Item{
     double thief_travel_time_withonlythis; // 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
     double score;
     double fitness; // uxik
+};
+
+struct City{
+    int x;
+    int y;
+    std::vector<int> contained_items;  // list of items in this city;
+    std::vector<int> picked_items;
+    double distance_to_dest;
 };
 
 class TravelThief{
