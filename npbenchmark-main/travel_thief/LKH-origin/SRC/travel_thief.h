@@ -5,6 +5,7 @@
 #ifndef LKH_TRAVEL_THIEF_H
 #define LKH_TRAVEL_THIEF_H
 
+#include <random>
 #include <string>
 #include <utility>
 #include <vector>
@@ -56,6 +57,9 @@ class TravelThief{
     double tour_length_computed; // tour length added by myself;
     double total_traveling_time; // total travel time with no item, 不难看出在路径构筑后这是一个恒定值;
 
+    // debug variables:
+    std::mt19937 generated_random;
+
 public:
     TravelThief();
     ~TravelThief();
@@ -76,6 +80,9 @@ public:
 
     double simple_heuristic(); // Algorithm 1
     double random_local_search(); // Algorithm 2
+
+    // debug funcions
+    void init_rand(int seed) { generated_random = std::mt19937(seed); }
 };
 
 #endif //LKH_TRAVEL_THIEF_H
