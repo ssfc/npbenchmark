@@ -726,7 +726,16 @@ double TravelThief::random_local_search()
     }
     cerr << endl;
 
+    // Implement A2 LINE 2
+    // repeat until no improvement for X iterations
+    // X: RLS max iters
     int RLS_max_iters = 10;
+    int iter = 0;
+    while(iter < RLS_max_iters)
+    {
+        cerr << iter << endl;
+        iter++;
+    }
 
     return object_value;
 }
