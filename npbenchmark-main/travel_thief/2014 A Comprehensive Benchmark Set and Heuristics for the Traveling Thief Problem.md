@@ -224,7 +224,7 @@ Z∗:= max (Z(Π, P), −R × t′)
 // Algorithm 2 Random Local Search (RLS)
 // A2 LINE 1
 Initialize P∗ such that no items are packed.
-// p*: original packing status
+// p*: previous packing status
 
 // A2 LINE 2
 repeat until no improvement for X iterations
