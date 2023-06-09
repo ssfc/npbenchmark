@@ -232,6 +232,7 @@ repeat until no improvement for X iterations
     
     // A2 LINE 3
     Create P by inverting the packing status of a uniformly at random picked item of P
+    // P是改变一个元素的P*
 ```
 
 
