@@ -470,8 +470,6 @@ double TravelThief::simple_heuristic()
 
     }
 
-    vector<Item> original_items = items;  // 使用赋值操作符将 items 赋值给 originalItems
-
     // Implement A1 LINE 8;
     // Create the joint set of items I and sort them in descending order score values
     std::sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
@@ -546,7 +544,7 @@ double TravelThief::simple_heuristic()
     for(Item this_item : packing_plan)
     {
         // cerr << this_item_index << " ";
-        cerr << this_item.index << " (" << original_items[this_item.index].fitness << ") ";
+        cerr << this_item.index << " (" << this_item.fitness << ") ";
     }
     cerr << endl;
 
