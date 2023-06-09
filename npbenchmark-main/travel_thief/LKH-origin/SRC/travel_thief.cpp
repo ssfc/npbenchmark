@@ -726,5 +726,7 @@ double TravelThief::random_local_search()
     }
     cerr << endl;
 
+    int RLS_max_iters = 10;
+
     return object_value;
 }
