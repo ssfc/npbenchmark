@@ -740,7 +740,7 @@ double TravelThief::random_local_search()
         // cerr << iter << endl;
 
         // Implement A2 LINE 3
-        // Create P by inverting the packing status of a uniformly at random picked item of P
+        // Create P by inverting the packing status of a random picked item of P
         // P是改变一个元素的P*
         unsigned int rand_select = generated_random() % items.size();
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
