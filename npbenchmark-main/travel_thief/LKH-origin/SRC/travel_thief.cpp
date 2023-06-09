@@ -152,6 +152,8 @@ TravelThief::TravelThief():
     // test.print_city_coords();
     // test.print_items();
 
+    packing_status.resize(items.size(), 0);
+    cerr << "packing size: " << packing_status.size() << endl;
     speed_capacity_ratio = (max_speed - min_speed) / capacity;
     cerr << "speed capacity ratio: " << speed_capacity_ratio << endl;
 }

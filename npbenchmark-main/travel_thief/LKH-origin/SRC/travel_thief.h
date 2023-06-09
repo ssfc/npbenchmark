@@ -47,6 +47,7 @@ class TravelThief{
     double speed_capacity_ratio;
     int used_capacity; // Wc
     std::vector<int> packing_plan;
+    std::vector<int> packing_status;
     double object_value;
 
     // concerning LKH;
