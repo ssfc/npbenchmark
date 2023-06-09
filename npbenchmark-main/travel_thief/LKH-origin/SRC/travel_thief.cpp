@@ -278,6 +278,11 @@ void TravelThief::print_tour()
     cerr << endl;
 }
 
+void TravelThief::compute_object_value()
+{
+
+}
+
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
@@ -509,6 +514,7 @@ double TravelThief::simple_heuristic()
             // Add the item Ixik to the packing plan P
             // Ixik: item
             packing_plan.push_back(this_item.index);
+            packing_status[this_item.index] = 1;
 
             // Add this item to city picked items;
             cities[this_item.assigned_city].picked_items.push_back(this_item.index);

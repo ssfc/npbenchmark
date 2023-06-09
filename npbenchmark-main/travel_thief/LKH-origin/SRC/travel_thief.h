@@ -70,6 +70,8 @@ public:
 
     double compute_total_distances();
 
+    void compute_object_value();
+
     // void sample_solver();
 
     double simple_heuristic(); // Algorithm 1
