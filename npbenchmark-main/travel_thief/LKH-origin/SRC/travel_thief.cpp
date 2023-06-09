@@ -733,7 +733,13 @@ double TravelThief::random_local_search()
     int iter = 0;
     while(iter < RLS_max_iters)
     {
+        // Evaluate A2 LINE 2
         cerr << iter << endl;
+
+        // A2 LINE 3
+        // Create P by inverting the packing status of a uniformly at random picked item of P
+        // P是改变一个元素的P*
+
         iter++;
     }
 
