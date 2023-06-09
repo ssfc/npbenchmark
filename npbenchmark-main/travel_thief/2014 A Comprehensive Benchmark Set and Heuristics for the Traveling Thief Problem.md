@@ -229,6 +229,9 @@ Initialize P∗ such that no items are packed.
 // A2 LINE 2
 repeat until no improvement for X iterations
 // X: RLS max iters
+    
+    // A2 LINE 3
+    Create P by inverting the packing status of a uniformly at random picked item of P
 ```
 
 
