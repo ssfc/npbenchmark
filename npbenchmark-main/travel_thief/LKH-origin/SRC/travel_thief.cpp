@@ -600,4 +600,5 @@ double TravelThief::simple_heuristic()
 double TravelThief::random_local_search()
 {
 
+    return object_value;
 }
