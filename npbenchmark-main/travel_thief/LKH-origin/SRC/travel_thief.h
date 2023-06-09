@@ -75,6 +75,7 @@ public:
     // void sample_solver();
 
     double simple_heuristic(); // Algorithm 1
+    double random_local_search(); // Algorithm 2
 };
 
 #endif //LKH_TRAVEL_THIEF_H

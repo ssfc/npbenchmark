@@ -596,3 +596,8 @@ double TravelThief::simple_heuristic()
 
     return object_value;
 }
+
+double TravelThief::random_local_search()
+{
+
+}
