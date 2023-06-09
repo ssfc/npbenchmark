@@ -708,14 +708,23 @@ double TravelThief::random_local_search()
         }
     }
 
-    // Evaluate A1 LINE 1
     print_tour();
 
     // output tour length
     cerr << "Length: " << tour_length_LKH / scale << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
+    // Implement A2 LINE 1
+    // 1: Initialize P∗ such that no items are packed.
+    // p*: original packing status
 
+    // Evaluate A2 LINE 1
+    cerr << "packing status (" << items.size() << "): ";
+    for(Item this_item : items)
+    {
+        cerr << this_item.packing_status << " ";
+    }
+    cerr << endl;
 
     return object_value;
 }
