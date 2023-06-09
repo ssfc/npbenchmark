@@ -206,7 +206,9 @@ Z∗:= max (Z(Π, P), −R × t′)
 
 ### 4.2 Iterative Heuristics
 
+(Prompt: Generalize Section "4.2 Iterative Heuristics" of this article in Chinese)
 
+这篇文章的4.2节介绍了一种迭代的启发式方法，用于解决多重选择多维背包问题。该方法基于半连续松弛技术，将原问题转化为一个更容易求解的子问题。然后，通过不断改进子问题的解，来逼近原问题的最优解。该方法还结合了一些额外的组件，如随机化策略、局部搜索、分支定界等，以提高效率和质量。最后，通过计算实验，展示了该方法在不同类型的实例上的性能。
 
 ## 5. EXPERIMENTS
 
