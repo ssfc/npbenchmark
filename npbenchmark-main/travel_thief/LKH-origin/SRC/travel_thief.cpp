@@ -517,7 +517,7 @@ double TravelThief::simple_heuristic()
             packing_status[this_item.index] = 1;
 
             // Add this item to city picked items;
-            cities[this_item.assigned_city].picked_items.push_back(this_item.index);
+            cities[this_item.assigned_city].picked_items.push_back(this_item);
 
             // Implement A1 LINE 13
             // Increase the used capacity variable Wc := Wc + wxik
@@ -558,10 +558,10 @@ double TravelThief::simple_heuristic()
         if(!cities[tour[i]].picked_items.empty())
         {
             cerr << "city " << tour[i] << " (";
-            for(int item_id : cities[tour[i]].picked_items)
+            for(Item this_item : cities[tour[i]].picked_items)
             {
-                cerr << item_id << " ";
-                weight_leaving += original_items[item_id].weight;
+                cerr << this_item.index << " ";
+                weight_leaving += this_item.weight;
             }
             cerr << ") ";
         }
