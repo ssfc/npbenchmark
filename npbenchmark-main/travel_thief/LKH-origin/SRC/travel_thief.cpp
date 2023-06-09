@@ -513,7 +513,7 @@ double TravelThief::simple_heuristic()
             // Implement A1 LINE 12
             // Add the item Ixik to the packing plan P
             // Ixik: item
-            packing_plan.push_back(this_item.index);
+            packing_plan.push_back(this_item);
             packing_status[this_item.index] = 1;
 
             // Add this item to city picked items;
@@ -543,10 +543,10 @@ double TravelThief::simple_heuristic()
     }
 
     cerr << "Packing plan: ";
-    for(int this_item_index : packing_plan)
+    for(Item this_item : packing_plan)
     {
         // cerr << this_item_index << " ";
-        cerr << this_item_index << " (" << original_items[this_item_index].fitness << ") ";
+        cerr << this_item.index << " (" << original_items[this_item.index].fitness << ") ";
     }
     cerr << endl;
 
