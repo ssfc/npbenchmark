@@ -719,7 +719,7 @@ double TravelThief::random_local_search()
 
     // Implement A2 LINE 1
     // 1: Initialize P∗ such that no items are packed.
-    // p*: original packing status
+    // p*: previous packing status
 
     // Evaluate A2 LINE 1
     cerr << "packing status (" << items.size() << "): ";
