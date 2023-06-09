@@ -716,5 +716,7 @@ double TravelThief::random_local_search()
     cerr << "Length: " << tour_length_LKH / scale << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
+    
+
     return object_value;
 }

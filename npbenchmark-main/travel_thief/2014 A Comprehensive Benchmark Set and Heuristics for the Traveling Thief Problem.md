@@ -221,6 +221,10 @@ Z∗:= max (Z(Π, P), −R × t′)
 半连续松弛技术可以扩展线性规划方法的应用范围，使其能够处理更复杂的问题，特别是在涉及具有半连续性质的变量时。它在生产计划、资源分配、库存管理等领域中得到广泛应用。
 
 ```c++
+// Algorithm 2 Random Local Search (RLS)
+1: Initialize P∗ such that no items are packed.
+// p*: original packing plan
+
 ```
 
 
