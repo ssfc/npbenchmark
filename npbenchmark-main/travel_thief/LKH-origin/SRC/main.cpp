@@ -13,7 +13,7 @@ extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
     TravelThief travel_thief;
     travel_thief.simple_heuristic();
