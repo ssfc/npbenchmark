@@ -34,12 +34,12 @@ TravelThief::TravelThief(string input_filename):
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
     // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
     // string filename = "../data/pla33810_n33809_bounded-strongly-corr_01.ttp";
-    string filename = "../data/fnl4461_n13380_uncorr_02.ttp";
-    ifstream file(filename);
+    // string filename = "../data/fnl4461_n13380_uncorr_02.ttp";
+    ifstream file(input_filename);
 
     if(!file.is_open())
     {
-        cerr << "Failed to open file " << filename << endl;
+        cerr << "Failed to open file " << input_filename << endl;
     }
 
     int num_city_coord = 0;
