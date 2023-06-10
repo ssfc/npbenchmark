@@ -115,6 +115,7 @@ TravelThief::TravelThief(const string& input_filename, int max_runtime):
                     istringstream iss(line);
                     iss >> index >> x >> y;
                     City temp{};
+                    temp.index = index - 1;
                     temp.x = x;
                     temp.y = y;
                     cities.push_back(temp);
@@ -771,7 +772,13 @@ double TravelThief::random_local_search()
         }
 
         // evaluate adding and removing item in packing plan
-        
+        for(City this_city : cities)
+        {
+            if(!this_city.picked_items.empty())
+            {
+                cerr << "city ";
+            }
+        }
 
         iter++;
     }

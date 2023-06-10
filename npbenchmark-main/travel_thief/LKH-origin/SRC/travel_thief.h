@@ -23,6 +23,7 @@ struct Item{
 };
 
 struct City{
+    int index;
     int x;
     int y;
     std::vector<Item> contained_items;  // list of items in this city;
