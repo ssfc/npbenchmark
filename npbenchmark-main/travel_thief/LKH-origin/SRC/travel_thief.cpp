@@ -333,6 +333,57 @@ void TravelThief::compute_object_by_plan()
     }
 }
 
+void TravelThief::compute_object_by_status()
+{
+    double weight_leaving = 0.0;
+    double collect_time = 0.0;
+    double total_value = 0.0; // 偷盗物品的总价值
+    cerr << "tour with picked items: ";
+    for(int i=0; i<tour.size(); i++)
+    {
+        if(!cities[tour[i]].picked_items.empty())
+        {
+            cerr << "city " << tour[i] << " (";
+            for(Item this_item : cities[tour[i]].picked_items)
+            {
+                cerr << this_item.index << " ";
+                weight_leaving += this_item.weight;
+                total_value += this_item.value;
+            }
+            cerr << ") ";
+        }
+        cerr << "weight " << weight_leaving << " ";
+
+        if(i != tour.size()-1)
+        {
+            collect_time += city2city_distances[i][i+1] / (max_speed - speed_capacity_ratio * weight_leaving);
+        }
+
+        cerr << "collect time " << collect_time << " ";
+    }
+    cerr << endl;
+
+    // 从最后一个城市返回出发点的时间
+    cerr << "used capacity: " << used_capacity << endl;
+
+    // Implement A1 LINE 16
+    // Set the resulting objective value
+    // Z∗:= max (Z(Π, P), −R × t′)
+    // Z*: object value
+    // Z(Π, P): 扣除租金物品的价值
+    double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
+                       / (max_speed - speed_capacity_ratio * used_capacity);
+    cerr << "back time: " << back_time << endl;
+    object_value = total_value - renting_ratio * (back_time + collect_time);
+    cerr << "object value: " << object_value << endl;
+
+    double no_item_value = - renting_ratio*total_traveling_time;
+    if(object_value < no_item_value)
+    {
+        object_value = no_item_value;
+    }
+}
+
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
@@ -598,7 +649,8 @@ double TravelThief::simple_heuristic()
     }
     cerr << endl;
 
-    compute_object_by_plan();
+    // compute_object_by_plan();
+    compute_object_by_status();
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     cerr << "Running time(s): " << elapsed_time << endl;
