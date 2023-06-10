@@ -749,6 +749,24 @@ double TravelThief::random_local_search()
         cerr << rand_select << " "
         << items[rand_select].packing_status << endl;
 
+        if(items[rand_select].packing_status) // if true, means add new item
+        {
+            cities[items[rand_select].assigned_city].picked_items.push_back(items[rand_select]);
+        }
+        else // if false, means remove item
+        {
+            auto it = std::find_if
+                    (items.begin(), items.end(), [rand_select](const Item& item)
+            {
+                return item.index == rand_select;
+            });
+
+            if (it != items.end())
+            {
+                items.erase(it);
+            }
+        }
+
         iter++;
     }
 
