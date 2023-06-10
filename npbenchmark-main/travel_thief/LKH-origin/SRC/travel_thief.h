@@ -59,6 +59,7 @@ class TravelThief{
 
     // debug variables:
     std::mt19937 generated_random;
+    clock_t start_time;
 
 public:
     TravelThief();

@@ -26,14 +26,15 @@ TravelThief::TravelThief():
         tour_length_computed(0.0),
         total_traveling_time(0.0)
 {
+    start_time = clock();
     int input_seed = 1;
     init_rand(input_seed); // initialize random generator;
 
-    // string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
+    string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
     // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
     // string filename = "../data/pla33810_n33809_bounded-strongly-corr_01.ttp";
-    string filename = "../data/fnl4461_n13380_uncorr_01.ttp";
+    // string filename = "../data/fnl4461_n13380_uncorr_03.ttp";
     ifstream file(filename);
 
     if(!file.is_open())
@@ -598,6 +599,9 @@ double TravelThief::simple_heuristic()
     cerr << endl;
 
     compute_object_value();
+
+    double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+    cerr << "Running time(s): " << elapsed_time << endl;
 
     return object_value;
 }
