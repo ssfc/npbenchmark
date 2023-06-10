@@ -770,6 +770,9 @@ double TravelThief::random_local_search()
             }
         }
 
+        // evaluate adding and removing item in packing plan
+        
+
         iter++;
     }
 
