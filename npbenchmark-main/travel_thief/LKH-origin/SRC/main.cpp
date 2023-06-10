@@ -15,7 +15,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    TravelThief travel_thief(argv[1]);
+    TravelThief travel_thief(argv[1], 600);
     travel_thief.simple_heuristic();
     // travel_thief.random_local_search();
 

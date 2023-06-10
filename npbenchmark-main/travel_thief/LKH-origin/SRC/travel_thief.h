@@ -61,7 +61,7 @@ class TravelThief{
     clock_t start_time;
 
 public:
-    TravelThief(std::string input_filename);
+    TravelThief(std::string input_filename, int max_runtime);
     ~TravelThief();
 
     void print_city_coords();
