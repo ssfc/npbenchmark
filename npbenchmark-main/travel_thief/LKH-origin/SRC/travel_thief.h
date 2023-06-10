@@ -74,7 +74,7 @@ public:
 
     double compute_total_distances();
 
-    void compute_object_value();
+    void compute_object_value(std::vector<Item>& input_items);
 
     // void sample_solver();
 
