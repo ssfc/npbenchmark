@@ -746,8 +746,10 @@ double TravelThief::random_local_search()
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
 
         // Evaluate A2 LINE 3
+        /*
         cerr << rand_select << " "
         << items[rand_select].packing_status << endl;
+         */
 
         if(items[rand_select].packing_status) // if true, means add new item
         {
@@ -756,14 +758,15 @@ double TravelThief::random_local_search()
         else // if false, means remove item
         {
             auto it = std::find_if
-                    (items.begin(), items.end(), [rand_select](const Item& item)
+                    (cities[items[rand_select].assigned_city].picked_items.begin(),
+                     cities[items[rand_select].assigned_city].picked_items.end(), [rand_select](const Item& item)
             {
                 return item.index == rand_select;
             });
 
-            if (it != items.end())
+            if (it != cities[items[rand_select].assigned_city].picked_items.end())
             {
-                items.erase(it);
+                cities[items[rand_select].assigned_city].picked_items.erase(it);
             }
         }
 
