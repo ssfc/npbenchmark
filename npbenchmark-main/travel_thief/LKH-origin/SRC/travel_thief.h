@@ -25,7 +25,7 @@ struct Item{
 struct City{
     int x;
     int y;
-    std::vector<int> contained_items;  // list of items in this city;
+    std::vector<Item> contained_items;  // list of items in this city;
     std::vector<Item> picked_items;
     double distance_to_dest;
 };
