@@ -247,6 +247,10 @@ repeat until no improvement for X iterations
 
 本文的第五节报告了作者在TTP基准集上进行的实验结果和分析。作者使用了LKH算法来为每个TTP实例生成一个高质量的TSP路线，然后使用SH、RLS和EA三种启发式算法来优化背包装载方案。作者比较了不同算法在不同类型、规模和难度的TTP实例上的表现，包括目标值、运行时间和标准差等指标。作者发现，SH算法虽然速度很快，但是目标值往往较低；RLS和EA算法虽然能够得到更好的目标值，但是运行时间较长，并且对于大规模的TTP实例，它们很难找到全局最优解。作者还使用了决策树来分析不同算法在不同条件下的相对优势，发现TTP实例的特征对算法的选择有很大的影响。
 
+stopped when no improvement has been made for 10,000 iterations, or when a total runtime of 10 minutes for a run is reached. 
+
+
+
 ## 6. CONCLUSIONS
 
 (Prompt: Generalize Section "CONCLUSIONS" of this article in Chinese)
