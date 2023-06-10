@@ -471,13 +471,13 @@ double TravelThief::simple_heuristic()
         // cerr << city_index << " (" << cities[city_index].travel_distance << ") ";
         // show each city contained items
         cerr << "city " << city_index;
-        for(Item this_item : cities[city_index].contained_items)
+        for(Item this_item_in_city : cities[city_index].contained_items)
         {
             // Implement A1 LINE 4
             // Calculate txik by using Equation 1
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
-            items[this_item.index].item_travel_time = cities[city_index].distance_to_dest
-                    / (max_speed - speed_capacity_ratio * items[this_item.index].weight);
+            items[this_item_in_city.index].item_travel_time = cities[city_index].distance_to_dest
+                    / (max_speed - speed_capacity_ratio * items[this_item_in_city.index].weight);
 
             // Implement A1 LINE 5
             // Set t′xik := t′ − dxi + txik
@@ -485,8 +485,8 @@ double TravelThief::simple_heuristic()
             // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
             // txik: total travel time of item Ixik // 这个显然要从被捡起来开始算。
             // meaning: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
-            items[this_item.index].thief_travel_time_withonlythis = total_traveling_time
-                    - cities[city_index].distance_to_dest + items[this_item.index].item_travel_time;
+            items[this_item_in_city.index].thief_travel_time_withonlythis = total_traveling_time
+                    - cities[city_index].distance_to_dest + items[this_item_in_city.index].item_travel_time;
 
             // Implement A1 LINE 6;
             // A1 LINE 6
@@ -497,8 +497,8 @@ double TravelThief::simple_heuristic()
             // R: 单位时间租金
             // txik: travel time of item Ixik from being picked up to being transported to the destination
             // meaning: 物品经过时间贬值后剩下多少
-            items[this_item.index].score = items[this_item.index].value -
-                    renting_ratio * items[this_item.index].item_travel_time;
+            items[this_item_in_city.index].score = items[this_item_in_city.index].value -
+                    renting_ratio * items[this_item_in_city.index].item_travel_time;
 
             // A1 LINE 7
             // Set uxik := R × t′ + (pxik − R × t′xik)
@@ -507,15 +507,17 @@ double TravelThief::simple_heuristic()
             // pxik: value of item Ixik
             // t'xik: 从出发算起，小偷空载到达xi, 再背着Ixik到达终点（也就是起点）的总时间
             // meaning: fitness value
-            items[this_item.index].fitness = renting_ratio * total_traveling_time + (items[this_item.index].value
-                    - renting_ratio * items[this_item.index].thief_travel_time_withonlythis);
+            items[this_item_in_city.index].fitness = renting_ratio * total_traveling_time
+                    + (items[this_item_in_city.index].value
+                    - renting_ratio * items[this_item_in_city.index].thief_travel_time_withonlythis);
 
             // Evaluate A1 LINE 4 LINE 5 LINE 6 LINE 7;
-            cerr << "\titem " << this_item.index << "\tdistance to dest " << cities[city_index].distance_to_dest
-                 << "\ttime " << items[this_item.index].item_travel_time
-                 << "\tthief time " << items[this_item.index].thief_travel_time_withonlythis
-                 << "\tscore " << items[this_item.index].score
-                 << "\tfitness " << items[this_item.index].fitness << endl;
+            cerr << "\titem " << this_item_in_city.index
+                 << "\tdistance to dest " << cities[city_index].distance_to_dest
+                 << "\ttime " << items[this_item_in_city.index].item_travel_time
+                 << "\tthief time " << items[this_item_in_city.index].thief_travel_time_withonlythis
+                 << "\tscore " << items[this_item_in_city.index].score
+                 << "\tfitness " << items[this_item_in_city.index].fitness << endl;
         }
         // cerr << endl;
 
