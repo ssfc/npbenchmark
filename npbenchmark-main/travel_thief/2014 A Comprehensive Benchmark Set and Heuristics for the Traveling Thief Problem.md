@@ -249,7 +249,7 @@ repeat until no improvement for X iterations
 
 stopped when no improvement has been made for 10,000 iterations, or when a total runtime of 10 minutes for a run is reached. 
 
-
+根据算力规模、时间限制，选择不同的策略。
 
 ## 6. CONCLUSIONS
 
