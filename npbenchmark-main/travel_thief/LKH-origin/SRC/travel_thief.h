@@ -75,7 +75,7 @@ public:
 
     double compute_total_distances();
 
-    void compute_object_value();
+    void compute_object_by_plan();
 
     // void sample_solver();
 
