@@ -776,9 +776,11 @@ double TravelThief::random_local_search()
         {
             if(!this_city.picked_items.empty())
             {
-                cerr << "city ";
+                cerr << "city " << this_city.index << ": ";
+
             }
         }
+        cerr << endl;
 
         iter++;
     }
