@@ -249,7 +249,11 @@ repeat until no improvement for X iterations
 
 stopped when no improvement has been made for 10,000 iterations, or when a total runtime of 10 minutes for a run is reached. 
 
-根据算力规模、时间限制，选择不同的策略。
+根据算力规模、时间限制，选择不同的算法策略。
+
+the objective values are typically (but not always) negative.
+
+
 
 ## 6. CONCLUSIONS
 
