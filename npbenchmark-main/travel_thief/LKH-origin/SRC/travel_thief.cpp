@@ -13,7 +13,7 @@ extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
 using namespace std;
 
-TravelThief::TravelThief():
+TravelThief::TravelThief(string input_filename):
         num_cities(0),
         num_items(0),
         capacity(0),
