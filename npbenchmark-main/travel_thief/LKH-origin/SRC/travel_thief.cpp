@@ -837,7 +837,6 @@ double TravelThief::random_local_search()
 
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
 
-
         // Evaluate A2 LINE 3
         /*
         cerr << rand_select << " "
