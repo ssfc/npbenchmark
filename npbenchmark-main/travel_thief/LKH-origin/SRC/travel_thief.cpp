@@ -819,14 +819,17 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 30;
+    int RLS_max_iters = 300;
     int iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
         // Evaluate A2 LINE 2
-        cerr << "iter: " << iter << endl;
-
+        if(iter % 10 == 0)
+        {
+            cerr << "iter: " << iter << endl;
+        }
+        
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
         // P是改变一个元素的P*
@@ -848,7 +851,11 @@ double TravelThief::random_local_search()
         {
             cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
             used_capacity += items[rand_select].weight;
-            cerr << "object value of adding " << rand_select << ": " << compute_object_value(cities) << endl;
+            if(iter % 10 == 0)
+            {
+                cerr << "object value of adding " << rand_select << ": "
+                << compute_object_value(cities) << endl;
+            }
         }
         else // if false, means remove item
         {
@@ -867,7 +874,12 @@ double TravelThief::random_local_search()
 
             used_capacity -= items[rand_select].weight;
 
-            cerr << "object value of deleting " << rand_select << ": " << compute_object_value(cities) << endl;
+            if(iter % 10 == 0)
+            {
+                cerr << "object value of deleting " << rand_select << ": "
+                << compute_object_value(cities) << endl;
+            }
+
         }
 
         object_value = compute_object_value(cities);
@@ -891,8 +903,11 @@ double TravelThief::random_local_search()
             prev_items = items;
             prev_used_capacity = used_capacity;
             prev_object_value = object_value;
-            cerr << "object value updated: " << object_value
-             << "\tused capacity: " << used_capacity << endl;
+            if(iter % 10 == 0)
+            {
+                cerr << "object value updated: " << object_value
+                     << "\tused capacity: " << used_capacity << endl;
+            }
         }
         else
         {
@@ -900,8 +915,11 @@ double TravelThief::random_local_search()
             items = prev_items;
             used_capacity = prev_used_capacity;
             object_value = prev_object_value;
-            cerr << "object value unchanged: " << object_value
-                 << "\tused capacity: " << used_capacity << endl;
+            if(iter % 10 == 0)
+            {
+                cerr << "object value unchanged: " << object_value
+                     << "\tused capacity: " << used_capacity << endl;
+            }
         }
 
         iter++;
