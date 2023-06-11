@@ -721,6 +721,7 @@ double TravelThief::random_local_search()
     // 1: Initialize P∗ such that no items are packed.
     // p*: previous packing status
     vector<Item> prev_items = items;
+    vector<City> prev_cities = cities;
 
     // Evaluate A2 LINE 1
     cerr << "packing status (" << prev_items.size() << "): ";
