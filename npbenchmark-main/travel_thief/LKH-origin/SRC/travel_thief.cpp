@@ -283,7 +283,7 @@ void TravelThief::print_tour()
     cerr << endl;
 }
 
-void TravelThief::compute_object_value(vector<Item>& input_items)
+void TravelThief::compute_object_value(vector<City>& input_cities)
 {
     double weight_leaving = 0.0;
     double collect_time = 0.0;
@@ -593,7 +593,7 @@ double TravelThief::simple_heuristic()
         }
     }
 
-    compute_object_value(items);
+    compute_object_value(cities);
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     cerr << "Running time(s): " << elapsed_time << endl;

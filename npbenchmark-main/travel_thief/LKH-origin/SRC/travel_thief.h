@@ -75,7 +75,7 @@ public:
 
     double compute_total_distances();
 
-    void compute_object_value(std::vector<Item>& input_items);
+    void compute_object_value(std::vector<City>& input_cities);
 
     // void sample_solver();
 
