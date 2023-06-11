@@ -884,6 +884,7 @@ double TravelThief::random_local_search()
         // Z(Π, P)改动后新的object_value
         if(compute_object_value(cities) >= compute_object_value(prev_cities) && used_capacity <= capacity)
         {
+            prev_cities = cities;
             object_value = compute_object_value(cities);
             cerr << "object value updated: " << object_value << endl;
         }
