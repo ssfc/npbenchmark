@@ -324,9 +324,12 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * used_capacity);
     // cerr << "back time: " << back_time << endl;
+    // evaluate total value
     cerr << "total value: " << total_value << endl;
     cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
+    // evaluate back time
     cerr << "back time: " << back_time << endl;
+    cerr << "last distance: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     cerr << "total time: " << back_time + collect_time << endl;
     double output_object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "object value: " << output_object_value << endl;
