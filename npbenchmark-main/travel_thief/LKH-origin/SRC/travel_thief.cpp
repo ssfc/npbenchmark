@@ -291,10 +291,10 @@ void TravelThief::compute_object_value(vector<City>& input_cities)
     cerr << "tour with picked items: ";
     for(int i=0; i<tour.size(); i++)
     {
-        if(!cities[tour[i]].picked_items.empty())
+        if(!input_cities[tour[i]].picked_items.empty())
         {
             cerr << "city " << tour[i] << " (";
-            for(Item this_item : cities[tour[i]].picked_items)
+            for(Item this_item : input_cities[tour[i]].picked_items)
             {
                 cerr << this_item.index << " ";
                 weight_leaving += this_item.weight;
