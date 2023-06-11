@@ -333,7 +333,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     cerr << "total value: " << total_value << endl;
     // cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
     // evaluate back time
-    cerr << "expected back time: " << back_time << endl;
+    cerr << "back time: " << back_time << endl;
     // cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     // evaluate collect time
     // cerr << "collect time: " << collect_time << endl;
@@ -812,6 +812,7 @@ double TravelThief::random_local_search()
         if(items[rand_select].packing_status) // if true, means add new item
         {
             cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
+            used_capacity += items[rand_select].weight;
             cerr << "object value of adding " << rand_select << ": " << compute_object_value(cities) << endl;
         }
         else // if false, means remove item
@@ -828,6 +829,8 @@ double TravelThief::random_local_search()
             {
                 cities[city_contained_rand_item].picked_items.erase(it);
             }
+
+            used_capacity -= items[rand_select].weight;
 
             cerr << "object value of deleting " << rand_select << ": " << compute_object_value(cities) << endl;
         }
