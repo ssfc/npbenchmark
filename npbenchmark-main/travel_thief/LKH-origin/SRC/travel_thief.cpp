@@ -655,6 +655,35 @@ void TravelThief::evaluate_add_two_items()
     cerr << "expected object value: " << expected_object_value << endl;
 }
 
+void TravelThief::evaluate_add_and_remove_item(int input_iter, unsigned int &input_rand_select)
+{
+    if(input_iter==0)
+    {
+        input_rand_select = 240;
+        // evaluate add one item;
+        // evaluate_add_one_item();
+    }
+    else if(input_iter==1)
+    {
+        input_rand_select = 0;
+
+        // evaluate add two items;
+        // evaluate_add_two_items();
+    }
+    else if(input_iter==2)
+    {
+        input_rand_select = 0;
+    }
+    else if(input_iter==3)
+    {
+        input_rand_select = 0;
+    }
+    else if(input_iter==4)
+    {
+        input_rand_select = 240;
+    }
+}
+
 // Algorithm 2
 double TravelThief::random_local_search()
 {
@@ -802,31 +831,7 @@ double TravelThief::random_local_search()
         unsigned int rand_select = generated_random() % items.size();
 
         // evaluate adding and removing items
-        if(iter==0)
-        {
-            rand_select = 240;
-            // evaluate add one item;
-            // evaluate_add_one_item();
-        }
-        else if(iter==1)
-        {
-            rand_select = 0;
-
-            // evaluate add two items;
-            // evaluate_add_two_items();
-        }
-        else if(iter==2)
-        {
-            rand_select = 0;
-        }
-        else if(iter==3)
-        {
-            rand_select = 0;
-        }
-        else if(iter==4)
-        {
-            rand_select = 240;
-        }
+        evaluate_add_and_remove_item(iter, rand_select);
 
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
 

@@ -86,6 +86,7 @@ public:
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
     void evaluate_add_one_item();
     void evaluate_add_two_items();
+    void evaluate_add_and_remove_item(int iter, unsigned int &input_rand_select);
 };
 
 #endif //LKH_TRAVEL_THIEF_H
