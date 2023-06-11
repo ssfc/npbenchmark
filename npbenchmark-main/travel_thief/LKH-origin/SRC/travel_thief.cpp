@@ -806,7 +806,7 @@ double TravelThief::random_local_search()
     vector<Item> prev_items{};
     vector<City> prev_cities{};
     int prev_used_capacity = 0;
-    double prev_object_value = 0.0;
+    double prev_object_value = object_value = compute_object_value(cities);
 
     // Evaluate A2 LINE 1
     cerr << "packing status (" << prev_items.size() << "): ";
