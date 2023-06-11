@@ -754,7 +754,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 1;
+    int RLS_max_iters = 2;
     int iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
@@ -789,7 +789,24 @@ double TravelThief::random_local_search()
         }
         else if(iter==1)
         {
-            rand_select = 240;
+            rand_select = 0;
+
+            // evaluate add two items;
+            /*
+            double total_value = items[240].value + items[0].value;
+            cerr << "expected total value: " << total_value << endl;
+            double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
+                               / (max_speed - speed_capacity_ratio * (items[240].weight + items[0].weight));
+            cerr << "expected back time: " << back_time << endl;
+            double collect_time = city2city_distances[tour[0]][tour[1]]
+            + city2city_distances[tour[1]][tour[2]] / (max_speed - speed_capacity_ratio * items[0].weight)
+            + cities[241].distance_to_dest / (max_speed - speed_capacity_ratio * (items[240].weight + items[0].weight))
+            - back_time;
+            cerr << "expected collect time: " << collect_time << endl;
+            // cerr << "city 241 distance to dest: " << cities[241].distance_to_dest << endl;
+            double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
+            cerr << "expected object value: " << expected_object_value << endl;
+             */
         }
         else if(iter==2)
         {
