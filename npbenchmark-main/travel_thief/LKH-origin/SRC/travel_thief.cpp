@@ -732,6 +732,7 @@ double TravelThief::random_local_search()
     // X: RLS max iters
     int RLS_max_iters = 5;
     int iter = 0;
+    cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
         // Evaluate A2 LINE 2
