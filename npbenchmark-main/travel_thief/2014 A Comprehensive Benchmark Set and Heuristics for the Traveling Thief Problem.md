@@ -238,8 +238,10 @@ repeat until no improvement for X iterations
     if Z(Π, P) ≥ Z(Π, P∗) and w(P) ≤ W then
     // Z(Π, P)改动后新的object_value
         
-        // Implement A2 LINE 5
+        // A2 LINE 5
         P∗:= P
+        // P*: previous state
+        // P: current state
 ```
 
 
