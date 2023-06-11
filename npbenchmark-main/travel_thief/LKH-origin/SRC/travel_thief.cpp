@@ -325,23 +325,25 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
                        / (max_speed - speed_capacity_ratio * used_capacity);
     // cerr << "back time: " << back_time << endl;
     // evaluate total value
-    cerr << "total value: " << total_value << endl;
-    cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
+    // cerr << "total value: " << total_value << endl;
+    // cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
     // evaluate back time
-    cerr << "back time: " << back_time << endl;
-    cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
+    // cerr << "back time: " << back_time << endl;
+    // cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     // evaluate collect time
-    cerr << "collect time: " << collect_time << endl;
+    // cerr << "collect time: " << collect_time << endl;
+    /*
     double collect_time_base = 0;
     for(int i = 0; i<tour.size()-1; i++)
     {
         collect_time_base += city2city_distances[tour[i]][tour[i+1]];
     }
     cerr << "collect time base: " << collect_time_base << endl;
+     */
 
-    cerr << "total time: " << back_time + collect_time << endl;
+    // cerr << "total time: " << back_time + collect_time << endl;
     double output_object_value = total_value - renting_ratio * (back_time + collect_time);
-    cerr << "object value: " << output_object_value << endl;
+    // cerr << "object value: " << output_object_value << endl;
 
     return output_object_value;
 }
@@ -747,7 +749,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 0;
+    int RLS_max_iters = 1;
     int iter = 0;
     cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
