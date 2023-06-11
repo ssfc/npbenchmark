@@ -326,6 +326,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     // cerr << "back time: " << back_time << endl;
     cerr << "total value: " << total_value << endl;
     cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
+    cerr << "back time: " << back_time << endl;
     cerr << "total time: " << back_time + collect_time << endl;
     double output_object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "object value: " << output_object_value << endl;
