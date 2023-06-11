@@ -754,7 +754,7 @@ double TravelThief::random_local_search()
     }
 
     // hello_world();
-    compute_tsp();
+    // compute_tsp();
 
     ifstream inputFile(output_filename);
 
@@ -794,7 +794,7 @@ double TravelThief::random_local_search()
         }
     }
 
-    print_tour();
+    // print_tour();
 
     // output tour length
     cerr << "Length: " << tour_length_LKH / scale << endl;
@@ -809,19 +809,21 @@ double TravelThief::random_local_search()
     double prev_object_value = object_value = compute_object_value(cities);
 
     // Evaluate A2 LINE 1
+    /*
     cerr << "packing status (" << prev_items.size() << "): ";
     for(Item this_item : prev_items)
     {
         cerr << this_item.packing_status << " ";
     }
     cerr << endl;
+     */
 
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 300;
+    int RLS_max_iters = 300000;
     int iter = 0;
-    int output_interval = 15;
+    int output_interval = 500;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
