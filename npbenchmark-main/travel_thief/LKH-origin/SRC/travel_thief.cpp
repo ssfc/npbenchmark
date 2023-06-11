@@ -730,7 +730,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 50;
+    int RLS_max_iters = 5;
     int iter = 0;
     while(iter < RLS_max_iters)
     {
@@ -741,7 +741,31 @@ double TravelThief::random_local_search()
         // Create P by inverting the packing status of a random picked item of P
         // P是改变一个元素的P*
         unsigned int rand_select = generated_random() % items.size();
+
+        // evaluate adding and removing items
+        if(iter==0)
+        {
+            rand_select = 103;
+        }
+        else if(iter==1)
+        {
+            rand_select = 103;
+        }
+        else if(iter==2)
+        {
+            rand_select = 103;
+        }
+        else if(iter==3)
+        {
+            rand_select = 103;
+        }
+        else if(iter==4)
+        {
+            rand_select = 103;
+        }
+
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
+
 
         // Evaluate A2 LINE 3
         /*
