@@ -825,6 +825,7 @@ double TravelThief::random_local_search()
         // Evaluate A2 LINE 2
         cerr << "iter: " << iter << endl;
 
+        // 在做出改变前保存当前的值
         prev_items = items;
         prev_cities = cities;
 
