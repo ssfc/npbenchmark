@@ -831,7 +831,7 @@ double TravelThief::random_local_search()
         prev_items = items;
         prev_cities = cities;
         prev_used_capacity = used_capacity;
-        prev_object_value = object_value = compute_object_value(cities);
+        prev_object_value = object_value;
 
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
