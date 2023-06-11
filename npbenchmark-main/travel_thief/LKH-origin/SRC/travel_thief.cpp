@@ -306,7 +306,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
 
         if(i != tour.size()-1)
         {
-            collect_time += city2city_distances[i][i+1] / (max_speed - speed_capacity_ratio * weight_leaving);
+            collect_time += city2city_distances[tour[i]][tour[i+1]] / (max_speed - speed_capacity_ratio * weight_leaving);
         }
 
         // cerr << "collect time " << collect_time << " ";
