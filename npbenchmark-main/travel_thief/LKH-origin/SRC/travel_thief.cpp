@@ -288,33 +288,33 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     double weight_leaving = 0.0;
     double collect_time = 0.0;
     double total_value = 0.0; // 偷盗物品的总价值
-    cerr << "tour with picked items: ";
+    // cerr << "tour with picked items: ";
     for(int i=0; i<tour.size(); i++)
     {
         if(!input_cities[tour[i]].picked_items.empty())
         {
-            cerr << "city " << tour[i] << " (";
+            // cerr << "city " << tour[i] << " (";
             for(Item this_item : input_cities[tour[i]].picked_items)
             {
-                cerr << this_item.index << " ";
+                // cerr << this_item.index << " ";
                 weight_leaving += this_item.weight;
                 total_value += this_item.value;
             }
-            cerr << ") ";
+            // cerr << ") ";
         }
-        cerr << "weight " << weight_leaving << " ";
+        // cerr << "weight " << weight_leaving << " ";
 
         if(i != tour.size()-1)
         {
             collect_time += city2city_distances[i][i+1] / (max_speed - speed_capacity_ratio * weight_leaving);
         }
 
-        cerr << "collect time " << collect_time << " ";
+        // cerr << "collect time " << collect_time << " ";
     }
-    cerr << endl;
+    // cerr << endl;
 
     // 从最后一个城市返回出发点的时间
-    cerr << "used capacity: " << used_capacity << endl;
+    // cerr << "used capacity: " << used_capacity << endl;
 
     // Implement A1 LINE 16
     // Set the resulting objective value
@@ -323,15 +323,9 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     // Z(Π, P): 扣除租金物品的价值
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * used_capacity);
-    cerr << "back time: " << back_time << endl;
+    // cerr << "back time: " << back_time << endl;
     double output_object_value = total_value - renting_ratio * (back_time + collect_time);
-    cerr << "object value: " << output_object_value << endl;
-
-    double no_item_value = - renting_ratio * total_traveling_time;
-    if(output_object_value < no_item_value)
-    {
-        output_object_value = no_item_value;
-    }
+    // cerr << "object value: " << output_object_value << endl;
 
     return output_object_value;
 }
@@ -741,7 +735,7 @@ double TravelThief::random_local_search()
     while(iter < RLS_max_iters)
     {
         // Evaluate A2 LINE 2
-        // cerr << iter << endl;
+        cerr << "iter: " << iter << endl;
 
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
@@ -759,6 +753,7 @@ double TravelThief::random_local_search()
         if(items[rand_select].packing_status) // if true, means add new item
         {
             cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
+            cerr << "object value of adding " << rand_select << ": " << compute_object_value(cities) << endl;
         }
         else // if false, means remove item
         {
@@ -774,6 +769,8 @@ double TravelThief::random_local_search()
             {
                 cities[city_contained_rand_item].picked_items.erase(it);
             }
+
+            cerr << "object value of deleting " << rand_select << ": " << compute_object_value(cities) << endl;
         }
 
         // evaluate adding and removing item in packing plan
