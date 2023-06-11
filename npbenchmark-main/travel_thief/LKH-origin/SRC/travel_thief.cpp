@@ -805,6 +805,7 @@ double TravelThief::random_local_search()
     // p*: previous packing status
     vector<Item> prev_items = items;
     vector<City> prev_cities = cities;
+    int prev_used_capacity = used_capacity;
 
     // Evaluate A2 LINE 1
     cerr << "packing status (" << prev_items.size() << "): ";
@@ -828,6 +829,7 @@ double TravelThief::random_local_search()
         // 在做出改变前保存当前的值
         prev_items = items;
         prev_cities = cities;
+        prev_used_capacity = used_capacity;
 
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
@@ -890,6 +892,7 @@ double TravelThief::random_local_search()
         {
             prev_cities = cities;
             prev_items = items;
+            prev_used_capacity = used_capacity;
             object_value = compute_object_value(cities);
             cerr << "object value updated: " << object_value << endl;
         }
@@ -897,6 +900,7 @@ double TravelThief::random_local_search()
         {
             cities = prev_cities;
             items = prev_items;
+            used_capacity = prev_used_capacity;
             object_value = compute_object_value(cities);
             cerr << "object value not change: " << object_value << endl;
         }
