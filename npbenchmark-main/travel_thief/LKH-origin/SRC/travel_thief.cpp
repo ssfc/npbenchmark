@@ -817,7 +817,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 4;
+    int RLS_max_iters = 50000;
     int iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
@@ -831,7 +831,7 @@ double TravelThief::random_local_search()
         unsigned int rand_select = generated_random() % items.size();
 
         // evaluate adding and removing items
-        evaluate_add_and_remove_item(iter, rand_select);
+        // evaluate_add_and_remove_item(iter, rand_select);
 
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
 
@@ -878,6 +878,20 @@ double TravelThief::random_local_search()
         }
         cerr << "total item count: " << item_count << endl;
          */
+
+        // Implement A2 LINE 4
+        // if Z(Π, P) ≥ Z(Π, P∗) and w(P) ≤ W then
+        // Z(Π, P)改动后新的object_value
+        if(compute_object_value(cities) >= compute_object_value(prev_cities) && used_capacity <= capacity)
+        {
+            object_value = compute_object_value(cities);
+            cerr << "object value updated: " << object_value << endl;
+        }
+        else
+        {
+            cities = prev_cities;
+            cerr << "object value not change: " << object_value << endl;
+        }
 
         iter++;
     }
