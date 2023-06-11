@@ -788,7 +788,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 2;
+    int RLS_max_iters = 4;
     int iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
@@ -817,11 +817,11 @@ double TravelThief::random_local_search()
         }
         else if(iter==2)
         {
-            rand_select = 240;
+            rand_select = 0;
         }
         else if(iter==3)
         {
-            rand_select = 240;
+            rand_select = 0;
         }
         else if(iter==4)
         {
