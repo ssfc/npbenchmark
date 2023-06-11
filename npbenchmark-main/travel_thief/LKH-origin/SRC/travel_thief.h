@@ -84,6 +84,7 @@ public:
 
     // debug funcions
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
+    void evaluate_add_one_item();
 };
 
 #endif //LKH_TRAVEL_THIEF_H
