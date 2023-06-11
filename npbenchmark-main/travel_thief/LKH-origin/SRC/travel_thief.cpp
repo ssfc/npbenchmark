@@ -803,9 +803,9 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 1
     // 1: Initialize P∗ such that no items are packed.
     // p*: previous packing status
-    vector<Item> prev_items = items;
-    vector<City> prev_cities = cities;
-    int prev_used_capacity = used_capacity;
+    vector<Item> prev_items{};
+    vector<City> prev_cities{};
+    int prev_used_capacity = 0;
 
     // Evaluate A2 LINE 1
     cerr << "packing status (" << prev_items.size() << "): ";
@@ -826,7 +826,7 @@ double TravelThief::random_local_search()
         // Evaluate A2 LINE 2
         cerr << "iter: " << iter << endl;
 
-        // 在做出改变前保存当前的值
+        // restore the current value before make change
         prev_items = items;
         prev_cities = cities;
         prev_used_capacity = used_capacity;
