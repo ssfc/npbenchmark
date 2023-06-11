@@ -590,6 +590,7 @@ double TravelThief::simple_heuristic()
     }
 
     object_value = compute_object_value(cities);
+    cerr << "object value: " << object_value << endl;
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     cerr << "Running time(s): " << elapsed_time << endl;
