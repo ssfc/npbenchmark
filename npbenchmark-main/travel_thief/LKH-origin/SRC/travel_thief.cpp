@@ -891,6 +891,7 @@ double TravelThief::random_local_search()
         else
         {
             cities = prev_cities;
+            items[rand_select].packing_status = !items[rand_select].packing_status; // 退回
             object_value = compute_object_value(cities);
             cerr << "object value not change: " << object_value << endl;
         }
