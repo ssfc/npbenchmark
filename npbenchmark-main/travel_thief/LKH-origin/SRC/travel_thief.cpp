@@ -336,7 +336,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     cerr << "back time: " << back_time << endl;
     // cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     // evaluate collect time
-    // cerr << "collect time: " << collect_time << endl;
+    cerr << "collect time: " << collect_time << endl;
     /*
     double collect_time_base = 0;
     for(int i = 0; i<tour.size()-1; i++)
@@ -777,8 +777,10 @@ double TravelThief::random_local_search()
             double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                                / (max_speed - speed_capacity_ratio * items[240].weight);
             cerr << "expected back time: " << back_time << endl;
-            double collect_time = city2city_distances[tour[0]][tour[1]] + city2city_distances[tour[1]][tour[2]];
-            + cities[241].distance_to_dest / (max_speed - speed_capacity_ratio * items[240].weight);
+            double collect_time = city2city_distances[tour[0]][tour[1]] + city2city_distances[tour[1]][tour[2]]
+            + cities[241].distance_to_dest / (max_speed - speed_capacity_ratio * items[240].weight) - back_time;
+            cerr << "expected collect time: " << collect_time << endl;
+            // cerr << "city 241 distance to dest: " << cities[241].distance_to_dest << endl;
             double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
             cerr << "expected object value: " << expected_object_value << endl;
         }
