@@ -330,10 +330,10 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
                        / (max_speed - speed_capacity_ratio * used_capacity);
     // cerr << "back time: " << back_time << endl;
     // evaluate total value
-    // cerr << "total value: " << total_value << endl;
+    cerr << "total value: " << total_value << endl;
     // cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
     // evaluate back time
-    // cerr << "back time: " << back_time << endl;
+    cerr << "expected back time: " << back_time << endl;
     // cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     // evaluate collect time
     // cerr << "collect time: " << collect_time << endl;
@@ -756,7 +756,7 @@ double TravelThief::random_local_search()
     // X: RLS max iters
     int RLS_max_iters = 1;
     int iter = 0;
-    cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
+    // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
         // Evaluate A2 LINE 2
@@ -771,6 +771,16 @@ double TravelThief::random_local_search()
         if(iter==0)
         {
             rand_select = 240;
+
+            double total_value = items[240].value;
+            cerr << "expected total value: " << total_value << endl;
+            double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
+                               / (max_speed - speed_capacity_ratio * items[240].weight);
+            cerr << "expected back time: " << back_time << endl;
+            double collect_time = city2city_distances[tour[0]][tour[1]] + city2city_distances[tour[1]][tour[2]];
+            + cities[241].distance_to_dest / (max_speed - speed_capacity_ratio * items[240].weight);
+            double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
+            cerr << "expected object value: " << expected_object_value << endl;
         }
         else if(iter==1)
         {
