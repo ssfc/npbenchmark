@@ -283,7 +283,7 @@ void TravelThief::print_tour()
     cerr << endl;
 }
 
-void TravelThief::compute_object_value(vector<City>& input_cities)
+double TravelThief::compute_object_value(vector<City>& input_cities)
 {
     double weight_leaving = 0.0;
     double collect_time = 0.0;
@@ -324,14 +324,16 @@ void TravelThief::compute_object_value(vector<City>& input_cities)
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * used_capacity);
     cerr << "back time: " << back_time << endl;
-    object_value = total_value - renting_ratio * (back_time + collect_time);
-    cerr << "object value: " << object_value << endl;
+    double output_object_value = total_value - renting_ratio * (back_time + collect_time);
+    cerr << "object value: " << output_object_value << endl;
 
     double no_item_value = - renting_ratio * total_traveling_time;
-    if(object_value < no_item_value)
+    if(output_object_value < no_item_value)
     {
-        object_value = no_item_value;
+        output_object_value = no_item_value;
     }
+
+    return output_object_value;
 }
 
 // Algorithm 1
@@ -593,7 +595,7 @@ double TravelThief::simple_heuristic()
         }
     }
 
-    compute_object_value(cities);
+    object_value = compute_object_value(cities);
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     cerr << "Running time(s): " << elapsed_time << endl;
