@@ -278,7 +278,12 @@ void TravelThief::print_tour()
     cerr << "Tour (size " << tour.size() << "): ";
     for (int city_index : tour)
     {
-        cerr << city_index << " ";
+        cerr << city_index << " (";
+        for(Item this_item : cities[city_index].contained_items)
+        {
+            cerr << this_item.index << " ";
+        }
+        cerr << ") ";
     }
     cerr << endl;
 }
@@ -765,23 +770,23 @@ double TravelThief::random_local_search()
         // evaluate adding and removing items
         if(iter==0)
         {
-            rand_select = 103;
+            rand_select = 240;
         }
         else if(iter==1)
         {
-            rand_select = 103;
+            rand_select = 240;
         }
         else if(iter==2)
         {
-            rand_select = 103;
+            rand_select = 240;
         }
         else if(iter==3)
         {
-            rand_select = 103;
+            rand_select = 240;
         }
         else if(iter==4)
         {
-            rand_select = 103;
+            rand_select = 240;
         }
 
         items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
