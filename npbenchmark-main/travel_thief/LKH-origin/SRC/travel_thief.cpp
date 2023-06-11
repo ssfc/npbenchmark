@@ -327,7 +327,7 @@ void TravelThief::compute_object_value(vector<City>& input_cities)
     object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "object value: " << object_value << endl;
 
-    double no_item_value = - renting_ratio*total_traveling_time;
+    double no_item_value = - renting_ratio * total_traveling_time;
     if(object_value < no_item_value)
     {
         object_value = no_item_value;
