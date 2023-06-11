@@ -926,5 +926,8 @@ double TravelThief::random_local_search()
         iter++;
     }
 
+    double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+    cerr << "Running time(s): " << elapsed_time << endl;
+
     return object_value;
 }
