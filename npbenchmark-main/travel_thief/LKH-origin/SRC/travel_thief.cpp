@@ -804,8 +804,8 @@ double TravelThief::random_local_search()
     // 1: Initialize P∗ such that no items are packed.
     // p*: previous packing status
     vector<Item> prev_items{};
-    vector<City> prev_cities{};
-    int prev_used_capacity = 0;
+    vector<City> prev_cities = cities;
+    int prev_used_capacity = used_capacity;
     double prev_object_value = object_value = compute_object_value(cities);
 
     // Evaluate A2 LINE 1
@@ -829,9 +829,6 @@ double TravelThief::random_local_search()
 
         // restore the current value before make change
         prev_items = items;
-        prev_cities = cities;
-        prev_used_capacity = used_capacity;
-        prev_object_value = object_value;
 
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
