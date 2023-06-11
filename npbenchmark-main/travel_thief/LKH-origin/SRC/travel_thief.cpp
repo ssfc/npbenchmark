@@ -789,7 +789,7 @@ double TravelThief::random_local_search()
             rand_select = 240;
 
             // evaluate add one item;
-            evaluate_add_one_item();
+            // evaluate_add_one_item();
         }
         else if(iter==1)
         {
