@@ -877,6 +877,8 @@ double TravelThief::random_local_search()
             cerr << "object value of deleting " << rand_select << ": " << compute_object_value(cities) << endl;
         }
 
+        object_value = compute_object_value(cities);
+
         // evaluate adding and removing item in packing plan
         /*
         int item_count = 0;
@@ -890,13 +892,12 @@ double TravelThief::random_local_search()
         // Implement A2 LINE 4
         // if Z(Π, P) ≥ Z(Π, P∗) and w(P) ≤ W then
         // Z(Π, P)改动后新的object_value
-        if(compute_object_value(cities) >= prev_object_value && used_capacity <= capacity)
+        if(object_value >= prev_object_value && used_capacity <= capacity)
         {
             prev_cities = cities;
             prev_items = items;
             prev_used_capacity = used_capacity;
-            prev_object_value = compute_object_value(cities);
-            object_value = compute_object_value(cities);
+            prev_object_value = object_value;
             cerr << "object value updated: " << object_value
              << "\tused capacity: " << used_capacity << endl;
         }
