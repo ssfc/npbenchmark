@@ -733,7 +733,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 10;
+    int RLS_max_iters = 50;
     int iter = 0;
     while(iter < RLS_max_iters)
     {
@@ -752,35 +752,36 @@ double TravelThief::random_local_search()
         << items[rand_select].packing_status << endl;
          */
 
+        int city_contained_rand_item = items[rand_select].assigned_city;
         if(items[rand_select].packing_status) // if true, means add new item
         {
-            cities[items[rand_select].assigned_city].picked_items.push_back(items[rand_select]);
+            cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
         }
         else // if false, means remove item
         {
             auto it = std::find_if
-                    (cities[items[rand_select].assigned_city].picked_items.begin(),
-                     cities[items[rand_select].assigned_city].picked_items.end(), [rand_select](const Item& item)
+                    (cities[city_contained_rand_item].picked_items.begin(),
+                     cities[city_contained_rand_item].picked_items.end(),
+                     [rand_select](const Item& item)
             {
                 return item.index == rand_select;
             });
 
-            if (it != cities[items[rand_select].assigned_city].picked_items.end())
+            if (it != cities[city_contained_rand_item].picked_items.end())
             {
-                cities[items[rand_select].assigned_city].picked_items.erase(it);
+                cities[city_contained_rand_item].picked_items.erase(it);
             }
         }
 
         // evaluate adding and removing item in packing plan
-        for(City this_city : cities)
+        /*
+        int item_count = 0;
+        for(const City& this_city : cities)
         {
-            if(!this_city.picked_items.empty())
-            {
-                cerr << "city " << this_city.index << ": ";
-
-            }
+            item_count += (int) (this_city.picked_items.size());
         }
-        cerr << endl;
+        cerr << "total item count: " << item_count << endl;
+         */
 
         iter++;
     }
