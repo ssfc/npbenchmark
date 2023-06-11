@@ -890,6 +890,7 @@ double TravelThief::random_local_search()
         else
         {
             cities = prev_cities;
+            object_value = compute_object_value(cities);
             cerr << "object value not change: " << object_value << endl;
         }
 
