@@ -821,15 +821,16 @@ double TravelThief::random_local_search()
     // X: RLS max iters
     int RLS_max_iters = 300;
     int iter = 0;
+    int output_interval = 15;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
         // Evaluate A2 LINE 2
-        if(iter % 10 == 0)
+        if(iter % output_interval == 0)
         {
             cerr << "iter: " << iter << endl;
         }
-        
+
         // Implement A2 LINE 3
         // Create P by inverting the packing status of a random picked item of P
         // P是改变一个元素的P*
@@ -851,7 +852,7 @@ double TravelThief::random_local_search()
         {
             cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
             used_capacity += items[rand_select].weight;
-            if(iter % 10 == 0)
+            if(iter % output_interval == 0)
             {
                 cerr << "object value of adding " << rand_select << ": "
                 << compute_object_value(cities) << endl;
@@ -874,7 +875,7 @@ double TravelThief::random_local_search()
 
             used_capacity -= items[rand_select].weight;
 
-            if(iter % 10 == 0)
+            if(iter % output_interval == 0)
             {
                 cerr << "object value of deleting " << rand_select << ": "
                 << compute_object_value(cities) << endl;
@@ -903,7 +904,7 @@ double TravelThief::random_local_search()
             prev_items = items;
             prev_used_capacity = used_capacity;
             prev_object_value = object_value;
-            if(iter % 10 == 0)
+            if(iter % output_interval == 0)
             {
                 cerr << "object value updated: " << object_value
                      << "\tused capacity: " << used_capacity << endl;
@@ -915,7 +916,7 @@ double TravelThief::random_local_search()
             items = prev_items;
             used_capacity = prev_used_capacity;
             object_value = prev_object_value;
-            if(iter % 10 == 0)
+            if(iter % output_interval == 0)
             {
                 cerr << "object value unchanged: " << object_value
                      << "\tused capacity: " << used_capacity << endl;
