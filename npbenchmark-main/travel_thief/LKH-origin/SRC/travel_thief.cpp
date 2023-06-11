@@ -772,6 +772,8 @@ double TravelThief::random_local_search()
         {
             rand_select = 240;
 
+            // evaluate add one item;
+            /*
             double total_value = items[240].value;
             cerr << "expected total value: " << total_value << endl;
             double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
@@ -783,6 +785,7 @@ double TravelThief::random_local_search()
             // cerr << "city 241 distance to dest: " << cities[241].distance_to_dest << endl;
             double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
             cerr << "expected object value: " << expected_object_value << endl;
+             */
         }
         else if(iter==1)
         {
