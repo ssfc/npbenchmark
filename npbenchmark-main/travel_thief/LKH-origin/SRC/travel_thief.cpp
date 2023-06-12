@@ -415,6 +415,12 @@ void TravelThief::save_result()
     }
 }
 
+void TravelThief::compute_object_value_by_saved_result()
+{
+    object_value = compute_object_value(cities);
+    cerr << "object_value: " << object_value << endl;
+}
+
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
