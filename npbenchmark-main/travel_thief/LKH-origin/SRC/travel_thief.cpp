@@ -658,7 +658,19 @@ void TravelThief::evaluate_add_two_items()
 
 void TravelThief::save_result()
 {
-    string save_filename = "";
+    string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
+    ofstream result_file(save_filename);
+    if (result_file.is_open())
+    {
+        result_file << "[";
+        result_file << "]";
+        result_file.close();
+        cerr << "Parameter file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create parameter file.\n";
+    }
 }
 
 void TravelThief::evaluate_add_and_remove_item(int input_iter, unsigned int &input_rand_select)
