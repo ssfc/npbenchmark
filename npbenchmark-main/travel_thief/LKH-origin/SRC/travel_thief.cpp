@@ -283,7 +283,7 @@ void TravelThief::print_tour()
     for (int city_index : tour)
     {
         cerr << city_index << " (";
-        for(Item this_item : cities[city_index].contained_items)
+        for(Item& this_item : cities[city_index].contained_items)
         {
             cerr << this_item.index << " ";
         }
@@ -303,7 +303,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
         if(!input_cities[tour[i]].picked_items.empty())
         {
             // cerr << "city " << tour[i] << " (";
-            for(Item this_item : input_cities[tour[i]].picked_items)
+            for(Item& this_item : input_cities[tour[i]].picked_items)
             {
                 // cerr << this_item.index << " ";
                 weight_leaving += this_item.weight;
@@ -495,7 +495,7 @@ double TravelThief::simple_heuristic()
         // cerr << city_index << " (" << cities[city_index].travel_distance << ") ";
         // show each city contained items
         cerr << "city " << city_index;
-        for(Item this_item_in_city : cities[city_index].contained_items)
+        for(Item& this_item_in_city : cities[city_index].contained_items)
         {
             // Implement A1 LINE 4
             // Calculate txik by using Equation 1
@@ -556,7 +556,7 @@ double TravelThief::simple_heuristic()
     // Evaluate A1 LINE 8;
     /*
     cerr << "Sort by score descending: ";
-    for(Item this_item : items)
+    for(Item& this_item : items)
     {
         // cerr << this_item.index << " (" << this_item.score << ") ";
     }
@@ -684,7 +684,7 @@ void TravelThief::save_result()
             return item1.index < item2.index;
         });
         vector<int> packing_plan;
-        for(Item this_item : items)
+        for(Item& this_item : items)
         {
             if(this_item.packing_status)
             {
@@ -873,7 +873,7 @@ double TravelThief::random_local_search()
     // Evaluate A2 LINE 1
     /*
     cerr << "packing status (" << prev_items.size() << "): ";
-    for(Item this_item : prev_items)
+    for(Item& this_item : prev_items)
     {
         cerr << this_item.packing_status << " ";
     }
