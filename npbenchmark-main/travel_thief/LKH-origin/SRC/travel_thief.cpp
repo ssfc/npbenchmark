@@ -357,6 +357,64 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     return output_object_value;
 }
 
+void TravelThief::save_result()
+{
+    cerr << "filename: " << filename << endl;
+    string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
+    ofstream result_file(save_filename);
+    if (result_file.is_open())
+    {
+        // save tour cities;
+        result_file << "[";
+
+        for (int i = 0; i < tour.size(); i++)
+        {
+            result_file << tour[i] + 1; // number starts with 1
+            if (i != tour.size() - 1)
+            {
+                result_file << ",";
+            }
+        }
+
+        result_file << "]" << endl;
+
+        sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
+            return item1.index < item2.index;
+        });
+        vector<int> packing_plan;
+        for(Item& this_item : items)
+        {
+            if(this_item.packing_status)
+            {
+                packing_plan.push_back(this_item.index);
+            }
+        }
+
+        cerr << "packing plan size: " << packing_plan.size() << endl;
+
+        // save packed items;
+        result_file << "[";
+
+        for (int i = 0; i < packing_plan.size(); i++)
+        {
+            result_file << packing_plan[i] + 1; // number starts with 1
+            if (i != packing_plan.size() - 1)
+            {
+                result_file << ",";
+            }
+        }
+
+        result_file << "]" << endl;
+
+        result_file.close();
+        cerr << "Save file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create parameter file.\n";
+    }
+}
+
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
@@ -657,64 +715,6 @@ void TravelThief::evaluate_add_two_items()
     // cerr << "city 241 distance to dest: " << cities[241].distance_to_dest << endl;
     double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "expected object value: " << expected_object_value << endl;
-}
-
-void TravelThief::save_result()
-{
-    cerr << "filename: " << filename << endl;
-    string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
-    ofstream result_file(save_filename);
-    if (result_file.is_open())
-    {
-        // save tour cities;
-        result_file << "[";
-
-        for (int i = 0; i < tour.size(); i++)
-        {
-            result_file << tour[i] + 1; // number starts with 1
-            if (i != tour.size() - 1)
-            {
-                result_file << ",";
-            }
-        }
-
-        result_file << "]" << endl;
-
-        sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
-            return item1.index < item2.index;
-        });
-        vector<int> packing_plan;
-        for(Item& this_item : items)
-        {
-            if(this_item.packing_status)
-            {
-                packing_plan.push_back(this_item.index);
-            }
-        }
-
-        cerr << "packing plan size: " << packing_plan.size() << endl;
-
-        // save packed items;
-        result_file << "[";
-
-        for (int i = 0; i < packing_plan.size(); i++)
-        {
-            result_file << packing_plan[i] + 1; // number starts with 1
-            if (i != packing_plan.size() - 1)
-            {
-                result_file << ",";
-            }
-        }
-
-        result_file << "]" << endl;
-
-        result_file.close();
-        cerr << "Save file created successfully.\n";
-    }
-    else
-    {
-        cerr << "Unable to create parameter file.\n";
-    }
 }
 
 void TravelThief::evaluate_add_and_remove_item(int input_iter, unsigned int &input_rand_select)
