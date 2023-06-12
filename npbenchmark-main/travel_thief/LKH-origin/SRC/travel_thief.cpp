@@ -423,7 +423,7 @@ double TravelThief::simple_heuristic()
     }
 
     // hello_world();
-    compute_tsp();
+    // compute_tsp();
 
     ifstream inputFile(output_filename);
 
