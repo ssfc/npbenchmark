@@ -549,7 +549,7 @@ double TravelThief::simple_heuristic()
 
     // Implement A1 LINE 8;
     // Create the joint set of items I and sort them in descending order score values
-    std::sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
+    sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
         return item1.score > item2.score;
     });
 
@@ -571,7 +571,7 @@ double TravelThief::simple_heuristic()
     // Implement A1 LINE 10
     // for all items Ixik ∈ I do
     // Ixik: item k in city xi
-    for(Item this_item : items)
+    for(Item& this_item : items)
     {
         // Evaluate A1 LINE 10
         // cerr << this_item.score << " ";
@@ -666,18 +666,48 @@ void TravelThief::save_result()
     ofstream result_file(save_filename);
     if (result_file.is_open())
     {
+        // save tour cities;
         result_file << "[";
 
         for (int i = 0; i < tour.size(); i++)
         {
-            result_file << tour[i];
+            result_file << tour[i] + 1; // number starts with 1
             if (i != tour.size() - 1)
             {
                 result_file << ",";
             }
         }
 
-        result_file << "]";
+        result_file << "]" << endl;
+
+        sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
+            return item1.index < item2.index;
+        });
+        vector<int> packing_plan;
+        for(Item this_item : items)
+        {
+            if(this_item.packing_status)
+            {
+                packing_plan.push_back(this_item.index);
+            }
+        }
+
+        cerr << "packing plan size: " << packing_plan.size() << endl;
+
+        // save packed items;
+        result_file << "[";
+
+        for (int i = 0; i < packing_plan.size(); i++)
+        {
+            result_file << packing_plan[i] + 1; // number starts with 1
+            if (i != packing_plan.size() - 1)
+            {
+                result_file << ",";
+            }
+        }
+
+        result_file << "]" << endl;
+
         result_file.close();
         cerr << "Save file created successfully.\n";
     }
