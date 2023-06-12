@@ -13,7 +13,7 @@ extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
 using namespace std;
 
-TravelThief::TravelThief(const string& input_filename, int max_runtime):
+TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         num_cities(0),
         num_items(0),
         capacity(0),
@@ -25,7 +25,7 @@ TravelThief::TravelThief(const string& input_filename, int max_runtime):
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
         total_traveling_time(0.0),
-        filename(input_filename)
+        filename(input_file_with_path)
 {
     start_time = clock();
     int input_seed = 1;
@@ -36,11 +36,11 @@ TravelThief::TravelThief(const string& input_filename, int max_runtime):
     // string filename = "../data/fnl4461_n4460_bounded-strongly-corr_01.ttp";
     // string filename = "../data/pla33810_n33809_bounded-strongly-corr_01.ttp";
     // string filename = "../data/fnl4461_n13380_uncorr_02.ttp";
-    ifstream file(input_filename);
+    ifstream file(input_file_with_path);
 
     if(!file.is_open())
     {
-        cerr << "Failed to open file " << input_filename << endl;
+        cerr << "Failed to open file " << input_file_with_path << endl;
     }
 
     int num_city_coord = 0;

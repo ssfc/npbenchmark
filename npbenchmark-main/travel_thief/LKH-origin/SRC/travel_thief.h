@@ -63,7 +63,7 @@ class TravelThief{
     std::string filename;
 
 public:
-    TravelThief(const std::string& input_filename, int max_runtime);
+    TravelThief(const std::string& input_file_with_path, int max_runtime);
     ~TravelThief();
 
     void print_city_coords();
