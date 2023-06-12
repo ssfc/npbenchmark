@@ -59,3 +59,13 @@ https://github.com/ssfc/papers/blob/main/2014%20A%20comprehensive%20benchmark%20
 ##  Related Competitions
 
 ##  Competition Organizers
+
+### Q: 怎样缩短LKH的运行时间？
+
+(1) MOVE_TYPE对于大算例可以设置成2或者3；
+
+(2) RUNS是执行了多少次局部搜索，MAX_TRIALS是每次局部搜索的最大迭代次数; 
+
+(3) TIME_LIMIT,你还可以限制运行时间; 
+
+(4) MAX_CANDIDATES & ASCENT_CANDIDATES这两个参数是每个点考虑的邻居点个数的，不过具体含义我记不太清了，反正调小一些肯定会快; (2023年6月12日)
