@@ -24,12 +24,15 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         object_value(0.0),
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
-        total_traveling_time(0.0),
-        filename(input_file_with_path)
+        total_traveling_time(0.0)
 {
     start_time = clock();
     int input_seed = 1;
     init_rand(input_seed); // initialize random generator;
+
+
+    size_t lastSlashPos = input_file_with_path.find_last_of('/'); // 查找最后一个斜杠的位置
+    filename = input_file_with_path.substr(lastSlashPos + 1); // 截取字符串
 
     //string filename = "../data/a280_n279_bounded-strongly-corr_01.ttp";
     // string filename = "../data/a280_n1395_uncorr-similar-weights_05.ttp";
@@ -658,14 +661,25 @@ void TravelThief::evaluate_add_two_items()
 
 void TravelThief::save_result()
 {
+    cerr << "filename: " << filename << endl;
     string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
     ofstream result_file(save_filename);
     if (result_file.is_open())
     {
         result_file << "[";
+
+        for (int i = 0; i < tour.size(); i++)
+        {
+            result_file << tour[i];
+            if (i != tour.size() - 1)
+            {
+                result_file << ",";
+            }
+        }
+
         result_file << "]";
         result_file.close();
-        cerr << "Parameter file created successfully.\n";
+        cerr << "Save file created successfully.\n";
     }
     else
     {
