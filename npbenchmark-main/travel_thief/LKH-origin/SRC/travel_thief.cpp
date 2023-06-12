@@ -24,7 +24,8 @@ TravelThief::TravelThief(const string& input_filename, int max_runtime):
         object_value(0.0),
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
-        total_traveling_time(0.0)
+        total_traveling_time(0.0),
+        filename(input_filename)
 {
     start_time = clock();
     int input_seed = 1;
@@ -653,6 +654,11 @@ void TravelThief::evaluate_add_two_items()
     // cerr << "city 241 distance to dest: " << cities[241].distance_to_dest << endl;
     double expected_object_value = total_value - renting_ratio * (back_time + collect_time);
     cerr << "expected object value: " << expected_object_value << endl;
+}
+
+void TravelThief::save_result()
+{
+    string save_filename = "";
 }
 
 void TravelThief::evaluate_add_and_remove_item(int input_iter, unsigned int &input_rand_select)

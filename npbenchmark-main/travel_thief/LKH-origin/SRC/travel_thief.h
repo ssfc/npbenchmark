@@ -60,6 +60,7 @@ class TravelThief{
     // debug variables:
     std::mt19937 generated_random;
     clock_t start_time;
+    std::string filename;
 
 public:
     TravelThief(const std::string& input_filename, int max_runtime);
@@ -87,6 +88,7 @@ public:
     void evaluate_add_one_item();
     void evaluate_add_two_items();
     static void evaluate_add_and_remove_item(int iter, unsigned int &input_rand_select);
+    void save_result();
 };
 
 #endif //LKH_TRAVEL_THIEF_H
