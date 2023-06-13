@@ -703,6 +703,7 @@ double TravelThief::simple_heuristic()
     // Implement A1 LINE 10
     // for all items Ixik ∈ I do
     // Ixik: item k in city xi
+    vector<int> packing_plan;
     for(Item& this_item : items)
     {
         // Evaluate A1 LINE 10
@@ -722,6 +723,7 @@ double TravelThief::simple_heuristic()
             // Add the item Ixik to the packing plan P
             // Ixik: item
             this_item.packing_status = true;
+            packing_plan.push_back(this_item.index);
 
             // Add this item to city picked items;
             cities[this_item.assigned_city].picked_items.push_back(this_item);
@@ -747,6 +749,13 @@ double TravelThief::simple_heuristic()
             break;
         }
     }
+
+    cerr << "packing plan: ";
+    for(int this_index : packing_plan)
+    {
+        cerr << this_index << " ";
+    }
+    cerr << endl;
 
     object_value = compute_object_value(cities);
     cerr << "object value: " << object_value << endl;
