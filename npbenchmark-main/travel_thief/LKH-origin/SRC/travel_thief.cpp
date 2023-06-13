@@ -477,6 +477,10 @@ void TravelThief::compute_object_value_by_saved_result()
         }
         cerr << endl;
 
+        sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
+            return item1.index < item2.index;
+        });
+
         for(int this_item_index : packing_plan)
         {
             // Add this item to city picked items;

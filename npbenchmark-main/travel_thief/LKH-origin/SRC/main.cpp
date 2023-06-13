@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     travel_thief.simple_heuristic();
     // travel_thief.random_local_search();
     // travel_thief.save_result();
-    travel_thief.compute_object_value_by_saved_result();
+    // travel_thief.compute_object_value_by_saved_result();
 
     return 0;
 }
