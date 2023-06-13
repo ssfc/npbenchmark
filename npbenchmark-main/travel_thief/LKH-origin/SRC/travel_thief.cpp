@@ -416,10 +416,9 @@ void TravelThief::save_result()
     }
 }
 
-void TravelThief::compute_object_value_by_saved_result()
+void TravelThief::compute_object_value_by_saved_result(string result_filename)
 {
     compute_city_distances();
-    string result_filename = "a280_n279_bounded-strongly-corr_01.ttp.thisIsMyAlgorithm.1239433";
 
     // 打开文件
     ifstream file(result_filename);
