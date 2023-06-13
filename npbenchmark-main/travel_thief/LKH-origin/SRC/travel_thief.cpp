@@ -417,7 +417,75 @@ void TravelThief::save_result()
 
 void TravelThief::compute_object_value_by_saved_result()
 {
-    object_value = compute_object_value(cities);
+    string result_filename = "a280_n279_bounded-strongly-corr_01.ttp.thisIsMyAlgorithm.1239433";
+
+    // 打开文件
+    ifstream file(result_filename);
+    if (file.is_open())
+    {
+        string line;
+        vector<int> packing_plan;
+
+        // 逐行读取文件内容
+        while (getline(file, line))
+        {
+            // 移除空格和括号
+            line.erase(remove(line.begin(), line.end(), ' '), line.end());
+            line.erase(remove(line.begin(), line.end(), '['), line.end());
+            line.erase(remove(line.begin(), line.end(), ']'), line.end());
+
+            // 解析数字
+            vector<int> numbers;
+            string number;
+            for (char c : line)
+            {
+                if (c == ',')
+                {
+                    numbers.push_back(stoi(number));
+                    number.clear();
+                }
+                else
+                {
+                    number += c;
+                }
+            }
+            numbers.push_back(stoi(number));
+
+            // 保存到对应的数组中
+            if (tour.empty())
+            {
+                tour = numbers;
+            }
+            else
+            {
+                packing_plan = numbers;
+            }
+        }
+
+        // 打印结果
+        cerr << "Tour: ";
+        for (int num : tour)
+        {
+            cerr << num << " ";
+        }
+        cerr << endl;
+
+        std::cout << "Packing Plan: ";
+        for (int num : packing_plan)
+        {
+            cout << num << " ";
+        }
+        cout << endl;
+
+        // 关闭文件
+        file.close();
+    }
+    else
+    {
+        cerr << "Failed to open the file." << std::endl;
+    }
+
+    // object_value = compute_object_value(cities);
     cerr << "object_value: " << object_value << endl;
 }
 
