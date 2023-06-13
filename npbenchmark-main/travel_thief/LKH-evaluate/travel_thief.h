@@ -78,17 +78,9 @@ public:
 
     double compute_object_value(std::vector<City>& input_cities);
 
-    // void sample_solver();
-
-    double simple_heuristic(); // Algorithm 1
-    double random_local_search(); // Algorithm 2
-
     // debug funcions
     void init_rand(int seed) { generated_random = std::mt19937(seed); }
-    void evaluate_add_one_item();
-    void evaluate_add_two_items();
-    static void evaluate_add_and_remove_item(int iter, unsigned int &input_rand_select);
-    void save_result();
+
     bool checkTour();
     void compute_object_value_by_saved_result(std::string result_filename);
 };

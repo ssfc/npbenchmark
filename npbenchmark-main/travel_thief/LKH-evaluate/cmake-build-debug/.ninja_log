@@ -1,2 +1,13 @@
 # ninja log v5
 559	774	7083434989851712	LKH_evaluate.exe	fa435eef0cdd4e3a
+1	1152	7083458953867693	CMakeFiles/LKH_evaluate.dir/main.cpp.obj	fd61c52601969a03
+13	2209	7083458964306698	CMakeFiles/LKH_evaluate.dir/travel_thief.cpp.obj	82756270160c24af
+10	1286	7083459768956371	CMakeFiles/LKH_evaluate.dir/main.cpp.obj	fd61c52601969a03
+16	2175	7083459777764541	CMakeFiles/LKH_evaluate.dir/travel_thief.cpp.obj	82756270160c24af
+2176	2491	7083459780951093	LKH_evaluate.exe	1b60bd0ce19bc586
+20	3362	7083462661519551	CMakeFiles/LKH_evaluate.dir/main.cpp.obj	fd61c52601969a03
+11	4594	7083462673996239	CMakeFiles/LKH_evaluate.dir/travel_thief.cpp.obj	82756270160c24af
+4595	5024	7083462678221724	LKH_evaluate.exe	1b60bd0ce19bc586
+20	2075	7083463139646660	CMakeFiles/LKH_evaluate.dir/main.cpp.obj	fd61c52601969a03
+9	3312	7083463151992555	CMakeFiles/LKH_evaluate.dir/travel_thief.cpp.obj	82756270160c24af
+3313	3812	7083463156379930	LKH_evaluate.exe	1b60bd0ce19bc586
