@@ -30,7 +30,6 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
     int input_seed = 1;
     init_rand(input_seed); // initialize random generator;
 
-
     size_t lastSlashPos = input_file_with_path.find_last_of('/'); // 查找最后一个斜杠的位置
     filename = input_file_with_path.substr(lastSlashPos + 1); // 截取字符串
 
@@ -417,6 +416,7 @@ void TravelThief::save_result()
 
 void TravelThief::compute_object_value_by_saved_result()
 {
+    compute_city_distances();
     string result_filename = "a280_n279_bounded-strongly-corr_01.ttp.thisIsMyAlgorithm.1239433";
 
     // 打开文件
@@ -477,6 +477,12 @@ void TravelThief::compute_object_value_by_saved_result()
         }
         cerr << endl;
 
+        for(int this_item_index : packing_plan)
+        {
+            // Add this item to city picked items;
+            cities[items[this_item_index].assigned_city].picked_items.push_back(items[this_item_index]);
+        }
+
         // 关闭文件
         file.close();
     }
@@ -485,7 +491,7 @@ void TravelThief::compute_object_value_by_saved_result()
         cerr << "Failed to open the file." << endl;
     }
 
-    // object_value = compute_object_value(cities);
+    object_value = compute_object_value(cities);
     cerr << "object_value: " << object_value << endl;
 }
 
