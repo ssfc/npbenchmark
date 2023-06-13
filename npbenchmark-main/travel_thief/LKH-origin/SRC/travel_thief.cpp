@@ -470,12 +470,12 @@ void TravelThief::compute_object_value_by_saved_result()
         }
         cerr << endl;
 
-        std::cout << "Packing Plan: ";
+        cerr << "Packing Plan: ";
         for (int num : packing_plan)
         {
-            cout << num << " ";
+            cerr << num << " ";
         }
-        cout << endl;
+        cerr << endl;
 
         // 关闭文件
         file.close();
