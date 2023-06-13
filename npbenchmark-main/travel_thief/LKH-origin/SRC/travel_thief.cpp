@@ -331,6 +331,8 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     // Z(Π, P): 扣除租金物品的价值
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * used_capacity);
+    // cerr << "distance: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
+    // cerr << "used capacity: " << used_capacity << endl;
     // cerr << "back time: " << back_time << endl;
     // evaluate total value
     // cerr << "total value: " << total_value << endl;
@@ -485,6 +487,7 @@ void TravelThief::compute_object_value_by_saved_result()
         {
             // Add this item to city picked items;
             cities[items[this_item_index].assigned_city].picked_items.push_back(items[this_item_index]);
+            used_capacity += items[this_item_index].weight;
         }
 
         // 关闭文件
