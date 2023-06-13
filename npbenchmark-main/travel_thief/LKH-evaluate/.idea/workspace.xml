@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="LKH_evaluate" targetName="LKH_evaluate" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="52438280-34f0-42e1-bfc1-79147df424be" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/LKH-evaluate.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-b116ab75ef24ee3defd1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-75ba2f34923cd8a7f8dc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-c34535cbb505b77ffc7e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-13T07-22-25-0057.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-LKH_evaluate-Debug-7604013bc61ab91d4d48.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-412cc2260079ebecb331.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeRCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/a.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/a.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/LKH_evaluate.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/travel_thief.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/travel_thief.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/a280_n279_bounded-strongly-corr_01.ttp.answer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.cmake/api/v1/reply/cache-v2-56842ec341a94efd640f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-1bdd9c9aeec9b7cd2870.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.cmake/api/v1/reply/index-2023-06-01T08-52-20-0751.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdCXX/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_TRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_TSPDL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_TSPPD.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_TSPTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_VRPB.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_VRPBTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Penalty_VRPPD.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/PrintParameters.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Random.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadEdges.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadLine.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadParameters.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadPenalties.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ReadProblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/RecordBestTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/RecordBetterTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/RemoveFirstActive.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/ResetCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/RestoreTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SFCTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SOP_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SOP_RepairTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SOP_Report.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/STTSP2TSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SegmentSize.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Sequence.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveCompressedSubproblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveDelaunaySubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveKCenterSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveKMeansSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveKarpSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveRoheSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveSFCSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveSubproblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveSubproblemBorderProblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SolveTourSegmentSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/Statistics.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/StatusReport.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/StoreTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/SymmetrizeCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/TSPDL_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/TSPTW_MakespanCost.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/TSPTW_Reduce.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/TrimCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/VRPB_Reduce.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/WriteCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/WritePenalties.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/WriteTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/printff.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/LKH.dir/travel_thief.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Activate.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AddCandidate.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AddExtraCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AddTourCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AdjustCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AdjustClusters.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/AllocateStructures.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Ascent.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/BIT.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Best2OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Best3OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Best4OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Best5OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/BestKOptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/BestSpecialOptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Between.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Between_SL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Between_SSL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/BridgeGain.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/BuildKDTree.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/C.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CTSP_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CVRP_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CandidateReport.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ChooseInitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Connect.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CreateCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CreateDelaunayCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CreateNNCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/CreateQuadrantCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Create_POPMUSIC_CandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Delaunay.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Distance.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Distance_MTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Distance_SOP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Distance_SPECIAL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ERXT.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Excludable.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Exclude.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/FindTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/FixedOrCommonCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Flip.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Flip_SL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Flip_SSL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Forbidden.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/FreeStructures.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Gain23.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/GenerateCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Genetic.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/GeoConversion.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/GetTime.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/GreedyTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Hashing.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Heap.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Improvement.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/IsBackboneCandidate.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/IsCandidate.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/IsCommonEdge.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/IsPossibleCandidate.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/KSwapKick.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/LKH.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/LKHmain.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/LinKernighan.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MTSP2TSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MTSP_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MTSP_Report.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MTSP_WriteSolution.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Make2OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Make3OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Make4OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Make5OptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MakeKOptMove.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MergeTourWithBestTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MergeWithTourCLARIST.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MergeWithTourGPX2.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MergeWithTourIPT.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Minimum1TreeCost.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/MinimumSpanningTree.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/NormalizeNodeList.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/NormalizeSegmentList.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/OrderCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/PDPTW_Reduce.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/PatchCycles.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_1_PDTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_ACVRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_BWTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_CCVRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_CTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_CVRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_CVRPTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_M1_PDTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_MLP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_MTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_M_PDTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_OVRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_PDPTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_PDTSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_PDTSPF.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_PDTSPL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_RCTVRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_SOP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_TRP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_TSPDL.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_TSPPD.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_TSPTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_VRPB.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_VRPBTW.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Penalty_VRPPD.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/PrintParameters.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Random.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadEdges.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadLine.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadParameters.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadPenalties.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ReadProblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/RecordBestTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/RecordBetterTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/RemoveFirstActive.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/ResetCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/RestoreTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SFCTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SINTEF_WriteSolution.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SOP_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SOP_RepairTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SOP_Report.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/STTSP2TSP.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SegmentSize.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Sequence.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveCompressedSubproblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveDelaunaySubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveKCenterSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveKMeansSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveKarpSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveRoheSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveSFCSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveSubproblem.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveSubproblemBorderProblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SolveTourSegmentSubproblems.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/Statistics.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/StatusReport.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/StoreTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/SymmetrizeCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/TSPDL_InitialTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/TSPTW_MakespanCost.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/TSPTW_Reduce.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/TrimCandidateSet.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/VRPB_Reduce.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/WriteCandidates.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/WritePenalties.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/WriteTour.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/eprintf.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/fscanint.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/gpx.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/SRC.dir/printff.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/LKH.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/LKH.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LKH-origin/SRC/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../LKH-origin/SRC/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="1.3" />
+  </component>
+  <component name="ProjectId" id="2R8mBbYnEcOMeREHbsDLoeRJS4S" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "CPPToolchains",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LKH_evaluate" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LKH_evaluate" TARGET_NAME="LKH_evaluate" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="LKH_evaluate" RUN_TARGET_NAME="LKH_evaluate">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="52438280-34f0-42e1-bfc1-79147df424be" name="更改" comment="" />
+      <created>1686639947313</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686639947313</updated>
+      <workItem from="1686639949712" duration="1474000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticFoundErrors value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
