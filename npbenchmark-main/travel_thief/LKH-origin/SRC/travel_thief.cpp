@@ -8,6 +8,7 @@ extern "C" int compute_tsp(); // 声明c文件中的函数原型
 #include <iostream>
 #include <algorithm>
 #include <fstream>
+#include <set>
 #include <sstream>
 #include <string>
 
@@ -416,6 +417,26 @@ void TravelThief::save_result()
     }
 }
 
+bool TravelThief::checkTour() {
+    std::set<int> expectedValues;
+
+    // 添加期望的整数值到 expectedValues
+    for (int i = 0; i < tour.size(); i++) {
+        expectedValues.insert(i);
+    }
+
+    // 检查 tour 中的元素是否在 expectedValues 中
+    for (int value : tour) {
+        auto it = expectedValues.find(value);
+        if (it != expectedValues.end()) {
+            expectedValues.erase(it);
+        }
+    }
+
+    // 检查 expectedValues 是否为空
+    return expectedValues.empty();
+}
+
 void TravelThief::compute_object_value_by_saved_result(string result_filename)
 {
     compute_city_distances();
@@ -495,6 +516,21 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
     else
     {
         cerr << "Failed to open the file." << endl;
+    }
+
+    if(used_capacity <= capacity)
+    {
+        cerr << "重量满足条件" << endl;
+    }
+    else
+    {
+        cerr << "背包重量超了" << endl;
+    }
+
+    if (checkTour()) {
+        cerr << "tour contains all cities." << std::endl;
+    } else {
+        cerr << "tour is missing some cities." << std::endl;
     }
 
     object_value = compute_object_value(cities);

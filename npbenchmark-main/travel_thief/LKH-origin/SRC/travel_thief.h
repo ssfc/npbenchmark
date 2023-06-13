@@ -89,6 +89,7 @@ public:
     void evaluate_add_two_items();
     static void evaluate_add_and_remove_item(int iter, unsigned int &input_rand_select);
     void save_result();
+    bool checkTour();
     void compute_object_value_by_saved_result(std::string result_filename);
 };
 
