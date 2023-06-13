@@ -482,7 +482,7 @@ void TravelThief::compute_object_value_by_saved_result()
     }
     else
     {
-        cerr << "Failed to open the file." << std::endl;
+        cerr << "Failed to open the file." << endl;
     }
 
     // object_value = compute_object_value(cities);
