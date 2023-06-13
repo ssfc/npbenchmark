@@ -441,7 +441,7 @@ void TravelThief::compute_object_value_by_saved_result()
             {
                 if (c == ',')
                 {
-                    numbers.push_back(stoi(number));
+                    numbers.push_back(stoi(number) - 1);
                     number.clear();
                 }
                 else
@@ -449,7 +449,7 @@ void TravelThief::compute_object_value_by_saved_result()
                     number += c;
                 }
             }
-            numbers.push_back(stoi(number));
+            numbers.push_back(stoi(number) - 1);
 
             // 保存到对应的数组中
             if (tour.empty())
