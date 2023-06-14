@@ -82,6 +82,7 @@ public:
 
     double simple_heuristic(); // Algorithm 1
     double random_local_search(); // Algorithm 2
+    double evolutionary_algorithm(); // Algorithm 3
 
     // debug funcions
     void init_rand(int seed) { generated_random = std::mt19937(seed); }

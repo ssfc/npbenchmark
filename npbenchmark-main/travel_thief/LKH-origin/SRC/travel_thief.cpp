@@ -1126,3 +1126,253 @@ double TravelThief::random_local_search()
 
     return object_value;
 }
+
+// Algorithm 3
+double TravelThief::evolutionary_algorithm()
+{
+    compute_city_distances();
+    // test.sample_solver();
+
+    // Set parameters;
+    string parameter_filename = "pr2392.par";
+    string problem_filename = "pr2392.tsp";
+    int move_type = 5;
+    int patching_c = 3;
+    int patching_a = 2;
+    int runs = 1;
+    string output_filename = "output_tour.txt";
+
+    // construct parameter file;
+    ofstream parameter_file(parameter_filename);
+    if (parameter_file.is_open())
+    {
+        parameter_file << "PROBLEM_FILE = " << problem_filename << "\n";
+        // parameter_file << "OPTIMUM = 378032\n";
+        parameter_file << "MOVE_TYPE = " << move_type << "\n";
+        parameter_file << "PATCHING_C = " << patching_c << "\n";
+        parameter_file << "PATCHING_A = " << patching_a << "\n";
+        // parameter_file << "PRECISION = 90\n";
+        parameter_file << "RUNS = " << runs << "\n";
+        parameter_file << "OUTPUT_TOUR_FILE = " << output_filename << "\n";
+        parameter_file.close();
+        cerr << "Parameter file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create parameter file.\n";
+    }
+
+    // Set problem
+    string tsp_problem_name = "pr2392";
+    string tsp_comment = "2392-city problem (Padberg/Rinaldi)";
+    string tsp_type = "TSP";
+    string tsp_edge_weight_type = "EUC_2D";
+    int scale = 100; // 坐标放大倍数
+
+    // construct TSP file;
+    ofstream tsp_file(problem_filename);
+    if (tsp_file.is_open())
+    {
+        tsp_file << "NAME : " << tsp_problem_name << "\n";
+        tsp_file << "COMMENT : " << tsp_comment << "\n";
+        tsp_file << "TYPE : " << tsp_type << "\n";
+        tsp_file << "DIMENSION : " << num_cities << "\n";
+        tsp_file << "EDGE_WEIGHT_TYPE : " << tsp_edge_weight_type << "\n";
+        tsp_file << "NODE_COORD_SECTION\n";
+        for(int i=0;i<num_cities;i++)
+        {
+            // LKH官方程序是从1开始算城市的，所以要+1;
+            // tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
+
+            // 试着缩放一下坐标；
+            tsp_file << i+1 << " " << cities[i].x * scale << " " << cities[i].y * scale << "\n";
+        }
+        tsp_file << "EOF\n";
+        tsp_file.close();
+        cerr << "TSP file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create TSP file.\n";
+    }
+
+    // hello_world();
+    compute_tsp();
+
+    ifstream inputFile(output_filename);
+
+    // string line;
+    bool tourSectionReached = false;
+
+    string line;
+    while (getline(inputFile, line))
+    {
+        if (line.find("COMMENT : Length =") != string::npos)
+        {
+            // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀;
+            string lengthStr = line.substr(line.find('=') + 1);
+            tour_length_LKH = stod(lengthStr);
+        }
+
+        if (line.find("TOUR_SECTION") != string::npos)
+        {
+            tourSectionReached = true;
+            continue;
+        }
+
+        if (tourSectionReached)
+        {
+            if (line == "-1" || line == "EOF")
+            {
+                break;
+            }
+
+            int city_index = stoi(line);
+            // LKH官方程序是从1开始算城市的，所以要-1;
+            // Implement A1 LINE 1
+            // Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
+            // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
+            // xi: city index
+            tour.push_back(city_index-1);
+        }
+    }
+
+    // print_tour();
+
+    // output tour length
+    cerr << "Length: " << tour_length_LKH / scale << endl;
+    cerr << "Length computed: " << compute_total_distances() << endl;
+
+    // Implement A2 LINE 1
+    // 1: Initialize P∗ such that no items are packed.
+    // p*: previous packing status
+    vector<Item> prev_items = items;
+    vector<City> prev_cities = cities;
+    int prev_used_capacity = used_capacity;
+    double prev_object_value = object_value = compute_object_value(cities);
+
+    // Evaluate A2 LINE 1
+    /*
+    cerr << "packing status (" << prev_items.size() << "): ";
+    for(Item& this_item : prev_items)
+    {
+        cerr << this_item.packing_status << " ";
+    }
+    cerr << endl;
+     */
+
+    // Implement A2 LINE 2
+    // repeat until no improvement for X iterations
+    // X: RLS max iters
+    int RLS_max_iters = 3000;
+    int iter = 0;
+    int output_interval = 500;
+    // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
+    while(iter < RLS_max_iters)
+    {
+        // Evaluate A2 LINE 2
+        if(iter % output_interval == 0)
+        {
+            cerr << "iter: " << iter << endl;
+        }
+
+        // Implement A2 LINE 3
+        // Create P by inverting the packing status of a random picked item of P
+        // P是改变一个元素的P*
+        unsigned int rand_select = generated_random() % items.size();
+
+        // evaluate adding and removing items
+        // evaluate_add_and_remove_item(iter, rand_select);
+
+        items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
+
+        // Evaluate A2 LINE 3
+        /*
+        cerr << rand_select << " "
+        << items[rand_select].packing_status << endl;
+         */
+
+        int city_contained_rand_item = items[rand_select].assigned_city;
+        if(items[rand_select].packing_status) // if true, means add new item
+        {
+            cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
+            used_capacity += items[rand_select].weight;
+            if(iter % output_interval == 0)
+            {
+                cerr << "object value of adding " << rand_select << ": "
+                     << compute_object_value(cities) << endl;
+            }
+        }
+        else // if false, means remove item
+        {
+            auto it = std::find_if
+                    (cities[city_contained_rand_item].picked_items.begin(),
+                     cities[city_contained_rand_item].picked_items.end(),
+                     [rand_select](const Item& item)
+                     {
+                         return item.index == rand_select;
+                     });
+
+            if (it != cities[city_contained_rand_item].picked_items.end())
+            {
+                cities[city_contained_rand_item].picked_items.erase(it);
+            }
+
+            used_capacity -= items[rand_select].weight;
+
+            if(iter % output_interval == 0)
+            {
+                cerr << "object value of deleting " << rand_select << ": "
+                     << compute_object_value(cities) << endl;
+            }
+
+        }
+
+        object_value = compute_object_value(cities);
+
+        // evaluate adding and removing item in packing plan
+        /*
+        int item_count = 0;
+        for(const City& this_city : cities)
+        {
+            item_count += (int) (this_city.picked_items.size());
+        }
+        cerr << "total item count: " << item_count << endl;
+         */
+
+        // Implement A2 LINE 4
+        // if Z(Π, P) ≥ Z(Π, P∗) and w(P) ≤ W then
+        // Z(Π, P)改动后新的object_value
+        if(object_value >= prev_object_value && used_capacity <= capacity)
+        {
+            prev_cities = cities;
+            prev_items = items;
+            prev_used_capacity = used_capacity;
+            prev_object_value = object_value;
+            if(iter % output_interval == 0)
+            {
+                cerr << "object value updated: " << object_value
+                     << "\tused capacity: " << used_capacity << endl;
+            }
+        }
+        else
+        {
+            cities = prev_cities;
+            items = prev_items;
+            used_capacity = prev_used_capacity;
+            object_value = prev_object_value;
+            if(iter % output_interval == 0)
+            {
+                cerr << "object value unchanged: " << object_value
+                     << "\tused capacity: " << used_capacity << endl;
+            }
+        }
+
+        iter++;
+    }
+
+    double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+    cerr << "Running time(s): " << elapsed_time << endl;
+
+    return object_value;
+}
