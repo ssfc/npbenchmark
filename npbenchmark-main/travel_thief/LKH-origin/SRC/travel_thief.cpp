@@ -538,7 +538,7 @@ void TravelThief::save_result()
     }
 }
 
-bool TravelThief::checkTour() {
+bool TravelThief::check_tour() {
     std::set<int> expectedValues;
 
     // 添加期望的整数值到 expectedValues
@@ -648,7 +648,7 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
         cerr << "背包重量超了" << endl;
     }
 
-    if (checkTour()) {
+    if (check_tour()) {
         cerr << "tour contains all cities." << std::endl;
     } else {
         cerr << "tour is missing some cities." << std::endl;
