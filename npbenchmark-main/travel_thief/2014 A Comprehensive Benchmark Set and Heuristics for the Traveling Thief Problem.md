@@ -253,6 +253,10 @@ Initialize P∗ such that no items are packed.
 // A3 LINE 2
 repeat until no improvement for X iterations
 // X: 连续X个iterations都没有改进，退出    
+    
+    // A3 LINE 3
+    Create P by inverting the packing status of each item of P∗ independently with probability 1/m.
+    // P是改变一个元素的P*
 ```
 
 
