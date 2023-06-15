@@ -68,7 +68,7 @@ public:
 
     void compute_city_distances();
     double compute_total_distances();
-    void create_parameter_file();
+    void generate_tour();
 
     double compute_object_value(std::vector<City>& input_cities);
 
