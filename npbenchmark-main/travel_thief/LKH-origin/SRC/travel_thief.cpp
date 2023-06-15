@@ -1130,6 +1130,10 @@ double TravelThief::evolutionary_algorithm()
         }
 
         cerr << "change_count: " << change_count << endl;
+        if(iter % output_interval == 0)
+        {
+            cerr << "tried object value: "<< compute_object_value(cities) << endl;
+        }
 
         object_value = compute_object_value(cities);
 
