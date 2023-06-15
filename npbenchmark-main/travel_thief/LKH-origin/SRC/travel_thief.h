@@ -66,14 +66,7 @@ public:
     TravelThief(const std::string& input_file_with_path, int max_runtime);
     ~TravelThief();
 
-    void print_city_coords();
-
-    void print_items();
-
-    void print_tour();
-
     void compute_city_distances();
-
     double compute_total_distances();
 
     double compute_object_value(std::vector<City>& input_cities);
@@ -92,6 +85,9 @@ public:
     void save_result();
     bool checkTour();
     void compute_object_value_by_saved_result(std::string result_filename);
+    void print_city_coords();
+    void print_items();
+    void print_tour();
 };
 
 #endif //LKH_TRAVEL_THIEF_H

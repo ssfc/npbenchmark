@@ -1016,7 +1016,7 @@ double TravelThief::random_local_search()
     // X: RLS max iters
     int RLS_max_iters = 3;
     int iter = 0;
-    int output_interval = 500;
+    int output_interval = 1;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
@@ -1122,6 +1122,7 @@ double TravelThief::random_local_search()
     }
 
     double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+    cerr << "Final object value: " << object_value << endl;
     cerr << "Running time(s): " << elapsed_time << endl;
 
     return object_value;
