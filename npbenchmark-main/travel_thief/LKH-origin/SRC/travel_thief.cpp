@@ -1014,7 +1014,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 300000;
+    int RLS_max_iters = 3;
     int iter = 0;
     int output_interval = 500;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
@@ -1264,7 +1264,7 @@ double TravelThief::evolutionary_algorithm()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3000;
+    int RLS_max_iters = 5;
     int iter = 0;
     int output_interval = 500;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
@@ -1276,57 +1276,67 @@ double TravelThief::evolutionary_algorithm()
             cerr << "iter: " << iter << endl;
         }
 
-        // Implement A2 LINE 3
-        // Create P by inverting the packing status of a random picked item of P
-        // P是改变一个元素的P*
-        unsigned int rand_select = generated_random() % items.size();
-
-        // evaluate adding and removing items
-        // evaluate_add_and_remove_item(iter, rand_select);
-
-        items[rand_select].packing_status = !items[rand_select].packing_status; // 取反
-
-        // Evaluate A2 LINE 3
-        /*
-        cerr << rand_select << " "
-        << items[rand_select].packing_status << endl;
-         */
-
-        int city_contained_rand_item = items[rand_select].assigned_city;
-        if(items[rand_select].packing_status) // if true, means add new item
+        int change_prob = 30;
+        int rand_count = 0;
+        for(int i=0;i<items.size();i++)
         {
-            cities[city_contained_rand_item].picked_items.push_back(items[rand_select]);
-            used_capacity += items[rand_select].weight;
-            if(iter % output_interval == 0)
+            // Implement A2 LINE 3
+            // Create P by inverting the packing status of a random picked item of P
+            // P是改变一个元素的P*
+            if(generated_random() % change_prob == 0)
             {
-                cerr << "object value of adding " << rand_select << ": "
-                     << compute_object_value(cities) << endl;
+                rand_count++;
+
+                // evaluate adding and removing items
+                // evaluate_add_and_remove_item(iter, i);
+
+                items[i].packing_status = !items[i].packing_status; // 取反
+
+                // Evaluate A2 LINE 3
+                /*
+                cerr << i << " "
+                << items[i].packing_status << endl;
+                 */
+
+                int city_contained_rand_item = items[i].assigned_city;
+                if(items[i].packing_status) // if true, means add new item
+                {
+                    cities[city_contained_rand_item].picked_items.push_back(items[i]);
+                    used_capacity += items[i].weight;
+                    if(iter % output_interval == 0)
+                    {
+                        cerr << "object value of adding " << i << ": "
+                             << compute_object_value(cities) << endl;
+                    }
+                }
+                else // if false, means remove item
+                {
+                    auto it = std::find_if
+                            (cities[city_contained_rand_item].picked_items.begin(),
+                             cities[city_contained_rand_item].picked_items.end(),
+                             [i](const Item& item)
+                             {
+                                 return item.index == i;
+                             });
+
+                    if (it != cities[city_contained_rand_item].picked_items.end())
+                    {
+                        cities[city_contained_rand_item].picked_items.erase(it);
+                    }
+
+                    used_capacity -= items[i].weight;
+
+                    if(iter % output_interval == 0)
+                    {
+                        cerr << "object value of deleting " << i << ": "
+                             << compute_object_value(cities) << endl;
+                    }
+
+                }
             }
         }
-        else // if false, means remove item
-        {
-            auto it = std::find_if
-                    (cities[city_contained_rand_item].picked_items.begin(),
-                     cities[city_contained_rand_item].picked_items.end(),
-                     [rand_select](const Item& item)
-                     {
-                         return item.index == rand_select;
-                     });
 
-            if (it != cities[city_contained_rand_item].picked_items.end())
-            {
-                cities[city_contained_rand_item].picked_items.erase(it);
-            }
-
-            used_capacity -= items[rand_select].weight;
-
-            if(iter % output_interval == 0)
-            {
-                cerr << "object value of deleting " << rand_select << ": "
-                     << compute_object_value(cities) << endl;
-            }
-
-        }
+        cerr << "rand_count: " << rand_count << endl;
 
         object_value = compute_object_value(cities);
 
