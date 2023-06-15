@@ -1057,7 +1057,7 @@ double TravelThief::evolutionary_algorithm()
     // Implement A3 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 1;
+    int RLS_max_iters = 3;
     int iter = 0;
     int output_interval = 1;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
@@ -1070,7 +1070,7 @@ double TravelThief::evolutionary_algorithm()
         }
 
         int change_prob = (int) (items.size() / 2);
-        int rand_count = 0;
+        int change_count = 0;
         for(int i=0;i<items.size();i++)
         {
             // Implement A3 LINE 3
@@ -1078,7 +1078,7 @@ double TravelThief::evolutionary_algorithm()
             // P是改变一个元素的P*
             if(generated_random() % change_prob == 0)
             {
-                rand_count++;
+                change_count++;
 
                 // evaluate adding and removing items
                 // evaluate_add_and_remove_item(iter, i);
@@ -1129,7 +1129,7 @@ double TravelThief::evolutionary_algorithm()
             }
         }
 
-        cerr << "rand_count: " << rand_count << endl;
+        cerr << "change_count: " << change_count << endl;
 
         object_value = compute_object_value(cities);
 
