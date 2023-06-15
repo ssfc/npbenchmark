@@ -226,6 +226,11 @@ double TravelThief::compute_total_distances()
     return tour_length_computed;
 }
 
+void TravelThief::create_parameter_file()
+{
+    
+}
+
 /*
 void TravelThief::sample_solver()
 {
