@@ -888,7 +888,7 @@ double TravelThief::random_local_search()
     // test.sample_solver();
 
     generate_tour();
-    
+
     // Implement A2 LINE 1
     // 1: Initialize P∗ such that no items are packed.
     // p*: previous packing status
@@ -1030,115 +1030,7 @@ double TravelThief::evolutionary_algorithm()
     compute_city_distances();
     // test.sample_solver();
 
-    // Set parameters;
-    string parameter_filename = "pr2392.par";
-    string problem_filename = "pr2392.tsp";
-    int move_type = 5;
-    int patching_c = 3;
-    int patching_a = 2;
-    int runs = 1;
-    string output_filename = "output_tour.txt";
-
-    // create parameter file;
-    ofstream parameter_file(parameter_filename);
-    if (parameter_file.is_open())
-    {
-        parameter_file << "PROBLEM_FILE = " << problem_filename << "\n";
-        // parameter_file << "OPTIMUM = 378032\n";
-        parameter_file << "MOVE_TYPE = " << move_type << "\n";
-        parameter_file << "PATCHING_C = " << patching_c << "\n";
-        parameter_file << "PATCHING_A = " << patching_a << "\n";
-        // parameter_file << "PRECISION = 90\n";
-        parameter_file << "RUNS = " << runs << "\n";
-        parameter_file << "OUTPUT_TOUR_FILE = " << output_filename << "\n";
-        parameter_file.close();
-        cerr << "Parameter file created successfully.\n";
-    }
-    else
-    {
-        cerr << "Unable to create parameter file.\n";
-    }
-
-    // Set problem
-    string tsp_problem_name = "pr2392";
-    string tsp_comment = "2392-city problem (Padberg/Rinaldi)";
-    string tsp_type = "TSP";
-    string tsp_edge_weight_type = "EUC_2D";
-    int scale = 100; // 坐标放大倍数
-
-    // create TSP file;
-    ofstream tsp_file(problem_filename);
-    if (tsp_file.is_open())
-    {
-        tsp_file << "NAME : " << tsp_problem_name << "\n";
-        tsp_file << "COMMENT : " << tsp_comment << "\n";
-        tsp_file << "TYPE : " << tsp_type << "\n";
-        tsp_file << "DIMENSION : " << num_cities << "\n";
-        tsp_file << "EDGE_WEIGHT_TYPE : " << tsp_edge_weight_type << "\n";
-        tsp_file << "NODE_COORD_SECTION\n";
-        for(int i=0;i<num_cities;i++)
-        {
-            // LKH官方程序是从1开始算城市的，所以要+1;
-            // tsp_file << i+1 << " " << city_coords[i].x << " " << city_coords[i].y << "\n";
-
-            // 试着缩放一下坐标；
-            tsp_file << i+1 << " " << cities[i].x * scale << " " << cities[i].y * scale << "\n";
-        }
-        tsp_file << "EOF\n";
-        tsp_file.close();
-        cerr << "TSP file created successfully.\n";
-    }
-    else
-    {
-        cerr << "Unable to create TSP file.\n";
-    }
-
-    // hello_world();
-    compute_tsp();
-
-    ifstream inputFile(output_filename);
-
-    // string line;
-    bool tourSectionReached = false;
-
-    string line;
-    while (getline(inputFile, line))
-    {
-        if (line.find("COMMENT : Length =") != string::npos)
-        {
-            // 提取路径长度: Ah... 这个路径长度和自己手动累加的不一样呀;
-            string lengthStr = line.substr(line.find('=') + 1);
-            tour_length_LKH = stod(lengthStr);
-        }
-
-        if (line.find("TOUR_SECTION") != string::npos)
-        {
-            tourSectionReached = true;
-            continue;
-        }
-
-        if (tourSectionReached)
-        {
-            if (line == "-1" || line == "EOF")
-            {
-                break;
-            }
-
-            int city_index = stoi(line);
-            // LKH官方程序是从1开始算城市的，所以要-1;
-            // Implement A1 LINE 1
-            // Fill the array D with values dxi, xi ∈ {x2, . . . , xn}
-            // dxi: total travel distance of item Ixik // 这个显然要从被捡起来开始算。
-            // xi: city index
-            tour.push_back(city_index-1);
-        }
-    }
-
-    // print_tour();
-
-    // output tour length
-    cerr << "Length: " << tour_length_LKH / scale << endl;
-    cerr << "Length computed: " << compute_total_distances() << endl;
+    generate_tour();
 
     // Implement A3 LINE 1
     // 1: Initialize P∗ such that no items are packed.
