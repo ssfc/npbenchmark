@@ -910,11 +910,13 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3;
+    int RLS_max_iters = 3000;
     int iter = 0;
     int output_interval = 1;
+    int max_no_improve_iter = 50; // 如果X次没有改进，跳出循环
+    int no_improve_iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
-    while(iter < RLS_max_iters)
+    while(iter < RLS_max_iters && no_improve_iter < max_no_improve_iter)
     {
         // Evaluate A2 LINE 2
         if(iter % output_interval == 0)
@@ -991,6 +993,7 @@ double TravelThief::random_local_search()
         // Z(Π, P)改动后新的object_value
         if(object_value >= prev_object_value && used_capacity <= capacity)
         {
+            no_improve_iter = 0;
             prev_cities = cities;
             prev_items = items;
             prev_used_capacity = used_capacity;
@@ -1003,13 +1006,14 @@ double TravelThief::random_local_search()
         }
         else
         {
+            no_improve_iter++;
             cities = prev_cities;
             items = prev_items;
             used_capacity = prev_used_capacity;
             object_value = prev_object_value;
             if(iter % output_interval == 0)
             {
-                cerr << "object value unchanged: " << object_value
+                cerr << "object value unchanged " << no_improve_iter << ": " << object_value
                      << "\tused capacity: " << used_capacity << endl;
             }
         }
