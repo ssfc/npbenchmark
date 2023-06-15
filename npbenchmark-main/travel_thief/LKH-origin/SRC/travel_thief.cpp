@@ -1054,26 +1054,26 @@ double TravelThief::evolutionary_algorithm()
     cerr << endl;
      */
 
-    // Implement A2 LINE 2
+    // Implement A3 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 0;
+    int RLS_max_iters = 1;
     int iter = 0;
-    int output_interval = 500;
+    int output_interval = 1;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
-        // Evaluate A2 LINE 2
+        // Evaluate A3 LINE 2
         if(iter % output_interval == 0)
         {
             cerr << "iter: " << iter << endl;
         }
 
-        int change_prob = (int) (items.size() / 5);
+        int change_prob = (int) (items.size() / 2);
         int rand_count = 0;
         for(int i=0;i<items.size();i++)
         {
-            // Implement A2 LINE 3
+            // Implement A3 LINE 3
             // Create P by inverting the packing status of a random picked item of P
             // P是改变一个元素的P*
             if(generated_random() % change_prob == 0)
@@ -1085,7 +1085,7 @@ double TravelThief::evolutionary_algorithm()
 
                 items[i].packing_status = !items[i].packing_status; // 取反
 
-                // Evaluate A2 LINE 3
+                // Evaluate A3 LINE 3
                 /*
                 cerr << i << " "
                 << items[i].packing_status << endl;
@@ -1143,7 +1143,7 @@ double TravelThief::evolutionary_algorithm()
         cerr << "total item count: " << item_count << endl;
          */
 
-        // Implement A2 LINE 4
+        // Implement A3 LINE 4
         // if Z(Π, P) ≥ Z(Π, P∗) and w(P) ≤ W then
         // Z(Π, P)改动后新的object_value
         if(object_value >= prev_object_value && used_capacity <= capacity)
