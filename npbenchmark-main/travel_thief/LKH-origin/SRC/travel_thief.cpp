@@ -228,9 +228,6 @@ double TravelThief::compute_total_distances()
 
 void TravelThief::generate_tour()
 {
-    compute_city_distances();
-    // test.sample_solver();
-
     // Set parameters;
     string parameter_filename = "pr2392.par";
     string problem_filename = "pr2392.tsp";
@@ -664,6 +661,8 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
+    compute_city_distances();
+    // test.sample_solver();
     generate_tour();
 
     // Implement A1 LINE 3

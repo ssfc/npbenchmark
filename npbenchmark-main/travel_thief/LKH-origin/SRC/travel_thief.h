@@ -68,7 +68,7 @@ public:
 
     void compute_city_distances();
     double compute_total_distances();
-    void generate_tour();
+    void generate_tour(); // generate tour by LKH algorithm
 
     double compute_object_value(std::vector<City>& input_cities);
 
