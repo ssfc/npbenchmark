@@ -1276,7 +1276,7 @@ double TravelThief::evolutionary_algorithm()
             cerr << "iter: " << iter << endl;
         }
 
-        int change_prob = 30;
+        int change_prob = (int) (items.size() / 5);
         int rand_count = 0;
         for(int i=0;i<items.size();i++)
         {
