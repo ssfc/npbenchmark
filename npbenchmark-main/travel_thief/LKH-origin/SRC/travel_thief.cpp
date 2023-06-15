@@ -1243,7 +1243,7 @@ double TravelThief::evolutionary_algorithm()
     cerr << "Length: " << tour_length_LKH / scale << endl;
     cerr << "Length computed: " << compute_total_distances() << endl;
 
-    // Implement A2 LINE 1
+    // Implement A3 LINE 1
     // 1: Initialize P∗ such that no items are packed.
     // p*: previous packing status
     vector<Item> prev_items = items;
@@ -1264,7 +1264,7 @@ double TravelThief::evolutionary_algorithm()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 5;
+    int RLS_max_iters = 0;
     int iter = 0;
     int output_interval = 500;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
