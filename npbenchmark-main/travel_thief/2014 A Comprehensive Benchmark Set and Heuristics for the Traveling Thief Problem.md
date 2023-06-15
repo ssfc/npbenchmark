@@ -244,6 +244,11 @@ repeat until no improvement for X iterations
         // P: current state
 ```
 
+```c++
+// Algorithm 3 (1+1) Evolutionary Algorithm (EA)
+
+```
+
 
 
 ## 5. EXPERIMENTS
