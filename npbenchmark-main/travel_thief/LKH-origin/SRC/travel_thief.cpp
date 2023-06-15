@@ -552,7 +552,7 @@ double TravelThief::simple_heuristic()
     int runs = 1;
     string output_filename = "output_tour.txt";
 
-    // construct parameter file;
+    // create parameter file;
     ofstream parameter_file(parameter_filename);
     if (parameter_file.is_open())
     {
@@ -579,7 +579,7 @@ double TravelThief::simple_heuristic()
     string tsp_edge_weight_type = "EUC_2D";
     int scale = 100; // 坐标放大倍数
 
-    // construct TSP file;
+    // create TSP file;
     ofstream tsp_file(problem_filename);
     if (tsp_file.is_open())
     {
@@ -892,7 +892,7 @@ double TravelThief::random_local_search()
     int runs = 1;
     string output_filename = "output_tour.txt";
 
-    // construct parameter file;
+    // create parameter file;
     ofstream parameter_file(parameter_filename);
     if (parameter_file.is_open())
     {
@@ -919,7 +919,7 @@ double TravelThief::random_local_search()
     string tsp_edge_weight_type = "EUC_2D";
     int scale = 100; // 坐标放大倍数
 
-    // construct TSP file;
+    // create TSP file;
     ofstream tsp_file(problem_filename);
     if (tsp_file.is_open())
     {
@@ -1142,7 +1142,7 @@ double TravelThief::evolutionary_algorithm()
     int runs = 1;
     string output_filename = "output_tour.txt";
 
-    // construct parameter file;
+    // create parameter file;
     ofstream parameter_file(parameter_filename);
     if (parameter_file.is_open())
     {
@@ -1169,7 +1169,7 @@ double TravelThief::evolutionary_algorithm()
     string tsp_edge_weight_type = "EUC_2D";
     int scale = 100; // 坐标放大倍数
 
-    // construct TSP file;
+    // create TSP file;
     ofstream tsp_file(problem_filename);
     if (tsp_file.is_open())
     {
