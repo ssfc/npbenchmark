@@ -228,7 +228,7 @@ Initialize P∗ such that no items are packed.
 
 // A2 LINE 2
 repeat until no improvement for X iterations
-// X: RLS max iters
+// X: 连续X个iterations都没有改进，退出
     
     // A2 LINE 3
     Create P by inverting the packing status of a uniformly at random picked item of P
@@ -246,8 +246,13 @@ repeat until no improvement for X iterations
 
 ```c++
 // Algorithm 3 (1+1) Evolutionary Algorithm (EA)
-// A1 LINE 1
-
+// A3 LINE 1
+Initialize P∗ such that no items are packed.
+// p*: previous packing status
+    
+// A3 LINE 2
+repeat until no improvement for X iterations
+// X: 连续X个iterations都没有改进，退出    
 ```
 
 
