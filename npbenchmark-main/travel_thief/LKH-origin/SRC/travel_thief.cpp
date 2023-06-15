@@ -910,10 +910,10 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3000;
+    int RLS_max_iters = 300000;
     int iter = 0;
     int output_interval = 1;
-    int max_no_improve_iter = 50; // 如果X次没有改进，跳出循环
+    int max_no_improve_iter = 500; // 如果X次没有改进，跳出循环
     int no_improve_iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters && no_improve_iter < max_no_improve_iter)
@@ -1057,9 +1057,9 @@ double TravelThief::evolutionary_algorithm()
     // Implement A3 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3;
+    int RLS_max_iters = 3000000;
     int iter = 0;
-    int output_interval = 1;
+    int output_interval = 100;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
     while(iter < RLS_max_iters)
     {
@@ -1069,7 +1069,7 @@ double TravelThief::evolutionary_algorithm()
             cerr << "iter: " << iter << endl;
         }
 
-        int change_prob = (int) (items.size() / 2);
+        int change_prob = (int) (items.size() / 4);
         int change_count = 0;
         for(int i=0;i<items.size();i++)
         {
@@ -1129,9 +1129,9 @@ double TravelThief::evolutionary_algorithm()
             }
         }
 
-        cerr << "change_count: " << change_count << endl;
         if(iter % output_interval == 0)
         {
+            cerr << "change_count: " << change_count << endl;
             cerr << "tried object value: "<< compute_object_value(cities) << endl;
         }
 
