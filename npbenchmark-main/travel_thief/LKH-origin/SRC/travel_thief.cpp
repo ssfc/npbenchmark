@@ -669,6 +669,7 @@ void TravelThief::print_numerical_features() const
     // Output total weight
     cerr << "capacity: " << capacity << " used capacity: " << used_capacity << endl;
     cerr << "total value: " << total_value << endl;
+    cerr << "num item in each city: " << num_items / (num_cities - 1) << endl;
 }
 
 // Algorithm 1
