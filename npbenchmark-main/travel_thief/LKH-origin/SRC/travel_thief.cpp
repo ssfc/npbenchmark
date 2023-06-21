@@ -28,7 +28,8 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
         total_traveling_time(0.0),
-        min_item_value(INT_MAX)
+        min_item_value(INT_MAX),
+        max_item_value(0)
 {
     start_time = clock();
     int input_seed = 1;
@@ -148,6 +149,11 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
                         if(value < min_item_value)
                         {
                             min_item_value = value;
+                        }
+
+                        if(value > max_item_value)
+                        {
+                            max_item_value = value;
                         }
 
                         // 输出节点坐标
@@ -679,6 +685,7 @@ void TravelThief::print_numerical_features() const
     cerr << "total value: " << total_value << endl;
     cerr << "num item in each city: " << num_items / (num_cities - 1) << endl;
     cerr << "min item value: " << min_item_value << endl;
+    cerr << "max item value: " << max_item_value << endl;
 }
 
 // Algorithm 1
