@@ -65,6 +65,7 @@ class TravelThief{
     int min_item_value;
     int max_item_value;
     int min_item_weight;
+    int max_item_weight;
 
 public:
     TravelThief(const std::string& input_file_with_path, int max_runtime);

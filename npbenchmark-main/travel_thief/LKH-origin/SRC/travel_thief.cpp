@@ -30,7 +30,8 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         total_traveling_time(0.0),
         min_item_value(INT_MAX),
         max_item_value(0),
-        min_item_weight(INT_MAX)
+        min_item_weight(INT_MAX),
+        max_item_weight(0)
 {
     start_time = clock();
     int input_seed = 1;
@@ -160,6 +161,11 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
                         if(weight < min_item_weight)
                         {
                             min_item_weight = weight;
+                        }
+
+                        if(weight > max_item_weight)
+                        {
+                            max_item_weight = weight;
                         }
 
                         // 输出节点坐标
@@ -693,6 +699,7 @@ void TravelThief::print_numerical_features() const
     cerr << "min item value: " << min_item_value << endl;
     cerr << "max item value: " << max_item_value << endl;
     cerr << "min item weight: " << min_item_weight << endl;
+    cerr << "max item weight: " << max_item_weight << endl;
 }
 
 // Algorithm 1
