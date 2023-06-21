@@ -666,7 +666,7 @@ void TravelThief::print_numerical_features() const
     // Output item num
     cerr << "num items: " << num_items << endl;
     // Output total weight
-    
+    cerr << "capacity: " << capacity << " used capacity: " << used_capacity << endl;
 }
 
 // Algorithm 1
