@@ -910,7 +910,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 300000;
+    int RLS_max_iters = 3000;
     int iter = 0;
     int output_interval = 500;
     int max_no_improve_iter = 300000; // 如果X次没有改进，跳出循环
