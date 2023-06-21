@@ -22,6 +22,7 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         max_speed(0.0),
         renting_ratio(0.0),
         used_capacity(0),
+        total_value(0.0),
         object_value(0.0),
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
@@ -417,7 +418,7 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
 {
     double weight_leaving = 0.0;
     double collect_time = 0.0;
-    double total_value = 0.0; // 偷盗物品的总价值
+    total_value = 0.0; // 偷盗物品的总价值
     // cerr << "tour with picked items: ";
     for(int i=0; i<tour.size(); i++)
     {
@@ -667,6 +668,7 @@ void TravelThief::print_numerical_features() const
     cerr << "num items: " << num_items << endl;
     // Output total weight
     cerr << "capacity: " << capacity << " used capacity: " << used_capacity << endl;
+    cerr << "total value: " << total_value << endl;
 }
 
 // Algorithm 1
@@ -832,7 +834,7 @@ double TravelThief::simple_heuristic()
 void TravelThief::evaluate_add_one_item()
 {
     // evaluate add one item;
-    double total_value = items[240].value;
+    total_value = items[240].value;
     cerr << "expected total value: " << total_value << endl;
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * items[240].weight);
@@ -848,7 +850,7 @@ void TravelThief::evaluate_add_one_item()
 void TravelThief::evaluate_add_two_items()
 {
     // evaluate add two items;
-    double total_value = items[240].value + items[0].value;
+    total_value = items[240].value + items[0].value;
     cerr << "expected total value: " << total_value << endl;
     double back_time = city2city_distances[tour[tour.size()-1]][tour[0]]
                        / (max_speed - speed_capacity_ratio * (items[240].weight + items[0].weight));

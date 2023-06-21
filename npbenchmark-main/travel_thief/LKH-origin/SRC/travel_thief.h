@@ -49,6 +49,7 @@ class TravelThief{
     // computed from the above;
     double speed_capacity_ratio;
     int used_capacity; // Wc
+    double total_value;
     double object_value;
 
     // concerning LKH;
