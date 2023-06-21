@@ -658,6 +658,13 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
     cerr << "object_value: " << object_value << endl;
 }
 
+// print numerical features
+void TravelThief::print_numerical_features()
+{
+    // Output node num
+    cerr << "num cities: " << num_cities << endl;
+}
+
 // Algorithm 1
 double TravelThief::simple_heuristic()
 {
