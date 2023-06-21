@@ -292,7 +292,7 @@ void TravelThief::generate_tour()
     }
 
     // hello_world();
-    // compute_tsp();
+    compute_tsp();
 
     ifstream inputFile(output_filename);
 
