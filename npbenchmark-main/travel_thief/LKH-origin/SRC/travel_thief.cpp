@@ -659,10 +659,14 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
 }
 
 // print numerical features
-void TravelThief::print_numerical_features()
+void TravelThief::print_numerical_features() const
 {
     // Output node num
     cerr << "num cities: " << num_cities << endl;
+    // Output item num
+    cerr << "num items: " << num_items << endl;
+    // Output total weight
+    
 }
 
 // Algorithm 1

@@ -89,7 +89,7 @@ public:
     void print_city_coords();
     void print_items();
     void print_tour();
-    void print_numerical_features(); // print numerical features of instance;
+    void print_numerical_features() const; // print numerical features of instance;
 };
 
 #endif //LKH_TRAVEL_THIEF_H
