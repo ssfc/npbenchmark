@@ -4,6 +4,7 @@
 extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
 #include "travel_thief.h"
+#include <climits>
 #include <cmath>
 #include <iostream>
 #include <algorithm>
@@ -26,7 +27,8 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
         object_value(0.0),
         tour_length_LKH(0.0),
         tour_length_computed(0.0),
-        total_traveling_time(0.0)
+        total_traveling_time(0.0),
+        min_item_value(INT_MAX)
 {
     start_time = clock();
     int input_seed = 1;
@@ -142,6 +144,12 @@ TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
                         replace(line.begin(), line.end(), '\t', ' ');
                         istringstream iss(line);
                         iss >> index >> value >> weight >> assigned_city;
+
+                        if(value < min_item_value)
+                        {
+                            min_item_value = value;
+                        }
+
                         // 输出节点坐标
                         // cerr << index << " " << profit << " " << weight << " " << assigned_city << endl;
                         Item temp{};
@@ -670,6 +678,7 @@ void TravelThief::print_numerical_features() const
     cerr << "capacity: " << capacity << " used capacity: " << used_capacity << endl;
     cerr << "total value: " << total_value << endl;
     cerr << "num item in each city: " << num_items / (num_cities - 1) << endl;
+    cerr << "min item value: " << min_item_value << endl;
 }
 
 // Algorithm 1

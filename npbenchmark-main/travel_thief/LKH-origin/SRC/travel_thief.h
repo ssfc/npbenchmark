@@ -62,6 +62,7 @@ class TravelThief{
     std::mt19937 generated_random;
     clock_t start_time;
     std::string filename;
+    int min_item_value;
 
 public:
     TravelThief(const std::string& input_file_with_path, int max_runtime);
