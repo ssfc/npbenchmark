@@ -701,6 +701,8 @@ void TravelThief::print_numerical_features() const
     cerr << "min item weight: " << min_item_weight << endl;
     cerr << "max item weight: " << max_item_weight << endl;
     cerr << "renting ratio: " << renting_ratio << endl;
+    cerr << "max speed: " << max_speed << endl;
+    cerr << "min speed: " << min_speed << endl;
 }
 
 // Algorithm 1
