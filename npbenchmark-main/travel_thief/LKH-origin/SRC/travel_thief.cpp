@@ -259,6 +259,8 @@ void TravelThief::generate_tour()
     string parameter_filename = "pr2392.par";
     string problem_filename = "pr2392.tsp";
     int move_type = 5;
+    int max_trials = num_cities;
+    int max_candidates = 5;
     int patching_c = 3;
     int patching_a = 2;
     int runs = 1;
@@ -271,6 +273,7 @@ void TravelThief::generate_tour()
         parameter_file << "PROBLEM_FILE = " << problem_filename << "\n";
         // parameter_file << "OPTIMUM = 378032\n";
         parameter_file << "MOVE_TYPE = " << move_type << "\n";
+        parameter_file << "MAX_CANDIDATES = " << max_candidates << "\n";
         parameter_file << "PATCHING_C = " << patching_c << "\n";
         parameter_file << "PATCHING_A = " << patching_a << "\n";
         // parameter_file << "PRECISION = 90\n";
@@ -957,7 +960,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3000;
+    int RLS_max_iters = 0;
     int iter = 0;
     int output_interval = 500;
     int max_no_improve_iter = 300000; // 如果X次没有改进，跳出循环
