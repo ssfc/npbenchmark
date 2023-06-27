@@ -273,6 +273,7 @@ void TravelThief::generate_tour()
         parameter_file << "PROBLEM_FILE = " << problem_filename << "\n";
         // parameter_file << "OPTIMUM = 378032\n";
         parameter_file << "MOVE_TYPE = " << move_type << "\n";
+        parameter_file << "MAX_TRIALS = " << max_trials << "\n";
         parameter_file << "MAX_CANDIDATES = " << max_candidates << "\n";
         parameter_file << "PATCHING_C = " << patching_c << "\n";
         parameter_file << "PATCHING_A = " << patching_a << "\n";
