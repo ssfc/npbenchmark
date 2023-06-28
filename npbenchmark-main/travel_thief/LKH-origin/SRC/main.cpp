@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
     travel_thief.random_local_search();
     // travel_thief.print_numerical_features(); // print numerical feature of instances
     // travel_thief.evolutionary_algorithm();
-    // travel_thief.save_result();
+    travel_thief.save_result();
     // travel_thief.compute_object_value_by_saved_result(argv[2]);
 
     return 0;
