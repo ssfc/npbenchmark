@@ -516,7 +516,8 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
 void TravelThief::save_result()
 {
     cerr << "filename: " << filename << endl;
-    string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
+    // string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
+    string save_filename = filename + ".thisIsMyAlgorithm";
     ofstream result_file(save_filename);
     if (result_file.is_open())
     {
@@ -551,6 +552,13 @@ void TravelThief::save_result()
         // save packed items;
         result_file << "[";
 
+        // 果然, packing status全是0;
+        /*
+        for(int i=0;i<items.size();i++)
+        {
+            result_file << items[i].packing_status << " ";
+        }*/
+        
         for (int i = 0; i < packing_plan.size(); i++)
         {
             result_file << packing_plan[i] + 1; // number starts with 1
@@ -963,7 +971,7 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 0;
+    int RLS_max_iters = 3000;
     int iter = 0;
     int output_interval = 500;
     int max_no_improve_iter = 300000; // 如果X次没有改进，跳出循环
