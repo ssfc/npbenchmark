@@ -261,6 +261,7 @@ void TravelThief::generate_tour()
     int move_type = 5;
     int max_trials = num_cities;
     int max_candidates = 5;
+    int time_limit = 10;
     int patching_c = 3;
     int patching_a = 2;
     int runs = 1;
@@ -275,6 +276,7 @@ void TravelThief::generate_tour()
         parameter_file << "MOVE_TYPE = " << move_type << "\n";
         parameter_file << "MAX_TRIALS = " << max_trials << "\n";
         parameter_file << "MAX_CANDIDATES = " << max_candidates << "\n";
+        parameter_file << "TIME_LIMIT = " << time_limit << "\n";
         parameter_file << "PATCHING_C = " << patching_c << "\n";
         parameter_file << "PATCHING_A = " << patching_a << "\n";
         // parameter_file << "PRECISION = 90\n";
