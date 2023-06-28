@@ -552,13 +552,13 @@ void TravelThief::save_result()
         // save packed items;
         result_file << "[";
 
-        // 果然, packing status全是0;
+        // 测试packing status的情况;
         /*
         for(int i=0;i<items.size();i++)
         {
             result_file << items[i].packing_status << " ";
         }*/
-        
+
         for (int i = 0; i < packing_plan.size(); i++)
         {
             result_file << packing_plan[i] + 1; // number starts with 1
