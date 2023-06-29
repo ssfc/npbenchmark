@@ -6,13 +6,15 @@ This is a simple alarm clock built with Python using the tkinter library for the
 
 ## Usage
 
-In path \dist\main, double click main.exe
+On windows platform, change directory to the exe file path. Then run command: LKH.exe argument1. The argument 1 is path of instance file, for example C:\wamp64\www\npbenchmark\npbenchmark-main\travel_thief\LKH-origin\SRC\data\a280_n279_bounded-strongly-corr_01.ttp
+
+On Linux platform, change directory to path of LKH file. The run command: ./LKH argument1.  The argument 1 is path of instance file, for example ../data/a280_n279_bounded-strongly-corr_01.ttp
 
 ## Building
 
-In file main.py, set variable time_points.
+On windows platform, build in IDE according to CMakeLists.txt.
 
-Then pack the file in terminal: pyinstaller main.py --noconsole
+On Linux platform, run command:  cmake . ; make 
 
 ## Requirements
 
