@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple alarm clock built with Python using the tkinter library for the graphical user interface and the winsound library for playing sound alerts.
+This is my program built with c++ for solving TTP.
 
 ## Usage
 
