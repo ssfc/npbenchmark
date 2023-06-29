@@ -16,4 +16,4 @@ Then pack the file in terminal: pyinstaller main.py --noconsole
 
 ## Requirements
 
-This program requires Python 3.x, as well as the tkinter and winsound libraries, which are included in most Python distributions.
+This program requires c++ version >= 17 and C version >= 11.
