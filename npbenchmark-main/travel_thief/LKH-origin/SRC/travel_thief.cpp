@@ -517,8 +517,8 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
 void TravelThief::save_result()
 {
     cerr << "filename: " << filename << endl;
-    // string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
-    string save_filename = filename + ".thisIsMyAlgorithm";
+    string save_filename = filename + ".thisIsMyAlgorithm." + to_string(clock());
+    // string save_filename = filename + ".thisIsMyAlgorithm";
     ofstream result_file(save_filename);
     if (result_file.is_open())
     {
