@@ -259,7 +259,7 @@ void TravelThief::generate_tour()
     string parameter_filename = "pr2392.par";
     string problem_filename = "pr2392.tsp";
     int move_type = 5;
-    int max_trials = num_cities;
+    int max_trials = num_cities * 2 / 3;
     int max_candidates = 5;
     int time_limit = 10;
     int patching_c = 3;
