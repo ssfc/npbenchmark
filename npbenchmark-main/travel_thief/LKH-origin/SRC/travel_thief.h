@@ -61,6 +61,7 @@ class TravelThief{
     // debug variables:
     std::mt19937 generated_random;
     clock_t start_time;
+    int max_runtime;
     std::string filename;
     int min_item_value;
     int max_item_value;

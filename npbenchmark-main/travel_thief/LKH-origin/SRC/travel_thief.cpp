@@ -15,7 +15,8 @@ extern "C" int compute_tsp(); // 声明c文件中的函数原型
 
 using namespace std;
 
-TravelThief::TravelThief(const string& input_file_with_path, int max_runtime):
+TravelThief::TravelThief(const string& input_file_with_path, int input_max_runtime):
+        max_runtime(input_max_runtime),
         num_cities(0),
         num_items(0),
         capacity(0),
@@ -971,13 +972,14 @@ double TravelThief::random_local_search()
     // Implement A2 LINE 2
     // repeat until no improvement for X iterations
     // X: RLS max iters
-    int RLS_max_iters = 3000;
+    int RLS_max_iters = INT_MAX;
     int iter = 0;
-    int output_interval = 500;
-    int max_no_improve_iter = 300000; // 如果X次没有改进，跳出循环
+    int output_interval = 50000;
+    int max_no_improve_iter = INT_MAX; // 如果X次没有改进，跳出循环
     int no_improve_iter = 0;
     // cerr << "object value of empty" << ": " << compute_object_value(cities) << endl;
-    while(iter < RLS_max_iters && no_improve_iter < max_no_improve_iter)
+    while(iter < RLS_max_iters && no_improve_iter < max_no_improve_iter
+    && (clock() - start_time) < CLOCKS_PER_SEC * (max_runtime-1))
     {
         // Evaluate A2 LINE 2
         if(iter % output_interval == 0)
