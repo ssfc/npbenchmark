@@ -453,6 +453,9 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     double collect_time = 0.0;
     total_value = 0.0; // 偷盗物品的总价值
     // cerr << "tour with picked items: ";
+
+    ofstream middle_file("collect_time.txt");
+
     for(int i=0; i<tour.size(); i++)
     {
         if(!input_cities[tour[i]].picked_items.empty())
@@ -470,11 +473,16 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
 
         if(i != tour.size()-1)
         {
-            collect_time += city2city_distances[tour[i]][tour[i+1]] / (max_speed - speed_capacity_ratio * weight_leaving);
+            // cerr << "city2city distance: " << city2city_distances[tour[i]][tour[i+1]] << endl; // 没有问题
+            double temp = city2city_distances[tour[i]][tour[i+1]] / (max_speed - speed_capacity_ratio * weight_leaving);
+            // cerr << "每一项：" << temp << " ";
+            middle_file << temp << "\n";
+            // collect_time = collect_time + city2city_distances[tour[i]][tour[i+1]];
         }
 
         // cerr << "collect time " << collect_time << " ";
     }
+    middle_file.close();
     // cerr << endl;
 
     // 从最后一个城市返回出发点的时间
@@ -494,10 +502,35 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     // cerr << "total value: " << total_value << endl;
     // cerr << "the latter part: " << - renting_ratio * (back_time + collect_time) << endl;
     // evaluate back time
-    // cerr << "back time: " << back_time << endl;
+    cerr << "back time: " << back_time << endl;
     // cerr << "back time base: " << city2city_distances[tour[tour.size()-1]][tour[0]] << endl;
     // evaluate collect time
-    // cerr << "collect time: " << collect_time << endl;
+
+    std::ifstream file("collect_time.txt");
+    if (!file) {
+        std::cerr << "Failed to open file." << std::endl;
+        return 1;
+    }
+
+    collect_time = 0.0;
+    std::string line;
+    while (std::getline(file, line)) {
+        try {
+            double value = std::stod(line);
+            collect_time += value;
+        } catch (const std::invalid_argument& e) {
+            std::cerr << "Invalid argument: " << e.what() << std::endl;
+            continue;
+        } catch (const std::out_of_range& e) {
+            std::cerr << "Out of range: " << e.what() << std::endl;
+            continue;
+        }
+    }
+
+    file.close();
+
+
+    cerr << "collect time: " << collect_time << endl;
     /*
     double collect_time_base = 0;
     for(int i = 0; i<tour.size()-1; i++)
@@ -507,7 +540,8 @@ double TravelThief::compute_object_value(vector<City>& input_cities)
     cerr << "collect time base: " << collect_time_base << endl;
      */
 
-    // cerr << "total time: " << back_time + collect_time << endl;
+    cerr << "total value: " << total_value << endl;
+    cerr << "total time: " << back_time + collect_time << endl;
     double output_object_value = total_value - renting_ratio * (back_time + collect_time);
     // cerr << "object value: " << output_object_value << endl;
 
@@ -649,17 +683,21 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
 
         // 打印结果
         cerr << "Tour: ";
+        /*
         for (int num : tour)
         {
             cerr << num << " ";
         }
+         */
         cerr << endl;
 
         cerr << "Packing Plan: ";
+        /*
         for (int num : packing_plan)
         {
             cerr << num << " ";
         }
+         */
         cerr << endl;
 
         sort(items.begin(), items.end(), [](const Item& item1, const Item& item2) {
@@ -683,7 +721,7 @@ void TravelThief::compute_object_value_by_saved_result(string result_filename)
 
     if(used_capacity <= capacity)
     {
-        cerr << "重量满足条件" << endl;
+        cerr << "used capacity: " << used_capacity << " 重量满足条件" << endl;
     }
     else
     {
