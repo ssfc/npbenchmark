@@ -56,6 +56,16 @@ Source: Conversation with Bing, 2023/5/30
 (2) 技术解析 | 多智能体路径规划（MAPF） - 知乎 - 知乎专栏. https://zhuanlan.zhihu.com/p/388982360.
 (3) CBS基于冲突的搜索算法流程和核心 - CSDN博客. https://blog.csdn.net/m0_58135773/article/details/124699226.
 
+### Q: 提出MAPF CBS的论文是哪一篇？
+
+提出MAPF CBS的论文是**Conflict-based search for optimal multi-agent path finding**¹，发表在2012年的Artificial Intelligence Journal上。这篇论文提出了一种基于冲突的两层搜索算法，可以在多智能体路径规划（MAPF）问题上找到全局最优解。³¹: https://www.sciencedirect.com/science/article/pii/S0004370211001047
+³: https://zhuanlan.zhihu.com/p/611361907
+
+源: 与必应的对话， 2023/7/7
+(1) Conflict-Based Search for Explainable Multi-Agent Path Finding. https://arxiv.org/abs/2202.09930.
+(2) CBS(Conflict-Based Search)多机器人路径规划 - 知乎. https://zhuanlan.zhihu.com/p/611361907.
+(3) EECBS: A Bounded-Suboptimal Search for Multi-Agent Path Finding. https://arxiv.org/abs/2010.01367.
+
 ### Q: MAPF是一个序列决策的过程吗？
 
 根据我的搜索结果，MAPF是一个序列决策的过程，因为它涉及到多个智能体在离散的时间步中做出动作，以达到各自的目标位置，同时避免与其他智能体发生冲突。¹²
