@@ -48,3 +48,13 @@ https://github.com/gavincangan/multiagent-pathfinding
 # Jiaoyang-Li (cpp)
 
 https://github.com/Jiaoyang-Li/CBSH2
+
+不错，在Linux环境下能跑了。原来作者贴心地准备了cmakeList.txt。
+
+## 问题
+
+# roboticist-whf (matlab)
+
+## 问题
+
+matlab写的转化不方便吧，还得去安装matlab. 
