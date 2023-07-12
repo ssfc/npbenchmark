@@ -1,7 +1,7 @@
 from macros import *
 import numpy as np
 from gworld import *
-from tkinter import *
+from Tkinter import *
 
 class Visualize:
     def __init__(self, world_data):
