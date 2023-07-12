@@ -40,3 +40,7 @@ CV库安装不上。
 # gavincangan (python)
 
 https://github.com/gavincangan/multiagent-pathfinding
+
+## 问题
+
+我日，居然是用python2写的。

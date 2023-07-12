@@ -35,7 +35,7 @@ class GridWorld:
     '''
     def add_agents(self, agents_sng):
         if agents_sng:
-            print agents_sng
+            print(agents_sng)
             # Replace list of tuples with a dict lookup for better performance
             for (sy, sx, gy, gx) in agents_sng:
                 nagents = len( self.aindx_cpos.keys() )
@@ -91,7 +91,7 @@ class GridWorld:
         if(len(cell_pos) == 3):
             t, y, x= cell_pos[0], cell_pos[1], cell_pos[2]
             if(t > MAX_STEPS):
-                print 'cell = ', cell_pos
+                print('cell = ', cell_pos)
                 raise EnvironmentError
             if(x > 0):
                 nbor_cells.append((t+1, y, x-1))

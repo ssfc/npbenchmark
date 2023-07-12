@@ -44,7 +44,7 @@ def get_max_pathlen(agents, path_seq):
 
 def path_equalize(agents, path_seq, max_pathlen = -1):
     if(max_pathlen < 0):
-        max_pathlen = get_maxpathlen(agents, path_seq)
+        max_pathlen = get_max_pathlen(agents, path_seq)
     for agent in agents:
         path = path_seq[agent]
         lstep = path[-1]
@@ -136,7 +136,7 @@ def search(agents, world):
 
         if(restart_loop):
             restart_loop = False
-            print '\n\nStuck between a rock and a hard place?\nRapid Random Restart to the rescue!\n\n'
+            print('\n\nStuck between a rock and a hard place?\nRapid Random Restart to the rescue!\n\n')
             # something = input('Press 1 + <Return> to continue...')
             for agent in agents:
                 conflicts_db[agent] = set()
@@ -155,7 +155,7 @@ def search(agents, world):
                 if(bool(constraints)):
                     start = cell_spacetime_conv(world.aindx_cpos[agent], 0)
                     goal = cell_spacetime_conv(world.aindx_goal[agent], SOMETIME)
-                    print 'Agent',agent,': S',start, ' G', goal, '\n\t  C', constraints, '\n\t  OP', path_seq[agent]
+                    print('Agent',agent,': S',start, ' G', goal, '\n\t  C', constraints, '\n\t  OP', path_seq[agent])
                     nw_path, nw_pathlen = get_m_astar_path(world, start, goal, constraints)
                     if(nw_path):
                         path_seq[agent] = nw_path
@@ -163,7 +163,7 @@ def search(agents, world):
                     else:
                         path_seq[agent] = [start]
                         restart_loop = True
-                    print 'Agent',agent,': S',start, ' G', goal, '\n\t  C', constraints, '\n\t  NP', nw_path, 'Len: ', nw_pathlen
+                    print('Agent',agent,': S',start, ' G', goal, '\n\t  C', constraints, '\n\t  NP', nw_path, 'Len: ', nw_pathlen)
 
         if not restart_loop:
             path_seq = path_equalize(agents, path_seq, SOMETIME)
@@ -177,8 +177,8 @@ def search(agents, world):
                 if(step in constraints):
                     ubrokn_conflicts.append(step)
             if(ubrokn_conflicts):
-                print '## A', agent, 'UC:', ubrokn_conflicts
-                print 'Yes, there are conflicts!'
+                print('## A', agent, 'UC:', ubrokn_conflicts)
+                print('Yes, there are conflicts!')
                 break_loop = False
             goal = cell_spacetime_conv(world.aindx_goal[agent], SOMETIME)
             if(path_seq[agent][-1] != goal):
@@ -186,16 +186,16 @@ def search(agents, world):
         iter_count = iter_count + 1
 
         if(break_loop and not restart_loop):
-            print 'Loop break!'
+            print('Loop break!')
             break
 
         # something = input('Press any key to continue...')
 
     for agent in agents:
-        print '\nAgent ', agent, ' cost:',pathcost[agent], ' Path -- ', path_seq[agent]
+        print('\nAgent ', agent, ' cost:',pathcost[agent], ' Path -- ', path_seq[agent])
 
     for agent in agents:
         if agent in conflicts_db:
-            print '\nAgent ', agent, ' Conflicts -- ', conflicts_db[agent]
+            print('\nAgent ', agent, ' Conflicts -- ', conflicts_db[agent])
 
     return path_seq
