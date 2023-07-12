@@ -1,0 +1,7 @@
+# ninja log v5
+2730	3526	1688990846870075000	ConflictBasedSearch.exe	4bfc16036e7f3ee4
+18	2729	1688990846069222700	CMakeFiles/ConflictBasedSearch.dir/main.cpp.o	7243105edcc2e6a2
+2	2911	1688989126874272500	CMakeFiles/ConflictBasedSearch.dir/HighLevelSolver.cpp.o	e248d01366b8f0d6
+37	2896	1688989126854060200	CMakeFiles/ConflictBasedSearch.dir/LowLevelSolver.cpp.o	3ddd27aebc1a5f
+153	2514	1688989126486991800	CMakeFiles/ConflictBasedSearch.dir/TreeNode.cpp.o	72ae259be65fa98a
+21	312	1689072094797527800	build.ninja	77b8d59133a844be
