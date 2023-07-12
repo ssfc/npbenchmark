@@ -141,7 +141,8 @@ def show_pos(pos):
 if __name__ == '__main__':
     # From command line, call:
     # python3 visualizer.py scenario1.yaml
-    load_scenario(sys.argv[1])
+    # load_scenario(sys.argv[1])
+    load_scenario("scenario1.yaml")
     # show_pos(START)
     r = Simulator()
     r.start()
