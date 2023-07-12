@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/addr2line.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/addr2line.exe"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -47,7 +47,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ar.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -71,7 +71,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug"
+			"value" : "c:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -131,7 +131,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/bin/cmake.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/bin/cpack.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -155,7 +155,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/bin/ctest.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -167,11 +167,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : "/usr/bin/g++.exe"
+			"type" : "FILEPATH",
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/g++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -187,7 +187,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -203,7 +203,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -286,6 +286,22 @@
 			"value" : "-O2 -g -DNDEBUG"
 		},
 		{
+			"name" : "CMAKE_CXX_STANDARD_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Libraries linked by default with all C++ applications."
+				}
+			],
+			"type" : "STRING",
+			"value" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+		},
+		{
 			"name" : "CMAKE_C_COMPILER",
 			"properties" : 
 			[
@@ -295,11 +311,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : "/usr/bin/gcc.exe"
+			"type" : "FILEPATH",
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -315,7 +331,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ar.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ar.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_RANLIB",
@@ -331,7 +347,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/gcc-ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -414,6 +430,22 @@
 			"value" : "-O2 -g -DNDEBUG"
 		},
 		{
+			"name" : "CMAKE_C_STANDARD_LIBRARIES",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Libraries linked by default with all C applications."
+				}
+			],
+			"type" : "STRING",
+			"value" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+		},
+		{
 			"name" : "CMAKE_DLLTOOL",
 			"properties" : 
 			[
@@ -427,7 +459,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/dlltool.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/dlltool.exe"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -455,7 +487,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "-Wl,--enable-auto-import"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS_DEBUG",
@@ -559,7 +591,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -610,6 +642,18 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_GNUtoMS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Convert GNU import libraries to MS format (requires Visual Studio)"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "OFF"
+		},
+		{
 			"name" : "CMAKE_HOME_DIRECTORY",
 			"properties" : 
 			[
@@ -619,7 +663,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src"
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -631,7 +675,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/usr/local"
+			"value" : "C:/Program Files (x86)/src"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -647,7 +691,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/ld.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ld.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -659,7 +703,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/cygdrive/c/Program Files/JetBrains/CLion 2022.2.3/bin/ninja/cygwin/x64/ninja.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -755,7 +799,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/nm.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/nm.exe"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -783,7 +827,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/objcopy.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/objcopy.exe"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -799,7 +843,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/objdump.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/objdump.exe"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -863,7 +907,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/ranlib.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ranlib.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER",
@@ -879,7 +923,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/windres.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/windres.exe"
 		},
 		{
 			"name" : "CMAKE_RC_COMPILER_WORKS",
@@ -987,7 +1031,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/readelf.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/readelf.exe"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -999,7 +1043,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/cygdrive/c/Users/take_/AppData/Local/JetBrains/CLion2023.1/cygwin_cmake/share/cmake-3.25.2"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.25"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1207,19 +1251,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/strip.exe"
-		},
-		{
-			"name" : "CMAKE_UNAME",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "uname command"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/bin/uname.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/strip.exe"
 		},
 		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
@@ -1247,7 +1279,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[C:/boost_1_81_0][c ][v0.0.0()]"
+			"value" : "[C:/boost_1_81_0][c ][v1.81.0()]"
 		},
 		{
 			"name" : "_Boost_COMPONENTS_SEARCHED",
@@ -1319,7 +1351,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug"
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/cmake-build-debug"
 		},
 		{
 			"name" : "src_IS_TOP_LEVEL",
@@ -1343,7 +1375,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src"
+			"value" : "C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src"
 		}
 	],
 	"kind" : "cache",
