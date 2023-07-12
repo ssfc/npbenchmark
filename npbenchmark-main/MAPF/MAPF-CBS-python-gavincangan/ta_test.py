@@ -23,17 +23,17 @@ path = astar.find_path(a.get_nbor_cells,
               lambda cell: 1,
               lambda cell: not a.is_blocked( cell[0], cell[1] ) )
 
-print path
+print(path)
 actions = a.path_to_action(1, path[1:])
 
-print actions
+print(actions)
 
 for action in actions:
     a.agent_action(1, action)
     vis.canvas.update()
     vis.canvas.after(1000)
 
-print a.cells
+print(a.cells)
 vis.canvas.after(3000)
 
 
