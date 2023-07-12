@@ -36,3 +36,7 @@ CV库安装不上。
 (1) *多代理寻径：定义、变体和基准 - 知乎. https://zhuanlan.zhihu.com/p/339098595.
 (2) 技术解析 | 多智能体路径规划（MAPF） - 知乎. https://zhuanlan.zhihu.com/p/388982360.
 (3) MAPF笔记1_无法解出的问题的博客-CSDN博客. https://blog.csdn.net/Vincent_Ethan_Lyq/article/details/119322458.
+
+# gavincangan
+
+https://github.com/gavincangan/multiagent-pathfinding
