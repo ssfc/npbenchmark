@@ -13,7 +13,8 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_executable",
+			"include_directories"
 		],
 		"files" : 
 		[
@@ -27,7 +28,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 12,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 10,
 				"parent" : 0
 			}
 		]
@@ -42,6 +49,13 @@
 				},
 				{
 					"fragment" : "-std=gnu++14"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-jiaoyangli/src/C:/boost_1_81_0"
 				}
 			],
 			"language" : "CXX",
