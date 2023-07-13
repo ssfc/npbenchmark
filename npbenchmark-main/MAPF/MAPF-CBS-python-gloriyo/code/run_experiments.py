@@ -188,3 +188,6 @@ if __name__ == '__main__':
             # animation.save('demo/fig.gif', 1)
 
     result_file.close()
+
+# debug on laptop by Pycharm:
+# python run_experiments.py --instance instances/test_1.txt --hlsolver CBS
