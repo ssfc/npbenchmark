@@ -85,10 +85,18 @@ https://github.com/roboticist-whf/multi-agent-path-finding
 
 matlab写的转化不方便吧，还得去安装matlab. 这个人是不是特别喜欢用matlab? 
 
-# baharsevket
+# baharsevket (cpp)
 
 https://github.com/baharsevket/Conflict-Based-Search-for-Multi-Agent-Pathfinding
 
 这个project的读文件格式和enginbaglayici (c++)雷同，或许可以帮助吾人理解c++实现的CBS。
 
 ## 问题
+
+# Shushman (Julia)
+
+https://github.com/Shushman/MultiAgentPathFinding.jl
+
+## 问题
+
+Julia是什么诡异的编程语言？
