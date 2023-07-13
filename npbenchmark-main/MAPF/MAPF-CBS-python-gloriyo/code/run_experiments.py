@@ -128,7 +128,6 @@ if __name__ == '__main__':
             print("***Run ICBS with CB***")
             cbs = ICBS_CB_Solver(my_map, starts, goals)
 
-
         elif args.hlsolver == "ICBS":
             print("***Run ICBS***")
             cbs = ICBS_Solver(my_map, starts, goals)
