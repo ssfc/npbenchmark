@@ -53,6 +53,8 @@ https://github.com/Jiaoyang-Li/CBSH2
 
 ## 问题
 
+实现的不是传统CBS，而是CBSH
+
 # roboticist-whf (matlab)
 
 https://github.com/roboticist-whf/Multi-agent-Path-Finding-in-Warehouse
@@ -68,4 +70,12 @@ https://github.com/gloriyo/MAPF-ICBS
 哈哈哈终于可以运行了。(2023年7月12日)
 
 ## 问题
+
+# PathPlanning (c++)
+
+https://github.com/PathPlanning/Continuous-CBS
+
+## 问题
+
+实现的不是传统CBS, 而是CCBS。
 
