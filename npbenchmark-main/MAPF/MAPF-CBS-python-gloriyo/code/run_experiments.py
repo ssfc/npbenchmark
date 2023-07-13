@@ -105,7 +105,7 @@ if __name__ == '__main__':
         # LINE 2 to 9: dot means space, @ means obstacles.
         # LINE 10: 5 means num of agents.
         # LINE 11 to 15: in each row, the first pair are (x, y) coordinates of agent start position,
-        # the second pair are coordinates (x, y) of agent end position. The origin are on the upper left corner. 
+        # the second pair are coordinates (x, y) of agent end position. The origin are in the upper left corner.
     else:
         input_instance = sorted(glob.glob(args.instance))
 
