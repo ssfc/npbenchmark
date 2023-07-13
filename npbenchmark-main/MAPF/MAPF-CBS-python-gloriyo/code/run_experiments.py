@@ -100,6 +100,8 @@ if __name__ == '__main__':
 
     if args.batch:
         input_instance = sorted(glob.glob("instances/test*"))
+        # take test_1.txt for example
+        # LINE 1: 8 8 means 8 columns 8 rows. 
     else:
         input_instance = sorted(glob.glob(args.instance))
 
