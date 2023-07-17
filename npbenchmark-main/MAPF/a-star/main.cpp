@@ -99,7 +99,7 @@ private:
 public:
     // A Function to find the shortest path betwee a given source cell to a destination cell according
     // to A* Search Algorithm
-    void aStarSearch(int grid[][COL], Pair src, Pair dest);
+    static void aStarSearch(int grid[][COL], Pair src, Pair dest);
 };
 
 void AStar::aStarSearch(int grid[][COL], Pair src, Pair dest)
