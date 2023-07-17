@@ -68,7 +68,7 @@ double calculate_h(int row, int col, Pair dest)
 // trace the path from the source to destination
 void trace_path(cell cellDetails[][COL], Pair dest)
 {
-	printf("\nThe Path is ");
+	cerr << "\nThe Path is ";
 	int row = dest.first;
 	int col = dest.second;
 
@@ -89,7 +89,7 @@ void trace_path(cell cellDetails[][COL], Pair dest)
     {
 		pair<int, int> p = Path.top();
 		Path.pop();
-		printf("-> (%d,%d) ", p.first, p.second);
+        cout << "-> (" << p.first << "," << p.second << ") ";
 	}
 }
 
@@ -106,14 +106,14 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     // If the source is out of range
     if (!is_valid(src.first, src.second))
     {
-        printf("Source is invalid\n");
+        cerr <<"Source is invalid\n";
         return;
     }
 
     // If the destination is out of range
     if (!is_valid(dest.first, dest.second))
     {
-        printf("Destination is invalid\n");
+        cerr << "Destination is invalid\n";
         return;
     }
 
@@ -121,14 +121,14 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     if (!is_unblocked(grid, src.first, src.second)
         || !is_unblocked(grid, dest.first, dest.second))
     {
-        printf("Source or the destination is blocked\n");
+        cerr << "Source or the destination is blocked\n";
         return;
     }
 
     // If the destination cell is the same as source cell
     if (is_destination(src.first, src.second, dest))
     {
-        printf("We are already at the destination\n");
+        cerr << "We are already at the destination\n";
         return;
     }
 
@@ -230,7 +230,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j].parent_i = i;
                 cellDetails[i - 1][j].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
                 return;
@@ -279,7 +279,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j].parent_i = i;
                 cellDetails[i + 1][j].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
 
@@ -329,7 +329,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i][j + 1].parent_i = i;
                 cellDetails[i][j + 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
                 return;
@@ -380,7 +380,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i][j - 1].parent_i = i;
                 cellDetails[i][j - 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
                 return;
@@ -432,7 +432,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j + 1].parent_i = i;
                 cellDetails[i - 1][j + 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
 
@@ -486,7 +486,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j - 1].parent_i = i;
                 cellDetails[i - 1][j - 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
 
@@ -538,7 +538,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j + 1].parent_i = i;
                 cellDetails[i + 1][j + 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
 
@@ -591,7 +591,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j - 1].parent_i = i;
                 cellDetails[i + 1][j - 1].parent_j = j;
-                printf("The destination cell is found\n");
+                cerr << "The destination cell is found\n";
                 trace_path(cellDetails, dest);
                 foundDest = true;
 
@@ -639,7 +639,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     // there is no way to destination cell (due to
     // blockages)
     if (!foundDest)
-        printf("Failed to find the Destination Cell\n");
+        cerr << "Failed to find the Destination Cell\n";
 }
 
 // Driver program to test above function
