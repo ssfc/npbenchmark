@@ -86,14 +86,12 @@ void tracePath(cell cellDetails[][COL], Pair dest)
 		col = temp_col;
 	}
 
-	Path.push(make_pair(row, col));
+	Path.emplace(row, col);
 	while (!Path.empty()) {
 		pair<int, int> p = Path.top();
 		Path.pop();
 		printf("-> (%d,%d) ", p.first, p.second);
 	}
-
-	return;
 }
 
 // A Function to find the shortest path between
