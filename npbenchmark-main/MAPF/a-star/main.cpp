@@ -98,10 +98,10 @@ class AStar
 private:
 public:
     // find the shortest path between a given source cell to a destination cell
-    static void aStarSearch(int grid[][COL], Pair src, Pair dest);
+    static void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
 
-void AStar::aStarSearch(int grid[][COL], Pair src, Pair dest)
+void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
 {
     // If the source is out of range
     if (!isValid(src.first, src.second))
@@ -144,8 +144,10 @@ void AStar::aStarSearch(int grid[][COL], Pair src, Pair dest)
 
     int i, j;
 
-    for (i = 0; i < ROW; i++) {
-        for (j = 0; j < COL; j++) {
+    for (i = 0; i < ROW; i++)
+    {
+        for (j = 0; j < COL; j++)
+        {
             cellDetails[i][j].f = FLT_MAX;
             cellDetails[i][j].g = FLT_MAX;
             cellDetails[i][j].h = FLT_MAX;
@@ -180,7 +182,8 @@ void AStar::aStarSearch(int grid[][COL], Pair src, Pair dest)
     // the destination is not reached.
     bool foundDest = false;
 
-    while (!openList.empty()) {
+    while (!openList.empty())
+    {
         pPair p = *openList.begin();
 
         // Remove this vertex from the open list
@@ -657,7 +660,7 @@ int main()
 	Pair dest = make_pair(0, 0);
 
     AStar test;
-	test.aStarSearch(grid, src, dest);
+	test.a_star_search(grid, src, dest);
 
 	return (0);
 }
