@@ -214,10 +214,12 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 		//----------- 1st Successor (North) ------------
 
 		// Only process this cell if this is a valid one
-		if (isValid(i - 1, j) == true) {
+		if (isValid(i - 1, j))
+        {
 			// If the destination cell is the same as the
 			// current successor
-			if (isDestination(i - 1, j, dest) == true) {
+			if (isDestination(i - 1, j, dest))
+            {
 				// Set the Parent of the destination cell
 				cellDetails[i - 1][j].parent_i = i;
 				cellDetails[i - 1][j].parent_j = j;
@@ -229,9 +231,8 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 			// If the successor is already on the closed
 			// list or if it is blocked, then ignore it.
 			// Else do the following
-			else if (closedList[i - 1][j] == false
-					&& isUnBlocked(grid, i - 1, j)
-							== true) {
+			else if (!closedList[i - 1][j]
+                     && isUnBlocked(grid, i - 1, j)) {
 				gNew = cellDetails[i][j].g + 1.0;
 				hNew = calculateHValue(i - 1, j, dest);
 				fNew = gNew + hNew;
