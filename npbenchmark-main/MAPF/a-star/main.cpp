@@ -7,6 +7,9 @@
 #include <set>
 #include <stack>
 #include <utility>
+
+#include "a_star.h"
+
 using namespace std;
 
 #define ROW 9
