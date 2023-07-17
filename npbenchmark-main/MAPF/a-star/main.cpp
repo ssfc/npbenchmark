@@ -30,14 +30,14 @@ struct cell {
 	double f, g, h;
 };
 
-// A Utility Function to check whether given cell (row, col) is a valid cell or not.
+// check whether given cell (row, col) is a valid cell or not.
 bool is_valid(int row, int col)
 {
 	// Returns true if row number and column number is in range
 	return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL);
 }
 
-// A Utility Function to check whether the given cell is blocked or not
+// check whether the given cell is blocked or not
 bool isUnBlocked(int grid[][COL], int row, int col)
 {
 	// Returns true if the cell is not blocked else false
@@ -47,7 +47,7 @@ bool isUnBlocked(int grid[][COL], int row, int col)
 		return (false);
 }
 
-// A Utility Function to check whether destination cell has been reached or not
+// check whether destination cell has been reached or not
 bool isDestination(int row, int col, Pair dest)
 {
 	if (row == dest.first && col == dest.second)
@@ -56,7 +56,7 @@ bool isDestination(int row, int col, Pair dest)
 		return (false);
 }
 
-// A Utility Function to calculate the 'h' heuristics.
+// calculate the 'h' heuristics.
 double calculateHValue(int row, int col, Pair dest)
 {
 	// Return using the distance formula
@@ -65,7 +65,7 @@ double calculateHValue(int row, int col, Pair dest)
 		+ (col - dest.second) * (col - dest.second)));
 }
 
-// A Utility Function to trace the path from the source to destination
+// trace the path from the source to destination
 void tracePath(cell cellDetails[][COL], Pair dest)
 {
 	printf("\nThe Path is ");
