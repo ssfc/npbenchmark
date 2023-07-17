@@ -35,17 +35,17 @@ class AStar
 private:
 public:
     // check whether given cell (row, col) is a valid cell or not.
-    bool is_valid(int row, int col);
+    static bool is_valid(int row, int col);
     // check whether the given cell is blocked or not
-    bool is_unblocked(int grid[][COL], int row, int col);
+    static bool is_unblocked(int grid[][COL], int row, int col);
     // check whether destination cell has been reached or not
-    bool is_destination(int row, int col, Pair dest);
+    static bool is_destination(int row, int col, Pair dest);
     // calculate the 'h' heuristics.
-    double calculate_h(int row, int col, Pair dest);
+    static double calculate_h(int row, int col, Pair dest);
     // trace the path from the source to destination
-    void trace_path(cell cellDetails[][COL], Pair dest);
+    static void trace_path(cell cellDetails[][COL], Pair dest);
     // find the shortest path between a given source cell to a destination cell
-    void a_star_search(int grid[][COL], Pair src, Pair dest);
+    static void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
 
 // check whether given cell (row, col) is a valid cell or not.
