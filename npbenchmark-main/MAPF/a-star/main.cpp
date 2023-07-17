@@ -56,24 +56,26 @@ bool is_destination(int row, int col, Pair dest)
 		return false;
 }
 
-// calculate the 'h' heuristics.
-double calculate_h(int row, int col, Pair dest)
-{
-	// Return using the distance formula
-	return ((double)sqrt(
-		(row - dest.first) * (row - dest.first)
-		+ (col - dest.second) * (col - dest.second)));
-}
-
 class AStar
 {
 private:
 public:
+    // calculate the 'h' heuristics.
+    double calculate_h(int row, int col, Pair dest);
     // trace the path from the source to destination
     void trace_path(cell cellDetails[][COL], Pair dest);
     // find the shortest path between a given source cell to a destination cell
     void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
+
+// calculate the 'h' heuristics.
+double AStar::calculate_h(int row, int col, Pair dest)
+{
+    // Return using the distance formula
+    return ((double)sqrt(
+            (row - dest.first) * (row - dest.first)
+            + (col - dest.second) * (col - dest.second)));
+}
 
 void AStar::trace_path(cell cellDetails[][COL], Pair dest)
 {
