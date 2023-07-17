@@ -21,7 +21,8 @@ using Pair = pair<int, int>;
 using pPair = pair<double, pair<int, int> >;
 
 // A structure to hold the necessary parameters
-struct cell {
+struct cell
+{
 	// Row and Column index of its parent
 	// Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
 	int parent_i, parent_j;
@@ -41,7 +42,7 @@ public:
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(int row, int col);
     // check whether the given cell is blocked or not
-    static bool is_unblocked(int input_grid[][COL], int row, int col);
+    bool is_unblocked(int row, int col);
     // check whether destination cell has been reached or not
     static bool is_destination(int row, int col, Pair dest);
     // calculate the 'h' heuristics.
@@ -76,10 +77,10 @@ bool AStar::is_valid(int row, int col)
 }
 
 // check whether the given cell is blocked or not
-bool AStar::is_unblocked(int input_grid[][COL], int row, int col)
+bool AStar::is_unblocked(int row, int col)
 {
     // Returns true if the cell is not blocked else false
-    if (input_grid[row][col] == 1)
+    if (grid[row][col] == 1)
         return true;
     else
         return false;
@@ -147,8 +148,8 @@ void AStar::a_star_search(Pair src, Pair dest)
     }
 
     // Either the source or the destination is blocked
-    if (!is_unblocked(grid, src.first, src.second)
-        || !is_unblocked(grid, dest.first, dest.second))
+    if (!is_unblocked(src.first, src.second)
+        || !is_unblocked(dest.first, dest.second))
     {
         cerr << "Source or the destination is blocked\n";
         return;
@@ -267,7 +268,7 @@ void AStar::a_star_search(Pair src, Pair dest)
 
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closedList[i - 1][j] && is_unblocked(grid, i - 1, j))
+            else if (!closedList[i - 1][j] && is_unblocked(i - 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i - 1, j, dest);
@@ -317,8 +318,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i + 1][j]
-                     && is_unblocked(grid, i + 1, j))
+            else if (!closedList[i + 1][j] && is_unblocked(i + 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i + 1, j, dest);
@@ -367,8 +367,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i][j + 1]
-                     && is_unblocked(grid, i, j + 1))
+            else if (!closedList[i][j + 1] && is_unblocked(i, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i, j + 1, dest);
@@ -419,7 +418,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i][j - 1]
-                     && is_unblocked(grid, i, j - 1))
+                     && is_unblocked(i, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i, j - 1, dest);
@@ -472,7 +471,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i - 1][j + 1]
-                     && is_unblocked(grid, i - 1, j + 1))
+                     && is_unblocked(i - 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i - 1, j + 1, dest);
@@ -525,8 +524,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i - 1][j - 1]
-                     && is_unblocked(grid, i - 1, j - 1))
+            else if (!closedList[i-1][j-1] && is_unblocked(i-1, j-1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i - 1, j - 1, dest);
@@ -541,7 +539,8 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cellDetails[i - 1][j - 1].f == FLT_MAX
-                    || cellDetails[i - 1][j - 1].f > fNew) {
+                    || cellDetails[i - 1][j - 1].f > fNew)
+                {
                     openList.insert(make_pair(
                             fNew, make_pair(i - 1, j - 1)));
                     // Update the details of this cell
@@ -577,8 +576,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i + 1][j + 1]
-                     && is_unblocked(grid, i + 1, j + 1))
+            else if (!closedList[i+1][j+1] && is_unblocked(i+1, j+1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i + 1, j + 1, dest);
@@ -630,8 +628,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i + 1][j - 1]
-                     && is_unblocked(grid, i + 1, j - 1))
+            else if (!closedList[i+1][j-1] && is_unblocked(i+1, j-1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i + 1, j - 1, dest);
