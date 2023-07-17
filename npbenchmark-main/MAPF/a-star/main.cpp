@@ -57,7 +57,7 @@ bool is_destination(int row, int col, Pair dest)
 }
 
 // calculate the 'h' heuristics.
-double calculateHValue(int row, int col, Pair dest)
+double calculate_h(int row, int col, Pair dest)
 {
 	// Return using the distance formula
 	return ((double)sqrt(
@@ -241,7 +241,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
             else if (!closedList[i - 1][j] && is_unblocked(grid, i - 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculateHValue(i - 1, j, dest);
+                hNew = calculate_h(i - 1, j, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -291,7 +291,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i + 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculateHValue(i + 1, j, dest);
+                hNew = calculate_h(i + 1, j, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -341,7 +341,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculateHValue(i, j + 1, dest);
+                hNew = calculate_h(i, j + 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -392,7 +392,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculateHValue(i, j - 1, dest);
+                hNew = calculate_h(i, j - 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -445,7 +445,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i - 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculateHValue(i - 1, j + 1, dest);
+                hNew = calculate_h(i - 1, j + 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -498,7 +498,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i - 1, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculateHValue(i - 1, j - 1, dest);
+                hNew = calculate_h(i - 1, j - 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -550,7 +550,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i + 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculateHValue(i + 1, j + 1, dest);
+                hNew = calculate_h(i + 1, j + 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -603,7 +603,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                      && is_unblocked(grid, i + 1, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculateHValue(i + 1, j - 1, dest);
+                hNew = calculate_h(i + 1, j - 1, dest);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
