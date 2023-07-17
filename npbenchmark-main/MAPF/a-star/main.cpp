@@ -30,8 +30,7 @@ struct cell {
 // A Utility Function to check whether given cell (row, col) is a valid cell or not.
 bool isValid(int row, int col)
 {
-	// Returns true if row number and column number
-	// is in range
+	// Returns true if row number and column number is in range
 	return (row >= 0) && (row < ROW) && (col >= 0)
 		&& (col < COL);
 }
