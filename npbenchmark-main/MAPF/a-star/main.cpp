@@ -27,8 +27,7 @@ struct cell {
 	double f, g, h;
 };
 
-// A Utility Function to check whether given cell (row, col)
-// is a valid cell or not.
+// A Utility Function to check whether given cell (row, col) is a valid cell or not.
 bool isValid(int row, int col)
 {
 	// Returns true if row number and column number
