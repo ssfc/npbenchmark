@@ -37,8 +37,7 @@ bool isValid(int row, int col)
 		&& (col < COL);
 }
 
-// A Utility Function to check whether the given cell is
-// blocked or not
+// A Utility Function to check whether the given cell is blocked or not
 bool isUnBlocked(int grid[][COL], int row, int col)
 {
 	// Returns true if the cell is not blocked else false
