@@ -48,7 +48,7 @@ bool is_unblocked(int grid[][COL], int row, int col)
 }
 
 // check whether destination cell has been reached or not
-bool isDestination(int row, int col, Pair dest)
+bool is_destination(int row, int col, Pair dest)
 {
 	if (row == dest.first && col == dest.second)
 		return true;
@@ -126,7 +126,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     }
 
     // If the destination cell is the same as source cell
-    if (isDestination(src.first, src.second, dest))
+    if (is_destination(src.first, src.second, dest))
     {
         printf("We are already at the destination\n");
         return;
@@ -225,7 +225,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i - 1, j, dest))
+            if (is_destination(i - 1, j, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j].parent_i = i;
@@ -235,9 +235,9 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 foundDest = true;
                 return;
             }
-                // If the successor is already on the closed
-                // list or if it is blocked, then ignore it.
-                // Else do the following
+
+            // If the successor is already on the closed list or if it is blocked, then ignore it.
+            // Else do the following
             else if (!closedList[i - 1][j] && is_unblocked(grid, i - 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
@@ -274,7 +274,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i + 1, j, dest))
+            if (is_destination(i + 1, j, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j].parent_i = i;
@@ -323,7 +323,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i, j + 1, dest))
+            if (is_destination(i, j + 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i][j + 1].parent_i = i;
@@ -374,7 +374,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i, j - 1, dest))
+            if (is_destination(i, j - 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i][j - 1].parent_i = i;
@@ -426,7 +426,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i - 1, j + 1, dest))
+            if (is_destination(i - 1, j + 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j + 1].parent_i = i;
@@ -434,6 +434,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
+
                 return;
             }
 
@@ -479,7 +480,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i - 1, j - 1, dest))
+            if (is_destination(i - 1, j - 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i - 1][j - 1].parent_i = i;
@@ -530,7 +531,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i + 1, j + 1, dest))
+            if (is_destination(i + 1, j + 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j + 1].parent_i = i;
@@ -538,6 +539,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
+
                 return;
             }
 
@@ -582,7 +584,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         {
             // If the destination cell is the same as the
             // current successor
-            if (isDestination(i + 1, j - 1, dest))
+            if (is_destination(i + 1, j - 1, dest))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i + 1][j - 1].parent_i = i;
@@ -590,6 +592,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 printf("The destination cell is found\n");
                 tracePath(cellDetails, dest);
                 foundDest = true;
+
                 return;
             }
 
@@ -612,7 +615,8 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cellDetails[i + 1][j - 1].f == FLT_MAX
-                    || cellDetails[i + 1][j - 1].f > fNew) {
+                    || cellDetails[i + 1][j - 1].f > fNew)
+                {
                     openList.insert(make_pair(
                             fNew, make_pair(i + 1, j - 1)));
 
