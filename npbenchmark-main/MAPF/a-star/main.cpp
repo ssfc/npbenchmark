@@ -65,41 +65,42 @@ double calculate_h(int row, int col, Pair dest)
 		+ (col - dest.second) * (col - dest.second)));
 }
 
-// trace the path from the source to destination
-void trace_path(cell cellDetails[][COL], Pair dest)
-{
-	cerr << "\nThe Path is ";
-	int row = dest.first;
-	int col = dest.second;
-
-	stack<Pair> Path;
-
-	while (!(cellDetails[row][col].parent_i == row
-			&& cellDetails[row][col].parent_j == col))
-    {
-		Path.emplace(row, col);
-		int temp_row = cellDetails[row][col].parent_i;
-		int temp_col = cellDetails[row][col].parent_j;
-		row = temp_row;
-		col = temp_col;
-	}
-
-	Path.emplace(row, col);
-	while (!Path.empty())
-    {
-		pair<int, int> p = Path.top();
-		Path.pop();
-        cout << "-> (" << p.first << "," << p.second << ") ";
-	}
-}
-
 class AStar
 {
 private:
 public:
+    // trace the path from the source to destination
+    void trace_path(cell cellDetails[][COL], Pair dest);
     // find the shortest path between a given source cell to a destination cell
-    static void a_star_search(int grid[][COL], Pair src, Pair dest);
+    void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
+
+void AStar::trace_path(cell cellDetails[][COL], Pair dest)
+{
+    cerr << "\nThe Path is ";
+    int row = dest.first;
+    int col = dest.second;
+
+    stack<Pair> Path;
+
+    while (!(cellDetails[row][col].parent_i == row
+             && cellDetails[row][col].parent_j == col))
+    {
+        Path.emplace(row, col);
+        int temp_row = cellDetails[row][col].parent_i;
+        int temp_col = cellDetails[row][col].parent_j;
+        row = temp_row;
+        col = temp_col;
+    }
+
+    Path.emplace(row, col);
+    while (!Path.empty())
+    {
+        pair<int, int> p = Path.top();
+        Path.pop();
+        cout << "-> (" << p.first << "," << p.second << ") ";
+    }
+}
 
 void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
 {
