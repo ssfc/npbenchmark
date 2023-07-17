@@ -13,10 +13,10 @@ using namespace std;
 #define COL 10
 
 // Creating a shortcut for int, int pair type
-typedef pair<int, int> Pair;
+using Pair = pair<int, int>;
 
 // Creating a shortcut for pair<int, pair<int, int>> type
-typedef pair<double, pair<int, int> > pPair;
+using pPair = pair<double, pair<int, int> >;
 
 // A structure to hold the necessary parameters
 struct cell {
