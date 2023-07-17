@@ -32,9 +32,9 @@ struct cell {
 class AStar
 {
 private:
-    int num_row;
+    int num_rows;
 public:
-    AStar(int input_num_row);
+    AStar(int input_num_rows);
 
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(int row, int col);
@@ -50,8 +50,8 @@ public:
     void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
 
-AStar::AStar(int input_num_row):
-num_row(input_num_row)
+AStar::AStar(int input_num_rows):
+num_rows(input_num_rows)
 {
 
 }
@@ -60,7 +60,7 @@ num_row(input_num_row)
 bool AStar::is_valid(int row, int col)
 {
     // Returns true if row number and column number is in range
-    return (row >= 0) && (row < num_row) && (col >= 0) && (col < COL);
+    return (row >= 0) && (row < num_rows) && (col >= 0) && (col < COL);
 }
 
 // check whether the given cell is blocked or not
@@ -152,16 +152,16 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     // Create a closed list and initialise it to false which
     // means that no cell has been included yet This closed
     // list is implemented as a boolean 2D array
-    bool closedList[num_row][COL];
+    bool closedList[num_rows][COL];
     memset(closedList, false, sizeof(closedList));
 
     // Declare a 2D array of structure to hold the details
     // of that cell
-    cell cellDetails[num_row][COL];
+    cell cellDetails[num_rows][COL];
 
     int i, j;
 
-    for (i = 0; i < num_row; i++)
+    for (i = 0; i < num_rows; i++)
     {
         for (j = 0; j < COL; j++)
         {
