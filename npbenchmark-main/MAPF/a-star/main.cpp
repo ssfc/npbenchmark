@@ -37,20 +37,12 @@ bool is_valid(int row, int col)
 	return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL);
 }
 
-// check whether the given cell is blocked or not
-bool is_unblocked(int grid[][COL], int row, int col)
-{
-	// Returns true if the cell is not blocked else false
-	if (grid[row][col] == 1)
-		return true;
-	else
-		return false;
-}
-
 class AStar
 {
 private:
 public:
+    // check whether the given cell is blocked or not
+    bool is_unblocked(int grid[][COL], int row, int col);
     // check whether destination cell has been reached or not
     bool is_destination(int row, int col, Pair dest);
     // calculate the 'h' heuristics.
@@ -60,6 +52,16 @@ public:
     // find the shortest path between a given source cell to a destination cell
     void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
+
+// check whether the given cell is blocked or not
+bool AStar::is_unblocked(int grid[][COL], int row, int col)
+{
+    // Returns true if the cell is not blocked else false
+    if (grid[row][col] == 1)
+        return true;
+    else
+        return false;
+}
 
 // check whether destination cell has been reached or not
 bool AStar::is_destination(int row, int col, Pair dest)
