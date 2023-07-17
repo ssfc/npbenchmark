@@ -30,6 +30,7 @@ struct cell
 	double f, g, h;
 };
 
+
 class AStar
 {
 private:
