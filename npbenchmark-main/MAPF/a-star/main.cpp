@@ -31,7 +31,7 @@ struct cell {
 };
 
 // A Utility Function to check whether given cell (row, col) is a valid cell or not.
-bool isValid(int row, int col)
+bool is_valid(int row, int col)
 {
 	// Returns true if row number and column number is in range
 	return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL);
@@ -104,14 +104,14 @@ public:
 void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
 {
     // If the source is out of range
-    if (!isValid(src.first, src.second))
+    if (!is_valid(src.first, src.second))
     {
         printf("Source is invalid\n");
         return;
     }
 
     // If the destination is out of range
-    if (!isValid(dest.first, dest.second))
+    if (!is_valid(dest.first, dest.second))
     {
         printf("Destination is invalid\n");
         return;
@@ -221,7 +221,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //----------- 1st Successor (North) ------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i - 1, j))
+        if (is_valid(i - 1, j))
         {
             // If the destination cell is the same as the
             // current successor
@@ -271,7 +271,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //----------- 2nd Successor (South) ------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i + 1, j))
+        if (is_valid(i + 1, j))
         {
             // If the destination cell is the same as the
             // current successor
@@ -320,7 +320,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //----------- 3rd Successor (East) ------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i, j + 1))
+        if (is_valid(i, j + 1))
         {
             // If the destination cell is the same as the
             // current successor
@@ -371,7 +371,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //----------- 4th Successor (West) ------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i, j - 1))
+        if (is_valid(i, j - 1))
         {
             // If the destination cell is the same as the
             // current successor
@@ -423,7 +423,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i - 1, j + 1))
+        if (is_valid(i - 1, j + 1))
         {
             // If the destination cell is the same as the
             // current successor
@@ -475,7 +475,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i - 1, j - 1))
+        if (is_valid(i - 1, j - 1))
         {
             // If the destination cell is the same as the
             // current successor
@@ -526,7 +526,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i + 1, j + 1))
+        if (is_valid(i + 1, j + 1))
         {
             // If the destination cell is the same as the
             // current successor
@@ -578,7 +578,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
         //------------
 
         // Only process this cell if this is a valid one
-        if (isValid(i + 1, j - 1))
+        if (is_valid(i + 1, j - 1))
         {
             // If the destination cell is the same as the
             // current successor
