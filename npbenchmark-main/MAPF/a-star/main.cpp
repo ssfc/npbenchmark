@@ -23,7 +23,7 @@ using pPair = pair<double, pair<int, int> >;
 // A structure to hold the necessary parameters
 struct cell {
 	// Row and Column index of its parent
-	// Note that 0 <= i <= num_row-1 & 0 <= j <= COL-1
+	// Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
 	int parent_i, parent_j;
 	// f = g + h
 	double f, g, h;
@@ -33,8 +33,9 @@ class AStar
 {
 private:
     int num_rows;
+    int num_columns;
 public:
-    AStar(int input_num_rows);
+    AStar(int input_num_rows, int input_num_columns);
 
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(int row, int col);
@@ -50,8 +51,9 @@ public:
     void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
 
-AStar::AStar(int input_num_rows):
-num_rows(input_num_rows)
+AStar::AStar(int input_num_rows, int input_num_columns):
+num_rows(input_num_rows),
+num_columns(input_num_columns)
 {
 
 }
@@ -682,7 +684,7 @@ int main()
 	// Destination is the left-most top-most corner
 	Pair dest = make_pair(0, 0);
 
-    AStar test(9);
+    AStar test(9, 10);
 	test.a_star_search(grid, src, dest);
 
 	return 0;
