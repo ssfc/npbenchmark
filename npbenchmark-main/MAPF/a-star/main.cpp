@@ -97,9 +97,14 @@ class AStar
 {
 private:
 public:
-    // A Function to find the shortest path between
-// a given source cell to a destination cell according
-// to A* Search Algorithm
+    // A Function to find the shortest path betwee a given source cell to a destination cell according
+    // to A* Search Algorithm
+    void aStarSearch(int grid[][COL], Pair src, Pair dest);
+
+};
+
+void AStar::aStarSearch(int (*grid)[10], Pair src, Pair dest)
+{
     void aStarSearch(int grid[][COL], Pair src, Pair dest)
     {
         // If the source is out of range
@@ -631,9 +636,7 @@ public:
         if (!foundDest)
             printf("Failed to find the Destination Cell\n");
     }
-
-};
-
+}
 
 // Driver program to test above function
 int main()
