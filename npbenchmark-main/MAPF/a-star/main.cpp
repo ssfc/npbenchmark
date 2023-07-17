@@ -34,6 +34,7 @@ class AStar
 private:
     int num_rows;
     int num_columns;
+    int grid[9][COL];
 public:
     AStar(int input_num_rows, int input_num_columns);
 
@@ -48,12 +49,21 @@ public:
     // trace the path from the source to destination
     static void trace_path(cell cellDetails[][COL], Pair dest);
     // find the shortest path between a given source cell to a destination cell
-    void a_star_search(int input_grid[][COL], Pair src, Pair dest);
+    void a_star_search(Pair src, Pair dest);
 };
 
 AStar::AStar(int input_num_rows, int input_num_columns):
 num_rows(input_num_rows),
-num_columns(input_num_columns)
+num_columns(input_num_columns),
+grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+      { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+      { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
+      { 0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
+      { 1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
+      { 1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
+      { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+      { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+      { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
 {
 
 }
@@ -120,7 +130,7 @@ void AStar::trace_path(cell cellDetails[][COL], Pair dest)
     }
 }
 
-void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
+void AStar::a_star_search(Pair src, Pair dest)
 {
     // If the source is out of range
     if (!is_valid(src.first, src.second))
@@ -137,8 +147,8 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
     }
 
     // Either the source or the destination is blocked
-    if (!is_unblocked(input_grid, src.first, src.second)
-        || !is_unblocked(input_grid, dest.first, dest.second))
+    if (!is_unblocked(grid, src.first, src.second)
+        || !is_unblocked(grid, dest.first, dest.second))
     {
         cerr << "Source or the destination is blocked\n";
         return;
@@ -257,7 +267,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
 
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closedList[i - 1][j] && is_unblocked(input_grid, i - 1, j))
+            else if (!closedList[i - 1][j] && is_unblocked(grid, i - 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i - 1, j, dest);
@@ -308,7 +318,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i + 1][j]
-                     && is_unblocked(input_grid, i + 1, j))
+                     && is_unblocked(grid, i + 1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i + 1, j, dest);
@@ -358,7 +368,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i][j + 1]
-                     && is_unblocked(input_grid, i, j + 1))
+                     && is_unblocked(grid, i, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i, j + 1, dest);
@@ -409,7 +419,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i][j - 1]
-                     && is_unblocked(input_grid, i, j - 1))
+                     && is_unblocked(grid, i, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i, j - 1, dest);
@@ -462,7 +472,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i - 1][j + 1]
-                     && is_unblocked(input_grid, i - 1, j + 1))
+                     && is_unblocked(grid, i - 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i - 1, j + 1, dest);
@@ -516,7 +526,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i - 1][j - 1]
-                     && is_unblocked(input_grid, i - 1, j - 1))
+                     && is_unblocked(grid, i - 1, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i - 1, j - 1, dest);
@@ -568,7 +578,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i + 1][j + 1]
-                     && is_unblocked(input_grid, i + 1, j + 1))
+                     && is_unblocked(grid, i + 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i + 1, j + 1, dest);
@@ -621,7 +631,7 @@ void AStar::a_star_search(int input_grid[][COL], Pair src, Pair dest)
                 // list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closedList[i + 1][j - 1]
-                     && is_unblocked(input_grid, i + 1, j - 1))
+                     && is_unblocked(grid, i + 1, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(i + 1, j - 1, dest);
@@ -685,7 +695,7 @@ int main()
 	Pair dest = make_pair(0, 0);
 
     AStar test(9, 10);
-	test.a_star_search(test_grid, src, dest);
+	test.a_star_search(src, dest);
 
 	return 0;
 }
