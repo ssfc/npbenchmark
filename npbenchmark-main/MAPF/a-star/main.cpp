@@ -2,8 +2,8 @@
 // https://www.geeksforgeeks.org/a-search-algorithm/
 #include <cfloat>
 #include <cmath>
-#include <cstdio>
 #include <cstring>
+#include <iostream>
 #include <set>
 #include <stack>
 #include <utility>
