@@ -1,5 +1,6 @@
 // A C++ Program to implement A* Search Algorithm
-#include <bits/stdc++.h>
+#include <cmath>
+#include <utility>
 using namespace std;
 
 #define ROW 9
