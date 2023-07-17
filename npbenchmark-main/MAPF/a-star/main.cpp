@@ -100,28 +100,30 @@ void tracePath(cell cellDetails[][COL], Pair dest)
 void aStarSearch(int grid[][COL], Pair src, Pair dest)
 {
 	// If the source is out of range
-	if (isValid(src.first, src.second) == false) {
+	if (!isValid(src.first, src.second))
+    {
 		printf("Source is invalid\n");
 		return;
 	}
 
 	// If the destination is out of range
-	if (isValid(dest.first, dest.second) == false) {
+	if (!isValid(dest.first, dest.second))
+    {
 		printf("Destination is invalid\n");
 		return;
 	}
 
 	// Either the source or the destination is blocked
-	if (isUnBlocked(grid, src.first, src.second) == false
-		|| isUnBlocked(grid, dest.first, dest.second)
-			== false) {
+	if (!isUnBlocked(grid, src.first, src.second)
+        || !isUnBlocked(grid, dest.first, dest.second))
+    {
 		printf("Source or the destination is blocked\n");
 		return;
 	}
 
 	// If the destination cell is the same as source cell
-	if (isDestination(src.first, src.second, dest)
-		== true) {
+	if (isDestination(src.first, src.second, dest))
+    {
 		printf("We are already at the destination\n");
 		return;
 	}
