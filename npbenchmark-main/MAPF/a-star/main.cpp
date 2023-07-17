@@ -45,8 +45,7 @@ bool isUnBlocked(int grid[][COL], int row, int col)
 		return (false);
 }
 
-// A Utility Function to check whether destination cell has
-// been reached or not
+// A Utility Function to check whether destination cell has been reached or not
 bool isDestination(int row, int col, Pair dest)
 {
 	if (row == dest.first && col == dest.second)
@@ -64,8 +63,7 @@ double calculateHValue(int row, int col, Pair dest)
 		+ (col - dest.second) * (col - dest.second)));
 }
 
-// A Utility Function to trace the path from the source
-// to destination
+// A Utility Function to trace the path from the source to destination
 void tracePath(cell cellDetails[][COL], Pair dest)
 {
 	printf("\nThe Path is ");
