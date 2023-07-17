@@ -79,7 +79,7 @@ void tracePath(cell cellDetails[][COL], Pair dest)
 
 	while (!(cellDetails[row][col].parent_i == row
 			&& cellDetails[row][col].parent_j == col)) {
-		Path.push(make_pair(row, col));
+		Path.emplace(row, col);
 		int temp_row = cellDetails[row][col].parent_i;
 		int temp_col = cellDetails[row][col].parent_j;
 		row = temp_row;

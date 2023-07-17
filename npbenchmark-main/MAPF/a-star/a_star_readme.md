@@ -110,3 +110,62 @@ h(N) <= c(N, N') + h(N')
    - 查找与该算法相关的学习资料和资源，包括教科书、学术论文、博客文章或教程。阅读多个来源的解释，有助于加深对基本思想的理解。
 
 了解算法的基本思想为学习后续的原理、代码实现以及应用提供了框架。只有理解了算法的核心思想，才能在学习过程中更加深入和有针对性地学习算法的细节。
+
+### Q: 为什么这样建议？Clang-Tidy: Use emplace instead of push 
+
+这个建议是由 Clang-Tidy 给出的，它是 Clang C++ 编译器的一个静态代码分析工具。该建议是在代码中使用 `emplace` 替代 `push` 的提示。
+
+在 C++ 中，`push` 是用于向容器（如 vector、list、set 等）添加元素的方法，而 `emplace` 则是 C++11 引入的方法，用于在容器中直接构造元素，而不是先创建一个临时对象再拷贝或移动到容器。
+
+使用 `emplace` 可以避免不必要的对象拷贝或移动操作，提高代码的性能。因此，Clang-Tidy 给出这个建议是为了鼓励程序员使用 `emplace` 来代替 `push`，以获得更好的性能和效率。
+
+举个例子，对于 `std::vector<int>` 容器，`push` 用于将一个整数添加到容器末尾：
+
+```cpp
+std::vector<int> myVector;
+myVector.push_back(42);
+```
+
+而使用 `emplace` 可以直接在容器中构造整数：
+
+```cpp
+std::vector<int> myVector;
+myVector.emplace_back(42);
+```
+
+使用 `emplace` 而不是 `push` 可以避免创建临时整数对象，并直接在容器中构造元素，提高了性能和效率。但需要注意，`emplace` 在构造复杂对象时需要提供构造参数，因此使用时需根据具体情况选择合适的方法。
+
+### Q: 你知道make_pair函数吗？
+
+在C++中，`make_pair`是一个实用函数，用于方便地创建`std::pair`对象。`std::pair`是一个简单的容器，可以保存两个值，并且`make_pair`函数允许您在创建`std::pair`对象时不必显式指定模板参数。
+
+`make_pair`函数定义在`<utility>`头文件中，其语法如下：
+
+```cpp
+template <class T1, class T2>
+std::pair<T1, T2> make_pair(const T1& value1, const T2& value2);
+```
+
+您可以像这样使用`make_pair`：
+
+```cpp
+#include <iostream>
+#include <utility>
+
+int main() {
+    int x = 10;
+    double y = 3.14;
+
+    // 使用 make_pair 创建一个 pair
+    std::pair<int, double> myPair = std::make_pair(x, y);
+
+    std::cout << "第一个值: " << myPair.first << std::endl;
+    std::cout << "第二个值: " << myPair.second << std::endl;
+
+    return 0;
+}
+```
+
+在这个例子中，我们使用`make_pair`创建了一个`int`和`double`值的pair，然后我们可以使用`first`和`second`成员变量来访问pair的元素。
+
+使用`make_pair`被认为是一种更简洁和清晰的方式来创建pair，因为它避免了在创建pair时显式指定模板类型。
