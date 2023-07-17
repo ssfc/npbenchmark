@@ -468,10 +468,12 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 		//------------
 
 		// Only process this cell if this is a valid one
-		if (isValid(i - 1, j - 1) == true) {
+		if (isValid(i - 1, j - 1))
+        {
 			// If the destination cell is the same as the
 			// current successor
-			if (isDestination(i - 1, j - 1, dest) == true) {
+			if (isDestination(i - 1, j - 1, dest))
+            {
 				// Set the Parent of the destination cell
 				cellDetails[i - 1][j - 1].parent_i = i;
 				cellDetails[i - 1][j - 1].parent_j = j;
@@ -484,9 +486,9 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 			// If the successor is already on the closed
 			// list or if it is blocked, then ignore it.
 			// Else do the following
-			else if (closedList[i - 1][j - 1] == false
-					&& isUnBlocked(grid, i - 1, j - 1)
-							== true) {
+			else if (!closedList[i - 1][j - 1]
+                     && isUnBlocked(grid, i - 1, j - 1))
+            {
 				gNew = cellDetails[i][j].g + 1.414;
 				hNew = calculateHValue(i - 1, j - 1, dest);
 				fNew = gNew + hNew;
@@ -517,10 +519,12 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 		//------------
 
 		// Only process this cell if this is a valid one
-		if (isValid(i + 1, j + 1) == true) {
+		if (isValid(i + 1, j + 1))
+        {
 			// If the destination cell is the same as the
 			// current successor
-			if (isDestination(i + 1, j + 1, dest) == true) {
+			if (isDestination(i + 1, j + 1, dest))
+            {
 				// Set the Parent of the destination cell
 				cellDetails[i + 1][j + 1].parent_i = i;
 				cellDetails[i + 1][j + 1].parent_j = j;
@@ -533,9 +537,9 @@ void aStarSearch(int grid[][COL], Pair src, Pair dest)
 			// If the successor is already on the closed
 			// list or if it is blocked, then ignore it.
 			// Else do the following
-			else if (closedList[i + 1][j + 1] == false
-					&& isUnBlocked(grid, i + 1, j + 1)
-							== true) {
+			else if (!closedList[i + 1][j + 1]
+                     && isUnBlocked(grid, i + 1, j + 1))
+            {
 				gNew = cellDetails[i][j].g + 1.414;
 				hNew = calculateHValue(i + 1, j + 1, dest);
 				fNew = gNew + hNew;
