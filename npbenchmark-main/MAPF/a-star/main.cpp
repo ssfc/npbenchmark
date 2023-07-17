@@ -12,7 +12,6 @@
 
 using namespace std;
 
-#define ROW 9
 #define COL 10
 
 // Creating a shortcut for int, int pair type
@@ -24,7 +23,7 @@ using pPair = pair<double, pair<int, int> >;
 // A structure to hold the necessary parameters
 struct cell {
 	// Row and Column index of its parent
-	// Note that 0 <= i <= ROW-1 & 0 <= j <= COL-1
+	// Note that 0 <= i <= num_row-1 & 0 <= j <= COL-1
 	int parent_i, parent_j;
 	// f = g + h
 	double f, g, h;
@@ -33,9 +32,12 @@ struct cell {
 class AStar
 {
 private:
+    int num_row;
 public:
+    AStar(int input_num_row);
+
     // check whether given cell (row, col) is a valid cell or not.
-    static bool is_valid(int row, int col);
+    bool is_valid(int row, int col);
     // check whether the given cell is blocked or not
     static bool is_unblocked(int grid[][COL], int row, int col);
     // check whether destination cell has been reached or not
@@ -45,14 +47,20 @@ public:
     // trace the path from the source to destination
     static void trace_path(cell cellDetails[][COL], Pair dest);
     // find the shortest path between a given source cell to a destination cell
-    static void a_star_search(int grid[][COL], Pair src, Pair dest);
+    void a_star_search(int grid[][COL], Pair src, Pair dest);
 };
+
+AStar::AStar(int input_num_row):
+num_row(input_num_row)
+{
+
+}
 
 // check whether given cell (row, col) is a valid cell or not.
 bool AStar::is_valid(int row, int col)
 {
     // Returns true if row number and column number is in range
-    return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL);
+    return (row >= 0) && (row < num_row) && (col >= 0) && (col < COL);
 }
 
 // check whether the given cell is blocked or not
@@ -144,16 +152,16 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     // Create a closed list and initialise it to false which
     // means that no cell has been included yet This closed
     // list is implemented as a boolean 2D array
-    bool closedList[ROW][COL];
+    bool closedList[num_row][COL];
     memset(closedList, false, sizeof(closedList));
 
     // Declare a 2D array of structure to hold the details
     // of that cell
-    cell cellDetails[ROW][COL];
+    cell cellDetails[num_row][COL];
 
     int i, j;
 
-    for (i = 0; i < ROW; i++)
+    for (i = 0; i < num_row; i++)
     {
         for (j = 0; j < COL; j++)
         {
@@ -178,7 +186,7 @@ void AStar::a_star_search(int grid[][COL], Pair src, Pair dest)
     <f, <i, j>>
     where f = g + h,
     and i, j are the row and column index of that cell
-    Note that 0 <= i <= ROW-1 & 0 <= j <= COL-1
+    Note that 0 <= i <= num_row-1 & 0 <= j <= COL-1
     This open list is implemented as a set of pair of
     pair.*/
     set<pPair> openList;
@@ -657,7 +665,7 @@ int main()
 	/* Description of the Grid-
 	1--> The cell is not blocked
 	0--> The cell is blocked */
-	int grid[ROW][COL]
+	int grid[9][COL]
 		= { { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
@@ -674,7 +682,7 @@ int main()
 	// Destination is the left-most top-most corner
 	Pair dest = make_pair(0, 0);
 
-    AStar test;
+    AStar test(9);
 	test.a_star_search(grid, src, dest);
 
 	return 0;
