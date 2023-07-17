@@ -1,5 +1,10 @@
 // A C++ Program to implement A* Search Algorithm
+#include <cfloat>
 #include <cmath>
+#include <cstdio>
+#include <cstring>
+#include <set>
+#include <stack>
 #include <utility>
 using namespace std;
 
