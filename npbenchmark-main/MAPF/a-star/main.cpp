@@ -97,7 +97,7 @@ class AStar
 {
 private:
 public:
-    // find the shortest path between a given source cell to a destination cell 
+    // find the shortest path between a given source cell to a destination cell
     static void aStarSearch(int grid[][COL], Pair src, Pair dest);
 };
 
