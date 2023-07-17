@@ -667,7 +667,7 @@ int main()
 	/* Description of the Grid-
 	1--> The cell is not blocked
 	0--> The cell is blocked */
-	int grid[9][COL]
+	int test_grid[9][COL]
 		= { { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
@@ -685,7 +685,7 @@ int main()
 	Pair dest = make_pair(0, 0);
 
     AStar test(9, 10);
-	test.a_star_search(grid, src, dest);
+	test.a_star_search(test_grid, src, dest);
 
 	return 0;
 }
