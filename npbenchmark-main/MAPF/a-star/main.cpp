@@ -31,8 +31,7 @@ struct cell {
 bool isValid(int row, int col)
 {
 	// Returns true if row number and column number is in range
-	return (row >= 0) && (row < ROW) && (col >= 0)
-		&& (col < COL);
+	return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL);
 }
 
 // A Utility Function to check whether the given cell is blocked or not
@@ -73,7 +72,8 @@ void tracePath(cell cellDetails[][COL], Pair dest)
 	stack<Pair> Path;
 
 	while (!(cellDetails[row][col].parent_i == row
-			&& cellDetails[row][col].parent_j == col)) {
+			&& cellDetails[row][col].parent_j == col))
+    {
 		Path.emplace(row, col);
 		int temp_row = cellDetails[row][col].parent_i;
 		int temp_col = cellDetails[row][col].parent_j;
@@ -82,7 +82,8 @@ void tracePath(cell cellDetails[][COL], Pair dest)
 	}
 
 	Path.emplace(row, col);
-	while (!Path.empty()) {
+	while (!Path.empty())
+    {
 		pair<int, int> p = Path.top();
 		Path.pop();
 		printf("-> (%d,%d) ", p.first, p.second);
