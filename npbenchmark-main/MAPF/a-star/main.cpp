@@ -53,7 +53,7 @@ public:
     // trace the path from the source to destination
     void trace_path(Coordinate dest);
     // find the shortest path between a given source cell to a destination cell
-    void a_star_search(Coordinate src, Coordinate dest);
+    void a_star_search(Coordinate dest);
 };
 
 AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src):
@@ -138,7 +138,7 @@ void AStar::trace_path(Coordinate dest)
     }
 }
 
-void AStar::a_star_search(Coordinate src, Coordinate dest)
+void AStar::a_star_search(Coordinate dest)
 {
     // If the source is out of range
     if (!is_valid(src.first, src.second))
@@ -695,7 +695,7 @@ int main()
 	Coordinate test_dest = make_pair(0, 0);
 
     AStar test(9, 10, test_src);
-	test.a_star_search(test_src, test_dest);
+	test.a_star_search(test_dest);
 
 	return 0;
 }
