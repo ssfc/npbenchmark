@@ -48,7 +48,7 @@ public:
     // check whether the given cell is blocked or not
     bool is_unblocked(int row, int col);
     // check whether destination cell has been reached or not
-    static bool is_destination(int row, int col, Coordinate dest);
+    bool is_destination(int row, int col);
     // calculate the 'h' heuristics.
     double calculate_h(int row, int col) const;
     // trace the path from the source to destination

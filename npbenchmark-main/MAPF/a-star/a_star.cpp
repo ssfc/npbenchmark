@@ -43,7 +43,7 @@ bool AStar::is_unblocked(int row, int col)
 }
 
 // check whether destination cell has been reached or not
-bool AStar::is_destination(int row, int col, Coordinate dest)
+bool AStar::is_destination(int row, int col)
 {
     if (row == dest.first && col == dest.second)
         return true;
@@ -113,7 +113,7 @@ void AStar::a_star_search()
     }
 
     // If the destination cell is the same as source cell
-    if (is_destination(src.first, src.second, dest))
+    if (is_destination(src.first, src.second))
     {
         cerr << "We are already at the destination\n";
         return;
@@ -203,15 +203,15 @@ void AStar::a_star_search()
         //----------- 1st Successor (North) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i - 1, j))
+        if (is_valid(i-1, j))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i - 1, j, dest))
+            if (is_destination(i-1, j))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i - 1][j].parent_i = i;
-                cellDetails[i - 1][j].parent_j = j;
+                cellDetails[i-1][j].parent_i = i;
+                cellDetails[i-1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -252,15 +252,15 @@ void AStar::a_star_search()
         //----------- 2nd Successor (South) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i + 1, j))
+        if (is_valid(i+1, j))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i + 1, j, dest))
+            if (is_destination(i+1, j))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i + 1][j].parent_i = i;
-                cellDetails[i + 1][j].parent_j = j;
+                cellDetails[i+1][j].parent_i = i;
+                cellDetails[i+1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -301,11 +301,11 @@ void AStar::a_star_search()
         //----------- 3rd Successor (East) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i, j + 1))
+        if (is_valid(i, j+1))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i, j + 1, dest))
+            if (is_destination(i, j+1))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i][j + 1].parent_i = i;
@@ -351,15 +351,15 @@ void AStar::a_star_search()
         //----------- 4th Successor (West) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i, j - 1))
+        if (is_valid(i, j-1))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i, j - 1, dest))
+            if (is_destination(i, j-1))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i][j - 1].parent_i = i;
-                cellDetails[i][j - 1].parent_j = j;
+                cellDetails[i][j-1].parent_i = i;
+                cellDetails[i][j-1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -369,8 +369,8 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i][j - 1]
-                     && is_unblocked(i, j - 1))
+            else if (!closedList[i][j-1]
+                     && is_unblocked(i, j-1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(i, j-1);
@@ -407,11 +407,11 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i - 1, j + 1, dest))
+            if (is_destination(i-1, j+1))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i - 1][j + 1].parent_i = i;
-                cellDetails[i - 1][j + 1].parent_j = j;
+                cellDetails[i-1][j+1].parent_i = i;
+                cellDetails[i-1][j+1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -461,11 +461,11 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i - 1, j - 1, dest))
+            if (is_destination(i-1, j-1))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i - 1][j - 1].parent_i = i;
-                cellDetails[i - 1][j - 1].parent_j = j;
+                cellDetails[i-1][j-1].parent_i = i;
+                cellDetails[i-1][j-1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -509,15 +509,15 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i + 1, j + 1))
+        if (is_valid(i+1, j+1))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i + 1, j + 1, dest))
+            if (is_destination(i+1, j+1))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i + 1][j + 1].parent_i = i;
-                cellDetails[i + 1][j + 1].parent_j = j;
+                cellDetails[i+1][j+1].parent_i = i;
+                cellDetails[i+1][j+1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -561,15 +561,15 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i + 1, j - 1))
+        if (is_valid(i+1, j-1))
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i + 1, j - 1, dest))
+            if (is_destination(i+1, j-1))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i + 1][j - 1].parent_i = i;
-                cellDetails[i + 1][j - 1].parent_j = j;
+                cellDetails[i+1][j-1].parent_i = i;
+                cellDetails[i+1][j-1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
