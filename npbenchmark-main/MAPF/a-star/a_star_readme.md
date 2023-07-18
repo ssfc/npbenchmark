@@ -220,11 +220,7 @@ using Pair = std::pair<int, int>;
 
         iii) if a node with the same position as successor is in the OPEN list which has a lower f than successor, skip this successor
 
-        iV) if a node with the same position as 
-            successor  is in the CLOSED list which has
-            a lower f than successor, skip this successor
-            otherwise, add  the node to the open list
-     end (for loop)
+        iV) if a node with the same position as successor is in the CLOSED list which has a lower f than successor, skip this successor. Otherwise, add  the node to the open list end (for loop)
   
     e) push q on the closed list
     end (while loop)
