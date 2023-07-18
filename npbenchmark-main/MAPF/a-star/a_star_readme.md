@@ -218,9 +218,7 @@ using Pair = std::pair<int, int>;
           successor.h = distance from goal to successor (This can be done using many ways, we will discuss three heuristics- Manhattan, Diagonal and Euclidean Heuristics)          
           successor.f = successor.g + successor.h
 
-        iii) if a node with the same position as 
-            successor is in the OPEN list which has a 
-           lower f than successor, skip this successor
+        iii) if a node with the same position as successor is in the OPEN list which has a lower f than successor, skip this successor
 
         iV) if a node with the same position as 
             successor  is in the CLOSED list which has
