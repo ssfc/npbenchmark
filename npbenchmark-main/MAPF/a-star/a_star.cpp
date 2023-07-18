@@ -101,14 +101,14 @@ void AStar::trace_path()
 // find the shortest path between a given source cell to a destination cell
 void AStar::a_star_search()
 {
-    // If the source is out of range
+    // Check whether the source is out of range
     if (!is_valid(src))
     {
         cerr <<"Source is invalid\n";
         return;
     }
 
-    // If the destination is out of range
+    // Check whether the destination is out of range
     if (!is_valid(dest))
     {
         cerr << "Destination is invalid\n";
