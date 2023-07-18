@@ -25,7 +25,7 @@ AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Co
 
 // check whether given cell (row, col) is a valid cell or not.
 // 也就是检查一个cell是否在地图范围内
-bool AStar::is_valid(int row, int col)
+bool AStar::is_valid(int row, int col) const
 {
     // Returns true if row number and column number is in range
     return (row >= 0) && (row < num_rows) && (col >= 0) && (col < num_columns);
@@ -51,7 +51,7 @@ bool AStar::is_destination(int row, int col, Coordinate dest)
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(int row, int col)
+double AStar::calculate_h(int row, int col) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。

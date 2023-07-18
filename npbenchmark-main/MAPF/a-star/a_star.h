@@ -46,13 +46,13 @@ public:
     AStar(int input_num_rows, int input_num_columns, Coordinate src, Coordinate dest);
 
     // check whether given cell (row, col) is a valid cell or not.
-    bool is_valid(int row, int col);
+    bool is_valid(int row, int col) const;
     // check whether the given cell is blocked or not
     bool is_unblocked(int row, int col);
     // check whether destination cell has been reached or not
     static bool is_destination(int row, int col, Coordinate dest);
     // calculate the 'h' heuristics.
-    double calculate_h(int row, int col);
+    double calculate_h(int row, int col) const;
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source cell to a destination cell
