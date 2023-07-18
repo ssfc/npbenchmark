@@ -129,9 +129,8 @@ void AStar::a_star_search()
         return;
     }
 
-    // Create a closed list and initialise it to false which
-    // means that no cell has been included yet This closed
-    // list is implemented as a boolean 2D array
+    // Create a closed list and initialise it to false which means that no cell has been included yet
+    // This closed list is implemented as a boolean 2D array
     bool closedList[num_rows][num_columns];
     memset(closedList, false, sizeof(closedList));
 
