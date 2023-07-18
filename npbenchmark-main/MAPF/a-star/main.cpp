@@ -12,12 +12,6 @@
 using namespace std;
 
 
-// Creating a shortcut for int, int pair type
-using Coordinate = pair<int, int>;
-
-// Creating a shortcut for pair<int, pair<int, int>> type
-using pPair = pair<double, pair<int, int>>;
-
 // A structure to hold the necessary parameters
 struct cell
 {
