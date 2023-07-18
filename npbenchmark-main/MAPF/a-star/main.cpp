@@ -7,12 +7,10 @@
 #include <set>
 #include <stack>
 #include <utility>
-
 #include "a_star.h"
 
 using namespace std;
 
-#define COL 10
 
 // Creating a shortcut for int, int pair type
 using Pair = pair<int, int>;
@@ -36,11 +34,10 @@ class AStar
 private:
     int num_rows;
     int num_columns;
-    int grid[9][COL];
+    int grid[9][10];
 
-    // Declare a 2D array of structure to hold the details
-    // of that cell
-    cell cellDetails[9][COL];
+    // Declare a 2D array of structure to hold the details of that cell
+    cell cellDetails[9][10];
 public:
     AStar(int input_num_rows, int input_num_columns);
 
@@ -78,7 +75,7 @@ grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 bool AStar::is_valid(int row, int col)
 {
     // Returns true if row number and column number is in range
-    return (row >= 0) && (row < num_rows) && (col >= 0) && (col < COL);
+    return (row >= 0) && (row < num_rows) && (col >= 0) && (col < num_columns);
 }
 
 // check whether the given cell is blocked or not
@@ -170,14 +167,14 @@ void AStar::a_star_search(Pair src, Pair dest)
     // Create a closed list and initialise it to false which
     // means that no cell has been included yet This closed
     // list is implemented as a boolean 2D array
-    bool closedList[num_rows][COL];
+    bool closedList[num_rows][num_columns];
     memset(closedList, false, sizeof(closedList));
 
     int i, j;
 
     for (i = 0; i < num_rows; i++)
     {
-        for (j = 0; j < COL; j++)
+        for (j = 0; j < num_columns; j++)
         {
             cellDetails[i][j].f = FLT_MAX;
             cellDetails[i][j].g = FLT_MAX;
@@ -200,7 +197,7 @@ void AStar::a_star_search(Pair src, Pair dest)
     <f, <i, j>>
     where f = g + h,
     and i, j are the row and column index of that cell
-    Note that 0 <= i <= num_row-1 & 0 <= j <= COL-1
+    Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair of
     pair.*/
     set<pPair> openList;
@@ -675,7 +672,7 @@ int main()
 	/* Description of the Grid-
 	1--> The cell is not blocked
 	0--> The cell is blocked */
-	int test_grid[9][COL]
+	int test_grid[9][10]
 		= { { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
 			{ 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
