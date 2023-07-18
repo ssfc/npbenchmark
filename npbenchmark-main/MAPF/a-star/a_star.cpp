@@ -122,7 +122,7 @@ void AStar::a_star_search()
         return;
     }
 
-    // If the destination cell is the same as source cell
+    // Check whether the destination cell is the same as source cell
     if (is_destination(src))
     {
         cerr << "We are already at the destination\n";
