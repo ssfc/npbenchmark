@@ -30,7 +30,7 @@ bool AStar::is_valid(Coordinate position) const
 {
     // Returns true if row number and column number is in range
     return (position.first >= 0) && (position.first < num_rows)
-    && (position.second >= 0) && (position.second < num_columns);
+           && (position.second >= 0) && (position.second < num_columns);
 }
 
 // check whether the given cell is blocked or not
