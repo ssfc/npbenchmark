@@ -157,20 +157,16 @@ void AStar::a_star_search()
     cellDetails[i][j].parent_j = j;
 
     /*
-    Create an open list having information as-
-    <f, <i, j>>
-    where f = g + h,
+    Create an open list having information as <f, <i, j>> where f = g + h,
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
     set<pPair> openList;
 
-    // Put the starting cell on the open list and set its
-    // 'f' as 0
+    // Put the starting cell on the open list and set its 'f' as 0
     openList.insert(make_pair(0.0, make_pair(i, j)));
 
-    // We set this boolean value as false as initially
-    // the destination is not reached.
+    // We set this boolean value as false as initially the destination is not reached.
     bool foundDest = false;
 
     while (!openList.empty())
