@@ -114,8 +114,7 @@ void AStar::a_star_search()
     }
 
     // Either the source or the destination is blocked
-    if (!is_unblocked(src)
-        || !is_unblocked(dest))
+    if (!is_unblocked(src) || !is_unblocked(dest))
     {
         cerr << "Source or the destination is blocked\n";
         return;
