@@ -3,6 +3,7 @@
 //
 #include "a_star.h"
 
+using namespace std;
 
 AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Coordinate input_dest):
         num_rows(input_num_rows),
