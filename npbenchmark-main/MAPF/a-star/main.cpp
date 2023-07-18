@@ -35,11 +35,12 @@ private:
     int num_rows;
     int num_columns;
     int grid[9][10];
+    Coordinate src;
 
     // Declare a 2D array of structure to hold the details of that cell
     cell cellDetails[9][10];
 public:
-    AStar(int input_num_rows, int input_num_columns);
+    AStar(int input_num_rows, int input_num_columns, Coordinate src);
 
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(int row, int col);
@@ -55,9 +56,10 @@ public:
     void a_star_search(Coordinate src, Coordinate dest);
 };
 
-AStar::AStar(int input_num_rows, int input_num_columns):
+AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src):
 num_rows(input_num_rows),
 num_columns(input_num_columns),
+src(input_src),
 grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
       { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
       { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
@@ -692,7 +694,7 @@ int main()
 	// Destination is the left-most top-most corner
 	Coordinate test_dest = make_pair(0, 0);
 
-    AStar test(9, 10);
+    AStar test(9, 10, test_src);
 	test.a_star_search(test_src, test_dest);
 
 	return 0;
