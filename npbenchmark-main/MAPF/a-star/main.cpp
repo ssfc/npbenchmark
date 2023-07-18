@@ -12,17 +12,6 @@
 using namespace std;
 
 
-// A structure to hold the necessary parameters
-struct cell
-{
-	// Row and Column index of its parent
-	// Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
-	int parent_i, parent_j;
-	// f = g + h
-	double f, g, h;
-};
-
-
 class AStar
 {
 private:
