@@ -84,7 +84,10 @@ void AStar::trace_path()
         col = temp_col;
     }
 
+    // 接下来，将起点位置 (row, col) 也加入到 Path 中，此时 Path 中存储了完整的反向路径。
     Path.emplace(row, col);
+
+    // 最后，通过另一个 while 循环遍历 Path 并依次输出路径上的每个坐标 (row, col)，形式为 -> (row,col)。
     while (!Path.empty())
     {
         pair<int, int> p = Path.top();
