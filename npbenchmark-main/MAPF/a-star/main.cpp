@@ -52,7 +52,7 @@ public:
     // calculate the 'h' heuristics.
     static double calculate_h(int row, int col, Coordinate dest);
     // trace the path from the source to destination
-    void trace_path(Coordinate dest);
+    void trace_path();
     // find the shortest path between a given source cell to a destination cell
     void a_star_search();
 };
@@ -113,7 +113,7 @@ double AStar::calculate_h(int row, int col, Coordinate dest)
             + (col - dest.second) * (col - dest.second)));
 }
 
-void AStar::trace_path(Coordinate dest)
+void AStar::trace_path()
 {
     cerr << "\nThe Path is ";
     int row = dest.first;
@@ -205,8 +205,7 @@ void AStar::a_star_search()
     where f = g + h,
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
-    This open list is implemented as a set of pair of
-    pair.*/
+    This open list is implemented as a set of pair.*/
     set<pPair> openList;
 
     // Put the starting cell on the open list and set its
@@ -266,7 +265,7 @@ void AStar::a_star_search()
                 cellDetails[i - 1][j].parent_i = i;
                 cellDetails[i - 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
                 return;
             }
@@ -315,7 +314,7 @@ void AStar::a_star_search()
                 cellDetails[i + 1][j].parent_i = i;
                 cellDetails[i + 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
 
                 return;
@@ -364,7 +363,7 @@ void AStar::a_star_search()
                 cellDetails[i][j + 1].parent_i = i;
                 cellDetails[i][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
                 return;
             }
@@ -414,7 +413,7 @@ void AStar::a_star_search()
                 cellDetails[i][j - 1].parent_i = i;
                 cellDetails[i][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
                 return;
             }
@@ -466,7 +465,7 @@ void AStar::a_star_search()
                 cellDetails[i - 1][j + 1].parent_i = i;
                 cellDetails[i - 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
 
                 return;
@@ -520,7 +519,7 @@ void AStar::a_star_search()
                 cellDetails[i - 1][j - 1].parent_i = i;
                 cellDetails[i - 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
 
                 return;
@@ -572,7 +571,7 @@ void AStar::a_star_search()
                 cellDetails[i + 1][j + 1].parent_i = i;
                 cellDetails[i + 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
 
                 return;
@@ -624,7 +623,7 @@ void AStar::a_star_search()
                 cellDetails[i + 1][j - 1].parent_i = i;
                 cellDetails[i + 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(dest);
+                trace_path();
                 foundDest = true;
 
                 return;
