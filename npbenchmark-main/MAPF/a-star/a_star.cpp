@@ -71,6 +71,9 @@ void AStar::trace_path()
     // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
     stack<Coordinate> Path;
 
+    // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
+    // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
+    // Comment: 看来这个程序的设定是起点的父就是自己,我的话倾向于设为-1。
     while (!(cellDetails[row][col].parent_i == row
              && cellDetails[row][col].parent_j == col))
     {
