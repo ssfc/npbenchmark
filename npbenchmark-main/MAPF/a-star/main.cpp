@@ -37,6 +37,10 @@ private:
     int num_rows;
     int num_columns;
     int grid[9][COL];
+
+    // Declare a 2D array of structure to hold the details
+    // of that cell
+    cell cellDetails[9][COL];
 public:
     AStar(int input_num_rows, int input_num_columns);
 
@@ -49,7 +53,7 @@ public:
     // calculate the 'h' heuristics.
     static double calculate_h(int row, int col, Pair dest);
     // trace the path from the source to destination
-    static void trace_path(cell cellDetails[][COL], Pair dest);
+    void trace_path(Pair dest);
     // find the shortest path between a given source cell to a destination cell
     void a_star_search(Pair src, Pair dest);
 };
@@ -105,7 +109,7 @@ double AStar::calculate_h(int row, int col, Pair dest)
             + (col - dest.second) * (col - dest.second)));
 }
 
-void AStar::trace_path(cell cellDetails[][COL], Pair dest)
+void AStar::trace_path(Pair dest)
 {
     cerr << "\nThe Path is ";
     int row = dest.first;
@@ -168,10 +172,6 @@ void AStar::a_star_search(Pair src, Pair dest)
     // list is implemented as a boolean 2D array
     bool closedList[num_rows][COL];
     memset(closedList, false, sizeof(closedList));
-
-    // Declare a 2D array of structure to hold the details
-    // of that cell
-    cell cellDetails[num_rows][COL];
 
     int i, j;
 
@@ -262,7 +262,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i - 1][j].parent_i = i;
                 cellDetails[i - 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
                 return;
             }
@@ -311,7 +311,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i + 1][j].parent_i = i;
                 cellDetails[i + 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
 
                 return;
@@ -360,7 +360,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i][j + 1].parent_i = i;
                 cellDetails[i][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
                 return;
             }
@@ -410,7 +410,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i][j - 1].parent_i = i;
                 cellDetails[i][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
                 return;
             }
@@ -462,7 +462,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i - 1][j + 1].parent_i = i;
                 cellDetails[i - 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
 
                 return;
@@ -516,7 +516,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i - 1][j - 1].parent_i = i;
                 cellDetails[i - 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
 
                 return;
@@ -568,7 +568,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i + 1][j + 1].parent_i = i;
                 cellDetails[i + 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
 
                 return;
@@ -620,7 +620,7 @@ void AStar::a_star_search(Pair src, Pair dest)
                 cellDetails[i + 1][j - 1].parent_i = i;
                 cellDetails[i + 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
-                trace_path(cellDetails, dest);
+                trace_path(dest);
                 foundDest = true;
 
                 return;
