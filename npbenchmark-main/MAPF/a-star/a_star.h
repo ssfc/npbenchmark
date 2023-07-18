@@ -57,9 +57,4 @@ public:
     void a_star_search();
 };
 
-
-
-
-
-
 #endif //A_STAR_A_STAR_H
