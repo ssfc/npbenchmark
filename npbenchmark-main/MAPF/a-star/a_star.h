@@ -52,7 +52,7 @@ public:
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(Coordinate position) const;
     // check whether the given cell is blocked or not
-    bool is_passable(pos_pair position);
+    bool is_passable(Coordinate position);
     // check whether destination cell has been reached or not
     bool is_destination(pos_pair position) const;
     // calculate the 'h' heuristics.
