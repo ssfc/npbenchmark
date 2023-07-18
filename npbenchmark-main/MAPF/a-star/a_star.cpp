@@ -44,9 +44,9 @@ bool AStar::is_unblocked(Coordinate position)
 }
 
 // check whether destination cell has been reached or not
-bool AStar::is_destination(int row, int col) const
+bool AStar::is_destination(Coordinate position) const
 {
-    if (row == dest.first && col == dest.second)
+    if (position == dest)
         return true;
     else
         return false;
@@ -122,7 +122,7 @@ void AStar::a_star_search()
     }
 
     // If the destination cell is the same as source cell
-    if (is_destination(src.first, src.second))
+    if (is_destination(src))
     {
         cerr << "We are already at the destination\n";
         return;
@@ -216,7 +216,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i-1, j))
+            if (is_destination(make_pair(i-1, j)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i-1][j].parent_i = i;
@@ -265,7 +265,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i+1, j))
+            if (is_destination(make_pair(i+1, j)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i+1][j].parent_i = i;
@@ -314,7 +314,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i, j+1))
+            if (is_destination(make_pair(i, j+1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i][j + 1].parent_i = i;
@@ -364,7 +364,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i, j-1))
+            if (is_destination(make_pair(i, j-1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i][j-1].parent_i = i;
@@ -416,7 +416,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i-1, j+1))
+            if (is_destination(make_pair(i-1, j+1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i-1][j+1].parent_i = i;
@@ -470,7 +470,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i-1, j-1))
+            if (is_destination(make_pair(i-1, j-1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i-1][j-1].parent_i = i;
@@ -522,7 +522,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i+1, j+1))
+            if (is_destination(make_pair(i+1, j+1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i+1][j+1].parent_i = i;
@@ -574,7 +574,7 @@ void AStar::a_star_search()
         {
             // If the destination cell is the same as the
             // current successor
-            if (is_destination(i+1, j-1))
+            if (is_destination(make_pair(i+1, j-1)))
             {
                 // Set the Parent of the destination cell
                 cellDetails[i+1][j-1].parent_i = i;
