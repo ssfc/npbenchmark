@@ -62,6 +62,7 @@ double AStar::calculate_h(Coordinate position) const
             + (position.second - dest.second) * (position.second - dest.second)));
 }
 
+// trace the path from the source to destination
 void AStar::trace_path()
 {
     cerr << "\nThe Path is ";
