@@ -192,3 +192,74 @@ using Pair = std::pair<int, int>;
 
 但是，如果你的代码要兼容较旧的 C++ 版本，或者在一些特定的代码库或项目中，仍然会看到 `typedef` 的使用。在这些情况下，`typedef` 是有效且合法的，只是在新的代码中，更多地使用 `using` 是更为常见的做法。
 
+### Q: 用中文解读下述伪代码： 
+
+```
+// A* Search Algorithm
+1.  Initialize the open list
+2.  Initialize the closed list
+    put the starting node on the open 
+    list (you can leave its f at zero)
+
+3.  while the open list is not empty
+    a) find the node with the least f on 
+       the open list, call it "q"
+
+    b) pop q off the open list
+  
+    c) generate q's 8 successors and set their 
+       parents to q
+   
+    d) for each successor
+        i) if successor is the goal, stop search
+        
+        ii) else, compute both g and h for successor
+          successor.g = q.g + distance between 
+                              successor and q
+          successor.h = distance from goal to 
+          successor (This can be done using many 
+          ways, we will discuss three heuristics- 
+          Manhattan, Diagonal and Euclidean 
+          Heuristics)
+          
+          successor.f = successor.g + successor.h
+
+        iii) if a node with the same position as 
+            successor is in the OPEN list which has a 
+           lower f than successor, skip this successor
+
+        iV) if a node with the same position as 
+            successor  is in the CLOSED list which has
+            a lower f than successor, skip this successor
+            otherwise, add  the node to the open list
+     end (for loop)
+  
+    e) push q on the closed list
+    end (while loop)
+```
+
+这段伪代码描述了 A*（A星）搜索算法的执行过程，该算法用于在图或网络中搜索从起点到目标点的最短路径。下面对每一步进行解读：
+
+1. 初始化开放列表（open list）：开放列表用于存储待扩展的节点，初始时为空。
+
+2. 初始化封闭列表（closed list）：封闭列表用于存储已经扩展过的节点，初始时为空。将起始节点放入开放列表，可以将其 f 值设为0（这里 f 表示估计的总路径代价）。
+
+3. 当开放列表不为空时，执行以下步骤：
+   a) 在开放列表中找到 f 值最小的节点，将其称为 "q"。
+   b) 将 "q" 从开放列表中移除。
+   c) 生成 "q" 的8个后继节点，并将它们的父节点设置为 "q"。
+   d) 对于每个后继节点：
+      i) 如果后继节点是目标节点，则停止搜索，找到了最短路径。
+      ii) 否则，计算后继节点的 g 和 h 值：
+          - g 值表示从起点到当前节点的实际代价（即实际路径长度）。
+          - h 值表示当前节点到目标节点的估计代价（即启发式函数估计的路径长度）。
+          这一步中，可以使用三种启发式函数来计算 h 值：曼哈顿距离、对角线距离和欧几里得距离。
+          successor.g = q.g + 从 "q" 到后继节点的距离
+          successor.h = 从后继节点到目标节点的距离（可以通过多种方式计算，如曼哈顿距离、对角线距离或欧几里得距离）。
+          successor.f = successor.g + successor.h
+      iii) 如果与后继节点位置相同的节点在开放列表中具有更小的 f 值，则跳过该后继节点。
+      iV) 如果与后继节点位置相同的节点在封闭列表中具有更小的 f 值，则跳过该后继节点，否则将该节点添加到开放列表。
+   e) 将 "q" 添加到封闭列表。
+   
+
+整个过程在一个 while 循环中进行，直到找到目标节点或开放列表为空为止。A*算法通过选择 f 值最小的节点来扩展，同时使用启发式函数的估计值来引导搜索方向，从而更快地找到最优路径。
