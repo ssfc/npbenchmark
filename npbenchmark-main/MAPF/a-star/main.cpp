@@ -13,7 +13,7 @@ using namespace std;
 
 
 // Creating a shortcut for int, int pair type
-using Pair = pair<int, int>;
+using Coordinate = pair<int, int>;
 
 // Creating a shortcut for pair<int, pair<int, int>> type
 using pPair = pair<double, pair<int, int> >;
@@ -46,13 +46,13 @@ public:
     // check whether the given cell is blocked or not
     bool is_unblocked(int row, int col);
     // check whether destination cell has been reached or not
-    static bool is_destination(int row, int col, Pair dest);
+    static bool is_destination(int row, int col, Coordinate dest);
     // calculate the 'h' heuristics.
-    static double calculate_h(int row, int col, Pair dest);
+    static double calculate_h(int row, int col, Coordinate dest);
     // trace the path from the source to destination
-    void trace_path(Pair dest);
+    void trace_path(Coordinate dest);
     // find the shortest path between a given source cell to a destination cell
-    void a_star_search(Pair src, Pair dest);
+    void a_star_search(Coordinate src, Coordinate dest);
 };
 
 AStar::AStar(int input_num_rows, int input_num_columns):
@@ -67,6 +67,7 @@ grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
       { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
       { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
       { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
+      // 0表示无障碍, 1表示有障碍。
 {
 
 }
@@ -90,7 +91,7 @@ bool AStar::is_unblocked(int row, int col)
 }
 
 // check whether destination cell has been reached or not
-bool AStar::is_destination(int row, int col, Pair dest)
+bool AStar::is_destination(int row, int col, Coordinate dest)
 {
     if (row == dest.first && col == dest.second)
         return true;
@@ -99,21 +100,22 @@ bool AStar::is_destination(int row, int col, Pair dest)
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(int row, int col, Pair dest)
+double AStar::calculate_h(int row, int col, Coordinate dest)
 {
     // Return using the distance formula
+    // 看样子用的是欧几里得距离。
     return ((double)sqrt(
             (row - dest.first) * (row - dest.first)
             + (col - dest.second) * (col - dest.second)));
 }
 
-void AStar::trace_path(Pair dest)
+void AStar::trace_path(Coordinate dest)
 {
     cerr << "\nThe Path is ";
     int row = dest.first;
     int col = dest.second;
 
-    stack<Pair> Path;
+    stack<Coordinate> Path;
 
     while (!(cellDetails[row][col].parent_i == row
              && cellDetails[row][col].parent_j == col))
@@ -134,7 +136,7 @@ void AStar::trace_path(Pair dest)
     }
 }
 
-void AStar::a_star_search(Pair src, Pair dest)
+void AStar::a_star_search(Coordinate src, Coordinate dest)
 {
     // If the source is out of range
     if (!is_valid(src.first, src.second))
@@ -685,10 +687,10 @@ int main()
 			{ 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
 
 	// Source is the left-most bottom-most corner
-	Pair src = make_pair(8, 0);
+	Coordinate src = make_pair(8, 0);
 
 	// Destination is the left-most top-most corner
-	Pair dest = make_pair(0, 0);
+	Coordinate dest = make_pair(0, 0);
 
     AStar test(9, 10);
 	test.a_star_search(src, dest);
