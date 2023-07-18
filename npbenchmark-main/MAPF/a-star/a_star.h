@@ -50,7 +50,7 @@ public:
     AStar(int input_num_rows, int input_num_columns, pos_pair src, pos_pair dest);
 
     // check whether given cell (row, col) is a valid cell or not.
-    bool is_valid(pos_pair position) const;
+    bool is_valid(Coordinate position) const;
     // check whether the given cell is blocked or not
     bool is_passable(pos_pair position);
     // check whether destination cell has been reached or not
