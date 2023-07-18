@@ -687,13 +687,13 @@ int main()
 			{ 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
 
 	// Source is the left-most bottom-most corner
-	Coordinate src = make_pair(8, 0);
+	Coordinate test_src = make_pair(8, 0);
 
 	// Destination is the left-most top-most corner
-	Coordinate dest = make_pair(0, 0);
+	Coordinate test_dest = make_pair(0, 0);
 
     AStar test(9, 10);
-	test.a_star_search(src, dest);
+	test.a_star_search(test_src, test_dest);
 
 	return 0;
 }
