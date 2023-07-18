@@ -98,6 +98,7 @@ void AStar::trace_path()
     }
 }
 
+// find the shortest path between a given source cell to a destination cell
 void AStar::a_star_search()
 {
     // If the source is out of range
