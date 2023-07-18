@@ -46,7 +46,7 @@ public:
     // check whether given cell (row, col) is a valid cell or not.
     bool is_valid(Coordinate position) const;
     // check whether the given cell is blocked or not
-    bool is_unblocked(int row, int col);
+    bool is_unblocked(Coordinate position);
     // check whether destination cell has been reached or not
     bool is_destination(int row, int col) const;
     // calculate the 'h' heuristics.
