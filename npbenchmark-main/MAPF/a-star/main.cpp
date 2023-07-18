@@ -59,7 +59,7 @@ public:
 AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src):
 num_rows(input_num_rows),
 num_columns(input_num_columns),
-src(input_src),
+src(std::move(input_src)),
 grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
       { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
       { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
