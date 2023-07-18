@@ -228,7 +228,7 @@ void AStar::a_star_search()
 
                 // If the successor is already on the closed list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i - 1][j] && is_unblocked(make_pair(i-1, j)))
+            else if (!closedList[i-1][j] && is_unblocked(make_pair(i-1, j)))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(make_pair(i-1, j));
@@ -377,8 +377,7 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i][j-1]
-                     && is_unblocked(make_pair(i, j-1)))
+            else if (!closedList[i][j-1] && is_unblocked(make_pair(i, j-1)))
             {
                 gNew = cellDetails[i][j].g + 1.0;
                 hNew = calculate_h(make_pair(i, j-1));
@@ -430,8 +429,7 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i-1][j+1]
-                     && is_unblocked(make_pair(i-1, j+1)))
+            else if (!closedList[i-1][j+1] && is_unblocked(make_pair(i-1, j+1)))
             {
                 gNew = cellDetails[i][j].g + 1.414;
                 hNew = calculate_h(make_pair(i-1, j+1));
