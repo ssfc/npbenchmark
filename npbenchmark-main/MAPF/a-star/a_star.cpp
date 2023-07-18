@@ -43,7 +43,7 @@ bool AStar::is_unblocked(int row, int col)
 }
 
 // check whether destination cell has been reached or not
-bool AStar::is_destination(int row, int col)
+bool AStar::is_destination(int row, int col) const
 {
     if (row == dest.first && col == dest.second)
         return true;
