@@ -115,7 +115,7 @@ void AStar::a_star_search()
         return;
     }
 
-    // Either the source or the destination is blocked
+    // Check whether the source or the destination is blocked
     if (!is_passable(src) || !is_passable(dest))
     {
         cerr << "Source or the destination is blocked\n";
