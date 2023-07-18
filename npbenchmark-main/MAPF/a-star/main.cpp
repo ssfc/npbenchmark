@@ -16,7 +16,7 @@ using namespace std;
 using Coordinate = pair<int, int>;
 
 // Creating a shortcut for pair<int, pair<int, int>> type
-using pPair = pair<double, pair<int, int> >;
+using pPair = pair<double, pair<int, int>>;
 
 // A structure to hold the necessary parameters
 struct cell
@@ -54,7 +54,7 @@ public:
     // trace the path from the source to destination
     void trace_path(Coordinate dest);
     // find the shortest path between a given source cell to a destination cell
-    void a_star_search(Coordinate dest);
+    void a_star_search();
 };
 
 AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Coordinate input_dest):
@@ -140,7 +140,7 @@ void AStar::trace_path(Coordinate dest)
     }
 }
 
-void AStar::a_star_search(Coordinate dest)
+void AStar::a_star_search()
 {
     // If the source is out of range
     if (!is_valid(src.first, src.second))
@@ -697,7 +697,7 @@ int main()
 	Coordinate test_dest = make_pair(0, 0);
 
     AStar test(9, 10, test_src, test_dest);
-	test.a_star_search(test_dest);
+	test.a_star_search();
 
 	return 0;
 }
