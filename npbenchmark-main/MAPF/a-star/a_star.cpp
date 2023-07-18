@@ -5,7 +5,7 @@
 
 using namespace std;
 
-AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Coordinate input_dest):
+AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_pair input_dest):
         num_rows(input_num_rows),
         num_columns(input_num_columns),
         src(std::move(input_src)),
@@ -26,7 +26,7 @@ AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Co
 
 // check whether given cell (row, col) is a valid cell or not.
 // 也就是检查一个cell是否在地图范围内
-bool AStar::is_valid(Coordinate position) const
+bool AStar::is_valid(pos_pair position) const
 {
     // Returns true if row number and column number is in range
     return (position.first >= 0) && (position.first < num_rows)
@@ -34,7 +34,7 @@ bool AStar::is_valid(Coordinate position) const
 }
 
 // check whether the given cell is blocked or not
-bool AStar::is_passable(Coordinate position)
+bool AStar::is_passable(pos_pair position)
 {
     // Returns true if the cell is not blocked else false
     if (grid[position.first][position.second] == 1)
@@ -44,7 +44,7 @@ bool AStar::is_passable(Coordinate position)
 }
 
 // check whether destination cell has been reached or not
-bool AStar::is_destination(Coordinate position) const
+bool AStar::is_destination(pos_pair position) const
 {
     if (position == dest)
         return true;
@@ -53,7 +53,7 @@ bool AStar::is_destination(Coordinate position) const
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(Coordinate position) const
+double AStar::calculate_h(pos_pair position) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
@@ -71,7 +71,7 @@ void AStar::trace_path()
     int col = dest.second;
 
     // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
-    stack<Coordinate> Path;
+    stack<pos_pair> Path;
 
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
