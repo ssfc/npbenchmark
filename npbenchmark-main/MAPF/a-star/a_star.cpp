@@ -64,9 +64,11 @@ double AStar::calculate_h(int row, int col) const
 void AStar::trace_path()
 {
     cerr << "\nThe Path is ";
+    // 首先，函数 trace_path 初始化了起始位置的行索引 row 和列索引 col.
     int row = dest.first;
     int col = dest.second;
 
+    // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
     stack<Coordinate> Path;
 
     while (!(cellDetails[row][col].parent_i == row
