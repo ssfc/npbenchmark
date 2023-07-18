@@ -50,7 +50,7 @@ public:
     // check whether destination cell has been reached or not
     static bool is_destination(int row, int col, Coordinate dest);
     // calculate the 'h' heuristics.
-    static double calculate_h(int row, int col, Coordinate dest);
+    double calculate_h(int row, int col);
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source cell to a destination cell
@@ -104,7 +104,7 @@ bool AStar::is_destination(int row, int col, Coordinate dest)
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(int row, int col, Coordinate dest)
+double AStar::calculate_h(int row, int col)
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
@@ -272,10 +272,10 @@ void AStar::a_star_search()
 
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closedList[i - 1][j] && is_unblocked(i - 1, j))
+            else if (!closedList[i - 1][j] && is_unblocked(i-1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(i - 1, j, dest);
+                hNew = calculate_h(i-1, j);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -322,10 +322,10 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i + 1][j] && is_unblocked(i + 1, j))
+            else if (!closedList[i+1][j] && is_unblocked(i+1, j))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(i + 1, j, dest);
+                hNew = calculate_h(i+1, j);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -374,7 +374,7 @@ void AStar::a_star_search()
             else if (!closedList[i][j + 1] && is_unblocked(i, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(i, j + 1, dest);
+                hNew = calculate_h(i, j+1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -425,7 +425,7 @@ void AStar::a_star_search()
                      && is_unblocked(i, j - 1))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(i, j - 1, dest);
+                hNew = calculate_h(i, j-1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -478,7 +478,7 @@ void AStar::a_star_search()
                      && is_unblocked(i - 1, j + 1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(i - 1, j + 1, dest);
+                hNew = calculate_h(i-1, j+1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -531,7 +531,7 @@ void AStar::a_star_search()
             else if (!closedList[i-1][j-1] && is_unblocked(i-1, j-1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(i - 1, j - 1, dest);
+                hNew = calculate_h(i-1, j-1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -583,7 +583,7 @@ void AStar::a_star_search()
             else if (!closedList[i+1][j+1] && is_unblocked(i+1, j+1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(i + 1, j + 1, dest);
+                hNew = calculate_h(i+1, j+1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -635,7 +635,7 @@ void AStar::a_star_search()
             else if (!closedList[i+1][j-1] && is_unblocked(i+1, j-1))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(i + 1, j - 1, dest);
+                hNew = calculate_h(i+1, j-1);
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
