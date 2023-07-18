@@ -72,6 +72,7 @@ grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
 }
 
 // check whether given cell (row, col) is a valid cell or not.
+// 也就是检查一个cell是否在地图范围内
 bool AStar::is_valid(int row, int col)
 {
     // Returns true if row number and column number is in range
