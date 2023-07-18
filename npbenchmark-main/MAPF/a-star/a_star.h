@@ -44,7 +44,7 @@ public:
     AStar(int input_num_rows, int input_num_columns, Coordinate src, Coordinate dest);
 
     // check whether given cell (row, col) is a valid cell or not.
-    bool is_valid(int row, int col) const;
+    bool is_valid(Coordinate position) const;
     // check whether the given cell is blocked or not
     bool is_unblocked(int row, int col);
     // check whether destination cell has been reached or not

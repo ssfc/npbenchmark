@@ -26,10 +26,11 @@ AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Co
 
 // check whether given cell (row, col) is a valid cell or not.
 // 也就是检查一个cell是否在地图范围内
-bool AStar::is_valid(int row, int col) const
+bool AStar::is_valid(Coordinate position) const
 {
     // Returns true if row number and column number is in range
-    return (row >= 0) && (row < num_rows) && (col >= 0) && (col < num_columns);
+    return (position.first >= 0) && (position.first < num_rows)
+    && (position.second >= 0) && (position.second < num_columns);
 }
 
 // check whether the given cell is blocked or not
@@ -99,14 +100,14 @@ void AStar::trace_path()
 void AStar::a_star_search()
 {
     // If the source is out of range
-    if (!is_valid(src.first, src.second))
+    if (!is_valid(src))
     {
         cerr <<"Source is invalid\n";
         return;
     }
 
     // If the destination is out of range
-    if (!is_valid(dest.first, dest.second))
+    if (!is_valid(dest))
     {
         cerr << "Destination is invalid\n";
         return;
@@ -211,7 +212,7 @@ void AStar::a_star_search()
         //----------- 1st Successor (North) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i-1, j))
+        if (is_valid(make_pair(i-1, j)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -260,7 +261,7 @@ void AStar::a_star_search()
         //----------- 2nd Successor (South) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i+1, j))
+        if (is_valid(make_pair(i+1, j)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -309,7 +310,7 @@ void AStar::a_star_search()
         //----------- 3rd Successor (East) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i, j+1))
+        if (is_valid(make_pair(i, j+1)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -359,7 +360,7 @@ void AStar::a_star_search()
         //----------- 4th Successor (West) ------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i, j-1))
+        if (is_valid(make_pair(i, j-1)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -411,7 +412,7 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i - 1, j + 1))
+        if (is_valid(make_pair(i-1, j+1)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -465,7 +466,7 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i - 1, j - 1))
+        if (is_valid(make_pair(i-1, j-1)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -517,7 +518,7 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i+1, j+1))
+        if (is_valid(make_pair(i+1, j+1)))
         {
             // If the destination cell is the same as the
             // current successor
@@ -569,7 +570,7 @@ void AStar::a_star_search()
         //------------
 
         // Only process this cell if this is a valid one
-        if (is_valid(i+1, j-1))
+        if (is_valid(make_pair(i+1, j-1)))
         {
             // If the destination cell is the same as the
             // current successor
