@@ -629,6 +629,18 @@ void AStar::output_map()
     {
         map_file << num_rows << " " << num_columns << "\n";
         cerr << "Parameter file created successfully.\n";
+
+        for(int i=0;i<num_rows;i++)
+        {
+            for(int j=0;j<num_columns;j++)
+            {
+                map_file << map[i][j];
+                if(j == num_columns-1)
+                {
+                    map_file << "\n";
+                }
+            }
+        }
     }
     else
     {
