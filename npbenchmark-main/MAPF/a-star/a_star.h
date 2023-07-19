@@ -15,8 +15,6 @@
 #include <utility>
 #include <vector>
 
-// Creating a shortcut for int, int pair type
-using pos_pair = std::pair<int, int>;
 // Creating a shortcut for pair<int, pair<int, int>> type
 using pPair = std::pair<double, std::pair<int, int>>;
 

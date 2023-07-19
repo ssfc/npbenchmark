@@ -99,7 +99,7 @@ void AStar::trace_path()
     int col = dest.y;
 
     // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
-    stack<pos_pair> Path;
+    stack<Coordinate> Path;
 
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
@@ -107,7 +107,7 @@ void AStar::trace_path()
     while (!(cell_details[row][col].parent_i == row
              && cell_details[row][col].parent_j == col))
     {
-        Path.emplace(row, col);
+        Path.emplace(Coordinate{row, col});
         int temp_row = cell_details[row][col].parent_i;
         int temp_col = cell_details[row][col].parent_j;
         row = temp_row;
@@ -115,14 +115,14 @@ void AStar::trace_path()
     }
 
     // 接下来，将起点位置 (row, col) 也加入到 Path 中，此时 Path 中存储了完整的反向路径。
-    Path.emplace(row, col);
+    Path.emplace(Coordinate{row, col});
 
     // 最后，通过另一个 while 循环遍历 Path 并依次输出路径上的每个坐标 (row, col)，形式为 -> (row,col)。
     while (!Path.empty())
     {
-        pair<int, int> p = Path.top();
+        Coordinate p = Path.top();
         Path.pop();
-        cout << "-> (" << p.first << "," << p.second << ") ";
+        cout << "-> (" << p.x << "," << p.y << ") ";
     }
 }
 
