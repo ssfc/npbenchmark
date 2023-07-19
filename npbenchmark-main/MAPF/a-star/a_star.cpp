@@ -27,7 +27,14 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
             {
                 char c;
                 map_file >> c;
-                map[i][j] = c - '0'; // 将字符转换为整数存储在vector中
+                if(c=='0')
+                {
+                    map[i][j] = 0;
+                }
+                else if(c=='1')
+                {
+                    map[i][j] = 1;
+                }
             }
         }
 
