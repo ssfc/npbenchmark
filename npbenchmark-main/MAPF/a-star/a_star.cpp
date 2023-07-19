@@ -27,11 +27,11 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
             {
                 char c;
                 map_file >> c;
-                if(c=='0')
+                if(c=='@')
                 {
                     map[i][j] = 0;
                 }
-                else if(c=='1')
+                else if(c=='.')
                 {
                     map[i][j] = 1;
                 }
@@ -666,11 +666,11 @@ void AStar::output_map()
             {
                 if(map[i][j]==0)
                 {
-                    map_file << '0';
+                    map_file << '@';
                 }
                 else if(map[i][j]==1)
                 {
-                    map_file << '1';
+                    map_file << '.';
                 }
 
                 if(j == num_columns-1)
