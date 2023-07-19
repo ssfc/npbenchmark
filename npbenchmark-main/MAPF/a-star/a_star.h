@@ -44,7 +44,7 @@ private:
     int num_columns;
     std::vector<std::vector<int>> map;
     Coordinate src;
-    pos_pair dest;
+    Coordinate dest;
 
     // Declare a 2D array of structure to hold the details of that cell
     std::vector<std::vector<cell>> cell_details;

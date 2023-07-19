@@ -10,7 +10,7 @@ AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_
         num_rows(input_num_rows),
         num_columns(input_num_columns),
         src(Coordinate{input_src.first, input_src.second}),
-        dest(std::move(input_dest)),
+        dest(Coordinate{input_dest.first, input_dest.second}),
         map(input_map)
 // 0表示无障碍, 1表示有障碍。
 {
@@ -43,7 +43,7 @@ bool AStar::is_passable(Coordinate position)
 // check whether destination cell has been reached or not
 bool AStar::is_destination(Coordinate position) const
 {
-    if (position.x == dest.first && position.y == dest.second)
+    if (position.x == dest.x && position.y == dest.y)
         return true;
     else
         return false;
@@ -55,8 +55,8 @@ double AStar::calculate_h(Coordinate position) const
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
     return ((double)sqrt(
-            (position.x - dest.first) * (position.x - dest.first)
-            + (position.y - dest.second) * (position.y - dest.second)));
+            (position.x - dest.x) * (position.x - dest.x)
+            + (position.y - dest.y) * (position.y - dest.y)));
 }
 
 // trace the path from the source to destination
@@ -64,8 +64,8 @@ void AStar::trace_path()
 {
     cerr << "\nThe Path is ";
     // 首先，函数 trace_path 初始化了起始位置的行索引 row 和列索引 col.
-    int row = dest.first;
-    int col = dest.second;
+    int row = dest.x;
+    int col = dest.y;
 
     // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
     stack<pos_pair> Path;
@@ -106,15 +106,14 @@ void AStar::a_star_search()
     }
 
     // Check whether the destination is out of range
-    if (!is_valid(Coordinate{dest.first, dest.second}))
+    if (!is_valid(dest))
     {
         cerr << "Destination is invalid\n";
         return;
     }
 
     // Check whether the source or the destination is blocked
-    if (!is_passable(src)
-    || !is_passable(Coordinate{dest.first,dest.second}))
+    if (!is_passable(src) || !is_passable(dest))
     {
         cerr << "Source or the destination is blocked\n";
         return;
