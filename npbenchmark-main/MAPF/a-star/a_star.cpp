@@ -641,6 +641,8 @@ void AStar::output_map()
                 }
             }
         }
+
+        map_file.close();
     }
     else
     {
