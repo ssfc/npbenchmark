@@ -49,7 +49,7 @@ private:
     // Declare a 2D array of structure to hold the details of that cell
     std::vector<std::vector<cell>> cell_details;
 public:
-    AStar(int input_num_rows, int input_num_columns,
+    AStar(int input_num_columns,
           std::vector<std::vector<int>>& input_map,
           Coordinate input_src, Coordinate input_dest);
 

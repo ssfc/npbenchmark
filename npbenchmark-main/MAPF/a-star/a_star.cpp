@@ -5,10 +5,9 @@
 
 using namespace std;
 
-AStar::AStar(int input_num_rows, int input_num_columns,
+AStar::AStar(int input_num_columns,
              std::vector<std::vector<int>>& input_map,
              Coordinate input_src, Coordinate input_dest):
-        num_rows(input_num_rows),
         num_columns(input_num_columns),
         src(input_src),
         dest(input_dest),
@@ -37,8 +36,8 @@ AStar::AStar(int input_num_rows, int input_num_columns,
         map_file.close();
     }
 
-    cell_details.resize(input_num_rows);
-    for(int i=0;i<input_num_rows;i++)
+    cell_details.resize(num_rows);
+    for(int i=0;i<num_rows;i++)
     {
         cell_details[i].resize(input_num_columns);
     }
