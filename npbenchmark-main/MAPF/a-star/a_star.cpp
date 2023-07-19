@@ -21,7 +21,11 @@ AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_
             {1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
 // 0表示无障碍, 1表示有障碍。
 {
-
+    cell_details.resize(input_num_rows);
+    for(int i=0;i<input_num_rows;i++)
+    {
+        cell_details[i].resize(input_num_columns);
+    }
 }
 
 // check whether given cell (row, col) is a valid cell or not.

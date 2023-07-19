@@ -47,7 +47,7 @@ private:
     pos_pair dest;
 
     // Declare a 2D array of structure to hold the details of that cell
-    cell cell_details[9][10];
+    std::vector<std::vector<cell>> cell_details;
 public:
     AStar(int input_num_rows, int input_num_columns, pos_pair src, pos_pair dest);
 
