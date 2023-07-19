@@ -76,12 +76,12 @@ void AStar::trace_path()
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
     // Comment: 看来这个程序的设定是起点的父就是自己,我的话倾向于设为-1。
-    while (!(cellDetails[row][col].parent_i == row
-             && cellDetails[row][col].parent_j == col))
+    while (!(cell_details[row][col].parent_i == row
+             && cell_details[row][col].parent_j == col))
     {
         Path.emplace(row, col);
-        int temp_row = cellDetails[row][col].parent_i;
-        int temp_col = cellDetails[row][col].parent_j;
+        int temp_row = cell_details[row][col].parent_i;
+        int temp_col = cell_details[row][col].parent_j;
         row = temp_row;
         col = temp_col;
     }
@@ -141,21 +141,21 @@ void AStar::a_star_search()
     {
         for (j = 0; j < num_columns; j++)
         {
-            cellDetails[i][j].f = FLT_MAX;
-            cellDetails[i][j].g = FLT_MAX;
-            cellDetails[i][j].h = FLT_MAX;
-            cellDetails[i][j].parent_i = -1;
-            cellDetails[i][j].parent_j = -1;
+            cell_details[i][j].f = FLT_MAX;
+            cell_details[i][j].g = FLT_MAX;
+            cell_details[i][j].h = FLT_MAX;
+            cell_details[i][j].parent_i = -1;
+            cell_details[i][j].parent_j = -1;
         }
     }
 
     // Initialising the parameters of the starting node
     i = src.first, j = src.second;
-    cellDetails[i][j].f = 0.0;
-    cellDetails[i][j].g = 0.0;
-    cellDetails[i][j].h = 0.0;
-    cellDetails[i][j].parent_i = i;
-    cellDetails[i][j].parent_j = j;
+    cell_details[i][j].f = 0.0;
+    cell_details[i][j].g = 0.0;
+    cell_details[i][j].h = 0.0;
+    cell_details[i][j].parent_i = i;
+    cell_details[i][j].parent_j = j;
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
@@ -216,8 +216,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i-1, j}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i-1][j].parent_i = i;
-                cellDetails[i-1][j].parent_j = j;
+                cell_details[i - 1][j].parent_i = i;
+                cell_details[i - 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -228,7 +228,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i-1][j] && is_passable(Coordinate{i-1, j}))
             {
-                gNew = cellDetails[i][j].g + 1.0;
+                gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i-1, j});
                 fNew = gNew + hNew;
 
@@ -240,17 +240,17 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i - 1][j].f == FLT_MAX
-                    || cellDetails[i - 1][j].f > fNew) {
+                if (cell_details[i - 1][j].f == FLT_MAX
+                    || cell_details[i - 1][j].f > fNew) {
                     openList.insert(make_pair(
                             fNew, make_pair(i - 1, j)));
 
                     // Update the details of this cell
-                    cellDetails[i - 1][j].f = fNew;
-                    cellDetails[i - 1][j].g = gNew;
-                    cellDetails[i - 1][j].h = hNew;
-                    cellDetails[i - 1][j].parent_i = i;
-                    cellDetails[i - 1][j].parent_j = j;
+                    cell_details[i - 1][j].f = fNew;
+                    cell_details[i - 1][j].g = gNew;
+                    cell_details[i - 1][j].h = hNew;
+                    cell_details[i - 1][j].parent_i = i;
+                    cell_details[i - 1][j].parent_j = j;
                 }
             }
         }
@@ -265,8 +265,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i+1, j}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i+1][j].parent_i = i;
-                cellDetails[i+1][j].parent_j = j;
+                cell_details[i + 1][j].parent_i = i;
+                cell_details[i + 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -278,7 +278,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
-                gNew = cellDetails[i][j].g + 1.0;
+                gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i+1, j});
                 fNew = gNew + hNew;
 
@@ -290,16 +290,16 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i + 1][j].f == FLT_MAX
-                    || cellDetails[i + 1][j].f > fNew) {
+                if (cell_details[i + 1][j].f == FLT_MAX
+                    || cell_details[i + 1][j].f > fNew) {
                     openList.insert(make_pair(
                             fNew, make_pair(i + 1, j)));
                     // Update the details of this cell
-                    cellDetails[i + 1][j].f = fNew;
-                    cellDetails[i + 1][j].g = gNew;
-                    cellDetails[i + 1][j].h = hNew;
-                    cellDetails[i + 1][j].parent_i = i;
-                    cellDetails[i + 1][j].parent_j = j;
+                    cell_details[i + 1][j].f = fNew;
+                    cell_details[i + 1][j].g = gNew;
+                    cell_details[i + 1][j].h = hNew;
+                    cell_details[i + 1][j].parent_i = i;
+                    cell_details[i + 1][j].parent_j = j;
                 }
             }
         }
@@ -314,8 +314,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i, j+1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i][j + 1].parent_i = i;
-                cellDetails[i][j + 1].parent_j = j;
+                cell_details[i][j + 1].parent_i = i;
+                cell_details[i][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -327,7 +327,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i][j+1] && is_passable(Coordinate{i, j+1}))
             {
-                gNew = cellDetails[i][j].g + 1.0;
+                gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i, j+1});
                 fNew = gNew + hNew;
 
@@ -339,17 +339,17 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i][j + 1].f == FLT_MAX
-                    || cellDetails[i][j + 1].f > fNew) {
+                if (cell_details[i][j + 1].f == FLT_MAX
+                    || cell_details[i][j + 1].f > fNew) {
                     openList.insert(make_pair(
                             fNew, make_pair(i, j + 1)));
 
                     // Update the details of this cell
-                    cellDetails[i][j + 1].f = fNew;
-                    cellDetails[i][j + 1].g = gNew;
-                    cellDetails[i][j + 1].h = hNew;
-                    cellDetails[i][j + 1].parent_i = i;
-                    cellDetails[i][j + 1].parent_j = j;
+                    cell_details[i][j + 1].f = fNew;
+                    cell_details[i][j + 1].g = gNew;
+                    cell_details[i][j + 1].h = hNew;
+                    cell_details[i][j + 1].parent_i = i;
+                    cell_details[i][j + 1].parent_j = j;
                 }
             }
         }
@@ -364,8 +364,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i, j-1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i][j-1].parent_i = i;
-                cellDetails[i][j-1].parent_j = j;
+                cell_details[i][j - 1].parent_i = i;
+                cell_details[i][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -377,7 +377,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i][j-1] && is_passable(Coordinate{i, j-1}))
             {
-                gNew = cellDetails[i][j].g + 1.0;
+                gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i, j-1});
                 fNew = gNew + hNew;
 
@@ -389,17 +389,17 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i][j - 1].f == FLT_MAX
-                    || cellDetails[i][j - 1].f > fNew) {
+                if (cell_details[i][j - 1].f == FLT_MAX
+                    || cell_details[i][j - 1].f > fNew) {
                     openList.insert(make_pair(
                             fNew, make_pair(i, j - 1)));
 
                     // Update the details of this cell
-                    cellDetails[i][j - 1].f = fNew;
-                    cellDetails[i][j - 1].g = gNew;
-                    cellDetails[i][j - 1].h = hNew;
-                    cellDetails[i][j - 1].parent_i = i;
-                    cellDetails[i][j - 1].parent_j = j;
+                    cell_details[i][j - 1].f = fNew;
+                    cell_details[i][j - 1].g = gNew;
+                    cell_details[i][j - 1].h = hNew;
+                    cell_details[i][j - 1].parent_i = i;
+                    cell_details[i][j - 1].parent_j = j;
                 }
             }
         }
@@ -415,8 +415,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i-1, j+1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i-1][j+1].parent_i = i;
-                cellDetails[i-1][j+1].parent_j = j;
+                cell_details[i - 1][j + 1].parent_i = i;
+                cell_details[i - 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -429,7 +429,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i-1][j+1] && is_passable(Coordinate{i-1, j+1}))
             {
-                gNew = cellDetails[i][j].g + 1.414;
+                gNew = cell_details[i][j].g + 1.414;
                 hNew = calculate_h(Coordinate{i-1, j+1});
                 fNew = gNew + hNew;
 
@@ -441,18 +441,18 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i - 1][j + 1].f == FLT_MAX
-                    || cellDetails[i - 1][j + 1].f > fNew)
+                if (cell_details[i - 1][j + 1].f == FLT_MAX
+                    || cell_details[i - 1][j + 1].f > fNew)
                 {
                     openList.insert(make_pair(
                             fNew, make_pair(i - 1, j + 1)));
 
                     // Update the details of this cell
-                    cellDetails[i - 1][j + 1].f = fNew;
-                    cellDetails[i - 1][j + 1].g = gNew;
-                    cellDetails[i - 1][j + 1].h = hNew;
-                    cellDetails[i - 1][j + 1].parent_i = i;
-                    cellDetails[i - 1][j + 1].parent_j = j;
+                    cell_details[i - 1][j + 1].f = fNew;
+                    cell_details[i - 1][j + 1].g = gNew;
+                    cell_details[i - 1][j + 1].h = hNew;
+                    cell_details[i - 1][j + 1].parent_i = i;
+                    cell_details[i - 1][j + 1].parent_j = j;
                 }
             }
         }
@@ -468,8 +468,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i-1, j-1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i-1][j-1].parent_i = i;
-                cellDetails[i-1][j-1].parent_j = j;
+                cell_details[i - 1][j - 1].parent_i = i;
+                cell_details[i - 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -482,7 +482,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i-1][j-1] && is_passable(Coordinate{i-1, j-1}))
             {
-                gNew = cellDetails[i][j].g + 1.414;
+                gNew = cell_details[i][j].g + 1.414;
                 hNew = calculate_h(Coordinate{i-1, j-1});
                 fNew = gNew + hNew;
 
@@ -494,17 +494,17 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i - 1][j - 1].f == FLT_MAX
-                    || cellDetails[i - 1][j - 1].f > fNew)
+                if (cell_details[i - 1][j - 1].f == FLT_MAX
+                    || cell_details[i - 1][j - 1].f > fNew)
                 {
                     openList.insert(make_pair(
                             fNew, make_pair(i - 1, j - 1)));
                     // Update the details of this cell
-                    cellDetails[i - 1][j - 1].f = fNew;
-                    cellDetails[i - 1][j - 1].g = gNew;
-                    cellDetails[i - 1][j - 1].h = hNew;
-                    cellDetails[i - 1][j - 1].parent_i = i;
-                    cellDetails[i - 1][j - 1].parent_j = j;
+                    cell_details[i - 1][j - 1].f = fNew;
+                    cell_details[i - 1][j - 1].g = gNew;
+                    cell_details[i - 1][j - 1].h = hNew;
+                    cell_details[i - 1][j - 1].parent_i = i;
+                    cell_details[i - 1][j - 1].parent_j = j;
                 }
             }
         }
@@ -520,8 +520,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i+1, j+1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i+1][j+1].parent_i = i;
-                cellDetails[i+1][j+1].parent_j = j;
+                cell_details[i + 1][j + 1].parent_i = i;
+                cell_details[i + 1][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -534,7 +534,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i+1][j+1] && is_passable(Coordinate{i+1, j+1}))
             {
-                gNew = cellDetails[i][j].g + 1.414;
+                gNew = cell_details[i][j].g + 1.414;
                 hNew = calculate_h(Coordinate{i+1, j+1});
                 fNew = gNew + hNew;
 
@@ -546,17 +546,17 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i + 1][j + 1].f == FLT_MAX
-                    || cellDetails[i + 1][j + 1].f > fNew) {
+                if (cell_details[i + 1][j + 1].f == FLT_MAX
+                    || cell_details[i + 1][j + 1].f > fNew) {
                     openList.insert(make_pair(
                             fNew, make_pair(i + 1, j + 1)));
 
                     // Update the details of this cell
-                    cellDetails[i + 1][j + 1].f = fNew;
-                    cellDetails[i + 1][j + 1].g = gNew;
-                    cellDetails[i + 1][j + 1].h = hNew;
-                    cellDetails[i + 1][j + 1].parent_i = i;
-                    cellDetails[i + 1][j + 1].parent_j = j;
+                    cell_details[i + 1][j + 1].f = fNew;
+                    cell_details[i + 1][j + 1].g = gNew;
+                    cell_details[i + 1][j + 1].h = hNew;
+                    cell_details[i + 1][j + 1].parent_i = i;
+                    cell_details[i + 1][j + 1].parent_j = j;
                 }
             }
         }
@@ -572,8 +572,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i+1, j-1}))
             {
                 // Set the Parent of the destination cell
-                cellDetails[i+1][j-1].parent_i = i;
-                cellDetails[i+1][j-1].parent_j = j;
+                cell_details[i + 1][j - 1].parent_i = i;
+                cell_details[i + 1][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 foundDest = true;
@@ -586,7 +586,7 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closedList[i+1][j-1] && is_passable(Coordinate{i+1, j-1}))
             {
-                gNew = cellDetails[i][j].g + 1.414;
+                gNew = cell_details[i][j].g + 1.414;
                 hNew = calculate_h(Coordinate{i+1, j-1});
                 fNew = gNew + hNew;
 
@@ -598,18 +598,18 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cellDetails[i + 1][j - 1].f == FLT_MAX
-                    || cellDetails[i + 1][j - 1].f > fNew)
+                if (cell_details[i + 1][j - 1].f == FLT_MAX
+                    || cell_details[i + 1][j - 1].f > fNew)
                 {
                     openList.insert(make_pair(
                             fNew, make_pair(i + 1, j - 1)));
 
                     // Update the details of this cell
-                    cellDetails[i + 1][j - 1].f = fNew;
-                    cellDetails[i + 1][j - 1].g = gNew;
-                    cellDetails[i + 1][j - 1].h = hNew;
-                    cellDetails[i + 1][j - 1].parent_i = i;
-                    cellDetails[i + 1][j - 1].parent_j = j;
+                    cell_details[i + 1][j - 1].f = fNew;
+                    cell_details[i + 1][j - 1].g = gNew;
+                    cell_details[i + 1][j - 1].h = hNew;
+                    cell_details[i + 1][j - 1].parent_i = i;
+                    cell_details[i + 1][j - 1].parent_j = j;
                 }
             }
         }
