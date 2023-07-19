@@ -30,6 +30,7 @@ int main()
     pos_pair test_dest = make_pair(0, 0);
 
     AStar test(9, 10, test_src, test_dest);
+    test.output_map();
     test.a_star_search();
 
     return 0;

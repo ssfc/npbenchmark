@@ -623,3 +623,18 @@ void AStar::a_star_search()
     if (!foundDest)
         cerr << "Failed to find the Destination Cell\n";
 }
+
+
+void AStar::output_map()
+{
+    ofstream map_file("map.txt");
+    if (map_file.is_open())
+    {
+        map_file << num_rows << " " << num_columns << "\n";
+        cerr << "Parameter file created successfully.\n";
+    }
+    else
+    {
+        cerr << "Unable to create parameter file.\n";
+    }
+}

@@ -8,6 +8,7 @@
 #include <cfloat>
 #include <cmath>
 #include <cstring>
+#include <fstream>
 #include <iostream>
 #include <set>
 #include <stack>
@@ -61,6 +62,9 @@ public:
     void trace_path();
     // find the shortest path between a given source cell to a destination cell
     void a_star_search();
+
+    // debug func
+    void output_map();
 };
 
 #endif //A_STAR_A_STAR_H
