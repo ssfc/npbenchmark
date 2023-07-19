@@ -10,15 +10,15 @@ AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_
         num_columns(input_num_columns),
         src(std::move(input_src)),
         dest(std::move(input_dest)),
-        grid{ { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
-              { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
-              { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
-              { 0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
-              { 1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
-              { 1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
-              { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
-              { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
-              { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
+        map{{1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+            {1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+            {1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
+            {0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
+            {1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
+            {1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
+            {1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+            {1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+            {1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
 // 0表示无障碍, 1表示有障碍。
 {
 
@@ -37,7 +37,7 @@ bool AStar::is_valid(Coordinate position) const
 bool AStar::is_passable(Coordinate position)
 {
     // Returns true if the cell is not blocked else false
-    if (grid[position.x][position.y] == 1)
+    if (map[position.x][position.y] == 1)
         return true;
     else
         return false;

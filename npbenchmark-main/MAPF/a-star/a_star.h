@@ -41,7 +41,7 @@ class AStar
 private:
     int num_rows;
     int num_columns;
-    int grid[9][10];
+    int map[9][10];
     pos_pair src;
     pos_pair dest;
 
