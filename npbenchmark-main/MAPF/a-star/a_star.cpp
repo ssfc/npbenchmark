@@ -11,11 +11,7 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
 // 0表示无障碍, 1表示有障碍。
 {
     ifstream map_file("map.txt");
-    if (!map_file)
-    {
-        cerr << "Error opening file." << endl;
-    }
-    else
+    if (map_file.is_open())
     {
         map_file >> num_rows >> num_columns;
 
@@ -36,6 +32,10 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
         }
 
         map_file.close();
+    }
+    else
+    {
+        cerr << "Error opening file." << endl;
     }
 
     cell_details.resize(num_rows);
