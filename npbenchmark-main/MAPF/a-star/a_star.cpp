@@ -9,7 +9,7 @@ AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_
              std::vector<std::vector<int>>& input_map):
         num_rows(input_num_rows),
         num_columns(input_num_columns),
-        src(std::move(input_src)),
+        src(Coordinate{input_src.first, input_src.second}),
         dest(std::move(input_dest)),
         map(input_map)
 // 0表示无障碍, 1表示有障碍。
@@ -99,7 +99,7 @@ void AStar::trace_path()
 void AStar::a_star_search()
 {
     // Check whether the source is out of range
-    if (!is_valid(Coordinate{src.first, src.second}))
+    if (!is_valid(src))
     {
         cerr <<"Source is invalid\n";
         return;
@@ -113,7 +113,7 @@ void AStar::a_star_search()
     }
 
     // Check whether the source or the destination is blocked
-    if (!is_passable(Coordinate{src.first,src.second})
+    if (!is_passable(src)
     || !is_passable(Coordinate{dest.first,dest.second}))
     {
         cerr << "Source or the destination is blocked\n";
@@ -121,7 +121,7 @@ void AStar::a_star_search()
     }
 
     // Check whether the destination cell is the same as source cell
-    if (is_destination(Coordinate{src.first, src.second}))
+    if (is_destination(src))
     {
         cerr << "We are already at the destination\n";
         return;
@@ -147,7 +147,7 @@ void AStar::a_star_search()
     }
 
     // Initialising the parameters of the starting node
-    i = src.first, j = src.second;
+    i = src.x, j = src.y;
     cell_details[i][j].f = 0.0;
     cell_details[i][j].g = 0.0;
     cell_details[i][j].h = 0.0;
