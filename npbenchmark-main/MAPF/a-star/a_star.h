@@ -56,7 +56,7 @@ public:
     // check whether destination cell has been reached or not
     bool is_destination(Coordinate position) const;
     // calculate the 'h' heuristics.
-    double calculate_h(pos_pair position) const;
+    double calculate_h(Coordinate position) const;
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source cell to a destination cell

@@ -53,13 +53,13 @@ bool AStar::is_destination(Coordinate position) const
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(pos_pair position) const
+double AStar::calculate_h(Coordinate position) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
     return ((double)sqrt(
-            (position.first - dest.first) * (position.first - dest.first)
-            + (position.second - dest.second) * (position.second - dest.second)));
+            (position.x - dest.first) * (position.x - dest.first)
+            + (position.y - dest.second) * (position.y - dest.second)));
 }
 
 // trace the path from the source to destination
@@ -229,7 +229,7 @@ void AStar::a_star_search()
             else if (!closedList[i-1][j] && is_passable(Coordinate{i-1, j}))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(make_pair(i-1, j));
+                hNew = calculate_h(Coordinate{i-1, j});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -279,7 +279,7 @@ void AStar::a_star_search()
             else if (!closedList[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(make_pair(i+1, j));
+                hNew = calculate_h(Coordinate{i+1, j});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -328,7 +328,7 @@ void AStar::a_star_search()
             else if (!closedList[i][j+1] && is_passable(Coordinate{i, j+1}))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(make_pair(i, j+1));
+                hNew = calculate_h(Coordinate{i, j+1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -378,7 +378,7 @@ void AStar::a_star_search()
             else if (!closedList[i][j-1] && is_passable(Coordinate{i, j-1}))
             {
                 gNew = cellDetails[i][j].g + 1.0;
-                hNew = calculate_h(make_pair(i, j-1));
+                hNew = calculate_h(Coordinate{i, j-1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -430,7 +430,7 @@ void AStar::a_star_search()
             else if (!closedList[i-1][j+1] && is_passable(Coordinate{i-1, j+1}))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(make_pair(i-1, j+1));
+                hNew = calculate_h(Coordinate{i-1, j+1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -483,7 +483,7 @@ void AStar::a_star_search()
             else if (!closedList[i-1][j-1] && is_passable(Coordinate{i-1, j-1}))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(make_pair(i-1, j-1));
+                hNew = calculate_h(Coordinate{i-1, j-1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -535,7 +535,7 @@ void AStar::a_star_search()
             else if (!closedList[i+1][j+1] && is_passable(Coordinate{i+1, j+1}))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(make_pair(i+1, j+1));
+                hNew = calculate_h(Coordinate{i+1, j+1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to
@@ -587,7 +587,7 @@ void AStar::a_star_search()
             else if (!closedList[i+1][j-1] && is_passable(Coordinate{i+1, j-1}))
             {
                 gNew = cellDetails[i][j].g + 1.414;
-                hNew = calculate_h(make_pair(i+1, j-1));
+                hNew = calculate_h(Coordinate{i+1, j-1});
                 fNew = gNew + hNew;
 
                 // If it isn’t on the open list, add it to

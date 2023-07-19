@@ -1254,6 +1254,18 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "SFML_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for SFML."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SFML_DIR-NOTFOUND"
+		},
+		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
 			"properties" : 
 			[
