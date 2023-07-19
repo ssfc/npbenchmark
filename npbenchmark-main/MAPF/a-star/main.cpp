@@ -29,7 +29,7 @@ int main()
     // Destination is the left-most top-most corner
     auto test_dest = Coordinate{0, 0};
 
-    AStar test(9, 10, test_src, test_dest, test_map);
+    AStar test(9, 10, test_map, test_src, test_dest);
     test.output_map();
     test.a_star_search();
 

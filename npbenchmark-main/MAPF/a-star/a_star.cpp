@@ -5,8 +5,9 @@
 
 using namespace std;
 
-AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Coordinate input_dest,
-             std::vector<std::vector<int>>& input_map):
+AStar::AStar(int input_num_rows, int input_num_columns,
+             std::vector<std::vector<int>>& input_map,
+             Coordinate input_src, Coordinate input_dest):
         num_rows(input_num_rows),
         num_columns(input_num_columns),
         src(input_src),
