@@ -664,7 +664,15 @@ void AStar::output_map()
         {
             for(int j=0;j<num_columns;j++)
             {
-                map_file << map[i][j];
+                if(map[i][j]==0)
+                {
+                    map_file << '0';
+                }
+                else if(map[i][j]==1)
+                {
+                    map_file << '1';
+                }
+
                 if(j == num_columns-1)
                 {
                     map_file << "\n";
