@@ -24,7 +24,7 @@ int main()
                 { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
 
     // Source is the left-most bottom-most corner
-    pos_pair test_src = make_pair(8, 0);
+    Coordinate test_src = Coordinate{8, 0};
 
     // Destination is the left-most top-most corner
     pos_pair test_dest = make_pair(0, 0);
