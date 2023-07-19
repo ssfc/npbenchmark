@@ -18,7 +18,7 @@ AStar::AStar(int input_num_rows, int input_num_columns,
     ifstream map_file("map.txt");
     if (!map_file)
     {
-        std::cerr << "Error opening file." << std::endl;
+        cerr << "Error opening file." << endl;
     }
     else
     {
