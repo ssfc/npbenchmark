@@ -5,12 +5,12 @@
 
 using namespace std;
 
-AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, pos_pair input_dest,
+AStar::AStar(int input_num_rows, int input_num_columns, Coordinate input_src, Coordinate input_dest,
              std::vector<std::vector<int>>& input_map):
         num_rows(input_num_rows),
         num_columns(input_num_columns),
         src(input_src),
-        dest(Coordinate{input_dest.first, input_dest.second}),
+        dest(input_dest),
         map(input_map)
 // 0表示无障碍, 1表示有障碍。
 {
