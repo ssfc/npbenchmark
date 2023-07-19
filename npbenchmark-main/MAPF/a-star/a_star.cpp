@@ -11,15 +11,7 @@ AStar::AStar(int input_num_rows, int input_num_columns, pos_pair input_src, pos_
         num_columns(input_num_columns),
         src(std::move(input_src)),
         dest(std::move(input_dest)),
-        map{{1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
-            {1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
-            {1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
-            {0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
-            {1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
-            {1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
-            {1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
-            {1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
-            {1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } }
+        map(input_map)
 // 0表示无障碍, 1表示有障碍。
 {
     cell_details.resize(input_num_rows);
