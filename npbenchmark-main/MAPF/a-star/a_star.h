@@ -13,6 +13,7 @@
 #include <set>
 #include <stack>
 #include <utility>
+#include <vector>
 
 // Creating a shortcut for int, int pair type
 using pos_pair = std::pair<int, int>;
@@ -41,7 +42,7 @@ class AStar
 private:
     int num_rows;
     int num_columns;
-    int map[9][10];
+    std::vector<std::vector<int>> map;
     pos_pair src;
     pos_pair dest;
 
