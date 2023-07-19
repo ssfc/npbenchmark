@@ -49,8 +49,7 @@ private:
     // Declare a 2D array of structure to hold the details of that cell
     std::vector<std::vector<cell>> cell_details;
 public:
-    AStar(int input_num_columns,
-          std::vector<std::vector<int>>& input_map,
+    AStar(std::vector<std::vector<int>>& input_map,
           Coordinate input_src, Coordinate input_dest);
 
     // check whether given cell (row, col) is a valid cell or not.
