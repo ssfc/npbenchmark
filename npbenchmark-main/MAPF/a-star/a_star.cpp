@@ -15,6 +15,28 @@ AStar::AStar(int input_num_rows, int input_num_columns,
         map(input_map)
 // 0表示无障碍, 1表示有障碍。
 {
+    ifstream map_file("map.txt");
+    if (!map_file)
+    {
+        std::cerr << "Error opening file." << std::endl;
+    }
+    else
+    {
+        map_file >> num_rows >> num_columns;
+
+        for (int i = 0; i < num_rows; i++)
+        {
+            for (int j = 0; j < num_columns; j++)
+            {
+                char c;
+                map_file >> c;
+                map[i][j] = c - '0'; // 将字符转换为整数存储在vector中
+            }
+        }
+
+        map_file.close();
+    }
+
     cell_details.resize(input_num_rows);
     for(int i=0;i<input_num_rows;i++)
     {
