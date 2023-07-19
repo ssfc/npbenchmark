@@ -5,11 +5,9 @@
 
 using namespace std;
 
-AStar::AStar(std::vector<std::vector<int>>& input_map,
-             Coordinate input_src, Coordinate input_dest):
+AStar::AStar(Coordinate input_src, Coordinate input_dest):
         src(input_src),
-        dest(input_dest),
-        map(input_map)
+        dest(input_dest)
 // 0表示无障碍, 1表示有障碍。
 {
     ifstream map_file("map.txt");
@@ -20,6 +18,12 @@ AStar::AStar(std::vector<std::vector<int>>& input_map,
     else
     {
         map_file >> num_rows >> num_columns;
+
+        map.resize(num_rows);
+        for(int i=0;i<num_rows;i++)
+        {
+            map[i].resize(num_columns);
+        }
 
         for (int i = 0; i < num_rows; i++)
         {

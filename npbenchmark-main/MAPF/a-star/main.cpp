@@ -12,6 +12,7 @@ int main()
     /* Description of the Grid-
     1--> The cell is not blocked
     0--> The cell is blocked */
+    /*
     std::vector<std::vector<int>> test_map
             = { { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
                 { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
@@ -22,6 +23,7 @@ int main()
                 { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
                 { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
                 { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
+                */
 
     // Source is the left-most bottom-most corner
     auto test_src = Coordinate{8, 0};
@@ -29,7 +31,7 @@ int main()
     // Destination is the left-most top-most corner
     auto test_dest = Coordinate{0, 0};
 
-    AStar test(test_map, test_src, test_dest);
+    AStar test(test_src, test_dest);
     test.output_map();
     test.a_star_search();
 
