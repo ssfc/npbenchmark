@@ -242,23 +242,19 @@ void AStar::a_star_search()
 
                 return;
             }
-
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor has not been evaluated and is passable
             else if (!closed_list[i-1][j] && is_passable(Coordinate{i-1, j}))
             {
                 g_new = cell_details[i][j].g + 1.0;
                 h_new = calculate_h(Coordinate{i-1, j});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to
-                // the open list. Make the current square
-                // the parent of this square. Record the
-                // f, g, and h costs of the square Cell
+                // If it isn’t on the open list, add it to the open list.
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
                 //			 OR
-                // If it is on the open list already, check
-                // to see if this path to that square is
-                // better, using 'f' cost as the measure.
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
                 if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
@@ -291,8 +287,7 @@ void AStar::a_star_search()
 
                 return;
             }
-                // If the successor is already on the closed
-                // list or if it is blocked, then ignore it.
+                // If the successor is already on the closed list or if it is blocked, then ignore it.
                 // Else do the following
             else if (!closed_list[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
