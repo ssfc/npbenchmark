@@ -269,7 +269,7 @@ void AStar::a_star_search()
                 }
             }
         }
-        
+
         //----------- 2nd Successor (South) ------------
         // Only process this Cell if it is valid
         if (is_valid(Coordinate{current_x, current_y - 1}))
@@ -314,6 +314,51 @@ void AStar::a_star_search()
         }
 
         //----------- 3rd Successor (West) ------------
+        int west_x = current_x - 1;
+        int west_y = current_y;
+        // Only process this Cell if this is a valid one
+        if (is_valid(Coordinate{west_x, west_y}))
+        {
+            // If the destination Cell is the same as the current successor
+            if (is_destination(Coordinate{west_x, west_y}))
+            {
+                // Set the Parent of the destination Cell
+                cell_details[west_x][west_y].parent_i = current_x;
+                cell_details[west_x][west_y].parent_j = current_y;
+                cerr << "The destination Cell is found\n";
+                trace_path();
+                found_dest = true;
+
+                return;
+            }
+                // If the successor has not been evaluated and is passable
+            else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
+            {
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{west_x, west_y});
+                f_new = g_new + h_new;
+
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
+                //			 OR
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
+                if (cell_details[west_x][west_y].f > f_new)
+                {
+                    // Update the details of this Cell
+                    cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,
+                                                        current_x, current_y};
+                    // If it isn’t on the open list, add it to the open list.
+                    if(!open_table[west_x][west_y])
+                    {
+                        open_table[west_x][west_y] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{west_x, west_y}});
+                    }
+                }
+            }
+        }
+
+        //----------- 4th Successor (East) ------------
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{current_x + 1, current_y}))
         {
@@ -355,56 +400,6 @@ void AStar::a_star_search()
                 }
             }
         }
-
-        //----------- 4th Successor (East) ------------
-        int west_x = current_x - 1;
-        int west_y = current_y;
-        // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{west_x, west_y}))
-        {
-            // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{west_x, west_y}))
-            {
-                // Set the Parent of the destination Cell
-                cell_details[west_x][west_y].parent_i = current_x;
-                cell_details[west_x][west_y].parent_j = current_y;
-                cerr << "The destination Cell is found\n";
-                trace_path();
-                found_dest = true;
-
-                return;
-            }
-            // If the successor has not been evaluated and is passable
-            else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
-            {
-                g_new = cell_details[current_x][current_y].g + 1.0;
-                h_new = calculate_h(Coordinate{west_x, west_y});
-                f_new = g_new + h_new;
-
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
-                if (cell_details[west_x][west_y].f > f_new)
-                {
-                    // Update the details of this Cell
-                    cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,
-                                                        current_x, current_y};
-                    // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[west_x][west_y])
-                    {
-                        open_table[west_x][west_y] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{west_x, west_y}});
-                    }
-                }
-            }
-        }
-
-
-
-
-
 
     }
 
