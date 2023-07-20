@@ -49,7 +49,7 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     for(int i=0;i<num_rows;i++)
     {
         cell_details[i].resize(num_columns,
-                               Cell{FLT_MAX, FLT_MAX, FLT_MAX, -1, -1});
+                               Cell{INT_MAX, INT_MAX, INT_MAX, -1, -1});
     }
 }
 
@@ -82,11 +82,11 @@ bool AStar::is_destination(Coordinate position) const
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(Coordinate position) const
+int AStar::calculate_h(Coordinate position) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
-    return ((double)abs((position.x - dest.x) + abs(position.y - dest.y)));
+    return abs((position.x - dest.x) + abs(position.y - dest.y));
 }
 
 // trace the path from the source to destination
@@ -176,7 +176,7 @@ void AStar::a_star_search()
     memset(open_table, false, sizeof(open_table));
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y] = Cell{0.0, 0.0, 0.0, src.x, src.y};
+    cell_details[src.x][src.y] = Cell{0, 0, 0, src.x, src.y};
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
@@ -186,7 +186,7 @@ void AStar::a_star_search()
     set<OpenNode> open_list;
 
     // Put the starting Cell on the open list and set its 'f' as 0
-    open_list.insert(OpenNode{0.0, Coordinate{src.x, src.y}});
+    open_list.insert(OpenNode{0, Coordinate{src.x, src.y}});
     open_table[src.x][src.y] = true;
 
     // We set this boolean value as false as initially the destination is not reached.
@@ -222,7 +222,7 @@ void AStar::a_star_search()
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
-        double g_new, h_new, f_new;
+        int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
         // Only process this Cell if this is a valid one
@@ -243,7 +243,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[i-1][j] && is_passable(Coordinate{i-1, j}))
             {
-                g_new = cell_details[i][j].g + 1.0;
+                g_new = cell_details[i][j].g + 1;
                 h_new = calculate_h(Coordinate{i-1, j});
                 f_new = g_new + h_new;
 
@@ -252,7 +252,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
+                if (cell_details[i-1][j].f == INT_MAX || cell_details[i-1][j].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
@@ -286,7 +286,7 @@ void AStar::a_star_search()
             // Else do the following
             else if (!closed_list[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
-                g_new = cell_details[i][j].g + 1.0;
+                g_new = cell_details[i][j].g + 1;
                 h_new = calculate_h(Coordinate{i+1, j});
                 f_new = g_new + h_new;
 
@@ -295,7 +295,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i+1][j].f == FLT_MAX || cell_details[i+1][j].f > f_new)
+                if (cell_details[i+1][j].f == INT_MAX || cell_details[i+1][j].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[i+1][j] = Cell{f_new, g_new, h_new, i, j};
@@ -330,7 +330,7 @@ void AStar::a_star_search()
             // Else do the following
             else if (!closed_list[i][j+1] && is_passable(Coordinate{i, j+1}))
             {
-                g_new = cell_details[i][j].g + 1.0;
+                g_new = cell_details[i][j].g + 1;
                 h_new = calculate_h(Coordinate{i, j+1});
                 f_new = g_new + h_new;
 
@@ -339,7 +339,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i][j+1].f == FLT_MAX || cell_details[i][j+1].f > f_new)
+                if (cell_details[i][j+1].f == INT_MAX || cell_details[i][j+1].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
@@ -373,7 +373,7 @@ void AStar::a_star_search()
             // Else do the following
             else if (!closed_list[i][j-1] && is_passable(Coordinate{i, j-1}))
             {
-                g_new = cell_details[i][j].g + 1.0;
+                g_new = cell_details[i][j].g + 1;
                 h_new = calculate_h(Coordinate{i, j-1});
                 f_new = g_new + h_new;
 
@@ -382,7 +382,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i][j-1].f == FLT_MAX || cell_details[i][j-1].f > f_new)
+                if (cell_details[i][j-1].f == INT_MAX || cell_details[i][j-1].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};

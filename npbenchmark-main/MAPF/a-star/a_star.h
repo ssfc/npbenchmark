@@ -5,7 +5,6 @@
 #ifndef A_STAR_A_STAR_H
 #define A_STAR_A_STAR_H
 
-#include <cfloat>
 #include <cmath>
 #include <cstring>
 #include <fstream>
@@ -23,7 +22,7 @@ struct Coordinate
 
 struct OpenNode
 {
-    double heuristic_cost;
+    int heuristic_cost;
     Coordinate position;
 
     bool operator<(const OpenNode& other) const
@@ -50,7 +49,7 @@ struct OpenNode
 struct Cell
 {
     // f = g + h
-    double f, g, h;
+    int f, g, h;
     // Row and Column index of its parent
     // Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
     int parent_i, parent_j;
@@ -78,7 +77,7 @@ public:
     // check whether destination Cell has been reached or not
     [[nodiscard]] bool is_destination(Coordinate position) const;
     // calculate the 'h' heuristics.
-    [[nodiscard]] double calculate_h(Coordinate position) const;
+    [[nodiscard]] int calculate_h(Coordinate position) const;
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source Cell to a destination Cell
