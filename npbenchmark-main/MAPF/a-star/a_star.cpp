@@ -227,6 +227,50 @@ void AStar::a_star_search()
         double g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
+        // Only process this Cell if this is a valid one
+        if (is_valid(Coordinate{current_x, current_y + 1}))
+        {
+            // If the destination Cell is the same as the current successor
+            if (is_destination(Coordinate{current_x, current_y + 1}))
+            {
+                // Set the Parent of the destination Cell
+                cell_details[current_x][current_y + 1].parent_i = current_x;
+                cell_details[current_x][current_y + 1].parent_j = current_y;
+                cerr << "The destination Cell is found\n";
+                trace_path();
+                found_dest = true;
+
+                return;
+            }
+
+                // If the successor is already on the closed list or if it is blocked, then ignore it.
+                // Else do the following
+            else if (!closed_list[current_x][current_y + 1] && is_passable(Coordinate{current_x, current_y + 1}))
+            {
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{current_x, current_y + 1});
+                f_new = g_new + h_new;
+
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
+                //			 OR
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
+                if (cell_details[current_x][current_y + 1].f > f_new)
+                {
+                    // Update the details of this Cell
+                    cell_details[current_x][current_y + 1] = Cell{f_new, g_new, h_new, current_x, current_y};
+                    // If it isn’t on the open list, add it to the open list.
+                    if(!open_table[current_x][current_y + 1])
+                    {
+                        open_table[current_x][current_y + 1] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y + 1}});
+                    }
+                }
+            }
+        }
+        
+        //----------- 2nd Successor (South) ------------
         // Only process this Cell if it is valid
         if (is_valid(Coordinate{current_x, current_y - 1}))
         {
@@ -264,50 +308,6 @@ void AStar::a_star_search()
                     {
                         open_table[current_x][current_y - 1] = true;
                         open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y - 1}});
-                    }
-                }
-            }
-        }
-
-        //----------- 2nd Successor (South) ------------
-        // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{current_x, current_y + 1}))
-        {
-            // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{current_x, current_y + 1}))
-            {
-                // Set the Parent of the destination Cell
-                cell_details[current_x][current_y + 1].parent_i = current_x;
-                cell_details[current_x][current_y + 1].parent_j = current_y;
-                cerr << "The destination Cell is found\n";
-                trace_path();
-                found_dest = true;
-
-                return;
-            }
-
-            // If the successor is already on the closed list or if it is blocked, then ignore it.
-            // Else do the following
-            else if (!closed_list[current_x][current_y + 1] && is_passable(Coordinate{current_x, current_y + 1}))
-            {
-                g_new = cell_details[current_x][current_y].g + 1.0;
-                h_new = calculate_h(Coordinate{current_x, current_y + 1});
-                f_new = g_new + h_new;
-
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
-                if (cell_details[current_x][current_y + 1].f > f_new)
-                {
-                    // Update the details of this Cell
-                    cell_details[current_x][current_y + 1] = Cell{f_new, g_new, h_new, current_x, current_y};
-                    // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[current_x][current_y + 1])
-                    {
-                        open_table[current_x][current_y + 1] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y + 1}});
                     }
                 }
             }
