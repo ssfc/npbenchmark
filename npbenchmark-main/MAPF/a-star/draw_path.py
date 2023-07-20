@@ -36,11 +36,12 @@ def main():
         num_points = int(file.readline().strip())
         path_data = [tuple(map(int, file.readline().strip().split())) for _ in range(num_points)]
 
-    root = tk.Tk()
-    root.title('Agent Path Animation')
+    root = tk.Tk()  # 创建一个Tkinter的主窗口，通常称为root窗口。这个窗口是Tkinter程序的最顶层窗口。
+    root.title('Agent Path Animation')  # 设置主窗口的标题为'Agent Path Animation'，这将显示在窗口的标题栏上。
 
+    # 创建一个Canvas组件，设置宽度和高度为地图的宽度和高度（每个方块的大小乘以地图的行数和列数）的大小。这样，Canvas的大小将适应地图的大小。
     canvas = tk.Canvas(root, width=len(map_data[0]) * 40, height=len(map_data) * 40)
-    canvas.pack()
+    canvas.pack()  # 将Canvas组件添加到主窗口中。通过pack()方法，Canvas将会自动根据窗口大小进行适应和布局。
 
     draw_map(canvas, map_data)
     draw_path(canvas, path_data)
