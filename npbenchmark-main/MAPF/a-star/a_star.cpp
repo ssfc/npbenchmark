@@ -6,6 +6,8 @@
 using namespace std;
 
 AStar::AStar(Coordinate input_src, Coordinate input_dest):
+        num_rows(0),
+        num_columns(0),
         src(input_src),
         dest(input_dest)
 // 0表示无障碍, 1表示有障碍。
