@@ -15,14 +15,14 @@
 #include <utility>
 #include <vector>
 
-// Creating a shortcut for pair<int, pair<int, int>> type
-using pPair = std::pair<double, std::pair<int, int>>;
-
 struct Coordinate
 {
     int x;
     int y;
 };
+
+// Creating a shortcut for pair<int, pair<int, int>> type
+using pPair = std::pair<double, std::pair<int, int>>;
 
 // A structure to hold the necessary parameters
 struct cell
