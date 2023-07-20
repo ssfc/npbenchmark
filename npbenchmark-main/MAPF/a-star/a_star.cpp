@@ -159,8 +159,8 @@ void AStar::a_star_search()
 
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
-    bool closedList[num_rows][num_columns];
-    memset(closedList, false, sizeof(closedList));
+    bool closed_list[num_rows][num_columns];
+    memset(closed_list, false, sizeof(closed_list));
 
     int i, j;
 
@@ -189,25 +189,25 @@ void AStar::a_star_search()
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
-    set<pPair> openList;
+    set<pPair> open_list;
 
     // Put the starting cell on the open list and set its 'f' as 0
-    openList.insert(make_pair(0.0, make_pair(i, j)));
+    open_list.insert(make_pair(0.0, make_pair(i, j)));
 
     // We set this boolean value as false as initially the destination is not reached.
     bool foundDest = false;
 
-    while (!openList.empty())
+    while (!open_list.empty())
     {
-        pPair p = *openList.begin();
+        pPair p = *open_list.begin();
 
         // Remove this vertex from the open list
-        openList.erase(openList.begin());
+        open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
         i = p.second.first;
         j = p.second.second;
-        closedList[i][j] = true;
+        closed_list[i][j] = true;
 
         /*
         Generating all the 8 successor of this cell
@@ -253,7 +253,7 @@ void AStar::a_star_search()
 
                 // If the successor is already on the closed list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i-1][j] && is_passable(Coordinate{i-1, j}))
+            else if (!closed_list[i - 1][j] && is_passable(Coordinate{i - 1, j}))
             {
                 gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i-1, j});
@@ -269,7 +269,7 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i - 1][j].f == FLT_MAX
                     || cell_details[i - 1][j].f > fNew) {
-                    openList.insert(make_pair(
+                    open_list.insert(make_pair(
                             fNew, make_pair(i - 1, j)));
 
                     // Update the details of this cell
@@ -303,7 +303,7 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i+1][j] && is_passable(Coordinate{i+1, j}))
+            else if (!closed_list[i + 1][j] && is_passable(Coordinate{i + 1, j}))
             {
                 gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i+1, j});
@@ -319,7 +319,7 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i + 1][j].f == FLT_MAX
                     || cell_details[i + 1][j].f > fNew) {
-                    openList.insert(make_pair(
+                    open_list.insert(make_pair(
                             fNew, make_pair(i + 1, j)));
                     // Update the details of this cell
                     cell_details[i + 1][j].f = fNew;
@@ -352,7 +352,7 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i][j+1] && is_passable(Coordinate{i, j+1}))
+            else if (!closed_list[i][j + 1] && is_passable(Coordinate{i, j + 1}))
             {
                 gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i, j+1});
@@ -368,7 +368,7 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j + 1].f == FLT_MAX
                     || cell_details[i][j + 1].f > fNew) {
-                    openList.insert(make_pair(
+                    open_list.insert(make_pair(
                             fNew, make_pair(i, j + 1)));
 
                     // Update the details of this cell
@@ -402,7 +402,7 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closedList[i][j-1] && is_passable(Coordinate{i, j-1}))
+            else if (!closed_list[i][j - 1] && is_passable(Coordinate{i, j - 1}))
             {
                 gNew = cell_details[i][j].g + 1.0;
                 hNew = calculate_h(Coordinate{i, j-1});
@@ -418,7 +418,7 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j - 1].f == FLT_MAX
                     || cell_details[i][j - 1].f > fNew) {
-                    openList.insert(make_pair(
+                    open_list.insert(make_pair(
                             fNew, make_pair(i, j - 1)));
 
                     // Update the details of this cell
