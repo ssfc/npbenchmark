@@ -122,6 +122,7 @@ void AStar::trace_path()
     ofstream path_file("path.txt");
     if (path_file.is_open())
     {
+        cerr << "total cost: " << Path.size() << endl;
         path_file << Path.size() << "\n";
         while (!Path.empty())
         {
@@ -173,6 +174,8 @@ void AStar::a_star_search()
     // closed list是bool二维数组, open list是set, 有点诡异。
     bool closed_list[num_rows][num_columns];
     memset(closed_list, false, sizeof(closed_list));
+    bool open_table[num_rows][num_columns];
+    memset(open_table, false, sizeof(open_table));
 
     // Initialising the parameters of the starting node
     cell_details[src.x][src.y] = Cell{0.0, 0.0, 0.0, src.x, src.y};
@@ -186,6 +189,7 @@ void AStar::a_star_search()
 
     // Put the starting Cell on the open list and set its 'f' as 0
     open_list.insert(OpenNode{0.0, Coordinate{src.x, src.y}});
+    open_table[src.x][src.y] = true;
 
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
@@ -201,6 +205,7 @@ void AStar::a_star_search()
         int i = open_begin.position.x;
         int j = open_begin.position.y;
         closed_list[i][j] = true;
+        open_table[i][j] = false;
 
         /*
         Generating all the 4 successor of this Cell
@@ -252,9 +257,13 @@ void AStar::a_star_search()
                 // using 'f' cost as the measure.
                 if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
                 {
-                    open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
                     // Update the details of this Cell
                     cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
+                    if(!open_table[i-1][j])
+                    {
+                        open_table[i-1][j] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
+                    }
                 }
             }
         }
@@ -291,9 +300,13 @@ void AStar::a_star_search()
                 // using 'f' cost as the measure.
                 if (cell_details[i+1][j].f == FLT_MAX || cell_details[i+1][j].f > f_new)
                 {
-                    open_list.insert(OpenNode{f_new, Coordinate{i + 1, j}});
                     // Update the details of this Cell
                     cell_details[i+1][j] = Cell{f_new, g_new, h_new, i, j};
+                    if(!open_table[i+1][j])
+                    {
+                        open_table[i+1][j] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{i+1, j}});
+                    }
                 }
             }
         }
@@ -331,9 +344,13 @@ void AStar::a_star_search()
                 // using 'f' cost as the measure.
                 if (cell_details[i][j+1].f == FLT_MAX || cell_details[i][j+1].f > f_new)
                 {
-                    open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
                     // Update the details of this Cell
                     cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
+                    if(!open_table[i][j+1])
+                    {
+                        open_table[i][j+1] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
+                    }
                 }
             }
         }
@@ -370,9 +387,13 @@ void AStar::a_star_search()
                 // using 'f' cost as the measure.
                 if (cell_details[i][j-1].f == FLT_MAX || cell_details[i][j-1].f > f_new)
                 {
-                    open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
                     // Update the details of this Cell
                     cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};
+                    if(!open_table[i][j-1])
+                    {
+                        open_table[i][j-1] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
+                    }
                 }
             }
         }
