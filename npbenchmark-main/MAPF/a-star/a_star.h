@@ -21,9 +21,6 @@ struct Coordinate
     int y;
 };
 
-// Creating a shortcut for pair<int, pair<int, int>> type
-using pPair = std::pair<double, std::pair<int, int>>;
-
 struct OpenNode
 {
     double heuristic_cost;
