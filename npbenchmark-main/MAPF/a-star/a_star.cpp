@@ -249,7 +249,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i-1, j});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to the open list.
                 // Make the current square the parent of this square.
                 // Record the f, g, and h costs of the square Cell
                 //			 OR
@@ -259,6 +258,7 @@ void AStar::a_star_search()
                 {
                     // Update the details of this Cell
                     cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
+                    // If it isn’t on the open list, add it to the open list.
                     if(!open_table[i-1][j])
                     {
                         open_table[i-1][j] = true;
@@ -292,7 +292,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i+1, j});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to the open list.
                 // Make the current square the parent of this square.
                 // Record the f, g, and h costs of the square Cell
                 //			 OR
@@ -302,6 +301,7 @@ void AStar::a_star_search()
                 {
                     // Update the details of this Cell
                     cell_details[i+1][j] = Cell{f_new, g_new, h_new, i, j};
+                    // If it isn’t on the open list, add it to the open list.
                     if(!open_table[i+1][j])
                     {
                         open_table[i+1][j] = true;
@@ -336,7 +336,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i, j+1});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to the open list.
                 // Make the current square the parent of this square.
                 // Record the f, g, and h costs of the square Cell
                 //			 OR
@@ -346,6 +345,7 @@ void AStar::a_star_search()
                 {
                     // Update the details of this Cell
                     cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
+                    // If it isn’t on the open list, add it to the open list.
                     if(!open_table[i][j+1])
                     {
                         open_table[i][j+1] = true;
@@ -379,7 +379,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i, j-1});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to the open list.
                 // Make the current square the parent of this square.
                 // Record the f, g, and h costs of the square Cell
                 //			 OR
@@ -389,6 +388,7 @@ void AStar::a_star_search()
                 {
                     // Update the details of this Cell
                     cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};
+                    // If it isn’t on the open list, add it to the open list.
                     if(!open_table[i][j-1])
                     {
                         open_table[i][j-1] = true;
