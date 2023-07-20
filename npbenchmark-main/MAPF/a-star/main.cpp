@@ -10,8 +10,8 @@ using namespace std;
 int main()
 {
     /* Description of the Grid-
-    1--> The cell is not blocked
-    0--> The cell is blocked */
+    1--> The Cell is not blocked
+    0--> The Cell is blocked */
     /*
     std::vector<std::vector<int>> test_map
             = { { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },

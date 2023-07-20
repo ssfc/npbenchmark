@@ -48,11 +48,12 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     cell_details.resize(num_rows);
     for(int i=0;i<num_rows;i++)
     {
-        cell_details[i].resize(num_columns);
+        cell_details[i].resize(num_columns,
+                               Cell{FLT_MAX, FLT_MAX, FLT_MAX, -1, -1});
     }
 }
 
-// check whether given cell (row, col) is a valid cell or not.
+// check whether given Cell (row, col) is a valid Cell or not.
 // 也就是检查一个cell是否在地图范围内
 bool AStar::is_valid(Coordinate position) const
 {
@@ -61,17 +62,17 @@ bool AStar::is_valid(Coordinate position) const
            && (position.y >= 0) && (position.y < num_columns);
 }
 
-// check whether the given cell is blocked or not
+// check whether the given Cell is blocked or not
 bool AStar::is_passable(Coordinate position)
 {
-    // Returns true if the cell is not blocked else false
+    // Returns true if the Cell is not blocked else false
     if (map[position.x][position.y] == 1)
         return true;
     else
         return false;
 }
 
-// check whether destination cell has been reached or not
+// check whether destination Cell has been reached or not
 bool AStar::is_destination(Coordinate position) const
 {
     if (position.x == dest.x && position.y == dest.y)
@@ -136,7 +137,7 @@ void AStar::trace_path()
     }
 }
 
-// find the shortest path between a given source cell to a destination cell
+// find the shortest path between a given source Cell to a destination Cell
 void AStar::a_star_search()
 {
     // Check whether the source is out of range
@@ -160,31 +161,18 @@ void AStar::a_star_search()
         return;
     }
 
-    // Check whether the destination cell is the same as source cell
+    // Check whether the destination Cell is the same as source Cell
     if (is_destination(src))
     {
         cerr << "We are already at the destination\n";
         return;
     }
 
-    // Create a closed list and initialise it to false which means that no cell has been included yet
+    // Create a closed list and initialise it to false which means that no Cell has been included yet
     // This closed list is implemented as a boolean 2D array
     // closed list是bool二维数组, open list是set, 有点诡异。
     bool closed_list[num_rows][num_columns];
     memset(closed_list, false, sizeof(closed_list));
-
-
-    for (int i = 0; i < num_rows; i++)
-    {
-        for (int j = 0; j < num_columns; j++)
-        {
-            cell_details[i][j].f = FLT_MAX;
-            cell_details[i][j].g = FLT_MAX;
-            cell_details[i][j].h = FLT_MAX;
-            cell_details[i][j].parent_i = -1;
-            cell_details[i][j].parent_j = -1;
-        }
-    }
 
     // Initialising the parameters of the starting node
     cell_details[src.x][src.y].f = 0.0;
@@ -195,12 +183,12 @@ void AStar::a_star_search()
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
-    and i, j are the row and column index of that cell
+    and i, j are the row and column index of that Cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
     set<OpenNode> open_list;
 
-    // Put the starting cell on the open list and set its 'f' as 0
+    // Put the starting Cell on the open list and set its 'f' as 0
     open_list.insert(OpenNode{0.0, Coordinate{src.x, src.y}});
 
     // We set this boolean value as false as initially the destination is not reached.
@@ -219,7 +207,7 @@ void AStar::a_star_search()
         closed_list[i][j] = true;
 
         /*
-        Generating all the 4 successor of this cell
+        Generating all the 4 successor of this Cell
 
                    N
                    |
@@ -239,17 +227,17 @@ void AStar::a_star_search()
 
         //----------- 1st Successor (North) ------------
 
-        // Only process this cell if this is a valid one
+        // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i-1, j}))
         {
-            // If the destination cell is the same as the
+            // If the destination Cell is the same as the
             // current successor
             if (is_destination(Coordinate{i-1, j}))
             {
-                // Set the Parent of the destination cell
+                // Set the Parent of the destination Cell
                 cell_details[i - 1][j].parent_i = i;
                 cell_details[i - 1][j].parent_j = j;
-                cerr << "The destination cell is found\n";
+                cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
                 return;
@@ -266,7 +254,7 @@ void AStar::a_star_search()
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
                 // the parent of this square. Record the
-                // f, g, and h costs of the square cell
+                // f, g, and h costs of the square Cell
                 //			 OR
                 // If it is on the open list already, check
                 // to see if this path to that square is
@@ -276,7 +264,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{
                             fNew, Coordinate{i - 1, j}});
 
-                    // Update the details of this cell
+                    // Update the details of this Cell
                     cell_details[i - 1][j].f = fNew;
                     cell_details[i - 1][j].g = gNew;
                     cell_details[i - 1][j].h = hNew;
@@ -288,17 +276,17 @@ void AStar::a_star_search()
 
         //----------- 2nd Successor (South) ------------
 
-        // Only process this cell if this is a valid one
+        // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i+1, j}))
         {
-            // If the destination cell is the same as the
+            // If the destination Cell is the same as the
             // current successor
             if (is_destination(Coordinate{i+1, j}))
             {
-                // Set the Parent of the destination cell
+                // Set the Parent of the destination Cell
                 cell_details[i + 1][j].parent_i = i;
                 cell_details[i + 1][j].parent_j = j;
-                cerr << "The destination cell is found\n";
+                cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
 
@@ -316,7 +304,7 @@ void AStar::a_star_search()
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
                 // the parent of this square. Record the
-                // f, g, and h costs of the square cell
+                // f, g, and h costs of the square Cell
                 //			 OR
                 // If it is on the open list already, check
                 // to see if this path to that square is
@@ -325,7 +313,7 @@ void AStar::a_star_search()
                     || cell_details[i + 1][j].f > fNew) {
                     open_list.insert(OpenNode{
                             fNew, Coordinate{i + 1, j}});
-                    // Update the details of this cell
+                    // Update the details of this Cell
                     cell_details[i + 1][j].f = fNew;
                     cell_details[i + 1][j].g = gNew;
                     cell_details[i + 1][j].h = hNew;
@@ -337,17 +325,17 @@ void AStar::a_star_search()
 
         //----------- 3rd Successor (East) ------------
 
-        // Only process this cell if this is a valid one
+        // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j+1}))
         {
-            // If the destination cell is the same as the
+            // If the destination Cell is the same as the
             // current successor
             if (is_destination(Coordinate{i, j+1}))
             {
-                // Set the Parent of the destination cell
+                // Set the Parent of the destination Cell
                 cell_details[i][j + 1].parent_i = i;
                 cell_details[i][j + 1].parent_j = j;
-                cerr << "The destination cell is found\n";
+                cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
                 return;
@@ -365,7 +353,7 @@ void AStar::a_star_search()
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
                 // the parent of this square. Record the
-                // f, g, and h costs of the square cell
+                // f, g, and h costs of the square Cell
                 //			 OR
                 // If it is on the open list already, check
                 // to see if this path to that square is
@@ -375,7 +363,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{
                             fNew, Coordinate{i, j + 1}});
 
-                    // Update the details of this cell
+                    // Update the details of this Cell
                     cell_details[i][j + 1].f = fNew;
                     cell_details[i][j + 1].g = gNew;
                     cell_details[i][j + 1].h = hNew;
@@ -387,17 +375,17 @@ void AStar::a_star_search()
 
         //----------- 4th Successor (West) ------------
 
-        // Only process this cell if this is a valid one
+        // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j-1}))
         {
-            // If the destination cell is the same as the
+            // If the destination Cell is the same as the
             // current successor
             if (is_destination(Coordinate{i, j-1}))
             {
-                // Set the Parent of the destination cell
+                // Set the Parent of the destination Cell
                 cell_details[i][j - 1].parent_i = i;
                 cell_details[i][j - 1].parent_j = j;
-                cerr << "The destination cell is found\n";
+                cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
                 return;
@@ -415,7 +403,7 @@ void AStar::a_star_search()
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
                 // the parent of this square. Record the
-                // f, g, and h costs of the square cell
+                // f, g, and h costs of the square Cell
                 //			 OR
                 // If it is on the open list already, check
                 // to see if this path to that square is
@@ -425,7 +413,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{
                             fNew, Coordinate{i, j - 1}});
 
-                    // Update the details of this cell
+                    // Update the details of this Cell
                     cell_details[i][j - 1].f = fNew;
                     cell_details[i][j - 1].g = gNew;
                     cell_details[i][j - 1].h = hNew;
@@ -436,10 +424,10 @@ void AStar::a_star_search()
         }
     }
 
-    // When the destination cell is not found and the open
+    // When the destination Cell is not found and the open
     // list is empty, then we conclude that we failed to
-    // reach the destination cell. This may happen when the
-    // there is no way to destination cell (due to
+    // reach the destination Cell. This may happen when the
+    // there is no way to destination Cell (due to
     // blockages)
     if (!found_dest)
         cerr << "Failed to find the Destination Cell\n";

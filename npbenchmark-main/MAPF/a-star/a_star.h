@@ -47,13 +47,13 @@ struct OpenNode
 };
 
 // A structure to hold the necessary parameters
-struct cell
+struct Cell
 {
+    // f = g + h
+    double f, g, h;
     // Row and Column index of its parent
     // Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
     int parent_i, parent_j;
-    // f = g + h
-    double f, g, h;
 };
 
 
@@ -66,22 +66,22 @@ private:
     Coordinate src;
     Coordinate dest;
 
-    // Declare a 2D array of structure to hold the details of that cell
-    std::vector<std::vector<cell>> cell_details;
+    // Declare a 2D array of structure to hold the details of that Cell
+    std::vector<std::vector<Cell>> cell_details;
 public:
     AStar(Coordinate input_src, Coordinate input_dest);
 
-    // check whether given cell (row, col) is a valid cell or not.
+    // check whether given Cell (row, col) is a valid Cell or not.
     [[nodiscard]] bool is_valid(Coordinate position) const;
-    // check whether the given cell is blocked or not
+    // check whether the given Cell is blocked or not
     bool is_passable(Coordinate position);
-    // check whether destination cell has been reached or not
+    // check whether destination Cell has been reached or not
     [[nodiscard]] bool is_destination(Coordinate position) const;
     // calculate the 'h' heuristics.
     [[nodiscard]] double calculate_h(Coordinate position) const;
     // trace the path from the source to destination
     void trace_path();
-    // find the shortest path between a given source cell to a destination cell
+    // find the shortest path between a given source Cell to a destination Cell
     void a_star_search();
 
     // debug func
