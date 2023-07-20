@@ -256,7 +256,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[north_x][north_y].f == FLT_MAX || cell_details[north_x][north_y].f > f_new)
+                if (cell_details[north_x][north_y].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[north_x][north_y] = Cell{f_new, g_new, h_new,
@@ -300,7 +300,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[current_x + 1][current_y].f == FLT_MAX || cell_details[current_x + 1][current_y].f > f_new)
+                if (cell_details[current_x + 1][current_y].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[current_x + 1][current_y] = Cell{f_new, g_new, h_new, current_x, current_y};
@@ -344,7 +344,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[current_x][current_y + 1].f == FLT_MAX || cell_details[current_x][current_y + 1].f > f_new)
+                if (cell_details[current_x][current_y + 1].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[current_x][current_y + 1] = Cell{f_new, g_new, h_new, current_x, current_y};
@@ -387,7 +387,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[current_x][current_y - 1].f == FLT_MAX || cell_details[current_x][current_y - 1].f > f_new)
+                if (cell_details[current_x][current_y - 1].f > f_new)
                 {
                     // Update the details of this Cell
                     cell_details[current_x][current_y - 1] = Cell{f_new, g_new, h_new, current_x, current_y};
