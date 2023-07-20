@@ -46,7 +46,7 @@ def main():
     draw_map(canvas, map_data)
     draw_path(canvas, path_data)
 
-    root.mainloop()
+    root.mainloop()  # 启动Tkinter的事件循环，使窗口显示并等待用户交互。这个方法将会一直运行，直到用户关闭了窗口。
 
 
 if __name__ == "__main__":
