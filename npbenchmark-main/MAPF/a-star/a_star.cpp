@@ -217,10 +217,10 @@ void AStar::a_star_search()
                   S
 
         Cell-->Popped Cell (current_x, current_y)
-        N --> North	 (current_x-1, current_y)
-        S --> South	 (current_x+1, current_y)
-        E --> East	 (current_x, current_y+1)
-        W --> West	 (current_x, current_y-1)
+        N --> North	 (current_x, current_y+1)
+        S --> South	 (current_x, current_y-1)
+        W --> West	 (current_x-1, current_y)
+        E --> East	 (current_x+1, current_y)
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
