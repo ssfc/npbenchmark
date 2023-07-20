@@ -173,11 +173,10 @@ void AStar::a_star_search()
     bool closed_list[num_rows][num_columns];
     memset(closed_list, false, sizeof(closed_list));
 
-    int i, j;
 
-    for (i = 0; i < num_rows; i++)
+    for (int i = 0; i < num_rows; i++)
     {
-        for (j = 0; j < num_columns; j++)
+        for (int j = 0; j < num_columns; j++)
         {
             cell_details[i][j].f = FLT_MAX;
             cell_details[i][j].g = FLT_MAX;
@@ -215,8 +214,8 @@ void AStar::a_star_search()
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        i = open_begin.position.x;
-        j = open_begin.position.y;
+        int i = open_begin.position.x;
+        int j = open_begin.position.y;
         closed_list[i][j] = true;
 
         /*
@@ -232,7 +231,7 @@ void AStar::a_star_search()
         N --> North	 (i-1, j)
         S --> South	 (i+1, j)
         E --> East	 (i, j+1)
-        W --> West		 (i, j-1)
+        W --> West	 (i, j-1)
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
