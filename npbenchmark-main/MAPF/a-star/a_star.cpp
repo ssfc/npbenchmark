@@ -86,9 +86,7 @@ double AStar::calculate_h(Coordinate position) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
-    return ((double)sqrt(
-            (position.x - dest.x) * (position.x - dest.x)
-            + (position.y - dest.y) * (position.y - dest.y)));
+    return ((double)abs((position.x - dest.x) + abs(position.y - dest.y)));
 }
 
 // trace the path from the source to destination
