@@ -227,9 +227,9 @@ void AStar::a_star_search()
         double g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
-        // Only process this Cell if this is a valid one
         int north_x = current_x - 1;
         int north_y = current_y;
+        // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{north_x, north_y}))
         {
             // If the destination Cell is the same as the current successor
