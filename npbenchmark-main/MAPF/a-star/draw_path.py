@@ -27,12 +27,12 @@ def draw_path(canvas, path_data):
 
 def main():
     # 读取map.txt内容
-    with open('map.txt', 'r') as file:
+    with open('cmake-build-debug/map.txt', 'r') as file:
         rows, cols = map(int, file.readline().strip().split())  # Read the number of rows and columns
         map_data = [list(file.readline().strip()) for _ in range(rows)]  # Read each row and convert it to a list
 
     # 读取path.txt内容
-    with open('path.txt', 'r') as file:
+    with open('cmake-build-debug/path.txt', 'r') as file:
         num_points = int(file.readline().strip())
         path_data = [tuple(map(int, file.readline().strip().split())) for _ in range(num_points)]
 
