@@ -223,7 +223,7 @@ void AStar::a_star_search()
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
-        double gNew, hNew, fNew;
+        double g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
 
@@ -247,9 +247,9 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closed_list[i - 1][j] && is_passable(Coordinate{i - 1, j}))
             {
-                gNew = cell_details[i][j].g + 1.0;
-                hNew = calculate_h(Coordinate{i-1, j});
-                fNew = gNew + hNew;
+                g_new = cell_details[i][j].g + 1.0;
+                h_new = calculate_h(Coordinate{i - 1, j});
+                f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
@@ -260,14 +260,14 @@ void AStar::a_star_search()
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cell_details[i - 1][j].f == FLT_MAX
-                    || cell_details[i - 1][j].f > fNew) {
+                    || cell_details[i - 1][j].f > f_new) {
                     open_list.insert(OpenNode{
-                            fNew, Coordinate{i - 1, j}});
+                            f_new, Coordinate{i - 1, j}});
 
                     // Update the details of this Cell
-                    cell_details[i - 1][j].f = fNew;
-                    cell_details[i - 1][j].g = gNew;
-                    cell_details[i - 1][j].h = hNew;
+                    cell_details[i - 1][j].f = f_new;
+                    cell_details[i - 1][j].g = g_new;
+                    cell_details[i - 1][j].h = h_new;
                     cell_details[i - 1][j].parent_i = i;
                     cell_details[i - 1][j].parent_j = j;
                 }
@@ -297,9 +297,9 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closed_list[i + 1][j] && is_passable(Coordinate{i + 1, j}))
             {
-                gNew = cell_details[i][j].g + 1.0;
-                hNew = calculate_h(Coordinate{i+1, j});
-                fNew = gNew + hNew;
+                g_new = cell_details[i][j].g + 1.0;
+                h_new = calculate_h(Coordinate{i + 1, j});
+                f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
@@ -310,13 +310,13 @@ void AStar::a_star_search()
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cell_details[i + 1][j].f == FLT_MAX
-                    || cell_details[i + 1][j].f > fNew) {
+                    || cell_details[i + 1][j].f > f_new) {
                     open_list.insert(OpenNode{
-                            fNew, Coordinate{i + 1, j}});
+                            f_new, Coordinate{i + 1, j}});
                     // Update the details of this Cell
-                    cell_details[i + 1][j].f = fNew;
-                    cell_details[i + 1][j].g = gNew;
-                    cell_details[i + 1][j].h = hNew;
+                    cell_details[i + 1][j].f = f_new;
+                    cell_details[i + 1][j].g = g_new;
+                    cell_details[i + 1][j].h = h_new;
                     cell_details[i + 1][j].parent_i = i;
                     cell_details[i + 1][j].parent_j = j;
                 }
@@ -346,9 +346,9 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closed_list[i][j + 1] && is_passable(Coordinate{i, j + 1}))
             {
-                gNew = cell_details[i][j].g + 1.0;
-                hNew = calculate_h(Coordinate{i, j+1});
-                fNew = gNew + hNew;
+                g_new = cell_details[i][j].g + 1.0;
+                h_new = calculate_h(Coordinate{i, j + 1});
+                f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
@@ -359,14 +359,14 @@ void AStar::a_star_search()
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j + 1].f == FLT_MAX
-                    || cell_details[i][j + 1].f > fNew) {
+                    || cell_details[i][j + 1].f > f_new) {
                     open_list.insert(OpenNode{
-                            fNew, Coordinate{i, j + 1}});
+                            f_new, Coordinate{i, j + 1}});
 
                     // Update the details of this Cell
-                    cell_details[i][j + 1].f = fNew;
-                    cell_details[i][j + 1].g = gNew;
-                    cell_details[i][j + 1].h = hNew;
+                    cell_details[i][j + 1].f = f_new;
+                    cell_details[i][j + 1].g = g_new;
+                    cell_details[i][j + 1].h = h_new;
                     cell_details[i][j + 1].parent_i = i;
                     cell_details[i][j + 1].parent_j = j;
                 }
@@ -396,9 +396,9 @@ void AStar::a_star_search()
                 // Else do the following
             else if (!closed_list[i][j - 1] && is_passable(Coordinate{i, j - 1}))
             {
-                gNew = cell_details[i][j].g + 1.0;
-                hNew = calculate_h(Coordinate{i, j-1});
-                fNew = gNew + hNew;
+                g_new = cell_details[i][j].g + 1.0;
+                h_new = calculate_h(Coordinate{i, j - 1});
+                f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
                 // the open list. Make the current square
@@ -409,14 +409,14 @@ void AStar::a_star_search()
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j - 1].f == FLT_MAX
-                    || cell_details[i][j - 1].f > fNew) {
+                    || cell_details[i][j - 1].f > f_new) {
                     open_list.insert(OpenNode{
-                            fNew, Coordinate{i, j - 1}});
+                            f_new, Coordinate{i, j - 1}});
 
                     // Update the details of this Cell
-                    cell_details[i][j - 1].f = fNew;
-                    cell_details[i][j - 1].g = gNew;
-                    cell_details[i][j - 1].h = hNew;
+                    cell_details[i][j - 1].f = f_new;
+                    cell_details[i][j - 1].g = g_new;
+                    cell_details[i][j - 1].h = h_new;
                     cell_details[i][j - 1].parent_i = i;
                     cell_details[i][j - 1].parent_j = j;
                 }
