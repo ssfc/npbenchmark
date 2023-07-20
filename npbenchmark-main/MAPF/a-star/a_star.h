@@ -24,6 +24,12 @@ struct Coordinate
 // Creating a shortcut for pair<int, pair<int, int>> type
 using pPair = std::pair<double, std::pair<int, int>>;
 
+struct OpenNode
+{
+    double heuristic_cost;
+    Coordinate position;
+};
+
 // A structure to hold the necessary parameters
 struct cell
 {
