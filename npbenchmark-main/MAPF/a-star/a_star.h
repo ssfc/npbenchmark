@@ -29,12 +29,20 @@ struct OpenNode
     bool operator<(const OpenNode& other) const
     {
         if (heuristic_cost != other.heuristic_cost)
+        {
             return heuristic_cost < other.heuristic_cost;
-
-        if (position.x != other.position.x)
-            return position.x < other.position.x;
-
-        return position.y < other.position.y;
+        }
+        else
+        {
+            if (position.x != other.position.x)
+            {
+                return position.x < other.position.x;
+            }
+            else
+            {
+                return position.y < other.position.y;
+            }
+        }
     }
 };
 
