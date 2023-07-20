@@ -287,14 +287,12 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i+1, j});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to
-                // the open list. Make the current square
-                // the parent of this square. Record the
-                // f, g, and h costs of the square Cell
+                // If it isn’t on the open list, add it to the open list.
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
                 //			 OR
-                // If it is on the open list already, check
-                // to see if this path to that square is
-                // better, using 'f' cost as the measure.
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
                 if (cell_details[i+1][j].f == FLT_MAX || cell_details[i+1][j].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i + 1, j}});
@@ -329,14 +327,12 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i, j+1});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to
-                // the open list. Make the current square
-                // the parent of this square. Record the
-                // f, g, and h costs of the square Cell
+                // If it isn’t on the open list, add it to the open list.
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
                 //			 OR
-                // If it is on the open list already, check
-                // to see if this path to that square is
-                // better, using 'f' cost as the measure.
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
                 if (cell_details[i][j+1].f == FLT_MAX || cell_details[i][j+1].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
@@ -347,7 +343,7 @@ void AStar::a_star_search()
         }
 
         //----------- 4th Successor (West) ------------
-        // Only process this Cell if this is a valid one
+        // Only process this Cell if it is valid
         if (is_valid(Coordinate{i, j-1}))
         {
             // If the destination Cell is the same as the current successor
@@ -370,14 +366,12 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{i, j-1});
                 f_new = g_new + h_new;
 
-                // If it isn’t on the open list, add it to
-                // the open list. Make the current square
-                // the parent of this square. Record the
-                // f, g, and h costs of the square Cell
+                // If it isn’t on the open list, add it to the open list.
+                // Make the current square the parent of this square.
+                // Record the f, g, and h costs of the square Cell
                 //			 OR
-                // If it is on the open list already, check
-                // to see if this path to that square is
-                // better, using 'f' cost as the measure.
+                // If it is on the open list already, check to see if this path to that square is better,
+                // using 'f' cost as the measure.
                 if (cell_details[i][j-1].f == FLT_MAX || cell_details[i][j-1].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
