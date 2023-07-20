@@ -175,12 +175,8 @@ void AStar::a_star_search()
     memset(closed_list, false, sizeof(closed_list));
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y].f = 0.0;
-    cell_details[src.x][src.y].g = 0.0;
-    cell_details[src.x][src.y].h = 0.0;
-    cell_details[src.x][src.y].parent_i = src.x;
-    cell_details[src.x][src.y].parent_j = src.y;
-
+    cell_details[src.x][src.y] = Cell{0.0, 0.0, 0.0, src.x, src.y};
+    
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
     and i, j are the row and column index of that Cell
