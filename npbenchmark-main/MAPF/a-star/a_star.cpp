@@ -176,7 +176,7 @@ void AStar::a_star_search()
 
     // Initialising the parameters of the starting node
     cell_details[src.x][src.y] = Cell{0.0, 0.0, 0.0, src.x, src.y};
-    
+
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
     and i, j are the row and column index of that Cell
