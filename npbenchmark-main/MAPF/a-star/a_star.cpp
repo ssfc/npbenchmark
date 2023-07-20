@@ -189,24 +189,24 @@ void AStar::a_star_search()
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
-    set<pPair> open_list;
+    set<OpenNode> open_list;
 
     // Put the starting cell on the open list and set its 'f' as 0
-    open_list.insert(make_pair(0.0, make_pair(i, j)));
+    open_list.insert(OpenNode{0.0, Coordinate{i, j}});
 
     // We set this boolean value as false as initially the destination is not reached.
     bool foundDest = false;
 
     while (!open_list.empty())
     {
-        pPair open_begin = *open_list.begin();
+        OpenNode open_begin = *open_list.begin();
 
         // Remove this vertex from the open list
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        i = open_begin.second.first;
-        j = open_begin.second.second;
+        i = open_begin.position.x;
+        j = open_begin.position.y;
         closed_list[i][j] = true;
 
         /*
@@ -264,8 +264,8 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i - 1][j].f == FLT_MAX
                     || cell_details[i - 1][j].f > fNew) {
-                    open_list.insert(make_pair(
-                            fNew, make_pair(i - 1, j)));
+                    open_list.insert(OpenNode{
+                            fNew, Coordinate{i - 1, j}});
 
                     // Update the details of this cell
                     cell_details[i - 1][j].f = fNew;
@@ -314,8 +314,8 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i + 1][j].f == FLT_MAX
                     || cell_details[i + 1][j].f > fNew) {
-                    open_list.insert(make_pair(
-                            fNew, make_pair(i + 1, j)));
+                    open_list.insert(OpenNode{
+                            fNew, Coordinate{i + 1, j}});
                     // Update the details of this cell
                     cell_details[i + 1][j].f = fNew;
                     cell_details[i + 1][j].g = gNew;
@@ -363,8 +363,8 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j + 1].f == FLT_MAX
                     || cell_details[i][j + 1].f > fNew) {
-                    open_list.insert(make_pair(
-                            fNew, make_pair(i, j + 1)));
+                    open_list.insert(OpenNode{
+                            fNew, Coordinate{i, j + 1}});
 
                     // Update the details of this cell
                     cell_details[i][j + 1].f = fNew;
@@ -413,8 +413,8 @@ void AStar::a_star_search()
                 // better, using 'f' cost as the measure.
                 if (cell_details[i][j - 1].f == FLT_MAX
                     || cell_details[i][j - 1].f > fNew) {
-                    open_list.insert(make_pair(
-                            fNew, make_pair(i, j - 1)));
+                    open_list.insert(OpenNode{
+                            fNew, Coordinate{i, j - 1}});
 
                     // Update the details of this cell
                     cell_details[i][j - 1].f = fNew;
