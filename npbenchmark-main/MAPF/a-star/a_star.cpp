@@ -202,10 +202,10 @@ void AStar::a_star_search()
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        int i = open_begin.position.x;
-        int j = open_begin.position.y;
-        closed_list[i][j] = true;
-        open_table[i][j] = false;
+        int current_x = open_begin.position.x;
+        int current_y = open_begin.position.y;
+        closed_list[current_x][current_y] = true;
+        open_table[current_x][current_y] = false;
 
         /*
         Generating all the 4 successor of this Cell
@@ -216,11 +216,11 @@ void AStar::a_star_search()
                   |
                   S
 
-        Cell-->Popped Cell (i, j)
-        N --> North	 (i-1, j)
-        S --> South	 (i+1, j)
-        E --> East	 (i, j+1)
-        W --> West	 (i, j-1)
+        Cell-->Popped Cell (current_x, current_y)
+        N --> North	 (current_x-1, current_y)
+        S --> South	 (current_x+1, current_y)
+        E --> East	 (current_x, current_y+1)
+        W --> West	 (current_x, current_y-1)
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
@@ -228,14 +228,16 @@ void AStar::a_star_search()
 
         //----------- 1st Successor (North) ------------
         // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{i-1, j}))
+        int north_x = current_x - 1;
+        int north_y = current_y;
+        if (is_valid(Coordinate{north_x, north_y}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{i-1, j}))
+            if (is_destination(Coordinate{north_x, north_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[i-1][j].parent_i = i;
-                cell_details[i-1][j].parent_j = j;
+                cell_details[north_x][north_y].parent_i = current_x;
+                cell_details[north_x][north_y].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -243,10 +245,10 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[i-1][j] && is_passable(Coordinate{i-1, j}))
+            else if (!closed_list[north_x][north_y] && is_passable(Coordinate{north_x, north_y}))
             {
-                g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i-1, j});
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{north_x, north_y});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -254,15 +256,16 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
+                if (cell_details[north_x][north_y].f == FLT_MAX || cell_details[north_x][north_y].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
+                    cell_details[north_x][north_y] = Cell{f_new, g_new, h_new,
+                                                          current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[i-1][j])
+                    if(!open_table[north_x][north_y])
                     {
-                        open_table[i-1][j] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
+                        open_table[north_x][north_y] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{north_x, north_y}});
                     }
                 }
             }
@@ -270,14 +273,14 @@ void AStar::a_star_search()
 
         //----------- 2nd Successor (South) ------------
         // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{i+1, j}))
+        if (is_valid(Coordinate{current_x + 1, current_y}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{i+1, j}))
+            if (is_destination(Coordinate{current_x + 1, current_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[i+1][j].parent_i = i;
-                cell_details[i+1][j].parent_j = j;
+                cell_details[current_x + 1][current_y].parent_i = current_x;
+                cell_details[current_x + 1][current_y].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -286,10 +289,10 @@ void AStar::a_star_search()
             }
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closed_list[i+1][j] && is_passable(Coordinate{i+1, j}))
+            else if (!closed_list[current_x + 1][current_y] && is_passable(Coordinate{current_x + 1, current_y}))
             {
-                g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i+1, j});
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{current_x + 1, current_y});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -297,15 +300,15 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i+1][j].f == FLT_MAX || cell_details[i+1][j].f > f_new)
+                if (cell_details[current_x + 1][current_y].f == FLT_MAX || cell_details[current_x + 1][current_y].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[i+1][j] = Cell{f_new, g_new, h_new, i, j};
+                    cell_details[current_x + 1][current_y] = Cell{f_new, g_new, h_new, current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[i+1][j])
+                    if(!open_table[current_x + 1][current_y])
                     {
-                        open_table[i+1][j] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{i+1, j}});
+                        open_table[current_x + 1][current_y] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{current_x + 1, current_y}});
                     }
                 }
             }
@@ -313,14 +316,14 @@ void AStar::a_star_search()
 
         //----------- 3rd Successor (East) ------------
         // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{i, j+1}))
+        if (is_valid(Coordinate{current_x, current_y + 1}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{i, j+1}))
+            if (is_destination(Coordinate{current_x, current_y + 1}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[i][j+1].parent_i = i;
-                cell_details[i][j+1].parent_j = j;
+                cell_details[current_x][current_y + 1].parent_i = current_x;
+                cell_details[current_x][current_y + 1].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -330,10 +333,10 @@ void AStar::a_star_search()
 
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closed_list[i][j+1] && is_passable(Coordinate{i, j+1}))
+            else if (!closed_list[current_x][current_y + 1] && is_passable(Coordinate{current_x, current_y + 1}))
             {
-                g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i, j+1});
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{current_x, current_y + 1});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -341,15 +344,15 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i][j+1].f == FLT_MAX || cell_details[i][j+1].f > f_new)
+                if (cell_details[current_x][current_y + 1].f == FLT_MAX || cell_details[current_x][current_y + 1].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
+                    cell_details[current_x][current_y + 1] = Cell{f_new, g_new, h_new, current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[i][j+1])
+                    if(!open_table[current_x][current_y + 1])
                     {
-                        open_table[i][j+1] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
+                        open_table[current_x][current_y + 1] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y + 1}});
                     }
                 }
             }
@@ -357,14 +360,14 @@ void AStar::a_star_search()
 
         //----------- 4th Successor (West) ------------
         // Only process this Cell if it is valid
-        if (is_valid(Coordinate{i, j-1}))
+        if (is_valid(Coordinate{current_x, current_y - 1}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{i, j-1}))
+            if (is_destination(Coordinate{current_x, current_y - 1}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[i][j - 1].parent_i = i;
-                cell_details[i][j - 1].parent_j = j;
+                cell_details[current_x][current_y - 1].parent_i = current_x;
+                cell_details[current_x][current_y - 1].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -373,10 +376,10 @@ void AStar::a_star_search()
             }
             // If the successor is already on the closed list or if it is blocked, then ignore it.
             // Else do the following
-            else if (!closed_list[i][j-1] && is_passable(Coordinate{i, j-1}))
+            else if (!closed_list[current_x][current_y - 1] && is_passable(Coordinate{current_x, current_y - 1}))
             {
-                g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i, j-1});
+                g_new = cell_details[current_x][current_y].g + 1.0;
+                h_new = calculate_h(Coordinate{current_x, current_y - 1});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -384,15 +387,15 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[i][j-1].f == FLT_MAX || cell_details[i][j-1].f > f_new)
+                if (cell_details[current_x][current_y - 1].f == FLT_MAX || cell_details[current_x][current_y - 1].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};
+                    cell_details[current_x][current_y - 1] = Cell{f_new, g_new, h_new, current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[i][j-1])
+                    if(!open_table[current_x][current_y - 1])
                     {
-                        open_table[i][j-1] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
+                        open_table[current_x][current_y - 1] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y - 1}});
                     }
                 }
             }
