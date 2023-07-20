@@ -267,8 +267,7 @@ void AStar::a_star_search()
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i+1, j}))
         {
-            // If the destination Cell is the same as the
-            // current successor
+            // If the destination Cell is the same as the current successor
             if (is_destination(Coordinate{i+1, j}))
             {
                 // Set the Parent of the destination Cell
@@ -309,8 +308,7 @@ void AStar::a_star_search()
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j+1}))
         {
-            // If the destination Cell is the same as the
-            // current successor
+            // If the destination Cell is the same as the current successor
             if (is_destination(Coordinate{i, j+1}))
             {
                 // Set the Parent of the destination Cell
@@ -352,8 +350,7 @@ void AStar::a_star_search()
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j-1}))
         {
-            // If the destination Cell is the same as the
-            // current successor
+            // If the destination Cell is the same as the current successor
             if (is_destination(Coordinate{i, j-1}))
             {
                 // Set the Parent of the destination Cell
@@ -391,11 +388,9 @@ void AStar::a_star_search()
         }
     }
 
-    // When the destination Cell is not found and the open
-    // list is empty, then we conclude that we failed to
-    // reach the destination Cell. This may happen when the
-    // there is no way to destination Cell (due to
-    // blockages)
+    // When the destination Cell is not found and the open list is empty,
+    // then we conclude that we failed to reach the destination Cell.
+    // This may happen when there is no way to destination Cell (due to blockages)
     if (!found_dest)
         cerr << "Failed to find the Destination Cell\n";
 }
