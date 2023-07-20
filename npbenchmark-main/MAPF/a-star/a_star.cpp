@@ -266,7 +266,6 @@ void AStar::a_star_search()
         }
 
         //----------- 2nd Successor (South) ------------
-
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i+1, j}))
         {
@@ -309,7 +308,6 @@ void AStar::a_star_search()
         }
 
         //----------- 3rd Successor (East) ------------
-
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j+1}))
         {
@@ -327,8 +325,8 @@ void AStar::a_star_search()
                 return;
             }
 
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor is already on the closed list or if it is blocked, then ignore it.
+            // Else do the following
             else if (!closed_list[i][j+1] && is_passable(Coordinate{i, j+1}))
             {
                 g_new = cell_details[i][j].g + 1.0;
@@ -354,7 +352,6 @@ void AStar::a_star_search()
         }
 
         //----------- 4th Successor (West) ------------
-
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i, j-1}))
         {
@@ -370,9 +367,8 @@ void AStar::a_star_search()
                 found_dest = true;
                 return;
             }
-
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor is already on the closed list or if it is blocked, then ignore it.
+            // Else do the following
             else if (!closed_list[i][j-1] && is_passable(Coordinate{i, j-1}))
             {
                 g_new = cell_details[i][j].g + 1.0;
