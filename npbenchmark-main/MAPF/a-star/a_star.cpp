@@ -226,7 +226,6 @@ void AStar::a_star_search()
         double g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
-
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i-1, j}))
         {
@@ -258,7 +257,6 @@ void AStar::a_star_search()
                 if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
-
                     // Update the details of this Cell
                     cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
                 }
@@ -344,7 +342,6 @@ void AStar::a_star_search()
                 if (cell_details[i][j+1].f == FLT_MAX || cell_details[i][j+1].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
-
                     // Update the details of this Cell
                     cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
                 }
@@ -365,6 +362,7 @@ void AStar::a_star_search()
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
+
                 return;
             }
             // If the successor is already on the closed list or if it is blocked, then ignore it.
@@ -386,7 +384,6 @@ void AStar::a_star_search()
                 if (cell_details[i][j-1].f == FLT_MAX || cell_details[i][j-1].f > f_new)
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
-
                     // Update the details of this Cell
                     cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};
                 }
