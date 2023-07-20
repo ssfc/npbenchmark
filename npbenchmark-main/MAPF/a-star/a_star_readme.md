@@ -129,41 +129,6 @@ myVector.emplace_back(42);
 
 使用 `emplace` 而不是 `push` 可以避免创建临时整数对象，并直接在容器中构造元素，提高了性能和效率。但需要注意，`emplace` 在构造复杂对象时需要提供构造参数，因此使用时需根据具体情况选择合适的方法。
 
-### Q: 你知道make_pair函数吗？
-
-在C++中，`make_pair`是一个实用函数，用于方便地创建`std::pair`对象。`std::pair`是一个简单的容器，可以保存两个值，并且`make_pair`函数允许您在创建`std::pair`对象时不必显式指定模板参数。
-
-`make_pair`函数定义在`<utility>`头文件中，其语法如下：
-
-```cpp
-template <class T1, class T2>
-std::pair<T1, T2> make_pair(const T1& value1, const T2& value2);
-```
-
-您可以像这样使用`make_pair`：
-
-```cpp
-#include <iostream>
-#include <utility>
-
-int main() {
-    int x = 10;
-    double y = 3.14;
-
-    // 使用 make_pair 创建一个 pair
-    std::pair<int, double> myPair = std::make_pair(x, y);
-
-    std::cout << "第一个值: " << myPair.first << std::endl;
-    std::cout << "第二个值: " << myPair.second << std::endl;
-
-    return 0;
-}
-```
-
-在这个例子中，我们使用`make_pair`创建了一个`int`和`double`值的pair，然后我们可以使用`first`和`second`成员变量来访问pair的元素。
-
-使用`make_pair`被认为是一种更简洁和清晰的方式来创建pair，因为它避免了在创建pair时显式指定模板类型。
-
 ### Q: A*算法一般用于二维网格图吗？
 
 A*算法并不限于二维网格图，但它最常用于解决在二维网格或图上的路径搜索问题。
