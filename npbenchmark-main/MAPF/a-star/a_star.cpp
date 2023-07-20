@@ -283,8 +283,8 @@ void AStar::a_star_search()
 
                 return;
             }
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor is already on the closed list or if it is blocked, then ignore it.
+            // Else do the following
             else if (!closed_list[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
                 g_new = cell_details[i][j].g + 1.0;
@@ -303,11 +303,7 @@ void AStar::a_star_search()
                 {
                     open_list.insert(OpenNode{f_new, Coordinate{i + 1, j}});
                     // Update the details of this Cell
-                    cell_details[i+1][j].f = f_new;
-                    cell_details[i+1][j].g = g_new;
-                    cell_details[i+1][j].h = h_new;
-                    cell_details[i+1][j].parent_i = i;
-                    cell_details[i+1][j].parent_j = j;
+                    cell_details[i+1][j] = Cell{f_new, g_new, h_new, i, j};
                 }
             }
         }
@@ -352,11 +348,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{f_new, Coordinate{i, j+1}});
 
                     // Update the details of this Cell
-                    cell_details[i][j+1].f = f_new;
-                    cell_details[i][j+1].g = g_new;
-                    cell_details[i][j+1].h = h_new;
-                    cell_details[i][j+1].parent_i = i;
-                    cell_details[i][j+1].parent_j = j;
+                    cell_details[i][j+1] = Cell{f_new, g_new, h_new, i, j};
                 }
             }
         }
@@ -400,11 +392,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{f_new, Coordinate{i, j-1}});
 
                     // Update the details of this Cell
-                    cell_details[i][j-1].f = f_new;
-                    cell_details[i][j-1].g = g_new;
-                    cell_details[i][j-1].h = h_new;
-                    cell_details[i][j-1].parent_i = i;
-                    cell_details[i][j-1].parent_j = j;
+                    cell_details[i][j-1] = Cell{f_new, g_new, h_new, i, j};
                 }
             }
         }
