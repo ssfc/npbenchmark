@@ -32,7 +32,7 @@ int main()
     auto test_dest = Coordinate{0, 0};
 
     AStar test(test_src, test_dest);
-    test.output_map();
+    // test.output_map();
     test.a_star_search();
 
     return 0;

@@ -118,11 +118,21 @@ void AStar::trace_path()
     Path.emplace(Coordinate{row, col});
 
     // 最后，通过另一个 while 循环遍历 Path 并依次输出路径上的每个坐标 (row, col)，形式为 -> (row,col)。
-    while (!Path.empty())
+    ofstream path_file("path.txt");
+    if (path_file.is_open())
     {
-        Coordinate p = Path.top();
-        Path.pop();
-        cout << "-> (" << p.x << "," << p.y << ") ";
+        path_file << Path.size() << "\n";
+        while (!Path.empty())
+        {
+            Coordinate position = Path.top();
+            Path.pop();
+            cout << "-> (" << position.x << "," << position.y << ") ";
+            path_file << position.x << " " << position.y << "\n";
+        }
+    }
+    else
+    {
+        cerr << "Unable to create path file.\n";
     }
 }
 
@@ -469,6 +479,6 @@ void AStar::output_map()
     }
     else
     {
-        cerr << "Unable to create parameter file.\n";
+        cerr << "Unable to create map file.\n";
     }
 }
