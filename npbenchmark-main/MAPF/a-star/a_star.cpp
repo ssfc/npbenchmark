@@ -276,8 +276,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{i+1, j}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[i + 1][j].parent_i = i;
-                cell_details[i + 1][j].parent_j = j;
+                cell_details[i+1][j].parent_i = i;
+                cell_details[i+1][j].parent_j = j;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
