@@ -230,8 +230,7 @@ void AStar::a_star_search()
         // Only process this Cell if this is a valid one
         if (is_valid(Coordinate{i-1, j}))
         {
-            // If the destination Cell is the same as the
-            // current successor
+            // If the destination Cell is the same as the current successor
             if (is_destination(Coordinate{i-1, j}))
             {
                 // Set the Parent of the destination Cell
