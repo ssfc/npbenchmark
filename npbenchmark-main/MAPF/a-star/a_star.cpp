@@ -199,14 +199,14 @@ void AStar::a_star_search()
 
     while (!open_list.empty())
     {
-        pPair p = *open_list.begin();
+        pPair open_begin = *open_list.begin();
 
         // Remove this vertex from the open list
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        i = p.second.first;
-        j = p.second.second;
+        i = open_begin.second.first;
+        j = open_begin.second.second;
         closed_list[i][j] = true;
 
         /*
