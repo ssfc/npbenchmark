@@ -260,11 +260,7 @@ void AStar::a_star_search()
                     open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
 
                     // Update the details of this Cell
-                    cell_details[i-1][j].f = f_new;
-                    cell_details[i-1][j].g = g_new;
-                    cell_details[i-1][j].h = h_new;
-                    cell_details[i-1][j].parent_i = i;
-                    cell_details[i-1][j].parent_j = j;
+                    cell_details[i-1][j] = Cell{f_new, g_new, h_new, i, j};
                 }
             }
         }
