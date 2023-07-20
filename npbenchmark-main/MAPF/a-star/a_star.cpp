@@ -239,15 +239,16 @@ void AStar::a_star_search()
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
+
                 return;
             }
 
                 // If the successor is already on the closed list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closed_list[i - 1][j] && is_passable(Coordinate{i - 1, j}))
+            else if (!closed_list[i-1][j] && is_passable(Coordinate{i-1, j}))
             {
                 g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i - 1, j});
+                h_new = calculate_h(Coordinate{i-1, j});
                 f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
@@ -258,17 +259,16 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cell_details[i - 1][j].f == FLT_MAX
-                    || cell_details[i - 1][j].f > f_new) {
-                    open_list.insert(OpenNode{
-                            f_new, Coordinate{i - 1, j}});
+                if (cell_details[i-1][j].f == FLT_MAX || cell_details[i-1][j].f > f_new)
+                {
+                    open_list.insert(OpenNode{f_new, Coordinate{i-1, j}});
 
                     // Update the details of this Cell
-                    cell_details[i - 1][j].f = f_new;
-                    cell_details[i - 1][j].g = g_new;
-                    cell_details[i - 1][j].h = h_new;
-                    cell_details[i - 1][j].parent_i = i;
-                    cell_details[i - 1][j].parent_j = j;
+                    cell_details[i-1][j].f = f_new;
+                    cell_details[i-1][j].g = g_new;
+                    cell_details[i-1][j].h = h_new;
+                    cell_details[i-1][j].parent_i = i;
+                    cell_details[i-1][j].parent_j = j;
                 }
             }
         }
@@ -294,10 +294,10 @@ void AStar::a_star_search()
                 // If the successor is already on the closed
                 // list or if it is blocked, then ignore it.
                 // Else do the following
-            else if (!closed_list[i + 1][j] && is_passable(Coordinate{i + 1, j}))
+            else if (!closed_list[i+1][j] && is_passable(Coordinate{i+1, j}))
             {
                 g_new = cell_details[i][j].g + 1.0;
-                h_new = calculate_h(Coordinate{i + 1, j});
+                h_new = calculate_h(Coordinate{i+1, j});
                 f_new = g_new + h_new;
 
                 // If it isn’t on the open list, add it to
@@ -308,10 +308,9 @@ void AStar::a_star_search()
                 // If it is on the open list already, check
                 // to see if this path to that square is
                 // better, using 'f' cost as the measure.
-                if (cell_details[i + 1][j].f == FLT_MAX
-                    || cell_details[i + 1][j].f > f_new) {
-                    open_list.insert(OpenNode{
-                            f_new, Coordinate{i + 1, j}});
+                if (cell_details[i+1][j].f == FLT_MAX || cell_details[i+1][j].f > f_new)
+                {
+                    open_list.insert(OpenNode{f_new, Coordinate{i + 1, j}});
                     // Update the details of this Cell
                     cell_details[i + 1][j].f = f_new;
                     cell_details[i + 1][j].g = g_new;
