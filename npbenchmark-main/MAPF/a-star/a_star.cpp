@@ -169,6 +169,7 @@ void AStar::a_star_search()
 
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
+    // closed list是bool二维数组, open list是set, 有点诡异。
     bool closed_list[num_rows][num_columns];
     memset(closed_list, false, sizeof(closed_list));
 
@@ -187,12 +188,11 @@ void AStar::a_star_search()
     }
 
     // Initialising the parameters of the starting node
-    i = src.x, j = src.y;
-    cell_details[i][j].f = 0.0;
-    cell_details[i][j].g = 0.0;
-    cell_details[i][j].h = 0.0;
-    cell_details[i][j].parent_i = i;
-    cell_details[i][j].parent_j = j;
+    cell_details[src.x][src.y].f = 0.0;
+    cell_details[src.x][src.y].g = 0.0;
+    cell_details[src.x][src.y].h = 0.0;
+    cell_details[src.x][src.y].parent_i = src.x;
+    cell_details[src.x][src.y].parent_j = src.y;
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
@@ -202,10 +202,10 @@ void AStar::a_star_search()
     set<OpenNode> open_list;
 
     // Put the starting cell on the open list and set its 'f' as 0
-    open_list.insert(OpenNode{0.0, Coordinate{i, j}});
+    open_list.insert(OpenNode{0.0, Coordinate{src.x, src.y}});
 
     // We set this boolean value as false as initially the destination is not reached.
-    bool foundDest = false;
+    bool found_dest = false;
 
     while (!open_list.empty())
     {
@@ -252,7 +252,7 @@ void AStar::a_star_search()
                 cell_details[i - 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                foundDest = true;
+                found_dest = true;
                 return;
             }
 
@@ -301,7 +301,7 @@ void AStar::a_star_search()
                 cell_details[i + 1][j].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                foundDest = true;
+                found_dest = true;
 
                 return;
             }
@@ -350,7 +350,7 @@ void AStar::a_star_search()
                 cell_details[i][j + 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                foundDest = true;
+                found_dest = true;
                 return;
             }
 
@@ -400,7 +400,7 @@ void AStar::a_star_search()
                 cell_details[i][j - 1].parent_j = j;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                foundDest = true;
+                found_dest = true;
                 return;
             }
 
@@ -442,7 +442,7 @@ void AStar::a_star_search()
     // reach the destination cell. This may happen when the
     // there is no way to destination cell (due to
     // blockages)
-    if (!foundDest)
+    if (!found_dest)
         cerr << "Failed to find the Destination Cell\n";
 }
 
