@@ -339,7 +339,7 @@ void AStar::a_star_search()
 
                 if (f_new < cell_details[west_x][west_y].f)
                 {
-                    // Update the details of this Cell
+                    // Update the details of this cell
                     cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,
                                                         current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.

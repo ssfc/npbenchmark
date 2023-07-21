@@ -151,37 +151,58 @@ using Pair = std::pair<int, int>;
 
 但是，如果你的代码要兼容较旧的 C++ 版本，或者在一些特定的代码库或项目中，仍然会看到 `typedef` 的使用。在这些情况下，`typedef` 是有效且合法的，只是在新的代码中，更多地使用 `using` 是更为常见的做法。
 
-### Q: 用中文解读A*伪代码（from geeksforgeeks）： 
+### Q: 用中文解读A*伪代码（from wikipedia）： 
 
 ```
-// A* Search Algorithm
-1.  Initialize the open list
-2.  Initialize the closed list
-    put the starting node on the open list (you can leave its f at zero)
+function reconstruct_path(cameFrom, current)
+    total_path := {current}
+    while current in cameFrom.Keys:
+        current := cameFrom[current]
+        total_path.prepend(current)
+    return total_path
 
-3.  while the open list is not empty
-    a) find the node with the least f on 
-       the open list, call it "q"
+// A* finds a path from start to goal.
+// h is the heuristic function. h(n) estimates the cost to reach goal from node n.
+function A_Star(start, goal, h)
+    // The set of discovered nodes that may need to be (re-)expanded.
+    // Initially, only the start node is known.
+    // This is usually implemented as a min-heap or priority queue rather than a hash-set.
+    openSet := {start}
 
-    b) pop q off the open list
-  
-    c) generate q's 8 successors and set their 
-       parents to q
-   
-    d) for each successor
-        i) if successor is the goal, stop search
-        
-        ii) else, compute both g and h for successor
-          successor.g = q.g + distance between successor and q
-          successor.h = distance from goal to successor (This can be done using many ways, we will discuss three heuristics- Manhattan, Diagonal and Euclidean Heuristics)          
-          successor.f = successor.g + successor.h
+    // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from the start
+    // to n currently known.
+    cameFrom := an empty map
 
-        iii) if a node with the same position as successor is in the OPEN list which has a lower f than successor, skip this successor
+    // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
+    gScore := map with default value of Infinity
+    gScore[start] := 0
 
-        iV) if a node with the same position as successor is in the CLOSED list which has a lower f than successor, skip this successor. Otherwise, add  the node to the open list end (for loop)
-  
-    e) push q on the closed list
-    end (while loop)
+    // For node n, fScore[n] := gScore[n] + h(n). fScore[n] represents our current best guess as to
+    // how cheap a path could be from start to finish if it goes through n.
+    fScore := map with default value of Infinity
+    fScore[start] := h(start)
+
+    while openSet is not empty
+        // This operation can occur in O(Log(N)) time if openSet is a min-heap or a priority queue
+        current := the node in openSet having the lowest fScore[] value
+        if current = goal
+            return reconstruct_path(cameFrom, current)
+
+        openSet.Remove(current)
+        for each neighbor of current
+            // d(current,neighbor) is the weight of the edge from current to neighbor
+            // tentative_gScore is the distance from start to the neighbor through current
+            tentative_gScore := gScore[current] + d(current, neighbor)
+            if tentative_gScore < gScore[neighbor]
+                // This path to neighbor is better than any previous one. Record it!
+                cameFrom[neighbor] := current
+                gScore[neighbor] := tentative_gScore
+                fScore[neighbor] := tentative_gScore + h(neighbor)
+                if neighbor not in openSet
+                    openSet.add(neighbor)
+
+    // Open set is empty but goal was never reached
+    return failure
 ```
 
 这段伪代码描述了 A*（A星）搜索算法的执行过程，该算法用于在图或网络中搜索从起点到目标点的最短路径。下面对每一步进行解读：
