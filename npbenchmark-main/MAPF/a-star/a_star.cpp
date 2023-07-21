@@ -360,15 +360,17 @@ void AStar::a_star_search()
         }
 
         //----------- 4th Successor (East) ------------
+        int east_x = current_x + 1;
+        int east_y = current_y;
         // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{current_x + 1, current_y}))
+        if (is_valid(Coordinate{east_x, east_y}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{current_x + 1, current_y}))
+            if (is_destination(Coordinate{east_x, east_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[current_x + 1][current_y].parent_i = current_x;
-                cell_details[current_x + 1][current_y].parent_j = current_y;
+                cell_details[east_x][east_y].parent_i = current_x;
+                cell_details[east_x][east_y].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -376,10 +378,10 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[current_x + 1][current_y] && is_passable(Coordinate{current_x + 1, current_y}))
+            else if (!closed_list[east_x][east_y] && is_passable(Coordinate{east_x, east_y}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
-                h_new = calculate_h(Coordinate{current_x + 1, current_y});
+                h_new = calculate_h(Coordinate{east_x, east_y});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -387,15 +389,16 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[current_x + 1][current_y].f > f_new)
+                if (cell_details[east_x][east_y].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[current_x + 1][current_y] = Cell{f_new, g_new, h_new, current_x, current_y};
+                    cell_details[east_x][east_y] = Cell{f_new, g_new, h_new,
+                                                        current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[current_x + 1][current_y])
+                    if(!open_table[east_x][east_y])
                     {
-                        open_table[current_x + 1][current_y] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{current_x + 1, current_y}});
+                        open_table[east_x][east_y] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{east_x, east_y}});
                     }
                 }
             }
