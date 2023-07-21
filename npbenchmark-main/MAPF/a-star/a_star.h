@@ -50,7 +50,9 @@ struct OpenNode
 struct Cell
 {
     // f = g + h
-    double f, g, h;
+    double f;
+    double g;
+    double h;
     // Row and Column index of its parent
     // Note that 0 <= i <= num_row-1 & 0 <= j <= num_columns-1
     int parent_i, parent_j;
