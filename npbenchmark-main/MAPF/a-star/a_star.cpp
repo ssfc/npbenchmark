@@ -49,11 +49,11 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     for(int i=0;i<num_rows;i++)
     {
         cell_details[i].resize(num_columns,
-                               Cell{INT_MAX, INT_MAX, INT_MAX, -1, -1});
+                               Cell{INT_MAX, INT_MAX, INT_MAX, Coordinate{-1, -1}});
     }
 }
 
-// check whether given Cell (row, col) is a valid Cell or not.
+// check whether given cell (row, col) is a valid cell or not.
 // 也就是检查一个cell是否在地图范围内
 bool AStar::is_valid(Coordinate position) const
 {
@@ -62,17 +62,17 @@ bool AStar::is_valid(Coordinate position) const
            && (position.y >= 0) && (position.y < num_columns);
 }
 
-// check whether the given Cell is blocked or not
+// check whether the given cell is blocked or not
 bool AStar::is_passable(Coordinate position)
 {
-    // Returns true if the Cell is not blocked else false
+    // Returns true if the cell is not blocked else false
     if (map[position.x][position.y] == 1)
         return true;
     else
         return false;
 }
 
-// check whether destination Cell has been reached or not
+// check whether destination cell has been reached or not
 bool AStar::is_destination(Coordinate position) const
 {
     if (position.x == dest.x && position.y == dest.y)
@@ -143,13 +143,14 @@ void AStar::trace_path()
     }
 }
 
-// find the shortest path between a given source Cell to a destination Cell
+// find the shortest path between a given source cell to a destination cell
 void AStar::a_star_search()
 {
     // Check whether the source is out of range
     if (!is_valid(src))
     {
         cerr <<"Source is invalid\n";
+
         return;
     }
 
@@ -157,6 +158,7 @@ void AStar::a_star_search()
     if (!is_valid(dest))
     {
         cerr << "Destination is invalid\n";
+
         return;
     }
 
@@ -164,17 +166,19 @@ void AStar::a_star_search()
     if (!is_passable(src) || !is_passable(dest))
     {
         cerr << "Source or the destination is blocked\n";
+
         return;
     }
 
-    // Check whether the destination Cell is the same as source Cell
+    // Check whether the destination cell is the same as source cell
     if (is_destination(src))
     {
         cerr << "We are already at the destination\n";
+
         return;
     }
 
-    // Create a closed list and initialise it to false which means that no Cell has been included yet
+    // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
     // closed list是bool二维数组, open list是set, 有点诡异。
     bool closed_list[num_rows][num_columns];
@@ -183,16 +187,16 @@ void AStar::a_star_search()
     memset(open_table, false, sizeof(open_table));
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y] = Cell{0, 0, 0, src.x, src.y};
+    cell_details[src.x][src.y] = Cell{0, 0, 0, src};
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
-    and i, j are the row and column index of that Cell
+    and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
     set<OpenNode> open_list;
 
-    // Put the starting Cell on the open list and set its 'f' as 0
+    // Put the starting cell on the open list and set its 'f' as 0
     open_list.insert(OpenNode{0, src});
     open_table[src.x][src.y] = true;
 
@@ -213,15 +217,15 @@ void AStar::a_star_search()
         open_table[current_x][current_y] = false;
 
         /*
-        Generating all the 4 successor of this Cell
+        Generating all the 4 successor of this cell
 
                    N
                    |
-            W----Cell----E
+            W----cell----E
                   |
                   S
 
-        Cell-->Popped Cell (current_x, current_y)
+        cell-->Popped cell (current_x, current_y)
         N --> North	 (current_x, current_y+1)
         S --> South	 (current_x, current_y-1)
         W --> West	 (current_x-1, current_y)
@@ -234,15 +238,15 @@ void AStar::a_star_search()
         //----------- 1st Successor (North) ------------
         int north_x = current_x;
         int north_y = current_y + 1;
-        // Only process this Cell if this is a valid one
+        // Only process this cell if this is a valid one
         if (is_valid(Coordinate{north_x, north_y}))
         {
-            // If the destination Cell is the same as the current successor
+            // If the destination cell is the same as the current successor
             if (is_destination(Coordinate{north_x, north_y}))
             {
-                // Set the Parent of the destination Cell
+                // Set the Parent of the destination cell
                 cell_details[north_x][north_y].parent = Coordinate{current_x, current_y};
-                cerr << "The destination Cell is found\n";
+                cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
 
@@ -257,9 +261,9 @@ void AStar::a_star_search()
 
                 if (f_new < cell_details[north_x][north_y].f)
                 {
-                    // Update the details of this Cell
+                    // Update the details of this cell
                     cell_details[north_x][north_y] = Cell{f_new, g_new, h_new,
-                                                          current_x, current_y};
+                                                          Coordinate{current_x, current_y}};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[north_x][north_y])
                     {
@@ -273,15 +277,15 @@ void AStar::a_star_search()
         //----------- 2nd Successor (South) ------------
         int south_x = current_x;
         int south_y = current_y - 1;
-        // Only process this Cell if it is valid
+        // Only process this cell if it is valid
         if (is_valid(Coordinate{south_x, south_y}))
         {
-            // If the destination Cell is the same as the current successor
+            // If the destination cell is the same as the current successor
             if (is_destination(Coordinate{south_x, south_y}))
             {
-                // Set the Parent of the destination Cell
+                // Set the Parent of the destination cell
                 cell_details[south_x][south_y].parent = Coordinate{current_x, current_y};
-                cerr << "The destination Cell is found\n";
+                cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
 
@@ -296,9 +300,9 @@ void AStar::a_star_search()
 
                 if (f_new < cell_details[south_x][south_y].f)
                 {
-                    // Update the details of this Cell
+                    // Update the details of this cell
                     cell_details[south_x][south_y] = Cell{f_new, g_new, h_new,
-                                                          current_x, current_y};
+                                                          Coordinate{current_x, current_y}};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[south_x][south_y])
                     {
@@ -312,15 +316,15 @@ void AStar::a_star_search()
         //----------- 3rd Successor (West) ------------
         int west_x = current_x - 1;
         int west_y = current_y;
-        // Only process this Cell if this is a valid one
+        // Only process this cell if this is a valid one
         if (is_valid(Coordinate{west_x, west_y}))
         {
-            // If the destination Cell is the same as the current successor
+            // If the destination cell is the same as the current successor
             if (is_destination(Coordinate{west_x, west_y}))
             {
-                // Set the Parent of the destination Cell
+                // Set the Parent of the destination cell
                 cell_details[west_x][west_y].parent = Coordinate{current_x, current_y};
-                cerr << "The destination Cell is found\n";
+                cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
 
