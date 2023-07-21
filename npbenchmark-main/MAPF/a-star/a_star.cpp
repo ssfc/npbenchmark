@@ -227,15 +227,17 @@ void AStar::a_star_search()
         double g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
+        int north_x = current_x;
+        int north_y = current_y + 1;
         // Only process this Cell if this is a valid one
-        if (is_valid(Coordinate{current_x, current_y + 1}))
+        if (is_valid(Coordinate{north_x, north_y}))
         {
             // If the destination Cell is the same as the current successor
-            if (is_destination(Coordinate{current_x, current_y + 1}))
+            if (is_destination(Coordinate{north_x, north_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[current_x][current_y + 1].parent_i = current_x;
-                cell_details[current_x][current_y + 1].parent_j = current_y;
+                cell_details[north_x][north_y].parent_i = current_x;
+                cell_details[north_x][north_y].parent_j = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -243,10 +245,10 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[current_x][current_y + 1] && is_passable(Coordinate{current_x, current_y + 1}))
+            else if (!closed_list[north_x][north_y] && is_passable(Coordinate{north_x, north_y}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
-                h_new = calculate_h(Coordinate{current_x, current_y + 1});
+                h_new = calculate_h(Coordinate{north_x, north_y});
                 f_new = g_new + h_new;
 
                 // Make the current square the parent of this square.
@@ -254,15 +256,15 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[current_x][current_y + 1].f > f_new)
+                if (cell_details[north_x][north_y].f > f_new)
                 {
                     // Update the details of this Cell
-                    cell_details[current_x][current_y + 1] = Cell{f_new, g_new, h_new, current_x, current_y};
+                    cell_details[north_x][north_y] = Cell{f_new, g_new, h_new, current_x, current_y};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[current_x][current_y + 1])
+                    if(!open_table[north_x][north_y])
                     {
-                        open_table[current_x][current_y + 1] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{current_x, current_y + 1}});
+                        open_table[north_x][north_y] = true;
+                        open_list.insert(OpenNode{f_new, Coordinate{north_x, north_y}});
                     }
                 }
             }
