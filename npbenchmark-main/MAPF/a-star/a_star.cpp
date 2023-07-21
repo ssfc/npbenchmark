@@ -271,8 +271,7 @@ void AStar::a_star_search()
         }
 
         //----------- 2nd Successor (South) ------------
-        Coordinate south = current;
-        south.y = current.y - 1;
+        auto south = Coordinate{current.x, current.y - 1};
         // Only process this cell if it is valid
         if (is_valid(south))
         {
