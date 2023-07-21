@@ -242,9 +242,7 @@ void AStar::a_star_search()
 
                 return;
             }
-
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor has not been evaluated and is passable
             else if (!closed_list[current_x][current_y + 1] && is_passable(Coordinate{current_x, current_y + 1}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
@@ -286,8 +284,7 @@ void AStar::a_star_search()
 
                 return;
             }
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor has not been evaluated and is passable
             else if (!closed_list[current_x][current_y - 1] && is_passable(Coordinate{current_x, current_y - 1}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
@@ -331,7 +328,7 @@ void AStar::a_star_search()
 
                 return;
             }
-                // If the successor has not been evaluated and is passable
+            // If the successor has not been evaluated and is passable
             else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
@@ -374,8 +371,7 @@ void AStar::a_star_search()
 
                 return;
             }
-                // If the successor is already on the closed list or if it is blocked, then ignore it.
-                // Else do the following
+            // If the successor has not been evaluated and is passable
             else if (!closed_list[current_x + 1][current_y] && is_passable(Coordinate{current_x + 1, current_y}))
             {
                 g_new = cell_details[current_x][current_y].g + 1.0;
