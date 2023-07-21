@@ -256,11 +256,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{north_x, north_y});
                 f_new = g_new + h_new;
 
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
                 if (f_new < cell_details[north_x][north_y].f)
                 {
                     // Update the details of this Cell
@@ -301,11 +296,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{south_x, south_y});
                 f_new = g_new + h_new;
 
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
                 if (f_new < cell_details[south_x][south_y].f)
                 {
                     // Update the details of this Cell
@@ -346,11 +336,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{west_x, west_y});
                 f_new = g_new + h_new;
 
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
                 if (f_new < cell_details[west_x][west_y].f)
                 {
                     // Update the details of this Cell
@@ -391,11 +376,6 @@ void AStar::a_star_search()
                 h_new = calculate_h(Coordinate{east_x, east_y});
                 f_new = g_new + h_new;
 
-                // Make the current square the parent of this square.
-                // Record the f, g, and h costs of the square Cell
-                //			 OR
-                // If it is on the open list already, check to see if this path to that square is better,
-                // using 'f' cost as the measure.
                 if (f_new < cell_details[east_x][east_y].f)
                 {
                     // Update the details of this Cell
