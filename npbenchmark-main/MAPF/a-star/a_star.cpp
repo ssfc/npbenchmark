@@ -193,7 +193,7 @@ void AStar::a_star_search()
     set<OpenNode> open_list;
 
     // Put the starting Cell on the open list and set its 'f' as 0
-    open_list.insert(OpenNode{0, Coordinate{src.x, src.y}});
+    open_list.insert(OpenNode{0, src});
     open_table[src.x][src.y] = true;
 
     // We set this boolean value as false as initially the destination is not reached.
