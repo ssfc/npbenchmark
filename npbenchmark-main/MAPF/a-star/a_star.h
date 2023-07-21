@@ -49,8 +49,7 @@ struct OpenNode
 // A structure to hold the necessary parameters
 struct Cell
 {
-    // f = g + h
-    double f;
+    double f; // f = g + h
     double g;
     double h;
     // Row and Column index of its parent
