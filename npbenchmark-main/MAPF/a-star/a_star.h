@@ -70,6 +70,9 @@ private:
 
     // Declare a 2D array of structure to hold the details of that Cell
     std::vector<std::vector<Cell>> cell_details;
+
+    // debug var;
+    int iter;
 public:
     AStar(Coordinate input_src, Coordinate input_dest);
 

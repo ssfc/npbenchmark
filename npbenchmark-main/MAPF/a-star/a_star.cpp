@@ -7,7 +7,8 @@ using namespace std;
 
 AStar::AStar(Coordinate input_src, Coordinate input_dest):
         src(input_src),
-        dest(input_dest)
+        dest(input_dest),
+        iter(0)
 // 0表示无障碍, 1表示有障碍。
 {
     ifstream map_file("map.txt");
@@ -203,7 +204,7 @@ void AStar::a_star_search()
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_list.empty())
+    while (!open_list.empty() && iter<INT_MAX)
     {
         Coordinate current = open_list.begin()->position;
 
@@ -381,6 +382,7 @@ void AStar::a_star_search()
             }
         }
 
+        iter++;
     }
 
     // When the destination cell is not found and the open list is empty,
