@@ -211,10 +211,8 @@ void AStar::a_star_search()
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        int current_x = current.x;
-        int current_y = current.y;
-        closed_list[current_x][current_y] = true;
-        open_table[current_x][current_y] = false;
+        closed_list[current.x][current.y] = true;
+        open_table[current.x][current.y] = false;
 
         /*
         Generating all the 4 successor of this cell
@@ -237,7 +235,7 @@ void AStar::a_star_search()
 
         //----------- 1st Successor (North) ------------
         Coordinate north = current;
-        north.y = current_y + 1;
+        north.y = current.y + 1;
         // Only process this cell if this is a valid one
         if (is_valid(north))
         {
@@ -255,7 +253,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[north.x][north.y] && is_passable(north))
             {
-                g_new = cell_details[current_x][current_y].g + 1;
+                g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(north);
                 f_new = g_new + h_new;
 
@@ -275,7 +273,7 @@ void AStar::a_star_search()
 
         //----------- 2nd Successor (South) ------------
         Coordinate south = current;
-        south.y = current_y - 1;
+        south.y = current.y - 1;
         // Only process this cell if it is valid
         if (is_valid(south))
         {
@@ -293,7 +291,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[south.x][south.y] && is_passable(south))
             {
-                g_new = cell_details[current_x][current_y].g + 1;
+                g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(south);
                 f_new = g_new + h_new;
 
@@ -312,8 +310,8 @@ void AStar::a_star_search()
         }
 
         //----------- 3rd Successor (West) ------------
-        int west_x = current_x - 1;
-        int west_y = current_y;
+        int west_x = current.x - 1;
+        int west_y = current.y;
         // Only process this cell if this is a valid one
         if (is_valid(Coordinate{west_x, west_y}))
         {
@@ -331,7 +329,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1;
+                g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(Coordinate{west_x, west_y});
                 f_new = g_new + h_new;
 
@@ -350,8 +348,8 @@ void AStar::a_star_search()
         }
 
         //----------- 4th Successor (East) ------------
-        int east_x = current_x + 1;
-        int east_y = current_y;
+        int east_x = current.x + 1;
+        int east_y = current.y;
         // Only process this cell if this is a valid one
         if (is_valid(Coordinate{east_x, east_y}))
         {
@@ -369,7 +367,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[east_x][east_y] && is_passable(Coordinate{east_x, east_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1;
+                g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(Coordinate{east_x, east_y});
                 f_new = g_new + h_new;
 
