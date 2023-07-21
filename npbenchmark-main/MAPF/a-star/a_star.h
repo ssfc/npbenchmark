@@ -81,7 +81,7 @@ public:
     // check whether destination Cell has been reached or not
     [[nodiscard]] bool is_destination(Coordinate position) const;
     // calculate the 'h' heuristics.
-    [[nodiscard]] double calculate_h(Coordinate position) const;
+    [[nodiscard]] int calculate_h(Coordinate position) const;
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source Cell to a destination Cell

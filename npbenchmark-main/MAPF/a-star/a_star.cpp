@@ -49,7 +49,7 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     for(int i=0;i<num_rows;i++)
     {
         cell_details[i].resize(num_columns,
-                               Cell{FLT_MAX, FLT_MAX, FLT_MAX, -1, -1});
+                               Cell{INT_MAX, INT_MAX, INT_MAX, -1, -1});
     }
 }
 
@@ -82,7 +82,7 @@ bool AStar::is_destination(Coordinate position) const
 }
 
 // calculate the 'h' heuristics.
-double AStar::calculate_h(Coordinate position) const
+int AStar::calculate_h(Coordinate position) const
 {
     // Return using the distance formula
     // 看样子用的是欧几里得距离。
