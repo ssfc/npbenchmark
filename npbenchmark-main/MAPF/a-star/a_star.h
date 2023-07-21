@@ -5,7 +5,6 @@
 #ifndef A_STAR_A_STAR_H
 #define A_STAR_A_STAR_H
 
-#include <cfloat>
 #include <cmath>
 #include <cstring>
 #include <fstream>
@@ -23,7 +22,7 @@ struct Coordinate
 
 struct OpenNode
 {
-    double heuristic_cost;
+    int heuristic_cost;
     Coordinate position;
 
     bool operator<(const OpenNode& other) const
@@ -49,9 +48,9 @@ struct OpenNode
 // A structure to hold the necessary parameters
 struct Cell
 {
-    double g; // cost of the cheapest path from start to n currently known
-    double h; // h(n) estimates the cost to reach goal from node n
-    double f; // f = g + h; fScore[n] represents our current best guess as to
+    int g; // cost of the cheapest path from start to n currently known
+    int h; // h(n) estimates the cost to reach goal from node n
+    int f; // f = g + h; fScore[n] represents our current best guess as to
     // how cheap a path could be from start to finish if it goes through n.
 
     // Row and Column index of its parent

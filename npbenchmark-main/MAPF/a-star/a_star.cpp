@@ -183,7 +183,7 @@ void AStar::a_star_search()
     memset(open_table, false, sizeof(open_table));
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y] = Cell{0.0, 0.0, 0.0, src.x, src.y};
+    cell_details[src.x][src.y] = Cell{0, 0, 0, src.x, src.y};
 
     /*
     Create an open list having information as <f, <i, j>> where f = g + h,
@@ -193,7 +193,7 @@ void AStar::a_star_search()
     set<OpenNode> open_list;
 
     // Put the starting Cell on the open list and set its 'f' as 0
-    open_list.insert(OpenNode{0.0, Coordinate{src.x, src.y}});
+    open_list.insert(OpenNode{0, Coordinate{src.x, src.y}});
     open_table[src.x][src.y] = true;
 
     // We set this boolean value as false as initially the destination is not reached.
@@ -229,7 +229,7 @@ void AStar::a_star_search()
          */
 
         // To store the 'g', 'h' and 'f' of the 8 successors
-        double g_new, h_new, f_new;
+        int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
         int north_x = current_x;
@@ -252,7 +252,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[north_x][north_y] && is_passable(Coordinate{north_x, north_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1.0;
+                g_new = cell_details[current_x][current_y].g + 1;
                 h_new = calculate_h(Coordinate{north_x, north_y});
                 f_new = g_new + h_new;
 
@@ -297,7 +297,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[south_x][south_y] && is_passable(Coordinate{south_x, south_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1.0;
+                g_new = cell_details[current_x][current_y].g + 1;
                 h_new = calculate_h(Coordinate{south_x, south_y});
                 f_new = g_new + h_new;
 
@@ -341,7 +341,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1.0;
+                g_new = cell_details[current_x][current_y].g + 1;
                 h_new = calculate_h(Coordinate{west_x, west_y});
                 f_new = g_new + h_new;
 
@@ -386,7 +386,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (!closed_list[east_x][east_y] && is_passable(Coordinate{east_x, east_y}))
             {
-                g_new = cell_details[current_x][current_y].g + 1.0;
+                g_new = cell_details[current_x][current_y].g + 1;
                 h_new = calculate_h(Coordinate{east_x, east_y});
                 f_new = g_new + h_new;
 
