@@ -234,8 +234,7 @@ void AStar::a_star_search()
         int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
-        Coordinate north = current;
-        north.y = current.y + 1;
+        auto north = Coordinate{current.x, current.y + 1};
         // Only process this cell if this is a valid one
         if (is_valid(north))
         {
