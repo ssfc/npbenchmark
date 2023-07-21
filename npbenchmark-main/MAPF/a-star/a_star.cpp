@@ -341,7 +341,7 @@ void AStar::a_star_search()
                 {
                     // Update the details of this cell
                     cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,
-                                                        current_x, current_y};
+                                                        Coordinate{current_x, current_y}};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[west_x][west_y])
                     {
@@ -355,15 +355,15 @@ void AStar::a_star_search()
         //----------- 4th Successor (East) ------------
         int east_x = current_x + 1;
         int east_y = current_y;
-        // Only process this Cell if this is a valid one
+        // Only process this cell if this is a valid one
         if (is_valid(Coordinate{east_x, east_y}))
         {
-            // If the destination Cell is the same as the current successor
+            // If the destination cell is the same as the current successor
             if (is_destination(Coordinate{east_x, east_y}))
             {
-                // Set the Parent of the destination Cell
+                // Set the Parent of the destination cell
                 cell_details[east_x][east_y].parent = Coordinate{current_x, current_y};
-                cerr << "The destination Cell is found\n";
+                cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
 
@@ -378,9 +378,9 @@ void AStar::a_star_search()
 
                 if (f_new < cell_details[east_x][east_y].f)
                 {
-                    // Update the details of this Cell
+                    // Update the details of this cell
                     cell_details[east_x][east_y] = Cell{f_new, g_new, h_new,
-                                                        current_x, current_y};
+                                                        Coordinate{current_x, current_y}};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[east_x][east_y])
                     {
@@ -393,11 +393,11 @@ void AStar::a_star_search()
 
     }
 
-    // When the destination Cell is not found and the open list is empty,
-    // then we conclude that we failed to reach the destination Cell.
-    // This may happen when there is no way to destination Cell (due to blockages)
+    // When the destination cell is not found and the open list is empty,
+    // then we conclude that we failed to reach the destination cell.
+    // This may happen when there is no way to destination cell (due to blockages)
     if (!found_dest)
-        cerr << "Failed to find the Destination Cell\n";
+        cerr << "Failed to find the Destination cell\n";
 }
 
 
