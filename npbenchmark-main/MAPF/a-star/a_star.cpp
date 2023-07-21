@@ -205,14 +205,14 @@ void AStar::a_star_search()
 
     while (!open_list.empty())
     {
-        OpenNode open_begin = *open_list.begin();
+        Coordinate current = open_list.begin()->position;
 
         // Remove this vertex from the open list
         open_list.erase(open_list.begin());
 
         // Add this vertex to the closed list
-        int current_x = open_begin.position.x;
-        int current_y = open_begin.position.y;
+        int current_x = current.x;
+        int current_y = current.y;
         closed_list[current_x][current_y] = true;
         open_table[current_x][current_y] = false;
 
@@ -236,7 +236,7 @@ void AStar::a_star_search()
         int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
-        Coordinate north = open_begin.position;
+        Coordinate north = current;
         north.y = current_y + 1;
         // Only process this cell if this is a valid one
         if (is_valid(north))
@@ -245,7 +245,7 @@ void AStar::a_star_search()
             if (is_destination(north))
             {
                 // Set the Parent of the destination cell
-                cell_details[north.x][north.y].parent = open_begin.position;
+                cell_details[north.x][north.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -262,7 +262,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[north.x][north.y].f)
                 {
                     // Update the details of this cell
-                    cell_details[north.x][north.y] = Cell{f_new, g_new, h_new,open_begin.position};
+                    cell_details[north.x][north.y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[north.x][north.y])
                     {
@@ -274,7 +274,7 @@ void AStar::a_star_search()
         }
 
         //----------- 2nd Successor (South) ------------
-        Coordinate south = open_begin.position;
+        Coordinate south = current;
         south.y = current_y - 1;
         // Only process this cell if it is valid
         if (is_valid(south))
@@ -283,7 +283,7 @@ void AStar::a_star_search()
             if (is_destination(south))
             {
                 // Set the Parent of the destination cell
-                cell_details[south.x][south.y].parent = open_begin.position;
+                cell_details[south.x][south.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -300,7 +300,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[south.x][south.y].f)
                 {
                     // Update the details of this cell
-                    cell_details[south.x][south.y] = Cell{f_new, g_new, h_new,open_begin.position};
+                    cell_details[south.x][south.y] = Cell{f_new, g_new, h_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[south.x][south.y])
                     {
@@ -321,7 +321,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{west_x, west_y}))
             {
                 // Set the Parent of the destination cell
-                cell_details[west_x][west_y].parent = open_begin.position;
+                cell_details[west_x][west_y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -338,7 +338,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[west_x][west_y].f)
                 {
                     // Update the details of this cell
-                    cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,open_begin.position};
+                    cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[west_x][west_y])
                     {
@@ -359,7 +359,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{east_x, east_y}))
             {
                 // Set the Parent of the destination cell
-                cell_details[east_x][east_y].parent = open_begin.position;
+                cell_details[east_x][east_y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -376,7 +376,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[east_x][east_y].f)
                 {
                     // Update the details of this cell
-                    cell_details[east_x][east_y] = Cell{f_new, g_new, h_new,open_begin.position};
+                    cell_details[east_x][east_y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
                     if(!open_table[east_x][east_y])
                     {
