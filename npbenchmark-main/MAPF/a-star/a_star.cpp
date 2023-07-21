@@ -110,12 +110,12 @@ void AStar::trace_path()
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
     // Comment: 看来这个程序的设定是起点的父就是自己,我的话倾向于设为-1。
-    while (!(cell_details[row][col].parent_i == row
-             && cell_details[row][col].parent_j == col))
+    while (!(cell_details[row][col].parent.x == row
+             && cell_details[row][col].parent.y == col))
     {
         Path.emplace(Coordinate{row, col});
-        int temp_row = cell_details[row][col].parent_i;
-        int temp_col = cell_details[row][col].parent_j;
+        int temp_row = cell_details[row][col].parent.x;
+        int temp_col = cell_details[row][col].parent.y;
         row = temp_row;
         col = temp_col;
     }
@@ -241,8 +241,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{north_x, north_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[north_x][north_y].parent_i = current_x;
-                cell_details[north_x][north_y].parent_j = current_y;
+                cell_details[north_x][north_y].parent.x = current_x;
+                cell_details[north_x][north_y].parent.y = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -281,8 +281,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{south_x, south_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[south_x][south_y].parent_i = current_x;
-                cell_details[south_x][south_y].parent_j = current_y;
+                cell_details[south_x][south_y].parent.x = current_x;
+                cell_details[south_x][south_y].parent.y = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -321,8 +321,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{west_x, west_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[west_x][west_y].parent_i = current_x;
-                cell_details[west_x][west_y].parent_j = current_y;
+                cell_details[west_x][west_y].parent.x = current_x;
+                cell_details[west_x][west_y].parent.y = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -361,8 +361,8 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{east_x, east_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[east_x][east_y].parent_i = current_x;
-                cell_details[east_x][east_y].parent_j = current_y;
+                cell_details[east_x][east_y].parent.x = current_x;
+                cell_details[east_x][east_y].parent.y = current_y;
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
