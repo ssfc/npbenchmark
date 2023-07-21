@@ -261,7 +261,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[north_x][north_y].f > f_new)
+                if (f_new < cell_details[north_x][north_y].f)
                 {
                     // Update the details of this Cell
                     cell_details[north_x][north_y] = Cell{f_new, g_new, h_new,
@@ -306,7 +306,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[south_x][south_y].f > f_new)
+                if (f_new < cell_details[south_x][south_y].f)
                 {
                     // Update the details of this Cell
                     cell_details[south_x][south_y] = Cell{f_new, g_new, h_new, current_x, current_y};
@@ -350,7 +350,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[west_x][west_y].f > f_new)
+                if (f_new < cell_details[west_x][west_y].f)
                 {
                     // Update the details of this Cell
                     cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,
@@ -395,7 +395,7 @@ void AStar::a_star_search()
                 //			 OR
                 // If it is on the open list already, check to see if this path to that square is better,
                 // using 'f' cost as the measure.
-                if (cell_details[east_x][east_y].f > f_new)
+                if (f_new < cell_details[east_x][east_y].f)
                 {
                     // Update the details of this Cell
                     cell_details[east_x][east_y] = Cell{f_new, g_new, h_new,
