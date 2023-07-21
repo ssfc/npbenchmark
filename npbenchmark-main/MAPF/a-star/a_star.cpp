@@ -274,16 +274,16 @@ void AStar::a_star_search()
         }
 
         //----------- 2nd Successor (South) ------------
-        int south_x = current_x;
-        int south_y = current_y - 1;
+        Coordinate south = open_begin.position;
+        south.y = current_y - 1;
         // Only process this cell if it is valid
-        if (is_valid(Coordinate{south_x, south_y}))
+        if (is_valid(south))
         {
             // If the destination cell is the same as the current successor
-            if (is_destination(Coordinate{south_x, south_y}))
+            if (is_destination(south))
             {
                 // Set the Parent of the destination cell
-                cell_details[south_x][south_y].parent = open_begin.position;
+                cell_details[south.x][south.y].parent = open_begin.position;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -291,21 +291,21 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[south_x][south_y] && is_passable(Coordinate{south_x, south_y}))
+            else if (!closed_list[south.x][south.y] && is_passable(south))
             {
                 g_new = cell_details[current_x][current_y].g + 1;
-                h_new = calculate_h(Coordinate{south_x, south_y});
+                h_new = calculate_h(south);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[south_x][south_y].f)
+                if (f_new < cell_details[south.x][south.y].f)
                 {
                     // Update the details of this cell
-                    cell_details[south_x][south_y] = Cell{f_new, g_new, h_new,open_begin.position};
+                    cell_details[south.x][south.y] = Cell{f_new, g_new, h_new,open_begin.position};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[south_x][south_y])
+                    if(!open_table[south.x][south.y])
                     {
-                        open_table[south_x][south_y] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{south_x, south_y}});
+                        open_table[south.x][south.y] = true;
+                        open_list.insert(OpenNode{f_new, south});
                     }
                 }
             }
