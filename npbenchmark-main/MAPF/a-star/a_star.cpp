@@ -308,16 +308,15 @@ void AStar::a_star_search()
         }
 
         //----------- 3rd Successor (West) ------------
-        int west_x = current.x - 1;
-        int west_y = current.y;
+        auto west = Coordinate{current.x - 1, current.y};
         // Only process this cell if this is a valid one
-        if (is_valid(Coordinate{west_x, west_y}))
+        if (is_valid(west))
         {
             // If the destination cell is the same as the current successor
-            if (is_destination(Coordinate{west_x, west_y}))
+            if (is_destination(west))
             {
                 // Set the Parent of the destination cell
-                cell_details[west_x][west_y].parent = current;
+                cell_details[west.x][west.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -325,21 +324,21 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[west_x][west_y] && is_passable(Coordinate{west_x, west_y}))
+            else if (!closed_list[west.x][west.y] && is_passable(west))
             {
                 g_new = cell_details[current.x][current.y].g + 1;
-                h_new = calculate_h(Coordinate{west_x, west_y});
+                h_new = calculate_h(west);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[west_x][west_y].f)
+                if (f_new < cell_details[west.x][west.y].f)
                 {
                     // Update the details of this cell
-                    cell_details[west_x][west_y] = Cell{f_new, g_new, h_new,current};
+                    cell_details[west.x][west.y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_table[west_x][west_y])
+                    if(!open_table[west.x][west.y])
                     {
-                        open_table[west_x][west_y] = true;
-                        open_list.insert(OpenNode{f_new, Coordinate{west_x, west_y}});
+                        open_table[west.x][west.y] = true;
+                        open_list.insert(OpenNode{f_new, west});
                     }
                 }
             }
