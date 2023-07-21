@@ -241,8 +241,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{north_x, north_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[north_x][north_y].parent.x = current_x;
-                cell_details[north_x][north_y].parent.y = current_y;
+                cell_details[north_x][north_y].parent = Coordinate{current_x, current_y};
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -281,8 +280,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{south_x, south_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[south_x][south_y].parent.x = current_x;
-                cell_details[south_x][south_y].parent.y = current_y;
+                cell_details[south_x][south_y].parent = Coordinate{current_x, current_y};
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -321,8 +319,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{west_x, west_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[west_x][west_y].parent.x = current_x;
-                cell_details[west_x][west_y].parent.y = current_y;
+                cell_details[west_x][west_y].parent = Coordinate{current_x, current_y};
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
@@ -361,8 +358,7 @@ void AStar::a_star_search()
             if (is_destination(Coordinate{east_x, east_y}))
             {
                 // Set the Parent of the destination Cell
-                cell_details[east_x][east_y].parent.x = current_x;
-                cell_details[east_x][east_y].parent.y = current_y;
+                cell_details[east_x][east_y].parent = Coordinate{current_x, current_y};
                 cerr << "The destination Cell is found\n";
                 trace_path();
                 found_dest = true;
