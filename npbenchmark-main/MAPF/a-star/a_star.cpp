@@ -193,9 +193,13 @@ void AStar::a_star_search()
     {
         open_list[i].resize(num_columns, 0);
     }
-    
-    int closed_list[num_rows][num_columns];
-    memset(closed_list, 0, sizeof(closed_list));
+
+    vector<vector<int>> closed_list;
+    closed_list.resize(num_rows);
+    for(int i=0;i<num_rows;i++)
+    {
+        closed_list[i].resize(num_columns, 0);
+    }
 
     // Initialising the parameters of the starting node
     cell_details[src.x][src.y] = Cell{0, 0, 0, src};
