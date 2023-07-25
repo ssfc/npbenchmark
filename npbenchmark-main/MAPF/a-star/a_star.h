@@ -72,6 +72,7 @@ private:
     std::vector<std::vector<Cell>> cell_details;
 
     std::vector<std::vector<int>> open_list;
+    std::vector<std::vector<int>> closed_list;
 
     // debug var;
     int iter;
