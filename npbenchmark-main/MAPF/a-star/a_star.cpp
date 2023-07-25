@@ -215,10 +215,12 @@ void AStar::a_star_search()
     open_set.insert(OpenNode{0, src});
     open_list[src.x][src.y] = 1;
 
+    print_open_list();
+
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_set.empty() && iter < INT_MAX)
+    while (!open_set.empty() && iter < 3)
     {
         Coordinate current = open_set.begin()->position;
 
@@ -442,3 +444,23 @@ void AStar::output_map()
         cerr << "Unable to create map file.\n";
     }
 }
+
+
+void AStar::print_open_list()
+{
+    cerr << "open list: ";
+    for(int i=0;i<num_rows;i++)
+    {
+        for(int j=0;j<num_columns;j++)
+        {
+            if(open_list[i][j] == 1)
+            {
+                cerr <<"(" << i << " " << j << ") ";
+            }
+        }
+    }
+    cerr << endl;
+}
+
+
+
