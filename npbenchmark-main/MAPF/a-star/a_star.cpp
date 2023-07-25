@@ -100,6 +100,8 @@ int AStar::calculate_h(Coordinate position) const
 // trace the path from the source to destination
 void AStar::trace_path()
 {
+    cerr << "iter: " << iter << endl;
+
     cerr << "\nThe Path is ";
     // 首先，函数 trace_path 初始化了起始位置的行索引 row 和列索引 col.
     int row = dest.x;
