@@ -71,6 +71,8 @@ private:
     // Declare a 2D array of structure to hold the details of that Cell
     std::vector<std::vector<Cell>> cell_details;
 
+    std::vector<std::vector<int>> open_list;
+
     // debug var;
     int iter;
     double start_time;

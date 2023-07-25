@@ -12,6 +12,12 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
         start_time(clock())
 // 0表示无障碍, 1表示有障碍。
 {
+    open_list.resize(num_rows);
+    for(int i=0;i<num_rows;i++)
+    {
+        open_list[i].resize(num_columns, 0);
+    }
+
     ifstream map_file("map.txt");
     if (map_file.is_open())
     {
@@ -187,12 +193,6 @@ void AStar::a_star_search()
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
     // closed list是bool二维数组, open list是set, 有点诡异。
-    vector<vector<int>> open_list;
-    open_list.resize(num_rows);
-    for(int i=0;i<num_rows;i++)
-    {
-        open_list[i].resize(num_columns, 0);
-    }
 
     vector<vector<int>> closed_list;
     closed_list.resize(num_rows);
