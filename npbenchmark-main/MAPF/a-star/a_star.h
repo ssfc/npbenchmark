@@ -73,6 +73,7 @@ private:
 
     // debug var;
     int iter;
+    double start_time;
 public:
     AStar(Coordinate input_src, Coordinate input_dest);
 

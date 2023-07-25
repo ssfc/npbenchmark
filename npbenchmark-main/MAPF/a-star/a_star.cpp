@@ -8,7 +8,8 @@ using namespace std;
 AStar::AStar(Coordinate input_src, Coordinate input_dest):
         src(input_src),
         dest(input_dest),
-        iter(0)
+        iter(0),
+        start_time(clock())
 // 0表示无障碍, 1表示有障碍。
 {
     ifstream map_file("map.txt");
@@ -100,9 +101,10 @@ int AStar::calculate_h(Coordinate position) const
 // trace the path from the source to destination
 void AStar::trace_path()
 {
-    cerr << "iter: " << iter << endl;
+    double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;
+    cerr << "success, iterations: " << iter << " elapsed_time(s): " << elapsed_time
+         << " frequency:" << double (iter) / elapsed_time << endl;
 
-    cerr << "\nThe Path is ";
     // 首先，函数 trace_path 初始化了起始位置的行索引 row 和列索引 col.
     int row = dest.x;
     int col = dest.y;
@@ -132,6 +134,7 @@ void AStar::trace_path()
     {
         cerr << "total cost: " << Path.size() << endl;
         path_file << Path.size() << "\n";
+        cerr << "The Path is ";
         while (!Path.empty())
         {
             Coordinate position = Path.top();
