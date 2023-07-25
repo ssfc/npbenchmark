@@ -200,21 +200,21 @@ void AStar::a_star_search()
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
-    set<OpenNode> open_list;
+    set<OpenNode> open_set;
 
     // Put the starting cell on the open list and set its 'f' as 0
-    open_list.insert(OpenNode{0, src});
+    open_set.insert(OpenNode{0, src});
     open_table[src.x][src.y] = true;
 
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_list.empty() && iter<INT_MAX)
+    while (!open_set.empty() && iter < INT_MAX)
     {
-        Coordinate current = open_list.begin()->position;
+        Coordinate current = open_set.begin()->position;
 
         // Remove this vertex from the open list
-        open_list.erase(open_list.begin());
+        open_set.erase(open_set.begin());
 
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = true;
@@ -270,7 +270,7 @@ void AStar::a_star_search()
                     if(!open_table[north.x][north.y])
                     {
                         open_table[north.x][north.y] = true;
-                        open_list.insert(OpenNode{f_new, north});
+                        open_set.insert(OpenNode{f_new, north});
                     }
                 }
             }
@@ -307,7 +307,7 @@ void AStar::a_star_search()
                     if(!open_table[south.x][south.y])
                     {
                         open_table[south.x][south.y] = true;
-                        open_list.insert(OpenNode{f_new, south});
+                        open_set.insert(OpenNode{f_new, south});
                     }
                 }
             }
@@ -344,7 +344,7 @@ void AStar::a_star_search()
                     if(!open_table[west.x][west.y])
                     {
                         open_table[west.x][west.y] = true;
-                        open_list.insert(OpenNode{f_new, west});
+                        open_set.insert(OpenNode{f_new, west});
                     }
                 }
             }
@@ -381,7 +381,7 @@ void AStar::a_star_search()
                     if(!open_table[east.x][east.y])
                     {
                         open_table[east.x][east.y] = true;
-                        open_list.insert(OpenNode{f_new, east});
+                        open_set.insert(OpenNode{f_new, east});
                     }
                 }
             }
