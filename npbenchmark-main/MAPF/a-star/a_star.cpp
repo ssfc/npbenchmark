@@ -189,8 +189,8 @@ void AStar::a_star_search()
     // closed list是bool二维数组, open list是set, 有点诡异。
     int closed_list[num_rows][num_columns];
     memset(closed_list, 0, sizeof(closed_list));
-    bool open_list[num_rows][num_columns];
-    memset(open_list, false, sizeof(open_list));
+    int open_list[num_rows][num_columns];
+    memset(open_list, 0, sizeof(open_list));
 
     // Initialising the parameters of the starting node
     cell_details[src.x][src.y] = Cell{0, 0, 0, src};
@@ -204,7 +204,7 @@ void AStar::a_star_search()
 
     // Put the starting cell on the open list and set its 'f' as 0
     open_set.insert(OpenNode{0, src});
-    open_list[src.x][src.y] = true;
+    open_list[src.x][src.y] = 1;
 
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
@@ -218,7 +218,7 @@ void AStar::a_star_search()
 
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = 1;
-        open_list[current.x][current.y] = false;
+        open_list[current.x][current.y] = 0;
 
         /*
         Generating all the 4 successor of this cell
@@ -267,9 +267,9 @@ void AStar::a_star_search()
                     // Update the details of this cell
                     cell_details[north.x][north.y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_list[north.x][north.y])
+                    if(open_list[north.x][north.y]==0)
                     {
-                        open_list[north.x][north.y] = true;
+                        open_list[north.x][north.y] = 1;
                         open_set.insert(OpenNode{f_new, north});
                     }
                 }
@@ -304,9 +304,9 @@ void AStar::a_star_search()
                     // Update the details of this cell
                     cell_details[south.x][south.y] = Cell{f_new, g_new, h_new, current};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_list[south.x][south.y])
+                    if(open_list[south.x][south.y]==0)
                     {
-                        open_list[south.x][south.y] = true;
+                        open_list[south.x][south.y] = 1;
                         open_set.insert(OpenNode{f_new, south});
                     }
                 }
@@ -341,9 +341,9 @@ void AStar::a_star_search()
                     // Update the details of this cell
                     cell_details[west.x][west.y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_list[west.x][west.y])
+                    if(open_list[west.x][west.y]==0)
                     {
-                        open_list[west.x][west.y] = true;
+                        open_list[west.x][west.y] = 1;
                         open_set.insert(OpenNode{f_new, west});
                     }
                 }
@@ -378,9 +378,9 @@ void AStar::a_star_search()
                     // Update the details of this cell
                     cell_details[east.x][east.y] = Cell{f_new, g_new, h_new,current};
                     // If it isn’t on the open list, add it to the open list.
-                    if(!open_list[east.x][east.y])
+                    if(open_list[east.x][east.y]==0)
                     {
-                        open_list[east.x][east.y] = true;
+                        open_list[east.x][east.y] = 1;
                         open_set.insert(OpenNode{f_new, east});
                     }
                 }
