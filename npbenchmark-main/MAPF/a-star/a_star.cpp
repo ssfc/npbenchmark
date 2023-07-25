@@ -187,8 +187,8 @@ void AStar::a_star_search()
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
     // closed list是bool二维数组, open list是set, 有点诡异。
-    bool closed_list[num_rows][num_columns];
-    memset(closed_list, false, sizeof(closed_list));
+    int closed_list[num_rows][num_columns];
+    memset(closed_list, 0, sizeof(closed_list));
     bool open_list[num_rows][num_columns];
     memset(open_list, false, sizeof(open_list));
 
@@ -217,7 +217,7 @@ void AStar::a_star_search()
         open_set.erase(open_set.begin());
 
         // Add this vertex to the closed list
-        closed_list[current.x][current.y] = true;
+        closed_list[current.x][current.y] = 1;
         open_list[current.x][current.y] = false;
 
         /*
@@ -256,7 +256,7 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[north.x][north.y] && is_passable(north))
+            else if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
                 g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(north);
@@ -293,7 +293,7 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[south.x][south.y] && is_passable(south))
+            else if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
                 g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(south);
@@ -330,7 +330,7 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[west.x][west.y] && is_passable(west))
+            else if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
                 g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(west);
@@ -367,7 +367,7 @@ void AStar::a_star_search()
                 return;
             }
             // If the successor has not been evaluated and is passable
-            else if (!closed_list[east.x][east.y] && is_passable(east))
+            else if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
                 g_new = cell_details[current.x][current.y].g + 1;
                 h_new = calculate_h(east);
