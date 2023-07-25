@@ -187,8 +187,13 @@ void AStar::a_star_search()
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
     // closed list是bool二维数组, open list是set, 有点诡异。
-    int open_list[num_rows][num_columns];
-    memset(open_list, 0, sizeof(open_list));
+    vector<vector<int>> open_list;
+    open_list.resize(num_rows);
+    for(int i=0;i<num_rows;i++)
+    {
+        open_list[i].resize(num_columns, 0);
+    }
+    
     int closed_list[num_rows][num_columns];
     memset(closed_list, 0, sizeof(closed_list));
 
