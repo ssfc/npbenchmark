@@ -215,13 +215,14 @@ void AStar::a_star_search()
     open_set.insert(OpenNode{0, src});
     open_list[src.x][src.y] = 1;
 
-    print_open_list();
+    // print_open_list();
 
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
     while (!open_set.empty() && iter < 3)
     {
+        cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
 
         // Remove this vertex from the open list
@@ -230,6 +231,7 @@ void AStar::a_star_search()
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = 1;
         open_list[current.x][current.y] = 0;
+        print_open_list();
 
         /*
         Generating all the 4 successor of this cell
