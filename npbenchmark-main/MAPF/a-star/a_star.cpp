@@ -215,6 +215,10 @@ void AStar::a_star_search()
     open_set.insert(OpenNode{0, src});
     open_list[src.x][src.y] = 1;
 
+    cerr << "Add start to closed list" << endl;
+    print_open_list();
+    print_closed_list();
+
     // print_open_list();
 
     // We set this boolean value as false as initially the destination is not reached.
@@ -232,6 +236,7 @@ void AStar::a_star_search()
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = 1;
 
+        cerr << "Add smallest f = " << cell_details[current.x][current.y].f_score << " to closed list" << endl;
         print_open_list();
         print_closed_list();
 
@@ -287,6 +292,10 @@ void AStar::a_star_search()
                     {
                         open_list[north.x][north.y] = 1;
                         open_set.insert(OpenNode{f_new, north});
+
+                        cerr << "Add north node to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
                     }
                 }
             }
@@ -324,6 +333,10 @@ void AStar::a_star_search()
                     {
                         open_list[south.x][south.y] = 1;
                         open_set.insert(OpenNode{f_new, south});
+
+                        cerr << "Add south node to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
                     }
                 }
             }
@@ -361,6 +374,10 @@ void AStar::a_star_search()
                     {
                         open_list[west.x][west.y] = 1;
                         open_set.insert(OpenNode{f_new, west});
+
+                        cerr << "Add west node to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
                     }
                 }
             }
@@ -398,6 +415,10 @@ void AStar::a_star_search()
                     {
                         open_list[east.x][east.y] = 1;
                         open_set.insert(OpenNode{f_new, east});
+
+                        cerr << "Add east node to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
                     }
                 }
             }
