@@ -4,17 +4,17 @@ closed_list每轮循环进入1个元素，open_list可能每轮循环进入多�
 
 对A*算法在满足一致条件下最优性的证明：
 
-假设A*生成的路径是p, 起点记为start, 终点记为dest, 在p外有一个最优解q, 记路径p和q的第一个交点是A, 路径p倒数第二个节点是B. 记路径p的总长度为fp(dest),  路径q的总长度为fq(dest). 
+假设A*生成的路径是p, 起点记为start, 终点记为dest, 在p外有一个最优解q, 记路径p和q的第一个交点是A, q路径上A的下一个节点是B. 记路径p的总长度为fp(dest),  路径q的总长度为fq(dest). 
+
+由于B是A的邻居，所以B在open list中。
 
 由于路径q优于p, 所以fq(dest) < fp(dest)  (1)
 
-根据一致性原则，路径q在交点A处的估计值fq(A) < fq(dest)  (2)
+根据一致性原则，路径q在点B处的估计值fq(B) < fq(dest)  (2)
 
-而fp(B) = gp(B) + distance(B, D)
+联立(1)(2), 得出fq(B) < fp(dest)
 
-联立(1)(2), 得出fq(A) < fp(dest)
-
-所以，当A*生成的路径p由倒数第二个节点B向终点dest扩展的判断中，由于
+所以，当A*生成的路径p由倒数第二个节点B向终点dest扩展的判断中，由于fq(B) < fp(dest)，所以从open list中取出的节点是路径q上的节点B而不是路径p的终点dest. 根据A\*算法可知它可以沿着q路径扩展出一条更短的路径来. 与p是对最短路径矛盾。
 
 ### Q: A*算法求的是精确解还是次优解？
 
