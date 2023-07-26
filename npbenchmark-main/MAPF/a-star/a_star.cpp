@@ -220,7 +220,7 @@ void AStar::a_star_search()
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_set.empty() && iter < 20)
+    while (!open_set.empty() && iter < 30)
     {
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
@@ -232,6 +232,7 @@ void AStar::a_star_search()
         closed_list[current.x][current.y] = 1;
         open_list[current.x][current.y] = 0;
         print_open_list();
+        print_closed_list();
 
         /*
         Generating all the 4 successor of this cell
@@ -464,5 +465,19 @@ void AStar::print_open_list()
     cerr << endl;
 }
 
-
+void AStar::print_closed_list()
+{
+    cerr << "closed list: ";
+    for(int i=0;i<num_rows;i++)
+    {
+        for(int j=0;j<num_columns;j++)
+        {
+            if(closed_list[i][j] == 1)
+            {
+                cerr <<"(" << i << " " << j << ") ";
+            }
+        }
+    }
+    cerr << endl;
+}
 

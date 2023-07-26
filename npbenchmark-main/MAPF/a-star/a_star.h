@@ -96,6 +96,7 @@ public:
     // debug func
     void output_map();
     void print_open_list();
+    void print_closed_list();
 };
 
 #endif //A_STAR_A_STAR_H
