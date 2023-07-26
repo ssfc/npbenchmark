@@ -49,8 +49,8 @@ struct OpenNode
 struct Cell
 {
     int g_score; // cost of the cheapest path from start to n currently known
-    int h; // h(n) estimates the cost to reach goal from node n
-    int f; // f = g_score + h; fScore[n] represents our current best guess as to
+    int h_score; // h_score(n) estimates the cost to reach goal from node n
+    int f_score; // f_score = g_score + h_score; fScore[n] represents our current best guess as to
     // how cheap a path could be from start to finish if it goes through n.
 
     // Row and Column index of its parent
@@ -86,7 +86,7 @@ public:
     bool is_passable(Coordinate position);
     // check whether destination Cell has been reached or not
     [[nodiscard]] bool is_destination(Coordinate position) const;
-    // calculate the 'h' heuristics.
+    // calculate the 'h_score' heuristics.
     [[nodiscard]] int calculate_h(Coordinate position) const;
     // trace the path from the source to destination
     void trace_path();

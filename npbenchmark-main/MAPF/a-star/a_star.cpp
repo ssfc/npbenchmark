@@ -96,7 +96,7 @@ bool AStar::is_destination(Coordinate position) const
         return false;
 }
 
-// calculate the 'h' heuristics.
+// calculate the 'h_score' heuristics.
 int AStar::calculate_h(Coordinate position) const
 {
     // Return using the distance formula
@@ -205,13 +205,13 @@ void AStar::a_star_search()
     cell_details[src.x][src.y] = Cell{0, 0, 0, src};
 
     /*
-    Create an open list having information as <f, <i, j>> where f = g_score + h,
+    Create an open list having information as <f_score, <i, j>> where f_score = g_score + h_score,
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
     set<OpenNode> open_set;
 
-    // Put the starting cell on the open list and set its 'f' as 0
+    // Put the starting cell on the open list and set its 'f_score' as 0
     open_set.insert(OpenNode{0, src});
     open_list[src.x][src.y] = 1;
 
@@ -250,7 +250,7 @@ void AStar::a_star_search()
         E --> East	 (current_x+1, current_y)
          */
 
-        // To store the 'g_score', 'h' and 'f' of the 8 successors
+        // To store the 'g_score', 'h_score' and 'f_score' of the 8 successors
         int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
@@ -276,7 +276,7 @@ void AStar::a_star_search()
                 h_new = calculate_h(north);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[north.x][north.y].f)
+                if (f_new < cell_details[north.x][north.y].f_score)
                 {
                     // Update the details of this cell
                     cell_details[north.x][north.y] = Cell{f_new, g_new, h_new,current};
@@ -313,7 +313,7 @@ void AStar::a_star_search()
                 h_new = calculate_h(south);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[south.x][south.y].f)
+                if (f_new < cell_details[south.x][south.y].f_score)
                 {
                     // Update the details of this cell
                     cell_details[south.x][south.y] = Cell{f_new, g_new, h_new, current};
@@ -350,7 +350,7 @@ void AStar::a_star_search()
                 h_new = calculate_h(west);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[west.x][west.y].f)
+                if (f_new < cell_details[west.x][west.y].f_score)
                 {
                     // Update the details of this cell
                     cell_details[west.x][west.y] = Cell{f_new, g_new, h_new,current};
@@ -387,7 +387,7 @@ void AStar::a_star_search()
                 h_new = calculate_h(east);
                 f_new = g_new + h_new;
 
-                if (f_new < cell_details[east.x][east.y].f)
+                if (f_new < cell_details[east.x][east.y].f_score)
                 {
                     // Update the details of this cell
                     cell_details[east.x][east.y] = Cell{f_new, g_new, h_new,current};

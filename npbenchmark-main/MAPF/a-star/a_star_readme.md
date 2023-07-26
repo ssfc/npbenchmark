@@ -24,7 +24,7 @@ A*算法通常被设计用于在图或网络中找到最短路径（或最优解
 
 对于图中的每个节点N和N的每个邻居节点N'，如果从节点N移动到节点N'的实际代价是c(N, N')，而启发式函数的估计值为h(N)和h(N')，那么启发式函数h(x)必须满足以下条件：
 
-h(N) <= c(N, N') + h(N')
+h_score(N) <= c(N, N') + h_score(N')
 
 换句话说，对于任意节点N和它的每个邻居节点N'，启发式函数估计从N到N'的最短路径的代价不会大于实际的路径代价。这个条件也被称为满足三角不等式。
 
@@ -36,9 +36,9 @@ A\*算法在某些条件下是完备的，但并不是在所有情况下都能�
 
 A\*算法在搜索过程中使用启发式函数来引导搜索，它通过估计从当前节点到目标节点的代价，帮助算法朝着最优路径的方向前进。如果启发式函数满足以下两个条件，那么A*算法是完备的：
 
-1. 可行性条件（Admissibility）：启发式函数对于所有节点都是一个合理的估计，且不会高估到达目标节点的代价。换句话说，启发式函数应该满足 h(n) <= h\*(n)，其中 h(n) 表示启发式函数估计的从节点 n 到目标节点的代价，h*(n) 表示节点 n 到目标节点的实际最小代价。
+1. 可行性条件（Admissibility）：启发式函数对于所有节点都是一个合理的估计，且不会高估到达目标节点的代价。换句话说，启发式函数应该满足 h_score(n) <= h_score\*(n)，其中 h_score(n) 表示启发式函数估计的从节点 n 到目标节点的代价，h_score*(n) 表示节点 n 到目标节点的实际最小代价。
 
-2. 一致性条件（Consistency，或者称为单调性）：启发式函数应该满足对于任意节点 n 的所有后继节点 n'，有 h(n) <= c(n, n') + h(n')，其中 c(n, n') 表示从节点 n 到后继节点 n' 的实际代价。换句话说，启发式函数估计的代价不会“反悔”，它满足三角不等式。
+2. 一致性条件（Consistency，或者称为单调性）：启发式函数应该满足对于任意节点 n 的所有后继节点 n'，有 h_score(n) <= c(n, n') + h_score(n')，其中 c(n, n') 表示从节点 n 到后继节点 n' 的实际代价。换句话说，启发式函数估计的代价不会“反悔”，它满足三角不等式。
 
 如果启发式函数同时满足可行性和一致性条件，那么A\*算法是完备的，即在有限状态空间中，它能够找到从起始节点到目标节点的最优路径。然而，要注意的是，A\*算法的完备性并不保证在所有问题和状态空间中都能找到解，特别是当状态空间非常大或者存在特殊的障碍物配置时，A*算法可能会遇到搜索空间过大的情况，导致搜索不到解或者计算代价非常高。
 
@@ -164,8 +164,8 @@ function reconstruct_path(cameFrom, current)
     return total_path
 
 // A* finds a path from start to goal.
-// h is the heuristic function. h(n) estimates the cost to reach goal from node n.
-function A_Star(start, goal, h)
+// h_score is the heuristic function. h_score(n) estimates the cost to reach goal from node n.
+function A_Star(start, goal, h_score)
     // The set of discovered nodes that may need to be (re-)expanded.
     // Initially, only the start node is known.
     // This is usually implemented as a min-heap or priority queue rather than a hash-set.
@@ -179,10 +179,10 @@ function A_Star(start, goal, h)
     gScore := map with default value of Infinity
     gScore[start] := 0
 
-    // For node n, fScore[n] := gScore[n] + h(n). fScore[n] represents our current best guess as to
+    // For node n, fScore[n] := gScore[n] + h_score(n). fScore[n] represents our current best guess as to
     // how cheap a path could be from start to finish if it goes through n.
     fScore := map with default value of Infinity
-    fScore[start] := h(start)
+    fScore[start] := h_score(start)
 
     while openSet is not empty
         // This operation can occur in O(Log(N)) time if openSet is a min-heap or a priority queue
@@ -199,7 +199,7 @@ function A_Star(start, goal, h)
                 // This path to neighbor is better than any previous one. Record it!
                 cameFrom[neighbor] := current
                 gScore[neighbor] := tentative_gScore
-                fScore[neighbor] := tentative_gScore + h(neighbor)
+                fScore[neighbor] := tentative_gScore + h_score(neighbor)
                 if neighbor not in openSet
                     openSet.add(neighbor)
 
@@ -211,26 +211,26 @@ function A_Star(start, goal, h)
 
 1. 初始化开放列表（open list）：开放列表用于存储待扩展的节点，初始时为空。
 
-2. 初始化封闭列表（closed list）：封闭列表用于存储已经扩展过的节点，初始时为空。将起始节点放入开放列表，可以将其 f 值设为0（这里 f 表示估计的总路径代价）。
+2. 初始化封闭列表（closed list）：封闭列表用于存储已经扩展过的节点，初始时为空。将起始节点放入开放列表，可以将其 f_score 值设为0（这里 f_score 表示估计的总路径代价）。
 
 3. 当开放列表不为空时，执行以下步骤：
-   a) 在开放列表中找到 f 值最小的节点，将其称为 "q"。(最开始就是起点了)
+   a) 在开放列表中找到 f_score 值最小的节点，将其称为 "q"。(最开始就是起点了)
    b) 将 "q" 从开放列表中移除。
    c) 生成 "q" 的8个后继节点，并将它们的父节点设置为 "q"。(设置父节点是为了储存路径方便回溯)
    d) 对于每个后继节点：
       i) 如果后继节点是目标节点，则停止搜索，找到了最短路径。
-      ii) 否则，计算后继节点的 g_score 和 h 值：
+      ii) 否则，计算后继节点的 g_score 和 h_score 值：
           - g_score 值表示从起点到当前节点的实际代价（即实际路径长度）。
-                 - h 值表示当前节点到目标节点的估计代价（即启发式函数估计的路径长度）。
-                 这一步中，可以使用三种启发式函数来计算 h 值：曼哈顿距离、对角线距离和欧几里得距离。
+                 - h_score 值表示当前节点到目标节点的估计代价（即启发式函数估计的路径长度）。
+                 这一步中，可以使用三种启发式函数来计算 h_score 值：曼哈顿距离、对角线距离和欧几里得距离。
                  successor.g_score = q.g_score + 从 "q" 到后继节点的距离
-                 successor.h = 从后继节点到目标节点的距离（可以通过多种方式计算，如曼哈顿距离、对角线距离或欧几里得距离）。
-                 successor.f = successor.g_score + successor.h
-         iii) 如果与后继节点位置相同的节点在开放列表中具有更小的 f 值，则跳过该后继节点。
-         iV) 如果与后继节点位置相同的节点在封闭列表中具有更小的 f 值，则跳过该后继节点，否则将该节点添加到开放列表。
+                 successor.h_score = 从后继节点到目标节点的距离（可以通过多种方式计算，如曼哈顿距离、对角线距离或欧几里得距离）。
+                 successor.f_score = successor.g_score + successor.h_score
+         iii) 如果与后继节点位置相同的节点在开放列表中具有更小的 f_score 值，则跳过该后继节点。
+         iV) 如果与后继节点位置相同的节点在封闭列表中具有更小的 f_score 值，则跳过该后继节点，否则将该节点添加到开放列表。
    e) 将 "q" 添加到封闭列表。
 
-整个过程在一个 while 循环中进行，直到找到目标节点或开放列表为空为止。A*算法通过选择 f 值最小的节点来扩展，同时使用启发式函数的估计值来引导搜索方向，从而更快地找到最优路径。
+整个过程在一个 while 循环中进行，直到找到目标节点或开放列表为空为止。A*算法通过选择 f_score 值最小的节点来扩展，同时使用启发式函数的估计值来引导搜索方向，从而更快地找到最优路径。
 
 ### Q: 这个伪代码对A*的表述是否准确？
 
@@ -240,11 +240,11 @@ function A_Star(start, goal, h)
 
 总的来说，这个伪代码对A\*算法的基本流程和思想进行了正确的表述，但在实际应用中，可能需要根据具体问题做一些调整和优化。在编写实际的A\*算法实现时，还需仔细考虑细节，并对具体问题进行适当的调整和优化。
 
-### Q: 为什么”iii) 如果与后继节点位置相同的节点在开放列表中具有更小的 f 值，则跳过该后继节点。“？目的是什么？
+### Q: 为什么”iii) 如果与后继节点位置相同的节点在开放列表中具有更小的 f_score 值，则跳过该后继节点。“？目的是什么？
 
 这里的目的是为了确保在A*算法的搜索过程中，不重复扩展已经在开放列表中的节点，避免浪费不必要的计算和搜索代价。
 
-在A*算法中，每个节点都有一个 f 值，表示该节点的综合评估代价。为了找到最优路径，我们需要尽量选择 f 值较小的节点进行扩展。当我们生成一个节点的后继节点时，可能会得到一些与已经在开放列表中的节点位置相同的节点。如果这些后继节点在开放列表中已经有了，我们可以比较它们的 f 值，如果后继节点的 f 值较小，说明通过其他路径到达该节点的代价更低，因此我们可以跳过这些后继节点，不再重复扩展它们。
+在A*算法中，每个节点都有一个 f_score 值，表示该节点的综合评估代价。为了找到最优路径，我们需要尽量选择 f_score 值较小的节点进行扩展。当我们生成一个节点的后继节点时，可能会得到一些与已经在开放列表中的节点位置相同的节点。如果这些后继节点在开放列表中已经有了，我们可以比较它们的 f_score 值，如果后继节点的 f_score 值较小，说明通过其他路径到达该节点的代价更低，因此我们可以跳过这些后继节点，不再重复扩展它们。
 
 这个操作称为 "跳过重复节点"，是A*算法的一个重要优化措施。通过这个优化，可以减少重复计算和搜索，加快算法的执行速度，提高算法的效率。
 
@@ -254,7 +254,7 @@ function A_Star(start, goal, h)
 
 在直观上，可以将A\*算法的搜索过程比喻为一道光束朝着目标延伸。A*算法利用启发式函数（heuristic function）来引导搜索方向，使得搜索过程更加高效，类似于一道光束朝着目标前进。
 
-启发式函数用于估计从当前节点到目标节点的代价，它提供了关于节点距离目标节点的信息。A\*算法在搜索过程中通过综合考虑节点的实际代价（g值，即从起点到当前节点的实际路径代价）和启发式函数的估计代价（h值，即当前节点到目标节点的估计路径代价），计算出节点的总代价（f值，f = g_score + h）。在选择下一个要扩展的节点时，A*算法倾向于选择具有较小f值的节点，这使得搜索过程更有可能朝着目标节点的方向前进。
+启发式函数用于估计从当前节点到目标节点的代价，它提供了关于节点距离目标节点的信息。A\*算法在搜索过程中通过综合考虑节点的实际代价（g值，即从起点到当前节点的实际路径代价）和启发式函数的估计代价（h值，即当前节点到目标节点的估计路径代价），计算出节点的总代价（f值，f_score = g_score + h_score）。在选择下一个要扩展的节点时，A*算法倾向于选择具有较小f值的节点，这使得搜索过程更有可能朝着目标节点的方向前进。
 
 类比为光束，可以将启发式函数看作是“引导光束”，通过引导光束的方向，搜索过程更有可能朝着目标节点的方向延伸。这种引导作用使得A*算法在搜索过程中更加聚焦于可能较优的路径，从而避免扩展过多不必要的节点，提高搜索效率，找到较快的最优路径。
 
@@ -271,7 +271,7 @@ function A_Star(start, goal, h)
 
 通过设置父节点，A*算法可以高效地在搜索过程中保存节点之间的关系，从而在找到目标节点后，快速地重构出最优路径。这也是A*算法高效求解最短路径的一个重要原因。
 
-### Q: 如果与后继节点位置相同的节点在开放列表中具有更小的 f 值"中的位置相同是什么意思？
+### Q: 如果与后继节点位置相同的节点在开放列表中具有更小的 f_score 值"中的位置相同是什么意思？
 
 在这里，“位置相同”的意思是指后继节点和已经在开放列表中的节点处于相同的位置或坐标。A*算法是在图或网格结构中进行搜索，每个节点都有一组坐标来表示其位置。
 
