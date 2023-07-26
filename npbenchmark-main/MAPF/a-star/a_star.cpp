@@ -205,7 +205,7 @@ void AStar::a_star_search()
     cell_details[src.x][src.y] = Cell{0, 0, 0, src};
 
     /*
-    Create an open list having information as <f, <i, j>> where f = g + h,
+    Create an open list having information as <f, <i, j>> where f = g_score + h,
     and i, j are the row and column index of that cell
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
@@ -250,7 +250,7 @@ void AStar::a_star_search()
         E --> East	 (current_x+1, current_y)
          */
 
-        // To store the 'g', 'h' and 'f' of the 8 successors
+        // To store the 'g_score', 'h' and 'f' of the 8 successors
         int g_new, h_new, f_new;
 
         //----------- 1st Successor (North) ------------
@@ -272,7 +272,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
-                g_new = cell_details[current.x][current.y].g + 1;
+                g_new = cell_details[current.x][current.y].g_score + 1;
                 h_new = calculate_h(north);
                 f_new = g_new + h_new;
 
@@ -309,7 +309,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
-                g_new = cell_details[current.x][current.y].g + 1;
+                g_new = cell_details[current.x][current.y].g_score + 1;
                 h_new = calculate_h(south);
                 f_new = g_new + h_new;
 
@@ -346,7 +346,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
-                g_new = cell_details[current.x][current.y].g + 1;
+                g_new = cell_details[current.x][current.y].g_score + 1;
                 h_new = calculate_h(west);
                 f_new = g_new + h_new;
 
@@ -383,7 +383,7 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
-                g_new = cell_details[current.x][current.y].g + 1;
+                g_new = cell_details[current.x][current.y].g_score + 1;
                 h_new = calculate_h(east);
                 f_new = g_new + h_new;
 

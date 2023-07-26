@@ -48,9 +48,9 @@ struct OpenNode
 // A structure to hold the necessary parameters
 struct Cell
 {
-    int g; // cost of the cheapest path from start to n currently known
+    int g_score; // cost of the cheapest path from start to n currently known
     int h; // h(n) estimates the cost to reach goal from node n
-    int f; // f = g + h; fScore[n] represents our current best guess as to
+    int f; // f = g_score + h; fScore[n] represents our current best guess as to
     // how cheap a path could be from start to finish if it goes through n.
 
     // Row and Column index of its parent
