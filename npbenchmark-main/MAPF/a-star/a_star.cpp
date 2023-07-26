@@ -281,7 +281,7 @@ bool AStar::a_star_search()
                 if (f_new < cell_details[north.x][north.y].f_score) // new path is better
                 {
                     // Update the details of this cell
-                    cell_details[north.x][north.y] = Cell{f_new, g_new, current};
+                    cell_details[north.x][north.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[north.x][north.y]==0)
                     {
@@ -323,7 +323,7 @@ bool AStar::a_star_search()
                 if (f_new < cell_details[south.x][south.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[south.x][south.y] = Cell{f_new, g_new, current};
+                    cell_details[south.x][south.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[south.x][south.y]==0)
                     {
@@ -365,7 +365,7 @@ bool AStar::a_star_search()
                 if (f_new < cell_details[west.x][west.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[west.x][west.y] = Cell{f_new, g_new, current};
+                    cell_details[west.x][west.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[west.x][west.y]==0)
                     {
@@ -407,7 +407,7 @@ bool AStar::a_star_search()
                 if (f_new < cell_details[east.x][east.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[east.x][east.y] = Cell{f_new, g_new, current};
+                    cell_details[east.x][east.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[east.x][east.y]==0)
                     {
