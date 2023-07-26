@@ -163,14 +163,14 @@ void AStar::trace_path()
 }
 
 // find the shortest path between a given source cell to a destination cell
-void AStar::a_star_search()
+bool AStar::a_star_search()
 {
     // Check whether the source is out of range
     if (!is_valid(src))
     {
         cerr <<"Source is invalid\n";
 
-        return;
+        return false;
     }
 
     // Check whether the destination is out of range
@@ -178,7 +178,7 @@ void AStar::a_star_search()
     {
         cerr << "Destination is invalid\n";
 
-        return;
+        return false;
     }
 
     // Check whether the source or the destination is blocked
@@ -186,7 +186,7 @@ void AStar::a_star_search()
     {
         cerr << "Source or the destination is blocked\n";
 
-        return;
+        return false;
     }
 
     // Check whether the destination cell is the same as source cell
@@ -194,7 +194,7 @@ void AStar::a_star_search()
     {
         cerr << "We are already at the destination\n";
 
-        return;
+        return false;
     }
 
     // Create a closed list and initialise it to false which means that no cell has been included yet
@@ -216,13 +216,8 @@ void AStar::a_star_search()
     open_list[src.x][src.y] = 1;
 
     cerr << "Add start to closed list" << endl;
-    print_open_list();
+    print_open_list(); // print_open_list();
     print_closed_list();
-
-    // print_open_list();
-
-    // We set this boolean value as false as initially the destination is not reached.
-    bool found_dest = false;
 
     while (!open_set.empty() && iter < INT_MAX)
     {
@@ -271,9 +266,8 @@ void AStar::a_star_search()
                 cell_details[north.x][north.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                found_dest = true;
 
-                return;
+                return true;
             }
             // If the successor has not been evaluated and is passable
             else if (closed_list[north.x][north.y]==0 && is_passable(north))
@@ -313,9 +307,8 @@ void AStar::a_star_search()
                 cell_details[south.x][south.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                found_dest = true;
 
-                return;
+                return true;
             }
             // If the successor has not been evaluated and is passable
             else if (closed_list[south.x][south.y]==0 && is_passable(south))
@@ -354,9 +347,8 @@ void AStar::a_star_search()
                 cell_details[west.x][west.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                found_dest = true;
 
-                return;
+                return true;
             }
             // If the successor has not been evaluated and is passable
             else if (closed_list[west.x][west.y]==0 && is_passable(west))
@@ -395,9 +387,8 @@ void AStar::a_star_search()
                 cell_details[east.x][east.y].parent = current;
                 cerr << "The destination cell is found\n";
                 trace_path();
-                found_dest = true;
 
-                return;
+                return true;
             }
             // If the successor has not been evaluated and is passable
             else if (closed_list[east.x][east.y]==0 && is_passable(east))
@@ -430,8 +421,8 @@ void AStar::a_star_search()
     // When the destination cell is not found and the open list is empty,
     // then we conclude that we failed to reach the destination cell.
     // This may happen when there is no way to destination cell (due to blockages)
-    if (!found_dest)
-        cerr << "Failed to find the Destination cell\n";
+    cerr << "Failed to find the Destination cell\n";
+    return false;
 }
 
 

@@ -90,7 +90,7 @@ public:
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source Cell to a destination Cell
-    void a_star_search();
+    bool a_star_search();
 
     // debug func
     void output_map();
