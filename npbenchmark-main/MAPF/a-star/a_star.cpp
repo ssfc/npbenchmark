@@ -220,7 +220,7 @@ void AStar::a_star_search()
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_set.empty() && iter < 30)
+    while (!open_set.empty() && iter < 3)
     {
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
