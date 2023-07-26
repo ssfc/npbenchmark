@@ -202,7 +202,8 @@ bool AStar::a_star_search()
     // closed list是bool二维数组, open list是set, 有点诡异。
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y] = Cell{0, 0, src};
+    int f_start = calculate_h(src);
+    cell_details[src.x][src.y] = Cell{0, f_start, src};
 
     /*
     Create an open list having information as <f_score, <i, j>> where f_score = g_score + h_score,
@@ -212,7 +213,7 @@ bool AStar::a_star_search()
     set<OpenNode> open_set;
 
     // Put the starting cell on the open list and set its 'f_score' as 0
-    open_set.insert(OpenNode{0, src});
+    open_set.insert(OpenNode{f_start, src});
     open_list[src.x][src.y] = 1;
 
     cerr << "Add start to closed list" << endl;
