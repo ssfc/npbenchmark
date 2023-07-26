@@ -252,9 +252,6 @@ bool AStar::a_star_search()
         E --> East	 (current_x+1, current_y)
          */
 
-        // To store the 'g_score', 'h_score' and 'f_score' of the 8 successors
-        int g_new, f_new;
-
         //----------- 1st Successor (North) ------------
         auto north = Coordinate{current.x, current.y + 1};
         // Only process this cell if this is a valid one
@@ -274,9 +271,9 @@ bool AStar::a_star_search()
             else if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
                 // cost of the cheapest path from start to n currently known
-                g_new = cell_details[current.x][current.y].g_score + 1;
+                int g_new = cell_details[current.x][current.y].g_score + 1;
                 // h_score(n) estimates the cost to reach goal from node n
-                f_new = g_new + calculate_h(north);
+                int f_new = g_new + calculate_h(north);
 
                 if (f_new < cell_details[north.x][north.y].f_score) // new path is better
                 {
@@ -314,8 +311,8 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
-                g_new = cell_details[current.x][current.y].g_score + 1;
-                f_new = g_new + calculate_h(south);
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                int f_new = g_new + calculate_h(south);
 
                 // if new path is better
                 if (f_new < cell_details[south.x][south.y].f_score)
@@ -354,8 +351,8 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
-                g_new = cell_details[current.x][current.y].g_score + 1;
-                f_new = g_new + calculate_h(west);
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                int f_new = g_new + calculate_h(west);
 
                 // if new path is better
                 if (f_new < cell_details[west.x][west.y].f_score)
@@ -394,8 +391,8 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
-                g_new = cell_details[current.x][current.y].g_score + 1;
-                f_new = g_new + calculate_h(east);
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                int f_new = g_new + calculate_h(east);
 
                 // if new path is better
                 if (f_new < cell_details[east.x][east.y].f_score)
