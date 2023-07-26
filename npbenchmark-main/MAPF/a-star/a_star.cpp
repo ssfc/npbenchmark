@@ -278,7 +278,7 @@ void AStar::a_star_search()
                 // h_score(n) estimates the cost to reach goal from node n
                 f_new = g_new + calculate_h(north);
 
-                if (f_new < cell_details[north.x][north.y].f_score)
+                if (f_new < cell_details[north.x][north.y].f_score) // new path is better
                 {
                     // Update the details of this cell
                     cell_details[north.x][north.y] = Cell{f_new, g_new, current};
