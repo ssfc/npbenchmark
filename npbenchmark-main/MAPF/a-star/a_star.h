@@ -22,14 +22,14 @@ struct Coordinate
 
 struct OpenNode
 {
-    int heuristic_cost;
+    int f_score;
     Coordinate position;
 
     bool operator<(const OpenNode& other) const
     {
-        if (heuristic_cost != other.heuristic_cost)
+        if (f_score != other.f_score)
         {
-            return heuristic_cost < other.heuristic_cost;
+            return f_score < other.f_score;
         }
         else
         {
