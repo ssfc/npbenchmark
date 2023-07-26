@@ -251,7 +251,7 @@ void AStar::a_star_search()
          */
 
         // To store the 'g_score', 'h_score' and 'f_score' of the 8 successors
-        int g_new, h_new, f_new;
+        int g_new, f_new;
 
         //----------- 1st Successor (North) ------------
         auto north = Coordinate{current.x, current.y + 1};
@@ -275,8 +275,7 @@ void AStar::a_star_search()
                 // cost of the cheapest path from start to n currently known
                 g_new = cell_details[current.x][current.y].g_score + 1;
                 // h_score(n) estimates the cost to reach goal from node n
-                h_new = calculate_h(north);
-                f_new = g_new + h_new;
+                f_new = g_new + calculate_h(north);
 
                 if (f_new < cell_details[north.x][north.y].f_score)
                 {
@@ -312,8 +311,7 @@ void AStar::a_star_search()
             else if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
                 g_new = cell_details[current.x][current.y].g_score + 1;
-                h_new = calculate_h(south);
-                f_new = g_new + h_new;
+                f_new = g_new + calculate_h(south);
 
                 if (f_new < cell_details[south.x][south.y].f_score)
                 {
@@ -349,8 +347,7 @@ void AStar::a_star_search()
             else if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
                 g_new = cell_details[current.x][current.y].g_score + 1;
-                h_new = calculate_h(west);
-                f_new = g_new + h_new;
+                f_new = g_new + calculate_h(west);
 
                 if (f_new < cell_details[west.x][west.y].f_score)
                 {
@@ -386,8 +383,7 @@ void AStar::a_star_search()
             else if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
                 g_new = cell_details[current.x][current.y].g_score + 1;
-                h_new = calculate_h(east);
-                f_new = g_new + h_new;
+                f_new = g_new + calculate_h(east);
 
                 if (f_new < cell_details[east.x][east.y].f_score)
                 {
