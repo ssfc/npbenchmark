@@ -225,12 +225,13 @@ void AStar::a_star_search()
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
 
-        // Remove this vertex from the open list
+        // Remove this vertex from the open set
         open_set.erase(open_set.begin());
+        open_list[current.x][current.y] = 0;
 
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = 1;
-        open_list[current.x][current.y] = 0;
+
         print_open_list();
         print_closed_list();
 
