@@ -314,6 +314,7 @@ void AStar::a_star_search()
                 g_new = cell_details[current.x][current.y].g_score + 1;
                 f_new = g_new + calculate_h(south);
 
+                // if new path is better
                 if (f_new < cell_details[south.x][south.y].f_score)
                 {
                     // Update the details of this cell
@@ -350,6 +351,7 @@ void AStar::a_star_search()
                 g_new = cell_details[current.x][current.y].g_score + 1;
                 f_new = g_new + calculate_h(west);
 
+                // if new path is better
                 if (f_new < cell_details[west.x][west.y].f_score)
                 {
                     // Update the details of this cell
@@ -386,6 +388,7 @@ void AStar::a_star_search()
                 g_new = cell_details[current.x][current.y].g_score + 1;
                 f_new = g_new + calculate_h(east);
 
+                // if new path is better
                 if (f_new < cell_details[east.x][east.y].f_score)
                 {
                     // Update the details of this cell
