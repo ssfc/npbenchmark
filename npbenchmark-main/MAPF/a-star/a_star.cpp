@@ -64,7 +64,7 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     for(int i=0;i<num_rows;i++)
     {
         cell_details[i].resize(num_columns,
-                               Cell{INT_MAX, INT_MAX, INT_MAX, Coordinate{-1, -1}});
+                               Cell{INT_MAX, INT_MAX, Coordinate{-1, -1}});
     }
 }
 
@@ -202,7 +202,7 @@ void AStar::a_star_search()
     // closed list是bool二维数组, open list是set, 有点诡异。
 
     // Initialising the parameters of the starting node
-    cell_details[src.x][src.y] = Cell{0, 0, 0, src};
+    cell_details[src.x][src.y] = Cell{0, 0, src};
 
     /*
     Create an open list having information as <f_score, <i, j>> where f_score = g_score + h_score,
@@ -220,7 +220,7 @@ void AStar::a_star_search()
     // We set this boolean value as false as initially the destination is not reached.
     bool found_dest = false;
 
-    while (!open_set.empty() && iter < 3)
+    while (!open_set.empty() && iter < INT_MAX)
     {
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
@@ -281,7 +281,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[north.x][north.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[north.x][north.y] = Cell{f_new, g_new, h_new,current};
+                    cell_details[north.x][north.y] = Cell{f_new, g_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[north.x][north.y]==0)
                     {
@@ -318,7 +318,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[south.x][south.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[south.x][south.y] = Cell{f_new, g_new, h_new, current};
+                    cell_details[south.x][south.y] = Cell{f_new, g_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[south.x][south.y]==0)
                     {
@@ -355,7 +355,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[west.x][west.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[west.x][west.y] = Cell{f_new, g_new, h_new,current};
+                    cell_details[west.x][west.y] = Cell{f_new, g_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[west.x][west.y]==0)
                     {
@@ -392,7 +392,7 @@ void AStar::a_star_search()
                 if (f_new < cell_details[east.x][east.y].f_score)
                 {
                     // Update the details of this cell
-                    cell_details[east.x][east.y] = Cell{f_new, g_new, h_new,current};
+                    cell_details[east.x][east.y] = Cell{f_new, g_new, current};
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[east.x][east.y]==0)
                     {
