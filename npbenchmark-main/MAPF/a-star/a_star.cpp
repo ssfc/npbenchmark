@@ -288,7 +288,7 @@ bool AStar::a_star_search()
                         open_list[north.x][north.y] = 1;
                         open_set.insert(OpenNode{f_new, north});
 
-                        cerr << "Add north node to open list" << endl;
+                        cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -330,7 +330,7 @@ bool AStar::a_star_search()
                         open_list[south.x][south.y] = 1;
                         open_set.insert(OpenNode{f_new, south});
 
-                        cerr << "Add south node to open list" << endl;
+                        cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -372,7 +372,7 @@ bool AStar::a_star_search()
                         open_list[west.x][west.y] = 1;
                         open_set.insert(OpenNode{f_new, west});
 
-                        cerr << "Add west node to open list" << endl;
+                        cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -414,7 +414,7 @@ bool AStar::a_star_search()
                         open_list[east.x][east.y] = 1;
                         open_set.insert(OpenNode{f_new, east});
 
-                        cerr << "Add east node to open list" << endl;
+                        cerr << "Add east node (" << east.x << ", " << east.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
