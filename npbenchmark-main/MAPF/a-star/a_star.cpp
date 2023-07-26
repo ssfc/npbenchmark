@@ -225,6 +225,14 @@ bool AStar::a_star_search()
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
 
+        if (is_destination(current))
+        {
+            cerr << "The destination cell is found\n";
+            trace_path();
+
+            return true;
+        }
+
         // Remove this vertex from the open set
         open_set.erase(open_set.begin());
         open_list[current.x][current.y] = 0;
@@ -258,18 +266,8 @@ bool AStar::a_star_search()
         // Only process this cell if this is a valid one
         if (is_valid(north))
         {
-            // If the destination cell is the same as the current successor
-            if (is_destination(north))
-            {
-                // Set the Parent of the destination cell
-                cell_details[north.x][north.y].parent = current;
-                cerr << "The destination cell is found\n";
-                trace_path();
-
-                return true;
-            }
             // If the successor has not been evaluated and is passable
-            else if (closed_list[north.x][north.y]==0 && is_passable(north))
+            if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
                 // cost of the cheapest path from start to n currently known
                 int g_new = cell_details[current.x][current.y].g_score + 1;
@@ -301,18 +299,8 @@ bool AStar::a_star_search()
         // Only process this cell if it is valid
         if (is_valid(south))
         {
-            // If the destination cell is the same as the current successor
-            if (is_destination(south))
-            {
-                // Set the Parent of the destination cell
-                cell_details[south.x][south.y].parent = current;
-                cerr << "The destination cell is found\n";
-                trace_path();
-
-                return true;
-            }
             // If the successor has not been evaluated and is passable
-            else if (closed_list[south.x][south.y]==0 && is_passable(south))
+            if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(south);
@@ -343,18 +331,8 @@ bool AStar::a_star_search()
         // Only process this cell if this is a valid one
         if (is_valid(west))
         {
-            // If the destination cell is the same as the current successor
-            if (is_destination(west))
-            {
-                // Set the Parent of the destination cell
-                cell_details[west.x][west.y].parent = current;
-                cerr << "The destination cell is found\n";
-                trace_path();
-
-                return true;
-            }
             // If the successor has not been evaluated and is passable
-            else if (closed_list[west.x][west.y]==0 && is_passable(west))
+            if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(west);
@@ -385,18 +363,8 @@ bool AStar::a_star_search()
         // Only process this cell if this is a valid one
         if (is_valid(east))
         {
-            // If the destination cell is the same as the current successor
-            if (is_destination(east))
-            {
-                // Set the Parent of the destination cell
-                cell_details[east.x][east.y].parent = current;
-                cerr << "The destination cell is found\n";
-                trace_path();
-
-                return true;
-            }
             // If the successor has not been evaluated and is passable
-            else if (closed_list[east.x][east.y]==0 && is_passable(east))
+            if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(east);
