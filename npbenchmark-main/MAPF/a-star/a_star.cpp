@@ -272,7 +272,9 @@ void AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             else if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
+                // cost of the cheapest path from start to n currently known
                 g_new = cell_details[current.x][current.y].g_score + 1;
+                // h_score(n) estimates the cost to reach goal from node n
                 h_new = calculate_h(north);
                 f_new = g_new + h_new;
 
