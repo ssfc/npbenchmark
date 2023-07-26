@@ -479,7 +479,7 @@ void AStar::print_open_list()
         {
             if(open_list[i][j] == 1)
             {
-                cerr <<"f(" << i << " " << j << ") = " << cell_details[i][j].g_score << " ";
+                cerr <<"f(" << i << " " << j << ") = " << cell_details[i][j].f_score << " ";
             }
         }
     }
@@ -495,7 +495,7 @@ void AStar::print_closed_list()
         {
             if(closed_list[i][j] == 1)
             {
-                cerr <<"f(" << i << " " << j << ") = " << cell_details[i][j].g_score << " ";
+                cerr <<"f(" << i << " " << j << ") = " << cell_details[i][j].f_score << " ";
             }
         }
     }
