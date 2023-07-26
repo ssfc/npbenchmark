@@ -231,7 +231,8 @@ bool AStar::a_star_search()
         // Add this vertex to the closed list
         closed_list[current.x][current.y] = 1;
 
-        cerr << "Add smallest f = " << cell_details[current.x][current.y].f_score << " to closed list" << endl;
+        cerr << "Add smallest f(" << current.x << "," << current.y << ") = "
+        << cell_details[current.x][current.y].f_score << " to closed list" << endl;
         print_open_list();
         print_closed_list();
 
