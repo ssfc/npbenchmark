@@ -14,7 +14,7 @@ closed_list每轮循环进入1个元素，open_list可能每轮循环进入多�
 
 联立(1)(2), 得出fq(B) < fp(dest)
 
-所以，当A*生成的路径p由倒数第二个节点B向终点dest扩展的判断中，由于fq(B) < fp(dest)，所以从open list中取出的节点是路径q上的节点B而不是路径p的终点dest. 根据A\*算法可知它可以沿着q路径扩展出一条更短的路径来. 与p是对最短路径矛盾。
+所以，当A*生成的路径p由倒数第二个节点B向终点dest扩展的判断中，由于fq(B) < fp(dest)，所以从open list中取出的节点是路径q上的节点B而不是路径p的终点dest. 由于Q路径上所有的点都满足fq(Bq) < fp(dest), 所以p路径上的dest永远无法被open list取出。
 
 ### Q: A*算法求的是精确解还是次优解？
 
