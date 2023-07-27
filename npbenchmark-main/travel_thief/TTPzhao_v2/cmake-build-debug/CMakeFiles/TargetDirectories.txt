@@ -1,3 +1,0 @@
-/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/TTPzhao_v2/cmake-build-debug/CMakeFiles/TTPzhao_v2.dir
-/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/TTPzhao_v2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/wamp64/www/npbenchmark/npbenchmark-main/travel_thief/TTPzhao_v2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
