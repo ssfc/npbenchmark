@@ -338,6 +338,10 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[north.x][north.y].g_score) // new path is better
                 {
+                    // A* LINE 16
+                    // cameFrom[neighbor] := current
+                    // A* LINE 17
+                    // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
                     cell_details[north.x][north.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
@@ -378,6 +382,10 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[south.x][south.y].g_score)
                 {
+                    // A* LINE 16
+                    // cameFrom[neighbor] := current
+                    // A* LINE 17
+                    // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
                     cell_details[south.x][south.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
@@ -418,6 +426,10 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[west.x][west.y].g_score)
                 {
+                    // A* LINE 16
+                    // cameFrom[neighbor] := current
+                    // A* LINE 17
+                    // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
                     cell_details[west.x][west.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.
@@ -458,6 +470,10 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[east.x][east.y].g_score)
                 {
+                    // A* LINE 16
+                    // cameFrom[neighbor] := current
+                    // A* LINE 17
+                    // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
                     cell_details[east.x][east.y] = Cell{g_new, f_new, current};
                     // If it isn’t on the open list, add it to the open list.

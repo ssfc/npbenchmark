@@ -253,8 +253,14 @@ function A_Star(start, goal, h_score)
             // A* LINE 15
             if tentative_gScore < gScore[neighbor]
             // meaning: This path to neighbor is better than any previous one. Record it!
+                
+                // A* LINE 16
                 cameFrom[neighbor] := current
+                
+                // A* LINE 17
                 gScore[neighbor] := tentative_gScore
+                
+                // A* LINE 18
                 fScore[neighbor] := tentative_gScore + h_score(neighbor)
                 if neighbor not in openSet
                     openSet.add(neighbor)
