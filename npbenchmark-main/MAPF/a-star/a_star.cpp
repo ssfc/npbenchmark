@@ -300,32 +300,28 @@ bool AStar::a_star_search()
 
         //----------- 2nd Successor (South) ------------
         auto south = Coordinate{current.x, current.y - 1};
-        // Only process this cell if it is valid
-        if (is_valid(south))
+        // If the successor has not been evaluated and is passable
+        if (closed_list[south.x][south.y]==0 && is_passable(south) && is_valid(south))
         {
-            // If the successor has not been evaluated and is passable
-            if (closed_list[south.x][south.y]==0 && is_passable(south))
+            int g_new = cell_details[current.x][current.y].g_score + 1;
+            int f_new = g_new + calculate_h(south);
+
+            cerr << "south f_new: " << f_new << " ";
+            cerr << "south f_current: " << cell_details[south.x][south.y].f_score << endl;
+            // if new path is better
+            if (f_new < cell_details[south.x][south.y].f_score)
             {
-                int g_new = cell_details[current.x][current.y].g_score + 1;
-                int f_new = g_new + calculate_h(south);
-
-                cerr << "south f_new: " << f_new << " ";
-                cerr << "south f_current: " << cell_details[south.x][south.y].f_score << endl;
-                // if new path is better
-                if (f_new < cell_details[south.x][south.y].f_score)
+                // Update the details of this cell
+                cell_details[south.x][south.y] = Cell{g_new, f_new, current};
+                // If it isn’t on the open list, add it to the open list.
+                if(open_list[south.x][south.y]==0)
                 {
-                    // Update the details of this cell
-                    cell_details[south.x][south.y] = Cell{g_new, f_new, current};
-                    // If it isn’t on the open list, add it to the open list.
-                    if(open_list[south.x][south.y]==0)
-                    {
-                        open_list[south.x][south.y] = 1;
-                        open_set.insert(OpenNode{f_new, south});
+                    open_list[south.x][south.y] = 1;
+                    open_set.insert(OpenNode{f_new, south});
 
-                        cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
-                        print_open_list();
-                        print_closed_list();
-                    }
+                    cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
+                    print_open_list();
+                    print_closed_list();
                 }
             }
         }
