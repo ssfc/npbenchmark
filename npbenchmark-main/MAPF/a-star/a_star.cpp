@@ -139,8 +139,8 @@ void AStar::trace_path()
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
     // Comment: 看来这个程序的设定是起点的父就是自己,我的话倾向于设为-1。
-    while (!(cell_details[row][col].parent.x == row
-             && cell_details[row][col].parent.y == col))
+    while (!(cell_details[row][col].parent.x == -2
+             && cell_details[row][col].parent.y == -2))
     {
         int temp_row = cell_details[row][col].parent.x;
         int temp_col = cell_details[row][col].parent.y;
@@ -211,7 +211,7 @@ bool AStar::a_star_search()
 
     // Initialising the parameters of the starting node
     int f_start = calculate_h(src);
-    cell_details[src.x][src.y] = Cell{0, f_start, src};
+    cell_details[src.x][src.y] = Cell{0, f_start, Coordinate{-2, -2}};
 
     /*
     Create an open list having information as <f_score, <i, j>> where f_score = g_score + h_score,
