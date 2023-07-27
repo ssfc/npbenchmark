@@ -271,33 +271,29 @@ bool AStar::a_star_search()
 
         //----------- 1st Successor (North) ------------
         auto north = Coordinate{current.x, current.y + 1};
-        // Only process this cell if this is a valid one
-        if (is_valid(north))
+        // If the successor has not been evaluated and is passable
+        if (closed_list[north.x][north.y]==0 && is_passable(north) && is_valid(north))
         {
-            // If the successor has not been evaluated and is passable
-            if (closed_list[north.x][north.y]==0 && is_passable(north))
+            // cost of the cheapest path from start to n currently known
+            int g_new = cell_details[current.x][current.y].g_score + 1;
+            // h_score(n) estimates the cost to reach goal from node n
+            int f_new = g_new + calculate_h(north);
+
+            cerr << "north f_new: " << f_new << " ";
+            cerr << "north f_current: " << cell_details[north.x][north.y].f_score << endl;
+            if (f_new < cell_details[north.x][north.y].f_score) // new path is better
             {
-                // cost of the cheapest path from start to n currently known
-                int g_new = cell_details[current.x][current.y].g_score + 1;
-                // h_score(n) estimates the cost to reach goal from node n
-                int f_new = g_new + calculate_h(north);
-
-                cerr << "north f_new: " << f_new << " ";
-                cerr << "north f_current: " << cell_details[north.x][north.y].f_score << endl;
-                if (f_new < cell_details[north.x][north.y].f_score) // new path is better
+                // Update the details of this cell
+                cell_details[north.x][north.y] = Cell{g_new, f_new, current};
+                // If it isn’t on the open list, add it to the open list.
+                if(open_list[north.x][north.y]==0)
                 {
-                    // Update the details of this cell
-                    cell_details[north.x][north.y] = Cell{g_new, f_new, current};
-                    // If it isn’t on the open list, add it to the open list.
-                    if(open_list[north.x][north.y]==0)
-                    {
-                        open_list[north.x][north.y] = 1;
-                        open_set.insert(OpenNode{f_new, north});
+                    open_list[north.x][north.y] = 1;
+                    open_set.insert(OpenNode{f_new, north});
 
-                        cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
-                        print_open_list();
-                        print_closed_list();
-                    }
+                    cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
+                    print_open_list();
+                    print_closed_list();
                 }
             }
         }
