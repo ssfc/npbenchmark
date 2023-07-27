@@ -270,15 +270,21 @@ bool AStar::a_star_search()
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
 
+        // A* LINE 10
+        // if current = goal
         if (is_destination(current))
         {
             cerr << "The destination cell is found\n";
+            // A* LINE 11
+            // return reconstruct_path(cameFrom, current)
             trace_path();
 
             return true;
         }
 
-        // Remove this vertex from the open set
+        // A* LINE 12
+        // openSet.Remove(current)
+        // meaning: Remove this vertex from the open set
         open_set.erase(open_set.begin());
         open_list[current.x][current.y] = 0;
 
@@ -306,6 +312,8 @@ bool AStar::a_star_search()
         E --> East	 (current_x+1, current_y)
          */
 
+        // A* LINE 13
+        // for each neighbor of current
         //----------- 1st Successor (North) ------------
         auto north = Coordinate{current.x, current.y + 1};
         // Only process this cell if this is a valid one
@@ -339,6 +347,8 @@ bool AStar::a_star_search()
             }
         }
 
+        // A* LINE 13
+        // for each neighbor of current
         //----------- 2nd Successor (South) ------------
         auto south = Coordinate{current.x, current.y - 1};
         // Only process this cell if it is valid
@@ -371,6 +381,8 @@ bool AStar::a_star_search()
             }
         }
 
+        // A* LINE 13
+        // for each neighbor of current
         //----------- 3rd Successor (West) ------------
         auto west = Coordinate{current.x - 1, current.y};
         // Only process this cell if this is a valid one
@@ -403,6 +415,8 @@ bool AStar::a_star_search()
             }
         }
 
+        // A* LINE 13
+        // for each neighbor of current
         //----------- 4th Successor (East) ------------
         auto east = Coordinate{current.x + 1, current.y};
         // Only process this cell if this is a valid one

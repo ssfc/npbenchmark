@@ -231,12 +231,19 @@ function A_Star(start, goal, h_score)
 
     // A* LINE 8
     while openSet is not empty
+        // A* LINE 9
         // This operation can occur in O(Log(N)) time if openSet is a min-heap or a priority queue
         current := the node in openSet having the lowest fScore[] value
+            
+        // A* LINE 10
         if current = goal
+            // A* LINE 11
             return reconstruct_path(cameFrom, current)
 
+        // A* LINE 12
         openSet.Remove(current)
+            
+        // A* LINE 13
         for each neighbor of current
             // d(current,neighbor) is the weight of the edge from current to neighbor
             // tentative_gScore is the distance from start to the neighbor through current
