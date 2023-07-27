@@ -172,6 +172,7 @@ using Pair = std::pair<int, int>;
 ### Q: 用中文解读A*伪代码（from wikipedia）： 
 
 ```c++
+// A* LINE 1
 function reconstruct_path(cameFrom, current)
     total_path := {current}
     while current in cameFrom.Keys:
