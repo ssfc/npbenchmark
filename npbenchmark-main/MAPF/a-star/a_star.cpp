@@ -328,32 +328,28 @@ bool AStar::a_star_search()
 
         //----------- 3rd Successor (West) ------------
         auto west = Coordinate{current.x - 1, current.y};
-        // Only process this cell if this is a valid one
-        if (is_valid(west))
+        // If the successor has not been evaluated and is passable
+        if (closed_list[west.x][west.y]==0 && is_passable(west) && is_valid(west))
         {
-            // If the successor has not been evaluated and is passable
-            if (closed_list[west.x][west.y]==0 && is_passable(west))
+            int g_new = cell_details[current.x][current.y].g_score + 1;
+            int f_new = g_new + calculate_h(west);
+
+            cerr << "west f_new: " << f_new << " ";
+            cerr << "west f_current: " << cell_details[west.x][west.y].f_score << endl;
+            // if new path is better
+            if (f_new < cell_details[west.x][west.y].f_score)
             {
-                int g_new = cell_details[current.x][current.y].g_score + 1;
-                int f_new = g_new + calculate_h(west);
-
-                cerr << "west f_new: " << f_new << " ";
-                cerr << "west f_current: " << cell_details[west.x][west.y].f_score << endl;
-                // if new path is better
-                if (f_new < cell_details[west.x][west.y].f_score)
+                // Update the details of this cell
+                cell_details[west.x][west.y] = Cell{g_new, f_new, current};
+                // If it isn’t on the open list, add it to the open list.
+                if(open_list[west.x][west.y]==0)
                 {
-                    // Update the details of this cell
-                    cell_details[west.x][west.y] = Cell{g_new, f_new, current};
-                    // If it isn’t on the open list, add it to the open list.
-                    if(open_list[west.x][west.y]==0)
-                    {
-                        open_list[west.x][west.y] = 1;
-                        open_set.insert(OpenNode{f_new, west});
+                    open_list[west.x][west.y] = 1;
+                    open_set.insert(OpenNode{f_new, west});
 
-                        cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
-                        print_open_list();
-                        print_closed_list();
-                    }
+                    cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
+                    print_open_list();
+                    print_closed_list();
                 }
             }
         }
