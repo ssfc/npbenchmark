@@ -111,7 +111,7 @@ int AStar::calculate_h(Coordinate position) const
             + abs(position.y - dest.y));
 }
 
-// A* LINE 1
+// construct path LINE 1
 // function reconstruct_path(cameFrom, current)
 // cameFrom: 当前节点的前驱（或者说父节点）
 // current: 当前节点
@@ -126,7 +126,7 @@ void AStar::trace_path()
     int row = dest.x;
     int col = dest.y;
 
-    // A* LINE 2
+    // construct path LINE 2
     // total_path := {current}
     // current: 当前节点
     // total_path: 已经构造的路径
@@ -134,7 +134,7 @@ void AStar::trace_path()
     stack<Coordinate> Path;
     Path.emplace(Coordinate{row, col});
 
-    // A* LINE 3
+    // construct path LINE 3
     // while current in cameFrom.Keys:
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
@@ -142,7 +142,7 @@ void AStar::trace_path()
     while (!(cell_details[row][col].parent.x == -2
              && cell_details[row][col].parent.y == -2))
     {
-        // A* LINE 4
+        // construct path LINE 4
         // current := cameFrom[current]
         // cameFrom: 储存节点的前驱（或者说父节点）
         // current: 当前节点
@@ -151,7 +151,7 @@ void AStar::trace_path()
         row = temp_row;
         col = temp_col;
 
-        // A* LINE 5
+        // construct path LINE 5
         // total_path.prepend(current)
         // meaning: add current node to path
         Path.emplace(Coordinate{row, col});
@@ -161,7 +161,7 @@ void AStar::trace_path()
     ofstream path_file("path.txt");
     if (path_file.is_open())
     {
-        // A* LINE 6
+        // construct path LINE 6
         cerr << "total cost: " << Path.size() << endl;
         path_file << Path.size() << "\n";
         cerr << "The Path is ";
