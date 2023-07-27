@@ -322,6 +322,10 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
+                // A* LINE 14
+                // d(current,neighbor) is the weight of the edge from current to neighbor
+                // tentative_gScore is the distance from start to the neighbor through current
+                // tentative_gScore := gScore[current] + d(current, neighbor)
                 // cost of the cheapest path from start to n currently known
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 // h_score(n) estimates the cost to reach goal from node n
@@ -357,6 +361,10 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
+                // A* LINE 14
+                // d(current,neighbor) is the weight of the edge from current to neighbor
+                // tentative_gScore is the distance from start to the neighbor through current
+                // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(south);
 
@@ -391,6 +399,10 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
+                // A* LINE 14
+                // d(current,neighbor) is the weight of the edge from current to neighbor
+                // tentative_gScore is the distance from start to the neighbor through current
+                // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(west);
 
@@ -425,6 +437,10 @@ bool AStar::a_star_search()
             // If the successor has not been evaluated and is passable
             if (closed_list[east.x][east.y]==0 && is_passable(east))
             {
+                // A* LINE 14
+                // d(current,neighbor) is the weight of the edge from current to neighbor
+                // tentative_gScore is the distance from start to the neighbor through current
+                // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(east);
 

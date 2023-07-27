@@ -245,6 +245,7 @@ function A_Star(start, goal, h_score)
             
         // A* LINE 13
         for each neighbor of current
+            // A* LINE 14
             // d(current,neighbor) is the weight of the edge from current to neighbor
             // tentative_gScore is the distance from start to the neighbor through current
             tentative_gScore := gScore[current] + d(current, neighbor)
