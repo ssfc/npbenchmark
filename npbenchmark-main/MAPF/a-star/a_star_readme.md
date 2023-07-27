@@ -203,15 +203,18 @@ function reconstruct_path(cameFrom, current)
 // h_score is the heuristic function. h_score(n) estimates the cost to reach goal from node n.
 function A_Star(start, goal, h_score)
             
+    // A* LINE 2
     // The set of discovered nodes that may need to be (re-)expanded.
     // Initially, only the start node is known.
     // This is usually implemented as a min-heap or priority queue rather than a hash-set.
     openSet := {start}
 
+	// A* LINE 3
     // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from the start
     // to n currently known.
     cameFrom := an empty map
 
+    // A* LINE 4
     // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
     gScore := map with default value of Infinity
     gScore[start] := 0

@@ -60,6 +60,10 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
         cerr << "Error opening file." << endl;
     }
 
+    // A* LINE 3
+    // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from the start
+    // to n currently known.
+    // cameFrom := an empty map
     cell_details.resize(num_rows);
     for(int i=0;i<num_rows;i++)
     {
@@ -233,6 +237,11 @@ bool AStar::a_star_search()
     This open list is implemented as a set of pair.*/
     set<OpenNode> open_set;
 
+    // A* LINE 2
+    // The set of discovered nodes that may need to be (re-)expanded.
+    // Initially, only the start node is known.
+    // This is usually implemented as a min-heap or priority queue rather than a hash-set.
+    // openSet := {start}
     // Put the starting cell on the open list and set its 'f_score' as 0
     open_set.insert(OpenNode{f_start, src});
     open_list[src.x][src.y] = 1;
