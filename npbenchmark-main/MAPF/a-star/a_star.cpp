@@ -328,8 +328,6 @@ bool AStar::a_star_search()
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 // cost of the cheapest path from start to n currently known
                 int g_new = cell_details[current.x][current.y].g_score + 1;
-                // h_score(n) estimates the cost to reach goal from node n
-                int f_new = g_new + calculate_h(north);
 
                 cerr << "north g_new: " << g_new << " ";
                 cerr << "north g_current: " << cell_details[north.x][north.y].g_score << endl;
@@ -338,6 +336,7 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[north.x][north.y].g_score) // new path is better
                 {
+                    int f_new = g_new + calculate_h(north);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
@@ -373,7 +372,6 @@ bool AStar::a_star_search()
                 // tentative_gScore is the distance from start to the neighbor through current
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
-                int f_new = g_new + calculate_h(south);
 
                 cerr << "south g_new: " << g_new << " ";
                 cerr << "south g_current: " << cell_details[south.x][south.y].g_score << endl;
@@ -382,6 +380,8 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[south.x][south.y].g_score)
                 {
+                    int f_new = g_new + calculate_h(south);
+
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
@@ -417,7 +417,6 @@ bool AStar::a_star_search()
                 // tentative_gScore is the distance from start to the neighbor through current
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
-                int f_new = g_new + calculate_h(west);
 
                 cerr << "west g_new: " << g_new << " ";
                 cerr << "west g_current: " << cell_details[west.x][west.y].g_score << endl;
@@ -426,6 +425,7 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[west.x][west.y].g_score)
                 {
+                    int f_new = g_new + calculate_h(west);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
@@ -461,7 +461,6 @@ bool AStar::a_star_search()
                 // tentative_gScore is the distance from start to the neighbor through current
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
-                int f_new = g_new + calculate_h(east);
 
                 cerr << "east g_new: " << g_new << " ";
                 cerr << "east g_current: " << cell_details[east.x][east.y].g_score << endl;
@@ -470,6 +469,7 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[east.x][east.y].g_score)
                 {
+                    int f_new = g_new + calculate_h(east);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
