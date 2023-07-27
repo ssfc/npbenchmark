@@ -249,8 +249,10 @@ function A_Star(start, goal, h_score)
             // d(current,neighbor) is the weight of the edge from current to neighbor
             // tentative_gScore is the distance from start to the neighbor through current
             tentative_gScore := gScore[current] + d(current, neighbor)
+                
+            // A* LINE 15
             if tentative_gScore < gScore[neighbor]
-                // This path to neighbor is better than any previous one. Record it!
+            // meaning: This path to neighbor is better than any previous one. Record it!
                 cameFrom[neighbor] := current
                 gScore[neighbor] := tentative_gScore
                 fScore[neighbor] := tentative_gScore + h_score(neighbor)
@@ -391,3 +393,13 @@ vector<Node> generateSuccessors(Node currentNode) {
 3. 中间节点：在A*算法的执行过程中，除了起点和终点，还会探索和评估其他中间节点。这些中间节点可能在结束时包含在closed list中。
 
 总结：A*算法结束时，closed list会包含起始节点、终点（如果可达），以及所有被完全探索过的中间节点。这些节点都已经被算法遍历和评估过，形成了最优路径。
+
+### Q: A*算法在更新节点信息时，比较的是f_new和f_old的大小，还是g_new和g_old的大小？
+
+A*算法在更新节点信息时比较的是g_new和g_old的大小，而不是f_new和f_old的大小。
+
+在A*算法中，节点的f值表示从起始节点经过该节点到目标节点的估计总代价，即 f(n) = g(n) + h(n)。其中，g(n)是从起始节点到节点n的实际代价（已经走过的路径的代价），h(n)是从节点n到目标节点的启发式估计代价。
+
+在进行节点更新时，我们只关心实际代价g值的变化。当发现一条更优的路径到达某个节点时，需要比较新的实际代价g_new和旧的实际代价g_old的大小。如果g_new小于g_old，则说明新的路径比旧的路径更优，需要更新该节点的信息（更新g值、父节点等），并将该节点加入到开放集中（frontier）等待进一步扩展。
+
+对f值的比较并不会影响算法的正确性，因为只要g值是更优的，那么f值也必然更优。然而，对于A*算法的性能来说，只比较g值而不需要计算h值（启发式函数的计算可能较为复杂）可以节省计算开销，因此通常我们只关注g值的比较。
