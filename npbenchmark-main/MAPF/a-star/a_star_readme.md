@@ -174,6 +174,10 @@ using Pair = std::pair<int, int>;
 ```c++
 // A* LINE 1
 function reconstruct_path(cameFrom, current)
+// cameFrom: 当前节点的前驱（或者说父节点）
+// current: 当前节点
+// meaning: 构造出agent path
+    
     total_path := {current}
     while current in cameFrom.Keys:
         current := cameFrom[current]
