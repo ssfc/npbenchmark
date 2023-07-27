@@ -172,30 +172,30 @@ using Pair = std::pair<int, int>;
 ### Q: 用中文解读A*伪代码（from wikipedia）： 
 
 ```c++
-// A* LINE 1
+// construct path LINE 1
 function reconstruct_path(cameFrom, current)
 // cameFrom: 储存节点的前驱（或者说父节点）
 // current: 当前节点
 // meaning: 构造出agent path
     
-    // A* LINE 2
+    // construct path LINE 2
     total_path := {current}
     // current: 当前节点
     // total_path: 已经构造的路径
 
-    // A* LINE 3
+    // construct path LINE 3
     while current in cameFrom.Keys:
 
-		// A* LINE 4
+		// construct path LINE 4
         current := cameFrom[current]
         // cameFrom: 储存节点的前驱（或者说父节点）
 		// current: 当前节点
             
-        // A* LINE 5
+        // construct path LINE 5
         total_path.prepend(current)
         // meaning: add current node to path
             
-    // A* LINE 6
+    // construct path LINE 6
     return total_path
 
 // A* finds a path from start to goal.
