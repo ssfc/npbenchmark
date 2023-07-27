@@ -111,7 +111,11 @@ int AStar::calculate_h(Coordinate position) const
             + abs(position.y - dest.y));
 }
 
-// trace the path from the source to destination
+// A* LINE 1
+// function reconstruct_path(cameFrom, current)
+// cameFrom: 当前节点的前驱（或者说父节点）
+// current: 当前节点
+// meaning: 构造出agent path
 void AStar::trace_path()
 {
     double elapsed_time = (clock() - start_time) / CLOCKS_PER_SEC;

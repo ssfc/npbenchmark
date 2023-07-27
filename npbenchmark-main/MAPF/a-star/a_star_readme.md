@@ -178,7 +178,11 @@ function reconstruct_path(cameFrom, current)
 // current: 当前节点
 // meaning: 构造出agent path
     
+    // A* LINE 2
     total_path := {current}
+    // current: 当前节点
+    // total_path: 已经构造的路径
+
     while current in cameFrom.Keys:
         current := cameFrom[current]
         total_path.prepend(current)
