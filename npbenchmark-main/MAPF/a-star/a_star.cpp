@@ -64,6 +64,15 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
     // For node n, cameFrom[n] is the node immediately preceding it on the cheapest path from the start
     // to n currently known.
     // cameFrom := an empty map
+
+    // A* LINE 4
+    // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
+    // gScore := map with default value of Infinity
+
+    // A* LINE 6
+    // For node n, fScore[n] := gScore[n] + h_score(n). fScore[n] represents our current best guess as to
+    // how cheap a path could be from start to finish if it goes through n.
+    // fScore := map with default value of Infinity
     cell_details.resize(num_rows);
     for(int i=0;i<num_rows;i++)
     {
@@ -224,10 +233,14 @@ bool AStar::a_star_search()
 
     // Create a closed list and initialise it to false which means that no cell has been included yet
     // This closed list is implemented as a boolean 2D array
-    // closed list是bool二维数组, open list是set, 有点诡异。
 
+    // A* LINE 7
+    // fScore[start] := h_score(start)
     // Initialising the parameters of the starting node
     int f_start = calculate_h(src);
+
+    // A* LINE 5
+    // gScore[start] := 0
     cell_details[src.x][src.y] = Cell{0, f_start, Coordinate{-2, -2}};
 
     /*
@@ -250,6 +263,8 @@ bool AStar::a_star_search()
     print_open_list(); // print_open_list();
     print_closed_list();
 
+    // A* LINE 8
+    // while openSet is not empty
     while (!open_set.empty() && iter < INT_MAX)
     {
         cerr << "iter: " << iter << endl;

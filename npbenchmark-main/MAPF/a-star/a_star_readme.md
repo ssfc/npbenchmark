@@ -217,13 +217,19 @@ function A_Star(start, goal, h_score)
     // A* LINE 4
     // For node n, gScore[n] is the cost of the cheapest path from start to n currently known.
     gScore := map with default value of Infinity
+        
+    // A* LINE 5
     gScore[start] := 0
 
+    // A* LINE 6
     // For node n, fScore[n] := gScore[n] + h_score(n). fScore[n] represents our current best guess as to
     // how cheap a path could be from start to finish if it goes through n.
     fScore := map with default value of Infinity
+        
+    // A* LINE 7
     fScore[start] := h_score(start)
 
+    // A* LINE 8
     while openSet is not empty
         // This operation can occur in O(Log(N)) time if openSet is a min-heap or a priority queue
         current := the node in openSet having the lowest fScore[] value
