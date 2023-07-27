@@ -262,7 +262,10 @@ function A_Star(start, goal, h_score)
                 
                 // A* LINE 18
                 fScore[neighbor] := tentative_gScore + h_score(neighbor)
+                
+                // A* LINE 19
                 if neighbor not in openSet
+                    // A* LINE 20
                     openSet.add(neighbor)
 
     // Open set is empty but goal was never reached
