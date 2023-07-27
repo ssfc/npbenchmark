@@ -1,5 +1,6 @@
 // A C++ Program to implement A* Search Algorithm
 // https://www.geeksforgeeks.org/a-search-algorithm/
+// pseudocode at : https://en.wikipedia.org/wiki/A*_search_algorithm
 #include <utility>
 #include "a_star.h"
 
