@@ -271,85 +271,97 @@ bool AStar::a_star_search()
 
         //----------- 1st Successor (North) ------------
         auto north = Coordinate{current.x, current.y + 1};
-        // If the successor has not been evaluated and is passable
-        if (closed_list[north.x][north.y]==0 && is_passable(north) && is_valid(north))
+        // Only process this cell if this is a valid one
+        if (is_valid(north))
         {
-            // cost of the cheapest path from start to n currently known
-            int g_new = cell_details[current.x][current.y].g_score + 1;
-            // h_score(n) estimates the cost to reach goal from node n
-            int f_new = g_new + calculate_h(north);
-
-            cerr << "north f_new: " << f_new << " ";
-            cerr << "north f_current: " << cell_details[north.x][north.y].f_score << endl;
-            if (f_new < cell_details[north.x][north.y].f_score) // new path is better
+            // If the successor has not been evaluated and is passable
+            if (closed_list[north.x][north.y]==0 && is_passable(north))
             {
-                // Update the details of this cell
-                cell_details[north.x][north.y] = Cell{g_new, f_new, current};
-                // If it isn’t on the open list, add it to the open list.
-                if(open_list[north.x][north.y]==0)
-                {
-                    open_list[north.x][north.y] = 1;
-                    open_set.insert(OpenNode{f_new, north});
+                // cost of the cheapest path from start to n currently known
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                // h_score(n) estimates the cost to reach goal from node n
+                int f_new = g_new + calculate_h(north);
 
-                    cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
-                    print_open_list();
-                    print_closed_list();
+                cerr << "north f_new: " << f_new << " ";
+                cerr << "north f_current: " << cell_details[north.x][north.y].f_score << endl;
+                if (f_new < cell_details[north.x][north.y].f_score) // new path is better
+                {
+                    // Update the details of this cell
+                    cell_details[north.x][north.y] = Cell{g_new, f_new, current};
+                    // If it isn’t on the open list, add it to the open list.
+                    if(open_list[north.x][north.y]==0)
+                    {
+                        open_list[north.x][north.y] = 1;
+                        open_set.insert(OpenNode{f_new, north});
+
+                        cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
+                    }
                 }
             }
         }
 
         //----------- 2nd Successor (South) ------------
         auto south = Coordinate{current.x, current.y - 1};
-        // If the successor has not been evaluated and is passable
-        if (closed_list[south.x][south.y]==0 && is_passable(south) && is_valid(south))
+        // Only process this cell if it is valid
+        if (is_valid(south))
         {
-            int g_new = cell_details[current.x][current.y].g_score + 1;
-            int f_new = g_new + calculate_h(south);
-
-            cerr << "south f_new: " << f_new << " ";
-            cerr << "south f_current: " << cell_details[south.x][south.y].f_score << endl;
-            // if new path is better
-            if (f_new < cell_details[south.x][south.y].f_score)
+            // If the successor has not been evaluated and is passable
+            if (closed_list[south.x][south.y]==0 && is_passable(south))
             {
-                // Update the details of this cell
-                cell_details[south.x][south.y] = Cell{g_new, f_new, current};
-                // If it isn’t on the open list, add it to the open list.
-                if(open_list[south.x][south.y]==0)
-                {
-                    open_list[south.x][south.y] = 1;
-                    open_set.insert(OpenNode{f_new, south});
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                int f_new = g_new + calculate_h(south);
 
-                    cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
-                    print_open_list();
-                    print_closed_list();
+                cerr << "south f_new: " << f_new << " ";
+                cerr << "south f_current: " << cell_details[south.x][south.y].f_score << endl;
+                // if new path is better
+                if (f_new < cell_details[south.x][south.y].f_score)
+                {
+                    // Update the details of this cell
+                    cell_details[south.x][south.y] = Cell{g_new, f_new, current};
+                    // If it isn’t on the open list, add it to the open list.
+                    if(open_list[south.x][south.y]==0)
+                    {
+                        open_list[south.x][south.y] = 1;
+                        open_set.insert(OpenNode{f_new, south});
+
+                        cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
+                    }
                 }
             }
         }
 
         //----------- 3rd Successor (West) ------------
         auto west = Coordinate{current.x - 1, current.y};
-        // If the successor has not been evaluated and is passable
-        if (closed_list[west.x][west.y]==0 && is_passable(west) && is_valid(west))
+        // Only process this cell if this is a valid one
+        if (is_valid(west))
         {
-            int g_new = cell_details[current.x][current.y].g_score + 1;
-            int f_new = g_new + calculate_h(west);
-
-            cerr << "west f_new: " << f_new << " ";
-            cerr << "west f_current: " << cell_details[west.x][west.y].f_score << endl;
-            // if new path is better
-            if (f_new < cell_details[west.x][west.y].f_score)
+            // If the successor has not been evaluated and is passable
+            if (closed_list[west.x][west.y]==0 && is_passable(west))
             {
-                // Update the details of this cell
-                cell_details[west.x][west.y] = Cell{g_new, f_new, current};
-                // If it isn’t on the open list, add it to the open list.
-                if(open_list[west.x][west.y]==0)
-                {
-                    open_list[west.x][west.y] = 1;
-                    open_set.insert(OpenNode{f_new, west});
+                int g_new = cell_details[current.x][current.y].g_score + 1;
+                int f_new = g_new + calculate_h(west);
 
-                    cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
-                    print_open_list();
-                    print_closed_list();
+                cerr << "west f_new: " << f_new << " ";
+                cerr << "west f_current: " << cell_details[west.x][west.y].f_score << endl;
+                // if new path is better
+                if (f_new < cell_details[west.x][west.y].f_score)
+                {
+                    // Update the details of this cell
+                    cell_details[west.x][west.y] = Cell{g_new, f_new, current};
+                    // If it isn’t on the open list, add it to the open list.
+                    if(open_list[west.x][west.y]==0)
+                    {
+                        open_list[west.x][west.y] = 1;
+                        open_set.insert(OpenNode{f_new, west});
+
+                        cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
+                        print_open_list();
+                        print_closed_list();
+                    }
                 }
             }
         }
