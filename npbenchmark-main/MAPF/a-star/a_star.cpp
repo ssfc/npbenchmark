@@ -126,24 +126,28 @@ void AStar::trace_path()
     int row = dest.x;
     int col = dest.y;
 
+    // A* LINE 2
+    // total_path := {current}
+    // current: 当前节点
+    // total_path: 已经构造的路径
     // 接着创建了一个 stack 数据结构 Path 用于存储找到的最优路径.
     stack<Coordinate> Path;
+    Path.emplace(Coordinate{row, col});
 
+    // A* LINE 3
+    // while current in cameFrom.Keys:
     // 然后，通过一个 while 循环不断追踪回到起点，每次将当前位置 (row, col) 加入到 Path 中，然后将当前位置更新为其父节点的位置。
     // 这个过程会一直进行直到回到起点，即当前位置的父节点位置与其自身位置相同。
     // Comment: 看来这个程序的设定是起点的父就是自己,我的话倾向于设为-1。
     while (!(cell_details[row][col].parent.x == row
              && cell_details[row][col].parent.y == col))
     {
-        Path.emplace(Coordinate{row, col});
         int temp_row = cell_details[row][col].parent.x;
         int temp_col = cell_details[row][col].parent.y;
         row = temp_row;
         col = temp_col;
+        Path.emplace(Coordinate{row, col});
     }
-
-    // 接下来，将起点位置 (row, col) 也加入到 Path 中，此时 Path 中存储了完整的反向路径。
-    Path.emplace(Coordinate{row, col});
 
     // 最后，通过另一个 while 循环遍历 Path 并依次输出路径上的每个坐标 (row, col)，形式为 -> (row,col)。
     ofstream path_file("path.txt");
