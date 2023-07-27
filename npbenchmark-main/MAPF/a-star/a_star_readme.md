@@ -191,7 +191,11 @@ function reconstruct_path(cameFrom, current)
         // cameFrom: 储存节点的前驱（或者说父节点）
 		// current: 当前节点
             
+        // A* LINE 5
         total_path.prepend(current)
+        // meaning: add current node to path
+            
+    // A* LINE 6
     return total_path
 
 // A* finds a path from start to goal.

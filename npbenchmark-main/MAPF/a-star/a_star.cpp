@@ -142,10 +142,18 @@ void AStar::trace_path()
     while (!(cell_details[row][col].parent.x == -2
              && cell_details[row][col].parent.y == -2))
     {
+        // A* LINE 4
+        // current := cameFrom[current]
+        // cameFrom: 储存节点的前驱（或者说父节点）
+        // current: 当前节点
         int temp_row = cell_details[row][col].parent.x;
         int temp_col = cell_details[row][col].parent.y;
         row = temp_row;
         col = temp_col;
+
+        // A* LINE 5
+        // total_path.prepend(current)
+        // meaning: add current node to path
         Path.emplace(Coordinate{row, col});
     }
 
@@ -153,6 +161,7 @@ void AStar::trace_path()
     ofstream path_file("path.txt");
     if (path_file.is_open())
     {
+        // A* LINE 6
         cerr << "total cost: " << Path.size() << endl;
         path_file << Path.size() << "\n";
         cerr << "The Path is ";
