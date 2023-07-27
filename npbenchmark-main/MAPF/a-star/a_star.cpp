@@ -351,6 +351,8 @@ bool AStar::a_star_search()
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[north.x][north.y]==0)
                     {
+                        // A* LINE 20
+                        // openSet.add(neighbor)
                         open_list[north.x][north.y] = 1;
                         open_set.insert(OpenNode{f_new, north});
 
@@ -401,6 +403,8 @@ bool AStar::a_star_search()
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[south.x][south.y]==0)
                     {
+                        // A* LINE 20
+                        // openSet.add(neighbor)
                         open_list[south.x][south.y] = 1;
                         open_set.insert(OpenNode{f_new, south});
 
@@ -450,6 +454,8 @@ bool AStar::a_star_search()
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[west.x][west.y]==0)
                     {
+                        // A* LINE 20
+                        // openSet.add(neighbor)
                         open_list[west.x][west.y] = 1;
                         open_set.insert(OpenNode{f_new, west});
 
@@ -499,6 +505,8 @@ bool AStar::a_star_search()
                     // If it isn’t on the open list, add it to the open list.
                     if(open_list[east.x][east.y]==0)
                     {
+                        // A* LINE 20
+                        // openSet.add(neighbor)
                         open_list[east.x][east.y] = 1;
                         open_set.insert(OpenNode{f_new, east});
 
