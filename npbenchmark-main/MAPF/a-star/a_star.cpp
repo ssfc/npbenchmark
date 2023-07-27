@@ -336,6 +336,8 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[north.x][north.y].g_score) // new path is better
                 {
+                    // A* LINE 18
+                    // fScore[neighbor] := tentative_gScore + h_score(neighbor)
                     int f_new = g_new + calculate_h(north);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
@@ -380,6 +382,8 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[south.x][south.y].g_score)
                 {
+                    // A* LINE 18
+                    // fScore[neighbor] := tentative_gScore + h_score(neighbor)
                     int f_new = g_new + calculate_h(south);
 
                     // A* LINE 16
@@ -425,6 +429,8 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[west.x][west.y].g_score)
                 {
+                    // A* LINE 18
+                    // fScore[neighbor] := tentative_gScore + h_score(neighbor)
                     int f_new = g_new + calculate_h(west);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
@@ -469,6 +475,8 @@ bool AStar::a_star_search()
                 // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[east.x][east.y].g_score)
                 {
+                    // A* LINE 18
+                    // fScore[neighbor] := tentative_gScore + h_score(neighbor)
                     int f_new = g_new + calculate_h(east);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
