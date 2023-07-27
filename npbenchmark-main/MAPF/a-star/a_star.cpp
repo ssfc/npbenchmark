@@ -333,6 +333,9 @@ bool AStar::a_star_search()
 
                 cerr << "north g_new: " << g_new << " ";
                 cerr << "north g_current: " << cell_details[north.x][north.y].g_score << endl;
+                // A* LINE 15
+                // if tentative_gScore < gScore[neighbor]
+                // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[north.x][north.y].g_score) // new path is better
                 {
                     // Update the details of this cell
@@ -370,7 +373,9 @@ bool AStar::a_star_search()
 
                 cerr << "south g_new: " << g_new << " ";
                 cerr << "south g_current: " << cell_details[south.x][south.y].g_score << endl;
-                // if new path is better
+                // A* LINE 15
+                // if tentative_gScore < gScore[neighbor]
+                // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[south.x][south.y].g_score)
                 {
                     // Update the details of this cell
@@ -408,7 +413,9 @@ bool AStar::a_star_search()
 
                 cerr << "west g_new: " << g_new << " ";
                 cerr << "west g_current: " << cell_details[west.x][west.y].g_score << endl;
-                // if new path is better
+                // A* LINE 15
+                // if tentative_gScore < gScore[neighbor]
+                // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[west.x][west.y].g_score)
                 {
                     // Update the details of this cell
@@ -446,7 +453,9 @@ bool AStar::a_star_search()
 
                 cerr << "east g_new: " << g_new << " ";
                 cerr << "east g_current: " << cell_details[east.x][east.y].g_score << endl;
-                // if new path is better
+                // A* LINE 15
+                // if tentative_gScore < gScore[neighbor]
+                // meaning: This path to neighbor is better than any previous one. Record it!
                 if (g_new < cell_details[east.x][east.y].g_score)
                 {
                     // Update the details of this cell
