@@ -179,6 +179,10 @@ void AStar::trace_path()
     }
 }
 
+// A* LINE 1
+// A* finds a path from start to goal.
+// h_score is the heuristic function. h_score(n) estimates the cost to reach goal from node n.
+// function A_Star(start, goal, h_score)
 // find the shortest path between a given source cell to a destination cell
 bool AStar::a_star_search()
 {

@@ -198,9 +198,11 @@ function reconstruct_path(cameFrom, current)
     // construct path LINE 6
     return total_path
 
+// A* LINE 1
 // A* finds a path from start to goal.
 // h_score is the heuristic function. h_score(n) estimates the cost to reach goal from node n.
 function A_Star(start, goal, h_score)
+            
     // The set of discovered nodes that may need to be (re-)expanded.
     // Initially, only the start node is known.
     // This is usually implemented as a min-heap or priority queue rather than a hash-set.
