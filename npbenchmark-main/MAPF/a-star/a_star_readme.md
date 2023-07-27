@@ -268,6 +268,7 @@ function A_Star(start, goal, h_score)
                     // A* LINE 20
                     openSet.add(neighbor)
 
+    // A* LINE 21
     // Open set is empty but goal was never reached
     return failure
 ```

@@ -521,6 +521,9 @@ bool AStar::a_star_search()
         iter++;
     }
 
+    // A* LINE 21
+    // Open set is empty but goal was never reached
+    // return failure
     // When the destination cell is not found and the open list is empty,
     // then we conclude that we failed to reach the destination cell.
     // This may happen when there is no way to destination cell (due to blockages)
