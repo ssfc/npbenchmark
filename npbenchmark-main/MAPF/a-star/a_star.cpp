@@ -331,9 +331,9 @@ bool AStar::a_star_search()
                 // h_score(n) estimates the cost to reach goal from node n
                 int f_new = g_new + calculate_h(north);
 
-                cerr << "north f_new: " << f_new << " ";
-                cerr << "north f_current: " << cell_details[north.x][north.y].f_score << endl;
-                if (f_new < cell_details[north.x][north.y].f_score) // new path is better
+                cerr << "north g_new: " << g_new << " ";
+                cerr << "north g_current: " << cell_details[north.x][north.y].g_score << endl;
+                if (g_new < cell_details[north.x][north.y].g_score) // new path is better
                 {
                     // Update the details of this cell
                     cell_details[north.x][north.y] = Cell{g_new, f_new, current};
@@ -368,10 +368,10 @@ bool AStar::a_star_search()
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(south);
 
-                cerr << "south f_new: " << f_new << " ";
-                cerr << "south f_current: " << cell_details[south.x][south.y].f_score << endl;
+                cerr << "south g_new: " << g_new << " ";
+                cerr << "south g_current: " << cell_details[south.x][south.y].g_score << endl;
                 // if new path is better
-                if (f_new < cell_details[south.x][south.y].f_score)
+                if (g_new < cell_details[south.x][south.y].g_score)
                 {
                     // Update the details of this cell
                     cell_details[south.x][south.y] = Cell{g_new, f_new, current};
@@ -406,10 +406,10 @@ bool AStar::a_star_search()
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(west);
 
-                cerr << "west f_new: " << f_new << " ";
-                cerr << "west f_current: " << cell_details[west.x][west.y].f_score << endl;
+                cerr << "west g_new: " << g_new << " ";
+                cerr << "west g_current: " << cell_details[west.x][west.y].g_score << endl;
                 // if new path is better
-                if (f_new < cell_details[west.x][west.y].f_score)
+                if (g_new < cell_details[west.x][west.y].g_score)
                 {
                     // Update the details of this cell
                     cell_details[west.x][west.y] = Cell{g_new, f_new, current};
@@ -444,10 +444,10 @@ bool AStar::a_star_search()
                 int g_new = cell_details[current.x][current.y].g_score + 1;
                 int f_new = g_new + calculate_h(east);
 
-                cerr << "east f_new: " << f_new << " ";
-                cerr << "east f_current: " << cell_details[east.x][east.y].f_score << endl;
+                cerr << "east g_new: " << g_new << " ";
+                cerr << "east g_current: " << cell_details[east.x][east.y].g_score << endl;
                 // if new path is better
-                if (f_new < cell_details[east.x][east.y].f_score)
+                if (g_new < cell_details[east.x][east.y].g_score)
                 {
                     // Update the details of this cell
                     cell_details[east.x][east.y] = Cell{g_new, f_new, current};
