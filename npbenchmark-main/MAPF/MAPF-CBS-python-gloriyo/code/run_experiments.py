@@ -18,11 +18,11 @@ HLSOLVER = "CBS"
 LLSOLVER = "a_star"
 
 
-def print_mapf_instance(input_map, starts, goals):
+def print_mapf_instance(input_map, input_start, input_goal):
     print('Start locations')
-    print_locations(input_map, starts)
+    print_locations(input_map, input_start)
     print('Goal locations')
-    print_locations(input_map, goals)
+    print_locations(input_map, input_goal)
 
 
 def print_locations(input_map, locations):
