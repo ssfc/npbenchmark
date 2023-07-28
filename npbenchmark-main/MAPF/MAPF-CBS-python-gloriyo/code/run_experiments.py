@@ -70,7 +70,7 @@ def import_mapf_instance(filename):
     import_goal = []
     for a in range(num_agents):
         line = f.readline()
-        sx, sy, gx, gy = [int(x) for x in line.split(' ')]
+        sx, sy, gx, gy = [int(x) for x in line.split(' ')]  # 用的是屏幕坐标系，原点在左上角，x轴向下，y轴向右。
         import_start.append((sx, sy))
         import_goal.append((gx, gy))
     f.close()
