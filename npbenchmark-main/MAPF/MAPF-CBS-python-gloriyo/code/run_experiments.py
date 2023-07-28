@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
         print("***Import an instance***")
 
-        print(file)
+        print(file)  # print filename
         my_map, starts, goals = import_mapf_instance(file)
         print_mapf_instance(my_map, starts, goals)
 
