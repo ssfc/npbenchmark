@@ -124,3 +124,32 @@ with file_path.open() as file:
 4. 更好的错误处理：使用 `pathlib` 的 `Path` 类可以更好地处理文件路径不存在或其他错误情况。例如，使用 `Path` 对象的 `open` 方法时，如果文件路径不存在，它会自动抛出 `FileNotFoundError` 异常，而不需要显式地检查文件是否存在。
 
 综上所述，虽然直接使用 `open` 内置函数是一种简单的方法来打开文件，但是使用 `pathlib` 模块提供的 `Path` 类可以更加灵活、面向对象，且在处理文件路径时更加优雅和方便，尤其适用于复杂的文件操作场景。如果你的代码需要频繁进行文件路径操作，那么使用 `pathlib` 可能会更加方便和推荐。
+
+### Q: parser.add_argument('--batch', action='store_true'中的action='store_true'是啥意思？
+
+在 `argparse` 中，`action='store_true'` 是一个参数解析的动作(action)，用于指示当命令行中出现指定的参数时，将对应的变量设为 `True`。它通常与 `parser.add_argument` 一起使用，用于解析命令行参数并将结果存储到相应的变量中。
+
+具体来说，当命令行中出现 `--batch` 这个参数时，`action='store_true'` 的作用是将 `args.batch` 这个变量设为 `True`。如果在命令行中没有出现 `--batch` 参数，则 `args.batch` 会保持默认的值，通常是 `False`。
+
+以下是一个简单的示例：
+
+```python
+import argparse
+
+# 创建 ArgumentParser 对象
+parser = argparse.ArgumentParser()
+
+# 添加命令行参数 --batch，并指定动作为 'store_true'
+parser.add_argument('--batch', action='store_true')
+
+# 解析命令行参数
+args = parser.parse_args()
+
+# 根据命令行参数的情况，执行不同的操作
+if args.batch:
+    print("Batch mode is enabled.")
+else:
+    print("Batch mode is disabled.")
+```
+
+假设你在命令行中运行脚本时带上了 `--batch` 参数，那么 `args.batch` 将被设置为 `True`，并且会输出 "Batch mode is enabled."；如果你不带上 `--batch` 参数，则 `args.batch` 保持默认值 `False`，输出 "Batch mode is disabled."。
