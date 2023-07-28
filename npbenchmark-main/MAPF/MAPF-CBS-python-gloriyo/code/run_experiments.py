@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
         if args.hlsolver == "CBS":  # 执行CBS算法
             print("***Run CBS***")
-            cbs = CBSSolver(test_map, test_start, test_goal)
+            cbs = CBSSolver(test_map, test_start, test_goal)  # 原来是初始化一个类
             # solution = cbs.find_solution(args.disjoint)
 
             # if solution is not None:
