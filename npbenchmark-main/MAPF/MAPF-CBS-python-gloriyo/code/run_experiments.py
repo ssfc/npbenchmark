@@ -53,15 +53,15 @@ def import_mapf_instance(filename):
     rows = int(rows)
     columns = int(columns)
     # #rows lines with the map
-    my_map = []
+    imported_map = []
     for r in range(rows):
         line = f.readline()
-        my_map.append([])
+        imported_map.append([])
         for cell in line:
             if cell == '@':
-                my_map[-1].append(True)
+                imported_map[-1].append(True)
             elif cell == '.':
-                my_map[-1].append(False)
+                imported_map[-1].append(False)
     # #agents
     line = f.readline()
     num_agents = int(line)
@@ -74,7 +74,7 @@ def import_mapf_instance(filename):
         starts.append((sx, sy))
         goals.append((gx, gy))
     f.close()
-    return my_map, starts, goals
+    return imported_map, starts, goals
 
 
 if __name__ == '__main__':
