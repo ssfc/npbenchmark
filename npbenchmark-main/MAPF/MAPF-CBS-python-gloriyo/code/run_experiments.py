@@ -132,11 +132,11 @@ if __name__ == '__main__':
 
         elif args.hlsolver == "ICBS_CB":  # 执行ICBS with CB算法
             print("***Run ICBS with CB***")
-            cbs = ICBS_CB_Solver(test_map, test_start, test_goal)
+            cbs = ICBS_CB_Solver(test_map, test_start, test_goal)  # 原来是初始化一个类
 
         elif args.hlsolver == "ICBS":  # 执行ICBS算法 Comment: 看来总共有3种算法
             print("***Run ICBS***")
-            cbs = ICBS_Solver(test_map, test_start, test_goal)
+            cbs = ICBS_Solver(test_map, test_start, test_goal)  # 原来是初始化一个类
             # solution = cbs.find_solution(args.disjoint)
 
             # if solution is not None:
