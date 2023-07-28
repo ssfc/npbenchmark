@@ -115,9 +115,9 @@ if __name__ == '__main__':
 
         print(file)  # print filename
         test_map, test_start, test_goal = import_mapf_instance(file)
-        print_mapf_instance(test_map, test_start, test_goal)
+        print_mapf_instance(test_map, test_start, test_goal)  # 在map中表明agent的起点和终点
 
-        if args.hlsolver == "CBS":
+        if args.hlsolver == "CBS":  # 执行CBS算法
             print("***Run CBS***")
             cbs = CBSSolver(test_map, test_start, test_goal)
             # solution = cbs.find_solution(args.disjoint)
@@ -130,11 +130,11 @@ if __name__ == '__main__':
             # else:
             #     raise BaseException('No solutions')
 
-        elif args.hlsolver == "ICBS_CB":
+        elif args.hlsolver == "ICBS_CB":  # 执行ICBS with CB算法
             print("***Run ICBS with CB***")
             cbs = ICBS_CB_Solver(test_map, test_start, test_goal)
 
-        elif args.hlsolver == "ICBS":
+        elif args.hlsolver == "ICBS":  # 执行ICBS算法 Comment: 看来总共有3种算法
             print("***Run ICBS***")
             cbs = ICBS_Solver(test_map, test_start, test_goal)
             # solution = cbs.find_solution(args.disjoint)
