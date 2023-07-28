@@ -202,6 +202,38 @@ else:
 
 虽然使用 `if` 语句汇报异常也是一种方式，但它往往不如 `raise` 语句灵活，不能提供清晰的异常类型和详细的异常信息，也不支持异常链式传递和自定义异常类。因此，Python 推荐使用 `raise` 语句来汇报异常，以实现更加规范、明确和可定制化的异常处理。
 
+### Q: import time as timer是啥意思？
+
+`import time as timer` 是 Python 中的一种导入模块的语法。它的意思是将 Python 内置的 `time` 模块导入，并将其别名设置为 `timer`，以便在代码中使用更简洁的名称来引用该模块。
+
+通常情况下，我们可以直接使用 `import time` 来导入 `time` 模块，然后在代码中使用 `time` 模块的功能，比如获取当前时间、进行时间延迟等。例如：
+
+```python
+import time
+
+# 获取当前时间戳
+timestamp = time.time()
+
+# 进行时间延迟，暂停1秒
+time.sleep(1)
+```
+
+但有时候，如果模块名过长或容易与其他变量名冲突，可以使用 `as` 关键字为模块指定一个别名。在上面的例子中，使用 `import time as timer` 后，我们可以像下面这样使用 `timer` 来代替 `time` 模块：
+
+```python
+import time as timer
+
+# 获取当前时间戳
+timestamp = timer.time()
+
+# 进行时间延迟，暂停1秒
+timer.sleep(1)
+```
+
+通过给模块指定别名，可以简化代码，并且避免潜在的命名冲突。当然，给模块指定别名并不是必须的，取决于开发者的个人喜好和代码的需求。
+
+
+
 
 
 \*\*\*Import an instance\***
