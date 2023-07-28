@@ -185,3 +185,3532 @@ else:
 在你提供的代码中，`buffering=1` 表示打开文件 "results.csv" 时使用行缓冲。这意味着数据会被缓存在内存中，直到遇到换行符，然后将整行数据一次性写入文件。行缓冲适用于以行为单位进行写入的情况，通常在处理文本文件时使用。
 
 如果你希望立即将数据写入文件，可以将 `buffering` 参数设置为 0，这样可以禁用缓冲。当然，如果数据量较大，适当使用缓冲可以提高写入效率。具体要根据你的需求来选择适合的缓冲方式。
+
+\*\*\*Import an instance\***
+instances/test_1.txt
+Start locations
+3 . @ . . . . .
+4 0 . @ . . . .
+. . @ . . . . .
+. . . . . . . .
+. . . 2 . . . @
+. . . . . @ . .
+. . . . . . @ .
+. . . . . . 1 .
+
+Goal locations
+1 . @ . . . . .
+. 2 . @ . . . .
+. . @ . . . . .
+0 . . . . . . .
+. . . . . . . @
+. . . . 3 @ 4 .
+. . . . . . @ .
+. . . . . . . .
+
+***Run CBS***
+USING:  <function standard_splitting at 0x00000230C18F5550>
+
+> build constraint table
+> {}
+> [(1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (0, 1), (0, 0)]
+> build constraint table
+> {}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> build constraint table
+> {}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 0
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 1
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 3
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 5
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 8
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 9
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 6
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 14
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 16
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 17
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 13
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 21
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 22
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 24
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 26
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 27
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 29
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 2
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 35
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 37
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 40
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 38
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 44
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 46
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 41
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 49
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 43
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 53
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 54
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 56
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 58
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 47
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 63
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 59
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 67
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 61
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 71
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 7
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 15
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 23
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 25
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 28
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 32
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 39
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 45
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 55
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 57
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 60
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 70
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 76
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 78
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 82
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 84
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 86
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 88
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 90
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 94
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 96
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 98
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 99
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 101
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 103
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 10
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 125
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 126
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 128
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 130
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 12
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 135
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 136
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 138
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 140
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 18
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 146
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 148
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 20
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 152
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 154
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 30
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 157
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 158
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 160
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 162
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 34
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 167
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 168
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 170
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 172
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 42
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 177
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 178
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 180
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 182
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 48
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 188
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 190
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 52
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 193
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 194
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 196
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 198
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 62
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 203
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 204
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 206
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 208
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 66
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 214
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 216
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 68
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 0), (2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 219
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 220
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 222
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 224
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 74
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 229
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 230
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 232
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 234
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 80
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 92
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 109
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 243
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 111
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 247
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 113
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 251
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 145
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 255
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 258
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 151
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 261
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 264
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 187
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 267
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 270
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 213
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 273
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 276
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 239
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 11
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_a
+> gent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> Expand node 281
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_a
+> gent': {0}}], 3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 284
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 286
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 287
+
+ Found a solution!
+
+CPU time (s):    0.46
+Sum of costs:    41
+Expanded nodes:  145
+Generated nodes: 289
+Solution:
+agent 0 :  [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+agent 1 :  [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+agent 2 :  [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+agent 3 :  [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+agent 4 :  [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+[(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+[(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+[(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+[(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+[(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+***Test paths on a simulation***
+(base) PS C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code> python run_experiments.py  --instance "instances/test_1.txt" 
+***Import an instance***
+instances/test_1.txt
+Start locations
+3 . @ . . . . .
+4 0 . @ . . . .
+. . @ . . . . .
+. . . . . . . .
+. . . 2 . . . @
+. . . . . @ . .
+. . . . . . @ .
+. . . . . . 1 .
+
+Goal locations
+1 . @ . . . . .
+. 2 . @ . . . .
+. . @ . . . . .
+0 . . . . . . .
+. . . . . . . @
+. . . . 3 @ 4 .
+. . . . . . @ .
+. . . . . . . .
+
+Traceback (most recent call last):
+  File "C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code\run_experiments.py", line 120, in <module>
+    if args.hlsolver == "CBS":
+AttributeError: 'Namespace' object has no attribute 'hlsolver'
+(base) PS C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code> python run_experiments.py  --instance "instances/test_1.txt" 
+***Import an instance***
+instances/test_1.txt
+Start locations
+3 . @ . . . . .
+4 0 . @ . . . .
+. . @ . . . . .
+. . . . . . . .
+. . . 2 . . . @
+. . . . . @ . .
+. . . . . . @ .
+. . . . . . 1 .
+
+Goal locations
+1 . @ . . . . .
+. 2 . @ . . . .
+. . @ . . . . .
+0 . . . . . . .
+. . . . . . . @
+. . . . 3 @ 4 .
+. . . . . . @ .
+. . . . . . . .
+
+Traceback (most recent call last):
+  File "C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code\run_experiments.py", line 120, in <module>
+    if args.hlsolver == "CBS":
+AttributeError: 'Namespace' object has no attribute 'hlsolver'
+(base) PS C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code> python run_experiments.py  --instance "instances/test_1.txt" 
+***Import an instance***
+instances/test_1.txt
+Start locations
+3 . @ . . . . .
+4 0 . @ . . . .
+. . @ . . . . .
+. . . . . . . .
+. . . 2 . . . @
+. . . . . @ . .
+. . . . . . @ .
+. . . . . . 1 .
+
+Goal locations
+1 . @ . . . . .
+. 2 . @ . . . .
+. . @ . . . . .
+0 . . . . . . .
+. . . . . . . @
+. . . . 3 @ 4 .
+. . . . . . @ .
+. . . . . . . .
+
+***Run CBS***
+USING:  <function standard_splitting at 0x00000176E5895550>
+> build constraint table
+> {}
+> [(1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (0, 1), (0, 0)]
+> build constraint table
+> {}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> build constraint table
+> {}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 0
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 1
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 3
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 5
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 8
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 9
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 6
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 14
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 16
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 17
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 13
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 21
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 22
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 24
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 26
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 27
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 29
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 2
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 35
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 37
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 40
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 38
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 44
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 46
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 41
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 49
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 43
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 53
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 54
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 56
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 58
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 47
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 63
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 59
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 67
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 61
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 71
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 7
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 15
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 23
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 25
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 28
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 32
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 39
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 45
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 55
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 57
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 60
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 70
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 76
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 78
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 82
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 84
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 86
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 88
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 90
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 94
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 96
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 98
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 99
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 101
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 103
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 10
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 125
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 126
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 128
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 130
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 12
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 135
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 136
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 138
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 140
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 18
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 146
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 148
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 20
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 152
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 154
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 30
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 157
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 158
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 160
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 162
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 34
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 167
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 168
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 170
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 172
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 42
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 177
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 178
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 180
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 182
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 48
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 188
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 190
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 52
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 193
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 194
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 196
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 198
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 62
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 203
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 204
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 206
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 208
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 66
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 214
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 216
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 68
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 0), (2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 219
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 220
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 222
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 224
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 74
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 229
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 230
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 232
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 234
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 80
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 92
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 109
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 243
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 111
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 247
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 113
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 251
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 145
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 255
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 258
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 151
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 261
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 264
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 187
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 267
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 270
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 213
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 273
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 276
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 239
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 11
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_a
+> gent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> Expand node 281
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_a
+> gent': {0}}], 3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 284
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 286
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 287
+
+ Found a solution!
+
+CPU time (s):    0.58
+Sum of costs:    41
+Expanded nodes:  145
+Generated nodes: 289
+Solution:
+agent 0 :  [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+agent 1 :  [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+agent 2 :  [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+agent 3 :  [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+agent 4 :  [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+(base) PS C:\wamp64\www\npbenchmark\npbenchmark-main\MAPF\MAPF-CBS-python-gloriyo\code> python run_experiments.py  --instance "instances/test_1.txt" 
+***Import an instance***
+instances/test_1.txt
+Start locations
+3 . @ . . . . . 
+4 0 . @ . . . . 
+. . @ . . . . . 
+. . . . . . . . 
+. . . 2 . . . @
+. . . . . @ . .
+. . . . . . @ .
+. . . . . . 1 .
+
+Goal locations
+1 . @ . . . . .
+. 2 . @ . . . .
+. . @ . . . . .
+0 . . . . . . .
+. . . . . . . @
+. . . . 3 @ 4 .
+. . . . . . @ .
+. . . . . . . .
+
+***Run CBS***
+USING:  <function standard_splitting at 0x000002C5A5275550>
+> build constraint table
+> {}
+> [(1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (0, 1), (0, 0)]
+> build constraint table
+> {}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> build constraint table
+> {}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 0
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 1
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 3
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 5
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 8
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 9
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 6
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 14
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 16
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 17
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 13
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 21
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 22
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 24
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 26
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 27
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 29
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 2
+> build constraint table
+> {11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (1, 1), (0, 1), (1, 1)]
+> Expand node 35
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 37
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 40
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 38
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 44
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 46
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 41
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 49
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 43
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(4, 3), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 53
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (4, 3), (4, 4), (5, 4)]
+> Expand node 54
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 56
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 58
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 47
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 63
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 59
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 67
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 61
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 71
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': F
+> alse, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 7
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 15
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 23
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 25
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 28
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 32
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 39
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 45
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 55
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 57
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}, {'agent': 2, 'loc': [(3, 1), (2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 0), (2, 0), (1, 0), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 60
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 70
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 76
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 78
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 82
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 84
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 86
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 88
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 90
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 94
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 96
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 98
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 99
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 101
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 103
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 10
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 125
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 126
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 128
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 130
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 12
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 135
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 136
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 138
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 140
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 18
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 146
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 148
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 20
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 152
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 154
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 30
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 157
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 158
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 160
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 162
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 34
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 167
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 168
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 170
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 172
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 42
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 177
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 178
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 180
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 182
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 48
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 188
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 190
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 52
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}, {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 193
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 194
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 196
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 198
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 62
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 203
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 204
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 206
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 208
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 66
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 214
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 216
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 68
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 0), (2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 219
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 220
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 222
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 1), (2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 224
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 74
+> build constraint table
+> {7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 6: [{'agent': 1, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False,
+>  'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 229
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 230
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 
+> 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (4, 2), (4, 3), (4, 4), (5, 4)]
+> Expand node 232
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'posi
+> tive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 234
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3)], 'timestep': 7, 'posi
+> tive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 80
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 92
+> build constraint table
+> {1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 109
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 243
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 111
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 247
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 113
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0)]
+> build constraint table
+> {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 251
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'm
+> eta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (4, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 145
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 255
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 258
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 151
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 261
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 264
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 187
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 267
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 270
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 0), (2, 0), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 1: [{'agent': 3, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 213
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}, {'agent': 4, 'loc': [(3, 4)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 1: [{'agent': 4, 'loc': [(1, 0), (1, 1)], 'timestep': 1, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 273
+> build constraint table
+> {4: [{'agent': 2, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 1), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False,
+>  'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (1, 0), (2, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 276
+> build constraint table
+> {4: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 0), (2, 0), (3, 0)]
+> build constraint table
+> {4: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}, {'agent': 3, 'loc': [(2, 1)], 'timestep': 4, 'positive': False, 'meta_a
+> gent': {3}}, {'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 239
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (3, 1), (3, 1), (3, 0)]
+> build constraint table
+> {3: [{'agent': 3, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {3}}], 4: [{'agent': 3, 'loc': [(3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}], 7: [{'agent': 3, 'loc': [(3, 3), (3, 4)], 'timestep': 7, 'positive': False, 'meta_agent': {3}}]}
+> [(0, 0), (0, 1), (1, 1), (2, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+> Expand node 11
+> build constraint table
+> {3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_a
+> gent': {0}}], 2: [{'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> Expand node 281
+> build constraint table
+> {2: [{'agent': 0, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_a
+> gent': {0}}], 3: [{'agent': 0, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}, {'agent': 0, 'loc': [(3, 0)], 'timestep': 3, 'positive': False, 'meta_agent': {0}}], 1: [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]}
+> [(1, 1), (1, 1), (1, 0), (2, 0), (3, 0)]
+> build constraint table
+> {2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]
+> Expand node 284
+> build constraint table
+> {3: [{'agent': 2, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {2}}]}
+> [(4, 3), (3, 3), (3, 2), (3, 2), (3, 1), (2, 1), (1, 1)]
+> build constraint table
+> {3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 286
+> build constraint table
+> {6: [{'agent': 1, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {1}}], 7: [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}}], 11: [{'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}}]}
+> [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+> build constraint table
+> {6: [{'agent': 4, 'loc': [(4, 3)], 'timestep': 6, 'positive': False, 'meta_agent': {4}}], 3: [{'agent': 4, 'loc': [(3, 1)], 'timestep': 3, 'positive': False, 'meta_agent': {4}}], 2: [{'agent': 4, 'loc': [(2, 1)], 'timestep': 2, 'positive': False, 'meta_agent': {4}}]}
+> [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+> Expand node 287
+
+ Found a solution!
+
+CPU time (s):    0.47
+Sum of costs:    41
+Expanded nodes:  145
+Generated nodes: 289
+Solution:
+agent 0 :  [(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+agent 1 :  [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+agent 2 :  [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+agent 3 :  [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+agent 4 :  [(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+[(1, 1), (2, 1), (2, 1), (2, 0), (3, 0)]
+[(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (5, 3), (5, 2), (4, 2), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)]
+[(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)]
+[(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)]
+[(1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6), (5, 6)]
+***Test paths on a simulation***
