@@ -6,9 +6,9 @@ import copy
 import collections
 
 
-def move(loc, dir):
+def move(current_position, chosen_direction):
     directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]  # 移动可能有4方向或原地停留
-    return loc[0] + directions[dir][0], loc[1] + directions[dir][1]
+    return current_position[0] + directions[chosen_direction][0], current_position[1] + directions[chosen_direction][1]
 
 
 def get_sum_of_cost(paths):
