@@ -5,6 +5,7 @@ import numpy
 import copy
 import collections
 
+
 def move(loc, dir):
     directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]
     return loc[0] + directions[dir][0], loc[1] + directions[dir][1]
@@ -15,7 +16,7 @@ def get_sum_of_cost(paths):
     for path in paths:
         # print(path)
         rst += len(path) - 1
-        if(len(path)>1):
+        if (len(path) > 1):
             assert path[-1] != path[-2]
     return rst
 
@@ -33,8 +34,8 @@ def compute_heuristics(my_map, goal):
             child_loc = move(loc, dir)
             child_cost = cost + 1
             if child_loc[0] < 0 or child_loc[0] >= len(my_map) \
-               or child_loc[1] < 0 or child_loc[1] >= len(my_map[0]):
-               continue
+                    or child_loc[1] < 0 or child_loc[1] >= len(my_map[0]):
+                continue
             if my_map[child_loc[0]][child_loc[1]]:
                 continue
             child = {'loc': child_loc, 'cost': child_cost}
@@ -54,10 +55,11 @@ def compute_heuristics(my_map, goal):
         h_values[loc] = node['cost']
     return h_values
 
-# return a table that constains the list of constraints of all agents for each time step. 
+
+# return a table that contains the list of constraints of all agents for each time step.
 def build_constraint_table(constraints, meta_agent):
     # constraint_table = {}
-    constraint_table = collections.defaultdict(list) # dictionary of lists
+    constraint_table = collections.defaultdict(list)  # dictionary of lists
 
     if not constraints:
         return constraint_table
@@ -65,10 +67,10 @@ def build_constraint_table(constraints, meta_agent):
         timestep = constraint['timestep']
         for agent in meta_agent:
             # positive and negative constraint for agent
-            if (constraint['agent'] == agent):
+            if constraint['agent'] == agent:
                 constraint_table[timestep].append(constraint)
             # enforce positive constraints from other agents (i.e. create neg constraint)
-            elif constraint['positive']: 
+            elif constraint['positive']:
                 neg_constraint = copy.deepcopy(constraint)
                 neg_constraint['agent'] = agent
                 neg_constraint['meta_agent'] = meta_agent
@@ -80,10 +82,8 @@ def build_constraint_table(constraints, meta_agent):
                     neg_constraint['loc'] = [prev_loc, curr_loc]
                 neg_constraint['positive'] = False
                 constraint_table[timestep].append(neg_constraint)
-    
-    return constraint_table
-                
 
+    return constraint_table
 
 
 def get_location(path, time):
@@ -95,7 +95,7 @@ def get_location(path, time):
         return path[-1]  # wait at the goal location
 
 
-def get_path(goal_node,meta_agent):
+def get_path(goal_node, meta_agent):
     path = []
     for i in range(len(meta_agent)):
         path.append([])
@@ -110,21 +110,21 @@ def get_path(goal_node,meta_agent):
 
         print(path[i])
 
-        if len(path[i]) > 1: 
+        if len(path[i]) > 1:
             # remove trailing duplicates
             while path[i][-1] == path[i][-2]:
                 path[i].remove(path[i][-1])
-            assert path[i][-1] != path[i][-2] # no repeats at the end!!
+            assert path[i][-1] != path[i][-2]  # no repeats at the end!!
 
     assert path is not None
     return path
 
+
 # returns whether if a move at timestep violates any external (negative) constraint
 def is_constrained(curr_loc, next_loc, timestep, constraint_table, agent):
-
     if timestep not in constraint_table:
         return False
-    
+
     for constraint in constraint_table[timestep]:
         if agent == constraint['agent'] and constraint['positive'] == False:
             # vertex constraint
@@ -138,6 +138,7 @@ def is_constrained(curr_loc, next_loc, timestep, constraint_table, agent):
 
     return False
 
+
 # returns whether agent violates its positive constraint
 def violates_pos_constraint(curr_loc, next_loc, timestep, constraint_table, agent, meta_agent):
     if timestep not in constraint_table:
@@ -147,15 +148,17 @@ def violates_pos_constraint(curr_loc, next_loc, timestep, constraint_table, agen
             # vertex constraint
             if len(constraint['loc']) == 1:
                 if next_loc != constraint['loc'][0]:
-                    print('agent {} must follow positive constraint at timestep {}: {}'.format(agent, timestep, constraint['loc']))
+                    print('agent {} must follow positive constraint at timestep {}: {}'.format(agent, timestep,
+                                                                                               constraint['loc']))
                     return True
             # edge constraint
             else:
                 if constraint['loc'] != [curr_loc, next_loc]:
-                    print('agent {} must follow positive constraint at timestep {}: {}'.format(agent, timestep, constraint['loc']))
+                    print('agent {} must follow positive constraint at timestep {}: {}'.format(agent, timestep,
+                                                                                               constraint['loc']))
                     return True
     return False
-    
+
 
 # future external constraints
 def future_constraint_exists(agent, meta_agent, agent_loc, timestep, constraint_table):
@@ -164,7 +167,6 @@ def future_constraint_exists(agent, meta_agent, agent_loc, timestep, constraint_
         if t > timestep:
             # all constraints for timestep t in table 
             # print("future constraints at timestep {}", t)
-
 
             for constraint in constraint_table[t]:
                 # print(constraint)
@@ -177,17 +179,17 @@ def future_constraint_exists(agent, meta_agent, agent_loc, timestep, constraint_
                         print('agent 2 loc: ', agent_loc)
                         print('constraint loc:', constraint['loc'][-1])
 
-                    if(agent == constraint['agent'] and not constraint['positive']):
+                    if (agent == constraint['agent'] and not constraint['positive']):
                         return True
-                    if(agent != constraint['agent'] and constraint['positive']):
+                    if (agent != constraint['agent'] and constraint['positive']):
                         return True
-                
-    return False
 
+    return False
 
 
 def push_node(open_list, node):
     heapq.heappush(open_list, (node['g_val'] + node['h_val'], node['h_val'], node['loc'], node))
+
 
 def pop_node(open_list):
     _, _, _, curr = heapq.heappop(open_list)
@@ -210,7 +212,7 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
     ##############################
     # Task 1.1: Extend the A* search to search in the space-time domain
     #           rather than space domain, only.
-    
+
     # This is so I know which part is not CBS when debugging CBS with A*
     # print("\nSTARTING A*\n") # comment out if needed
 
@@ -240,17 +242,16 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
         h_value = h_values[agent][start_locs[agent]]
 
     root = {'loc': [start_locs[a] for a in meta_agent],
-            'g_val': 0, 
-            'h_val': h_value, 
+            'g_val': 0,
+            'h_val': h_value,
             'parent': None,
             'timestep': 0,
             'reached_goal': [False for i in range(len(meta_agent))]
             }
 
     push_node(open_list, root)
-    closed_list[(tuple(root['loc']),root['timestep'])] = root
+    closed_list[(tuple(root['loc']), root['timestep'])] = root
 
-    
     while len(open_list) > 0:
         curr = pop_node(open_list)
 
@@ -263,7 +264,8 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
 
             if curr['loc'][a] == goal_loc[meta_agent[a]]:
                 # check if there are any future (external) constraints
-                future_constraint_found = future_constraint_exists(meta_agent[a],meta_agent, curr['loc'][a], curr['timestep'], table)
+                future_constraint_found = future_constraint_exists(meta_agent[a], meta_agent, curr['loc'][a],
+                                                                   curr['timestep'], table)
                 if future_constraint_found:
                     print("future constraint found!!")
                 else:
@@ -274,10 +276,10 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
             # if curr['loc'][i] == goal_loc[meta_agent[i]] or curr['loc'][i] == goal_loc[0]:
             # if curr['loc'][i] != goal_loc[meta_agent[i]]:
             #     break
-            if curr['reached_goal'][a] == False:
+            if not curr['reached_goal'][a]:
                 break
-        else: # all agents reached goal_locations
-        
+        else:  # all agents reached goal_locations
+
             # # check if there are future (external) constraints left
             # for i in range(len(meta_agent)):
             #     # if current agent has reached its goal
@@ -289,23 +291,21 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
             #         break
 
             # else: # all agents do not violate future constraints
-                print('Returning path....')
-                # print(get_path(curr,meta_agent), '\n')
-                
+            print('Returning path....')
+            # print(get_path(curr,meta_agent), '\n')
 
-                # ALSO AGENTS WITH POSITIVE CONSTRAINTS SHOULD ABIDE BY THEM
+            # ALSO AGENTS WITH POSITIVE CONSTRAINTS SHOULD ABIDE BY THEM
 
-                return get_path(curr,meta_agent)
+            return get_path(curr, meta_agent)
 
         ma_dirs_list = []
 
         seeking_ma = copy.deepcopy(meta_agent)
         # remove agent that has reached its goal from ma
 
-
         num_a_path_complete = 0
         for i, a in enumerate(meta_agent):
-            if curr['reached_goal'][i] == True:
+            if curr['reached_goal'][i]:
                 seeking_ma.remove(a)
                 num_a_path_complete += 1
 
@@ -329,12 +329,10 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
 
         # all combinations of directions for each agent in meta_agent for next timestep
         # ma_dirs = product(list(range(5)),repeat =len(meta_agent))
-        
-        ma_dirs = product(*ma_dirs_list) # create "nested loop with available moves"
 
-       
+        ma_dirs = product(*ma_dirs_list)  # create "nested loop with available moves"
 
-        # each 'dirs' contains 1 possible direction for each remaining agent 
+        # each 'dirs' contains 1 possible direction for each remaining agent
         for dirs in ma_dirs:
 
             # print('dirs: ', dirs)
@@ -342,10 +340,8 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
             invalid_move = False
             child_loc = copy.deepcopy(curr['loc'])
             # move each agent for new timestep & check for (internal) conflicts with each other
-            for a in range(ma_length):           
+            for a in range(ma_length):
                 if curr['reached_goal'][a] == True:
-
-                    
 
                     # print('agent {} has reached goal: {} at t {}; do not move'.format(meta_agent[a], curr['loc'][a], curr['timestep']))
 
@@ -355,19 +351,17 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
                     continue
                 else:
                     agent = meta_agent[a]
-                    i_dir = seeking_ma.index(agent) # index in directions list
+                    i_dir = seeking_ma.index(agent)  # index in directions list
                     assert i_dir >= 0
                     aloc = move(curr['loc'][a], dirs[i_dir])
                     # vertex collision; check for duplicates in child_loc
                     if aloc in child_loc:
                         invalid_move = True
                         break
-                    child_loc[a] = move(curr['loc'][a], dirs[i_dir])   
-
+                    child_loc[a] = move(curr['loc'][a], dirs[i_dir])
 
             if invalid_move:
                 continue
-
 
             for ai in range(ma_length):
                 # edge collision: check for matching locs in curr_loc and child_loc between two agents
@@ -375,28 +369,28 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
                     if ai != aj:
                         # print(ai, aj)
                         if child_loc[ai] == curr['loc'][aj] and child_loc[aj] == curr['loc'][ai]:
-                            invalid_move = True             
-            
+                            invalid_move = True
+
             if invalid_move:
                 continue
 
             # check map constraints and external constraints
             for i in range(len(child_loc)):
-                loc= child_loc[i]
+                loc = child_loc[i]
                 # agent out of map bounds
-                if loc[0]<0 or loc[0]>= len(my_map) or loc[1]<0 or loc[1]>=len(my_map[0]):
+                if loc[0] < 0 or loc[0] >= len(my_map) or loc[1] < 0 or loc[1] >= len(my_map[0]):
                     invalid_move = True
                     break
-                # agent collison with map obstacle
+                # agent collision with map obstacle
                 if my_map[loc[0]][loc[1]]:
                     invalid_move = True
                     break
                 # agent is constrained by a negative external constraint
-                if is_constrained(curr['loc'][i],loc,curr['timestep']+1,table, meta_agent[i]):
+                if is_constrained(curr['loc'][i], loc, curr['timestep'] + 1, table, meta_agent[i]):
                     invalid_move = True
                     break
                 # agent has a positive constraint and doesn't meet its positive constraint
-                if violates_pos_constraint(curr['loc'][i],loc,curr['timestep']+1,table, meta_agent[i], meta_agent):
+                if violates_pos_constraint(curr['loc'][i], loc, curr['timestep'] + 1, table, meta_agent[i], meta_agent):
                     print("currently at timestep {} with child loc {}".format(curr['timestep'], loc))
                     invalid_move = True
                     break
@@ -404,32 +398,27 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
             if invalid_move:
                 continue
 
-
-
             # find h_values for current moves
             h_value = 0
             for i in range(ma_length):
                 h_value += h_values[meta_agent[i]][child_loc[i]]
 
-
-
             child = {'loc': child_loc,
-                    'g_val': curr['g_val']+s_ma_length, # number of new locs (cost) added
-                    'h_val': h_value,
-                    'parent': curr,
-                    'timestep':curr['timestep']+1,
-                    'reached_goal': [False for i in range(len(meta_agent))] # currently checked when node is popped
-                    }
-            
+                     'g_val': curr['g_val'] + s_ma_length,  # number of new locs (cost) added
+                     'h_val': h_value,
+                     'parent': curr,
+                     'timestep': curr['timestep'] + 1,
+                     'reached_goal': [False for i in range(len(meta_agent))]  # currently checked when node is popped
+                     }
 
-            if (tuple(child['loc']),child['timestep']) in closed_list:
-                existing_node = closed_list[(tuple(child['loc']),child['timestep'])]
+            if (tuple(child['loc']), child['timestep']) in closed_list:
+                existing_node = closed_list[(tuple(child['loc']), child['timestep'])]
                 if compare_nodes(child, existing_node):
-                    closed_list[(tuple(child['loc']),child['timestep'])] = child
+                    closed_list[(tuple(child['loc']), child['timestep'])] = child
                     push_node(open_list, child)
             else:
-                closed_list[(tuple(child['loc']),child['timestep'])] = child
-                push_node(open_list, child)   
+                closed_list[(tuple(child['loc']), child['timestep'])] = child
+                push_node(open_list, child)
     print('no solution')
 
     # print("\nEND OF A*\n") # comment out if needed
