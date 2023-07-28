@@ -65,7 +65,7 @@ matlab写的转化不方便吧，还得去安装matlab.
 
 https://github.com/gloriyo/MAPF-ICBS
 
-哈哈哈终于可以运行了。(2023年7月12日) => 啊这，到底怎么运行的？
+哈哈哈终于可以运行了。(2023年7月12日) => 啊这，到底怎么运行的？cd到code文件夹，然后在pycharm终端输入python run_experiments.py  --instance "instances/test_1.txt"  (2023年7月28日)
 
 
 
