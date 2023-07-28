@@ -287,6 +287,46 @@ print(list(result))
 
 `itertools` 模块中的其他函数也提供了许多有用的迭代器工具，可以用于解决各种迭代和排列组合问题。
 
+### Q: import copy是干啥？
+
+`import copy` 是 Python 中导入 `copy` 模块的语法。`copy` 模块提供了用于复制对象的功能，它允许在不修改原始对象的情况下创建其副本。
+
+Python 中的变量是对象的引用，当将一个对象赋值给多个变量时，它们实际上引用的是同一个对象。在某些情况下，我们需要创建一个对象的副本而不是共享同一个对象的引用。这时候就可以使用 `copy` 模块来进行对象复制。
+
+`copy` 模块提供了两种复制方式：
+
+1. 浅复制（Shallow Copy）：浅复制创建了一个新对象，但其中的元素仍然是原始对象的引用。即复制了对象的顶层结构，但没有复制对象内部嵌套的元素。可以使用 `copy.copy()` 函数来进行浅复制。
+
+2. 深复制（Deep Copy）：深复制创建了一个完全独立的新对象，包括对象内部嵌套的元素，递归复制所有嵌套对象。可以使用 `copy.deepcopy()` 函数来进行深复制。
+
+使用 `copy` 模块可以防止在对复杂对象进行操作时出现意外的副作用。例如，在操作列表、字典或自定义对象时，使用深复制可以确保对副本的修改不会影响原始对象。
+
+以下是一个简单示例，展示浅复制和深复制的区别：
+
+```python
+import copy
+
+original_list = [1, 2, [3, 4]]
+shallow_copy_list = copy.copy(original_list)
+deep_copy_list = copy.deepcopy(original_list)
+
+# 修改原始列表的嵌套列表元素
+original_list[2][0] = 5
+
+print("Original List:", original_list)
+print("Shallow Copy List:", shallow_copy_list)  # 嵌套列表元素也被修改
+print("Deep Copy List:", deep_copy_list)  # 嵌套列表元素未受影响
+```
+
+输出结果为：
+```
+Original List: [1, 2, [5, 4]]
+Shallow Copy List: [1, 2, [5, 4]]
+Deep Copy List: [1, 2, [3, 4]]
+```
+
+可以看到，浅复制的列表和原始列表共享嵌套列表的引用，而深复制的列表是完全独立的，对其进行修改不会影响原始列表。
+
 
 
 \*\*\*Import an instance\***
