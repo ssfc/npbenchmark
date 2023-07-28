@@ -9,6 +9,8 @@ For running ICBS (CBS with prioritized conflict, bypass and meta-agent) use comm
 
 If want use disjoint splitting please add command --disjoint on the command line
 
+外面那个readme里面有错误，你说坑不吭。(2023年7月28日)
+
 ### Q: import argparse是干啥的？
 
 `import argparse` 是 Python 中用于处理命令行参数的标准库。它提供了一个简单而灵活的方法，让你可以在命令行中传递参数给你的 Python 脚本，从而实现在运行脚本时动态配置程序的行为。
