@@ -185,4 +185,7 @@ if __name__ == '__main__':
     result_file.close()
 
 # debug on laptop by Pycharm:
+# cd to code directory.
 # python run_experiments.py --instance instances/test_1.txt --hlsolver CBS
+
+
