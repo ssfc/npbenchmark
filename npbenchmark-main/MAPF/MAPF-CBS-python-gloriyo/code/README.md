@@ -208,7 +208,7 @@ Goal locations
 . . . . . . @ .
 . . . . . . . .
 
-***Run CBS***
+\*\**Run CBS\***
 USING:  <function standard_splitting at 0x00000230C18F5550>
 
 > build constraint table

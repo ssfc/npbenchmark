@@ -114,12 +114,12 @@ if __name__ == '__main__':
         print("***Import an instance***")
 
         print(file)  # print filename
-        my_map, starts, goals = import_mapf_instance(file)
-        print_mapf_instance(my_map, starts, goals)
+        test_map, starts, goals = import_mapf_instance(file)
+        print_mapf_instance(test_map, starts, goals)
 
         if args.hlsolver == "CBS":
             print("***Run CBS***")
-            cbs = CBSSolver(my_map, starts, goals)
+            cbs = CBSSolver(test_map, starts, goals)
             # solution = cbs.find_solution(args.disjoint)
 
             # if solution is not None:
@@ -132,11 +132,11 @@ if __name__ == '__main__':
 
         elif args.hlsolver == "ICBS_CB":
             print("***Run ICBS with CB***")
-            cbs = ICBS_CB_Solver(my_map, starts, goals)
+            cbs = ICBS_CB_Solver(test_map, starts, goals)
 
         elif args.hlsolver == "ICBS":
             print("***Run ICBS***")
-            cbs = ICBS_Solver(my_map, starts, goals)
+            cbs = ICBS_Solver(test_map, starts, goals)
             # solution = cbs.find_solution(args.disjoint)
 
             # if solution is not None:
@@ -177,7 +177,7 @@ if __name__ == '__main__':
 
         if not args.batch:
             print("***Test paths on a simulation***")
-            animation = Animation(my_map, starts, goals, paths)
+            animation = Animation(test_map, starts, goals, paths)
             # animation.save("output.mp4", 1.0)
             animation.show()
             # animation.save('demo/fig.gif', 1)

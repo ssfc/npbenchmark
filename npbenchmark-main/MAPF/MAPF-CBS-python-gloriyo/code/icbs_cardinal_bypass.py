@@ -319,7 +319,7 @@ class ICBS_CB_Solver(object):
                     temp_constraints.append(c)
                         
             a1 = collision['a1'] #agent a1
-            alt_path1 = a_star(self.my_map,self.starts[a1], self.goals[a1],self.heuristics[a1],a1,temp_constraints)
+            alt_path1 = a_star(self.test_map, self.starts[a1], self.goals[a1], self.heuristics[a1], a1, temp_constraints)
             print(alt_path1)
             if not alt_path1 or len(alt_path1) > len(p['paths'][a1]):
                 cardinality = 'semi-cardinal'
@@ -327,7 +327,7 @@ class ICBS_CB_Solver(object):
                 print('alt_path1 takes longer or is empty. at least semi-cardinal.')
                 
             a2 = collision['a2'] #agent a2
-            alt_path2 = a_star(self.my_map,self.starts[a2], self.goals[a2],self.heuristics[a2],a2,temp_constraints)
+            alt_path2 = a_star(self.test_map, self.starts[a2], self.goals[a2], self.heuristics[a2], a2, temp_constraints)
             print(alt_path2)
             if not alt_path2 or len(alt_path2) > len(p['paths'][a2]):
                 if cardinality == 'semi-cardinal':
@@ -373,7 +373,7 @@ class ICBS_CB_Solver(object):
                 ###########
                 # Find cardinality for positive constraint
                 # search for path for agent with positive constraint
-                alt_path_chosen = a_star(self.my_map,self.starts[chosen_agent],self.goals[chosen_agent],self.heuristics[chosen_agent],chosen_agent,all_constraints_pos)
+                alt_path_chosen = a_star(self.test_map, self.starts[chosen_agent], self.goals[chosen_agent], self.heuristics[chosen_agent], chosen_agent, all_constraints_pos)
                 
                 # constraint can be met by chosen agent (must traverse conflict location/edge)                
                 assert alt_path_chosen and len(alt_path_chosen) == len(p['paths'][chosen_agent]) # if the collision occured, path which caused it likely exists
@@ -400,7 +400,7 @@ class ICBS_CB_Solver(object):
 
                 
                 for v in alt_path_vols:
-                    path_v = a_star(self.my_map,self.starts[v], self.goals[v],self.heuristics[v],v,all_constraints_pos)
+                    path_v = a_star(self.test_map, self.starts[v], self.goals[v], self.heuristics[v], v, all_constraints_pos)
                     if path_v  is None :
                         path_failed = True
                         break
@@ -427,7 +427,7 @@ class ICBS_CB_Solver(object):
 
                 # negative constraint
                 print('neg constraint ', new_constraints[1])
-                alt_path_chosen = a_star(self.my_map,self.starts[chosen_agent], self.goals[chosen_agent],self.heuristics[chosen_agent],chosen_agent,all_constraints_neg)
+                alt_path_chosen = a_star(self.test_map, self.starts[chosen_agent], self.goals[chosen_agent], self.heuristics[chosen_agent], chosen_agent, all_constraints_neg)
                 # new_paths = copy.deepcopy(p['paths'])
                 # new_paths[chosen_agent] = copy.deepcopy(alt_path_chosen)
 

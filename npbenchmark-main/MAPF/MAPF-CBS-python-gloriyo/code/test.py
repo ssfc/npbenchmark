@@ -277,7 +277,7 @@ class CBSSolver(object):
                     new_constraints.append(c)
                         
             a1 = collision['a1'] #agent a1
-            alt_path1 = a_star(self.my_map,self.starts[a1], self.goals[a1],self.heuristics[a1],a1,new_constraints)
+            alt_path1 = a_star(self.test_map, self.starts[a1], self.goals[a1], self.heuristics[a1], a1, new_constraints)
             print(alt_path1)
             if not alt_path1 or len(alt_path1) > len(p['paths'][a1]):
                 cardinality = 'semi-cardinal'
@@ -285,7 +285,7 @@ class CBSSolver(object):
                 print('alt_path1 takes longer or is empty. at least semi-cardinal.')
                 
             a2 = collision['a2'] #agent a2
-            alt_path2 = a_star(self.my_map,self.starts[a2], self.goals[a2],self.heuristics[a2],a2,new_constraints)
+            alt_path2 = a_star(self.test_map, self.starts[a2], self.goals[a2], self.heuristics[a2], a2, new_constraints)
             print(alt_path2)
             if not alt_path2 or len(alt_path2) > len(p['paths'][a2]):
                 if cardinality == 'semi-cardinal':
@@ -338,7 +338,7 @@ class CBSSolver(object):
                     if constraint not in split:
                         split.append(constraint)
 
-                alt_path = a_star(self.my_map,self.starts[a_curr], self.goals[a_curr],self.heuristics[a_curr],a_curr,split)
+                alt_path = a_star(self.test_map, self.starts[a_curr], self.goals[a_curr], self.heuristics[a_curr], a_curr, split)
                 q = {'cost':0,
                     'constraints': [],
                     'paths':[],
@@ -359,7 +359,7 @@ class CBSSolver(object):
                         continue_flag = False
                         vol = paths_violate_constraint(temp[0],q['paths'])
                         for v in vol:
-                            path_v = a_star(self.my_map,self.starts[v], self.goals[v],self.heuristics[v],v,q['constraints'])
+                            path_v = a_star(self.test_map, self.starts[v], self.goals[v], self.heuristics[v], v, q['constraints'])
                             if path_v  is None :
                                 continue_flag = True
                             else:
