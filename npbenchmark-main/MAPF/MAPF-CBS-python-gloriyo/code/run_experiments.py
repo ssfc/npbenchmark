@@ -18,23 +18,23 @@ HLSOLVER = "CBS"
 LLSOLVER = "a_star"
 
 
-def print_mapf_instance(my_map, starts, goals):
+def print_mapf_instance(input_map, starts, goals):
     print('Start locations')
-    print_locations(my_map, starts)
+    print_locations(input_map, starts)
     print('Goal locations')
-    print_locations(my_map, goals)
+    print_locations(input_map, goals)
 
 
-def print_locations(my_map, locations):
-    starts_map = [[-1 for _ in range(len(my_map[0]))] for _ in range(len(my_map))]
+def print_locations(input_map, locations):
+    starts_map = [[-1 for _ in range(len(input_map[0]))] for _ in range(len(input_map))]
     for i in range(len(locations)):
         starts_map[locations[i][0]][locations[i][1]] = i
     to_print = ''
-    for x in range(len(my_map)):
-        for y in range(len(my_map[0])):
+    for x in range(len(input_map)):
+        for y in range(len(input_map[0])):
             if starts_map[x][y] >= 0:
                 to_print += str(starts_map[x][y]) + ' '
-            elif my_map[x][y]:
+            elif input_map[x][y]:
                 to_print += '@ '
             else:
                 to_print += '. '
