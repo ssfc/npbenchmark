@@ -13,9 +13,9 @@ from prioritized import PrioritizedPlanningSolver
 from visualize import Animation
 from single_agent_planner import get_sum_of_cost
 
-HLSOLVER = "CBS"
+high_level_SOLVER = "CBS"
 
-LLSOLVER = "a_star"
+low_level_SOLVER = "a_star"
 
 
 def print_mapf_instance(input_map, input_start, input_goal):
@@ -85,10 +85,10 @@ if __name__ == '__main__':
                         help='Use batch output instead of animation')
     parser.add_argument('--disjoint', action='store_true', default=False,
                         help='Use the disjoint splitting')
-    parser.add_argument('--hlsolver', type=str, default=HLSOLVER,
-                        help='The solver to use (one of: {CBS,ICBS_CB,ICBS}), defaults to ' + str(HLSOLVER))
-    parser.add_argument('--llsolver', type=str, default=LLSOLVER,
-                        help='The solver to use (one of: {a_star,pea_star,epea_star}), defaults to ' + str(LLSOLVER))
+    parser.add_argument('--hlsolver', type=str, default=high_level_SOLVER,
+                        help='The solver to use (one of: {CBS,ICBS_CB,ICBS}), defaults to ' + str(high_level_SOLVER))
+    parser.add_argument('--llsolver', type=str, default=low_level_SOLVER,
+                        help='The solver to use (one of: {a_star,pea_star,epea_star}), defaults to ' + str(low_level_SOLVER))
     args = parser.parse_args()
 
     result_file = open("results.csv", "w", buffering=1)
