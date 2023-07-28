@@ -79,7 +79,7 @@ def import_mapf_instance(filename):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs various MAPF algorithms')
-    parser.add_argument('--instance', type=str, default=None,
+    parser.add_argument('--instance', type=str, default='code/instances/test_1.txt',
                         help='The name of the instance file(s)')
     parser.add_argument('--batch', action='store_true', default=False,
                         help='Use batch output instead of animation')
