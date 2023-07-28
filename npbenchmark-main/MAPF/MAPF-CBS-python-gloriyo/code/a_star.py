@@ -16,7 +16,7 @@ def get_sum_of_cost(paths):
     for path in paths:
         # print(path)
         rst += len(path) - 1
-        if (len(path) > 1):
+        if len(path) > 1:
             assert path[-1] != path[-2]
     return rst
 
