@@ -405,7 +405,7 @@ class CBSSolver(object):
 
             assert temp_constraints[0]['meta_agent'] == ma1
             path1_constraints = combined_constraints(p['constraints'], temp_constraints[0])
-            alt_paths1 = ma_star(self.test_map, self.starts, self.goals, self.heuristics, list(ma1), path1_constraints)
+            alt_paths1 = ma_star(self.test_map, self.test_start, self.test_goal, self.heuristics, list(ma1), path1_constraints)
 
             # get current paths of meta-agent
             curr_paths = []
@@ -438,7 +438,7 @@ class CBSSolver(object):
 
             assert temp_constraints[1]['meta_agent'] == ma2
             path2_constraints = combined_constraints(p['constraints'], temp_constraints[1])
-            alt_paths2 = ma_star(self.test_map, self.starts, self.goals, self.heuristics, list(ma2), path2_constraints)
+            alt_paths2 = ma_star(self.test_map, self.test_start, self.test_goal, self.heuristics, list(ma2), path2_constraints)
 
             # for i in range(len(ma2)):
             #     if len(alt_path1[i])> len(p['paths'][ma2[i]]):
