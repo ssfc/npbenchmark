@@ -25,10 +25,10 @@ def print_mapf_instance(input_map, input_start, input_goal):
     print_locations(input_map, input_goal)
 
 
-def print_locations(input_map, locations):
+def print_locations(input_map, input_location):
     starts_map = [[-1 for _ in range(len(input_map[0]))] for _ in range(len(input_map))]
-    for i in range(len(locations)):
-        starts_map[locations[i][0]][locations[i][1]] = i
+    for i in range(len(input_location)):
+        starts_map[input_location[i][0]][input_location[i][1]] = i
     to_print = ''
     for x in range(len(input_map)):
         for y in range(len(input_map[0])):
