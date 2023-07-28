@@ -62,10 +62,10 @@ def import_mapf_instance(filename):
                 imported_map[-1].append(True)
             elif cell == '.':
                 imported_map[-1].append(False)
-    # #agents
+    # agents
     line = f.readline()
     num_agents = int(line)
-    # #agents lines with the start/goal positions
+    # agents lines with the start/goal positions
     import_start = []
     import_goal = []
     for a in range(num_agents):
