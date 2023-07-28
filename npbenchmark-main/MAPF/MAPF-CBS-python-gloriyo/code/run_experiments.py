@@ -66,15 +66,15 @@ def import_mapf_instance(filename):
     line = f.readline()
     num_agents = int(line)
     # #agents lines with the start/goal positions
-    starts = []
-    goals = []
+    import_start = []
+    import_goal = []
     for a in range(num_agents):
         line = f.readline()
         sx, sy, gx, gy = [int(x) for x in line.split(' ')]
-        starts.append((sx, sy))
-        goals.append((gx, gy))
+        import_start.append((sx, sy))
+        import_goal.append((gx, gy))
     f.close()
-    return imported_map, starts, goals
+    return imported_map, import_start, import_goal
 
 
 if __name__ == '__main__':
