@@ -7,7 +7,7 @@ import collections
 
 
 def move(loc, dir):
-    directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]
+    directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]  # 移动可能有4方向或原地停留
     return loc[0] + directions[dir][0], loc[1] + directions[dir][1]
 
 
