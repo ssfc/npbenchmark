@@ -327,6 +327,40 @@ Deep Copy List: [1, 2, [3, 4]]
 
 可以看到，浅复制的列表和原始列表共享嵌套列表的引用，而深复制的列表是完全独立的，对其进行修改不会影响原始列表。
 
+### Q: import collections是干啥？
+
+`import collections` 是 Python 中导入 `collections` 模块的语法。`collections` 是 Python 内置的模块，提供了一些额外的数据类型和数据结构，用于处理和操作更复杂的数据集合。
+
+`collections` 模块包含了许多有用的类，其中一些常用的包括：
+
+1. `namedtuple`: 创建命名元组，是一个具名的 tuple，可以使用属性名来访问元素。
+
+2. `deque`: 双端队列，支持高效地在两端添加和删除元素。
+
+3. `defaultdict`: 字典的子类，可以设置默认值，当访问不存在的键时，返回默认值而不是抛出异常。
+
+4. `Counter`: 统计可哈希对象的出现次数，返回一个字典，键为元素，值为出现次数。
+
+5. `OrderedDict`: 有序字典，记住元素的添加顺序。
+
+6. `ChainMap`: 合并多个字典或映射，并将它们视为一个逻辑上的单个字典。
+
+这些数据类型和数据结构为 Python 提供了更多灵活的数据处理方式，使得开发者能够更方便地处理数据、实现算法，并提高代码的可读性和可维护性。
+
+例如，可以使用 `collections.Counter` 来统计列表中元素出现的次数：
+
+```python
+import collections
+
+my_list = [1, 2, 3, 2, 1, 3, 4, 5, 4, 4]
+counter = collections.Counter(my_list)
+
+print(counter)
+# 输出结果为: Counter({4: 3, 1: 2, 2: 2, 3: 2, 5: 1})
+```
+
+`collections` 模块中的其他类和函数也提供了许多有用的功能，适用于各种数据处理场景。
+
 
 
 \*\*\*Import an instance\***
