@@ -10,7 +10,7 @@ def get_sum_of_cost(agents):
     rst = 0
     for agent in agents:
         # print('path',agent)
-        rst += len(agent) - 1
+        rst += len(agent) - 1  # 树间隔比树-1
     return rst
 
 
