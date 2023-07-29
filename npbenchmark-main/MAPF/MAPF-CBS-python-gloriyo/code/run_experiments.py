@@ -18,6 +18,7 @@ high_level_SOLVER = "CBS"
 low_level_SOLVER = "a_star"
 
 
+# 分别打印多个智能体起点和终点的位置
 def print_mapf_instance(input_map, input_start, input_goal):
     print('Start locations')
     print_locations(input_map, input_start)
