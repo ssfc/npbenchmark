@@ -175,7 +175,7 @@ if __name__ == '__main__':
             raise BaseException('No solutions')
 
         cost = get_sum_of_cost(paths)
-        result_file.write("{},{}\n".format(file, cost))
+        result_file.write("{},{}\n".format(file, cost))  # 所有路径总长度
 
         nodes_gen_file.write("{},{}\n".format(file, nodes_gen))
         nodes_exp_file.write("{},{}\n".format(file, nodes_exp))
