@@ -44,12 +44,12 @@ def print_locations(input_map, input_location):
     print(to_print)
 
 
-def import_mapf_instance(filename):
+def import_mapf_instance(filename):  # import map, agent starts and goals
     f = Path(filename)
     if not f.is_file():
         raise BaseException(filename + " does not exist.")
     f = open(filename, 'r')
-    # first line: #rows #columns
+    # first line: rows and columns
     line = f.readline()
     rows, columns = [int(x) for x in line.split(' ')]
     rows = int(rows)
