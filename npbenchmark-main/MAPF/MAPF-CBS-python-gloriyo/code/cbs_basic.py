@@ -43,8 +43,8 @@ def detect_all_paths_first_collisions(paths):
     for i in range(len(paths) - 1):
         for j in range(i + 1, len(paths)):
             if detect_two_paths_first_collision(paths[i], paths[j]) is not None:
-                position, t = detect_two_paths_first_collision(paths[i], paths[j])
-                first_collisions.append({'a1': i, 'a2': j, 'loc': position, 'timestep': t + 1})
+                location, t = detect_two_paths_first_collision(paths[i], paths[j])
+                first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
 
     return first_collisions
 
