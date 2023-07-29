@@ -8,10 +8,10 @@ Colors = ['green', 'blue', 'orange']
 
 
 class Animation:
-    def __init__(self, my_map, starts, goals, paths):
-        self.my_map = np.flip(np.transpose(my_map), 1)
+    def __init__(self, input_map, input_starts, goals, paths):
+        self.my_map = np.flip(np.transpose(input_map), 1)
         self.starts = []
-        for start in starts:
+        for start in input_starts:
             self.starts.append((start[1], len(self.my_map[0]) - 1 - start[0]))
         self.goals = []
         for goal in goals:
@@ -57,12 +57,12 @@ class Animation:
                                           edgecolor='black', alpha=0.5))
         for i in range(len(self.paths)):
             name = str(i)
-            self.agents[i] = Circle((starts[i][0], starts[i][1]), 0.3, facecolor=Colors[i % len(Colors)],
+            self.agents[i] = Circle((input_starts[i][0], input_starts[i][1]), 0.3, facecolor=Colors[i % len(Colors)],
                                     edgecolor='black')
             self.agents[i].original_face_color = Colors[i % len(Colors)]
             self.patches.append(self.agents[i])
             self.T = max(self.T, len(paths[i]) - 1)
-            self.agent_names[i] = self.ax.text(starts[i][0], starts[i][1] + 0.25, name)
+            self.agent_names[i] = self.ax.text(input_starts[i][0], input_starts[i][1] + 0.25, name)
             self.agent_names[i].set_horizontalalignment('center')
             self.agent_names[i].set_verticalalignment('center')
             self.artists.append(self.agent_names[i])
