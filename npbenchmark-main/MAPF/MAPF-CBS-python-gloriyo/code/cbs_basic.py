@@ -32,7 +32,6 @@ def detect_two_paths_first_collision(path1, path2):
             return [next_location_2, current_location_2], t
 
     return None
-    # pass
 
 
 def detect_all_paths_first_collisions(paths):
@@ -45,13 +44,9 @@ def detect_all_paths_first_collisions(paths):
         for j in range(i + 1, len(paths)):
             if detect_two_paths_first_collision(paths[i], paths[j]) is not None:
                 position, t = detect_two_paths_first_collision(paths[i], paths[j])
-                first_collisions.append({'a1': i,
-                                   'a2': j,
-                                   'loc': position,
-                                   'timestep': t + 1})
-    return first_collisions
+                first_collisions.append({'a1': i, 'a2': j, 'loc': position, 'timestep': t + 1})
 
-    # pass
+    return first_collisions
 
 
 def standard_splitting(collision):
