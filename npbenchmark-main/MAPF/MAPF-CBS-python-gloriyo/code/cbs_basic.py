@@ -85,16 +85,13 @@ def standard_splitting(collision):
 
 # Task 4.1: Return a list of (two) constraints to resolve the given collision
 def disjoint_splitting(collision):
-    # Vertex collision: the first constraint enforces one agent to be at the specified location at the
-    #                   specified timestep, and the second constraint prevents the same agent to be at the
-    #                   same location at the timestep.
-    # Edge collision: the first constraint enforces one agent to traverse the specified edge at the
-    #                 specified timestep, and the second constraint prevents the same agent to traverse the
-    #                 specified edge at the specified timestep
     # Choose the agent randomly
     constraints = []
     agent = random.randint(0, 1)
     a = 'a' + str(agent + 1)
+    # Vertex collision: the first constraint enforces one agent to be at the specified location at the
+    #                   specified timestep, and the second constraint prevents the same agent to be at the
+    #                   same location at the timestep.
     if len(collision['loc']) == 1:
         constraints.append({'agent': collision[a],
                             'loc': collision['loc'],
@@ -106,6 +103,9 @@ def disjoint_splitting(collision):
                             'timestep': collision['timestep'],
                             'positive': False
                             })
+    # Edge collision: the first constraint enforces one agent to traverse the specified edge at the
+    #                 specified timestep, and the second constraint prevents the same agent to traverse the
+    #                 specified edge at the specified timestep
     else:
         if agent == 0:
             constraints.append({'agent': collision[a],
