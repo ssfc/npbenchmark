@@ -35,21 +35,21 @@ def detect_two_paths_first_collision(path1, path2):
     # pass
 
 
-def detect_all_paths_first_collision(paths):
+def detect_all_paths_first_collisions(paths):
     # Task 3.1: Return a list of first collisions between all robot pairs.
     #           A collision can be represented as dictionary that contains the id of the two robots, the vertex or edge
     #           causing the collision, and the timestep at which the collision occurred.
     #           You should use your detect_collision function to find a collision between two robots.
-    collisions = []
+    first_collisions = []
     for i in range(len(paths) - 1):
         for j in range(i + 1, len(paths)):
             if detect_two_paths_first_collision(paths[i], paths[j]) is not None:
                 position, t = detect_two_paths_first_collision(paths[i], paths[j])
-                collisions.append({'a1': i,
+                first_collisions.append({'a1': i,
                                    'a2': j,
                                    'loc': position,
                                    'timestep': t + 1})
-    return collisions
+    return first_collisions
 
     # pass
 
@@ -245,7 +245,7 @@ class CBSSolver(object):
             root['paths'].append(path[0])
 
         root['cost'] = get_sum_of_cost(root['paths'])
-        root['collisions'] = detect_all_paths_first_collision(root['paths'])
+        root['collisions'] = detect_all_paths_first_collisions(root['paths'])
         self.push_node(root)
 
         ##############################
@@ -304,7 +304,7 @@ class CBSSolver(object):
                                 q['paths'][v] = path_v[0]
                         if continue_flag:
                             continue
-                    q['collisions'] = detect_all_paths_first_collision(q['paths'])
+                    q['collisions'] = detect_all_paths_first_collisions(q['paths'])
                     q['cost'] = get_sum_of_cost(q['paths'])
                     self.push_node(q)
         return None
