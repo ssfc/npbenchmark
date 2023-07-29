@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
         print(file)  # print filename
         test_map, test_start, test_goal = import_mapf_instance(file)
-        print_mapf_instance(test_map, test_start, test_goal)  # 在map中表明agent的起点和终点
+        print_mapf_instance(test_map, test_start, test_goal)  # 在map中标明agent的起点和终点
 
         if args.hlsolver == "CBS":  # 执行CBS算法
             print("***Run CBS***")
