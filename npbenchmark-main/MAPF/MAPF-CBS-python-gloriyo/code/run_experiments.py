@@ -165,9 +165,9 @@ if __name__ == '__main__':
             raise RuntimeError("Unknown solver!")
 
         solution = cbs.find_solution(args.disjoint, args.llsolver)
+        # print("test solution:", solution)
 
         if solution is not None:
-            # print(solution)
             paths, nodes_gen, nodes_exp = [solution[i] for i in range(3)]
             if paths is None:
                 raise BaseException('No solutions')
