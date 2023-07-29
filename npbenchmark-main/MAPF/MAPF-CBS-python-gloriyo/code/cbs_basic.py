@@ -131,8 +131,6 @@ def disjoint_splitting(collision):
                                 })
     return constraints
 
-    # pass
-
 
 def paths_violate_constraint(constraint, paths):
     assert constraint['positive'] is True
