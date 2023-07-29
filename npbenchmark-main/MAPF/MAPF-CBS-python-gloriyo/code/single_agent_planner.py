@@ -1,5 +1,6 @@
 import heapq
 
+
 def move(loc, dir):
     directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]
     return loc[0] + directions[dir][0], loc[1] + directions[dir][1]
@@ -7,7 +8,6 @@ def move(loc, dir):
 
 def get_sum_of_cost(agents):
     rst = 0
-    ('agentprints                                                         ', agents)
     for agent in agents:
         # print('path',agent)
         rst += len(agent) - 1
@@ -27,8 +27,8 @@ def compute_heuristics(my_map, goal):
             child_loc = move(loc, dir)
             child_cost = cost + 1
             if child_loc[0] < 0 or child_loc[0] >= len(my_map) \
-               or child_loc[1] < 0 or child_loc[1] >= len(my_map[0]):
-               continue
+                    or child_loc[1] < 0 or child_loc[1] >= len(my_map[0]):
+                continue
             if my_map[child_loc[0]][child_loc[1]]:
                 continue
             child = {'loc': child_loc, 'cost': child_cost}
@@ -55,7 +55,7 @@ def build_constraint_table(constraints, agent):
     #               the given agent for each time step. The table can be used
     #               for a more efficient constraint violation check in the 
     #               is_constrained function.
-    table =dict()
+    table = dict()
     for constraint in constraints:
         if constraint['agent'] == agent:
             if constraint['timestep'] not in table:
@@ -63,20 +63,20 @@ def build_constraint_table(constraints, agent):
             else:
                 table[constraint['timestep']].append(constraint)
         # task 4
-        if constraint['agent'] != agent and constraint['positive'] ==True:
-            if len(constraint['loc'])>1:
-                cons_i = {'agent':agent,
-                            'loc':[constraint['loc'][1],constraint['loc'][0]],
-                            'timestep':constraint['timestep'],
-                            'positive':False
-                            }
-          
+        if constraint['agent'] != agent and constraint['positive'] == True:
+            if len(constraint['loc']) > 1:
+                cons_i = {'agent': agent,
+                          'loc': [constraint['loc'][1], constraint['loc'][0]],
+                          'timestep': constraint['timestep'],
+                          'positive': False
+                          }
+
             else:
-                cons_i = {'agent':agent,
-                        'loc':constraint['loc'],
-                        'timestep':constraint['timestep'],
-                        'positive':False
-                        }
+                cons_i = {'agent': agent,
+                          'loc': constraint['loc'],
+                          'timestep': constraint['timestep'],
+                          'positive': False
+                          }
             if cons_i['timestep'] not in table:
                 table[cons_i['timestep']] = [cons_i]
             else:
@@ -110,26 +110,27 @@ def is_constrained(curr_loc, next_loc, next_time, constraint_table):
     # Task 1.2/1.3: Check if a move from curr_loc to next_loc at time step next_time violates
     #               any given constraint. For efficiency the constraints are indexed in a constraint_table
     #               by time step, see build_constraint_table.
-    if next_time in constraint_table:  
+    if next_time in constraint_table:
         for constraint in constraint_table[next_time]:
-            if len(constraint['loc']) ==1:
+            if len(constraint['loc']) == 1:
                 if constraint['loc'] == [next_loc]:
-                    if constraint['positive']==True:
+                    if constraint['positive'] == True:
                         return 1
                     else:
                         return 0
             else:
-                if constraint['loc'] ==[curr_loc,next_loc]:
-                    if constraint['positive']==True:
+                if constraint['loc'] == [curr_loc, next_loc]:
+                    if constraint['positive'] == True:
                         return 1
                     else:
                         return 0
-    return -1   
+    return -1
     pass
 
 
 def push_node(open_list, node):
     heapq.heappush(open_list, (node['g_val'] + node['h_val'], node['h_val'], node['loc'], node))
+
 
 def pop_node(open_list):
     _, _, _, curr = heapq.heappop(open_list)
@@ -152,15 +153,15 @@ def a_star(my_map, start_loc, goal_loc, h_values, agent, constraints):
     ##############################
     # Task 1.1: Extend the A* search to search in the space-time domain
     #           rather than space domain, only.
-    
+
     open_list = []
     closed_list = dict()
     earliest_goal_timestep = 0
     h_value = h_values[start_loc]
-    table = build_constraint_table(constraints,agent)
-    root = {'loc': start_loc, 'g_val': 0, 'h_val': h_value, 'parent': None,'timestep':0}
+    table = build_constraint_table(constraints, agent)
+    root = {'loc': start_loc, 'g_val': 0, 'h_val': h_value, 'parent': None, 'timestep': 0}
     push_node(open_list, root)
-    closed_list[(root['loc'],root['timestep'])] = root
+    closed_list[(root['loc'], root['timestep'])] = root
     while len(open_list) > 0:
         curr = pop_node(open_list)
         # if curr['loc'] == goal_loc:
@@ -170,63 +171,64 @@ def a_star(my_map, start_loc, goal_loc, h_values, agent, constraints):
         if curr['loc'] == goal_loc:
             no_future_goalConstraint = True
             for timestep in table:
-                if timestep >curr['timestep']:
+                if timestep > curr['timestep']:
                     for cons in table[timestep]:
-                        if cons['loc'] == [goal_loc] and cons['positive']==False:
-                            no_future_goalConstraint =False
+                        if cons['loc'] == [goal_loc] and cons['positive'] == False:
+                            no_future_goalConstraint = False
             if no_future_goalConstraint:
                 return get_path(curr)
-            
+
         continue_flag = False
         for d in range(5):
             child_loc = move(curr['loc'], d)
-            if is_constrained(curr['loc'],child_loc,curr['timestep']+1,table)==1:
+            if is_constrained(curr['loc'], child_loc, curr['timestep'] + 1, table) == 1:
                 child = {'loc': child_loc,
-                    'g_val': curr['g_val'] + 1,
-                    'h_val': h_values[child_loc],
-                    'parent': curr,
-                    'timestep':curr['timestep']+1
-                    }     
-                if child_loc[0]<0 or child_loc[0]>= len(my_map) or child_loc[1]<0 or child_loc[1]>=len(my_map[0]):
+                         'g_val': curr['g_val'] + 1,
+                         'h_val': h_values[child_loc],
+                         'parent': curr,
+                         'timestep': curr['timestep'] + 1
+                         }
+                if child_loc[0] < 0 or child_loc[0] >= len(my_map) or child_loc[1] < 0 or child_loc[1] >= len(
+                        my_map[0]):
                     continue
                 if my_map[child_loc[0]][child_loc[1]]:
                     continue
-                if (child['loc'],child['timestep']) in closed_list:
-                    existing_node = closed_list[(child['loc'],child['timestep'])]
+                if (child['loc'], child['timestep']) in closed_list:
+                    existing_node = closed_list[(child['loc'], child['timestep'])]
                     if compare_nodes(child, existing_node):
-                        closed_list[(child['loc'],child['timestep'])] = child
+                        closed_list[(child['loc'], child['timestep'])] = child
                         push_node(open_list, child)
                 else:
-                    closed_list[(child['loc'],child['timestep'])] = child
-                    push_node(open_list, child)    
-                continue_flag=True    
-                break      
-        
+                    closed_list[(child['loc'], child['timestep'])] = child
+                    push_node(open_list, child)
+                continue_flag = True
+                break
+
         if continue_flag:
             continue
-        
+
         for dir in range(5):
             child_loc = move(curr['loc'], dir)
-            if child_loc[0]<0 or child_loc[0]>= len(my_map) or child_loc[1]<0 or child_loc[1]>=len(my_map[0]):
+            if child_loc[0] < 0 or child_loc[0] >= len(my_map) or child_loc[1] < 0 or child_loc[1] >= len(my_map[0]):
                 continue
             if my_map[child_loc[0]][child_loc[1]]:
                 continue
             child = {'loc': child_loc,
-                    'g_val': curr['g_val'] + 1,
-                    'h_val': h_values[child_loc],
-                    'parent': curr,
-                    'timestep':curr['timestep']+1
-                    }         
-            
-            if is_constrained(curr['loc'],child_loc,curr['timestep']+1,table)==0:
+                     'g_val': curr['g_val'] + 1,
+                     'h_val': h_values[child_loc],
+                     'parent': curr,
+                     'timestep': curr['timestep'] + 1
+                     }
+
+            if is_constrained(curr['loc'], child_loc, curr['timestep'] + 1, table) == 0:
                 continue
-            
-            if (child['loc'],child['timestep']) in closed_list:
-                existing_node = closed_list[(child['loc'],child['timestep'])]
+
+            if (child['loc'], child['timestep']) in closed_list:
+                existing_node = closed_list[(child['loc'], child['timestep'])]
                 if compare_nodes(child, existing_node):
-                    closed_list[(child['loc'],child['timestep'])] = child
+                    closed_list[(child['loc'], child['timestep'])] = child
                     push_node(open_list, child)
             else:
-                closed_list[(child['loc'],child['timestep'])] = child
-                push_node(open_list, child)   
+                closed_list[(child['loc'], child['timestep'])] = child
+                push_node(open_list, child)
     return None  # Failed to find solutions
