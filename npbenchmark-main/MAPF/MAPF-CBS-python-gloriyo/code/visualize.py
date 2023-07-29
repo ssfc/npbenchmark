@@ -9,21 +9,21 @@ Colors = ['green', 'blue', 'orange']
 
 class Animation:
     def __init__(self, input_map, input_starts, input_goals, input_paths):
-        self.my_map = np.flip(np.transpose(input_map), 1)
+        self.map = np.flip(np.transpose(input_map), 1)
         self.starts = []
         for start in input_starts:
-            self.starts.append((start[1], len(self.my_map[0]) - 1 - start[0]))
+            self.starts.append((start[1], len(self.map[0]) - 1 - start[0]))
         self.goals = []
         for goal in input_goals:
-            self.goals.append((goal[1], len(self.my_map[0]) - 1 - goal[0]))
+            self.goals.append((goal[1], len(self.map[0]) - 1 - goal[0]))
         self.paths = []
         if input_paths:
             for path in input_paths:
                 self.paths.append([])
                 for loc in path:
-                    self.paths[-1].append((loc[1], len(self.my_map[0]) - 1 - loc[0]))
+                    self.paths[-1].append((loc[1], len(self.map[0]) - 1 - loc[0]))
 
-        aspect = len(self.my_map) / len(self.my_map[0])
+        aspect = len(self.map) / len(self.map[0])
 
         self.fig = plt.figure(frameon=False, figsize=(4 * aspect, 4))
         self.ax = self.fig.add_subplot(111, aspect='equal')
@@ -38,15 +38,15 @@ class Animation:
 
         x_min = -0.5
         y_min = -0.5
-        x_max = len(self.my_map) - 0.5
-        y_max = len(self.my_map[0]) - 0.5
+        x_max = len(self.map) - 0.5
+        y_max = len(self.map[0]) - 0.5
         plt.xlim(x_min, x_max)
         plt.ylim(y_min, y_max)
 
         self.patches.append(Rectangle((x_min, y_min), x_max - x_min, y_max - y_min, facecolor='none', edgecolor='gray'))
-        for i in range(len(self.my_map)):
-            for j in range(len(self.my_map[0])):
-                if self.my_map[i][j]:
+        for i in range(len(self.map)):
+            for j in range(len(self.map[0])):
+                if self.map[i][j]:
                     self.patches.append(Rectangle((i - 0.5, j - 0.5), 1, 1, facecolor='gray', edgecolor='gray'))
 
         # create agents:
