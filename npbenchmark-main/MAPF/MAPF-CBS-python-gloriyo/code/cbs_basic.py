@@ -14,8 +14,8 @@ from pea_star_class import PEA_Star
 PEA_STAR = PEA_Star
 
 
+# Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
 def detect_two_paths_first_collision(path1, path2):
-    # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
     # There are two types of collisions: vertex collision and edge collision.
     # A vertex collision occurs if both robots occupy the same location at the same timestep
     # An edge collision occurs if the robots swap their location at the same timestep.
@@ -34,8 +34,8 @@ def detect_two_paths_first_collision(path1, path2):
     return None
 
 
+# Task 3.1: Return a list of first collisions between all agent pairs.
 def detect_all_paths_first_collisions(paths):
-    # Task 3.1: Return a list of first collisions between all agent pairs.
     # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
     # causing the collision, and the timestep at which the collision occurred.
     # Use your detect_collision function to find a collision between two robots.
@@ -49,8 +49,8 @@ def detect_all_paths_first_collisions(paths):
     return first_collisions
 
 
+# Task 3.2: Return a list of (two) constraints to resolve the given collision
 def standard_splitting(collision):
-    # Task 3.2: Return a list of (two) constraints to resolve the given collision
     constraints = []
     # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
     #                   specified timestep, and the second constraint prevents the second agent to be at the
