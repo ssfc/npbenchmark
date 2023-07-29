@@ -15,22 +15,21 @@ PEA_STAR = PEA_Star
 
 
 def detect_collision(path1, path2):
-    ##############################
     # Task 3.1: Return the first collision that occurs between two robot paths (or None if there is no collision)
-    #           There are two types of collisions: vertex collision and edge collision.
-    #           A vertex collision occurs if both robots occupy the same location at the same timestep
-    #           An edge collision occurs if the robots swap their location at the same timestep.
-    #           You should use "get_location(path, t)" to get the location of a robot at time t.
+    # There are two types of collisions: vertex collision and edge collision.
+    # A vertex collision occurs if both robots occupy the same location at the same timestep
+    # An edge collision occurs if the robots swap their location at the same timestep.
+    # Use "get_location(path, t)" to get the location of a robot at time t.
     t_range = max(len(path1), len(path2))
     for t in range(t_range):
-        loc_c1 = get_location(path1, t)
-        loc_c2 = get_location(path2, t)
-        loc1 = get_location(path1, t + 1)
-        loc2 = get_location(path2, t + 1)
-        if loc1 == loc2:
-            return [loc1], t
-        if [loc_c1, loc1] == [loc2, loc_c2]:
-            return [loc2, loc_c2], t
+        current_location_1 = get_location(path1, t)
+        current_location_2 = get_location(path2, t)
+        next_location_1 = get_location(path1, t + 1)
+        next_location_2 = get_location(path2, t + 1)
+        if next_location_1 == next_location_2:  # vertex conflict
+            return [next_location_1], t
+        if [current_location_1, next_location_1] == [next_location_2, current_location_2]:  # edge conflict
+            return [next_location_2, current_location_2], t
 
     return None
     # pass

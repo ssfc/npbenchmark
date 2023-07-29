@@ -67,7 +67,7 @@ def import_mapf_instance(filename):  # import map, agent starts and goals
     # agents
     line = f.readline()
     num_agents = int(line)
-    # agents lines with the start/goal positions
+    # agents lines with the start/goal locations
     import_starts = []
     import_goals = []
     for a in range(num_agents):
@@ -106,7 +106,7 @@ if __name__ == '__main__':
         # LINE 1: Map size is 8 columns 8 rows.
         # LINE 2 to 9: dot means space, @ means obstacles.
         # LINE 10: 5 means num of agents.
-        # LINE 11 to 15: in each row, the first pair are (x, y) coordinates of agent start position,
+        # LINE 11 to 15: in each row, the first pair are (x, y) coordinates of agent start location,
         # the second pair are coordinates (x, y) of agent end position. The origin are in the upper left corner.
     else:
         input_instance = sorted(glob.glob(args.instance))
