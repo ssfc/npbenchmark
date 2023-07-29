@@ -26,6 +26,7 @@ def print_mapf_instance(input_map, input_start, input_goal):
     print_locations(input_map, input_goal)
 
 
+# 打印智能体的位置
 def print_locations(input_map, input_location):
     starts_map = [[-1 for _ in range(len(input_map[0]))] for _ in range(len(input_map))]
     for i in range(len(input_location)):
