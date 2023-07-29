@@ -14,7 +14,7 @@ from pea_star_class import PEA_Star
 PEA_STAR = PEA_Star
 
 
-def detect_collision(path1, path2):
+def detect_two_paths_first_collision(path1, path2):
     # Task 3.1: Return the first collision that occurs between two robot paths (or None if there is no collision)
     # There are two types of collisions: vertex collision and edge collision.
     # A vertex collision occurs if both robots occupy the same location at the same timestep
@@ -35,8 +35,7 @@ def detect_collision(path1, path2):
     # pass
 
 
-def detect_collisions(paths):
-    ##############################
+def detect_all_paths_collisions(paths):
     # Task 3.1: Return a list of first collisions between all robot pairs.
     #           A collision can be represented as dictionary that contains the id of the two robots, the vertex or edge
     #           causing the collision, and the timestep at which the collision occurred.
@@ -44,8 +43,8 @@ def detect_collisions(paths):
     collisions = []
     for i in range(len(paths) - 1):
         for j in range(i + 1, len(paths)):
-            if detect_collision(paths[i], paths[j]) is not None:
-                position, t = detect_collision(paths[i], paths[j])
+            if detect_two_paths_first_collision(paths[i], paths[j]) is not None:
+                position, t = detect_two_paths_first_collision(paths[i], paths[j])
                 collisions.append({'a1': i,
                                    'a2': j,
                                    'loc': position,
@@ -246,7 +245,7 @@ class CBSSolver(object):
             root['paths'].append(path[0])
 
         root['cost'] = get_sum_of_cost(root['paths'])
-        root['collisions'] = detect_collisions(root['paths'])
+        root['collisions'] = detect_all_paths_collisions(root['paths'])
         self.push_node(root)
 
         ##############################
@@ -305,7 +304,7 @@ class CBSSolver(object):
                                 q['paths'][v] = path_v[0]
                         if continue_flag:
                             continue
-                    q['collisions'] = detect_collisions(q['paths'])
+                    q['collisions'] = detect_all_paths_collisions(q['paths'])
                     q['cost'] = get_sum_of_cost(q['paths'])
                     self.push_node(q)
         return None
