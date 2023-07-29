@@ -15,7 +15,7 @@ PEA_STAR = PEA_Star
 
 
 def detect_two_paths_first_collision(path1, path2):
-    # Task 3.1: Return the first collision that occurs between two robot paths (or None if there is no collision)
+    # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
     # There are two types of collisions: vertex collision and edge collision.
     # A vertex collision occurs if both robots occupy the same location at the same timestep
     # An edge collision occurs if the robots swap their location at the same timestep.
@@ -35,14 +35,14 @@ def detect_two_paths_first_collision(path1, path2):
 
 
 def detect_all_paths_first_collisions(paths):
-    # Task 3.1: Return a list of first collisions between all robot pairs.
-    # A collision can be represented as dictionary that contains the id of the two robots, the vertex or edge
-    #           causing the collision, and the timestep at which the collision occurred.
-    #           You should use your detect_collision function to find a collision between two robots.
+    # Task 3.1: Return a list of first collisions between all agent pairs.
+    # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
+    # causing the collision, and the timestep at which the collision occurred.
+    # Use your detect_collision function to find a collision between two robots.
     first_collisions = []
     for i in range(len(paths) - 1):
         for j in range(i + 1, len(paths)):
-            if detect_two_paths_first_collision(paths[i], paths[j]) is not None:
+            if detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
                 location, t = detect_two_paths_first_collision(paths[i], paths[j])
                 first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
 
