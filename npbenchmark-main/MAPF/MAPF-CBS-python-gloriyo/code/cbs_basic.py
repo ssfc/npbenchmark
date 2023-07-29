@@ -51,13 +51,10 @@ def detect_all_paths_first_collisions(paths):
 
 def standard_splitting(collision):
     # Task 3.2: Return a list of (two) constraints to resolve the given collision
+    constraints = []
     # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
     #                   specified timestep, and the second constraint prevents the second agent to be at the
     #                   specified location at the specified timestep.
-    # Edge collision: the first constraint prevents the first agent to traverse the specified edge at the
-    #                 specified timestep, and the second constraint prevents the second agent to traverse the
-    #                 specified edge at the specified timestep
-    constraints = []
     if len(collision['loc']) == 1:  # vertex collision
         constraints.append({'agent': collision['a1'],
                             'loc': collision['loc'],
@@ -69,7 +66,10 @@ def standard_splitting(collision):
                             'timestep': collision['timestep'],
                             'positive': False
                             })
-    else:  # edge collision
+    # Edge collision: the first constraint prevents the first agent to traverse the specified edge at the
+    #                 specified timestep, and the second constraint prevents the second agent to traverse the
+    #                 specified edge at the specified timestep
+    else:
         constraints.append({'agent': collision['a1'],
                             'loc': [collision['loc'][0], collision['loc'][1]],
                             'timestep': collision['timestep'],
