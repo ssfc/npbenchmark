@@ -29,14 +29,14 @@ def detect_two_paths_first_collision(path1, path2):
         if next_location_1 == next_location_2:  # vertex conflict
             return [next_location_1], t
         if [current_location_1, next_location_1] == [next_location_2, current_location_2]:  # edge conflict
-            return [next_location_2, current_location_2], t
+            return [next_location_2, current_location_2], t  # return的值有可能是1个元素(vertex)也可能是俩元素(edge)
 
     return None
 
 
 def detect_all_paths_first_collisions(paths):
     # Task 3.1: Return a list of first collisions between all robot pairs.
-    #           A collision can be represented as dictionary that contains the id of the two robots, the vertex or edge
+    # A collision can be represented as dictionary that contains the id of the two robots, the vertex or edge
     #           causing the collision, and the timestep at which the collision occurred.
     #           You should use your detect_collision function to find a collision between two robots.
     first_collisions = []
