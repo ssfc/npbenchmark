@@ -389,7 +389,44 @@ print(counter)
 
 在 Python 的 `matplotlib` 库中，`Circle`、`Rectangle` 等就是 `patches` 的一部分，它们是用来表示圆形和矩形的对象。在绘图过程中，可以创建这些 `patches` 对象，并将它们添加到图形中，从而实现各种绘图需求。
 
+### Q: pyplot是啥库？
 
+`pyplot` 是 `matplotlib` 绘图库的一个子模块，是 `matplotlib.pyplot` 的缩写。它提供了一系列函数和工具，用于创建各种类型的图形和图表，以及进行数据可视化。
+
+`matplotlib` 是 Python 中一个功能强大的绘图库，用于绘制各种类型的图形，包括折线图、散点图、条形图、饼图、等高线图、3D 图等。`matplotlib` 的目标是提供一种简单易用的绘图方式，让用户能够快速地创建漂亮的图形。
+
+`pyplot` 模块是 `matplotlib` 的一个核心组件，它为用户提供了一个交互式界面，可以快速地绘制图形并对图形进行自定义。使用 `pyplot`，你可以轻松地创建基本的图表、添加标题和标签、设置图例、调整颜色和样式等。它还可以和 `NumPy` 等其他库配合使用，进行数据处理和数据可视化。
+
+通常在使用 `matplotlib` 进行绘图时，常见的导入方式是：
+
+```python
+import matplotlib.pyplot as plt
+```
+
+然后通过 `plt` 调用 `pyplot` 中的函数进行图形绘制和图表处理。
+
+例如，以下是使用 `pyplot` 绘制一个简单的折线图的示例：
+
+```python
+import matplotlib.pyplot as plt
+
+# 数据
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
+
+# 绘制折线图
+plt.plot(x, y, marker='o')
+
+# 设置标签
+plt.xlabel('X轴')
+plt.ylabel('Y轴')
+plt.title('简单折线图')
+
+# 显示图形
+plt.show()
+```
+
+在这个示例中，我们使用 `plt.plot()` 绘制了一个折线图，并使用 `plt.xlabel()` 和 `plt.ylabel()` 设置了 x 轴和 y 轴的标签，最后使用 `plt.title()` 设置了图表标题，并通过 `plt.show()` 显示了图形。
 
 
 

@@ -8,17 +8,17 @@ Colors = ['green', 'blue', 'orange']
 
 
 class Animation:
-    def __init__(self, input_map, input_starts, goals, paths):
+    def __init__(self, input_map, input_starts, input_goals, input_paths):
         self.my_map = np.flip(np.transpose(input_map), 1)
         self.starts = []
         for start in input_starts:
             self.starts.append((start[1], len(self.my_map[0]) - 1 - start[0]))
         self.goals = []
-        for goal in goals:
+        for goal in input_goals:
             self.goals.append((goal[1], len(self.my_map[0]) - 1 - goal[0]))
         self.paths = []
-        if paths:
-            for path in paths:
+        if input_paths:
+            for path in input_paths:
                 self.paths.append([])
                 for loc in path:
                     self.paths[-1].append((loc[1], len(self.my_map[0]) - 1 - loc[0]))
@@ -61,7 +61,7 @@ class Animation:
                                     edgecolor='black')
             self.agents[i].original_face_color = Colors[i % len(Colors)]
             self.patches.append(self.agents[i])
-            self.T = max(self.T, len(paths[i]) - 1)
+            self.T = max(self.T, len(input_paths[i]) - 1)
             self.agent_names[i] = self.ax.text(input_starts[i][0], input_starts[i][1] + 0.25, name)
             self.agent_names[i].set_horizontalalignment('center')
             self.agent_names[i].set_verticalalignment('center')
