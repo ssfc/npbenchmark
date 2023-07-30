@@ -242,6 +242,8 @@ class CBSSolver(object):
         # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
+        # A1 LINE 4
+        # insert R to OPEN
         self.push_node(root)
 
         ##############################
@@ -253,17 +255,21 @@ class CBSSolver(object):
         #                standard_splitting function). Add a new child node to your open list for each constraint
         #           Ensure to create a copy of any objects that your child nodes might inherit
 
+        # A1 LINE 5
+        # while OPEN not empty do
         while len(self.open_list) > 0:
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
             #     return None
+            # A1 LINE 6
+            # P ← the best node from OPEN // the lowest solution cost
             p = self.pop_node()
             if p['collisions'] == []:
                 self.print_results(p)
                 for pa in p['paths']:
                     print(pa)
-                return p[
-                    'paths'], self.num_of_generated, self.num_of_expanded  # number of nodes generated/expanded for comparing implementations
+                # number of nodes generated/expanded for comparing implementations
+                return p['paths'], self.num_of_generated, self.num_of_expanded
             collision = p['collisions'].pop(0)
             # constraints = standard_splitting(collision)
             # constraints = disjoint_splitting(collision)
