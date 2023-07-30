@@ -34,7 +34,7 @@ def compute_heuristics(input_map, input_goal):
     closed_list[input_goal] = root
     while len(open_list) > 0:
         (cost, loc, curr) = heapq.heappop(open_list)  # 肯定是cost最小的了
-        for direction in range(4):  # 0, 1, 2, 3  为什么没考虑原地等待的情况
+        for direction in range(4):  # 0, 1, 2, 3  为什么没考虑原地等待的情况?
             child_location = move(loc, direction)
             child_cost = cost + 1
             if child_location[0] < 0 or child_location[0] >= len(input_map) \
@@ -62,7 +62,6 @@ def compute_heuristics(input_map, input_goal):
 
 # return a table that contains the list of constraints of all agents for each time step.
 def build_constraint_table(constraints, meta_agent):
-    # constraint_table = {}
     constraint_table = collections.defaultdict(list)  # dictionary of lists
 
     if not constraints:
