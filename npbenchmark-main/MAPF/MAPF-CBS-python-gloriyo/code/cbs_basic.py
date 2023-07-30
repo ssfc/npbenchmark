@@ -219,6 +219,9 @@ class CBSSolver(object):
         # paths         - list of paths, one for each agent
         #               [[(x11, y11), (x12, y12), ...], [(x21, y21), (x22, y22), ...], ...]
         # collisions     - list of collisions in paths
+
+        # A1 LINE 1
+        # R.constraints = ∅  # 最开始无约束
         root = {'cost': 0,
                 'constraints': [],
                 'paths': [],
