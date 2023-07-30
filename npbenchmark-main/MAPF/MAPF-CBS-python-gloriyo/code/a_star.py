@@ -12,13 +12,13 @@ def move(current_position, chosen_direction):
 
 
 def get_sum_of_cost(paths):
-    rst = 0
+    result = 0
     for path in paths:
         # print(path)
-        rst += len(path) - 1
+        result += len(path) - 1
         if len(path) > 1:
             assert path[-1] != path[-2]
-    return rst
+    return result
 
 
 def compute_heuristics(my_map, goal):

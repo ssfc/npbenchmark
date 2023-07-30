@@ -153,17 +153,17 @@ def paths_violate_constraint(constraint, paths):
 class CBSSolver(object):
     """The high-level search of CBS."""
 
-    def __init__(self, input_map, starts, goals):
-        """my_map   - list of lists specifying obstacle positions
+    def __init__(self, input_map, input_starts, input_goals):
+        """map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations
         """
 
         self.ll_solver = a_star
         self.map = input_map
-        self.starts = starts
-        self.goals = goals
-        self.num_of_agents = len(goals)
+        self.starts = input_starts
+        self.goals = input_goals
+        self.num_of_agents = len(input_goals)
 
         self.num_of_generated = 0
         self.num_of_expanded = 0
