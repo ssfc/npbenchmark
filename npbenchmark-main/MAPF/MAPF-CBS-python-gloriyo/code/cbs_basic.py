@@ -238,6 +238,8 @@ class CBSSolver(object):
                 raise BaseException('No solutions')
             root['paths'].append(path[0])
 
+        # A1 LINE 3
+        # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
         self.push_node(root)
