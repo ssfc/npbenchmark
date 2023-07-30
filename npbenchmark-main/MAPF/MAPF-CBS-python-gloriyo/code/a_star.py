@@ -204,7 +204,7 @@ def compare_nodes(n1, n2):
     return n1['g_val'] + n1['h_val'] < n2['g_val'] + n2['h_val']
 
 
-def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
+def a_star(input_map, start_locs, goal_loc, h_values, meta_agent, constraints):
     """ my_map      - binary obstacle map
         start_loc   - list of start positions
         goal_loc    - list of goal positions
@@ -381,11 +381,11 @@ def a_star(my_map, start_locs, goal_loc, h_values, meta_agent, constraints):
             for i in range(len(child_loc)):
                 loc = child_loc[i]
                 # agent out of map bounds
-                if loc[0] < 0 or loc[0] >= len(my_map) or loc[1] < 0 or loc[1] >= len(my_map[0]):
+                if loc[0] < 0 or loc[0] >= len(input_map) or loc[1] < 0 or loc[1] >= len(input_map[0]):
                     invalid_move = True
                     break
                 # agent collision with map obstacle
-                if my_map[loc[0]][loc[1]]:
+                if input_map[loc[0]][loc[1]]:
                     invalid_move = True
                     break
                 # agent is constrained by a negative external constraint
