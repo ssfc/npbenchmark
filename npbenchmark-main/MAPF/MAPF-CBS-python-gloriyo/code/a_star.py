@@ -34,11 +34,11 @@ def compute_heuristics(input_map, input_goal):
     closed_list[input_goal] = root
     while len(open_list) > 0:
         (cost, loc, curr) = heapq.heappop(open_list)  # 肯定是cost最小的了
-        for direction in range(4):  # 0, 1, 2, 3
+        for direction in range(4):  # 0, 1, 2, 3  为什么没考虑原地等待的情况
             child_location = move(loc, direction)
             child_cost = cost + 1
             if child_location[0] < 0 or child_location[0] >= len(input_map) \
-                    or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
+                    or child_location[1] < 0 or child_location[1] >= len(input_map[0]):  # 非法解，跳出边界外
                 continue
             if input_map[child_location[0]][child_location[1]]:
                 continue
