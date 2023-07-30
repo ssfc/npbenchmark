@@ -64,7 +64,7 @@ def compute_heuristics(input_map, input_goal):
 def build_constraint_table(constraints, meta_agent):
     constraint_table = collections.defaultdict(list)  # dictionary of lists
 
-    if not constraints:
+    if not constraints:  # constraints为空
         return constraint_table
     for constraint in constraints:
         timestep = constraint['timestep']
