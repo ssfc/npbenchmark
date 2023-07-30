@@ -8,7 +8,8 @@ import collections
 
 def move(current_position, chosen_direction):
     directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]  # 移动可能有4方向或原地停留
-    return current_position[0] + directions[chosen_direction][0], current_position[1] + directions[chosen_direction][1]
+    return (current_position[0] + directions[chosen_direction][0],  # x value
+            current_position[1] + directions[chosen_direction][1])  # y value
 
 
 def get_sum_of_cost(paths):
@@ -32,9 +33,9 @@ def compute_heuristics(input_map, input_goal):
     heapq.heappush(open_list, (root['cost'], input_goal, root))
     closed_list[input_goal] = root
     while len(open_list) > 0:
-        (cost, loc, curr) = heapq.heappop(open_list)
-        for dir in range(4):
-            child_location = move(loc, dir)
+        (cost, loc, curr) = heapq.heappop(open_list)  # 肯定是cost最小的了
+        for direction in range(4):  # 0, 1, 2, 3
+            child_location = move(loc, direction)
             child_cost = cost + 1
             if child_location[0] < 0 or child_location[0] >= len(input_map) \
                     or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
