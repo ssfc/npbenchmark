@@ -1,4 +1,4 @@
-import time as timer
+import time
 import heapq
 import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
@@ -194,7 +194,7 @@ class CBSSolver(object):
         a_star_version   - version of A*; "a_star" or "pea_star"
         """
 
-        self.start_time = timer.time()
+        self.start_time = time.time()
 
         if disjoint:
             splitter = disjoint_splitting
@@ -302,7 +302,7 @@ class CBSSolver(object):
 
     def print_results(self, node):
         print("\n Found a solution! \n")
-        CPU_time = timer.time() - self.start_time
+        CPU_time = time.time() - self.start_time
         print("CPU time (s):    {:.2f}".format(CPU_time))
         print("Sum of costs:    {}".format(get_sum_of_cost(node['paths'])))
         print("Expanded nodes:  {}".format(self.num_of_expanded))
