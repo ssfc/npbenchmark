@@ -153,14 +153,14 @@ def paths_violate_constraint(constraint, paths):
 class CBSSolver(object):
     """The high-level search of CBS."""
 
-    def __init__(self, my_map, starts, goals):
+    def __init__(self, input_map, starts, goals):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations
         """
 
         self.ll_solver = a_star
-        self.my_map = my_map
+        self.map = input_map
         self.starts = starts
         self.goals = goals
         self.num_of_agents = len(goals)
@@ -174,7 +174,7 @@ class CBSSolver(object):
         # compute heuristics for the low-level search
         self.heuristics = []
         for goal in self.goals:
-            self.heuristics.append(compute_heuristics(my_map, goal))
+            self.heuristics.append(compute_heuristics(input_map, goal))
 
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
@@ -225,7 +225,7 @@ class CBSSolver(object):
                 'collisions': []}
 
         for i in range(self.num_of_agents):  # Find initial path for each agent
-            astar = AStar(self.my_map, self.starts, self.goals, self.heuristics, i, root['constraints'])
+            astar = AStar(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
             path = astar.find_paths()
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
@@ -275,7 +275,7 @@ class CBSSolver(object):
                     q['paths'].append(pa)
 
                 ai = constraint['agent']
-                astar = AStar(self.my_map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
+                astar = AStar(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
                 path = astar.find_paths()
 
                 if path is not None:
@@ -285,7 +285,7 @@ class CBSSolver(object):
                     if constraint['positive']:
                         vol = paths_violate_constraint(constraint, q['paths'])
                         for v in vol:
-                            astar_v = AStar(self.my_map, self.starts, self.goals, self.heuristics, v, q['constraints'])
+                            astar_v = AStar(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
                             path_v = astar_v.find_paths()
                             if path_v is None:
                                 continue_flag = True
