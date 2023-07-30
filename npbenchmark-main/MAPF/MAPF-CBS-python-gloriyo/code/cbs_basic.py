@@ -227,6 +227,8 @@ class CBSSolver(object):
                 'paths': [],
                 'collisions': []}
 
+        # A1 LINE 2
+        # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
         for i in range(self.num_of_agents):  # Find initial path for each agent
             astar = AStar(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
             path = astar.find_paths()
