@@ -7,7 +7,7 @@ import collections
 
 
 def move(current_position, chosen_direction):
-    directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]  # 移动可能有4方向或原地停留
+    directions = [(0, -1), (1, 0), (0, 1), (-1, 0), (0, 0)]  # east-west-south-north, or stay
     return (current_position[0] + directions[chosen_direction][0],  # x value
             current_position[1] + directions[chosen_direction][1])  # y value
 
