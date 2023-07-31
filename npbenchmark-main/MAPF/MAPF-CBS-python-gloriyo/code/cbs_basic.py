@@ -266,12 +266,18 @@ class CBSSolver(object):
             best_node = self.pop_node()
             # A1 LINE 7
             # Validate the paths in P until a conflict occurs.
+            # A1 LINE 8
+            # if P has no conflict then
             if best_node['collisions'] == []:
                 self.print_results(best_node)
                 for pa in best_node['paths']:
                     print(pa)
+                # A1 LINE 9
+                # return P.solution // P is goal
                 # number of nodes generated/expanded for comparing implementations
                 return best_node['paths'], self.num_of_generated, self.num_of_expanded
+            # A1 LINE 10
+            # C ← first conflict (ai, aj , v, t) in P
             collision = best_node['collisions'].pop(0)
             # constraints = standard_splitting(collision)
             # constraints = disjoint_splitting(collision)
