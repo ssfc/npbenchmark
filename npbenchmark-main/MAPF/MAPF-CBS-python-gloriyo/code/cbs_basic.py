@@ -263,14 +263,14 @@ class CBSSolver(object):
             #     return None
             # A1 LINE 6
             # P ← the best node from OPEN // the lowest solution cost
-            p = self.pop_node()
-            if p['collisions'] == []:
-                self.print_results(p)
-                for pa in p['paths']:
+            best_node = self.pop_node()
+            if best_node['collisions'] == []:
+                self.print_results(best_node)
+                for pa in best_node['paths']:
                     print(pa)
                 # number of nodes generated/expanded for comparing implementations
-                return p['paths'], self.num_of_generated, self.num_of_expanded
-            collision = p['collisions'].pop(0)
+                return best_node['paths'], self.num_of_generated, self.num_of_expanded
+            collision = best_node['collisions'].pop(0)
             # constraints = standard_splitting(collision)
             # constraints = disjoint_splitting(collision)
             constraints = splitter(collision)
@@ -281,10 +281,10 @@ class CBSSolver(object):
                      'paths': [],
                      'collisions': []
                      }
-                for c in p['constraints']:
+                for c in best_node['constraints']:
                     if c not in q['constraints']:
                         q['constraints'].append(c)
-                for pa in p['paths']:
+                for pa in best_node['paths']:
                     q['paths'].append(pa)
 
                 ai = constraint['agent']
