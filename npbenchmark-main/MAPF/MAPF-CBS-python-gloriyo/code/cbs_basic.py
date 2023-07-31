@@ -264,6 +264,8 @@ class CBSSolver(object):
             # A1 LINE 6
             # P ← the best node from OPEN // the lowest solution cost
             best_node = self.pop_node()
+            # A1 LINE 7
+            # Validate the paths in P until a conflict occurs.
             if best_node['collisions'] == []:
                 self.print_results(best_node)
                 for pa in best_node['paths']:
