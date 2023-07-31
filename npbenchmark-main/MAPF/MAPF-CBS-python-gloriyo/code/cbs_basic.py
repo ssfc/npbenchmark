@@ -270,8 +270,8 @@ class CBSSolver(object):
             # if P has no conflict then
             if best_node['collisions'] == []:
                 self.print_results(best_node)
-                for pa in best_node['paths']:
-                    print(pa)
+                for path in best_node['paths']:
+                    print(path)
                 # A1 LINE 9
                 # return P.solution // P is goal
                 # number of nodes generated/expanded for comparing implementations
@@ -292,8 +292,8 @@ class CBSSolver(object):
                 for c in best_node['constraints']:
                     if c not in q['constraints']:
                         q['constraints'].append(c)
-                for pa in best_node['paths']:
-                    q['paths'].append(pa)
+                for path in best_node['paths']:
+                    q['paths'].append(path)
 
                 ai = constraint['agent']
                 astar = AStar(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
