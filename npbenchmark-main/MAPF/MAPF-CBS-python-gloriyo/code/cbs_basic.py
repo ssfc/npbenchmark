@@ -257,7 +257,9 @@ class CBSSolver(object):
 
         # A1 LINE 5
         # while OPEN not empty do
-        while len(self.open_list) > 0:
+        iteration = 0
+        while len(self.open_list) > 0 and iteration < 1:
+            print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
             #     return None
@@ -317,6 +319,7 @@ class CBSSolver(object):
                     q['collisions'] = detect_all_paths_first_collisions(q['paths'])
                     q['cost'] = get_sum_of_cost(q['paths'])
                     self.push_node(q)
+            iteration += 1
         return None
         self.print_results(root)
         return root['paths']
