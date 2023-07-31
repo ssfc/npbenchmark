@@ -159,6 +159,7 @@ class CBSSolver(object):
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations
         """
 
+        self.start_time = None
         self.ll_solver = a_star
         self.map = input_map
         self.starts = input_starts
@@ -203,11 +204,11 @@ class CBSSolver(object):
 
         print("USING: ", splitter)
 
-        AStar = PEA_STAR
-
         if a_star_version == "a_star":
             # AStar = a_star # not a class yet
             AStar = A_Star
+        else:
+            AStar = PEA_STAR
         # if ll_solver == "a_star":
         #     # low-level solver
         #     self.ll_solver = a_star
@@ -257,8 +258,8 @@ class CBSSolver(object):
 
         # A1 LINE 5
         # while OPEN not empty do
-        iteration = 0
-        while len(self.open_list) > 0 and iteration < 1:
+        iteration = 0  # Iteration需要走144个，重复实验结果一样。
+        while len(self.open_list) > 0 and iteration < 1000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
