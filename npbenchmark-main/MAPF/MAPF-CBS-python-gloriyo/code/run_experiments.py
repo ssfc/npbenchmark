@@ -113,11 +113,11 @@ if __name__ == '__main__':
 
     for file in input_instance:
 
-        print("***Import an instance***")
+        # print("***Import an instance***")
 
-        print(file)  # print filename
+        # print(file)  # print filename
         test_map, test_start, test_goal = import_mapf_instance(file)
-        print_mapf_instance(test_map, test_start, test_goal)  # 在map中标明agent的起点和终点
+        # print_mapf_instance(test_map, test_start, test_goal)  # 在map中标明agent的起点和终点
         # print("test map: ", test_map)  # bool二维数组
         # print("test start: ", test_start)  # [(1, 1), (7, 6), (4, 3), (0, 0), (1, 0)]
         # print("test goal: ", test_goal)  # [(3, 0), (0, 0), (1, 1), (5, 4), (5, 6)]
