@@ -25,8 +25,8 @@ def get_sum_of_cost(paths):
     return result
 
 
+# Use Dijkstra to build a shortest-path tree rooted at the goal location
 def compute_heuristics(input_map, input_goal):
-    # Use Dijkstra to build a shortest-path tree rooted at the goal location
     open_list = []
     closed_list = dict()
     root = {'loc': input_goal, 'cost': 0}

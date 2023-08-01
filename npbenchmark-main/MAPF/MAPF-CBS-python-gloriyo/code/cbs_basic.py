@@ -4,10 +4,10 @@ import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
 
 
-from a_star import a_star, compute_heuristics
+from a_star import a_star
 # from pea_star import pea_star
 
-from a_star_class import A_Star, get_location, get_sum_of_cost
+from a_star_class import A_Star, get_location, get_sum_of_cost, compute_heuristics
 
 from pea_star_class import PEA_Star
 
