@@ -259,7 +259,7 @@ class CBSSolver(object):
         # A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 2:
+        while len(self.open_list) > 0 and iteration < 2000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
@@ -271,7 +271,7 @@ class CBSSolver(object):
             # Validate the paths in P until a conflict occurs.
             # A1 LINE 8
             # if P has no conflict then
-            if best_node['collisions'] == []:
+            if not best_node['collisions']:  # 为空[]
                 self.print_results(best_node)
                 for path in best_node['paths']:
                     print(path)
