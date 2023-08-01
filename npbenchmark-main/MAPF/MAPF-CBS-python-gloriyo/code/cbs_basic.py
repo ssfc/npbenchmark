@@ -311,8 +311,7 @@ class CBSSolver(object):
                     self.push_node(q)
             iteration += 1
         return None
-        self.print_results(root)
-        return root['paths']
+
 
     def print_results(self, node):
         print("\n Found a solution! \n")
