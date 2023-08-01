@@ -238,7 +238,7 @@ class CBSSolver(object):
             if path is None:
                 raise BaseException('No solutions')
             root['paths'].append(path[0])
-        # Evaluate A1 LINE 2
+        # Print A1 LINE 2
         '''
         print("Evaluate A1 LINE 2:")
         for i in range(len(root['paths'])):
@@ -248,6 +248,7 @@ class CBSSolver(object):
         # Implement A1 LINE 3
         # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
+        print("cost:", root['cost'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
         # Implement A1 LINE 4
         # insert R to OPEN
