@@ -4,7 +4,7 @@ import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
 # from pea_star import pea_star
 
-from a_star_class import A_Star, get_location, get_sum_of_cost, compute_heuristics
+from a_star_class import AStar, get_location, get_sum_of_cost, compute_heuristics
 
 from pea_star_class import PEA_Star
 
@@ -200,7 +200,7 @@ class CBSSolver(object):
 
         if a_star_version == "a_star":
             # AStar = a_star # not a class yet
-            AStar = A_Star
+            AStar = AStar
         else:
             AStar = PEA_Star
 

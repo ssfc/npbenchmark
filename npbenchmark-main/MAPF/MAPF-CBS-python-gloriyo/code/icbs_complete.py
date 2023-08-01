@@ -6,7 +6,7 @@ import random
 
 from a_star import a_star, get_sum_of_cost, compute_heuristics, get_location
 
-from a_star_class import A_Star
+from a_star_class import AStar
 
 # from pea_star import pea_star
 
@@ -559,7 +559,7 @@ class ICBS_Solver(object):
         AStar = EPEA_Star
 
         if a_star_version == "a_star":
-            AStar = A_Star
+            AStar = AStar
         if a_star_version == "pea_star":
             AStar = PEA_Star
         
