@@ -2,9 +2,6 @@ import time
 import heapq
 import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
-
-
-from a_star import a_star
 # from pea_star import pea_star
 
 from a_star_class import A_Star, get_location, get_sum_of_cost, compute_heuristics
@@ -158,7 +155,6 @@ class CBSSolver(object):
         """
 
         self.start_time = None
-        self.ll_solver = a_star
         self.map = input_map
         self.starts = input_starts
         self.goals = input_goals
@@ -207,11 +203,6 @@ class CBSSolver(object):
             AStar = A_Star
         else:
             AStar = PEA_Star
-        # if ll_solver == "a_star":
-        #     # low-level solver
-        #     self.ll_solver = a_star
-        # else:
-        #     self.ll_solver = pea_star
 
         # Generate the root node
         # constraints   - list of constraints
