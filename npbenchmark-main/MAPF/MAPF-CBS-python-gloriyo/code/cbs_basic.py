@@ -273,7 +273,7 @@ class CBSSolver(object):
             collision = best_node['collisions'].pop(0)
             # constraints = standard_splitting(collision)
             # constraints = disjoint_splitting(collision)
-            constraints = splitter(collision) # 将当前冲突分解为两个限制
+            constraints = splitter(collision)  # 将当前冲突分解为两个限制
 
             for constraint in constraints:
                 q = {'cost': 0,
@@ -311,7 +311,6 @@ class CBSSolver(object):
                     self.push_node(q)
             iteration += 1
         return None
-
 
     def print_results(self, node):
         print("\n Found a solution! \n")
