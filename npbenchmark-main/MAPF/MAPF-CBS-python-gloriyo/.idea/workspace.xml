@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/a_star_class.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/a_star_class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/cbs_basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/cbs_basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/icbs_complete.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/icbs_complete.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,7 @@
       <workItem from="1689349119565" duration="10000" />
       <workItem from="1689836362396" duration="35000" />
       <workItem from="1690509044557" duration="41070000" />
-      <workItem from="1690801324526" duration="19461000" />
+      <workItem from="1690801324526" duration="19645000" />
     </task>
     <servers />
   </component>

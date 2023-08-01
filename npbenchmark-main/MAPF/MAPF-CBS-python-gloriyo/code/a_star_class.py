@@ -395,7 +395,7 @@ class A_Star(object):
                 'reached_goal': [False for i in range(len(self.agents))]
                 }
 
-        # check if any any agents are already at goal loc
+        # check if any agents are already at goal loc
         for i, a in enumerate(self.agents):
             if root['loc'][i] == self.goals[i]:
 
