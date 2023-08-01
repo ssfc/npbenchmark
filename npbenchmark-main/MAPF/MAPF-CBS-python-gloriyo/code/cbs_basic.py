@@ -200,9 +200,9 @@ class CBSSolver(object):
 
         if a_star_version == "a_star":
             # AStar = a_star # not a class yet
-            AStar = A_Star
+            AStar_method = A_Star
         else:
-            AStar = PEA_Star
+            AStar_method = PEA_Star
 
         # Generate the root node
         # constraints   - list of constraints
@@ -222,7 +222,7 @@ class CBSSolver(object):
         # Implement A1 LINE 2
         # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
         for i in range(self.num_of_agents):  # Find initial path for each agent
-            astar = AStar(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
+            astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
             path = astar.find_paths()
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
@@ -244,7 +244,6 @@ class CBSSolver(object):
         # insert R to OPEN
         self.push_node(root)
 
-        ##############################
         # Task 3.3: High-Level Search
         #           Repeat the following as long as the open list is not empty:
         #             1. Get the next node from the open list (you can use self.pop_node()
@@ -256,7 +255,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 2:
+        while len(self.open_list) > 0 and iteration < 2000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
@@ -296,7 +295,7 @@ class CBSSolver(object):
                     q['paths'].append(path)
 
                 ai = constraint['agent']
-                astar = AStar(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
+                astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
                 path = astar.find_paths()
 
                 if path is not None:
@@ -306,7 +305,7 @@ class CBSSolver(object):
                     if constraint['positive']:
                         vol = paths_violate_constraint(constraint, q['paths'])
                         for v in vol:
-                            astar_v = AStar(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
+                            astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
                             path_v = astar_v.find_paths()
                             if path_v is None:
                                 continue_flag = True
