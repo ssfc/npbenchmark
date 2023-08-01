@@ -89,13 +89,13 @@ def build_constraint_table(constraints, meta_agent):
     return constraint_table
 
 
-def get_location(path, time):
-    if time < 0:
-        return path[0]
-    elif time < len(path):
-        return path[time]
+def get_location(input_path, input_time):
+    if input_time < 0:
+        return input_path[0]
+    elif input_time < len(input_path):
+        return input_path[input_time]
     else:
-        return path[-1]  # wait at the goal location
+        return input_path[-1]  # wait at the goal location
 
 
 def get_path(goal_node, meta_agent):
