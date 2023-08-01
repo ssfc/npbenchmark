@@ -212,8 +212,12 @@ class CBSSolver(object):
 
         # Implement A1 LINE 1
         # R.constraints = ∅  # 最开始无约束
+        #
         root = {'cost': 0,
-                'constraints': [],
+                'constraints': [], # (1) A set of constraints (N.constraints).
+                # The root of the CT contains an empty set of constraints.
+                # The child of a node in the CT inherits the constraints of the parent
+                # and adds one new constraint for one agent.
                 'paths': [],
                 'collisions': []}
         # Evaluate A1 LINE 1
@@ -316,6 +320,7 @@ class CBSSolver(object):
                     q['collisions'] = detect_all_paths_first_collisions(q['paths'])
                     q['cost'] = get_sum_of_cost(q['paths'])
                     self.push_node(q)
+
             iteration += 1
         return None
 
