@@ -218,7 +218,10 @@ class CBSSolver(object):
                 # The root of the CT contains an empty set of constraints.
                 # The child of a node in the CT inherits the constraints of the parent
                 # and adds one new constraint for one agent.
-                'paths': [],
+                'paths': [],  # (2) A solution (N.solution).
+                # A set of k paths, one path for each agent.
+                # The path for agent ai must be consistent with the constraints of ai.
+                # Such paths are found by the low-level
                 'collisions': []}
         # Evaluate A1 LINE 1
         # print("root:", root)
