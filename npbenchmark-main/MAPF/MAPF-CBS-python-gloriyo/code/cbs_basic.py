@@ -11,8 +11,6 @@ from a_star_class import A_Star
 
 from pea_star_class import PEA_Star
 
-PEA_STAR = PEA_Star
-
 
 # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
 def detect_two_paths_first_collision(path1, path2):
@@ -208,7 +206,7 @@ class CBSSolver(object):
             # AStar = a_star # not a class yet
             AStar = A_Star
         else:
-            AStar = PEA_STAR
+            AStar = PEA_Star
         # if ll_solver == "a_star":
         #     # low-level solver
         #     self.ll_solver = a_star
