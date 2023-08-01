@@ -210,14 +210,14 @@ class CBSSolver(object):
         #               [[(x11, y11), (x12, y12), ...], [(x21, y21), (x22, y22), ...], ...]
         # collisions     - list of collisions in paths
 
-        # A1 LINE 1
+        # Implement A1 LINE 1
         # R.constraints = ∅  # 最开始无约束
         root = {'cost': 0,
                 'constraints': [],
                 'paths': [],
                 'collisions': []}
 
-        # A1 LINE 2
+        # Implement A1 LINE 2
         # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
         for i in range(self.num_of_agents):  # Find initial path for each agent
             astar = AStar(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
@@ -228,11 +228,11 @@ class CBSSolver(object):
                 raise BaseException('No solutions')
             root['paths'].append(path[0])
 
-        # A1 LINE 3
+        # Implement A1 LINE 3
         # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
-        # A1 LINE 4
+        # Implement A1 LINE 4
         # insert R to OPEN
         self.push_node(root)
 
@@ -245,7 +245,7 @@ class CBSSolver(object):
         #                standard_splitting function). Add a new child node to your open list for each constraint
         #           Ensure to create a copy of any objects that your child nodes might inherit
 
-        # A1 LINE 5
+        # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
         while len(self.open_list) > 0 and iteration < 2000:
@@ -253,22 +253,22 @@ class CBSSolver(object):
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
             #     return None
-            # A1 LINE 6
+            # Implement A1 LINE 6
             # P ← the best node from OPEN // the lowest solution cost
             best_node = self.pop_node()
-            # A1 LINE 7
+            # Implement A1 LINE 7
             # Validate the paths in P until a conflict occurs.
-            # A1 LINE 8
+            # Implement A1 LINE 8
             # if P has no conflict then
             if not best_node['collisions']:  # 为空[]
                 self.print_results(best_node)
                 for path in best_node['paths']:
                     print(path)
-                # A1 LINE 9
+                # Implement A1 LINE 9
                 # return P.solution // P is goal
                 # number of nodes generated/expanded for comparing implementations
                 return best_node['paths'], self.num_of_generated, self.num_of_expanded
-            # A1 LINE 10
+            # Implement A1 LINE 10
             # C ← first conflict (ai, aj , v, t) in P
             collision = best_node['collisions'].pop(0)
             # constraints = standard_splitting(collision)
