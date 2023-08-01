@@ -251,6 +251,7 @@ class CBSSolver(object):
         print("root cost:", root['cost'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
         print("root collisions:", root['collisions'])
+        # Print A1 LINE 3
         # root collisions:
         # [{'a1': 0, 'a2': 4, 'loc': [(1, 1), (1, 0)], 'timestep': 1},
         # {'a1': 1, 'a2': 2, 'loc': [(1, 1)], 'timestep': 11},
@@ -260,7 +261,7 @@ class CBSSolver(object):
         # {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]
         # Implement A1 LINE 4
         # insert R to OPEN
-        self.push_node(root)
+        self.push_node(root)  # push到open list里面
 
         # Task 3.3: High-Level Search
         #           Repeat the following as long as the open list is not empty:
