@@ -152,7 +152,6 @@ class A_Star(object):
 
     # return a table that contains the list of constraints of all agents for each time step.
     def build_constraint_table(self, agent):
-        # constraint_table = {}
         constraint_table = dict()
 
         if not self.constraints:
@@ -160,7 +159,6 @@ class A_Star(object):
         for constraint in self.constraints:
 
             # print(constraint)
-
             timestep = constraint['timestep']
 
             t_constraint = []
@@ -378,7 +376,7 @@ class A_Star(object):
 
         for i, a in enumerate(self.agents):
             table_i = self.build_constraint_table(a)
-            print(table_i)
+            print("table", i, a, table_i)
             self.c_table.append(table_i)
             if table_i.keys():
                 self.max_constraints[i] = max(table_i.keys())
