@@ -13,13 +13,16 @@ def move(loc, dir):
 
 
 def get_sum_of_cost(paths):
-    rst = 0
+    result = 0
     for path in paths:
         # print(path)
-        rst += len(path) - 1
-        if (len(path) > 1):
+        result += len(path) - 1
+        if len(path) > 1:
+            # 这是一个断言语句，用于检查当前路径的最后两个节点是否不同，即路径中不存在重复节点。
+            # 如果最后两个节点相同（路径中出现环），则断言会引发 AssertionError 异常，表示存在错误。
+            # 这个断言可以帮助程序员及时发现路径数据的错误。
             assert path[-1] != path[-2]
-    return rst
+    return result
 
 
 def compute_heuristics(input_map, input_goal):
