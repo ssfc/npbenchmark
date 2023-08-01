@@ -102,8 +102,6 @@ class A_Star(object):
         """            
 
         self.map = input_map
-
-
         self.num_generated = 0
         self.num_expanded = 0
         self.CPU_time = 0
