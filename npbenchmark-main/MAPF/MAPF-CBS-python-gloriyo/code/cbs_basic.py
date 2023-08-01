@@ -262,6 +262,7 @@ class CBSSolver(object):
         # Implement A1 LINE 4
         # insert R to OPEN
         self.push_node(root)  # push到open list里面
+        print(self.open_list)
 
         # Task 3.3: High-Level Search
         #           Repeat the following as long as the open list is not empty:
