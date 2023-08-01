@@ -374,6 +374,7 @@ class A_Star(object):
     def find_paths(self):
         self.start_time = timer.time()
         print("> build constraint table")
+        print("agents", self.agents)
 
         for i, a in enumerate(self.agents):
             table_i = self.build_constraint_table(a)
