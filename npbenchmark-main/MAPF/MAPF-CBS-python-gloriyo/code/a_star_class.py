@@ -93,7 +93,7 @@ def get_path(goal_node, meta_agent):
 
 class A_Star(object):
 
-    def __init__(self, input_map, input_starts, input_goals, heuristics, agents, contraints):
+    def __init__(self, input_map, input_starts, input_goals, heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations for CBS
@@ -109,8 +109,7 @@ class A_Star(object):
         self.open_list = []
         self.closed_list = dict()
 
-        
-        self.constraints = contraints # to be used to create c_table
+        self.constraints = input_constraints # to be used to create c_table
 
         self.agents = agents
 
