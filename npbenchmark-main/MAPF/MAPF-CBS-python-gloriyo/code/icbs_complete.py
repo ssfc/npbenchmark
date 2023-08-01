@@ -6,7 +6,7 @@ import random
 
 from a_star import a_star, get_sum_of_cost, compute_heuristics, get_location
 
-from a_star_class import AStar
+from a_star_class import A_Star
 
 # from pea_star import pea_star
 

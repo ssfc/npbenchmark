@@ -4,7 +4,7 @@ import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
 # from pea_star import pea_star
 
-from a_star_class import AStar, get_location, get_sum_of_cost, compute_heuristics
+from a_star_class import A_Star, get_location, get_sum_of_cost, compute_heuristics
 
 from pea_star_class import PEA_Star
 
@@ -200,7 +200,7 @@ class CBSSolver(object):
 
         if a_star_version == "a_star":
             # AStar = a_star # not a class yet
-            AStar = AStar
+            AStar = A_Star
         else:
             AStar = PEA_Star
 
@@ -254,7 +254,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 2:
+        while len(self.open_list) > 0 and iteration < 2000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
