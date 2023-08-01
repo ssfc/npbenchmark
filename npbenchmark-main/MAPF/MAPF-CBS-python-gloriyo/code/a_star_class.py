@@ -1,4 +1,4 @@
-import time as timer
+import time as time
 import heapq
 from itertools import product
 import numpy as np
@@ -372,7 +372,7 @@ class A_Star(object):
         return n1['g_val'] + n1['h_val'] < n2['g_val'] + n2['h_val']
 
     def find_paths(self):
-        self.start_time = timer.time()
+        self.start_time = time.time()
         print("> build constraint table")
         print("agents", self.agents)
 
