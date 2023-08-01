@@ -229,6 +229,8 @@ class CBSSolver(object):
             if path is None:
                 raise BaseException('No solutions')
             root['paths'].append(path[0])
+        # Evaluate A1 LINE 2
+        print("Evaluate A1 LINE 2:", root['paths'])
 
         # Implement A1 LINE 3
         # R.cost = SIC(R.solution) // 计算目标函数
