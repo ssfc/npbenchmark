@@ -371,11 +371,11 @@ class A_Star(object):
     def find_paths(self):
         self.start_time = time.time()
         print("> build constraint table")
-        print("agents", self.agents)
+        # ("agents", self.agents)
 
         for i, a in enumerate(self.agents):
             table_i = self.build_constraint_table(a)
-            print("table", i, a, table_i)
+            # print("table", i, a, table_i)
             self.c_table.append(table_i)
             if table_i.keys():
                 self.max_constraints[i] = max(table_i.keys())

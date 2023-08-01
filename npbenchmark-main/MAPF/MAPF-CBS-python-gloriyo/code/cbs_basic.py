@@ -248,8 +248,16 @@ class CBSSolver(object):
         # Implement A1 LINE 3
         # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
-        print("cost:", root['cost'])
+        print("root cost:", root['cost'])
         root['collisions'] = detect_all_paths_first_collisions(root['paths'])
+        print("root collisions:", root['collisions'])
+        # root collisions:
+        # [{'a1': 0, 'a2': 4, 'loc': [(1, 1), (1, 0)], 'timestep': 1},
+        # {'a1': 1, 'a2': 2, 'loc': [(1, 1)], 'timestep': 11},
+        # {'a1': 1, 'a2': 3, 'loc': [(3, 4), (3, 3)], 'timestep': 7},
+        # {'a1': 1, 'a2': 4, 'loc': [(3, 4)], 'timestep': 6},
+        # {'a1': 2, 'a2': 3, 'loc': [(3, 1), (2, 1)], 'timestep': 4},
+        # {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]
         # Implement A1 LINE 4
         # insert R to OPEN
         self.push_node(root)
