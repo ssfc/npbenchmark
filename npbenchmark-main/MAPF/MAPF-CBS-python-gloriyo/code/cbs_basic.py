@@ -259,7 +259,7 @@ class CBSSolver(object):
         # A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 1000:
+        while len(self.open_list) > 0 and iteration < 2:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
