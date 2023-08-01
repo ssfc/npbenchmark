@@ -213,8 +213,10 @@ class CBSSolver(object):
         # Implement A1 LINE 1
         # R.constraints = ∅  # 最开始无约束
         #
-        root = {'cost': 0,
-                'constraints': [], # (1) A set of constraints (N.constraints).
+        root = {'cost': 0,  # (3) The total cost (N.cost) of the current solution
+                # (summation over all the single-agent path costs).
+                # We denote this cost the f-value of the node.
+                'constraints': [],  # (1) A set of constraints (N.constraints).
                 # The root of the CT contains an empty set of constraints.
                 # The child of a node in the CT inherits the constraints of the parent
                 # and adds one new constraint for one agent.
