@@ -6,12 +6,10 @@
 
 class CBS
 {
-
+private:
+public:
+    CBS(); // constructor
 };
-
-
-
-
 
 #define DRAW_PATH_PY_CBS_H
 
