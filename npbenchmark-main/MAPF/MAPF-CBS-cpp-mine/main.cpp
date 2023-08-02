@@ -2,6 +2,7 @@
 // https://www.geeksforgeeks.org/a-search-algorithm/
 // pseudocode at : https://en.wikipedia.org/wiki/A*_search_algorithm
 #include "a_star.h"
+#include "cbs.h"
 
 using namespace std;
 
@@ -32,9 +33,11 @@ int main()
     auto test_dest = Coordinate{2, 4};
     // auto test_dest = Coordinate{2, 5};
 
-    AStar test(test_src, test_dest);
-    // test.output_map();
-    test.a_star_search();
+    AStar test_astar(test_src, test_dest);
+    // test_astar.output_map();
+    test_astar.a_star_search();
+
+    CBS test_cbs;
 
     return 0;
 }
