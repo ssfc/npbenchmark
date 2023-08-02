@@ -12,7 +12,7 @@ AStar::AStar(Coordinate input_src, Coordinate input_dest):
         start_time(clock())
 // 0表示无障碍, 1表示有障碍。
 {
-    ifstream map_file("map.txt");
+    ifstream map_file("a_star_map.txt");
     if (map_file.is_open())
     {
         map_file >> num_rows >> num_columns;
