@@ -26,6 +26,7 @@ int main()
                 { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
                 */
 
+    /*
     // Source is the left-most bottom-most corner
     auto test_src = Coordinate{8, 0};
 
@@ -36,8 +37,10 @@ int main()
     AStar test_astar(test_src, test_dest);
     // test_astar.output_map();
     test_astar.a_star_search();
+     */
 
     CBS test_cbs;
+    test_cbs.print_map();
 
     return 0;
 }
