@@ -11,4 +11,19 @@ struct Coordinate
     int y;
 };
 
+struct Constraint
+{
+
+};
+
+struct Path
+{
+
+};
+
+struct Collision
+{
+
+};
+
 #endif //DRAW_PATH_PY_UTIL_H
