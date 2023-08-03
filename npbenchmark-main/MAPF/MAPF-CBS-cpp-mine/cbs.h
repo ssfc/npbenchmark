@@ -48,6 +48,7 @@ private:
     std::vector<std::vector<int>> map;
     int num_agents;
     std::vector<Agent> agents;
+    std::vector<CBSNode> open_list;
 
     // debug var;
     int iter;

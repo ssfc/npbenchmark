@@ -59,7 +59,10 @@ CBS::CBS():
 
 void CBS::find_solution()
 {
-    cerr << "hello" << endl;
+    CBSNode root;
+    root.cost = 0;
+
+    
 }
 
 void CBS::print_map()
