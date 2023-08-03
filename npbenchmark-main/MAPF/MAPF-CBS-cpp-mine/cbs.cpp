@@ -59,6 +59,8 @@ CBS::CBS():
 
 void CBS::find_solution()
 {
+    // A1 LINE 1
+    // R.constraints = ∅ // 最开始无约束
     CBSNode root;
     root.cost = 0;
     open_list.emplace_back(root);
