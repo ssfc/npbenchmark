@@ -22,7 +22,7 @@ struct Constraint
 
 struct Path
 {
-
+    std::vector<Coordinate> nodes;
 };
 
 struct Collision
