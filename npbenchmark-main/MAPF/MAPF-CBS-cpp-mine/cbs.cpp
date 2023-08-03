@@ -6,7 +6,9 @@
 
 using namespace std;
 
-CBS::CBS()
+CBS::CBS():
+    iter(0),
+    start_time(clock())
 {
     ifstream map_file("test_1.txt");
     if (map_file.is_open())

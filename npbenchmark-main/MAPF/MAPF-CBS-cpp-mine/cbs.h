@@ -23,6 +23,10 @@ private:
     std::vector<std::vector<int>> map;
     int num_agents;
     std::vector<Agent> agents;
+
+    // debug var;
+    int iter;
+    double start_time;
 public:
     CBS(); // constructor
 
