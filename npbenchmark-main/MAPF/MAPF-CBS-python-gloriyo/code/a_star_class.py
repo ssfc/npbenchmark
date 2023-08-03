@@ -153,7 +153,7 @@ class A_Star(object):
     # agent是一个整数，表示代理的编号。
     # 例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
     # 这个函数中的agent参数是用来指定要为哪个代理构建约束表的。
-    def build_constraint_table(self, agent_index):
+    def build_constraint_table(self, input_agent_id):
         constraint_table = dict()
 
         if not self.constraints:
@@ -171,20 +171,20 @@ class A_Star(object):
                 t_constraint = constraint_table[timestep]
 
             # positive constraint for agent
-            if constraint['positive'] and constraint['agent'] == agent_index:
+            if constraint['positive'] and constraint['agent'] == input_agent_id:
 
                 # constraint_table[timestep].append(constraint)
                 t_constraint.append(constraint)
                 constraint_table[timestep] = t_constraint
             # and negative (external) constraint for agent
-            elif not constraint['positive'] and constraint['agent'] == agent_index:
+            elif not constraint['positive'] and constraint['agent'] == input_agent_id:
                 # constraint_table[timestep].append(constraint)
                 t_constraint.append(constraint)
                 constraint_table[timestep] = t_constraint
                 # enforce positive constraints from other agents (i.e. create neg constraint)
             elif constraint['positive']:
                 neg_constraint = copy.deepcopy(constraint)
-                neg_constraint['agent'] = agent_index
+                neg_constraint['agent'] = input_agent_id
                 # neg_constraint['meta_agent'] = meta_agent
                 # if edge collision
                 if len(constraint['loc']) == 2:
@@ -379,8 +379,8 @@ class A_Star(object):
         print("> build constraint table")
         # ("agents", self.agents)
 
-        for i, a in enumerate(self.agents):
-            table_i = self.build_constraint_table(a)
+        for i, agent_id in enumerate(self.agents):
+            table_i = self.build_constraint_table(agent_id)
             # print("table", i, a, table_i)
             self.c_table.append(table_i)
             if table_i.keys():
