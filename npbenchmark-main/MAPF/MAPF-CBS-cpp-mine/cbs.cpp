@@ -57,6 +57,11 @@ CBS::CBS():
 
 }
 
+void CBS::find_solution()
+{
+
+}
+
 void CBS::print_map()
 {
     cerr << num_rows << " " << num_columns << endl;

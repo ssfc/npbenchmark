@@ -54,6 +54,7 @@ private:
     double start_time;
 public:
     CBS(); // constructor
+    void find_solution();
 
     // debug func
     void print_map();
