@@ -65,6 +65,9 @@ void CBS::find_solution()
     root.cost = 0;
     open_list.emplace_back(root);
 
+    // A1 LINE 2
+    // R.solution = find individual paths using the low-level() // 用低层算法计算每个智能体的path
+
 }
 
 void CBS::find_path()
