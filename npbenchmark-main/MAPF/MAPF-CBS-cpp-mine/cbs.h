@@ -7,6 +7,13 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include "util.h"
+
+struct Agent
+{
+    Coordinate start;
+    Coordinate goal;
+};
 
 class CBS
 {
@@ -15,6 +22,7 @@ private:
     int num_columns;
     std::vector<std::vector<int>> map;
     int num_agents;
+    std::vector<Agent> agents;
 public:
     CBS(); // constructor
 

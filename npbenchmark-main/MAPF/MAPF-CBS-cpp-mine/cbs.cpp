@@ -37,6 +37,14 @@ CBS::CBS()
         }
 
         map_file >> num_agents;
+        agents.resize(num_agents);
+        for(int i=0;i<num_agents;i++)
+        {
+            map_file >> agents[i].start.x;
+            map_file >> agents[i].start.y;
+            map_file >> agents[i].goal.x;
+            map_file >> agents[i].goal.y;
+        }
 
         map_file.close();
     }
@@ -59,6 +67,11 @@ void CBS::print_map()
         cerr << endl;
     }
     cerr << num_agents << endl;
+    for(auto agent : agents)
+    {
+        cerr << "(" << agent.start.x << "," << agent.start.y << ")->(";
+        cerr << agent.goal.x << "," << agent.goal.y << ")" << endl;
+    }
 }
 
 
