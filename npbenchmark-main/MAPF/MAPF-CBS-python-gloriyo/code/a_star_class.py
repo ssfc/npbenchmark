@@ -162,8 +162,8 @@ class A_Star(object):
         # 这么做的原因是，如果没有约束，那么就不需要构建约束表，也不需要考虑约束对搜索的影响。这样可以节省时间和空间，提高效率。
 
         for constraint in self.constraints:
-
-            # print(constraint)
+            # print("show constraint:", constraint)
+            # constraint: {'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}
             timestep = constraint['timestep']
 
             t_constraint = []
