@@ -150,8 +150,10 @@ class A_Star(object):
         return curr
 
     # return a table that contains the list of constraints of all agents for each time step.
+    # agent是一个整数，表示代理的编号。
+    # 例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
+    # 这个函数中的agent参数是用来指定要为哪个代理构建约束表的。
     def build_constraint_table(self, agent):
-    # 
         constraint_table = dict()
 
         if not self.constraints:
