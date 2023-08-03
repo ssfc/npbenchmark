@@ -14,6 +14,7 @@ private:
     int num_rows;
     int num_columns;
     std::vector<std::vector<int>> map;
+    int num_agents;
 public:
     CBS(); // constructor
 

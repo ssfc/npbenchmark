@@ -36,6 +36,8 @@ CBS::CBS()
             }
         }
 
+        map_file >> num_agents;
+
         map_file.close();
     }
     else
@@ -47,6 +49,7 @@ CBS::CBS()
 
 void CBS::print_map()
 {
+    cerr << num_rows << " " << num_columns << endl;
     for(auto & each_row : map)
     {
         for(int element : each_row)
@@ -55,6 +58,7 @@ void CBS::print_map()
         }
         cerr << endl;
     }
+    cerr << num_agents << endl;
 }
 
 

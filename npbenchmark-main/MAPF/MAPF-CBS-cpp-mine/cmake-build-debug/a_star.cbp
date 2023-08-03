@@ -97,6 +97,9 @@
 		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-mine/main.cpp">
 			<Option target="a_star"/>
 		</Unit>
+		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-mine/util.h">
+			<Option target="a_star"/>
+		</Unit>
 		<Unit filename="C:/wamp64/www/npbenchmark/npbenchmark-main/MAPF/MAPF-CBS-cpp-mine/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

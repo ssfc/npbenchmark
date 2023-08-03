@@ -13,12 +13,7 @@
 #include <stack>
 #include <utility>
 #include <vector>
-
-struct Coordinate
-{
-    int x;
-    int y;
-};
+#include "util.h"
 
 struct OpenNode
 {
