@@ -408,12 +408,7 @@ class A_Star(object):
         self.closed_list[(tuple(root['loc']), root['timestep'])] = [root]
 
         while len(self.open_list) > 0:
-
-            # if num_node_generated >= 30:
-            #     return
-
             curr = self.pop_node()
-
             solution_found = all(curr['reached_goal'][i] for i in range(len(self.agents)))
             # print(curr['reached_goal'] )
 
@@ -425,16 +420,6 @@ class A_Star(object):
             for child in children:
 
                 f_value = child['g_val'] + child['h_val']
-
-                # if (tuple(child['loc']),child['timestep']) in self.closed_list:
-                #     existing_node = self.closed_list[(tuple(child['loc']),child['timestep'])]
-                #     if self.compare_nodes(child, existing_node):
-                #         self.closed_list[(tuple(child['loc']),child['timestep'])] = child
-                #         self.push_node(child)
-                # else:
-                #     # print('bye child ',child['loc'])
-                #     self.closed_list[(tuple(child['loc']),child['timestep'])] = child
-                #     self.push_node(child)
 
                 if (tuple(child['loc']), child['timestep']) in self.closed_list:
                     existing = self.closed_list[(tuple(child['loc']), child['timestep'])]
@@ -450,16 +435,6 @@ class A_Star(object):
                     # print('bye child ',child['loc'])
                     self.closed_list[(tuple(child['loc']), child['timestep'])] = child
                     self.push_node(child)
-
-                # if (tuple(child['loc']),child['timestep']) not in self.closed_list:
-                #     # existing_node = self.closed_list[(tuple(child['loc']),child['timestep'])]
-                #     # if compare_nodes(child, existing_node):
-                #     self.closed_list[(tuple(child['loc']),child['timestep'])] = child
-                #     # print('bye child ',child['loc'])
-                #     self.push_node(child)
-
-            # if (tuple(curr['loc']),curr['timestep']) not in self.closed_list:
-            #     self.closed_list[(tuple(curr['loc']),curr['timestep'])] = curr
 
         print('no solution')
 
