@@ -368,7 +368,7 @@ class A_Star(object):
 
         return n1['g_val'] + n1['h_val'] < n2['g_val'] + n2['h_val']
 
-    def find_paths(self):
+    def find_path(self):
         self.start_time = time.time()
         print("> build constraint table")
         # ("agents", self.agents)

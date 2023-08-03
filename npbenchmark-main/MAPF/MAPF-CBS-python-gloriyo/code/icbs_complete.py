@@ -429,7 +429,7 @@ class ICBS_Solver(object):
         path1_constraints = combined_constraints(p['constraints'], temp_constraints[0])
         # alt_paths1 = self.ll_solver(self.my_map,self.starts, self.goals,self.heuristics,list(ma1),path1_constraints)
         astar_ma1 = AStar(self.my_map,self.starts, self.goals,self.heuristics,list(ma1),path1_constraints)
-        alt_paths1 = astar_ma1.find_paths()
+        alt_paths1 = astar_ma1.find_path()
 
         # get current paths of meta-agent
         curr_paths = []
@@ -470,7 +470,7 @@ class ICBS_Solver(object):
         path2_constraints = combined_constraints(p['constraints'], temp_constraints[1])
         # alt_paths2 = self.ll_solver(self.my_map,self.starts, self.goals,self.heuristics,list(ma2),path2_constraints)
         astar_ma2 = AStar(self.my_map,self.starts, self.goals,self.heuristics,list(ma2),path2_constraints)
-        alt_paths2 = astar_ma2.find_paths()
+        alt_paths2 = astar_ma2.find_path()
         
 
 

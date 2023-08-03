@@ -232,7 +232,8 @@ class CBSSolver(object):
         # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
         for i in range(self.num_of_agents):  # Find initial path for each agent
             astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
-            path = astar.find_paths()
+            path = astar.find_path()
+            # print("find path:", path)
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
             if path is None:
@@ -316,7 +317,7 @@ class CBSSolver(object):
 
                 ai = constraint['agent']
                 astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
-                path = astar.find_paths()
+                path = astar.find_path()
 
                 if path is not None:
                     q['paths'][ai] = path[0]
@@ -326,7 +327,7 @@ class CBSSolver(object):
                         vol = paths_violate_constraint(constraint, q['paths'])
                         for v in vol:
                             astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
-                            path_v = astar_v.find_paths()
+                            path_v = astar_v.find_path()
                             if path_v is None:
                                 continue_flag = True
                             else:
