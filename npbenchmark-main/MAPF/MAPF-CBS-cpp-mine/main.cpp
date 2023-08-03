@@ -41,6 +41,7 @@ int main()
 
     CBS test_cbs;
     test_cbs.print_map();
+    test_cbs.find_solution();
 
     return 0;
 }

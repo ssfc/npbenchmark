@@ -59,7 +59,7 @@ CBS::CBS():
 
 void CBS::find_solution()
 {
-
+    cerr << "hello" << endl;
 }
 
 void CBS::print_map()
