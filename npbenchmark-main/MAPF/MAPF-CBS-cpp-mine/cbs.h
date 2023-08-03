@@ -15,6 +15,31 @@ struct Agent
     Coordinate goal;
 };
 
+struct Constraint
+{
+
+};
+
+struct Path
+{
+
+};
+
+struct Collision
+{
+
+};
+
+// Node of constraint tree
+struct CBSNode
+{
+    int cost;
+    std::vector<Constraint> constraints;
+    std::vector<Path> paths;
+    std::vector<Collision> collisions;
+};
+
+
 class CBS
 {
 private:
