@@ -61,7 +61,12 @@ void CBS::find_solution()
 {
     CBSNode root;
     root.cost = 0;
+    open_list.emplace_back(root);
 
+}
+
+void CBS::find_path()
+{
     
 }
 

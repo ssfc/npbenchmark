@@ -56,6 +56,7 @@ private:
 public:
     CBS(); // constructor
     void find_solution();
+    void find_path();
 
     // debug func
     void print_map();
