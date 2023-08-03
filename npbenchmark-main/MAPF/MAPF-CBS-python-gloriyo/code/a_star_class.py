@@ -123,15 +123,17 @@ class A_Star(object):
             # print(meta_agent)
 
             # add meta_agent keys to constraints
-            for c in self.constraints:
-                c['meta_agent'] = {c['agent']}
+            for constraint in self.constraints:
+                constraint['meta_agent'] = {constraint['agent']}
+
+        print("input agents:", self.agents)
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
         self.starts = [input_starts[a] for a in self.agents]
         self.heuristics = [heuristics[a] for a in self.agents]
         self.goals = [input_goals[a] for a in self.agents]
 
-        self.c_table = []  # constraint table
+        self.constraint_table = []  # constraint table
         self.max_constraints = np.zeros((len(self.agents),), dtype=int)
 
     def push_node(self, node):
@@ -300,7 +302,7 @@ class A_Star(object):
                 elif self.map[next_loc[0]][next_loc[1]]:
                     invalid_move = True
                 # agent is constrained by a negative external constraint
-                elif self.constraint_violated(curr['loc'][i], next_loc, curr['timestep'] + 1, self.c_table[i],
+                elif self.constraint_violated(curr['loc'][i], next_loc, curr['timestep'] + 1, self.constraint_table[i],
                                               self.agents[i]):
                     invalid_move = True
                 if invalid_move:
@@ -340,7 +342,7 @@ class A_Star(object):
 
                     if curr['timestep'] + 1 <= self.max_constraints[i]:
                         if not self.future_constraint_violated(child_loc[i], curr['timestep'] + 1,
-                                                               self.max_constraints[i], self.c_table[i],
+                                                               self.max_constraints[i], self.constraint_table[i],
                                                                self.agents[i]):
                             # print("agent ", a, 'has found solution at timestep ', curr['timestep'] + 1)
                             # print ('MAX CONSTRIANT:', self.max_constraints[i])
@@ -382,7 +384,7 @@ class A_Star(object):
         for i, agent_id in enumerate(self.agents):
             table_i = self.build_constraint_table(agent_id)
             # print("table", i, a, table_i)
-            self.c_table.append(table_i)
+            self.constraint_table.append(table_i)
             if table_i.keys():
                 self.max_constraints[i] = max(table_i.keys())
 
@@ -405,7 +407,7 @@ class A_Star(object):
 
                 if root['timestep'] <= self.max_constraints[i]:
                     if not self.future_constraint_violated(root['loc'][i], root['timestep'], self.max_constraints[i],
-                                                           self.c_table[i], self.agents[i]):
+                                                           self.constraint_table[i], self.agents[i]):
                         root['reached_goal'][i] = True
 
                         self.max_constraints[i] = 0
