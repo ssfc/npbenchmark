@@ -151,10 +151,14 @@ class A_Star(object):
 
     # return a table that contains the list of constraints of all agents for each time step.
     def build_constraint_table(self, agent):
+    # 
         constraint_table = dict()
 
         if not self.constraints:
             return constraint_table
+        # 如果self.constraints是空的，也就是说没有给定任何约束，那么就直接返回constraint_table，也就是空的约束表。
+        # 这么做的原因是，如果没有约束，那么就不需要构建约束表，也不需要考虑约束对搜索的影响。这样可以节省时间和空间，提高效率。
+
         for constraint in self.constraints:
 
             # print(constraint)
