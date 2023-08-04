@@ -12,9 +12,9 @@ import collections
 # @param loc: tuple, 表示一个位置，包含两个整数，分别是横坐标和纵坐标。例如，(1, 2)表示横坐标为1，纵坐标为2的位置。
 # @param dir: int, 表示一个方向，取值范围是0到4，分别对应不动、上、右、下、左。例如，0表示不动，1表示上，2表示右，依此类推。
 # @return: tuple, 表示新的位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
-def move(loc, dir):
+def move(current_location, chosen_direction):
     directions = [(0, 0), (0, -1), (1, 0), (0, 1), (-1, 0)]
-    return loc[0] + directions[dir][0], loc[1] + directions[dir][1]
+    return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
 
 def get_sum_of_cost(paths):
