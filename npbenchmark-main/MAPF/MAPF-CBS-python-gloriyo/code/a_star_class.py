@@ -199,7 +199,9 @@ class A_Star(object):
         print("input agents:", self.agents)
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
+        # 因为是CBS, 所以下面这些都是只有1个成员的list. 
         self.starts = [input_starts[a] for a in self.agents]
+        # print("self.starts: ", self.starts)
         self.heuristics = [input_heuristics[a] for a in self.agents]
         self.goals = [input_goals[a] for a in self.agents]
 

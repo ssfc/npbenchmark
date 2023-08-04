@@ -278,7 +278,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 2:
+        while len(self.open_list) > 0 and iteration < 5:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
@@ -319,7 +319,7 @@ class CBSSolver(object):
 
                 ai = constraint['agent']
                 astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
-                print("constraint:", q['constraints'])
+                # print("constraint:", q['constraints'])
                 path = astar.find_path()
 
                 if path is not None:
