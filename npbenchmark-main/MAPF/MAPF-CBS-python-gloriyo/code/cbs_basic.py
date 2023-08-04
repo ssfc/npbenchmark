@@ -319,6 +319,7 @@ class CBSSolver(object):
 
                 ai = constraint['agent']
                 astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
+                print("constraint:", q['constraints'])
                 path = astar.find_path()
 
                 if path is not None:
