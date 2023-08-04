@@ -25,6 +25,9 @@ def get_sum_of_cost(paths):
 
 
 # Use Dijkstra to build a shortest-path tree rooted at the goal location
+# 函数的功能是计算一个启发式表，用于存储从每个位置到目标位置的最短路径的代价。
+# 函数使用了Dijkstra算法来构建一个以目标位置为根的最短路径树，然后遍历这棵树，把每个位置到目标位置的代价存储在一个字典中，并返回这个字典。
+# 这个启发式表可以用于A*算法中，来估计每个位置到目标位置的距离，从而提高搜索效率。
 def compute_heuristics(input_map, input_goal):
     open_list = []
     closed_list = dict()
@@ -60,6 +63,8 @@ def compute_heuristics(input_map, input_goal):
 
 
 # return location of a path at give time.
+# input_path的数据类型应该是一个列表，列表中的每个元素是一个表示位置的元组。
+# 例如，input_path = [(1, 2), (3, 4), (5, 6)]表示一个路径由三个位置组成，每个位置由两个整数表示。
 def get_location(input_path, input_time):
     if input_time < 0:
         return input_path[0]
