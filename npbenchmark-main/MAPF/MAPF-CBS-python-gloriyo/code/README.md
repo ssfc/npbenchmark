@@ -460,6 +460,29 @@ positive和negative是用来表示约束的类型的。约束是一种限制搜�
 
 agent是一个整数，表示代理的编号。例如，如果有三个代理，那么它们的编号分别是0, 1, 2。这个函数中的agent参数是用来指定要为哪个代理构建约束表的。
 
+### Q: 在编写函数注释时，应该先写函数整体的功能，还是先写函数参数的含义？
+
+通常，在编写函数注释时，应该先写函数整体的功能，再写函数参数的含义。这样的顺序可以帮助其他开发者更快地了解函数的作用和用途，然后再深入了解每个参数的具体含义和用法。
+
+以下是一个示例注释的顺序：
+
+```python
+def example_function(param1, param2):
+    """
+    This function performs a specific task.
+
+    Args:
+        param1 (int): The first parameter represents ...
+        param2 (str): The second parameter represents ...
+
+    Returns:
+        bool: True if the task is successful, False otherwise.
+    """
+    # Function implementation goes here
+```
+
+在这个示例中，首先描述了函数整体的功能，然后按顺序列出了每个参数的含义和类型，最后指定了返回值的类型和含义。这样的注释风格可以让其他开发者快速了解函数的作用和输入输出，提高代码的可读性和可维护性。
+
 
 
 \*\*\*Import an instance\***
