@@ -16,7 +16,9 @@ def move(current_location, chosen_direction):
     directions = [(0, 0), (0, -1), (1, 0), (0, 1), (-1, 0)]
     return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
-
+# 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
+# 函数还使用了一个断言语句，用于检查每个路径的最后两个节点是否不同，即路径中不存在重复节点。
+# 如果最后两个节点相同（路径中出现环），则断言会引发AssertionError异常，表示存在错误。1这个函数可以用于评估一组路径的优劣。
 def get_sum_of_cost(paths):
     result = 0
     for path in paths:
