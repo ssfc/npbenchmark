@@ -19,6 +19,7 @@ def move(current_location, chosen_direction):
     directions = [(0, 0), (0, -1), (1, 0), (0, 1), (-1, 0)]
     return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
+
 # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
 # 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
 # 函数还使用了一个断言语句，用于检查每个路径的最后两个节点是否不同，即路径中不存在重复节点。
