@@ -48,10 +48,10 @@ def get_sum_of_cost(paths):
 # 函数的功能是计算一个启发式表，用于存储从每个位置到目标位置的最短路径的代价。
 # 函数使用了Dijkstra算法来构建一个以目标位置为根的最短路径树，然后遍历这棵树，把每个位置到目标位置的代价存储在一个字典中，并返回这个字典。
 # 这个启发式表可以用于A*算法中，来估计每个位置到目标位置的距离，从而提高搜索效率。
-# Q: 函数def compute_heuristics(input_map, input_goal)输入参数的数据类型和含义分别是什么？
+# Q: 页面中函数def compute_heuristics(input_map, input_goal)输入参数的数据类型和含义分别是什么？
 # @param input_map (2D list): 表示一个地图
 # @param input_goal (tuple): 目标节点的坐标
-# Q: 函数def compute_heuristics(input_map, input_goal)输出结果的数据类型和含义分别是什么？
+# Q: 页面中函数def compute_heuristics(input_map, input_goal)输出结果的数据类型和含义分别是什么？
 # return h_values (dict): 一个启发式表，字典中的每个键是一个整数，表示一个节点，字典中的每个值是一个整数，表示从该节点到目标节点的最短路径的代价。
 # 例如，{1: 4, 2: 3, 3: 2, 4: 0}表示一个启发式表，其中节点1到节点4的最短路径的代价是4，节点2到节点4的最短路径的代价是3，以此类推。
 def compute_heuristics(input_map, input_goal):
@@ -88,8 +88,11 @@ def compute_heuristics(input_map, input_goal):
     return h_values
 
 
-# return location of a path at give time.
-# input_path的数据类型应该是一个列表，列表中的每个元素是一个表示位置的元组。
+# Q: 页面中函数def get_location(input_path, input_time)的功能是什么？
+# 返回一个路径在给定时间的位置。函数根据时间参数，从路径列表中取出对应的元素，即位置元组，并返回这个元组。
+# 如果时间参数小于0，函数返回路径的第一个位置；如果时间参数大于等于路径的长度，函数返回路径的最后一个位置；否则，函数返回路径中对应索引的位置。
+# Q: 页面中函数def get_location(input_path, input_time)输入参数的数据类型和含义分别是什么？
+# @param input_path (list): 列表中的每个元素是一个表示位置的元组。
 # 例如，input_path = [(1, 2), (3, 4), (5, 6)]表示一个路径由三个位置组成，每个位置由两个整数表示。
 def get_location(input_path, input_time):
     if input_time < 0:
