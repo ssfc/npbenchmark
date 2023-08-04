@@ -147,6 +147,10 @@ def trace_path(goal_node, meta_agent):
 class A_Star(object):
     # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)的功能是什么？
     # 初始化一个CBS对象，即一个用于解决多智能体路径规划问题的冲突检测搜索对象。
+    # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)
+    # 输入参数的数据类型和含义分别是什么？
+    # @param input_map (2D list): 表示一个地图
+    # @param input_starts (list of tuple): list of start locations for CBS
     
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
