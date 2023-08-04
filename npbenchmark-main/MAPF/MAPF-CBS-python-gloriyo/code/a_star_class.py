@@ -59,6 +59,7 @@ def compute_heuristics(input_map, input_goal):
     return h_values
 
 
+# return location of a path at give time.
 def get_location(input_path, input_time):
     if input_time < 0:
         return input_path[0]
