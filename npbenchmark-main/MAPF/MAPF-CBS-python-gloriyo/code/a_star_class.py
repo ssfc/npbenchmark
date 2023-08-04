@@ -160,6 +160,7 @@ class A_Star(object):
     # (2, 6): 7, (4, 6): 7, (3, 7): 7, (6, 4): 7, (7, 3): 7, (0, 3): 8, (0, 5): 8, (1, 6): 8, (2, 7): 8, (5, 6): 8,
     # (7, 4): 8, (6, 5): 8, (0, 6): 9, (1, 7): 9, (5, 7): 9, (7, 5): 9, (0, 7): 10, (6, 7): 10, (7, 6): 10, (7, 7): 11},
     # Comment: goal(3, 0), 障碍物的点不在其中, 距离是折线的最短路径。
+    # @param agents (list): [0] or [1] or [2] or [3]
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
