@@ -171,7 +171,7 @@ class CBSSolver(object):
         self.heuristics = []
         for goal in self.goals:
             self.heuristics.append(compute_heuristics(input_map, goal))
-        print("heuristics:", self.heuristics)
+        # print("heuristics:", self.heuristics)
 
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
