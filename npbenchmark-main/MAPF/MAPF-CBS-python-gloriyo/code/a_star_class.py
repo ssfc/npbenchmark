@@ -145,7 +145,10 @@ def trace_path(goal_node, meta_agent):
 
 
 class A_Star(object):
-    def __init__(self, input_map, input_starts, input_goals, heuristics, agents, input_constraints):
+    # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)的功能是什么？
+    # 初始化一个CBS对象，即一个用于解决多智能体路径规划问题的冲突检测搜索对象。
+    
+    def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations for CBS
@@ -178,7 +181,7 @@ class A_Star(object):
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
         self.starts = [input_starts[a] for a in self.agents]
-        self.heuristics = [heuristics[a] for a in self.agents]
+        self.heuristics = [input_heuristics[a] for a in self.agents]
         self.goals = [input_goals[a] for a in self.agents]
 
         self.constraint_table = []  # constraint table
