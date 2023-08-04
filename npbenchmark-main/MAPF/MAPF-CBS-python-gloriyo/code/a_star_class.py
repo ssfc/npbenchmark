@@ -152,7 +152,14 @@ class A_Star(object):
     # @param input_map (2D list): 表示一个地图
     # @param input_starts (list of tuple): list of start locations for CBS
     # @param input_goals (list of tuple): list of goal locations for CBS
-    # @param input_heuristics
+    # @param input_heuristics (list of dict): [{(3, 0): 0, (4, 0): 1, (3, 1): 1, (2, 0): 1, (2, 1): 2, (1, 0): 2,
+    # (4, 1): 2, (3, 2): 2,
+    # (5, 0): 2, (1, 1): 3, (0, 0): 3, (4, 2): 3, (3, 3): 3, (5, 1): 3, (6, 0): 3, (0, 1): 4, (1, 2): 4, (4, 3): 4,
+    # (3, 4): 4, (2, 3): 4, (5, 2): 4, (6, 1): 4, (7, 0): 4, (2, 4): 5, (4, 4): 5, (3, 5): 5, (5, 3): 5, (6, 2): 5,
+    # (7, 1): 5, (2, 5): 6, (1, 4): 6, (4, 5): 6, (3, 6): 6, (5, 4): 6, (6, 3): 6, (7, 2): 6, (1, 5): 7, (0, 4): 7,
+    # (2, 6): 7, (4, 6): 7, (3, 7): 7, (6, 4): 7, (7, 3): 7, (0, 3): 8, (0, 5): 8, (1, 6): 8, (2, 7): 8, (5, 6): 8,
+    # (7, 4): 8, (6, 5): 8, (0, 6): 9, (1, 7): 9, (5, 7): 9, (7, 5): 9, (0, 7): 10, (6, 7): 10, (7, 6): 10, (7, 7): 11},
+    # Comment: goal(3, 0), 障碍物的点不在其中, 距离是折线的最短路径。
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
