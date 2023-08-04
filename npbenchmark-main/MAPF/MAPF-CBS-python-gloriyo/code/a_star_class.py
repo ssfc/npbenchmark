@@ -95,6 +95,8 @@ def compute_heuristics(input_map, input_goal):
 # @param input_path (list): 列表中的每个元素是一个表示位置的元组。
 # 例如，input_path = [(1, 2), (3, 4), (5, 6)]表示一个路径由三个位置组成，每个位置由两个整数表示。
 # @param input_time (input_time): 表示要查询的时间点。例如，2表示要查询路径上第二个位置。
+# Q: 页面中函数def get_location(input_path, input_time)输出结果的数据类型和含义分别是什么？
+# return (tuple): 表示一个位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
 def get_location(input_path, input_time):
     if input_time < 0:
         return input_path[0]
