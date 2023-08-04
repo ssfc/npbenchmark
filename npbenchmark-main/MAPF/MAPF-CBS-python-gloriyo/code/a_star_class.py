@@ -52,7 +52,7 @@ def get_sum_of_cost(paths):
 # @param input_map (2D list): 表示一个地图
 # @param input_goal (tuple): 目标节点的坐标
 # Q: 页面中函数def compute_heuristics(input_map, input_goal)输出结果的数据类型和含义分别是什么？
-# return h_values (dict): 一个启发式表，字典中的每个键是一个整数，表示一个节点，字典中的每个值是一个整数，表示从该节点到目标节点的最短路径的代价。
+# return h_values (dict): 一个启发式表，字典中的每个键是一个tuple，表示一个节点坐标，字典中的每个值是一个整数，表示从该节点到目标节点的最短路径的代价。
 # 例如，{1: 4, 2: 3, 3: 2, 4: 0}表示一个启发式表，其中节点1到节点4的最短路径的代价是4，节点2到节点4的最短路径的代价是3，以此类推。
 def compute_heuristics(input_map, input_goal):
     open_list = []
@@ -151,7 +151,8 @@ class A_Star(object):
     # 输入参数的数据类型和含义分别是什么？
     # @param input_map (2D list): 表示一个地图
     # @param input_starts (list of tuple): list of start locations for CBS
-    
+    # @param input_goals (list of tuple): list of goal locations for CBS
+    # @param input_heuristics
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS

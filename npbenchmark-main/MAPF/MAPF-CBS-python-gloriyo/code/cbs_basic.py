@@ -167,9 +167,11 @@ class CBSSolver(object):
         self.open_list = []
 
         # compute heuristics for the low-level search
+        # 看样子compute_heuristics只有在初始化的时候用到
         self.heuristics = []
         for goal in self.goals:
             self.heuristics.append(compute_heuristics(input_map, goal))
+        print("heuristics:", self.heuristics)
 
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
@@ -276,7 +278,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 2000:
+        while len(self.open_list) > 0 and iteration < 2:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
