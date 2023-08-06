@@ -304,6 +304,10 @@ class A_Star(object):
 
     # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
     # 检查当前代理在给定的时间步是否违反了与另一个代理的约束条件。
+    # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
+    # 输入参数的数据类型和含义分别是什么？
+    # @param curr_loc (tuple): 这是一个元组，表示当前agent的位置坐标。例如，(1, 2)表示当前代理在第一行第二列的位置。
+    # @param next_loc (tuple): 这是一个元组，表示当前agent的下一个位置坐标。例如，(2, 2)表示当前代理要移动到第二行第二列的位置。
     # return constraint if a move at timestep violates a "positive" or a "negative" constraint in c_table
     def constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
