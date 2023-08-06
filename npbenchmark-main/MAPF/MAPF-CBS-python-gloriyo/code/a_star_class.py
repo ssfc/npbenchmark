@@ -167,6 +167,7 @@ class A_Star(object):
     # {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}},
     # {'agent': 1, 'loc': [(1, 1)], 'timestep: 11, 'positive': False, 'meta_agent': {1}},
     # {'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]
+    # void return
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
@@ -208,6 +209,13 @@ class A_Star(object):
         self.constraint_table = []  # constraint table
         self.max_constraints = np.zeros((len(self.agents),), dtype=int)
 
+    # Q: 页面中函数def push_node(self, node)的功能是什么？
+    # 把一个节点加入到开放列表中，用于后续的搜索。函数使用了一个元组来表示一个节点的评估值，包括f值（g值和h值的和）、h值、位置、生成编号和节点本身。
+    # 函数使用了heapq模块来实现一个优先队列，把评估值最小的节点放在最前面。函数还记录了生成的节点的数量，用于统计信息。
+    # 这个函数可以用于A*算法中，来维护一个待扩展的节点集合。
+    # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
+    # @param node (dict): f_value, node['h_val'], node['loc'], self.num_generated, node
+    # void return.
     def push_node(self, node):
         f_value = node['g_val'] + node['h_val']
         paths_left = node['reached_goal'].count(False)
@@ -216,6 +224,12 @@ class A_Star(object):
         heapq.heappush(self.open_list, (f_value, node['h_val'], node['loc'], self.num_generated, node))
         self.num_generated += 1
 
+    # Q: 页面中函数def pop_node(self)的功能是什么？
+    # 从开放列表中弹出一个节点，用于后续的搜索。
+    # 函数使用了heapq模块来实现一个优先队列，把评估值最小的节点放在最前面。
+    # 函数还记录了扩展的节点的数量，用于统计信息。
+    # @param none.
+    # void return.
     def pop_node(self):
         _, _, _, id, curr = heapq.heappop(self.open_list)
 
