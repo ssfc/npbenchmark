@@ -347,6 +347,11 @@ class A_Star(object):
                         return constraint
         return None
 
+    # Q: 页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, c_table_agent, agent)的功能是什么？
+    # 检查一个代理在当前位置是否会在未来的时间步违反约束条件。
+    # 函数遍历从当前时间步加一到最大时间步的范围，对于每个时间步，如果存在约束表，就遍历约束表中的每个约束，如果约束的代理和当前代理相同，就判断约束的类型和位置。如果是正向约束，就要求当前位置和约束位置相同，否则就返回True；如果是反向约束，就要求当前位置和约束位置不同，否则也返回True。如果没有发现任何违反的情况，就返回False。
+    # 这个函数可以用于判断一个代理是否已经找到了最终的解决方案，或者是否需要继续搜索。
+    
     # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
     def future_constraint_violated(self, curr_loc, timestep, max_timestep, c_table_agent, agent):
 
