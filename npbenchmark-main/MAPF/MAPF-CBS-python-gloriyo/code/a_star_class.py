@@ -345,7 +345,6 @@ class A_Star(object):
                     if not constraint['positive'] and constraint['loc'] == [curr_loc, next_loc]:
                         # print("time {} negative constraint : {}".format(timestep, constraint))
                         return constraint
-
         return None
 
     # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
