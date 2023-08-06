@@ -243,15 +243,18 @@ class A_Star(object):
         return curr
 
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)的功能是什么？
-    # 输入的agent id，构建一个约束表，用于存储该代理与其他代理之间的约束条件。
+    # 输入的agent id，构建一个约束表，用于存储该agent与其他agent之间的约束条件。
     # 约束表是一个字典，键是其他代理的id，值是一个列表，包含了该代理与其他代理共享的变量和值。
     # 这个函数可以用于协调图搜索算法中，来维护每个代理的局部问题。
     # return a table that contains the list of constraints of all agents for each time step.
     # agent是一个整数，表示代理的编号。
     # 例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
     # 这个函数中的agent参数是用来指定要为哪个代理构建约束表的。
-    #
-    # @param
+    # Q: 页面中函数def build_constraint_table(self, input_agent_id)输入参数的数据类型和含义分别是什么？
+    # @param input_agent_id (int): 要构建约束表的代理的id。它必须是一个有效的代理id，否则会抛出异常。
+    # Q: 页面中函数def build_constraint_table(self, input_agent_id)输出结果的数据类型和含义分别是什么？
+    # return constraint_table (dict):
+    # {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
     def build_constraint_table(self, input_agent_id):
         constraint_table = dict()
 
@@ -295,7 +298,7 @@ class A_Star(object):
                 # constraint_table[timestep].append(neg_constraint)
                 t_constraint.append(neg_constraint)
                 constraint_table[timestep] = t_constraint
-
+        # print("constraint table:", constraint_table)
         return constraint_table
 
     # returns if a move at timestep violates a "positive" or a "negative" constraint in c_table
