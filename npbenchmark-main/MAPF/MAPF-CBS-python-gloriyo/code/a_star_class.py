@@ -238,7 +238,7 @@ class A_Star(object):
         return curr
 
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)的功能是什么？
-    # 输入的代理id，构建一个约束表，用于存储该代理与其他代理之间的约束条件。
+    # 输入的agent id，构建一个约束表，用于存储该代理与其他代理之间的约束条件。
     # 约束表是一个字典，键是其他代理的id，值是一个列表，包含了该代理与其他代理共享的变量和值。
     # 这个函数可以用于协调图搜索算法中，来维护每个代理的局部问题。
     # return a table that contains the list of constraints of all agents for each time step.
