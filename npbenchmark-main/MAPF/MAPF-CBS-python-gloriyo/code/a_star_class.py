@@ -233,6 +233,7 @@ class A_Star(object):
     # 函数还记录了扩展的节点的数量，用于统计信息。
     # Q: 页面中函数def pop_node(self)输入参数的数据类型和含义分别是什么？
     # @param none.
+    # Q: 页面中函数def pop_node(self)输出结果的数据类型和含义分别是什么？
     # void return.
     def pop_node(self):
         _, _, _, id, curr = heapq.heappop(self.open_list)
