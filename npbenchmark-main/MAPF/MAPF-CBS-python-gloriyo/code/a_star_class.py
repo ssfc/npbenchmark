@@ -253,8 +253,9 @@ class A_Star(object):
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)输入参数的数据类型和含义分别是什么？
     # @param input_agent_id (int): 要构建约束表的代理的id。它必须是一个有效的代理id，否则会抛出异常。
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)输出结果的数据类型和含义分别是什么？
-    # return constraint_table (dict):
-    # {11: [{'agent': 2, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {2}}]}
+    # return constraint_table (dict): list前的数字代表time stamp
+    # {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
+    # 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
     def build_constraint_table(self, input_agent_id):
         constraint_table = dict()
 
@@ -301,6 +302,8 @@ class A_Star(object):
         # print("constraint table:", constraint_table)
         return constraint_table
 
+    # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
+    #
     # returns if a move at timestep violates a "positive" or a "negative" constraint in c_table
     def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent):
 
