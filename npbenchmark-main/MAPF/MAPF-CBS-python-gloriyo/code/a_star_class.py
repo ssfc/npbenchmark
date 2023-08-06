@@ -316,7 +316,7 @@ class A_Star(object):
     # 输出结果的数据类型和含义分别是什么？
     # return constraint (dict): if a move at timestep violates a "positive" or a "negative" constraint in c_table
     # {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
-    # 4: [{'agent' : 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+    # 4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
     def get_constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
         # print("the move : {}, {}".format(curr_loc, next_loc))
@@ -357,8 +357,12 @@ class A_Star(object):
     # @param curr_loc (tuple): 表示当前代理的位置坐标。例如，(1, 2)表示横坐标为1，纵坐标为2的位置。
     # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
     # @param max_timestep (int): 表示最大的时间步。这个参数用于限制搜索的范围，避免无限循环或超时。
-    # @param
+    # @param constraint_table_agent (dict):
+    # if a move at timestep violates a "positive" or a "negative" constraint in constraint_table
+    # {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
+    #  4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
     # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
+    # @param agent (int) : 表示当前代理的编号。例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
     def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent):
 
         for t in range(timestep + 1, max_timestep + 1):
