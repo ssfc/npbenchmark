@@ -308,6 +308,9 @@ class A_Star(object):
     # 输入参数的数据类型和含义分别是什么？
     # @param curr_loc (tuple): 这是一个元组，表示当前agent的位置坐标。例如，(1, 2)表示当前代理在第一行第二列的位置。
     # @param next_loc (tuple): 这是一个元组，表示当前agent的下一个位置坐标。例如，(2, 2)表示当前代理要移动到第二行第二列的位置。
+    # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
+    # @param constraint_table_agent (dict): 表示当前agent的约束表。
+    # @param agent (int): 这是一个整数，表示另一个代理的id。它必须是一个有效的代理id，否则会抛出异常。
     # return constraint if a move at timestep violates a "positive" or a "negative" constraint in c_table
     def constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
