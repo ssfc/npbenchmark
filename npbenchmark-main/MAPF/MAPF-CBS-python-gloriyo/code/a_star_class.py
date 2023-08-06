@@ -351,15 +351,18 @@ class A_Star(object):
     # 检查一个代理在当前位置是否会在未来的时间步违反约束条件。
     # 函数遍历从当前时间步加一到最大时间步的范围，对于每个时间步，如果存在约束表，就遍历约束表中的每个约束，如果约束的代理和当前代理相同，就判断约束的类型和位置。如果是正向约束，就要求当前位置和约束位置相同，否则就返回True；如果是反向约束，就要求当前位置和约束位置不同，否则也返回True。如果没有发现任何违反的情况，就返回False。
     # 这个函数可以用于判断一个代理是否已经找到了最终的解决方案，或者是否需要继续搜索。
-    
+    # Q:页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent)
+    # 输入参数的数据类型和含义分别是什么？
+    # @param curr_loc (tuple): 表示当前代理的位置坐标。例如，(1, 2)表示横坐标为1，纵坐标为2的位置。
+    # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
     # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
-    def future_constraint_violated(self, curr_loc, timestep, max_timestep, c_table_agent, agent):
+    def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent):
 
         for t in range(timestep + 1, max_timestep + 1):
-            if t not in c_table_agent:
+            if t not in constraint_table_agent:
                 continue
 
-            for constraint in c_table_agent[t]:
+            for constraint in constraint_table_agent[t]:
 
                 if agent == constraint['agent']:
                     # vertex constraint
