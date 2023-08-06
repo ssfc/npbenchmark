@@ -302,21 +302,21 @@ class A_Star(object):
         # print("constraint table:", constraint_table)
         return constraint_table
 
-    # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
     # 检查当前代理在给定的时间步是否违反了与另一个代理的约束条件。
-    # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
     # 输入参数的数据类型和含义分别是什么？
     # @param curr_loc (tuple): 这是一个元组，表示当前agent的位置坐标。例如，(1, 2)表示当前代理在第一行第二列的位置。
     # @param next_loc (tuple): 这是一个元组，表示当前agent的下一个位置坐标。例如，(2, 2)表示当前代理要移动到第二行第二列的位置。
     # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
     # @param constraint_table_agent (dict): 表示当前agent的约束表。
     # @param agent (int): 这是一个整数，表示另一个代理的id。它必须是一个有效的代理id，否则会抛出异常。
-    # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
     # 输出结果的数据类型和含义分别是什么？
     # return constraint (dict): if a move at timestep violates a "positive" or a "negative" constraint in c_table
     # {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
     # 4: [{'agent' : 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
-    def constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
+    def get_constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
         # print("the move : {}, {}".format(curr_loc, next_loc))
 
@@ -416,8 +416,8 @@ class A_Star(object):
                 elif self.map[next_loc[0]][next_loc[1]]:
                     invalid_move = True
                 # agent is constrained by a negative external constraint
-                elif self.constraint_violated(curr['loc'][i], next_loc, curr['timestep'] + 1, self.constraint_table[i],
-                                              self.agents[i]):
+                elif self.get_constraint_violated(curr['loc'][i], next_loc, curr['timestep'] + 1, self.constraint_table[i],
+                                                  self.agents[i]):
                     invalid_move = True
                 if invalid_move:
                     break
