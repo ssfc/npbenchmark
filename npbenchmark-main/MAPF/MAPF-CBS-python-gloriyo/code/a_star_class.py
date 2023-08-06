@@ -303,16 +303,15 @@ class A_Star(object):
         return constraint_table
 
     # Q: 页面中函数def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
-    #
     # returns if a move at timestep violates a "positive" or a "negative" constraint in c_table
-    def constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent):
+    def constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
         # print("the move : {}, {}".format(curr_loc, next_loc))
 
-        if timestep not in c_table_agent:
+        if timestep not in constraint_table_agent:
             return None
 
-        for constraint in c_table_agent[timestep]:
+        for constraint in constraint_table_agent[timestep]:
 
             if agent == constraint['agent']:
                 # vertex constraint
