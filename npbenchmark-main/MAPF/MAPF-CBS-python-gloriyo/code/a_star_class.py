@@ -167,6 +167,8 @@ class A_Star(object):
     # {'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}},
     # {'agent': 1, 'loc': [(1, 1)], 'timestep: 11, 'positive': False, 'meta_agent': {1}},
     # {'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]
+    # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)
+    # 输出结果的数据类型和含义分别是什么？
     # void return
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
@@ -215,6 +217,7 @@ class A_Star(object):
     # 这个函数可以用于A*算法中，来维护一个待扩展的节点集合。
     # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
     # @param node (dict): f_value, node['h_val'], node['loc'], self.num_generated, node
+    # Q: 页面中函数def push_node(self, node)输出结果的数据类型和含义分别是什么？
     # void return.
     def push_node(self, node):
         f_value = node['g_val'] + node['h_val']
@@ -228,6 +231,7 @@ class A_Star(object):
     # 从开放列表中弹出一个节点，用于后续的搜索。
     # 函数使用了heapq模块来实现一个优先队列，把评估值最小的节点放在最前面。
     # 函数还记录了扩展的节点的数量，用于统计信息。
+    # Q: 页面中函数def pop_node(self)输入参数的数据类型和含义分别是什么？
     # @param none.
     # void return.
     def pop_node(self):
@@ -245,6 +249,8 @@ class A_Star(object):
     # agent是一个整数，表示代理的编号。
     # 例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
     # 这个函数中的agent参数是用来指定要为哪个代理构建约束表的。
+    #
+    # @param
     def build_constraint_table(self, input_agent_id):
         constraint_table = dict()
 
