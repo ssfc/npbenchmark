@@ -361,8 +361,13 @@ class A_Star(object):
     # if a move at timestep violates a "positive" or a "negative" constraint in constraint_table
     # {2: [{'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
     #  4: [{'agent': 3, 'loc': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
-    # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
     # @param agent (int) : 表示当前代理的编号。例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
+    # Q: 页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent)
+    # 输出结果的数据类型和含义分别是什么？
+    # return true/false: 这是一个冲突检测的结果，表示当前代理在当前位置是否会在未来的时间步违反约束条件。如果返回True，表示有冲突，如果返回False，表示没有冲突。
+    # 例如，如果当前代理的位置是(1, 1)，时间步是2，最大时间步是5，约束表是
+    # {3: [{‘agent’: 0, ‘loc’: [(1, 1)], ‘positive’: False}]},当前代理的编号是0，那么函数会返回True，因为在时间步3，代理0有一个反向约束，禁止它在(1, 1)位置。
+    # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
     def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent):
 
         for t in range(timestep + 1, max_timestep + 1):
