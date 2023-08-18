@@ -545,7 +545,10 @@ class A_Star(object):
 
     # Q: 页面中函数def find_path(self)的功能是什么？
     # 使用A*算法来寻找一组代理的最优路径，即从起点到终点的最短且不冲突的路径。
-    # 
+    # Q: 页面中函数def find_path(self)输入参数的数据类型和含义分别是什么？
+    # self
+    # Q: 页面中函数def find_path(self)输出结果的数据类型和含义分别是什么？
+    # return path (list): 表示一个路径，路径中的每个元素是一个元组，表示一个位置，元组中包含两个整数，分别是横坐标和纵坐标。
     def find_path(self):
         self.start_time = time.time()
         print("> build constraint table")
