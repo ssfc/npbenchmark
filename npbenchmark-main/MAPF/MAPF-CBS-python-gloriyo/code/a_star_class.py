@@ -393,9 +393,9 @@ class A_Star(object):
     # Q: 页面中函数def generate_child_nodes(self, curr)输入参数的数据类型和含义分别是什么？
     # @param current_node (dict): ‘loc’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
     # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
-    # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。4
+    # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。
     # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
-    # ‘timestep’: 一个整数，表示当前节点的时间步。5
+    # ‘timestep’: 一个整数，表示当前节点的时间步。
     # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
     # Q: 页面中函数def generate_child_nodes(self, curr)输出结果的数据类型和含义分别是什么？
     # return children (list): 每个元素是一个dict. ‘loc’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
@@ -516,7 +516,18 @@ class A_Star(object):
     # 评估值是由g值和h值的和组成的，g值表示从根节点到当前节点的路径长度，h值表示从当前节点到目标节点的启发式估计。函数返回一个布尔值，如果n1的评估值小于n2的评估值，就返回True，否则返回False。
     # 这个函数可以用于A*算法中，来选择最优的节点进行扩展。
     # Q: 页面中函数def compare_nodes(self, node_1, node_2)输入参数的数据类型和含义分别是什么？
-    #
+    # @param node_1 (dict): ‘loc’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
+    # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
+    # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。
+    # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
+    # ‘timestep’: 一个整数，表示当前节点的时间步。
+    # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
+    # @param node_2 (dict): ‘loc’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
+    # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
+    # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。
+    # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
+    # ‘timestep’: 一个整数，表示当前节点的时间步。
+    # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
     def compare_nodes(self, node_1, node_2):
         """Return true is n1 is better than n2."""
 
