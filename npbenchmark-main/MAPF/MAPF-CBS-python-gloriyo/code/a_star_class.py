@@ -528,6 +528,10 @@ class A_Star(object):
     # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
     # ‘timestep’: 一个整数，表示当前节点的时间步。
     # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
+    # Q: 页面中函数def compare_nodes(self, node_1, node_2)输出结果的数据类型和含义分别是什么？
+    # return (bool): 表示n1是否比n2更好，即n1的评估值是否比n2的评估值更小。
+    # 评估值是由g值和h值的和组成的，g值表示从根节点到当前节点的路径长度，h值表示从当前节点到目标节点的启发式估计。如果n1的评估值小于n2的评估值，就返回True，否则返回False。
+    # 这个函数可以用于A*算法中，来选择最优的节点进行扩展。
     def compare_nodes(self, node_1, node_2):
         """Return true is n1 is better than n2."""
 
