@@ -511,20 +511,22 @@ class A_Star(object):
 
         return children
 
-    # Q: 页面中函数def compare_nodes(self, n1, n2)的功能是什么？
+    # Q: 页面中函数def compare_nodes(self, node_1, node_2)的功能是什么？
     # 判断n1是否比n2更好，即n1的评估值是否比n2的评估值更小。
     # 评估值是由g值和h值的和组成的，g值表示从根节点到当前节点的路径长度，h值表示从当前节点到目标节点的启发式估计。函数返回一个布尔值，如果n1的评估值小于n2的评估值，就返回True，否则返回False。
     # 这个函数可以用于A*算法中，来选择最优的节点进行扩展。
-    def compare_nodes(self, n1, n2):
+    # Q: 页面中函数def compare_nodes(self, node_1, node_2)输入参数的数据类型和含义分别是什么？
+    #
+    def compare_nodes(self, node_1, node_2):
         """Return true is n1 is better than n2."""
 
         # print(n1['g_val'] + n1['h_val'])
         # print(n2['g_val'] + n2['h_val'])
 
-        assert isinstance(n1['g_val'] + n1['h_val'], int)
-        assert isinstance(n2['g_val'] + n2['h_val'], int)
+        assert isinstance(node_1['g_val'] + node_1['h_val'], int)
+        assert isinstance(node_2['g_val'] + node_2['h_val'], int)
 
-        return n1['g_val'] + n1['h_val'] < n2['g_val'] + n2['h_val']
+        return node_1['g_val'] + node_1['h_val'] < node_2['g_val'] + node_2['h_val']
 
     def find_path(self):
         self.start_time = time.time()
