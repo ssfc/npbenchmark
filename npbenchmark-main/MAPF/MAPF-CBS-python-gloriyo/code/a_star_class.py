@@ -511,6 +511,10 @@ class A_Star(object):
 
         return children
 
+    # Q: 页面中函数def compare_nodes(self, n1, n2)的功能是什么？
+    # 判断n1是否比n2更好，即n1的评估值是否比n2的评估值更小。
+    # 评估值是由g值和h值的和组成的，g值表示从根节点到当前节点的路径长度，h值表示从当前节点到目标节点的启发式估计。函数返回一个布尔值，如果n1的评估值小于n2的评估值，就返回True，否则返回False。
+    # 这个函数可以用于A*算法中，来选择最优的节点进行扩展。
     def compare_nodes(self, n1, n2):
         """Return true is n1 is better than n2."""
 
