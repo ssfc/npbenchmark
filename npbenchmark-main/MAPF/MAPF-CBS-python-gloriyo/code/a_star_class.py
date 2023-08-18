@@ -390,7 +390,14 @@ class A_Star(object):
 
     # Q: 页面中函数def generate_child_nodes(self, curr)的功能是什么？
     # 根据当前节点生成一组子节点，用于后续的搜索。
-    def generate_child_nodes(self, curr):
+    # Q: 页面中函数def generate_child_nodes(self, curr)输入参数的数据类型和含义分别是什么？
+    # @param curr (dict): ‘loc’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
+    # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
+    # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。4
+    # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
+    # ‘timestep’: 一个整数，表示当前节点的时间步。5
+    # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
+    def generate_child_nodes(self, current_node):
         children = []
         # directions for move() for each agent: 0, 1, 2, 3, 4
         ma_dirs = product(list(range(5)), repeat=len(self.agents))
@@ -401,13 +408,13 @@ class A_Star(object):
             child_loc = []
             # move each agent for new timestep & check for (internal) conflicts with each other
             for i, a in enumerate(self.agents):
-                aloc = move(curr['loc'][i], dirs[i])
+                aloc = move(current_node['loc'][i], dirs[i])
                 # vertex collision; check for duplicates in child_loc
                 if aloc in child_loc:
                     invalid_move = True
                     # print("internal conflict")
                     break
-                child_loc.append(move(curr['loc'][i], dirs[i]))
+                child_loc.append(move(current_node['loc'][i], dirs[i]))
 
             if invalid_move:
                 continue
@@ -417,7 +424,7 @@ class A_Star(object):
                 for j, a in enumerate(self.agents):
                     if i != j:
                         # print(ai, aj)
-                        if child_loc[i] == curr['loc'][j] and child_loc[j] == curr['loc'][i]:
+                        if child_loc[i] == current_node['loc'][j] and child_loc[j] == current_node['loc'][i]:
                             invalid_move = True
 
             if invalid_move:
@@ -434,7 +441,7 @@ class A_Star(object):
                 elif self.map[next_loc[0]][next_loc[1]]:
                     invalid_move = True
                 # agent is constrained by a negative external constraint
-                elif self.get_constraint_violated(curr['loc'][i], next_loc, curr['timestep'] + 1, self.constraint_table[i],
+                elif self.get_constraint_violated(current_node['loc'][i], next_loc, current_node['timestep'] + 1, self.constraint_table[i],
                                                   self.agents[i]):
                     invalid_move = True
                 if invalid_move:
@@ -453,10 +460,10 @@ class A_Star(object):
             assert h_value == h_test
 
             # g_value = curr['g_val']+ curr['reached_goal'].count(False)
-            num_moves = curr['reached_goal'].count(False)
+            num_moves = current_node['reached_goal'].count(False)
             # print("(edge) cost (curr -> child) in a* tree == ", num_moves)
 
-            g_value = curr['g_val'] + num_moves
+            g_value = current_node['g_val'] + num_moves
 
             reached_goal = [False for i in range(len(self.agents))]
             # for i, a in enumerate(self.agents):
@@ -472,8 +479,8 @@ class A_Star(object):
 
                 if not reached_goal[i] and child_loc[i] == self.goals[i]:
 
-                    if curr['timestep'] + 1 <= self.max_constraints[i]:
-                        if not self.future_constraint_violated(child_loc[i], curr['timestep'] + 1,
+                    if current_node['timestep'] + 1 <= self.max_constraints[i]:
+                        if not self.future_constraint_violated(child_loc[i], current_node['timestep'] + 1,
                                                                self.max_constraints[i], self.constraint_table[i],
                                                                self.agents[i]):
                             # print("agent ", a, 'has found solution at timestep ', curr['timestep'] + 1)
@@ -486,8 +493,8 @@ class A_Star(object):
             child = {'loc': child_loc,
                      'g_val': g_value,  # number of new locs (cost) added
                      'h_val': h_value,
-                     'parent': curr,
-                     'timestep': curr['timestep'] + 1,
+                     'parent': current_node,
+                     'timestep': current_node['timestep'] + 1,
                      'reached_goal': copy.deepcopy(reached_goal)
                      }
 
