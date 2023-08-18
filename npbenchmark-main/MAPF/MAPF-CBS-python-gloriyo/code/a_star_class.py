@@ -389,6 +389,7 @@ class A_Star(object):
         return False
 
     # Q: 页面中函数def generate_child_nodes(self, curr)的功能是什么？
+    # 根据当前节点生成一组子节点，用于后续的搜索。
     def generate_child_nodes(self, curr):
         children = []
         # directions for move() for each agent: 0, 1, 2, 3, 4
