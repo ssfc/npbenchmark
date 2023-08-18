@@ -80,7 +80,7 @@ void CBS::find_path()
 
 void CBS::print_map()
 {
-    cerr << num_rows << " " << num_columns << endl;
+    cerr << "num rows: " << num_rows << " num columns: " << num_columns << endl;
     for(auto & each_row : map)
     {
         for(int element : each_row)
@@ -89,7 +89,7 @@ void CBS::print_map()
         }
         cerr << endl;
     }
-    cerr << num_agents << endl;
+    cerr << "num agents: " << num_agents << endl;
     for(auto agent : agents)
     {
         cerr << "(" << agent.start.x << "," << agent.start.y << ")->(";
