@@ -1,3 +1,0 @@
-"C:\Users\take_\AppData\Local\JetBrains\CLion 2023.2\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\a_star.dir/objects.a
-C:\Users\take_\AppData\Local\JETBRA~1\CLION2~1.2\bin\mingw\bin\ar.exe qc CMakeFiles\a_star.dir/objects.a @CMakeFiles\a_star.dir\objects1.rsp
-C:\Users\take_\AppData\Local\JETBRA~1\CLION2~1.2\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\a_star.dir/objects.a -Wl,--no-whole-archive -o a_star.exe -Wl,--out-implib,liba_star.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\a_star.dir\linkLibs.rsp
