@@ -374,7 +374,6 @@ class A_Star(object):
                 continue
 
             for constraint in constraint_table_agent[t]:
-
                 if agent == constraint['agent']:
                     # vertex constraint
                     if len(constraint['loc']) == 1:
@@ -387,14 +386,13 @@ class A_Star(object):
                             # print("time {} negative constraint : {}".format(timestep, constraint))
                             # print("future time {} negative constraint : {}".format(t, constraint))
                             return True
-
         return False
 
+    # Q: 页面中函数def generate_child_nodes(self, curr)的功能是什么？
     def generate_child_nodes(self, curr):
-
         children = []
-        ma_dirs = product(list(range(5)),
-                          repeat=len(self.agents))  # directions for move() for each agent: 0, 1, 2, 3, 4
+        # directions for move() for each agent: 0, 1, 2, 3, 4
+        ma_dirs = product(list(range(5)), repeat=len(self.agents))
 
         for dirs in ma_dirs:
             # print(dirs)
