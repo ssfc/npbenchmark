@@ -543,6 +543,9 @@ class A_Star(object):
 
         return node_1['g_val'] + node_1['h_val'] < node_2['g_val'] + node_2['h_val']
 
+    # Q: 页面中函数def find_path(self)的功能是什么？
+    # 使用A*算法来寻找一组代理的最优路径，即从起点到终点的最短且不冲突的路径。
+    # 
     def find_path(self):
         self.start_time = time.time()
         print("> build constraint table")
