@@ -369,7 +369,6 @@ class A_Star(object):
     # {3: [{‘agent’: 0, ‘loc’: [(1, 1)], ‘positive’: False}]},当前代理的编号是0，那么函数会返回True，因为在时间步3，代理0有一个反向约束，禁止它在(1, 1)位置。
     # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
     def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent):
-
         for t in range(timestep + 1, max_timestep + 1):
             if t not in constraint_table_agent:
                 continue
