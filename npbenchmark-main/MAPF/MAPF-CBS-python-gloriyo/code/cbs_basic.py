@@ -44,40 +44,6 @@ def detect_all_paths_first_collisions(paths):
     return first_collisions
 
 
-# Task 3.2: Return a list of (two) constraints to resolve the given collision
-def standard_splitting(collision):
-    constraints = []
-    # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
-    #                   specified timestep, and the second constraint prevents the second agent to be at the
-    #                   specified location at the specified timestep.
-    if len(collision['loc']) == 1:  # vertex collision
-        constraints.append({'agent': collision['a1'],
-                            'loc': collision['loc'],
-                            'timestep': collision['timestep'],
-                            'positive': False
-                            })
-        constraints.append({'agent': collision['a2'],
-                            'loc': collision['loc'],
-                            'timestep': collision['timestep'],
-                            'positive': False
-                            })
-    # Edge collision: the first constraint prevents the first agent to traverse the specified edge at the
-    #                 specified timestep, and the second constraint prevents the second agent to traverse the
-    #                 specified edge at the specified timestep
-    else:
-        constraints.append({'agent': collision['a1'],
-                            'loc': [collision['loc'][0], collision['loc'][1]],
-                            'timestep': collision['timestep'],
-                            'positive': False
-                            })
-        constraints.append({'agent': collision['a2'],
-                            'loc': [collision['loc'][1], collision['loc'][0]],
-                            'timestep': collision['timestep'],
-                            'positive': False
-                            })
-    return constraints
-
-
 # Task 4.1: Return a list of (two) constraints to resolve the given collision
 def disjoint_splitting(collision):
     # Choose the agent randomly
@@ -184,6 +150,40 @@ class CBSSolver(object):
         self.num_of_expanded += 1
         return node
 
+    # Task 3.2: Return a list of (two) constraints to resolve the given collision
+    def standard_splitting(self, collision):
+        constraints = []
+        # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
+        #                   specified timestep, and the second constraint prevents the second agent to be at the
+        #                   specified location at the specified timestep.
+        if len(collision['loc']) == 1:  # vertex collision
+            constraints.append({'agent': collision['a1'],
+                                'loc': collision['loc'],
+                                'timestep': collision['timestep'],
+                                'positive': False
+                                })
+            constraints.append({'agent': collision['a2'],
+                                'loc': collision['loc'],
+                                'timestep': collision['timestep'],
+                                'positive': False
+                                })
+        # Edge collision: the first constraint prevents the first agent to traverse the specified edge at the
+        #                 specified timestep, and the second constraint prevents the second agent to traverse the
+        #                 specified edge at the specified timestep
+        else:
+            constraints.append({'agent': collision['a1'],
+                                'loc': [collision['loc'][0], collision['loc'][1]],
+                                'timestep': collision['timestep'],
+                                'positive': False
+                                })
+            constraints.append({'agent': collision['a2'],
+                                'loc': [collision['loc'][1], collision['loc'][0]],
+                                'timestep': collision['timestep'],
+                                'positive': False
+                                })
+        return constraints
+
+
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
 
@@ -196,7 +196,7 @@ class CBSSolver(object):
         if disjoint:
             splitter = disjoint_splitting
         else:
-            splitter = standard_splitting
+            splitter = self.standard_splitting
 
         print("USING: ", splitter)
 
