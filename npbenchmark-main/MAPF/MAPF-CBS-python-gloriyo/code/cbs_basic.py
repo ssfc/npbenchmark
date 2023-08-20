@@ -9,29 +9,6 @@ from a_star_class import A_Star, compute_heuristics
 from pea_star_class import PEA_Star
 
 
-# Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
-# 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
-# 函数还使用了一个断言语句，用于检查每个路径的最后两个节点是否不同，即路径中不存在重复节点。
-# 如果最后两个节点相同（路径中出现环），则断言会引发AssertionError异常，表示存在错误。1这个函数可以用于评估一组路径的优劣。
-# Q: 页面中函数def get_sum_of_cost(paths)输入参数的数据类型和含义分别是什么？
-# @param paths (list): 表示一组路径，列表中的每个元素是一个列表，表示一个路径，路径中的每个元素是一个tuple，表示一个节点二维坐标。
-# 例如，[[1, 2, 3], [4, 5, 6]]表示两条路径，第一条路径由节点1、2、3组成，第二条路径由节点4、5、6组成。
-# Q: 页面中函数def get_sum_of_cost(paths)输出结果的数据类型和含义分别是什么？
-# return result (int): 表示一组路径的总代价，即每个路径的长度减一的和。
-# 例如，如果paths = [[1, 2, 3], [4, 5, 6]]，则输出结果为4，因为第一条路径的长度为3，减一为2，第二条路径的长度为3，减一为2，两者相加为4。
-def get_sum_of_cost(paths):
-    result = 0
-    for path in paths:
-        # print(path)
-        result += len(path) - 1
-        if len(path) > 1:
-            # 这是一个断言语句，用于检查当前路径的最后两个节点是否不同，即路径中不存在重复节点。
-            # 如果最后两个节点相同（路径中出现环），则断言会引发 AssertionError 异常，表示存在错误。
-            # 这个断言可以帮助程序员及时发现路径数据的错误。
-            assert path[-1] != path[-2]
-    return result
-
-
 class CBSSolver(object):
     """The high-level search of CBS."""
 
@@ -59,6 +36,28 @@ class CBSSolver(object):
         for goal in self.goals:
             self.heuristics.append(compute_heuristics(input_map, goal))
         # print("heuristics:", self.heuristics)
+
+    # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
+    # 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
+    # 函数还使用了一个断言语句，用于检查每个路径的最后两个节点是否不同，即路径中不存在重复节点。
+    # 如果最后两个节点相同（路径中出现环），则断言会引发AssertionError异常，表示存在错误。1这个函数可以用于评估一组路径的优劣。
+    # Q: 页面中函数def get_sum_of_cost(paths)输入参数的数据类型和含义分别是什么？
+    # @param paths (list): 表示一组路径，列表中的每个元素是一个列表，表示一个路径，路径中的每个元素是一个tuple，表示一个节点二维坐标。
+    # 例如，[[1, 2, 3], [4, 5, 6]]表示两条路径，第一条路径由节点1、2、3组成，第二条路径由节点4、5、6组成。
+    # Q: 页面中函数def get_sum_of_cost(paths)输出结果的数据类型和含义分别是什么？
+    # return result (int): 表示一组路径的总代价，即每个路径的长度减一的和。
+    # 例如，如果paths = [[1, 2, 3], [4, 5, 6]]，则输出结果为4，因为第一条路径的长度为3，减一为2，第二条路径的长度为3，减一为2，两者相加为4。
+    def get_sum_of_cost(self, paths):
+        result = 0
+        for path in paths:
+            # print(path)
+            result += len(path) - 1
+            if len(path) > 1:
+                # 这是一个断言语句，用于检查当前路径的最后两个节点是否不同，即路径中不存在重复节点。
+                # 如果最后两个节点相同（路径中出现环），则断言会引发 AssertionError 异常，表示存在错误。
+                # 这个断言可以帮助程序员及时发现路径数据的错误。
+                assert path[-1] != path[-2]
+        return result
 
     # Q: 页面中函数def get_location(input_path, input_time)的功能是什么？
     # 返回一个路径在给定时间的位置。函数根据时间参数，从路径列表中取出对应的元素，即位置元组，并返回这个元组。
@@ -286,7 +285,7 @@ class CBSSolver(object):
 
         # Implement A1 LINE 3
         # R.cost = SIC(R.solution) // 计算目标函数
-        root['cost'] = get_sum_of_cost(root['paths'])
+        root['cost'] = self.get_sum_of_cost(root['paths'])
         print("root cost:", root['cost'])
         root['collisions'] = self.detect_all_paths_first_collisions(root['paths'])
         print("root collisions:", root['collisions'])
@@ -374,7 +373,7 @@ class CBSSolver(object):
                         if continue_flag:
                             continue
                     q['collisions'] = self.detect_all_paths_first_collisions(q['paths'])
-                    q['cost'] = get_sum_of_cost(q['paths'])
+                    q['cost'] = self.get_sum_of_cost(q['paths'])
                     self.push_node(q)
 
             iteration += 1
@@ -384,7 +383,7 @@ class CBSSolver(object):
         print("\n Found a solution! \n")
         CPU_time = time.time() - self.start_time
         print("CPU time (s):    {:.2f}".format(CPU_time))
-        print("Sum of costs:    {}".format(get_sum_of_cost(node['paths'])))
+        print("Sum of costs:    {}".format(self.get_sum_of_cost(node['paths'])))
         print("Expanded nodes:  {}".format(self.num_of_expanded))
         print("Generated nodes: {}".format(self.num_of_generated))
 
