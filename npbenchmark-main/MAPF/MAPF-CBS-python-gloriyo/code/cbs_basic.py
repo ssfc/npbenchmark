@@ -9,24 +9,6 @@ from a_star_class import A_Star, get_sum_of_cost, compute_heuristics
 from pea_star_class import PEA_Star
 
 
-# Q: 页面中函数def get_location(input_path, input_time)的功能是什么？
-# 返回一个路径在给定时间的位置。函数根据时间参数，从路径列表中取出对应的元素，即位置元组，并返回这个元组。
-# 如果时间参数小于0，函数返回路径的第一个位置；如果时间参数大于等于路径的长度，函数返回路径的最后一个位置；否则，函数返回路径中对应索引的位置。
-# Q: 页面中函数def get_location(input_path, input_time)输入参数的数据类型和含义分别是什么？
-# @param input_path (list): 列表中的每个元素是一个表示位置的元组。
-# 例如，input_path = [(1, 2), (3, 4), (5, 6)]表示一个路径由三个位置组成，每个位置由两个整数表示。
-# @param input_time (input_time): 表示要查询的时间点。例如，2表示要查询路径上第二个位置。
-# Q: 页面中函数def get_location(input_path, input_time)输出结果的数据类型和含义分别是什么？
-# return (tuple): 表示一个位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
-def get_location(input_path, input_time):
-    if input_time < 0:
-        return input_path[0]
-    elif input_time < len(input_path):
-        return input_path[input_time]
-    else:
-        return input_path[-1]  # wait at the goal location
-
-
 class CBSSolver(object):
     """The high-level search of CBS."""
 
@@ -55,6 +37,23 @@ class CBSSolver(object):
             self.heuristics.append(compute_heuristics(input_map, goal))
         # print("heuristics:", self.heuristics)
 
+    # Q: 页面中函数def get_location(input_path, input_time)的功能是什么？
+    # 返回一个路径在给定时间的位置。函数根据时间参数，从路径列表中取出对应的元素，即位置元组，并返回这个元组。
+    # 如果时间参数小于0，函数返回路径的第一个位置；如果时间参数大于等于路径的长度，函数返回路径的最后一个位置；否则，函数返回路径中对应索引的位置。
+    # Q: 页面中函数def get_location(input_path, input_time)输入参数的数据类型和含义分别是什么？
+    # @param input_path (list): 列表中的每个元素是一个表示位置的元组。
+    # 例如，input_path = [(1, 2), (3, 4), (5, 6)]表示一个路径由三个位置组成，每个位置由两个整数表示。
+    # @param input_time (input_time): 表示要查询的时间点。例如，2表示要查询路径上第二个位置。
+    # Q: 页面中函数def get_location(input_path, input_time)输出结果的数据类型和含义分别是什么？
+    # return (tuple): 表示一个位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
+    def get_location(self, input_path, input_time):
+        if input_time < 0:
+            return input_path[0]
+        elif input_time < len(input_path):
+            return input_path[input_time]
+        else:
+            return input_path[-1]  # wait at the goal location
+
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
         # print("Generate node {}".format(self.num_of_generated))
@@ -74,10 +73,10 @@ class CBSSolver(object):
         # Use "get_location(path, t)" to get the location of a robot at time t.
         t_range = max(len(path1), len(path2))
         for t in range(t_range):
-            current_location_1 = get_location(path1, t)
-            current_location_2 = get_location(path2, t)
-            next_location_1 = get_location(path1, t + 1)
-            next_location_2 = get_location(path2, t + 1)
+            current_location_1 = self.get_location(path1, t)
+            current_location_2 = self.get_location(path2, t)
+            next_location_1 = self.get_location(path1, t + 1)
+            next_location_2 = self.get_location(path2, t + 1)
             if next_location_1 == next_location_2:  # vertex conflict
                 return [next_location_1], t
             if [current_location_1, next_location_1] == [next_location_2, current_location_2]:  # edge conflict
@@ -105,8 +104,8 @@ class CBSSolver(object):
         for i in range(len(paths)):
             if i == constraint['agent']:
                 continue
-            current_location = get_location(paths[i], constraint['timestep'])
-            prev_location = get_location(paths[i], constraint['timestep'] - 1)
+            current_location = self.get_location(paths[i], constraint['timestep'])
+            prev_location = self.get_location(paths[i], constraint['timestep'] - 1)
             if len(constraint['loc']) == 1:  # vertex constraint
                 if constraint['loc'][0] == current_location:
                     result.append(i)
