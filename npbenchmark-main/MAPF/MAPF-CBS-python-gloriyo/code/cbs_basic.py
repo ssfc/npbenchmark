@@ -9,26 +9,6 @@ from a_star_class import A_Star, get_location, get_sum_of_cost, compute_heuristi
 from pea_star_class import PEA_Star
 
 
-# Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
-def detect_two_paths_first_collision(path1, path2):
-    # There are two types of collisions: vertex collision and edge collision.
-    # A vertex collision occurs if both robots occupy the same location at the same timestep
-    # An edge collision occurs if the robots swap their location at the same timestep.
-    # Use "get_location(path, t)" to get the location of a robot at time t.
-    t_range = max(len(path1), len(path2))
-    for t in range(t_range):
-        current_location_1 = get_location(path1, t)
-        current_location_2 = get_location(path2, t)
-        next_location_1 = get_location(path1, t + 1)
-        next_location_2 = get_location(path2, t + 1)
-        if next_location_1 == next_location_2:  # vertex conflict
-            return [next_location_1], t
-        if [current_location_1, next_location_1] == [next_location_2, current_location_2]:  # edge conflict
-            return [next_location_2, current_location_2], t  # return的值有可能是1个元素(vertex)也可能是俩元素(edge)
-
-    return None
-
-
 class CBSSolver(object):
     """The high-level search of CBS."""
 
@@ -68,6 +48,25 @@ class CBSSolver(object):
         self.num_of_expanded += 1
         return node
 
+    # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
+    def detect_two_paths_first_collision(self, path1, path2):
+        # There are two types of collisions: vertex collision and edge collision.
+        # A vertex collision occurs if both robots occupy the same location at the same timestep
+        # An edge collision occurs if the robots swap their location at the same timestep.
+        # Use "get_location(path, t)" to get the location of a robot at time t.
+        t_range = max(len(path1), len(path2))
+        for t in range(t_range):
+            current_location_1 = get_location(path1, t)
+            current_location_2 = get_location(path2, t)
+            next_location_1 = get_location(path1, t + 1)
+            next_location_2 = get_location(path2, t + 1)
+            if next_location_1 == next_location_2:  # vertex conflict
+                return [next_location_1], t
+            if [current_location_1, next_location_1] == [next_location_2, current_location_2]:  # edge conflict
+                return [next_location_2, current_location_2], t  # return的值有可能是1个元素(vertex)也可能是俩元素(edge)
+
+        return None
+
     # Task 3.1: Return a list of first collisions between all agent pairs.
     def detect_all_paths_first_collisions(self, paths):
         # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
@@ -76,8 +75,8 @@ class CBSSolver(object):
         first_collisions = []
         for i in range(len(paths) - 1):
             for j in range(i + 1, len(paths)):
-                if detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
-                    location, t = detect_two_paths_first_collision(paths[i], paths[j])
+                if self.detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
+                    location, t = self.detect_two_paths_first_collision(paths[i], paths[j])
                     first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
 
         return first_collisions
