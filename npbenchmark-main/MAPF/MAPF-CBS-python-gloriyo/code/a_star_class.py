@@ -44,7 +44,7 @@ class A_Star(object):
     # {'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}]
     # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)
     # 输出结果的数据类型和含义分别是什么？
-    # void return
+    # @return (void)
     def __init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
@@ -94,7 +94,7 @@ class A_Star(object):
     # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
     # @param node (dict): f_value, node['h_val'], node['loc'], self.num_generated, node
     # Q: 页面中函数def push_node(self, node)输出结果的数据类型和含义分别是什么？
-    # void return.
+    # @return (void).
     def push_node(self, node):
         f_value = node['g_val'] + node['h_val']
         paths_left = node['reached_goal'].count(False)
