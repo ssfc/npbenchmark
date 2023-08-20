@@ -20,51 +20,6 @@ def move(current_location, chosen_direction):
     return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
 
-# Use Dijkstra to build a shortest-path tree rooted at the goal location
-# Q: 页面中函数def compute_heuristics(input_map, input_goal)的功能是什么？
-# 函数的功能是计算一个启发式表，用于存储从每个位置到目标位置的最短路径的代价。
-# 函数使用了Dijkstra算法来构建一个以目标位置为根的最短路径树，然后遍历这棵树，把每个位置到目标位置的代价存储在一个字典中，并返回这个字典。
-# 这个启发式表可以用于A*算法中，来估计每个位置到目标位置的距离，从而提高搜索效率。
-# Q: 页面中函数def compute_heuristics(input_map, input_goal)输入参数的数据类型和含义分别是什么？
-# @param input_map (2D list): 表示一个地图
-# @param input_goal (tuple): 目标节点的坐标
-# Q: 页面中函数def compute_heuristics(input_map, input_goal)输出结果的数据类型和含义分别是什么？
-# return h_values (dict): 一个启发式表，字典中的每个键是一个tuple，表示一个节点坐标，字典中的每个值是一个整数，表示从该节点到目标节点的最短路径的代价。
-# 例如，{1: 4, 2: 3, 3: 2, 4: 0}表示一个启发式表，其中节点1到节点4的最短路径的代价是4，节点2到节点4的最短路径的代价是3，以此类推。
-def compute_heuristics(input_map, input_goal):
-    open_list = []
-    closed_list = dict()
-    root = {'loc': input_goal, 'cost': 0}
-    heapq.heappush(open_list, (root['cost'], input_goal, root))
-    closed_list[input_goal] = root
-    while len(open_list) > 0:
-        (cost, loc, curr) = heapq.heappop(open_list)
-        for dir in range(1, 5):
-            child_loc = move(loc, dir)
-            child_cost = cost + 1
-            if child_loc[0] < 0 or child_loc[0] >= len(input_map) \
-                    or child_loc[1] < 0 or child_loc[1] >= len(input_map[0]):
-                continue
-            if input_map[child_loc[0]][child_loc[1]]:
-                continue
-            child = {'loc': child_loc, 'cost': child_cost}
-            if child_loc in closed_list:
-                existing_node = closed_list[child_loc]
-                if existing_node['cost'] > child_cost:
-                    closed_list[child_loc] = child
-                    # open_list.delete((existing_node['cost'], existing_node['loc'], existing_node))
-                    heapq.heappush(open_list, (child_cost, child_loc, child))
-            else:
-                closed_list[child_loc] = child
-                heapq.heappush(open_list, (child_cost, child_loc, child))
-
-    # build the heuristics table
-    h_values = dict()
-    for loc, node in closed_list.items():
-        h_values[loc] = node['cost']
-    return h_values
-
-
 class A_Star(object):
     # Q: 页面中函数__init__(self, input_map, input_starts, input_goals, input_heuristics, agents, input_constraints)的功能是什么？
     # 初始化一个CBS对象，即一个用于解决多智能体路径规划问题的冲突检测搜索对象。
