@@ -3,7 +3,6 @@ import heapq
 from itertools import product
 import numpy as np
 import copy
-import collections
 
 
 # Q: 页面中函数move(current_location, chosen_direction)的功能是什么？
