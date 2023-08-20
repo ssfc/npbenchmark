@@ -19,6 +19,7 @@ class CBSSolver(object):
     # @param input_starts (list made of tuple): 表示智能体的起始位置，列表中的每个元素是一个二元组，表示一个智能体的横纵坐标。
     # @param input_goals (list made of tuple): 表示智能体的目标位置，列表中的每个元素是一个二元组，表示一个智能体的横纵坐标
     # Q: 页面中函数def __init__(self, input_map, input_starts, input_goals)输出结果的数据类型和含义分别是什么？
+    # @return (void)
     def __init__(self, input_map, input_starts, input_goals):
         """map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations
