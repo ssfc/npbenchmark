@@ -12,6 +12,9 @@ from pea_star_class import PEA_Star
 class CBSSolver(object):
     """The high-level search of CBS."""
 
+    # Q: 页面中函数def __init__(self, input_map, input_starts, input_goals)的功能是什么？
+    # 初始化一个CBSSolver类的实例对象。这个类是用来实现CBS算法的高层搜索，用于为多个智能体在地图上寻找不冲突的路径。
+    # Q: 
     def __init__(self, input_map, input_starts, input_goals):
         """map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations
