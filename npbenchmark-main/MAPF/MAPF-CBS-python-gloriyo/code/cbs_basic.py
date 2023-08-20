@@ -144,7 +144,18 @@ class CBSSolver(object):
     # Q: 页面中函数def pop_node(self)输入参数的数据类型和含义分别是什么？
     # self.
     # Q: 页面中函数def pop_node(self)输出结果的数据类型和含义分别是什么？
-    # @return (tuple): (cost, loc, {loc, cost})
+    # @return (dict): {'cost': 40,
+    # 'constraints': [{'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}],
+    # 'paths': [[(1, 1), (2, 1), (2, 0), (3, 0)],
+    # [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (0, 1), (0, 0)],
+    # [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)],
+    # [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)],
+    # [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]],
+    #  'collisions': [{'a1': 1, 'a2': 2, 'loc': [(1, 1)], 'timestep': 11},
+    #  {'a1': 1, 'a2': 3, 'loc': [(3, 4), (3, 3)], 'timestep': 7},
+    #  {'a1': 1, 'a2': 4, 'loc': [(3, 4)], 'timestep': 6},
+    #  {'a1': 2, 'a2': 3, 'loc': [(3, 1), (2, 1)], 'timestep': 4},
+    #  {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]}
     def pop_node(self):
         _, _, id, node = heapq.heappop(self.open_list)
         print("Expand node {}".format(id))
@@ -377,7 +388,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 500:
+        while len(self.open_list) > 0 and iteration < 3:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
@@ -385,6 +396,7 @@ class CBSSolver(object):
             # Implement A1 LINE 6
             # P ← the best node from OPEN // the lowest solution cost
             best_node = self.pop_node()
+            print("best node:", best_node)
             # Implement A1 LINE 7
             # Validate the paths in P until a conflict occurs.
             # Implement A1 LINE 8
