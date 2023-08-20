@@ -29,21 +29,6 @@ def detect_two_paths_first_collision(path1, path2):
     return None
 
 
-# Task 3.1: Return a list of first collisions between all agent pairs.
-def detect_all_paths_first_collisions(paths):
-    # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
-    # causing the collision, and the timestep at which the collision occurred.
-    # Use your detect_collision function to find a collision between two robots.
-    first_collisions = []
-    for i in range(len(paths) - 1):
-        for j in range(i + 1, len(paths)):
-            if detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
-                location, t = detect_two_paths_first_collision(paths[i], paths[j])
-                first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
-
-    return first_collisions
-
-
 class CBSSolver(object):
     """The high-level search of CBS."""
 
@@ -82,6 +67,20 @@ class CBSSolver(object):
         print("Expand node {}".format(id))
         self.num_of_expanded += 1
         return node
+
+    # Task 3.1: Return a list of first collisions between all agent pairs.
+    def detect_all_paths_first_collisions(self, paths):
+        # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
+        # causing the collision, and the timestep at which the collision occurred.
+        # Use your detect_collision function to find a collision between two robots.
+        first_collisions = []
+        for i in range(len(paths) - 1):
+            for j in range(i + 1, len(paths)):
+                if detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
+                    location, t = detect_two_paths_first_collision(paths[i], paths[j])
+                    first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
+
+        return first_collisions
 
     def paths_violate_constraint(self, constraint, paths):
         assert constraint['positive'] is True
@@ -250,7 +249,7 @@ class CBSSolver(object):
         # R.cost = SIC(R.solution) // 计算目标函数
         root['cost'] = get_sum_of_cost(root['paths'])
         print("root cost:", root['cost'])
-        root['collisions'] = detect_all_paths_first_collisions(root['paths'])
+        root['collisions'] = self.detect_all_paths_first_collisions(root['paths'])
         print("root collisions:", root['collisions'])
         # Print A1 LINE 3
         # root collisions:
@@ -335,7 +334,7 @@ class CBSSolver(object):
                                 q['paths'][v] = path_v[0]
                         if continue_flag:
                             continue
-                    q['collisions'] = detect_all_paths_first_collisions(q['paths'])
+                    q['collisions'] = self.detect_all_paths_first_collisions(q['paths'])
                     q['cost'] = get_sum_of_cost(q['paths'])
                     self.push_node(q)
 
