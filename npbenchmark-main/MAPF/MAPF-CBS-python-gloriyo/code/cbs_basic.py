@@ -132,6 +132,8 @@ class CBSSolver(object):
     # 将一个节点插入到待扩展的节点列表中，按照节点的代价从小到大排序。
     # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
     # @param node (tuple): (cost, loc, {loc, cost})
+    # Q: 页面中函数def push_node(self, node)输出结果的数据类型和含义分别是什么？
+    # @return (void)
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
         # print("Generate node {}".format(self.num_of_generated))
