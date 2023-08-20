@@ -44,55 +44,6 @@ def detect_all_paths_first_collisions(paths):
     return first_collisions
 
 
-# Task 4.1: Return a list of (two) constraints to resolve the given collision
-def disjoint_splitting(collision):
-    # Choose the agent randomly
-    constraints = []
-    agent = random.randint(0, 1)
-    a = 'a' + str(agent + 1)
-    # Vertex collision: the first constraint enforces one agent to be at the specified location at the
-    #                   specified timestep, and the second constraint prevents the same agent to be at the
-    #                   same location at the timestep.
-    if len(collision['loc']) == 1:
-        constraints.append({'agent': collision[a],
-                            'loc': collision['loc'],
-                            'timestep': collision['timestep'],
-                            'positive': True
-                            })
-        constraints.append({'agent': collision[a],
-                            'loc': collision['loc'],
-                            'timestep': collision['timestep'],
-                            'positive': False
-                            })
-    # Edge collision: the first constraint enforces one agent to traverse the specified edge at the
-    #                 specified timestep, and the second constraint prevents the same agent to traverse the
-    #                 specified edge at the specified timestep
-    else:
-        if agent == 0:
-            constraints.append({'agent': collision[a],
-                                'loc': [collision['loc'][0], collision['loc'][1]],
-                                'timestep': collision['timestep'],
-                                'positive': True
-                                })
-            constraints.append({'agent': collision[a],
-                                'loc': [collision['loc'][0], collision['loc'][1]],
-                                'timestep': collision['timestep'],
-                                'positive': False
-                                })
-        else:
-            constraints.append({'agent': collision[a],
-                                'loc': [collision['loc'][1], collision['loc'][0]],
-                                'timestep': collision['timestep'],
-                                'positive': True
-                                })
-            constraints.append({'agent': collision[a],
-                                'loc': [collision['loc'][1], collision['loc'][0]],
-                                'timestep': collision['timestep'],
-                                'positive': False
-                                })
-    return constraints
-
-
 def paths_violate_constraint(constraint, paths):
     assert constraint['positive'] is True
     result = []  # store index of conflicted path
@@ -183,6 +134,54 @@ class CBSSolver(object):
                                 })
         return constraints
 
+    # Task 4.1: Return a list of (two) constraints to resolve the given collision
+    def disjoint_splitting(self, collision):
+        # Choose the agent randomly
+        constraints = []
+        agent = random.randint(0, 1)
+        a = 'a' + str(agent + 1)
+        # Vertex collision: the first constraint enforces one agent to be at the specified location at the
+        #                   specified timestep, and the second constraint prevents the same agent to be at the
+        #                   same location at the timestep.
+        if len(collision['loc']) == 1:
+            constraints.append({'agent': collision[a],
+                                'loc': collision['loc'],
+                                'timestep': collision['timestep'],
+                                'positive': True
+                                })
+            constraints.append({'agent': collision[a],
+                                'loc': collision['loc'],
+                                'timestep': collision['timestep'],
+                                'positive': False
+                                })
+        # Edge collision: the first constraint enforces one agent to traverse the specified edge at the
+        #                 specified timestep, and the second constraint prevents the same agent to traverse the
+        #                 specified edge at the specified timestep
+        else:
+            if agent == 0:
+                constraints.append({'agent': collision[a],
+                                    'loc': [collision['loc'][0], collision['loc'][1]],
+                                    'timestep': collision['timestep'],
+                                    'positive': True
+                                    })
+                constraints.append({'agent': collision[a],
+                                    'loc': [collision['loc'][0], collision['loc'][1]],
+                                    'timestep': collision['timestep'],
+                                    'positive': False
+                                    })
+            else:
+                constraints.append({'agent': collision[a],
+                                    'loc': [collision['loc'][1], collision['loc'][0]],
+                                    'timestep': collision['timestep'],
+                                    'positive': True
+                                    })
+                constraints.append({'agent': collision[a],
+                                    'loc': [collision['loc'][1], collision['loc'][0]],
+                                    'timestep': collision['timestep'],
+                                    'positive': False
+                                    })
+        return constraints
+
 
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
@@ -194,7 +193,7 @@ class CBSSolver(object):
         self.start_time = time.time()
 
         if disjoint:
-            splitter = disjoint_splitting
+            splitter = self.disjoint_splitting
         else:
             splitter = self.standard_splitting
 
