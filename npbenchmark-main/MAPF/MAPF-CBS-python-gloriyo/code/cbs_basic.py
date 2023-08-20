@@ -128,6 +128,9 @@ class CBSSolver(object):
         else:
             return input_path[-1]  # wait at the goal location
 
+    # Q: 页面中函数def push_node(self, node)的功能是什么？
+    # 将一个节点插入到待扩展的节点列表中，按照节点的代价从小到大排序。
+    # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
     def push_node(self, node):
         heapq.heappush(self.open_list, (node['cost'], len(node['collisions']), self.num_of_generated, node))
         # print("Generate node {}".format(self.num_of_generated))
