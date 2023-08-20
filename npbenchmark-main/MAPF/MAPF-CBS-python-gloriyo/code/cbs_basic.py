@@ -44,24 +44,6 @@ def detect_all_paths_first_collisions(paths):
     return first_collisions
 
 
-def paths_violate_constraint(constraint, paths):
-    assert constraint['positive'] is True
-    result = []  # store index of conflicted path
-    for i in range(len(paths)):
-        if i == constraint['agent']:
-            continue
-        current_location = get_location(paths[i], constraint['timestep'])
-        prev_location = get_location(paths[i], constraint['timestep'] - 1)
-        if len(constraint['loc']) == 1:  # vertex constraint
-            if constraint['loc'][0] == current_location:
-                result.append(i)
-        else:  # edge constraint
-            if constraint['loc'][0] == prev_location or constraint['loc'][1] == current_location \
-                    or constraint['loc'] == [current_location, prev_location]:
-                result.append(i)
-    return result
-
-
 class CBSSolver(object):
     """The high-level search of CBS."""
 
@@ -100,6 +82,23 @@ class CBSSolver(object):
         print("Expand node {}".format(id))
         self.num_of_expanded += 1
         return node
+
+    def paths_violate_constraint(self, constraint, paths):
+        assert constraint['positive'] is True
+        result = []  # store index of conflicted path
+        for i in range(len(paths)):
+            if i == constraint['agent']:
+                continue
+            current_location = get_location(paths[i], constraint['timestep'])
+            prev_location = get_location(paths[i], constraint['timestep'] - 1)
+            if len(constraint['loc']) == 1:  # vertex constraint
+                if constraint['loc'][0] == current_location:
+                    result.append(i)
+            else:  # edge constraint
+                if constraint['loc'][0] == prev_location or constraint['loc'][1] == current_location \
+                        or constraint['loc'] == [current_location, prev_location]:
+                    result.append(i)
+        return result
 
     # Task 3.2: Return a list of (two) constraints to resolve the given collision
     def standard_splitting(self, collision):
@@ -326,7 +325,7 @@ class CBSSolver(object):
                     # task 4
                     continue_flag = False
                     if constraint['positive']:
-                        vol = paths_violate_constraint(constraint, q['paths'])
+                        vol = self.paths_violate_constraint(constraint, q['paths'])
                         for v in vol:
                             astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
                             path_v = astar_v.find_path()
