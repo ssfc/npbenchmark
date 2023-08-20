@@ -139,6 +139,12 @@ class CBSSolver(object):
         # print("Generate node {}".format(self.num_of_generated))
         self.num_of_generated += 1
 
+    # Q: 页面中函数def pop_node(self)的功能是什么？
+    # 从待扩展的节点列表中弹出最小代价的节点。
+    # Q: 页面中函数def pop_node(self)输入参数的数据类型和含义分别是什么？
+    # self.
+    # Q: 页面中函数def pop_node(self)输出结果的数据类型和含义分别是什么？
+    # @return (tuple): (cost, loc, {loc, cost})
     def pop_node(self):
         _, _, id, node = heapq.heappop(self.open_list)
         print("Expand node {}".format(id))
