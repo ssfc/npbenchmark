@@ -14,7 +14,10 @@ class CBSSolver(object):
 
     # Q: 页面中函数def __init__(self, input_map, input_starts, input_goals)的功能是什么？
     # 初始化一个CBSSolver类的实例对象。这个类是用来实现CBS算法的高层搜索，用于为多个智能体在地图上寻找不冲突的路径。
-    # Q: 
+    # Q: 页面中函数def __init__(self, input_map, input_starts, input_goals)输入参数的数据类型和含义分别是什么？
+    # @param input_map (2D list): 表示一个地图，列表中的每个元素是一个列表，表示一行，列表中的每个元素是一个布尔值，表示该位置是否有障碍物。2
+    # @param input_starts (list made of tuple): 表示智能体的起始位置，列表中的每个元素是一个二元组，表示一个智能体的横纵坐标。
+    # @param input_goals (list made of tuple): 表示智能体的目标位置，列表中的每个元素是一个二元组，表示一个智能体的横纵坐标
     def __init__(self, input_map, input_starts, input_goals):
         """map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations
