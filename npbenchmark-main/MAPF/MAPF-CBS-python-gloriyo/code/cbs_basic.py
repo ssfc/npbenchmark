@@ -131,7 +131,17 @@ class CBSSolver(object):
     # Q: 页面中函数def push_node(self, node)的功能是什么？
     # 将一个节点插入到待扩展的节点列表中，按照节点的代价从小到大排序。
     # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
-    # @param node (tuple): (cost, loc, {loc, cost})
+    # @param node (dict): {'cost': 40,
+    # 'constraints': [{'agent': 1, 'loc': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}},
+    # {'agent': 1, 'loc': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}},
+    # {'agent': 0, 'loc': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}],
+    # 'paths': [[(1, 1), (2, 1), (2, 0), (3, 0)],
+    # [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)],
+    # [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)],
+    # [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)],
+    # [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]],
+    # 'collisions': [{'a1': 2, 'a2': 3, 'loc': [(3, 1), (2, 1)], 'timestep': 4},
+    # {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]}
     # Q: 页面中函数def push_node(self, node)输出结果的数据类型和含义分别是什么？
     # @return (void)
     def push_node(self, node):
@@ -396,7 +406,7 @@ class CBSSolver(object):
             # Implement A1 LINE 6
             # P ← the best node from OPEN // the lowest solution cost
             best_node = self.pop_node()
-            print("best node:", best_node)
+            # print("best node:", best_node)
             # Implement A1 LINE 7
             # Validate the paths in P until a conflict occurs.
             # Implement A1 LINE 8
@@ -451,6 +461,7 @@ class CBSSolver(object):
                     q['collisions'] = self.detect_all_paths_first_collisions(q['paths'])
                     q['cost'] = self.get_sum_of_cost(q['paths'])
                     self.push_node(q)
+                    print("push_node:", q)
 
             iteration += 1
         return None
