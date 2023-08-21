@@ -344,7 +344,9 @@ class CBSSolver(object):
                                     })
         return constraints
 
-
+    # Q: 页面中函数def find_solution(self, disjoint, a_star_version)的功能是什么？
+    # 为多个智能体在地图上寻找不冲突的路径，使用了CBS算法的高层搜索。
+    # 
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
 
