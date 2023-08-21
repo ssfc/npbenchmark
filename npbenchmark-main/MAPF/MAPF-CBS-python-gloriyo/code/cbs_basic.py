@@ -346,7 +346,10 @@ class CBSSolver(object):
 
     # Q: 页面中函数def find_solution(self, disjoint, a_star_version)的功能是什么？
     # 为多个智能体在地图上寻找不冲突的路径，使用了CBS算法的高层搜索。
-    # 
+    # Q: 页面中函数def find_solution(self, disjoint, a_star_version)输入参数的数据类型和含义分别是什么？
+    # @param disjoint: disjoint表示是否使用不相交分解方法来处理碰撞，
+    # 如果为True，则随机选择一个智能体，增加一个正向约束和一个反向约束，强制它在碰撞位置和时间点出现，并禁止它在其他时间点出现；
+    # 如果为False，则使用标准分解方法，为两个智能体分别增加一个反向约束，禁止它们在碰撞位置和时间点出现。
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
 
