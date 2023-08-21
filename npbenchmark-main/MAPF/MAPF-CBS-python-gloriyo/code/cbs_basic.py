@@ -226,6 +226,9 @@ class CBSSolver(object):
         return first_collisions
 
     # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)的功能是什么？
+    # 检测一组路径是否违反了一个约束，也就是是否满足了一个不期望的条件。
+    # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)输入参数的数据类型和含义分别是什么？
+    # @param constraint (dict): {'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
     # 
     def paths_violate_constraint(self, constraint, paths):
         assert constraint['positive'] is True
