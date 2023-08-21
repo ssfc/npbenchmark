@@ -173,7 +173,7 @@ class CBSSolver(object):
         return node
 
     # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)的功能是什么？
-    # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
+    # 检测两条路径间是否有碰撞。
     # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)输入参数的数据类型和含义分别是什么？
     # @param path1 (list): 表示两条路径。列表中的每个元素是一个元组，表示一个位置的坐标。
     # path1 = [(1, 2), (3, 4), (5, 6)]表示一条由三个位置组成的路径，每个位置由两个整数表示。
@@ -199,6 +199,7 @@ class CBSSolver(object):
 
         return None
 
+    # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)的功能是什么？
     # Task 3.1: Return a list of first collisions between all agent pairs.
     def detect_all_paths_first_collisions(self, paths):
         # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
