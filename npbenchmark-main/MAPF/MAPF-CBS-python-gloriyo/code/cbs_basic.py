@@ -229,7 +229,9 @@ class CBSSolver(object):
     # 检测一组路径是否违反了一个约束，也就是是否满足了一个不期望的条件。
     # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)输入参数的数据类型和含义分别是什么？
     # @param constraint (dict): {'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
-    # 
+    # @param paths (list made of list): 一组路径。
+    # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)输出结果的数据类型和含义分别是什么？
+    # @return result (list): index of conflicted path
     def paths_violate_constraint(self, constraint, paths):
         assert constraint['positive'] is True
         result = []  # store index of conflicted path
