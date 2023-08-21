@@ -179,6 +179,8 @@ class CBSSolver(object):
     # path1 = [(1, 2), (3, 4), (5, 6)]表示一条由三个位置组成的路径，每个位置由两个整数表示。
     # @param path2 (list): 表示两条路径。列表中的每个元素是一个元组，表示一个位置的坐标。
     # path2 = [(1, 2), (3, 4), (5, 6)]表示一条由三个位置组成的路径，每个位置由两个整数表示。
+    # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)输出结果的数据类型和含义分别是什么？
+    # @return first collision (tuple): ([(3, 1), (2, 1)], 3) OR ([(3, 1)], 2)
     def detect_two_paths_first_collision(self, path1, path2):
         # There are two types of collisions: vertex collision and edge collision.
         # A vertex collision occurs if both robots occupy the same location at the same timestep
@@ -206,6 +208,7 @@ class CBSSolver(object):
         for i in range(len(paths) - 1):
             for j in range(i + 1, len(paths)):
                 if self.detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
+                    print("detect_two_paths_first_collision:", self.detect_two_paths_first_collision(paths[i], paths[j]))
                     location, t = self.detect_two_paths_first_collision(paths[i], paths[j])
                     first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
 
