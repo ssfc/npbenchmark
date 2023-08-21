@@ -173,7 +173,7 @@ class CBSSolver(object):
         return node
 
     # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)的功能是什么？
-    # 检测两条路径间是否有碰撞。
+    # 检测两条路径间是否有冲突(点冲突或边冲突)。
     # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)输入参数的数据类型和含义分别是什么？
     # @param path1 (list): 表示两条路径。列表中的每个元素是一个元组，表示一个位置的坐标。
     # path1 = [(1, 2), (3, 4), (5, 6)]表示一条由三个位置组成的路径，每个位置由两个整数表示。
