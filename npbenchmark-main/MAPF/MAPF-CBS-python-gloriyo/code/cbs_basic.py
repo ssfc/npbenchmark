@@ -350,6 +350,9 @@ class CBSSolver(object):
     # @param disjoint: disjoint表示是否使用不相交分解方法来处理碰撞，
     # 如果为True，则随机选择一个智能体，增加一个正向约束和一个反向约束，强制它在碰撞位置和时间点出现，并禁止它在其他时间点出现；
     # 如果为False，则使用标准分解方法，为两个智能体分别增加一个反向约束，禁止它们在碰撞位置和时间点出现。
+    # @param a_star_version: 是否使用PEA算法来进行低层搜索，
+    # 如果为True，则使用PEA算法，一种基于启发式的A算法的改进版本，可以更快地找到满足约束的最短路径；
+    # 如果为False，则使用普通的A算法。
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
 
