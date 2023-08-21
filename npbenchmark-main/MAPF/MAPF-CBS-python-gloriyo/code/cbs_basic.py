@@ -249,6 +249,9 @@ class CBSSolver(object):
                     result.append(i)
         return result
 
+    # Q: 页面中函数def standard_splitting(self, collision)的功能是什么？
+    # 根据一个碰撞，生成两个正向约束，用于重新规划两条路径，使得它们不再发生碰撞。
+    # Q: 页面中函数def standard_splitting(self, collision)输入参数的数据类型和含义分别是什么？
     # Task 3.2: Return a list of (two) constraints to resolve the given collision
     def standard_splitting(self, collision):
         constraints = []
