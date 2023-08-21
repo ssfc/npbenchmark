@@ -174,6 +174,7 @@ class CBSSolver(object):
 
     # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)的功能是什么？
     # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
+    # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)输入参数的数据类型和含义分别是什么？
     def detect_two_paths_first_collision(self, path1, path2):
         # There are two types of collisions: vertex collision and edge collision.
         # A vertex collision occurs if both robots occupy the same location at the same timestep
