@@ -353,6 +353,8 @@ class CBSSolver(object):
     # @param a_star_version: 是否使用PEA算法来进行低层搜索，
     # 如果为True，则使用PEA算法，一种基于启发式的A算法的改进版本，可以更快地找到满足约束的最短路径；
     # 如果为False，则使用普通的A算法。
+    # Q: 页面中函数def find_solution(self, disjoint, a_star_version)输出结果的数据类型和含义分别是什么？
+    # @return tuple: best_node['paths'], self.num_of_generated, self.num_of_expanded
     def find_solution(self, disjoint, a_star_version):
         """ Finds paths for all agents from their start locations to their goal locations
 
