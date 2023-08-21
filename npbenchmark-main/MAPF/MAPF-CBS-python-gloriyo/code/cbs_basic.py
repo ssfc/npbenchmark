@@ -519,6 +519,12 @@ class CBSSolver(object):
             iteration += 1
         return None
 
+    # Q: 页面中函数def print_results(self, node)的功能是什么？
+    # 打印出一个解的结果，包括CPU时间、路径总代价、扩展节点数、生成节点数和每个智能体的路径。
+    # Q: 页面中函数def print_results(self, node)输入参数的数据类型和含义分别是什么？
+    # @param node (dict)
+    # Q: 页面中函数def print_results(self, node)输出结果的数据类型和含义分别是什么？
+    # @return void
     def print_results(self, node):
         print("\n Found a solution! \n")
         CPU_time = time.time() - self.start_time
