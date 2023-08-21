@@ -427,41 +427,41 @@ class CBSSolver(object):
             constraints = splitter(collision)  # 将当前冲突分解为两个限制
 
             for constraint in constraints:
-                q = {'cost': 0,
+                new_node = {'cost': 0,
                      'constraints': [constraint],
                      'paths': [],
                      'collisions': []
                      }
                 for c in best_node['constraints']:
-                    if c not in q['constraints']:
-                        q['constraints'].append(c)
+                    if c not in new_node['constraints']:
+                        new_node['constraints'].append(c)
                 for path in best_node['paths']:
-                    q['paths'].append(path)
+                    new_node['paths'].append(path)
 
                 ai = constraint['agent']
-                astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, q['constraints'])
+                astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, new_node['constraints'])
                 # print("constraint:", q['constraints'])
                 path = astar.find_path()
 
                 if path is not None:
-                    q['paths'][ai] = path[0]
+                    new_node['paths'][ai] = path[0]
                     # task 4
                     continue_flag = False
                     if constraint['positive']:
-                        vol = self.paths_violate_constraint(constraint, q['paths'])
+                        vol = self.paths_violate_constraint(constraint, new_node['paths'])
                         for v in vol:
-                            astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, q['constraints'])
+                            astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, new_node['constraints'])
                             path_v = astar_v.find_path()
                             if path_v is None:
                                 continue_flag = True
                             else:
-                                q['paths'][v] = path_v[0]
+                                new_node['paths'][v] = path_v[0]
                         if continue_flag:
                             continue
-                    q['collisions'] = self.detect_all_paths_first_collisions(q['paths'])
-                    q['cost'] = self.get_sum_of_cost(q['paths'])
-                    self.push_node(q)
-                    # print("push_node:", q)
+                    new_node['collisions'] = self.detect_all_paths_first_collisions(new_node['paths'])
+                    new_node['cost'] = self.get_sum_of_cost(new_node['paths'])
+                    self.push_node(new_node)
+                    # print("push_node:", new_node)
 
             iteration += 1
         return None
