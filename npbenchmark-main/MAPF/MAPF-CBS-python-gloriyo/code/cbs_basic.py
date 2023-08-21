@@ -172,6 +172,7 @@ class CBSSolver(object):
         self.num_of_expanded += 1
         return node
 
+    # Q: 页面中函数def detect_two_paths_first_collision(self, path1, path2)的功能是什么？
     # Task 3.1: Return the first collision that occurs between two agents paths (or None if there is no collision)
     def detect_two_paths_first_collision(self, path1, path2):
         # There are two types of collisions: vertex collision and edge collision.
