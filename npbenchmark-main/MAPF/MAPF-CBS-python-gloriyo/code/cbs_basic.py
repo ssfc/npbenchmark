@@ -200,6 +200,15 @@ class CBSSolver(object):
         return None
 
     # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)的功能是什么？
+    # 检测一组路径之间是否发生了任何碰撞，也就是多个智能体是否在同一个时间点占据了同一个位置或者交换了位置。
+    # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)输入参数的数据类型和含义分别是什么？
+    # @param paths (list): 所有的路径。
+    # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)输出结果的数据类型和含义分别是什么？
+    # @return first_collisions (list): [{'a1': 1, 'a2': 2, 'loc': [(1, 1), (0, 1)], 'timestep': 12},
+    # {'a1': 1, 'a2': 3, 'loc': [(3, 4), (3, 3)], 'timestep': 7},
+    # {'a1': 1, 'a2': 4, 'loc': [(3, 4)], 'timestep': 6},
+    # {'a1': 2, 'a2': 3, 'loc': [(3, 1), (2, 1)], 'timestep': 4},
+    # {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]
     # Task 3.1: Return a list of first collisions between all agent pairs.
     def detect_all_paths_first_collisions(self, paths):
         # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
@@ -209,12 +218,15 @@ class CBSSolver(object):
         for i in range(len(paths) - 1):
             for j in range(i + 1, len(paths)):
                 if self.detect_two_paths_first_collision(paths[i], paths[j]) is not None:  # 不冲突就不记录了
-                    print("detect_two_paths_first_collision:", self.detect_two_paths_first_collision(paths[i], paths[j]))
+                    # print("detect_two_paths_first_collision:",
+                    # self.detect_two_paths_first_collision(paths[i], paths[j]))
                     location, t = self.detect_two_paths_first_collision(paths[i], paths[j])
                     first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
 
         return first_collisions
 
+    # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)的功能是什么？
+    # 
     def paths_violate_constraint(self, constraint, paths):
         assert constraint['positive'] is True
         result = []  # store index of conflicted path
@@ -383,7 +395,7 @@ class CBSSolver(object):
         root['cost'] = self.get_sum_of_cost(root['paths'])
         print("root cost:", root['cost'])
         root['collisions'] = self.detect_all_paths_first_collisions(root['paths'])
-        print("root collisions:", root['collisions'])
+        # print("root collisions:", root['collisions'])
         # Print A1 LINE 3
         # root collisions:
         # [{'a1': 0, 'a2': 4, 'loc': [(1, 1), (1, 0)], 'timestep': 1},
@@ -468,6 +480,8 @@ class CBSSolver(object):
                                 new_node['paths'][v] = path_v[0]
                         if continue_flag:
                             continue
+                    # print("detect_all_paths_first_collisions:",
+                    # self.detect_all_paths_first_collisions(new_node['paths']))
                     new_node['collisions'] = self.detect_all_paths_first_collisions(new_node['paths'])
                     new_node['cost'] = self.get_sum_of_cost(new_node['paths'])
                     self.push_node(new_node)
