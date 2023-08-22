@@ -466,6 +466,7 @@ class A_Star(object):
         print("> build constraint table")
         # ("agents", self.agents)
 
+        # 遍历所有的agents，获取每个agent的编号 agent_id
         for i, agent_id in enumerate(self.agents):
             table_i = self.build_constraint_table(agent_id)
             # print("table", i, a, table_i)

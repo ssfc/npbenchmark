@@ -132,16 +132,16 @@ class CBSSolver(object):
     # 将一个节点插入到待扩展的节点列表中，按照节点的代价从小到大排序。
     # Q: 页面中函数def push_node(self, node)输入参数的数据类型和含义分别是什么？
     # @param node (dict): {'cost': 40,
-    # 'constraints': [{'agent': 1, 'location': [(3, 4), (3, 3)], 'timestep': 7, 'positive': False, 'meta_agent': {1}},
-    # {'agent': 1, 'location': [(1, 1)], 'timestep': 11, 'positive': False, 'meta_agent': {1}},
-    # {'agent': 0, 'location': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}],
+    # 'constraints': [{'agent': 1, 'location': [(3, 4), (3, 3)], 'time_step': 7, 'positive': False, 'meta_agent': {1}},
+    # {'agent': 1, 'location': [(1, 1)], 'time_step': 11, 'positive': False, 'meta_agent': {1}},
+    # {'agent': 0, 'location': [(1, 1), (1, 0)], 'time_step': 1, 'positive': False, 'meta_agent': {0}}],
     # 'paths': [[(1, 1), (2, 1), (2, 0), (3, 0)],
     # [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (2, 0), (1, 0), (0, 0)],
     # [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)],
     # [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)],
     # [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]],
-    # 'collisions': [{'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'timestep': 4},
-    # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'timestep': 3}]}
+    # 'collisions': [{'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'time_step': 4},
+    # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'time_step': 3}]}
     # Q: 页面中函数def push_node(self, node)输出结果的数据类型和含义分别是什么？
     # @return (void)
     def push_node(self, node):
@@ -425,12 +425,12 @@ class CBSSolver(object):
         # print("root collisions:", root['collisions'])
         # Print A1 LINE 3
         # root collisions:
-        # [{'a1': 0, 'a2': 4, 'location': [(1, 1), (1, 0)], 'timestep': 1},
-        # {'a1': 1, 'a2': 2, 'location': [(1, 1)], 'timestep': 11},
-        # {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'timestep': 7},
-        # {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'timestep': 6},
-        # {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'timestep': 4},
-        # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'timestep': 3}]
+        # [{'a1': 0, 'a2': 4, 'location': [(1, 1), (1, 0)], 'time_step': 1},
+        # {'a1': 1, 'a2': 2, 'location': [(1, 1)], 'time_step': 11},
+        # {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'time_step': 7},
+        # {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'time_step': 6},
+        # {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'time_step': 4},
+        # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'time_step': 3}]
         # Implement A1 LINE 4
         # insert R to OPEN
         self.push_node(root)  # push到open list里面
