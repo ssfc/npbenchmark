@@ -10,6 +10,8 @@ using namespace std;
 LowLevel::LowLevel(std::vector<std::vector<int>> input_map):
           map(std::move(input_map))
 {
+    num_rows = map.size();
+    num_columns = map[0].size();
 }
 
 void LowLevel::print_map()
