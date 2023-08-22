@@ -3,10 +3,12 @@
 //
 #include "low_level.h"
 
+#include <utility>
+
 using namespace std;
 
 LowLevel::LowLevel(std::vector<std::vector<int>> input_map):
-          map(input_map)
+          map(std::move(input_map))
 {
 }
 
