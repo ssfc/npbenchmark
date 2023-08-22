@@ -292,10 +292,10 @@ class CBSSolver(object):
     # Q: 页面中函数def disjoint_splitting(self, collision)的功能是什么？
     # 根据一个碰撞，生成两个正向约束，用于重新规划两条路径，使得它们不再发生碰撞。
     # Q: 页面中函数def disjoint_splitting(self, collision)输入参数的数据类型和含义分别是什么？
-    # @param collision (dict): {'agent': 3, 'loc': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
+    # @param collision (dict): {'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
     # Q: 页面中函数def disjoint_splitting(self, collision)输出结果的数据类型和含义分别是什么？
-    # @return constraints (list): [{‘agent’: 0, ‘loc’: [(3, 4)], ‘timestep’: 5, ‘positive’: False},
-    # {‘agent’: 1, ‘loc’: [(3, 4)], ‘timestep’: 5, ‘positive’: False}]
+    # @return constraints (list): [{‘agent’: 0, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False},
+    # {‘agent’: 1, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False}]
     # Task 4.1: Return a list of (two) constraints to resolve the given collision
     def disjoint_splitting(self, collision):
         # Choose the agent randomly
@@ -427,12 +427,12 @@ class CBSSolver(object):
         # print("root collisions:", root['collisions'])
         # Print A1 LINE 3
         # root collisions:
-        # [{'a1': 0, 'a2': 4, 'loc': [(1, 1), (1, 0)], 'timestep': 1},
-        # {'a1': 1, 'a2': 2, 'loc': [(1, 1)], 'timestep': 11},
-        # {'a1': 1, 'a2': 3, 'loc': [(3, 4), (3, 3)], 'timestep': 7},
-        # {'a1': 1, 'a2': 4, 'loc': [(3, 4)], 'timestep': 6},
-        # {'a1': 2, 'a2': 3, 'loc': [(3, 1), (2, 1)], 'timestep': 4},
-        # {'a1': 2, 'a2': 4, 'loc': [(3, 1)], 'timestep': 3}]
+        # [{'a1': 0, 'a2': 4, 'location': [(1, 1), (1, 0)], 'timestep': 1},
+        # {'a1': 1, 'a2': 2, 'location': [(1, 1)], 'timestep': 11},
+        # {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'timestep': 7},
+        # {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'timestep': 6},
+        # {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'timestep': 4},
+        # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'timestep': 3}]
         # Implement A1 LINE 4
         # insert R to OPEN
         self.push_node(root)  # push到open list里面
