@@ -142,7 +142,8 @@ class A_Star(object):
 
         for constraint in self.constraints:
             # print("show constraint:", constraint)
-            # constraint: {'agent': 0, 'location': [(1, 1), (1, 0)], 'time_step': 1, 'positive': False, 'meta_agent': {0}}
+            # constraint: {'agent': 0, 'location': [(1, 1), (1, 0)],
+            # 'time_step': 1, 'positive': False, 'meta_agent': {0}}
             time_step = constraint['time_step']
 
             t_constraint = []
