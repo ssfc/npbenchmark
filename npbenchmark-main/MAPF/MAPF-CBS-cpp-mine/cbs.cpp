@@ -97,4 +97,7 @@ void CBS::print_map()
     }
 }
 
-
+vector<vector<int>> CBS::get_map()
+{
+    return map;
+}

@@ -42,9 +42,10 @@ int main()
 
     CBS test_cbs;
     test_cbs.print_map();
-    test_cbs.find_solution();
+    // test_cbs.find_solution();
 
-    // LowLevel test_lowlevel;
+    LowLevel test_lowlevel(test_cbs.get_map());
+    test_lowlevel.print_map();
 
     return 0;
 }

@@ -65,6 +65,7 @@ public:
     void find_path();
 
     // debug func
+    std::vector<std::vector<int>> get_map();
     void print_map();
 };
 

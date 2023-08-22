@@ -5,7 +5,7 @@
 
 using namespace std;
 
-LowLevel::LowLevel(std::vector<std::vector<int>> &input_map):
+LowLevel::LowLevel(std::vector<std::vector<int>> input_map):
           map(input_map)
 {
 }
