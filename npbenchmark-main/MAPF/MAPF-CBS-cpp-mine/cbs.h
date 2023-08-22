@@ -33,6 +33,7 @@ struct Collision
     int agent_id_2; // second collision agent;
     // collision location, vertex collision contains 1 location, edge collision contains 2 locations.
     std::vector<Coordinate> location;
+    int timestep; // collision time
 };
 
 // Node of constraint tree
