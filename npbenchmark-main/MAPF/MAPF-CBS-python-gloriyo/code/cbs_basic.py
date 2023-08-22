@@ -155,17 +155,17 @@ class CBSSolver(object):
     # self.
     # Q: 页面中函数def pop_node(self)输出结果的数据类型和含义分别是什么？
     # @return (dict): {'cost': 40,
-    # 'constraints': [{'agent': 0, 'location': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}],
+    # 'constraints': [{'agent': 0, 'location': [(1, 1), (1, 0)], 'time_step': 1, 'positive': False, 'meta_agent': {0}}],
     # 'paths': [[(1, 1), (2, 1), (2, 0), (3, 0)],
     # [(7, 6), (7, 5), (6, 5), (6, 4), (5, 4), (4, 4), (3, 4), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1), (0, 1), (0, 0)],
     # [(4, 3), (3, 3), (3, 2), (3, 1), (2, 1), (1, 1)],
     # [(0, 0), (0, 1), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (4, 4), (5, 4)],
     # [(1, 0), (1, 1), (2, 1), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6), (4, 6), (5, 6)]],
-    #  'collisions': [{'a1': 1, 'a2': 2, 'location': [(1, 1)], 'timestep': 11},
-    #  {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'timestep': 7},
-    #  {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'timestep': 6},
-    #  {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'timestep': 4},
-    #  {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'timestep': 3}]}
+    #  'collisions': [{'a1': 1, 'a2': 2, 'location': [(1, 1)], 'time_step': 11},
+    #  {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'time_step': 7},
+    #  {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'time_step': 6},
+    #  {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'time_step': 4},
+    #  {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'time_step': 3}]}
     def pop_node(self):
         _, _, id, node = heapq.heappop(self.open_list)
         print("Expand node {}".format(id))
@@ -183,8 +183,8 @@ class CBSSolver(object):
     # @return first collision (tuple): ([(3, 1)], 2) OR ([(3, 1), (2, 1)], 3)
     def detect_two_paths_first_collision(self, path1, path2):
         # There are two types of collisions: vertex collision and edge collision.
-        # A vertex collision occurs if both robots occupy the same location at the same timestep
-        # An edge collision occurs if the robots swap their location at the same timestep.
+        # A vertex collision occurs if both robots occupy the same location at the same time_step
+        # An edge collision occurs if the robots swap their location at the same time_step.
         # Use "get_location(path, t)" to get the location of a robot at time t.
         t_range = max(len(path1), len(path2))
         for t in range(t_range):
@@ -204,15 +204,15 @@ class CBSSolver(object):
     # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)输入参数的数据类型和含义分别是什么？
     # @param paths (list): 所有的路径。
     # Q: 页面中函数def detect_all_paths_first_collisions(self, paths)输出结果的数据类型和含义分别是什么？
-    # @return first_collisions (list): [{'a1': 1, 'a2': 2, 'location': [(1, 1), (0, 1)], 'timestep': 12},
-    # {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'timestep': 7},
-    # {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'timestep': 6},
-    # {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'timestep': 4},
-    # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'timestep': 3}]
+    # @return first_collisions (list): [{'a1': 1, 'a2': 2, 'location': [(1, 1), (0, 1)], 'time_step': 12},
+    # {'a1': 1, 'a2': 3, 'location': [(3, 4), (3, 3)], 'time_step': 7},
+    # {'a1': 1, 'a2': 4, 'location': [(3, 4)], 'time_step': 6},
+    # {'a1': 2, 'a2': 3, 'location': [(3, 1), (2, 1)], 'time_step': 4},
+    # {'a1': 2, 'a2': 4, 'location': [(3, 1)], 'time_step': 3}]
     # Task 3.1: Return a list of first collisions between all agent pairs.
     def detect_all_paths_first_collisions(self, paths):
         # A collision can be represented as dictionary that contains the id of the two agents, the vertex or edge
-        # causing the collision, and the timestep at which the collision occurred.
+        # causing the collision, and the time_step at which the collision occurred.
         # Use your detect_collision function to find a collision between two robots.
         first_collisions = []
         for i in range(len(paths) - 1):
@@ -228,7 +228,7 @@ class CBSSolver(object):
     # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)的功能是什么？
     # 检测一组路径是否违反了一个约束，也就是是否满足了一个不期望的条件。
     # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)输入参数的数据类型和含义分别是什么？
-    # @param constraint (dict): {'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
+    # @param constraint (dict): {'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}
     # @param paths (list made of list): 一组路径。
     # Q: 页面中函数def paths_violate_constraint(self, constraint, paths)输出结果的数据类型和含义分别是什么？
     # @return result (list): index of conflicted path
@@ -252,10 +252,10 @@ class CBSSolver(object):
     # Q: 页面中函数def standard_splitting(self, collision)的功能是什么？
     # 根据一个碰撞，生成两个正向约束，用于重新规划两条路径，使得它们不再发生碰撞。
     # Q: 页面中函数def standard_splitting(self, collision)输入参数的数据类型和含义分别是什么？
-    # @param collision (dict): {'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
+    # @param collision (dict): {'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}
     # Q: 页面中函数def standard_splitting(self, collision)输出结果的数据类型和含义分别是什么？
-    # @return constraints (list): [{‘agent’: 0, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False},
-    # {‘agent’: 1, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False}]
+    # @return constraints (list): [{‘agent’: 0, ‘location’: [(3, 4)], ‘time_step’: 5, ‘positive’: False},
+    # {‘agent’: 1, ‘location’: [(3, 4)], ‘time_step’: 5, ‘positive’: False}]
     # Task 3.2: Return a list of (two) constraints to resolve the given collision
     def standard_splitting(self, collision):
         constraints = []
