@@ -260,8 +260,8 @@ class CBSSolver(object):
     def standard_splitting(self, collision):
         constraints = []
         # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
-        #                   specified timestep, and the second constraint prevents the second agent to be at the
-        #                   specified location at the specified timestep.
+        #                   specified time_step, and the second constraint prevents the second agent to be at the
+        #                   specified location at the specified time_step.
         if len(collision['location']) == 1:  # vertex collision
             constraints.append({'agent': collision['a1'],
                                 'location': collision['location'],
@@ -274,8 +274,8 @@ class CBSSolver(object):
                                 'positive': False
                                 })
         # Edge collision: the first constraint prevents the first agent to traverse the specified edge at the
-        #                 specified timestep, and the second constraint prevents the second agent to traverse the
-        #                 specified edge at the specified timestep
+        #                 specified time_step, and the second constraint prevents the second agent to traverse the
+        #                 specified edge at the specified time_step
         else:
             constraints.append({'agent': collision['a1'],
                                 'location': [collision['location'][0], collision['location'][1]],
@@ -292,10 +292,10 @@ class CBSSolver(object):
     # Q: 页面中函数def disjoint_splitting(self, collision)的功能是什么？
     # 根据一个碰撞，生成两个正向约束，用于重新规划两条路径，使得它们不再发生碰撞。
     # Q: 页面中函数def disjoint_splitting(self, collision)输入参数的数据类型和含义分别是什么？
-    # @param collision (dict): {'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}
+    # @param collision (dict): {'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}
     # Q: 页面中函数def disjoint_splitting(self, collision)输出结果的数据类型和含义分别是什么？
-    # @return constraints (list): [{‘agent’: 0, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False},
-    # {‘agent’: 1, ‘location’: [(3, 4)], ‘timestep’: 5, ‘positive’: False}]
+    # @return constraints (list): [{‘agent’: 0, ‘location’: [(3, 4)], ‘time_step’: 5, ‘positive’: False},
+    # {‘agent’: 1, ‘location’: [(3, 4)], ‘time_step’: 5, ‘positive’: False}]
     # Task 4.1: Return a list of (two) constraints to resolve the given collision
     def disjoint_splitting(self, collision):
         # Choose the agent randomly
@@ -303,8 +303,8 @@ class CBSSolver(object):
         agent = random.randint(0, 1)
         a = 'a' + str(agent + 1)
         # Vertex collision: the first constraint enforces one agent to be at the specified location at the
-        #                   specified timestep, and the second constraint prevents the same agent to be at the
-        #                   same location at the timestep.
+        #                   specified time_step, and the second constraint prevents the same agent to be at the
+        #                   same location at the time_step.
         if len(collision['location']) == 1:
             constraints.append({'agent': collision[a],
                                 'location': collision['location'],
@@ -317,8 +317,8 @@ class CBSSolver(object):
                                 'positive': False
                                 })
         # Edge collision: the first constraint enforces one agent to traverse the specified edge at the
-        #                 specified timestep, and the second constraint prevents the same agent to traverse the
-        #                 specified edge at the specified timestep
+        #                 specified time_step, and the second constraint prevents the same agent to traverse the
+        #                 specified edge at the specified time_step
         else:
             if agent == 0:
                 constraints.append({'agent': collision[a],
