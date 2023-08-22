@@ -65,23 +65,23 @@ class CBSSolver(object):
         while len(open_list) > 0:
             (cost, loc, curr) = heapq.heappop(open_list)
             for dir in range(1, 5):
-                child_loc = move(loc, dir)
+                child_location = move(loc, dir)
                 child_cost = cost + 1
-                if child_loc[0] < 0 or child_loc[0] >= len(input_map) \
-                        or child_loc[1] < 0 or child_loc[1] >= len(input_map[0]):
+                if child_location[0] < 0 or child_location[0] >= len(input_map) \
+                        or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
                     continue
-                if input_map[child_loc[0]][child_loc[1]]:
+                if input_map[child_location[0]][child_location[1]]:
                     continue
-                child = {'loc': child_loc, 'cost': child_cost}
-                if child_loc in closed_list:
-                    existing_node = closed_list[child_loc]
+                child = {'loc': child_location, 'cost': child_cost}
+                if child_location in closed_list:
+                    existing_node = closed_list[child_location]
                     if existing_node['cost'] > child_cost:
-                        closed_list[child_loc] = child
+                        closed_list[child_location] = child
                         # open_list.delete((existing_node['cost'], existing_node['loc'], existing_node))
-                        heapq.heappush(open_list, (child_cost, child_loc, child))
+                        heapq.heappush(open_list, (child_cost, child_location, child))
                 else:
-                    closed_list[child_loc] = child
-                    heapq.heappush(open_list, (child_cost, child_loc, child))
+                    closed_list[child_location] = child
+                    heapq.heappush(open_list, (child_cost, child_location, child))
 
         # build the heuristics table
         h_values = dict()
@@ -449,7 +449,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 3:
+        while len(self.open_list) > 0 and iteration < 3000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')

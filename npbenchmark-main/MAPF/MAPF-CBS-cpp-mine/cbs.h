@@ -17,7 +17,8 @@ struct Agent
 
 struct Constraint
 {
-
+    int agent_id;
+    Coordinate location;
 };
 
 struct Path
