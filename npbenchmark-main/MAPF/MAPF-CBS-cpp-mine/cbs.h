@@ -17,8 +17,9 @@ struct Agent
 
 struct Constraint
 {
-    int agent_id;
-    Coordinate location;
+    int agent_id; // 人物
+    Coordinate location; // 地点
+    int timestep; // 时间
 };
 
 struct Path
@@ -28,7 +29,10 @@ struct Path
 
 struct Collision
 {
-
+    int agent_id_1; // first collision agent;
+    int agent_id_2; // second collision agent;
+    // collision location, vertex collision contains 1 location, edge collision contains 2 locations.
+    std::vector<Coordinate> location;
 };
 
 // Node of constraint tree
