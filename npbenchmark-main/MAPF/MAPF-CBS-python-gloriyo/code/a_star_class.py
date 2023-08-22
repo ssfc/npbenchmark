@@ -456,7 +456,7 @@ class A_Star(object):
         return path
 
     # Q: 页面中函数def low_level_search(self)的功能是什么？
-    # 使用A*算法来寻找一组代理的最优路径，即从起点到终点的最短且不冲突的路径。
+    # 使用A*算法来寻找a group of agents的最优路径，即从起点到终点的最短且不冲突的路径。
     # Q: 页面中函数def low_level_search(self)输入参数的数据类型和含义分别是什么？
     # self
     # Q: 页面中函数def low_level_search(self)输出结果的数据类型和含义分别是什么？
