@@ -142,7 +142,7 @@ class A_Star(object):
 
         for constraint in self.constraints:
             # print("show constraint:", constraint)
-            # constraint: {'agent': 0, 'location': [(1, 1), (1, 0)], 'timestep': 1, 'positive': False, 'meta_agent': {0}}
+            # constraint: {'agent': 0, 'location': [(1, 1), (1, 0)], 'time_step': 1, 'positive': False, 'meta_agent': {0}}
             timestep = constraint['timestep']
 
             t_constraint = []
@@ -172,26 +172,26 @@ class A_Star(object):
                     curr_loc = constraint['location'][0]
                     neg_constraint['location'] = [prev_loc, curr_loc]
                 neg_constraint['positive'] = False
-                # constraint_table[timestep].append(neg_constraint)
+                # constraint_table[time_step].append(neg_constraint)
                 t_constraint.append(neg_constraint)
                 constraint_table[timestep] = t_constraint
         # print("constraint table:", constraint_table)
         return constraint_table
 
-    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)的功能是什么？
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, time_step, c_table_agent, agent)的功能是什么？
     # 检查当前代理在给定的时间步是否违反了与另一个代理的约束条件。
-    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, time_step, c_table_agent, agent)
     # 输入参数的数据类型和含义分别是什么？
     # @param curr_loc (tuple): 这是一个元组，表示当前agent的位置坐标。例如，(1, 2)表示当前代理在第一行第二列的位置。
     # @param next_loc (tuple): 这是一个元组，表示当前agent的下一个位置坐标。例如，(2, 2)表示当前代理要移动到第二行第二列的位置。
-    # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
+    # @param time_step (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
     # @param constraint_table_agent (dict): 表示当前agent的约束表。
     # @param agent (int): 这是一个整数，表示另一个代理的id。它必须是一个有效的代理id，否则会抛出异常。
-    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, timestep, c_table_agent, agent)
+    # Q: 页面中函数def get_constraint_violated(self, curr_loc, next_loc, time_step, c_table_agent, agent)
     # 输出结果的数据类型和含义分别是什么？
-    # return constraint (dict): if a move at timestep violates a "positive" or a "negative" constraint in c_table
-    # {2: [{'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
-    # 4: [{'agent': 3, 'location': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+    # return constraint (dict): if a move at time_step violates a "positive" or a "negative" constraint in c_table
+    # {2: [{'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}],
+    # 4: [{'agent': 3, 'location': [(2, 1), (3, 1)], 'time_step': 4, 'positive': False, 'meta_agent': {3}}]}
     def get_constraint_violated(self, curr_loc, next_loc, timestep, constraint_table_agent, agent):
 
         # print("the move : {}, {}".format(curr_loc, next_loc))
@@ -206,43 +206,44 @@ class A_Star(object):
                 if len(constraint['location']) == 1:
                     # positive constraint
                     if constraint['positive'] and next_loc != constraint['location'][0]:
-                        # print("time {} positive constraint : {}".format(timestep, constraint))
+                        # print("time {} positive constraint : {}".format(time_step, constraint))
                         return constraint
                     # negative constraint
                     elif not constraint['positive'] and next_loc == constraint['location'][0]:
-                        # print("time {} negative constraint : {}".format(timestep, constraint))
+                        # print("time {} negative constraint : {}".format(time_step, constraint))
                         return constraint
                 # edge constraint
                 else:
                     if constraint['positive'] and constraint['location'] != [curr_loc, next_loc]:
-                        # print("time {} positive constraint : {}".format(timestep, constraint))
+                        # print("time {} positive constraint : {}".format(time_step, constraint))
                         return constraint
                     if not constraint['positive'] and constraint['location'] == [curr_loc, next_loc]:
-                        # print("time {} negative constraint : {}".format(timestep, constraint))
+                        # print("time {} negative constraint : {}".format(time_step, constraint))
                         return constraint
         return None
 
-    # Q: 页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent)
+    # Q: 页面中函数def future_constraint_violated(self, curr_loc, time_step, max_time_step, constraint_table_agent, agent)
     # 的功能是什么？
     # 检查一个代理在当前位置是否会在未来的时间步违反约束条件。
     # 函数遍历从当前时间步加一到最大时间步的范围，对于每个时间步，如果存在约束表，就遍历约束表中的每个约束，如果约束的代理和当前代理相同，就判断约束的类型和位置。如果是正向约束，就要求当前位置和约束位置相同，否则就返回True；如果是反向约束，就要求当前位置和约束位置不同，否则也返回True。如果没有发现任何违反的情况，就返回False。
     # 这个函数可以用于判断一个代理是否已经找到了最终的解决方案，或者是否需要继续搜索。
-    # Q:页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent)
+    # Q:页面中函数def future_constraint_violated(self, curr_loc, time_step, max_time_step, constraint_table_agent, agent)
     # 输入参数的数据类型和含义分别是什么？
     # @param curr_loc (tuple): 表示当前代理的位置坐标。例如，(1, 2)表示横坐标为1，纵坐标为2的位置。
-    # @param timestep (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
-    # @param max_timestep (int): 表示最大的时间步。这个参数用于限制搜索的范围，避免无限循环或超时。
+    # @param time_step (int): 表示当前的时间步。例如，0表示初始状态，1表示第一次移动后的状态，依此类推。
+    # @param max_time_step (int): 表示最大的时间步。这个参数用于限制搜索的范围，避免无限循环或超时。
     # @param constraint_table_agent (dict):
-    # if a move at timestep violates a "positive" or a "negative" constraint in constraint_table
-    # {2: [{'agent': 3, 'location': [(2, 0)], 'timestep': 2, 'positive': False, 'meta_agent': {3}}],
-    #  4: [{'agent': 3, 'location': [(2, 1), (3, 1)], 'timestep': 4, 'positive': False, 'meta_agent': {3}}]}
+    # if a move at time_step violates a "positive" or a "negative" constraint in constraint_table
+    # {2: [{'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}],
+    #  4: [{'agent': 3, 'location': [(2, 1), (3, 1)], 'time_step': 4, 'positive': False, 'meta_agent': {3}}]}
     # @param agent (int) : 表示当前代理的编号。例如，如果有三个代理，那么它们的编号分别是0, 1, 2。
-    # Q: 页面中函数def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent)
+    # Q: 页面中函数def future_constraint_violated(self, curr_loc, time_step, max_time_step, constraint_table_agent, agent)
     # 输出结果的数据类型和含义分别是什么？
     # return true/false: 这是一个冲突检测的结果，表示当前代理在当前位置是否会在未来的时间步违反约束条件。如果返回True，表示有冲突，如果返回False，表示没有冲突。
     # 例如，如果当前代理的位置是(1, 1)，时间步是2，最大时间步是5，约束表是
-    # {3: [{‘agent’: 0, ‘location’: [(1, 1)], ‘positive’: False}]},当前代理的编号是0，那么函数会返回True，因为在时间步3，代理0有一个反向约束，禁止它在(1, 1)位置。
-    # returns whether an agent at goal node at current timestep will violate a constraint in next timesteps
+    # {3: [{‘agent’: 0, ‘location’: [(1, 1)], ‘positive’: False}]},
+    # 当前agent的编号是0，那么函数会返回True，因为在时间步3，代理0有一个反向约束，禁止它在(1, 1)位置。
+    # returns whether an agent at goal node at current time_step will violate a constraint in next time_steps
     def future_constraint_violated(self, curr_loc, timestep, max_timestep, constraint_table_agent, agent):
         for t in range(timestep + 1, max_timestep + 1):
             if t not in constraint_table_agent:
@@ -258,7 +259,7 @@ class A_Star(object):
                             return True
                         # negative constraint
                         elif not constraint['positive'] and curr_loc == constraint['location'][0]:
-                            # print("time {} negative constraint : {}".format(timestep, constraint))
+                            # print("time {} negative constraint : {}".format(time_step, constraint))
                             # print("future time {} negative constraint : {}".format(t, constraint))
                             return True
         return False
@@ -270,14 +271,14 @@ class A_Star(object):
     # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
     # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。
     # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
-    # ‘timestep’: 一个整数，表示当前节点的时间步。
+    # ‘time_step’: 一个整数，表示当前节点的时间步。
     # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
     # Q: 页面中函数def generate_child_nodes(self, curr)输出结果的数据类型和含义分别是什么？
     # return children (list): 每个元素是一个dict. ‘location’: tuple，例如(1, 2), 表示agent的位置是(1, 2)。
     # ‘g_val’: 一个整数，表示从根节点到当前节点的路径长度。
     # ‘h_val’: 一个整数，表示从当前节点到目标节点的启发式估计。
     # ‘parent’: 一个字典，表示当前节点的父节点，如果当前节点是根节点，则为None。
-    # ‘timestep’: 一个整数，表示当前节点的时间步。
+    # ‘time_step’: 一个整数，表示当前节点的时间步。
     # ‘reached_goal’: 一个布尔值列表，表示每个代理是否已经到达目标位置，列表中的每个元素对应一个代理，例如[True, False]表示第一个代理已经到达目标位置，第二个代理还没有到达目标位置。
     def generate_child_nodes(self, current_node):
         children = []
@@ -288,7 +289,7 @@ class A_Star(object):
             # print(dirs)
             invalid_move = False
             child_loc = []
-            # move each agent for new timestep & check for (internal) conflicts with each other
+            # move each agent for new time_step & check for (internal) conflicts with each other
             for i, a in enumerate(self.agents):
                 aloc = move(current_node['location'][i], dirs[i])
                 # vertex collision; check for duplicates in child_loc
@@ -350,10 +351,10 @@ class A_Star(object):
             reached_goal = [False for i in range(len(self.agents))]
             # for i, a in enumerate(self.agents):
             #     # print(child_loc[i], goal_loc[i])
-            #     # print(max_constraints[i], curr['timestep']+1)
+            #     # print(max_constraints[i], curr['time_step']+1)
 
-            #     if child_loc[i] == self.goals[i] and (curr['timestep']+1 > self.max_constraints[i]):
-            #         # print("agent ", a, 'has reached_goal at timestep ', curr['timestep'] + 1)
+            #     if child_loc[i] == self.goals[i] and (curr['time_step']+1 > self.max_constraints[i]):
+            #         # print("agent ", a, 'has reached_goal at time_step ', curr['time_step'] + 1)
             #         # print (self.max_constraints[i])
             #         reached_goal[i] = True
 
@@ -365,7 +366,7 @@ class A_Star(object):
                         if not self.future_constraint_violated(child_loc[i], current_node['timestep'] + 1,
                                                                self.max_constraints[i], self.constraint_table[i],
                                                                self.agents[i]):
-                            # print("agent ", a, 'has found solution at timestep ', curr['timestep'] + 1)
+                            # print("agent ", a, 'has found solution at time_step ', curr['time_step'] + 1)
                             # print ('MAX CONSTRIANT:', self.max_constraints[i])
                             reached_goal[i] = True
                             # self.max_constraints[i] differs for each node
