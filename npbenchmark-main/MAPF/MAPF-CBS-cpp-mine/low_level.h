@@ -5,6 +5,7 @@
 #ifndef DRAW_PATH_PY_LOW_LEVEL_H
 #define DRAW_PATH_PY_LOW_LEVEL_H
 
+#include <iostream>
 #include <vector>
 
 class LowLevel
@@ -17,6 +18,8 @@ class LowLevel
 public:
     LowLevel(std::vector<std::vector<int>>& input_map); // constructor
 
+    // debug func
+    void print_map();
 };
 
 
