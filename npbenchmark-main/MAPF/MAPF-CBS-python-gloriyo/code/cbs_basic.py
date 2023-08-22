@@ -59,25 +59,25 @@ class CBSSolver(object):
     def compute_heuristics(self, input_map, input_goal):
         open_list = []
         closed_list = dict()
-        root = {'loc': input_goal, 'cost': 0}
+        root = {'location': input_goal, 'cost': 0}
         heapq.heappush(open_list, (root['cost'], input_goal, root))
         closed_list[input_goal] = root
         while len(open_list) > 0:
-            (cost, loc, curr) = heapq.heappop(open_list)
+            (cost, location, curr) = heapq.heappop(open_list)
             for dir in range(1, 5):
-                child_location = move(loc, dir)
+                child_location = move(location, dir)
                 child_cost = cost + 1
                 if child_location[0] < 0 or child_location[0] >= len(input_map) \
                         or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
                     continue
                 if input_map[child_location[0]][child_location[1]]:
                     continue
-                child = {'loc': child_location, 'cost': child_cost}
+                child = {'location': child_location, 'cost': child_cost}
                 if child_location in closed_list:
                     existing_node = closed_list[child_location]
                     if existing_node['cost'] > child_cost:
                         closed_list[child_location] = child
-                        # open_list.delete((existing_node['cost'], existing_node['loc'], existing_node))
+                        # open_list.delete((existing_node['cost'], existing_node['location'], existing_node))
                         heapq.heappush(open_list, (child_cost, child_location, child))
                 else:
                     closed_list[child_location] = child
@@ -85,8 +85,8 @@ class CBSSolver(object):
 
         # build the heuristics table
         h_values = dict()
-        for loc, node in closed_list.items():
-            h_values[loc] = node['cost']
+        for location, node in closed_list.items():
+            h_values[location] = node['cost']
         return h_values
 
     # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
@@ -221,7 +221,7 @@ class CBSSolver(object):
                     # print("detect_two_paths_first_collision:",
                     # self.detect_two_paths_first_collision(paths[i], paths[j]))
                     location, t = self.detect_two_paths_first_collision(paths[i], paths[j])
-                    first_collisions.append({'a1': i, 'a2': j, 'loc': location, 'timestep': t + 1})
+                    first_collisions.append({'a1': i, 'a2': j, 'location': location, 'timestep': t + 1})
 
         return first_collisions
 
@@ -240,12 +240,12 @@ class CBSSolver(object):
                 continue
             current_location = self.get_location(paths[i], constraint['timestep'])
             prev_location = self.get_location(paths[i], constraint['timestep'] - 1)
-            if len(constraint['loc']) == 1:  # vertex constraint
-                if constraint['loc'][0] == current_location:
+            if len(constraint['location']) == 1:  # vertex constraint
+                if constraint['location'][0] == current_location:
                     result.append(i)
             else:  # edge constraint
-                if constraint['loc'][0] == prev_location or constraint['loc'][1] == current_location \
-                        or constraint['loc'] == [current_location, prev_location]:
+                if constraint['location'][0] == prev_location or constraint['location'][1] == current_location \
+                        or constraint['location'] == [current_location, prev_location]:
                     result.append(i)
         return result
 
@@ -262,14 +262,14 @@ class CBSSolver(object):
         # Vertex collision: the first constraint prevents the first agent to be at the specified location at the
         #                   specified timestep, and the second constraint prevents the second agent to be at the
         #                   specified location at the specified timestep.
-        if len(collision['loc']) == 1:  # vertex collision
+        if len(collision['location']) == 1:  # vertex collision
             constraints.append({'agent': collision['a1'],
-                                'loc': collision['loc'],
+                                'location': collision['location'],
                                 'timestep': collision['timestep'],
                                 'positive': False
                                 })
             constraints.append({'agent': collision['a2'],
-                                'loc': collision['loc'],
+                                'location': collision['location'],
                                 'timestep': collision['timestep'],
                                 'positive': False
                                 })
@@ -278,12 +278,12 @@ class CBSSolver(object):
         #                 specified edge at the specified timestep
         else:
             constraints.append({'agent': collision['a1'],
-                                'loc': [collision['loc'][0], collision['loc'][1]],
+                                'location': [collision['location'][0], collision['location'][1]],
                                 'timestep': collision['timestep'],
                                 'positive': False
                                 })
             constraints.append({'agent': collision['a2'],
-                                'loc': [collision['loc'][1], collision['loc'][0]],
+                                'location': [collision['location'][1], collision['location'][0]],
                                 'timestep': collision['timestep'],
                                 'positive': False
                                 })
@@ -305,14 +305,14 @@ class CBSSolver(object):
         # Vertex collision: the first constraint enforces one agent to be at the specified location at the
         #                   specified timestep, and the second constraint prevents the same agent to be at the
         #                   same location at the timestep.
-        if len(collision['loc']) == 1:
+        if len(collision['location']) == 1:
             constraints.append({'agent': collision[a],
-                                'loc': collision['loc'],
+                                'location': collision['location'],
                                 'timestep': collision['timestep'],
                                 'positive': True
                                 })
             constraints.append({'agent': collision[a],
-                                'loc': collision['loc'],
+                                'location': collision['location'],
                                 'timestep': collision['timestep'],
                                 'positive': False
                                 })
@@ -322,23 +322,23 @@ class CBSSolver(object):
         else:
             if agent == 0:
                 constraints.append({'agent': collision[a],
-                                    'loc': [collision['loc'][0], collision['loc'][1]],
+                                    'location': [collision['location'][0], collision['location'][1]],
                                     'timestep': collision['timestep'],
                                     'positive': True
                                     })
                 constraints.append({'agent': collision[a],
-                                    'loc': [collision['loc'][0], collision['loc'][1]],
+                                    'location': [collision['location'][0], collision['location'][1]],
                                     'timestep': collision['timestep'],
                                     'positive': False
                                     })
             else:
                 constraints.append({'agent': collision[a],
-                                    'loc': [collision['loc'][1], collision['loc'][0]],
+                                    'location': [collision['location'][1], collision['location'][0]],
                                     'timestep': collision['timestep'],
                                     'positive': True
                                     })
                 constraints.append({'agent': collision[a],
-                                    'loc': [collision['loc'][1], collision['loc'][0]],
+                                    'location': [collision['location'][1], collision['location'][0]],
                                     'timestep': collision['timestep'],
                                     'positive': False
                                     })
