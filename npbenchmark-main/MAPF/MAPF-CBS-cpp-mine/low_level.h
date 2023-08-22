@@ -5,4 +5,11 @@
 #ifndef DRAW_PATH_PY_LOW_LEVEL_H
 #define DRAW_PATH_PY_LOW_LEVEL_H
 
+class LowLevel
+{
+
+};
+
+
+
 #endif //DRAW_PATH_PY_LOW_LEVEL_H
