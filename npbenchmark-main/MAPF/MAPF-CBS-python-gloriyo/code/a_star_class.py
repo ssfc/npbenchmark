@@ -461,7 +461,7 @@ class A_Star(object):
     # self
     # Q: 页面中函数def low_level_search(self)输出结果的数据类型和含义分别是什么？
     # return path (list): 表示一个路径，路径中的每个元素是一个元组，表示一个位置，元组中包含两个整数，分别是横坐标和纵坐标。
-    def find_path(self):
+    def low_level_search(self):
         self.start_time = time.time()
         print("> build constraint table")
         # ("agents", self.agents)

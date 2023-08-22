@@ -373,9 +373,9 @@ class CBSSolver(object):
 
         if a_star_version == "a_star":
             # AStar = a_star # not a class yet
-            AStar_method = A_Star
+            a_star_method = A_Star
         else:
-            AStar_method = PEA_Star
+            a_star_method = PEA_Star
 
         # Generate the root node
         # constraints   - list of constraints
@@ -404,8 +404,8 @@ class CBSSolver(object):
         # Implement A1 LINE 2
         # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
         for i in range(self.num_of_agents):  # Find initial path for each agent
-            astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
-            path = astar.find_path()
+            astar = a_star_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
+            path = astar.low_level_search()
             # print("find path:", path)
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
@@ -488,9 +488,9 @@ class CBSSolver(object):
                     new_node['paths'].append(path)
 
                 ai = constraint['agent']
-                astar = AStar_method(self.map, self.starts, self.goals, self.heuristics, ai, new_node['constraints'])
+                astar = a_star_method(self.map, self.starts, self.goals, self.heuristics, ai, new_node['constraints'])
                 # print("constraint:", q['constraints'])
-                path = astar.find_path()
+                path = astar.low_level_search()
 
                 if path is not None:
                     new_node['paths'][ai] = path[0]
@@ -499,8 +499,8 @@ class CBSSolver(object):
                     if constraint['positive']:
                         vol = self.paths_violate_constraint(constraint, new_node['paths'])
                         for v in vol:
-                            astar_v = AStar_method(self.map, self.starts, self.goals, self.heuristics, v, new_node['constraints'])
-                            path_v = astar_v.find_path()
+                            astar_v = a_star_method(self.map, self.starts, self.goals, self.heuristics, v, new_node['constraints'])
+                            path_v = astar_v.low_level_search()
                             if path_v is None:
                                 continue_flag = True
                             else:
