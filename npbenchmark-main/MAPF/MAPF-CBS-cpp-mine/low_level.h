@@ -19,7 +19,8 @@ class LowLevel
 
 
 public:
-    LowLevel(std::vector<std::vector<int>> input_map); // constructor
+    LowLevel(std::vector<std::vector<int>> input_map,
+             std::vector<Agent> input_agents); // constructor
 
     // debug func
     void print_map();
