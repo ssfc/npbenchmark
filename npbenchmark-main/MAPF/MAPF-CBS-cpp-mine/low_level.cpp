@@ -12,9 +12,9 @@ LowLevel::LowLevel(std::vector<std::vector<int>> input_map,
           map(std::move(input_map)),
           agents(std::move(input_agents))
 {
-    num_rows = map.size();
-    num_columns = map[0].size();
-    num_agents = agents.size();
+    num_rows = int (map.size());
+    num_columns = int (map[0].size());
+    num_agents = int (agents.size());
 }
 
 void LowLevel::print_map()
