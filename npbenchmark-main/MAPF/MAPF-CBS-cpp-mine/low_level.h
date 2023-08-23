@@ -7,12 +7,15 @@
 
 #include <iostream>
 #include <vector>
+#include "util.h"
 
 class LowLevel
 {
     int num_rows;
     int num_columns;
     std::vector<std::vector<int>> map;
+    int num_agents;
+    std::vector<Agent> agents;
 
 
 public:
