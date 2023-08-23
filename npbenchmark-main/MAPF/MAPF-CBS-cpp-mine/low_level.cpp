@@ -14,6 +14,7 @@ LowLevel::LowLevel(std::vector<std::vector<int>> input_map,
 {
     num_rows = map.size();
     num_columns = map[0].size();
+    num_agents = agents.size();
 }
 
 void LowLevel::print_map()
@@ -28,14 +29,12 @@ void LowLevel::print_map()
         cerr << endl;
     }
 
-    /*
     cerr << "num agents: " << num_agents << endl;
     for(auto agent : agents)
     {
         cerr << "(" << agent.start.x << "," << agent.start.y << ")->(";
         cerr << agent.goal.x << "," << agent.goal.y << ")" << endl;
     }
-     */
 }
 
 
