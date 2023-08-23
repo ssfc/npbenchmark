@@ -11,5 +11,11 @@ struct Coordinate
     int y;
 };
 
+struct Agent
+{
+    Coordinate start;
+    Coordinate goal;
+};
+
 
 #endif //DRAW_PATH_PY_UTIL_H

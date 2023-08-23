@@ -101,3 +101,12 @@ vector<vector<int>> CBS::get_map()
 {
     return map;
 }
+
+std::vector<Agent> CBS::get_agents()
+{
+    return agents;
+}
+
+
+
+

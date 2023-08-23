@@ -9,11 +9,6 @@
 #include <vector>
 #include "util.h"
 
-struct Agent
-{
-    Coordinate start;
-    Coordinate goal;
-};
 
 struct Constraint
 {
@@ -66,6 +61,7 @@ public:
 
     // debug func
     std::vector<std::vector<int>> get_map();
+    std::vector<Agent> get_agents();
     void print_map();
 };
 
