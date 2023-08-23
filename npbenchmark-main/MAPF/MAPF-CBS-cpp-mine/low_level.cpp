@@ -10,7 +10,7 @@ using namespace std;
 LowLevel::LowLevel(std::vector<std::vector<int>> input_map,
                    std::vector<Agent> input_agents):
           map(std::move(input_map)),
-          agents(input_agents)
+          agents(std::move(input_agents))
 {
     num_rows = map.size();
     num_columns = map[0].size();
