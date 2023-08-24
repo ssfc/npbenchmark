@@ -43,7 +43,7 @@ class CBSSolver(object):
         self.heuristics = []
         for goal in self.goals:
             self.heuristics.append(self.compute_heuristics(input_map, goal))
-        # print("heuristics:", self.heuristics)
+        print("heuristics:", self.heuristics)
 
     # Use Dijkstra to build a shortest-path tree rooted at the goal location
     # Q: 页面中函数def compute_heuristics(input_map, input_goal)的功能是什么？
@@ -447,7 +447,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 1000:
+        while len(self.open_list) > 0 and iteration < 1:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
