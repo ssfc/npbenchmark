@@ -43,7 +43,15 @@ class CBSSolver(object):
         self.heuristics = []
         for goal in self.goals:
             self.heuristics.append(self.compute_heuristics(input_map, goal))
-        print("heuristics:", self.heuristics)
+        print("heuristics [0]:", self.heuristics[0])
+        # heuristics [0]: {(3, 0): 0, (4, 0): 1, (3, 1): 1, (2, 0): 1, (2, 1): 2, (1, 0): 2, (
+        # 4, 1): 2, (3, 2): 2, (5, 0): 2, (1, 1): 3, (0, 0): 3, (4, 2): 3, (3, 3): 3, (5, 1):
+        # 3, (6, 0): 3, (0, 1): 4, (1, 2): 4, (4, 3): 4, (3, 4): 4, (2, 3): 4, (5, 2): 4, (6,
+        # 1): 4, (7, 0): 4, (2, 4): 5, (4, 4): 5, (3, 5): 5, (5, 3): 5, (6, 2): 5, (7, 1): 5,
+        # (2, 5): 6, (1, 4): 6, (4, 5): 6, (3, 6): 6, (5, 4): 6, (6, 3): 6, (7, 2): 6, (1, 5):
+        #  7, (0, 4): 7, (2, 6): 7, (4, 6): 7, (3, 7): 7, (6, 4): 7, (7, 3): 7, (0, 3): 8, (0,
+        #  5): 8, (1, 6): 8, (2, 7): 8, (5, 6): 8, (7, 4): 8, (6, 5): 8, (0, 6): 9, (1, 7): 9,
+        #  (5, 7): 9, (7, 5): 9, (0, 7): 10, (6, 7): 10, (7, 6): 10, (7, 7): 11}
 
     # Use Dijkstra to build a shortest-path tree rooted at the goal location
     # Q: 页面中函数def compute_heuristics(input_map, input_goal)的功能是什么？
