@@ -56,7 +56,7 @@ private:
     double start_time;
 public:
     CBS(); // constructor
-    int compute_heuristics(Coordinate input_goal);
+    int compute_heuristics(Coordinate input_goal); // 计算终点和每个点的距离
     void find_solution();
     void find_path();
 
