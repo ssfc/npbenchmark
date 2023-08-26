@@ -249,7 +249,6 @@ bool AStar::a_star_search()
     Note that 0 <= i <= num_row-1 & 0 <= j <= num_column-1
     This open list is implemented as a set of pair.*/
     priority_queue<OpenNode> open_set;
-    priority_queue<OpenNode> open_queue;
 
     // A* LINE 2
     // The set of discovered nodes that may need to be (re-)expanded.
@@ -258,7 +257,6 @@ bool AStar::a_star_search()
     // openSet := {start}
     // Put the starting cell on the open list and set its 'f_score' as 0
     open_set.push(OpenNode{f_start, src});
-    open_queue.push(OpenNode{f_start, src});
     open_list[src.x][src.y] = 1;
 
     cerr << "Add start to closed list" << endl;
@@ -271,9 +269,6 @@ bool AStar::a_star_search()
     {
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.top().position;
-        cerr << "set: " << open_set.top().position.x << " " << open_set.top().position.y << endl;
-        Coordinate current_node = open_queue.top().position;
-        cerr << "queue: " << open_queue.top().position.x << " " << open_queue.top().position.y << endl;
 
         // A* LINE 10
         // if current = goal
@@ -291,7 +286,6 @@ bool AStar::a_star_search()
         // openSet.Remove(current)
         // meaning: Remove this vertex from the open set
         open_set.pop();
-        open_queue.pop();
         open_list[current.x][current.y] = 0;
 
         // Add this vertex to the closed list
@@ -361,7 +355,6 @@ bool AStar::a_star_search()
                         // openSet.add(neighbor)
                         open_list[north.x][north.y] = 1;
                         open_set.push(OpenNode{f_new, north});
-                        open_queue.push(OpenNode{f_new, north});
 
                         cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
                         print_open_list();
@@ -414,7 +407,6 @@ bool AStar::a_star_search()
                         // openSet.add(neighbor)
                         open_list[south.x][south.y] = 1;
                         open_set.push(OpenNode{f_new, south});
-                        open_queue.push(OpenNode{f_new, south});
 
                         cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
                         print_open_list();
@@ -466,7 +458,6 @@ bool AStar::a_star_search()
                         // openSet.add(neighbor)
                         open_list[west.x][west.y] = 1;
                         open_set.push(OpenNode{f_new, west});
-                        open_queue.push(OpenNode{f_new, west});
 
                         cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
                         print_open_list();
@@ -518,7 +509,6 @@ bool AStar::a_star_search()
                         // openSet.add(neighbor)
                         open_list[east.x][east.y] = 1;
                         open_set.push(OpenNode{f_new, east});
-                        open_queue.push(OpenNode{f_new, east});
 
                         cerr << "Add east node (" << east.x << ", " << east.y << ") to open list" << endl;
                         print_open_list();
