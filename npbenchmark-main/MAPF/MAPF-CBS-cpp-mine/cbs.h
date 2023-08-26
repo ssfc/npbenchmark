@@ -56,6 +56,7 @@ private:
     double start_time;
 public:
     CBS(); // constructor
+    int compute_heuristics(Coordinate input_goal);
     void find_solution();
     void find_path();
 

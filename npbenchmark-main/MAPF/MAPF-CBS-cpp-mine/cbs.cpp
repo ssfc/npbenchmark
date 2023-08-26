@@ -57,6 +57,14 @@ CBS::CBS():
 
 }
 
+int CBS::compute_heuristics(Coordinate input_goal)
+{
+    int h_value = 0;
+
+
+    return h_value;
+}
+
 void CBS::find_solution()
 {
     // A1 LINE 1
