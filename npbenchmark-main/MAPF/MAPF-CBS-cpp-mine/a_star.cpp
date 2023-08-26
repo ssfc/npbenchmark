@@ -271,7 +271,9 @@ bool AStar::a_star_search()
     {
         cerr << "iter: " << iter << endl;
         Coordinate current = open_set.begin()->position;
+        cerr << "set: " << open_set.begin()->position.x << " " << open_set.begin()->position.y << endl;
         Coordinate current_node = open_queue.top().position;
+        cerr << "queue: " << open_queue.top().position.x << " " << open_queue.top().position.y << endl;
 
         // A* LINE 10
         // if current = goal

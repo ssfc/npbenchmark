@@ -49,5 +49,48 @@ int main()
     test_low_level.print_map();
      */
 
+#include <iostream>
+#include <queue>
+
+    struct Coordinate {
+        int x, y;
+    };
+
+    struct OpenNode {
+        int f_score;
+        Coordinate position;
+
+        bool operator<(const OpenNode& other) const {
+            if (f_score != other.f_score) {
+                return f_score > other.f_score;  // 注意这里使用 > 符号
+            } else {
+                if (position.x != other.position.x) {
+                    return position.x > other.position.x;
+                } else {
+                    return position.y > other.position.y;
+                }
+            }
+        }
+    };
+
+
+    std::priority_queue<OpenNode> open_queue;
+
+    OpenNode node1 = {10, {2, 3}};
+    OpenNode node2 = {8, {1, 2}};
+
+    open_queue.push(node1);
+    open_queue.push(node2);
+
+    cerr << endl;
+    while (!open_queue.empty()) {
+        OpenNode top_node = open_queue.top();
+        open_queue.pop();
+        cerr << "f_score: " << top_node.f_score << ", position: (" << top_node.position.x << ", "
+        << top_node.position.y << ")" << endl;
+    }
+
+
+
     return 0;
 }

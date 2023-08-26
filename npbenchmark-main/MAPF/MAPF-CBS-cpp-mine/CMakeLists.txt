@@ -8,4 +8,5 @@ add_executable(a_star main.cpp a_star.cpp a_star.h
         cbs.cpp
         util.h
         low_level.h
-        low_level.cpp)
+        low_level.cpp
+)
