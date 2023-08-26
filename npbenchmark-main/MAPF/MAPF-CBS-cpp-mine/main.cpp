@@ -73,7 +73,7 @@ int main()
         }
     };
 
-
+/*
     std::priority_queue<OpenNode> open_queue;
 
     OpenNode node1 = {10, {2, 3}};
@@ -89,7 +89,7 @@ int main()
         cerr << "f_score: " << top_node.f_score << ", position: (" << top_node.position.x << ", "
         << top_node.position.y << ")" << endl;
     }
-
+*/
 
 
     return 0;

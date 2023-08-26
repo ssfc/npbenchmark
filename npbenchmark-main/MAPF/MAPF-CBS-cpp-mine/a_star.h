@@ -31,11 +31,11 @@ struct OpenNode
         {
             if (position.x != other.position.x)
             {
-                return position.x < other.position.x;
+                return position.x > other.position.x;
             }
             else
             {
-                return position.y < other.position.y;
+                return position.y > other.position.y;
             }
         }
     }
