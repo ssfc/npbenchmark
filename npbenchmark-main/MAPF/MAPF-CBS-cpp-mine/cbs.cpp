@@ -59,8 +59,9 @@ CBS::CBS():
 
 int CBS::compute_heuristics(Coordinate input_goal)
 {
-    int h_value = 0;
 
+
+    int h_value = 0;
 
     return h_value;
 }
