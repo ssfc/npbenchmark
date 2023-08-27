@@ -27,7 +27,7 @@ int main()
                 { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
                 */
 
-    /*
+    ///*
     // Source is the left-most bottom-most corner
     auto test_src = Coordinate{8, 0};
 
@@ -38,9 +38,9 @@ int main()
     AStar test_astar(test_src, test_dest);
     // test_astar.output_map();
     test_astar.a_star_search();
-     */
+     //*/
 
-    ///*
+    /*
     CBS test_cbs;
     test_cbs.print_map();
     // test_cbs.find_solution();
@@ -48,25 +48,6 @@ int main()
     LowLevel test_low_level(test_cbs.get_map(), test_cbs.get_agents());
     test_low_level.print_map();
      //*/
-
-/*
-    std::priority_queue<OpenNode> open_queue;
-
-    OpenNode node1 = {10, {2, 3}};
-    OpenNode node2 = {8, {1, 2}};
-
-    open_queue.push(node1);
-    open_queue.push(node2);
-
-    cerr << endl;
-    while (!open_queue.empty()) {
-        OpenNode top_node = open_queue.top();
-        open_queue.pop();
-        cerr << "f_score: " << top_node.f_score << ", position: (" << top_node.position.x << ", "
-        << top_node.position.y << ")" << endl;
-    }
-*/
-
 
     return 0;
 }
