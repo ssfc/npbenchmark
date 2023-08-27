@@ -45,6 +45,25 @@ struct OpenQueueNode
 {
     int cost;
     Coordinate location;
+
+    bool operator<(const OpenQueueNode& other) const
+    {
+        if (cost != other.cost)
+        {
+            return cost < other.cost; // 把数值大的放在堆顶
+        }
+        else
+        {
+            if (location.x != other.location.x)
+            {
+                return location.x < other.location.x;
+            }
+            else
+            {
+                return location.y < other.location.y;
+            }
+        }
+    }
 };
 
 
