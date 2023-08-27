@@ -83,6 +83,7 @@ public:
     [[nodiscard]] bool is_destination(Coordinate position) const;
     // calculate the 'h_score' heuristics.
     [[nodiscard]] int calculate_h(Coordinate position) const;
+    Coordinate move(Coordinate current_location, int direction);
     // trace the path from the source to destination
     void trace_path();
     // find the shortest path between a given source Cell to a destination Cell

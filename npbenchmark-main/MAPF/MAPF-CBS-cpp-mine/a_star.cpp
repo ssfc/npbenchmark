@@ -124,6 +124,34 @@ int AStar::calculate_h(Coordinate position) const
             + abs(position.y - dest.y));
 }
 
+Coordinate AStar::move(Coordinate current_location, int direction)
+{
+    if(direction == 0)
+    {
+        return current_location;
+    }
+    else if(direction == 1)
+    {
+        return Coordinate{current_location.x, current_location.y + 1};
+    }
+    else if(direction == 2)
+    {
+        return Coordinate{current_location.x, current_location.y - 1};
+    }
+    else if(direction == 3)
+    {
+        return Coordinate{current_location.x - 1, current_location.y};
+    }
+    else if(direction == 4)
+    {
+        return Coordinate{current_location.x + 1, current_location.y};
+    }
+    else
+    {
+        return Coordinate{-1, -1};
+    }
+}
+
 // construct path LINE 1
 // function reconstruct_path(cameFrom, current)
 // cameFrom: 当前节点的前驱（或者说父节点）

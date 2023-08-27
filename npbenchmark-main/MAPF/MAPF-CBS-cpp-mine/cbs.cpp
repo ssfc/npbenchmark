@@ -70,7 +70,7 @@ int CBS::compute_heuristics(Coordinate input_goal)
         open_queue.pop();
         for(int i=0;i<5;i++)
         {
-            
+
         }
     }
 
