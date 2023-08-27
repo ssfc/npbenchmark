@@ -6,6 +6,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <queue>
 #include <vector>
 #include "util.h"
 
@@ -38,6 +39,12 @@ struct CBSNode
     std::vector<Constraint> constraints;
     std::vector<Path> paths;
     std::vector<Collision> collisions;
+};
+
+struct OpenQueueNode
+{
+    int cost;
+    Coordinate location;
 };
 
 

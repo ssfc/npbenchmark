@@ -25,7 +25,7 @@ struct OpenNode
     {
         if (f_score != other.f_score)
         {
-            return f_score > other.f_score;
+            return f_score > other.f_score; // 把数值小的放在堆顶
         }
         else
         {

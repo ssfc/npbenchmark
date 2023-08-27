@@ -27,7 +27,7 @@ int main()
                 { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 } };
                 */
 
-    ///*
+    /*
     // Source is the left-most bottom-most corner
     auto test_src = Coordinate{8, 0};
 
@@ -38,40 +38,16 @@ int main()
     AStar test_astar(test_src, test_dest);
     // test_astar.output_map();
     test_astar.a_star_search();
-     //*/
+     */
 
-    /*
+    ///*
     CBS test_cbs;
     test_cbs.print_map();
     // test_cbs.find_solution();
 
     LowLevel test_low_level(test_cbs.get_map(), test_cbs.get_agents());
     test_low_level.print_map();
-     */
-
-#include <iostream>
-#include <queue>
-
-    struct Coordinate {
-        int x, y;
-    };
-
-    struct OpenNode {
-        int f_score;
-        Coordinate position;
-
-        bool operator<(const OpenNode& other) const {
-            if (f_score != other.f_score) {
-                return f_score > other.f_score;  // 注意这里使用 > 符号
-            } else {
-                if (position.x != other.position.x) {
-                    return position.x > other.position.x;
-                } else {
-                    return position.y > other.position.y;
-                }
-            }
-        }
-    };
+     //*/
 
 /*
     std::priority_queue<OpenNode> open_queue;
