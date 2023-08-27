@@ -60,6 +60,8 @@ CBS::CBS():
 int CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
+    unordered_map<int, int> closed_list;
+    
 
     int h_value = 0;
 

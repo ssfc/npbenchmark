@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <queue>
+#include <unordered_map>
 #include <vector>
 #include "util.h"
 
