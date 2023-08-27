@@ -59,7 +59,7 @@ CBS::CBS():
 
 int CBS::compute_heuristics(Coordinate input_goal)
 {
-
+    priority_queue<OpenQueueNode> open_queue;
 
     int h_value = 0;
 
