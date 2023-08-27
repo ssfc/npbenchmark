@@ -63,8 +63,8 @@ int CBS::compute_heuristics(Coordinate input_goal)
     unordered_map<Coordinate, int> closed_list;
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
-    // closed_list[input_goal] = root
-
+    closed_list[input_goal] = root.cost;
+    
 
 
     int h_value = 0;
