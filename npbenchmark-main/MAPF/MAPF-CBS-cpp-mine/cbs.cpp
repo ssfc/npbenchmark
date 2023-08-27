@@ -64,7 +64,10 @@ int CBS::compute_heuristics(Coordinate input_goal)
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
     closed_list[input_goal] = root.cost;
-    
+    while(!open_queue.empty())
+    {
+        
+    }
 
 
     int h_value = 0;
