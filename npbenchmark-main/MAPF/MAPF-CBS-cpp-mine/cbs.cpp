@@ -68,6 +68,10 @@ int CBS::compute_heuristics(Coordinate input_goal)
     {
         auto current = open_queue.top();
         open_queue.pop();
+        for(int i=0;i<5;i++)
+        {
+            
+        }
     }
 
 
