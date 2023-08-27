@@ -124,7 +124,7 @@ int AStar::calculate_h(Coordinate position) const
             + abs(position.y - dest.y));
 }
 
-Coordinate AStar::move(Coordinate current_location, int direction)
+Coordinate AStar::move_agent(Coordinate current_location, int direction)
 {
     if(direction == 0)
     {
@@ -343,7 +343,7 @@ bool AStar::a_star_search()
         // A* LINE 13
         // for each neighbor of current
         //----------- 1st Successor (North) ------------
-        auto north = Coordinate{current.x, current.y + 1};
+        auto north = move_agent(current, 1);
         // Only process this cell if this is a valid one
         if (is_valid(north))
         {
