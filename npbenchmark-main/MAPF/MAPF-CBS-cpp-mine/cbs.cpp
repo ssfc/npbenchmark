@@ -66,7 +66,8 @@ int CBS::compute_heuristics(Coordinate input_goal)
     closed_list[input_goal] = root.cost;
     while(!open_queue.empty())
     {
-        
+        auto current = open_queue.top();
+        open_queue.pop();
     }
 
 
