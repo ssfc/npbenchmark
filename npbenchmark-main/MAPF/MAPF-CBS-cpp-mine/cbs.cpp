@@ -59,9 +59,10 @@ CBS::CBS():
 
 int CBS::compute_heuristics(Coordinate input_goal)
 {
-    priority_queue<OpenQueueNode> open_queue;
+    priority_queue<OpenQueueNode> open_list;
     unordered_map<int, int> closed_list;
     auto root = OpenQueueNode{0, input_goal};
+    open_list.push(root);
 
     
 
