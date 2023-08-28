@@ -132,23 +132,23 @@ Coordinate AStar::move_agent(Coordinate current_location, int direction)
     }
     else if(direction == 1)
     {
-        // north
-        return Coordinate{current_location.x, current_location.y + 1};
-    }
-    else if(direction == 2)
-    {
-        // south
-        return Coordinate{current_location.x, current_location.y - 1};
-    }
-    else if(direction == 3)
-    {
         // east
         return Coordinate{current_location.x + 1, current_location.y};
     }
-    else if(direction == 4)
+    else if(direction == 2)
     {
         // west
         return Coordinate{current_location.x - 1, current_location.y};
+    }
+    else if(direction == 3)
+    {
+        // north
+        return Coordinate{current_location.x, current_location.y + 1};
+    }
+    else if(direction == 4)
+    {
+        // south
+        return Coordinate{current_location.x, current_location.y - 1};
     }
     else
     {
