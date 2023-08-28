@@ -103,6 +103,7 @@ int CBS::compute_heuristics(Coordinate input_goal)
         for(int i=0;i<5;i++)
         {
             auto child_location = move_agent(current.location, i);
+            int child_cost = current.cost + 1;
         }
     }
 
