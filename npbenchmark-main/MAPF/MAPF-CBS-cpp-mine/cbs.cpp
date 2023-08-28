@@ -7,6 +7,9 @@
 using namespace std;
 
 CBS::CBS():
+    num_rows(0),
+    num_columns(0),
+    num_agents(0),
     iter(0),
     start_time(clock())
 {
