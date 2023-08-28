@@ -165,6 +165,11 @@ void CBS::print_map()
     }
 }
 
+void CBS::print_heuristics()
+{
+    
+}
+
 vector<vector<int>> CBS::get_map()
 {
     return map;

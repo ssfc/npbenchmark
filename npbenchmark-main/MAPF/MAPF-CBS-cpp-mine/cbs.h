@@ -93,6 +93,7 @@ public:
     std::vector<std::vector<int>> get_map();
     std::vector<Agent> get_agents();
     void print_map();
+    void print_heuristics();
 };
 
 #define DRAW_PATH_PY_CBS_H
