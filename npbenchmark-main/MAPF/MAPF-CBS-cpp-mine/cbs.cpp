@@ -57,6 +57,8 @@ CBS::CBS():
         for(auto this_agent : agents)
         {
             cerr << "iter_goal: " << iter_goal << endl;
+            auto this_heuristics = compute_heuristics(this_agent.goal);
+            heuristics.push_back(this_heuristics);
             iter_goal++;
         }
     }
