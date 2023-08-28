@@ -52,6 +52,13 @@ CBS::CBS():
         }
 
         map_file.close();
+
+        int iter_goal = 0;
+        for(auto this_agent : agents)
+        {
+            cerr << "iter_goal: " << iter_goal << endl;
+            iter_goal++;
+        }
     }
     else
     {
