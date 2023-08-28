@@ -142,13 +142,13 @@ Coordinate AStar::move_agent(Coordinate current_location, int direction)
     }
     else if(direction == 3)
     {
-        // west
-        return Coordinate{current_location.x - 1, current_location.y};
+        // east
+        return Coordinate{current_location.x + 1, current_location.y};
     }
     else if(direction == 4)
     {
-        // east
-        return Coordinate{current_location.x + 1, current_location.y};
+        // west
+        return Coordinate{current_location.x - 1, current_location.y};
     }
     else
     {
