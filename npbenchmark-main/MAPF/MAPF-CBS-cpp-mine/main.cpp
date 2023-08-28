@@ -45,8 +45,8 @@ int main()
     test_cbs.print_map();
     // test_cbs.find_solution();
 
-    LowLevel test_low_level(test_cbs.get_map(), test_cbs.get_agents());
-    test_low_level.print_map();
+    // LowLevel test_low_level(test_cbs.get_map(), test_cbs.get_agents());
+    // test_low_level.print_map();
      //*/
 
     return 0;
