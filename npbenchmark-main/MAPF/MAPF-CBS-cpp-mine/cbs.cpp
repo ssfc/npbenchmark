@@ -57,6 +57,38 @@ CBS::CBS():
 
 }
 
+Coordinate CBS::move_agent(Coordinate current_location, int direction)
+{
+    if(direction == 0)
+    {
+        return current_location;
+    }
+    else if(direction == 1)
+    {
+        // east
+        return Coordinate{current_location.x + 1, current_location.y};
+    }
+    else if(direction == 2)
+    {
+        // west
+        return Coordinate{current_location.x - 1, current_location.y};
+    }
+    else if(direction == 3)
+    {
+        // north
+        return Coordinate{current_location.x, current_location.y + 1};
+    }
+    else if(direction == 4)
+    {
+        // south
+        return Coordinate{current_location.x, current_location.y - 1};
+    }
+    else
+    {
+        return Coordinate{-1, -1};
+    }
+}
+
 int CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
@@ -70,7 +102,7 @@ int CBS::compute_heuristics(Coordinate input_goal)
         open_queue.pop();
         for(int i=0;i<5;i++)
         {
-
+            auto child_location = move_agent(current.location, i);
         }
     }
 

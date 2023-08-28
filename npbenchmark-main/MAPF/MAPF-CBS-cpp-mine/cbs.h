@@ -83,6 +83,7 @@ private:
     double start_time;
 public:
     CBS(); // constructor
+    static Coordinate move_agent(Coordinate current_location, int direction);
     int compute_heuristics(Coordinate input_goal); // 计算终点和每个点的距离
     void find_solution();
     void find_path();
