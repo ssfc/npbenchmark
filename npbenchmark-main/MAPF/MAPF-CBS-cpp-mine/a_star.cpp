@@ -343,12 +343,12 @@ bool AStar::a_star_search()
         // A* LINE 13
         // for each neighbor of current
         //----------- 1st Successor (North) ------------
-        auto north = move_agent(current, 1);
+        auto direction_1 = move_agent(current, 1);
         // Only process this cell if this is a valid one
-        if (is_valid(north))
+        if (is_valid(direction_1))
         {
             // If the successor has not been evaluated and is passable
-            if (closed_list[north.x][north.y]==0 && is_passable(north))
+            if (closed_list[direction_1.x][direction_1.y] == 0 && is_passable(direction_1))
             {
                 // A* LINE 14
                 // d(current,neighbor) is the weight of the edge from current to neighbor
@@ -357,34 +357,34 @@ bool AStar::a_star_search()
                 // cost of the cheapest path from start to n currently known
                 int g_new = cell_details[current.x][current.y].g_score + 1;
 
-                cerr << "north g_new: " << g_new << " ";
-                cerr << "north g_current: " << cell_details[north.x][north.y].g_score << endl;
+                cerr << "direction_1 g_new: " << g_new << " ";
+                cerr << "direction_1 g_current: " << cell_details[direction_1.x][direction_1.y].g_score << endl;
                 // A* LINE 15
                 // if tentative_gScore < gScore[neighbor]
                 // meaning: This path to neighbor is better than any previous one. Record it!
-                if (g_new < cell_details[north.x][north.y].g_score) // new path is better
+                if (g_new < cell_details[direction_1.x][direction_1.y].g_score) // new path is better
                 {
                     // A* LINE 18
                     // fScore[neighbor] := tentative_gScore + h_score(neighbor)
-                    int f_new = g_new + calculate_h(north);
+                    int f_new = g_new + calculate_h(direction_1);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
                     // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
-                    cell_details[north.x][north.y] = Cell{g_new, f_new, current};
+                    cell_details[direction_1.x][direction_1.y] = Cell{g_new, f_new, current};
 
                     // A* LINE 19
                     // if neighbor not in openSet
                     // If it isn’t on the open list, add it to the open list.
-                    if(open_list[north.x][north.y]==0)
+                    if(open_list[direction_1.x][direction_1.y] == 0)
                     {
                         // A* LINE 20
                         // openSet.add(neighbor)
-                        open_list[north.x][north.y] = 1;
-                        open_queue.push(OpenNode{f_new, north});
+                        open_list[direction_1.x][direction_1.y] = 1;
+                        open_queue.push(OpenNode{f_new, direction_1});
 
-                        cerr << "Add north node (" << north.x << ", " << north.y << ") to open list" << endl;
+                        cerr << "Add direction_1 node (" << direction_1.x << ", " << direction_1.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -395,12 +395,12 @@ bool AStar::a_star_search()
         // A* LINE 13
         // for each neighbor of current
         //----------- 2nd Successor (South) ------------
-        auto south = Coordinate{current.x, current.y - 1};
+        auto direction_2 = move_agent(current, 2);
         // Only process this cell if it is valid
-        if (is_valid(south))
+        if (is_valid(direction_2))
         {
             // If the successor has not been evaluated and is passable
-            if (closed_list[south.x][south.y]==0 && is_passable(south))
+            if (closed_list[direction_2.x][direction_2.y] == 0 && is_passable(direction_2))
             {
                 // A* LINE 14
                 // d(current,neighbor) is the weight of the edge from current to neighbor
@@ -408,35 +408,35 @@ bool AStar::a_star_search()
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
 
-                cerr << "south g_new: " << g_new << " ";
-                cerr << "south g_current: " << cell_details[south.x][south.y].g_score << endl;
+                cerr << "direction_2 g_new: " << g_new << " ";
+                cerr << "direction_2 g_current: " << cell_details[direction_2.x][direction_2.y].g_score << endl;
                 // A* LINE 15
                 // if tentative_gScore < gScore[neighbor]
                 // meaning: This path to neighbor is better than any previous one. Record it!
-                if (g_new < cell_details[south.x][south.y].g_score)
+                if (g_new < cell_details[direction_2.x][direction_2.y].g_score)
                 {
                     // A* LINE 18
                     // fScore[neighbor] := tentative_gScore + h_score(neighbor)
-                    int f_new = g_new + calculate_h(south);
+                    int f_new = g_new + calculate_h(direction_2);
 
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
                     // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
-                    cell_details[south.x][south.y] = Cell{g_new, f_new, current};
+                    cell_details[direction_2.x][direction_2.y] = Cell{g_new, f_new, current};
 
                     // A* LINE 19
                     // if neighbor not in openSet
                     // If it isn’t on the open list, add it to the open list.
-                    if(open_list[south.x][south.y]==0)
+                    if(open_list[direction_2.x][direction_2.y] == 0)
                     {
                         // A* LINE 20
                         // openSet.add(neighbor)
-                        open_list[south.x][south.y] = 1;
-                        open_queue.push(OpenNode{f_new, south});
+                        open_list[direction_2.x][direction_2.y] = 1;
+                        open_queue.push(OpenNode{f_new, direction_2});
 
-                        cerr << "Add south node (" << south.x << ", " << south.y << ") to open list" << endl;
+                        cerr << "Add direction_2 node (" << direction_2.x << ", " << direction_2.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -447,12 +447,12 @@ bool AStar::a_star_search()
         // A* LINE 13
         // for each neighbor of current
         //----------- 3rd Successor (West) ------------
-        auto west = Coordinate{current.x - 1, current.y};
+        auto direction_3 = move_agent(current, 3);
         // Only process this cell if this is a valid one
-        if (is_valid(west))
+        if (is_valid(direction_3))
         {
             // If the successor has not been evaluated and is passable
-            if (closed_list[west.x][west.y]==0 && is_passable(west))
+            if (closed_list[direction_3.x][direction_3.y] == 0 && is_passable(direction_3))
             {
                 // A* LINE 14
                 // d(current,neighbor) is the weight of the edge from current to neighbor
@@ -460,34 +460,34 @@ bool AStar::a_star_search()
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
 
-                cerr << "west g_new: " << g_new << " ";
-                cerr << "west g_current: " << cell_details[west.x][west.y].g_score << endl;
+                cerr << "direction_3 g_new: " << g_new << " ";
+                cerr << "direction_3 g_current: " << cell_details[direction_3.x][direction_3.y].g_score << endl;
                 // A* LINE 15
                 // if tentative_gScore < gScore[neighbor]
                 // meaning: This path to neighbor is better than any previous one. Record it!
-                if (g_new < cell_details[west.x][west.y].g_score)
+                if (g_new < cell_details[direction_3.x][direction_3.y].g_score)
                 {
                     // A* LINE 18
                     // fScore[neighbor] := tentative_gScore + h_score(neighbor)
-                    int f_new = g_new + calculate_h(west);
+                    int f_new = g_new + calculate_h(direction_3);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
                     // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
-                    cell_details[west.x][west.y] = Cell{g_new, f_new, current};
+                    cell_details[direction_3.x][direction_3.y] = Cell{g_new, f_new, current};
 
                     // A* LINE 19
                     // if neighbor not in openSet
                     // If it isn’t on the open list, add it to the open list.
-                    if(open_list[west.x][west.y]==0)
+                    if(open_list[direction_3.x][direction_3.y] == 0)
                     {
                         // A* LINE 20
                         // openSet.add(neighbor)
-                        open_list[west.x][west.y] = 1;
-                        open_queue.push(OpenNode{f_new, west});
+                        open_list[direction_3.x][direction_3.y] = 1;
+                        open_queue.push(OpenNode{f_new, direction_3});
 
-                        cerr << "Add west node (" << west.x << ", " << west.y << ") to open list" << endl;
+                        cerr << "Add direction_3 node (" << direction_3.x << ", " << direction_3.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
@@ -498,12 +498,12 @@ bool AStar::a_star_search()
         // A* LINE 13
         // for each neighbor of current
         //----------- 4th Successor (East) ------------
-        auto east = Coordinate{current.x + 1, current.y};
+        auto direction_4 = move_agent(current, 4);
         // Only process this cell if this is a valid one
-        if (is_valid(east))
+        if (is_valid(direction_4))
         {
             // If the successor has not been evaluated and is passable
-            if (closed_list[east.x][east.y]==0 && is_passable(east))
+            if (closed_list[direction_4.x][direction_4.y] == 0 && is_passable(direction_4))
             {
                 // A* LINE 14
                 // d(current,neighbor) is the weight of the edge from current to neighbor
@@ -511,34 +511,34 @@ bool AStar::a_star_search()
                 // tentative_gScore := gScore[current] + d(current, neighbor)
                 int g_new = cell_details[current.x][current.y].g_score + 1;
 
-                cerr << "east g_new: " << g_new << " ";
-                cerr << "east g_current: " << cell_details[east.x][east.y].g_score << endl;
+                cerr << "direction_4 g_new: " << g_new << " ";
+                cerr << "direction_4 g_current: " << cell_details[direction_4.x][direction_4.y].g_score << endl;
                 // A* LINE 15
                 // if tentative_gScore < gScore[neighbor]
                 // meaning: This path to neighbor is better than any previous one. Record it!
-                if (g_new < cell_details[east.x][east.y].g_score)
+                if (g_new < cell_details[direction_4.x][direction_4.y].g_score)
                 {
                     // A* LINE 18
                     // fScore[neighbor] := tentative_gScore + h_score(neighbor)
-                    int f_new = g_new + calculate_h(east);
+                    int f_new = g_new + calculate_h(direction_4);
                     // A* LINE 16
                     // cameFrom[neighbor] := current
                     // A* LINE 17
                     // gScore[neighbor] := tentative_gScore
                     // Update the details of this cell
-                    cell_details[east.x][east.y] = Cell{g_new, f_new, current};
+                    cell_details[direction_4.x][direction_4.y] = Cell{g_new, f_new, current};
 
                     // A* LINE 19
                     // if neighbor not in openSet
                     // If it isn’t on the open list, add it to the open list.
-                    if(open_list[east.x][east.y]==0)
+                    if(open_list[direction_4.x][direction_4.y] == 0)
                     {
                         // A* LINE 20
                         // openSet.add(neighbor)
-                        open_list[east.x][east.y] = 1;
-                        open_queue.push(OpenNode{f_new, east});
+                        open_list[direction_4.x][direction_4.y] = 1;
+                        open_queue.push(OpenNode{f_new, direction_4});
 
-                        cerr << "Add east node (" << east.x << ", " << east.y << ") to open list" << endl;
+                        cerr << "Add direction_4 node (" << direction_4.x << ", " << direction_4.y << ") to open list" << endl;
                         print_open_list();
                         print_closed_list();
                     }
