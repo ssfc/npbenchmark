@@ -99,7 +99,7 @@ Coordinate CBS::move_agent(Coordinate current_location, int direction)
     }
 }
 
-int CBS::compute_heuristics(Coordinate input_goal)
+unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
     unordered_map<Coordinate, int> closed_list;
@@ -118,7 +118,7 @@ int CBS::compute_heuristics(Coordinate input_goal)
     }
 
 
-    int h_value = 0;
+    unordered_map<Coordinate, int> h_value;
 
     return h_value;
 }
