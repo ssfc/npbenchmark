@@ -77,6 +77,7 @@ private:
     int num_agents;
     std::vector<Agent> agents;
     std::vector<CBSNode> open_list;
+    std::vector<std::unordered_map<Coordinate, int>> heuristics;
 
     // debug var;
     int iter;
