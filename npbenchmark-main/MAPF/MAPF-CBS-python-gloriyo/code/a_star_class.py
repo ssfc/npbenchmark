@@ -15,7 +15,7 @@ import copy
 # Q: 页面中函数move(current_location, chosen_direction)输出结果的数据类型和含义分别是什么？
 # @return (tuple): 表示新的位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
 def move(current_location, chosen_direction):
-    directions = [(0, 0), (0, -1), (1, 0), (0, 1), (-1, 0)]
+    directions = [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]
     return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
 
