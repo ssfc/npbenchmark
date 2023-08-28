@@ -4,7 +4,7 @@ import random
 # from single_agent_planner import compute_heuristics, a_star, get_location, get_sum_of_cost
 # from pea_star import pea_star
 
-from a_star_class import A_Star, move
+from a_star_class import A_Star, move_agent
 
 from pea_star_class import PEA_Star
 
@@ -73,7 +73,7 @@ class CBSSolver(object):
         while len(open_list) > 0:
             (cost, location, curr) = heapq.heappop(open_list)
             for dir in range(1, 5):
-                child_location = move(location, dir)
+                child_location = move_agent(location, dir)
                 child_cost = cost + 1
                 if child_location[0] < 0 or child_location[0] >= len(input_map) \
                         or child_location[1] < 0 or child_location[1] >= len(input_map[0]):

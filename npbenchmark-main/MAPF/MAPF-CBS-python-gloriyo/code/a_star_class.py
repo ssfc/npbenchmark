@@ -5,16 +5,16 @@ import numpy as np
 import copy
 
 
-# Q: 页面中函数move(current_location, chosen_direction)的功能是什么？
+# Q: 页面中函数move_agent(current_location, chosen_direction)的功能是什么？
 # 函数的功能是根据一个位置和一个方向，返回一个新的位置。
 # 函数使用了一个列表来表示五个可能的方向，分别是不动、上、右、下、左。函数根据方向的索引，从列表中取出对应的元组，然后把元组中的两个值分别加到位置的两个坐标上，得到新的位置，并返回这个位置。
 # 这个函数可以用于模拟一个代理在地图上的移动。
-# Q: 页面中函数move(current_location, chosen_direction)输入参数的数据类型和含义分别是什么？
+# Q: 页面中函数move_agent(current_location, chosen_direction)输入参数的数据类型和含义分别是什么？
 # @param location (tuple): 表示一个位置，包含两个整数，分别是横坐标和纵坐标。例如，(1, 2)表示横坐标为1，纵坐标为2的位置。
 # @param dir (int): 表示一个方向，取值范围是0到4，分别对应不动、上、右、下、左。例如，0表示不动，1表示上，2表示右，依此类推。
-# Q: 页面中函数move(current_location, chosen_direction)输出结果的数据类型和含义分别是什么？
+# Q: 页面中函数move_agent(current_location, chosen_direction)输出结果的数据类型和含义分别是什么？
 # @return (tuple): 表示新的位置，包含两个整数，分别是横坐标和纵坐标。例如，(3, 4)表示横坐标为3，纵坐标为4的位置。
-def move(current_location, chosen_direction):
+def move_agent(current_location, chosen_direction):
     directions = [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]
     return current_location[0] + directions[chosen_direction][0], current_location[1] + directions[chosen_direction][1]
 
@@ -292,13 +292,13 @@ class A_Star(object):
             child_loc = []
             # move each agent for new time_step & check for (internal) conflicts with each other
             for i, a in enumerate(self.agents):
-                aloc = move(current_node['location'][i], dirs[i])
+                aloc = move_agent(current_node['location'][i], dirs[i])
                 # vertex collision; check for duplicates in child_loc
                 if aloc in child_loc:
                     invalid_move = True
                     # print("internal conflict")
                     break
-                child_loc.append(move(current_node['location'][i], dirs[i]))
+                child_loc.append(move_agent(current_node['location'][i], dirs[i]))
 
             if invalid_move:
                 continue
