@@ -59,6 +59,7 @@ CBS::CBS():
             cerr << "iter_goal: " << iter_goal << endl;
             auto this_heuristics = compute_heuristics(this_agent.goal);
             heuristics.push_back(this_heuristics);
+            print_heuristics();
             iter_goal++;
         }
     }
@@ -108,7 +109,8 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
     closed_list[input_goal] = root.cost;
-    while(!open_queue.empty())
+    int iter_computed = 0;
+    while(!open_queue.empty() && iter_computed<3)
     {
         auto current = open_queue.top();
         open_queue.pop();
@@ -117,6 +119,8 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             auto child_location = move_agent(current.location, i);
             int child_cost = current.cost + 1;
         }
+
+        iter_computed++;
     }
 
 
