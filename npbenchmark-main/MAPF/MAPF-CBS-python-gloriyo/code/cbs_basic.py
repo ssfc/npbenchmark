@@ -89,7 +89,7 @@ class CBSSolver(object):
                 if child_location[0] < 0 or child_location[0] >= len(input_map) \
                         or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
                     continue
-                # test whether child location is passable. 
+                # test whether child location is passable.
                 if input_map[child_location[0]][child_location[1]]:
                     continue
                 child = {'location': child_location, 'cost': child_cost}

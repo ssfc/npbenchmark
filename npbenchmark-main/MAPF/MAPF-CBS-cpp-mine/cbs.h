@@ -71,8 +71,8 @@ struct OpenQueueNode
 class CBS
 {
 private:
-    int num_rows;
-    int num_columns;
+    size_t num_rows;
+    size_t num_columns;
     std::vector<std::vector<int>> map;
     int num_agents;
     std::vector<Agent> agents;
@@ -85,7 +85,7 @@ private:
 public:
     CBS(); // constructor
     static Coordinate move_agent(Coordinate current_location, int direction);
-    static std::unordered_map<Coordinate, int> compute_heuristics(Coordinate input_goal); // 计算终点和每个点的距离
+    std::unordered_map<Coordinate, int> compute_heuristics(Coordinate input_goal); // 计算终点和每个点的距离
     void find_solution();
     void find_path();
 

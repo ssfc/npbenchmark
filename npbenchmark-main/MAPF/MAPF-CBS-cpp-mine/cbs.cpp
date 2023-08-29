@@ -121,6 +121,21 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             cerr << "child_location: (" << child_location.x << "," << child_location.y << ")" << endl;
             int child_cost = current.cost + 1;
             cerr << "child_cost: " << child_cost << endl;
+
+            // test whether child location is out of range.
+            if(child_location.x < 0 || child_location.x >= num_rows
+            || child_location.y < 0 || child_location.y >= num_columns)
+            {
+                continue;
+            }
+            // test whether child location is passable.
+            if(map[child_location.x][child_location.y] == 0)
+            {
+                continue;
+            }
+            auto child = OpenQueueNode{child_cost, child_location};
+            
+
         }
 
         iter_computed++;
