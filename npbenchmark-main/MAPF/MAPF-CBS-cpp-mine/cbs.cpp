@@ -105,10 +105,10 @@ Coordinate CBS::move_agent(Coordinate current_location, int direction)
 unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
-    unordered_map<Coordinate, int> closed_list;
+    unordered_map<Coordinate, OpenQueueNode> closed_list;
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
-    closed_list[input_goal] = root.cost;
+    closed_list[input_goal] = root;
     int iter_computed = 0;
     while(!open_queue.empty() && iter_computed<3)
     {
