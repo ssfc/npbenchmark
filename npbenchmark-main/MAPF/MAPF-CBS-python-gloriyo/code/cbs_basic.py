@@ -75,7 +75,7 @@ class CBSSolver(object):
         closed_list = dict()
         root = {'location': input_goal, 'cost': 0}
         heapq.heappush(open_list, (root['cost'], input_goal))
-        closed_list[input_goal] = root
+        closed_list[input_goal] = 0
         iter_computed = 0
         while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
@@ -96,22 +96,22 @@ class CBSSolver(object):
                 print("child:", child)
                 if child_location in closed_list:
                     print("child_location in closed list")
-                    existing_node = closed_list[child_location]
-                    if existing_node['cost'] > child_cost:
-                        closed_list[child_location] = child
+                    existing_cost = closed_list[child_location]
+                    if existing_cost > child_cost:
+                        closed_list[child_location] = child_cost
                         # open_list.delete((existing_node['cost'], existing_node['location'], existing_node))
                         heapq.heappush(open_list, (child_cost, child_location))
                 else:
                     print("child_location not in closed list")
-                    closed_list[child_location] = child
+                    closed_list[child_location] = child_cost
                     heapq.heappush(open_list, (child_cost, child_location))
 
             iter_computed += 1
 
         # build the heuristics table
         h_values = dict()
-        for location, node in closed_list.items():
-            h_values[location] = node['cost']
+        for location, cost in closed_list.items():
+            h_values[location] = cost
         return h_values
 
     # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
