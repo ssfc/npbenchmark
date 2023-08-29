@@ -80,6 +80,7 @@ class CBSSolver(object):
         while len(open_list) > 0 and iter_computed<3:
             print("iter computed:", iter_computed)
             (cost, location) = heapq.heappop(open_list)
+            print("Current location: ", location, " cost: ", cost)
             for dir in range(1, 5):
                 child_location = move_agent(location, dir)
                 print("child_location:", child_location)
