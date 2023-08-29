@@ -105,10 +105,10 @@ Coordinate CBS::move_agent(Coordinate current_location, int direction)
 unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
-    unordered_map<Coordinate, OpenQueueNode> closed_list;
+    unordered_map<Coordinate, int> closed_list;
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
-    closed_list[input_goal] = root;
+    closed_list[input_goal] = 0;
     int iter_computed = 0;
     while(!open_queue.empty() && iter_computed<3)
     {
@@ -133,6 +133,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             {
                 continue;
             }
+
             auto child = OpenQueueNode{child_cost, child_location};
             cerr << "child: {location:(" << child.location.x << "," << child.location.y
                  << "), cost:" << child.cost << "}" << endl;
@@ -140,16 +141,17 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             if (closed_list.find(child_location) != closed_list.end())
             {
                 cerr << "child_location in closed list" << endl;
-                auto existing_node = closed_list[child_location];
-                if(existing_node.cost > child_cost)
+                if(closed_list[child_location] > child_cost)
                 {
-                    closed_list[child_location] = child;
+                    closed_list[child_location] = child_cost;
+                    open_queue.push(child);
                 }
             }
-            // child_location 不在 closed_list 中
-            else
+            else // child_location 不在 closed_list 中
             {
                 cerr << "child_location not in closed list" << endl;
+                closed_list[child_location] = child_cost;
+                open_queue.push(child);
             }
 
 
