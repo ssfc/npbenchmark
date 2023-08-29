@@ -115,10 +115,12 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         cerr << "iter computed: " << iter_computed << endl;
         auto current = open_queue.top();
         open_queue.pop();
-        for(int i=0;i<5;i++)
+        for(int i=1;i<5;i++)
         {
             auto child_location = move_agent(current.location, i);
+            cerr << "child_location: (" << child_location.x << "," << child_location.y << ")" << endl;
             int child_cost = current.cost + 1;
+            cerr << "child_cost: " << child_cost << endl;
         }
 
         iter_computed++;
