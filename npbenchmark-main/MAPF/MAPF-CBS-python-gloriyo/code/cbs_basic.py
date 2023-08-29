@@ -96,8 +96,7 @@ class CBSSolver(object):
                 print("child:", child)
                 if child_location in closed_list:
                     print("child_location in closed list")
-                    existing_cost = closed_list[child_location]
-                    if existing_cost > child_cost:
+                    if closed_list[child_location] > child_cost:
                         closed_list[child_location] = child_cost
                         # open_list.delete((existing_node['cost'], existing_node['location'], existing_node))
                         heapq.heappush(open_list, (child_cost, child_location))
