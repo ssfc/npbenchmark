@@ -134,15 +134,18 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
                 continue;
             }
             auto child = OpenQueueNode{child_cost, child_location};
+            cerr << "child: {location:(" << child.location.x << "," << child.location.y
+                 << "), cost:" << child.cost << "}" << endl;
             // child_location 存在于 closed_list 中
             if (closed_list.find(child_location) != closed_list.end())
             {
+                cerr << "child_location in closed list" << endl;
                 auto existing_node = closed_list[child_location];
             }
             // child_location 不在 closed_list 中
             else
             {
-
+                cerr << "child_location not in closed list" << endl;
             }
 
 
