@@ -57,11 +57,11 @@ struct OpenQueueNode
         {
             if (location.x != other.location.x)
             {
-                return location.x < other.location.x;
+                return location.x < other.location.x; // 把数值大的放在堆顶
             }
             else
             {
-                return location.y < other.location.y;
+                return location.y < other.location.y; // 把数值大的放在堆顶
             }
         }
     }
