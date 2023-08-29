@@ -45,8 +45,9 @@ class CBSSolver(object):
         for goal in self.goals:
             print("iter_goal:", iter_goal)
             this_heuristics = self.compute_heuristics(input_map, goal)
+            print("this_heuristics:", this_heuristics)
             self.heuristics.append(this_heuristics)
-            print("self.heuristics:", self.heuristics)
+            # print("self.heuristics:", self.heuristics)
             iter_goal += 1
         # print("heuristics [0]:", self.heuristics[0])
         # heuristics [0]: {(3, 0): 0, (4, 0): 1, (3, 1): 1, (2, 0): 1, (2, 1): 2, (1, 0): 2, (

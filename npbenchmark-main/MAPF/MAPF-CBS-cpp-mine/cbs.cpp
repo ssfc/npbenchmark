@@ -167,7 +167,15 @@ void CBS::print_map()
 
 void CBS::print_heuristics()
 {
-    
+    for(const auto& this_heuristic : heuristics)
+    {
+        for (auto pair : this_heuristic)
+        {
+            const Coordinate& coord = pair.first;
+            cerr << "Key: " << coord.x << " " << coord.y << " , Value: " << pair.second << endl;
+        }
+        cerr << endl;
+    }
 }
 
 vector<vector<int>> CBS::get_map()
