@@ -74,12 +74,12 @@ class CBSSolver(object):
         open_list = []
         closed_list = dict()
         root = {'location': input_goal, 'cost': 0}
-        heapq.heappush(open_list, (root['cost'], input_goal, root))
+        heapq.heappush(open_list, (root['cost'], input_goal))
         closed_list[input_goal] = root
         iter_computed = 0
         while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
-            (cost, location, curr) = heapq.heappop(open_list)
+            (cost, location) = heapq.heappop(open_list)
             for dir in range(1, 5):
                 child_location = move_agent(location, dir)
                 print("child_location:", child_location)
@@ -100,11 +100,11 @@ class CBSSolver(object):
                     if existing_node['cost'] > child_cost:
                         closed_list[child_location] = child
                         # open_list.delete((existing_node['cost'], existing_node['location'], existing_node))
-                        heapq.heappush(open_list, (child_cost, child_location, child))
+                        heapq.heappush(open_list, (child_cost, child_location))
                 else:
                     print("child_location not in closed list")
                     closed_list[child_location] = child
-                    heapq.heappush(open_list, (child_cost, child_location, child))
+                    heapq.heappush(open_list, (child_cost, child_location))
 
             iter_computed += 1
 
