@@ -77,7 +77,7 @@ class CBSSolver(object):
         heapq.heappush(open_list, (root['cost'], input_goal, root))
         closed_list[input_goal] = root
         iter_computed = 0
-        while len(open_list) > 0 and iter_computed<3:
+        while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
             (cost, location, curr) = heapq.heappop(open_list)
             for dir in range(1, 5):
@@ -472,7 +472,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 1:
+        while len(self.open_list) > 0 and iteration < 1000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')

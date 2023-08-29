@@ -141,6 +141,10 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             {
                 cerr << "child_location in closed list" << endl;
                 auto existing_node = closed_list[child_location];
+                if(existing_node.cost > child_cost)
+                {
+                    closed_list[child_location] = child;
+                }
             }
             // child_location 不在 closed_list 中
             else
