@@ -113,6 +113,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
     while(!open_queue.empty() && iter_computed<3)
     {
         cerr << "iter computed: " << iter_computed << endl;
+
         auto current = open_queue.top();
         cerr << "Current location: (" << current.location.x << "," << current.location.y << ")" << endl;
         open_queue.pop();
