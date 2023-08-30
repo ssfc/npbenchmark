@@ -15,7 +15,7 @@ class Triple:
 
 
 x = [(1,2,3), (2,1,4), (3,4,5), (4,3,6), (5,6,7), (1,2,5), (4,3,2), (2,1,3)]
-y = [Triple(a,b,c) for a,b,c in x]
+y = [Triple(a, b, c) for a, b, c in x]
 heapq.heapify(y)
 
 while y:
