@@ -74,12 +74,12 @@ class CBSSolver(object):
         open_list = []
         closed_list = dict()
         root = {'location': input_goal, 'cost': 0}
-        heapq.heappush(open_list, (root['cost'], input_goal))
+        heapq.heappush(open_list, (root['cost'], input_goal[0], input_goal[1], input_goal))
         closed_list[input_goal] = 0
         iter_computed = 0
-        while len(open_list) > 0 and iter_computed<3:
+        while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
-            (cost, location) = heapq.heappop(open_list)
+            (cost, location_x, location_y, location) = heapq.heappop(open_list)
             print("Current location: ", location, " cost: ", cost)
             for dir in range(1, 5):
                 child_location = move_agent(location, dir)
@@ -99,11 +99,11 @@ class CBSSolver(object):
                     print("child_location in closed list")
                     if closed_list[child_location] > child_cost:
                         closed_list[child_location] = child_cost
-                        heapq.heappush(open_list, (child_cost, child_location))
+                        heapq.heappush(open_list, (child_cost, child_location[0], child_location[1], child_location))
                 else:
                     print("child_location not in closed list")
                     closed_list[child_location] = child_cost
-                    heapq.heappush(open_list, (child_cost, child_location))
+                    heapq.heappush(open_list, (child_cost, child_location[0], child_location[1], child_location))
 
             iter_computed += 1
 
@@ -471,7 +471,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 1:
+        while len(self.open_list) > 0 and iteration < 1000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
