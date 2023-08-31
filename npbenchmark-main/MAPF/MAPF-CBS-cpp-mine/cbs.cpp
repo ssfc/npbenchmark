@@ -134,14 +134,14 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         cerr << "}" << endl;
 
         auto current = open_queue.top();
-        cerr << "Current location: (" << current.location.x << "," << current.location.y << ")" << endl;
+        // cerr << "Current location: (" << current.location.x << "," << current.location.y << ")" << endl;
         open_queue.pop();
         for(int i=1;i<5;i++)
         {
             auto child_location = move_agent(current.location, i);
-            cerr << "child_location: (" << child_location.x << "," << child_location.y << ")" << endl;
+            // cerr << "child_location: (" << child_location.x << "," << child_location.y << ")" << endl;
             int child_cost = current.cost + 1;
-            cerr << "child_cost: " << child_cost << endl;
+            // cerr << "child_cost: " << child_cost << endl;
 
             // test whether child location is out of range.
             if(child_location.x < 0 || child_location.x >= num_rows
@@ -156,12 +156,12 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             }
 
             auto child = OpenQueueNode{child_cost, child_location};
-            cerr << "child: {location:(" << child.location.x << "," << child.location.y
-                 << "), cost:" << child.cost << "}" << endl;
+            // cerr << "child: {location:(" << child.location.x << "," << child.location.y
+            //      << "), cost:" << child.cost << "}" << endl;
             // child_location 存在于 closed_list 中
             if (h_values.find(child_location) != h_values.end())
             {
-                cerr << "child_location in closed list" << endl;
+                // cerr << "child_location in closed list" << endl;
                 if(h_values[child_location] > child_cost)
                 {
                     h_values[child_location] = child_cost;
@@ -170,7 +170,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             }
             else // child_location 不在 closed_list 中
             {
-                cerr << "child_location not in closed list" << endl;
+                // cerr << "child_location not in closed list" << endl;
                 h_values[child_location] = child_cost;
                 open_queue.push(child);
             }

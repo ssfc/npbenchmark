@@ -83,12 +83,12 @@ class CBSSolver(object):
             print("h_values:", h_values)
             (cost, location_x, location_y) = heapq.heappop(open_list)
             location = (location_x, location_y)
-            print("Current location: ", location, " cost: ", cost)
+            # print("Current location: ", location, " cost: ", cost)
             for dir in range(1, 5):
                 child_location = move_agent(location, dir)
-                print("child_location:", child_location)
+                # print("child_location:", child_location)
                 child_cost = cost + 1
-                print("child_cost:", child_cost)
+                # print("child_cost:", child_cost)
                 # test whether child location is out of range.
                 if child_location[0] < 0 or child_location[0] >= len(input_map) \
                         or child_location[1] < 0 or child_location[1] >= len(input_map[0]):
@@ -97,14 +97,14 @@ class CBSSolver(object):
                 if input_map[child_location[0]][child_location[1]]:
                     continue
                 child = {'location': child_location, 'cost': child_cost}
-                print("child:", child)
+                # print("child:", child)
                 if child_location in h_values:
-                    print("child_location in closed list")
+                    # print("child_location in closed list")
                     if h_values[child_location] > child_cost:
                         h_values[child_location] = child_cost
                         heapq.heappush(open_list, (child_cost, child_location[0], child_location[1]))
                 else:
-                    print("child_location not in closed list")
+                    # print("child_location not in closed list")
                     h_values[child_location] = child_cost
                     heapq.heappush(open_list, (child_cost, child_location[0], child_location[1]))
 
