@@ -78,9 +78,9 @@ class CBSSolver(object):
         h_values[input_goal] = 0
         iter_computed = 0
         while len(open_list) > 0:
-            print("iter computed:", iter_computed)
-            print("open_list:", open_list)
-            print("h_values:", h_values)
+            # print("iter computed:", iter_computed)
+            # print("open_list:", open_list)
+            # print("h_values:", h_values)
             (cost, location_x, location_y) = heapq.heappop(open_list)
             location = (location_x, location_y)
             # print("Current location: ", location, " cost: ", cost)
