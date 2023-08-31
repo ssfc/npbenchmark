@@ -124,6 +124,14 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         }
         cerr << "}" << endl;
         // print closed_list
+        cerr << "closed list: {";
+        for (const auto& pair : closed_list)
+        {
+            const Coordinate& coord = pair.first;
+            int value = pair.second;
+            cerr << "((" << coord.x << "," << coord.y << ")," << value << "),";
+        }
+        cerr << "}" << endl;
 
         auto current = open_queue.top();
         cerr << "Current location: (" << current.location.x << "," << current.location.y << ")" << endl;
