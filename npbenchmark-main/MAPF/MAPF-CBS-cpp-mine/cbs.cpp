@@ -123,8 +123,8 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             temp.pop();
         }
         cerr << "}" << endl;
-        // print closed_list
-        cerr << "closed list: {";
+        // print h_values
+        cerr << "h_values: {";
         for (const auto& pair : h_values)
         {
             const Coordinate& coord = pair.first;
