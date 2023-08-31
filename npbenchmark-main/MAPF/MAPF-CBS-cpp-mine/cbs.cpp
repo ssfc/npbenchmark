@@ -58,8 +58,18 @@ CBS::CBS():
         {
             cerr << "iter_goal: " << iter_goal << endl;
             auto this_heuristics = compute_heuristics(this_agent.goal);
+
+            cerr << "this_heuristics: {";
+            for (const auto& pair : this_heuristics)
+            {
+                const Coordinate& coord = pair.first;
+                int value = pair.second;
+                cerr << "((" << coord.x << "," << coord.y << ")," << value << "),";
+            }
+            cerr << "}" << endl;
+
             heuristics.push_back(this_heuristics);
-            print_heuristics();
+            // print_heuristics();
             iter_goal++;
         }
     }
