@@ -77,7 +77,7 @@ class CBSSolver(object):
         heapq.heappush(open_list, (root['cost'], input_goal[0], input_goal[1]))
         closed_list[input_goal] = 0
         iter_computed = 0
-        while len(open_list) > 0 and iter_computed<3:
+        while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
             print("open_list:", open_list)
             print("closed_list:", closed_list)
@@ -110,11 +110,7 @@ class CBSSolver(object):
 
             iter_computed += 1
 
-        # build the heuristics table
-        h_values = dict()
-        for location, cost in closed_list.items():
-            h_values[location] = cost
-        return h_values
+        return closed_list
 
     # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
     # 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
@@ -474,7 +470,7 @@ class CBSSolver(object):
         # Implement A1 LINE 5
         # while OPEN not empty do
         iteration = 0  # Iteration需要走144个，重复实验结果一样。
-        while len(self.open_list) > 0 and iteration < 1:
+        while len(self.open_list) > 0 and iteration < 1000:
             print("iteration: ", iteration)
             # if self.num_of_generated > 50000:
             #     print('reached maximum number of nodes. Returning...')
