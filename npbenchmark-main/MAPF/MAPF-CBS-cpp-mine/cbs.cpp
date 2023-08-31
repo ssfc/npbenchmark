@@ -181,13 +181,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         iter_computed++;
     }
 
-
-    unordered_map<Coordinate, int> h_value;
-    //         for location, cost in closed_list.items():
-    //            h_values[location] = cost
-    
-
-    return h_value;
+    return closed_list;
 }
 
 void CBS::find_solution()
