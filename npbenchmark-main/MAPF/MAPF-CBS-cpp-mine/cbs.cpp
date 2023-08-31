@@ -110,7 +110,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
     open_queue.push(root);
     h_values[input_goal] = 0;
     int iter_computed = 0;
-    while(!open_queue.empty() && iter_computed<3)
+    while(!open_queue.empty() && iter_computed<6)
     {
         cerr << "iter computed: " << iter_computed << endl;
 
