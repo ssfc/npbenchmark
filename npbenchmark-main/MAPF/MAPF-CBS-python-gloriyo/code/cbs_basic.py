@@ -72,15 +72,15 @@ class CBSSolver(object):
     # 例如，{1: 4, 2: 3, 3: 2, 4: 0}表示一个启发式表，其中节点1到节点4的最短路径的代价是4，节点2到节点4的最短路径的代价是3，以此类推。
     def compute_heuristics(self, input_map, input_goal):
         open_list = []
-        closed_list = dict()
+        h_values = dict()
         root = {'location': input_goal, 'cost': 0}
         heapq.heappush(open_list, (root['cost'], input_goal[0], input_goal[1]))
-        closed_list[input_goal] = 0
+        h_values[input_goal] = 0
         iter_computed = 0
         while len(open_list) > 0 and iter_computed<3000:
             print("iter computed:", iter_computed)
             print("open_list:", open_list)
-            print("closed_list:", closed_list)
+            print("h_values:", h_values)
             (cost, location_x, location_y) = heapq.heappop(open_list)
             location = (location_x, location_y)
             print("Current location: ", location, " cost: ", cost)
@@ -98,19 +98,19 @@ class CBSSolver(object):
                     continue
                 child = {'location': child_location, 'cost': child_cost}
                 print("child:", child)
-                if child_location in closed_list:
+                if child_location in h_values:
                     print("child_location in closed list")
-                    if closed_list[child_location] > child_cost:
-                        closed_list[child_location] = child_cost
+                    if h_values[child_location] > child_cost:
+                        h_values[child_location] = child_cost
                         heapq.heappush(open_list, (child_cost, child_location[0], child_location[1]))
                 else:
                     print("child_location not in closed list")
-                    closed_list[child_location] = child_cost
+                    h_values[child_location] = child_cost
                     heapq.heappush(open_list, (child_cost, child_location[0], child_location[1]))
 
             iter_computed += 1
 
-        return closed_list
+        return h_values
 
     # Q: 页面中函数def get_sum_of_cost(paths)的功能是什么？
     # 函数的功能是计算一组路径的总代价，即每个路径的长度减一的和。函数遍历paths中的每个路径，把路径的长度减一累加到结果中，并返回结果。
