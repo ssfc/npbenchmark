@@ -77,7 +77,7 @@ class CBSSolver(object):
         heapq.heappush(open_list, (root['cost'], input_goal[0], input_goal[1]))
         h_values[input_goal] = 0
         iter_computed = 0
-        while len(open_list) > 0 and iter_computed < 6:
+        while len(open_list) > 0:
             print("iter computed:", iter_computed)
             print("open_list:", open_list)
             print("h_values:", h_values)
