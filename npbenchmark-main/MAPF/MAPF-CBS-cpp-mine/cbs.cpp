@@ -105,10 +105,10 @@ Coordinate CBS::move_agent(Coordinate current_location, int direction)
 unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
 {
     priority_queue<OpenQueueNode> open_queue;
-    unordered_map<Coordinate, int> closed_list;
+    unordered_map<Coordinate, int> h_values;
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
-    closed_list[input_goal] = 0;
+    h_values[input_goal] = 0;
     int iter_computed = 0;
     while(!open_queue.empty() && iter_computed<3)
     {
@@ -125,7 +125,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         cerr << "}" << endl;
         // print closed_list
         cerr << "closed list: {";
-        for (const auto& pair : closed_list)
+        for (const auto& pair : h_values)
         {
             const Coordinate& coord = pair.first;
             int value = pair.second;
@@ -159,19 +159,19 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
             cerr << "child: {location:(" << child.location.x << "," << child.location.y
                  << "), cost:" << child.cost << "}" << endl;
             // child_location 存在于 closed_list 中
-            if (closed_list.find(child_location) != closed_list.end())
+            if (h_values.find(child_location) != h_values.end())
             {
                 cerr << "child_location in closed list" << endl;
-                if(closed_list[child_location] > child_cost)
+                if(h_values[child_location] > child_cost)
                 {
-                    closed_list[child_location] = child_cost;
+                    h_values[child_location] = child_cost;
                     open_queue.push(child);
                 }
             }
             else // child_location 不在 closed_list 中
             {
                 cerr << "child_location not in closed list" << endl;
-                closed_list[child_location] = child_cost;
+                h_values[child_location] = child_cost;
                 open_queue.push(child);
             }
 
@@ -181,7 +181,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
         iter_computed++;
     }
 
-    return closed_list;
+    return h_values;
 }
 
 void CBS::find_solution()
