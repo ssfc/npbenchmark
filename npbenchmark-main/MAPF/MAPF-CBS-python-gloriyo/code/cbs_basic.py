@@ -41,14 +41,14 @@ class CBSSolver(object):
         # compute heuristics for the low-level search
         # 看样子compute_heuristics只有在初始化的时候用到
         self.heuristics = []
-        iter_goal = 0
+        # iter_goal = 0
         for goal in self.goals:
-            print("iter_goal:", iter_goal)
+            # print("iter_goal:", iter_goal)
             this_heuristics = self.compute_heuristics(input_map, goal)
-            print("this_heuristics:", this_heuristics)
+            # print("this_heuristics:", this_heuristics)
             self.heuristics.append(this_heuristics)
             # print("self.heuristics:", self.heuristics)
-            iter_goal += 1
+            # iter_goal += 1
         # print("heuristics [0]:", self.heuristics[0])
         # heuristics [0]: {(3, 0): 0, (4, 0): 1, (3, 1): 1, (2, 0): 1, (2, 1): 2, (1, 0): 2, (
         # 4, 1): 2, (3, 2): 2, (5, 0): 2, (1, 1): 3, (0, 0): 3, (4, 2): 3, (3, 3): 3, (5, 1):
