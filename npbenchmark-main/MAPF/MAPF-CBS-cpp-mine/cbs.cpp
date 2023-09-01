@@ -213,7 +213,7 @@ void CBS::find_solution()
         cerr << "agent " << i << " find path:" << endl;
         LowLevel a_star = LowLevel(map, agents,
                                   heuristics, i, root.constraints);
-
+        // paths = a_star;
     }
 }
 

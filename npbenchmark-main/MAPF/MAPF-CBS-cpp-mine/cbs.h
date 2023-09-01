@@ -12,10 +12,6 @@
 #include "low_level.h"
 #include "util.h"
 
-struct Path
-{
-    std::vector<Coordinate> nodes;
-};
 
 struct Collision
 {

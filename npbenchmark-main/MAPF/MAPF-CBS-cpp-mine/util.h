@@ -37,5 +37,9 @@ struct Constraint
     int time_step; // 时间
 };
 
+struct Path
+{
+    std::vector<Coordinate> nodes;
+};
 
 #endif //DRAW_PATH_PY_UTIL_H
