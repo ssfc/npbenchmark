@@ -215,10 +215,6 @@ void CBS::find_solution()
     }
 }
 
-void CBS::find_path()
-{
-
-}
 
 void CBS::print_map()
 {

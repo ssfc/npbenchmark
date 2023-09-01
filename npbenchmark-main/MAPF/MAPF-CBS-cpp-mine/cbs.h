@@ -9,8 +9,8 @@
 #include <queue>
 #include <unordered_map>
 #include <vector>
+#include "low_level.h"
 #include "util.h"
-
 
 struct Path
 {
@@ -80,7 +80,6 @@ public:
     static Coordinate move_agent(Coordinate current_location, int direction);
     std::unordered_map<Coordinate, int> compute_heuristics(Coordinate input_goal); // 计算终点和每个点的距离
     void find_solution();
-    void find_path();
 
     // debug func
     std::vector<std::vector<int>> get_map();
