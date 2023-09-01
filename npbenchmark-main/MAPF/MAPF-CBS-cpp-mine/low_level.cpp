@@ -9,10 +9,12 @@ using namespace std;
 
 LowLevel::LowLevel(std::vector<std::vector<int>> input_map,
                    std::vector<Agent> input_agents,
-                   std::vector<std::unordered_map<Coordinate, int>> input_heuristics):
+                   std::vector<std::unordered_map<Coordinate, int>> input_heuristics,
+                   int input_agent_id):
           map(std::move(input_map)),
           agents(std::move(input_agents)),
-          heuristics(std::move(input_heuristics))
+          heuristics(std::move(input_heuristics)),
+          agent_id(input_agent_id)
 {
     num_rows = int (map.size());
     num_columns = int (map[0].size());

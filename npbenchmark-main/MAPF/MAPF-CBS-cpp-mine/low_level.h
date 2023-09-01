@@ -18,11 +18,13 @@ class LowLevel
     int num_agents;
     std::vector<Agent> agents;
     std::vector<std::unordered_map<Coordinate, int>> heuristics;
+    int agent_id;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,
              std::vector<Agent> input_agents, // constructor
-             std::vector<std::unordered_map<Coordinate, int>> input_heuristics);
+             std::vector<std::unordered_map<Coordinate, int>> input_heuristics,
+             int input_agent_id);
 
     // debug func
     void print_map();
