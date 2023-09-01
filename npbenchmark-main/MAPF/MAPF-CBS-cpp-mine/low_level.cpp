@@ -25,6 +25,8 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
 
 vector<Path> LowLevel::low_level_search()
 {
+    cerr << "> build constraint table" << endl;
+
     vector<Path> paths;
 
     return paths;
