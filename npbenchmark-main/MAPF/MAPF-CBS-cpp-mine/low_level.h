@@ -21,7 +21,8 @@ class LowLevel
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,
-             std::vector<Agent> input_agents); // constructor
+             std::vector<Agent> input_agents, // constructor
+             std::vector<std::unordered_map<Coordinate, int>> input_heuristics);
 
     // debug func
     void print_map();
