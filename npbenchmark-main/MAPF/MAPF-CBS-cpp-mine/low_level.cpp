@@ -18,9 +18,9 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
           agent_id(input_agent_id),
           constraints(std::move(input_constraints))
 {
-    num_rows = int (map.size());
-    num_columns = int (map[0].size());
-    num_agents = int (agents.size());
+    num_rows = map.size();
+    num_columns = map[0].size();
+    num_agents = agents.size();
 }
 
 void LowLevel::print_map()

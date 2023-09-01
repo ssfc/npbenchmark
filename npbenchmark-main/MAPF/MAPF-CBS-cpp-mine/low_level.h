@@ -12,10 +12,10 @@
 
 class LowLevel
 {
-    int num_rows;
-    int num_columns;
+    size_t num_rows;
+    size_t num_columns;
     std::vector<std::vector<int>> map;
-    int num_agents;
+    size_t num_agents;
     std::vector<Agent> agents;
     std::vector<std::unordered_map<Coordinate, int>> heuristics;
     int agent_id;
