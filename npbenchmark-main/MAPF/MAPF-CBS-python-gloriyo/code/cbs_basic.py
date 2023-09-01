@@ -431,7 +431,7 @@ class CBSSolver(object):
             # print("iter_agent: ", iter_agent)
             astar = a_star_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
             path = astar.low_level_search()
-            print("iter_agent", iter_agent, "find path:", path)
+            print("agent", iter_agent, "find path:", path)
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
             if path is None:

@@ -210,6 +210,7 @@ void CBS::find_solution()
     // R.solution = find individual paths using the low-level() // 用低层算法计算每个智能体的path
     for(int i=0;i<num_agents;i++)
     {
+        cerr << "agent " << i << " find path:" << endl;
 
     }
 }
