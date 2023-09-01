@@ -23,6 +23,13 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
     num_agents = agents.size();
 }
 
+vector<Path> LowLevel::low_level_search()
+{
+    vector<Path> paths;
+
+    return paths;
+}
+
 void LowLevel::print_map()
 {
     cerr << "num rows: " << num_rows << " num columns: " << num_columns << endl;

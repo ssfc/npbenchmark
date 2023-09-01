@@ -28,6 +28,8 @@ public:
              int input_agent_id,
              std::vector<Constraint> input_constraints);
 
+    std::vector<Path> low_level_search();
+
     // debug func
     void print_map();
 };
