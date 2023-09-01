@@ -15,7 +15,7 @@
 struct Constraint
 {
     int agent_id; // 人物
-    Coordinate location; // 地点
+    std::vector<Coordinate> locations; // 可能是1个(点冲突), 也可能是2个(边冲突)
     int time_step; // 时间
 };
 
