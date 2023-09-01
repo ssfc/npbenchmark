@@ -7,11 +7,11 @@
 
 using namespace std;
 
-LowLevel::LowLevel(std::vector<std::vector<int>> input_map,
-                   std::vector<Agent> input_agents,
-                   std::vector<std::unordered_map<Coordinate, int>> input_heuristics,
+LowLevel::LowLevel(vector<vector<int>> input_map,
+                   vector<Agent> input_agents,
+                   vector<unordered_map<Coordinate, int>> input_heuristics,
                    int input_agent_id,
-                   std::vector<Constraint> input_constraints):
+                   vector<Constraint> input_constraints):
           map(std::move(input_map)),
           agents(std::move(input_agents)),
           heuristics(std::move(input_heuristics)),
