@@ -426,15 +426,18 @@ class CBSSolver(object):
 
         # Implement A1 LINE 2
         # R.solution = find individual paths using the low-level()  # 用低层算法计算每个智能体的path
+        iter_agent = 0
         for i in range(self.num_of_agents):  # Find initial path for each agent
+            # print("iter_agent: ", iter_agent)
             astar = a_star_method(self.map, self.starts, self.goals, self.heuristics, i, root['constraints'])
             path = astar.low_level_search()
-            # print("find path:", path)
+            print("iter_agent", iter_agent, "find path:", path)
 
             # path = ma_star(self.my_map, self.starts, self.goals, self.heuristics,[i], root['constraints'])
             if path is None:
                 raise BaseException('No solutions')
             root['paths'].append(path[0])
+            iter_agent += 1
         # Print A1 LINE 2
         print("Evaluate A1 LINE 2:")
         for i in range(len(root['paths'])):
