@@ -71,6 +71,7 @@ private:
     std::vector<Agent> agents;
     std::vector<CBSNode> open_list;
     std::vector<std::unordered_map<Coordinate, int>> heuristics;
+    std::vector<Path> paths;
 
     // debug var;
     int iter;

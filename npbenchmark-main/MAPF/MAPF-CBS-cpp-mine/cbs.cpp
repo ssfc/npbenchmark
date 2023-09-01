@@ -121,7 +121,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
     auto root = OpenQueueNode{0, input_goal};
     open_queue.push(root);
     h_values[input_goal] = 0;
-    int iter_computed = 0;
+    // int iter_computed = 0;
     while(!open_queue.empty())
     {
         // cerr << "iter computed: " << iter_computed << endl;
@@ -192,7 +192,7 @@ unordered_map<Coordinate, int> CBS::compute_heuristics(Coordinate input_goal)
 
         }
 
-        iter_computed++;
+        // iter_computed++;
     }
 
     return h_values;
