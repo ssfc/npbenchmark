@@ -471,11 +471,11 @@ class A_Star(object):
         # 遍历所有的agents，获取每个agent的编号 agent_id
         # 在当前局面下，agents是只有1个元素的list, i永远是0
         for i, agent_id in enumerate(self.agents):
-            table_i = self.build_constraint_table(agent_id)
-            print("constraint table: ", i, agent_id, table_i)
-            self.constraint_table.append(table_i)
-            if table_i.keys():
-                self.max_constraints[i] = max(table_i.keys())
+            constraint_table_i = self.build_constraint_table(agent_id)
+            print("constraint table: ", i, agent_id, constraint_table_i)
+            self.constraint_table.append(constraint_table_i)
+            if constraint_table_i.keys():
+                self.max_constraints[i] = max(constraint_table_i.keys())
 
         h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
 
