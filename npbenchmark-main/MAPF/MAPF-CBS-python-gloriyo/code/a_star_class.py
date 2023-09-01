@@ -129,7 +129,7 @@ class A_Star(object):
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)输入参数的数据类型和含义分别是什么？
     # @param input_agent_id (int): 要构建约束表的代理的id。它必须是一个有效的代理id，否则会抛出异常。
     # Q: 页面中函数def build_constraint_table(self, input_agent_id)输出结果的数据类型和含义分别是什么？
-    # return constraint_table (dict): list前的数字代表time stamp
+    # return constraint_table (dict): dict前的数字代表time stamp
     # {2: [{'agent': 3, 'location': [(2, 0)], 'time_step': 2, 'positive': False, 'meta_agent': {3}}],
     # 4: [{'agent': 3, 'location': [(2, 1), (3, 1)], 'time_step': 4, 'positive': False, 'meta_agent': {3}}]}
     def build_constraint_table(self, input_agent_id):
@@ -469,10 +469,10 @@ class A_Star(object):
         # ("agents", self.agents)
 
         # 遍历所有的agents，获取每个agent的编号 agent_id
-        # 在当前局面下，agents是只有1个元素的list
+        # 在当前局面下，agents是只有1个元素的list, i永远是0
         for i, agent_id in enumerate(self.agents):
             table_i = self.build_constraint_table(agent_id)
-            # print("table", i, a, table_i)
+            print("constraint table: ", i, agent_id, table_i)
             self.constraint_table.append(table_i)
             if table_i.keys():
                 self.max_constraints[i] = max(table_i.keys())
