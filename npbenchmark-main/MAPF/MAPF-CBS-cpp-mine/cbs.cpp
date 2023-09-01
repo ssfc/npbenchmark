@@ -211,6 +211,8 @@ void CBS::find_solution()
     for(int i=0;i<num_agents;i++)
     {
         cerr << "agent " << i << " find path:" << endl;
+        LowLevel a_star = LowLevel(map, agents,
+                                  heuristics, i, root.constraints);
 
     }
 }
