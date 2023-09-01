@@ -53,12 +53,13 @@ CBS::CBS():
 
         map_file.close();
 
-        int iter_goal = 0;
+        // int iter_goal = 0;
         for(auto this_agent : agents)
         {
-            cerr << "iter_goal: " << iter_goal << endl;
+            // cerr << "iter_goal: " << iter_goal << endl;
             auto this_heuristics = compute_heuristics(this_agent.goal);
 
+            /*
             cerr << "this_heuristics: {";
             for (const auto& pair : this_heuristics)
             {
@@ -67,10 +68,11 @@ CBS::CBS():
                 cerr << "((" << coord.x << "," << coord.y << ")," << value << "),";
             }
             cerr << "}" << endl;
+             */
 
             heuristics.push_back(this_heuristics);
             // print_heuristics();
-            iter_goal++;
+            // iter_goal++;
         }
     }
     else
