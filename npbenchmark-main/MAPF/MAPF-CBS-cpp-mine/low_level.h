@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 #include "util.h"
 
 class LowLevel
@@ -16,7 +17,7 @@ class LowLevel
     std::vector<std::vector<int>> map;
     int num_agents;
     std::vector<Agent> agents;
-
+    std::vector<std::unordered_map<Coordinate, int>> heuristics;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,
