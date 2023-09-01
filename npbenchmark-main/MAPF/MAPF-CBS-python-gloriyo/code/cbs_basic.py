@@ -538,7 +538,7 @@ class CBSSolver(object):
                     new_node['collisions'] = self.detect_all_paths_first_collisions(new_node['paths'])
                     new_node['cost'] = self.get_sum_of_cost(new_node['paths'])
                     self.push_node(new_node)
-                    print("push_node:", new_node)
+                    # print("push_node:", new_node)
 
             iteration += 1
         return None
