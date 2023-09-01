@@ -23,6 +23,14 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
     num_agents = agents.size();
 }
 
+unordered_map<int, vector<Constraint>> LowLevel::build_constraint_table(int input_agent_id)
+{
+    unordered_map<int, vector<Constraint>> constraint_table;
+
+    return constraint_table;
+}
+
+
 vector<Path> LowLevel::low_level_search()
 {
     cerr << "> build constraint table" << endl;

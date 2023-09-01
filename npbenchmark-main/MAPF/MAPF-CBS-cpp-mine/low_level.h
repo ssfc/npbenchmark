@@ -6,8 +6,8 @@
 #define DRAW_PATH_PY_LOW_LEVEL_H
 
 #include <iostream>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 #include "util.h"
 
 class LowLevel
@@ -28,6 +28,7 @@ public:
              int input_agent_id,
              std::vector<Constraint> input_constraints);
 
+    std::unordered_map<int, std::vector<Constraint>> build_constraint_table(int input_agent_id);
     std::vector<Path> low_level_search();
 
     // debug func
