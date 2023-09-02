@@ -476,7 +476,7 @@ class A_Star(object):
             # print("constraint table: ", i, agent_id, constraint_table_i)
             self.constraint_table.append(constraint_table_i)
             print("self constraint table: ", self.constraint_table)
-            if constraint_table_i.keys():
+            if constraint_table_i.keys():  # 因为i是0，所以这里只有1轮
                 self.max_constraints[i] = max(constraint_table_i.keys())
 
         h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
