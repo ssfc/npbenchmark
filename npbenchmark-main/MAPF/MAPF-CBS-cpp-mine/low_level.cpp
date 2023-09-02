@@ -67,7 +67,13 @@ vector<Path> LowLevel::low_level_search()
     constraint_table = constraint_table_i;
     if(!constraint_table_i.empty())
     {
-        // self.max_constraints[i] = max(constraint_table_i.keys())
+        max_constraints = -1;
+        for (const auto& element : constraint_table_i) {
+            if (element.first > max_constraints)
+            {
+                max_constraints = element.first;
+            }
+        }
     }
 
 
