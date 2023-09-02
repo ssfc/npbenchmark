@@ -35,9 +35,23 @@ vector<Path> LowLevel::low_level_search()
 {
     cerr << "> build constraint table" << endl;
     auto constraint_table_i = build_constraint_table(agent_id);
-    // print("constraint table: ", i, agent_id, constraint_table_i)
-    cerr << "constraint table: " << agent_id << " ";
-    
+
+    // print constraint table
+    cerr << "constraint table: " << agent_id << "{";
+    for (const auto& pair : constraint_table_i)
+    {
+        for(const auto& element : pair.second)
+        {
+            if(element.locations.size() == 1)
+            {
+                cerr << "agent " << element.agent_id << " location " << element.locations[0].x << " ";
+                cerr << element.locations[0].y << " ";
+            }
+
+        }
+    }
+    cerr << "}" << endl;
+
 
     vector<Path> paths;
 
