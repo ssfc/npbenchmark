@@ -10,6 +10,14 @@
 #include <vector>
 #include "util.h"
 
+struct LowLevelOpenNode
+{
+    int f_value;
+    int h_value;
+    Coordinate location;
+    int num_generate;
+};
+
 class LowLevel
 {
     size_t num_rows;
