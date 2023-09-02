@@ -10,16 +10,43 @@ struct Coordinate
     int x;
     int y;
 
-    bool operator==(const Coordinate& other) const {
+    bool operator==(const Coordinate& other) const
+    {
         return x == other.x && y == other.y;
     }
 };
 
-namespace std {
+namespace std
+{
     template <>
-    struct hash<Coordinate> {
-        size_t operator()(const Coordinate& coord) const {
+    struct hash<Coordinate>
+    {
+        size_t operator()(const Coordinate& coord) const
+        {
             return hash<int>()(coord.x) ^ hash<int>()(coord.y);
+        }
+    };
+}
+
+struct LocationTime
+{
+    Coordinate location;
+    int time_step;
+
+    bool operator==(const LocationTime& other) const
+    {
+        return location == other.location && time_step == other.time_step;
+    }
+};
+
+namespace std
+{
+    template <>
+    struct hash<LocationTime>
+    {
+        size_t operator()(const LocationTime& location_time) const
+        {
+            return hash<Coordinate>()(location_time.location) ^ hash<int>()(location_time.time_step);
         }
     };
 }

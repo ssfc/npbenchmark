@@ -6,6 +6,7 @@
 #define DRAW_PATH_PY_LOW_LEVEL_H
 
 #include <iostream>
+#include <tuple>
 #include <unordered_map>
 #include <vector>
 #include "util.h"
@@ -33,6 +34,7 @@ class LowLevel
     int num_expanded;
     int max_constraints;
     std::vector<LowLevelOpenNode> open_list;
+    std::unordered_map<LocationTime, std::vector<LowLevelOpenNode>> closed_list;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,
