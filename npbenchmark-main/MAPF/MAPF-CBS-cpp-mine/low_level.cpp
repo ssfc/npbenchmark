@@ -56,8 +56,7 @@ vector<Path> LowLevel::low_level_search()
         }
     }
     cerr << "}" << endl;
-
-    // self.constraint_table.append(constraint_table_i)
+    
     constraint_table = constraint_table_i;
 
 
