@@ -35,6 +35,7 @@ vector<Path> LowLevel::low_level_search()
 {
     cerr << "> build constraint table" << endl;
     auto constraint_table_i = build_constraint_table(agent_id);
+    // print("constraint table: ", i, agent_id, constraint_table_i)
 
     vector<Path> paths;
 
