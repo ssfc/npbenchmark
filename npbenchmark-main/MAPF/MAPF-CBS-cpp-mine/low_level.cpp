@@ -44,10 +44,15 @@ vector<Path> LowLevel::low_level_search()
         {
             if(element.locations.size() == 1)
             {
-                cerr << "agent " << element.agent_id << " location " << element.locations[0].x << " ";
-                cerr << element.locations[0].y << " ";
+                cerr << "[agent " << element.agent_id << " location " << element.locations[0].x << ",";
+                cerr << element.locations[0].y << " " << "time step " << element.time_step << "], ";
             }
-
+            else if(element.locations.size() == 2)
+            {
+                cerr << "[agent " << element.agent_id << " location (" << element.locations[0].x << ",";
+                cerr << element.locations[0].y << ")(" << element.locations[1].x << "," << element.locations[1].y
+                << ") time step " << element.time_step << "]";
+            }
         }
     }
     cerr << "}" << endl;
