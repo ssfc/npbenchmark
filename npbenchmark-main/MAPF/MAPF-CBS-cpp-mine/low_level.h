@@ -31,6 +31,7 @@ class LowLevel
     std::unordered_map<int, std::vector<Constraint>> constraint_table;
     int num_generated;
     int num_expanded;
+    int max_constraints;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,

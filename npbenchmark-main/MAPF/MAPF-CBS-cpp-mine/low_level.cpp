@@ -18,7 +18,8 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
           agent_id(input_agent_id),
           constraints(std::move(input_constraints)),
           num_generated(0),
-          num_expanded(0)
+          num_expanded(0),
+          max_constraints(0)
 {
     num_rows = map.size();
     num_columns = map[0].size();
