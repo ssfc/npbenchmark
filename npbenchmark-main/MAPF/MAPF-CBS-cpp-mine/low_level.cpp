@@ -29,6 +29,10 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
 unordered_map<int, vector<Constraint>> LowLevel::build_constraint_table(int input_agent_id)
 {
     unordered_map<int, vector<Constraint>> this_constraint_table;
+    if(constraints.empty())
+    {
+        return this_constraint_table;
+    }
 
     return this_constraint_table;
 }
