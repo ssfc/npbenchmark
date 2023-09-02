@@ -21,6 +21,8 @@ class LowLevel
     int agent_id;
     std::vector<Constraint> constraints;
     std::unordered_map<int, std::vector<Constraint>> constraint_table;
+    int num_generated;
+    int num_expanded;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,

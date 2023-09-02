@@ -16,7 +16,9 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
           agents(std::move(input_agents)),
           heuristics(std::move(input_heuristics)),
           agent_id(input_agent_id),
-          constraints(std::move(input_constraints))
+          constraints(std::move(input_constraints)),
+          num_generated(0),
+          num_expanded(0)
 {
     num_rows = map.size();
     num_columns = map[0].size();
@@ -56,7 +58,7 @@ vector<Path> LowLevel::low_level_search()
         }
     }
     cerr << "}" << endl;
-    
+
     constraint_table = constraint_table_i;
 
 
