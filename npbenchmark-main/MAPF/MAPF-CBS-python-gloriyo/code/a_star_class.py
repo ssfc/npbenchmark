@@ -61,7 +61,7 @@ class A_Star(object):
         self.open_list = []
         self.closed_list = dict()
 
-        self.constraints = input_constraints  # to be used to create c_table
+        self.constraints = input_constraints  # to be used to create constraint_table
 
         self.agents = agents
 
@@ -85,7 +85,7 @@ class A_Star(object):
 
         self.constraint_table = []  # constraint table
         self.max_constraints = np.zeros((len(self.agents),), dtype=int)  # CBS的话是[0]
-        print("self.max_constraints:", self.max_constraints)
+        # print("self.max_constraints:", self.max_constraints)
 
     # Q: 页面中函数def push_node(self, node)的功能是什么？
     # 把一个节点加入到开放列表中，用于后续的搜索。函数使用了一个元组来表示一个节点的评估值，包括f值（g值和h值的和）、h值、位置、生成编号和节点本身。
