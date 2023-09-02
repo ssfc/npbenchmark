@@ -521,13 +521,11 @@ class A_Star(object):
                 f_value = child['g_val'] + child['h_val']
 
                 if (tuple(child['location']), child['time_step']) in self.closed_list:
-                    existing = self.closed_list[(tuple(child['location']), child['time_step'])]
-                    # if child not in existing_nodes:
-                    #     print("child not in existing closed list")
-                    if (child['g_val'] + child['h_val'] < existing['g_val'] + existing['h_val']) and (
-                            child['g_val'] < existing['g_val']) and child['reached_goal'].count(False) <= existing[
-                        'reached_goal'].count(False):
-                        print("child is better than existing in closed list")
+                    this_node = self.closed_list[(tuple(child['location']), child['time_step'])]
+                    if ((child['g_val'] + child['h_val'] < this_node['g_val'] + this_node['h_val']) and
+                        (child['g_val'] < this_node['g_val']) and
+                        (child['reached_goal'].count(False) <= this_node['reached_goal'].count(False))):
+                        print("child is better than this node in closed list")
                         self.closed_list[(tuple(child['location']), child['time_step'])] = child
                         self.push_node(child)
                 else:

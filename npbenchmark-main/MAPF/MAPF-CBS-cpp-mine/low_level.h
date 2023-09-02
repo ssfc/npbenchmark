@@ -32,6 +32,7 @@ class LowLevel
     int num_generated;
     int num_expanded;
     int max_constraints;
+    std::vector<LowLevelOpenNode> open_list;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,
