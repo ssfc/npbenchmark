@@ -61,6 +61,10 @@ vector<Path> LowLevel::low_level_search()
     cerr << "}" << endl;
 
     constraint_table = constraint_table_i;
+    if(!constraint_table_i.empty())
+    {
+        // self.max_constraints[i] = max(constraint_table_i.keys())
+    }
 
 
     vector<Path> paths;
