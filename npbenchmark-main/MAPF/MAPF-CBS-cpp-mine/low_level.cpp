@@ -34,7 +34,6 @@ unordered_map<int, vector<Constraint>> LowLevel::build_constraint_table(int inpu
 vector<Path> LowLevel::low_level_search()
 {
     cerr << "> build constraint table" << endl;
-    // constraint_table_i = self.build_constraint_table(agent_id)
     auto constraint_table_i = build_constraint_table(agent_id);
 
     vector<Path> paths;
