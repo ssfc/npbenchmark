@@ -20,6 +20,7 @@ class LowLevel
     std::vector<std::unordered_map<Coordinate, int>> heuristics;
     int agent_id;
     std::vector<Constraint> constraints;
+    std::unordered_map<int, std::vector<Constraint>> constraint_table;
 
 public:
     LowLevel(std::vector<std::vector<int>> input_map,

@@ -25,9 +25,9 @@ LowLevel::LowLevel(vector<vector<int>> input_map,
 
 unordered_map<int, vector<Constraint>> LowLevel::build_constraint_table(int input_agent_id)
 {
-    unordered_map<int, vector<Constraint>> constraint_table;
+    unordered_map<int, vector<Constraint>> this_constraint_table;
 
-    return constraint_table;
+    return this_constraint_table;
 }
 
 
@@ -37,7 +37,7 @@ vector<Path> LowLevel::low_level_search()
     auto constraint_table_i = build_constraint_table(agent_id);
 
     // print constraint table
-    cerr << "constraint table: " << agent_id << "{";
+    cerr << "constraint table: " << agent_id << " {";
     for (const auto& pair : constraint_table_i)
     {
         for(const auto& element : pair.second)
@@ -56,6 +56,9 @@ vector<Path> LowLevel::low_level_search()
         }
     }
     cerr << "}" << endl;
+
+    // self.constraint_table.append(constraint_table_i)
+    constraint_table = constraint_table_i;
 
 
     vector<Path> paths;

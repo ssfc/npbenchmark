@@ -473,8 +473,9 @@ class A_Star(object):
         # 在当前局面下，这里没有循环，只有1轮。
         for i, agent_id in enumerate(self.agents):
             constraint_table_i = self.build_constraint_table(agent_id)
-            print("constraint table: ", i, agent_id, constraint_table_i)
+            # print("constraint table: ", i, agent_id, constraint_table_i)
             self.constraint_table.append(constraint_table_i)
+            print("self constraint table: ", self.constraint_table)
             if constraint_table_i.keys():
                 self.max_constraints[i] = max(constraint_table_i.keys())
 
