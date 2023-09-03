@@ -440,14 +440,13 @@ class A_Star(object):
         # 遍历所有的agents，获取每个agent的编号 agent_id
         # 在当前局面下，agents是只有1个元素的list, i永远是0
         # 在当前局面下，这里没有循环，只有1轮。
-        for i, agent_id in enumerate(self.agents):
-            constraint_table_i = self.build_constraint_table(agent_id)
-            # print("constraint table: ", i, agent_id, constraint_table_i)
-            self.constraint_table.append(constraint_table_i)
-            print("self constraint table: ", self.constraint_table)
-            if constraint_table_i.keys():  # 因为i是0，所以这里只有1轮
-                self.max_constraints = max(constraint_table_i.keys())
-            print("self.max_constraints:", self.max_constraints)
+        constraint_table_i = self.build_constraint_table(self.agents[0])
+        # print("constraint table: ", i, agent_id, constraint_table_i)
+        self.constraint_table.append(constraint_table_i)
+        print("self constraint table: ", self.constraint_table)
+        if constraint_table_i.keys():  # 因为i是0，所以这里只有1轮
+            self.max_constraints = max(constraint_table_i.keys())
+        print("self.max_constraints:", self.max_constraints)
 
         # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
         h_value = self.heuristics[0][self.starts[0]]
