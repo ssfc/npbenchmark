@@ -305,7 +305,7 @@ class A_Star(object):
                     invalid_move = True
                 # agent is constrained by a negative external constraint
                 elif self.get_constraint_violated(current_node['location'][i], next_loc, current_node['time_step'] + 1, self.constraint_table[i],
-                                                  self.agents[i]):
+                                                  self.agents[0]):
                     invalid_move = True
                 if invalid_move:
                     break
@@ -327,7 +327,7 @@ class A_Star(object):
 
             g_value = current_node['g_val'] + num_moves
 
-            reached_goal = [False for i in range(len(self.agents))]
+            reached_goal = [False]
 
             for i in range(len(self.agents)):
                 if not reached_goal[i] and child_loc[i] == self.goals[i]:
