@@ -340,27 +340,18 @@ class A_Star(object):
             g_value = current_node['g_val'] + num_moves
 
             reached_goal = [False for i in range(len(self.agents))]
-            # for i, a in enumerate(self.agents):
-            #     # print(child_loc[i], goal_loc[i])
-            #     # print(max_constraints[i], curr['time_step']+1)
-
-            #     if child_loc[i] == self.goals[i] and (curr['time_step']+1 > self.max_constraints[i]):
-            #         # print("agent ", a, 'has reached_goal at time_step ', curr['time_step'] + 1)
-            #         # print (self.max_constraints[i])
-            #         reached_goal[i] = True
 
             for i, a in enumerate(self.agents):
-
                 if not reached_goal[i] and child_loc[i] == self.goals[i]:
 
-                    if current_node['time_step'] + 1 <= self.max_constraints[i]:
+                    if current_node['time_step'] + 1 <= self.max_constraints[0]:
                         if not self.future_constraint_violated(child_loc[i], current_node['time_step'] + 1,
-                                                               self.max_constraints[i], self.constraint_table[i],
+                                                               self.max_constraints[0], self.constraint_table[i],
                                                                self.agents[i]):
                             # print("agent ", a, 'has found solution at time_step ', curr['time_step'] + 1)
-                            # print ('MAX CONSTRIANT:', self.max_constraints[i])
+                            # print ('MAX CONSTRIANT:', self.max_constraints[0])
                             reached_goal[i] = True
-                            # self.max_constraints[i] differs for each node
+                            # self.max_constraints[0] differs for each node
                     else:
                         reached_goal[i] = True
 
@@ -467,8 +458,8 @@ class A_Star(object):
             self.constraint_table.append(constraint_table_i)
             print("self constraint table: ", self.constraint_table)
             if constraint_table_i.keys():  # 因为i是0，所以这里只有1轮
-                self.max_constraints[i] = max(constraint_table_i.keys())
-            print("self.max_constraints[i]:", self.max_constraints[0])
+                self.max_constraints[0] = max(constraint_table_i.keys())
+            print("self.max_constraints[0]:", self.max_constraints[0])
 
         # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
         h_value = self.heuristics[0][self.starts[0]]
@@ -491,12 +482,12 @@ class A_Star(object):
         for i, a in enumerate(self.agents):
             if root['location'][i] == self.goals[i]:
 
-                if root['time_step'] <= self.max_constraints[i]:
-                    if not self.future_constraint_violated(root['location'][i], root['time_step'], self.max_constraints[i],
+                if root['time_step'] <= self.max_constraints[0]:
+                    if not self.future_constraint_violated(root['location'][i], root['time_step'], self.max_constraints[0],
                                                            self.constraint_table[i], self.agents[i]):
                         root['reached_goal'][i] = True
 
-                        self.max_constraints[i] = 0
+                        self.max_constraints[0] = 0
 
         self.push_node(root)
         self.closed_list[(tuple(root['location']), root['time_step'])] = [root]
