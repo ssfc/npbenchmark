@@ -315,10 +315,9 @@ class A_Star(object):
 
             # find h_values for current moves
             h_value = 0
-            for i in range(len(self.agents)):
-                h_value += self.heuristics[i][child_loc[i]]
+            h_value += self.heuristics[0][child_loc[0]]
 
-            h_test = sum([self.heuristics[i][child_loc[i]] for i in range(len(self.agents))])
+            h_test = self.heuristics[0][child_loc[0]]
 
             assert h_value == h_test
 
