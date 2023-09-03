@@ -328,20 +328,18 @@ class A_Star(object):
             g_value = current_node['g_val'] + num_moves
 
             reached_goal = [False]
+            if not reached_goal[0] and child_loc[0] == self.goals[0]:
 
-            for i in range(len(self.agents)):
-                if not reached_goal[0] and child_loc[0] == self.goals[0]:
-
-                    if current_node['time_step'] + 1 <= self.max_constraints:
-                        if not self.future_constraint_violated(child_loc[0], current_node['time_step'] + 1,
-                                                               self.max_constraints, self.constraint_table[0],
-                                                               self.agents[0]):
-                            # print("agent ", a, 'has found solution at time_step ', curr['time_step'] + 1)
-                            # print ('MAX CONSTRIANT:', self.max_constraints)
-                            reached_goal[0] = True
-                            # self.max_constraints differs for each node
-                    else:
+                if current_node['time_step'] + 1 <= self.max_constraints:
+                    if not self.future_constraint_violated(child_loc[0], current_node['time_step'] + 1,
+                                                           self.max_constraints, self.constraint_table[0],
+                                                           self.agents[0]):
+                        # print("agent ", a, 'has found solution at time_step ', curr['time_step'] + 1)
+                        # print ('MAX CONSTRIANT:', self.max_constraints)
                         reached_goal[0] = True
+                        # self.max_constraints differs for each node
+                else:
+                    reached_goal[0] = True
 
             child = {'location': child_loc,
                      'g_val': g_value,  # number of new locs (cost) added
