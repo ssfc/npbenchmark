@@ -463,15 +463,13 @@ class A_Star(object):
                 }
 
         # check if any agents are already at goal location
-        for i in range(len(self.agents)):
-            if root['location'][i] == self.goals[i]:
+        if root['location'][0] == self.goals[0]:
+            if root['time_step'] <= self.max_constraints:
+                if not self.future_constraint_violated(root['location'][0], root['time_step'], self.max_constraints,
+                                                       self.constraint_table[0], self.agents[0]):
+                    root['reached_goal'][0] = True
 
-                if root['time_step'] <= self.max_constraints:
-                    if not self.future_constraint_violated(root['location'][i], root['time_step'], self.max_constraints,
-                                                           self.constraint_table[i], self.agents[i]):
-                        root['reached_goal'][i] = True
-
-                        self.max_constraints = 0
+                    self.max_constraints = 0
 
         self.push_node(root)
         self.closed_list[(tuple(root['location']), root['time_step'])] = [root]
