@@ -63,17 +63,7 @@ class A_Star(object):
 
         self.constraints = input_constraints  # to be used to create constraint_table
 
-        self.agents = agents
-
-        # check if meta_agent is only a simple agent (from basic CBS)
-        if not isinstance(agents, list):
-            self.agents = [agents]
-            # print(meta_agent)
-
-            # add meta_agent keys to constraints
-            for constraint in self.constraints:
-                constraint['meta_agent'] = {constraint['agent']}
-
+        self.agents = [agents]
         print("self.agents:", self.agents)
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
@@ -84,7 +74,7 @@ class A_Star(object):
         self.heuristics = [input_heuristics[self.agents[0]]]
 
         self.constraint_table = []  # constraint table
-        self.max_constraints = np.zeros((len(self.agents),), dtype=int)  # CBS的话是[0]
+        self.max_constraints = np.zeros((1,), dtype=int)  # CBS的话是[0]
         # print("self.max_constraints:", self.max_constraints)
 
     # Q: 页面中函数def push_node(self, node)的功能是什么？
