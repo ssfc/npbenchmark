@@ -453,7 +453,7 @@ class A_Star(object):
 
         # assert h_value == h_test
 
-        root = {'location': [self.starts[j] for j in range(len(self.agents))],
+        root = {'location': [self.starts[0]],
                 # 'F_val' : h_value, # only consider children with f_val == F_val
                 'g_val': 0,
                 'h_val': h_value,
