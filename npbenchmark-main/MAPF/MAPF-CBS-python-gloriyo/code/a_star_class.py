@@ -274,9 +274,10 @@ class A_Star(object):
     def generate_child_nodes(self, current_node):
         children = []
         # directions for move() for each agent: 0, 1, 2, 3, 4
-        ma_dirs = product(list(range(5)), repeat=len(self.agents))
+        make_directions = product(list(range(5)), repeat=1)
+        # print("ma_dirs:", ma_dirs)
 
-        for dirs in ma_dirs:
+        for dirs in make_directions:
             # print(dirs)
             invalid_move = False
             child_loc = []
