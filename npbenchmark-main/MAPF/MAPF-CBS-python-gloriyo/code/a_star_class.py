@@ -459,7 +459,7 @@ class A_Star(object):
                 'h_val': h_value,
                 'parent': None,
                 'time_step': 0,
-                'reached_goal': [False for i in range(len(self.agents))]
+                'reached_goal': [False]
                 }
 
         # check if any agents are already at goal location
