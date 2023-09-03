@@ -67,7 +67,7 @@ vector<Path> LowLevel::low_level_search()
     constraint_table = constraint_table_i;
     if(!constraint_table_i.empty())
     {
-        max_constraints = -1;
+        max_constraints = 0;
         for (const auto& entry : constraint_table_i)
         {
             if (entry.first > max_constraints)
@@ -76,6 +76,7 @@ vector<Path> LowLevel::low_level_search()
             }
         }
     }
+    cerr << "max_constraints: " << max_constraints << endl;
 
 
     vector<Path> paths;

@@ -478,8 +478,13 @@ class A_Star(object):
             print("self constraint table: ", self.constraint_table)
             if constraint_table_i.keys():  # 因为i是0，所以这里只有1轮
                 self.max_constraints[i] = max(constraint_table_i.keys())
+            print("self.max_constraints[i]:", self.max_constraints[0])
 
-        h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
+        # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
+        h_value = sum([self.heuristics[0][self.starts[0]]])
+        for i in range(len(self.agents)):
+            print("i:", i)
+        print("h_value:", h_value)
 
         # assert h_value == h_test
 
