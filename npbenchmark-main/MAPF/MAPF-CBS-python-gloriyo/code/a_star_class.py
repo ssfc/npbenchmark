@@ -291,18 +291,16 @@ class A_Star(object):
                 continue
 
             # check map constraints and external constraints
-            for i in range(len(self.agents)):
+            for i in range(1):
                 next_loc = child_loc[0]
                 # agent out of map bounds
-                if next_loc[0] < 0 or next_loc[0] >= len(self.map) or next_loc[1] < 0 or next_loc[1] >= len(
-                        self.map[0]):
+                if next_loc[0] < 0 or next_loc[0] >= len(self.map) or next_loc[1] < 0 or next_loc[1] >= len(self.map[0]):
                     invalid_move = True
                 # agechild_locnt collison with map obstacle
                 elif self.map[next_loc[0]][next_loc[1]]:
                     invalid_move = True
                 # agent is constrained by a negative external constraint
-                elif self.get_constraint_violated(current_node['location'][0], next_loc, current_node['time_step'] + 1, self.constraint_table[0],
-                                                  self.agents[0]):
+                elif self.get_constraint_violated(current_node['location'][0], next_loc, current_node['time_step'] + 1, self.constraint_table[0], self.agents[0]):
                     invalid_move = True
                 if invalid_move:
                     break
