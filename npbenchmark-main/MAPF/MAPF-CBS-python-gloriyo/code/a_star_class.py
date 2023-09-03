@@ -281,7 +281,7 @@ class A_Star(object):
             invalid_move = False
             child_loc = []
             # move each agent for new time_step & check for (internal) conflicts with each other
-            for i, a in enumerate(self.agents):
+            for i, this_agent in enumerate(self.agents):
                 aloc = move_agent(current_node['location'][i], dirs[i])
                 # vertex collision; check for duplicates in child_loc
                 if aloc in child_loc:
@@ -293,7 +293,7 @@ class A_Star(object):
             if invalid_move:
                 continue
 
-            for i, a in enumerate(self.agents):
+            for i, this_agent in enumerate(self.agents):
                 # edge collision: check for matching locs in curr_loc and child_loc between two agents
                 for j, a in enumerate(self.agents):
                     if i != j:
@@ -305,7 +305,7 @@ class A_Star(object):
                 continue
 
             # check map constraints and external constraints
-            for i, a in enumerate(self.agents):
+            for i, this_agent in enumerate(self.agents):
                 next_loc = child_loc[i]
                 # agent out of map bounds
                 if next_loc[0] < 0 or next_loc[0] >= len(self.map) or next_loc[1] < 0 or next_loc[1] >= len(
@@ -341,7 +341,7 @@ class A_Star(object):
 
             reached_goal = [False for i in range(len(self.agents))]
 
-            for i, a in enumerate(self.agents):
+            for i, this_agent in enumerate(self.agents):
                 if not reached_goal[i] and child_loc[i] == self.goals[i]:
 
                     if current_node['time_step'] + 1 <= self.max_constraints:
@@ -479,7 +479,7 @@ class A_Star(object):
                 }
 
         # check if any agents are already at goal location
-        for i, a in enumerate(self.agents):
+        for i, this_agent in enumerate(self.agents):
             if root['location'][i] == self.goals[i]:
 
                 if root['time_step'] <= self.max_constraints:
