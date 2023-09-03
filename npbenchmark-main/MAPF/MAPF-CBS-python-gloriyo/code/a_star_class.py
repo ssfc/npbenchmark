@@ -282,25 +282,13 @@ class A_Star(object):
             invalid_move = False
             child_loc = []
             # move each agent for new time_step & check for (internal) conflicts with each other
-            for i in range(len(self.agents)):
-                aloc = move_agent(current_node['location'][i], dirs[i])
-                # vertex collision; check for duplicates in child_loc
-                if aloc in child_loc:
-                    invalid_move = True
-                    # print("internal conflict")
-                    break
-                child_loc.append(move_agent(current_node['location'][i], dirs[i]))
-
-            if invalid_move:
-                continue
-
-            for i in range(len(self.agents)):
-                # edge collision: check for matching locs in curr_loc and child_loc between two agents
-                for j in range(len(self.agents)):
-                    if i != j:
-                        # print(ai, aj)
-                        if child_loc[i] == current_node['location'][j] and child_loc[j] == current_node['location'][i]:
-                            invalid_move = True
+            aloc = move_agent(current_node['location'][0], dirs[0])
+            # vertex collision; check for duplicates in child_loc
+            if aloc in child_loc:
+                invalid_move = True
+                # print("internal conflict")
+                break
+            child_loc.append(move_agent(current_node['location'][0], dirs[0]))
 
             if invalid_move:
                 continue
