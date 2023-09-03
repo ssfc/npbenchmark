@@ -448,10 +448,7 @@ class A_Star(object):
             self.max_constraints = max(constraint_table_i.keys())
         print("self.max_constraints:", self.max_constraints)
 
-        # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
         h_value = self.heuristics[0][self.starts[0]]
-        # for i in range(len(self.agents)):
-        #    print("i:", i)
         print("h_value:", h_value)
 
         # assert h_value == h_test
