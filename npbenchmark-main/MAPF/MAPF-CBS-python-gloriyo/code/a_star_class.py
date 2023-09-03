@@ -317,10 +317,7 @@ class A_Star(object):
             h_test = self.heuristics[0][child_loc[0]]
 
             assert h_value == h_test
-
-            # g_value = curr['g_val']+ curr['reached_goal'].count(False)
             num_moves = current_node['reached_goal'].count(False)
-            # print("(edge) cost (curr -> child) in a* tree == ", num_moves)
 
             g_value = current_node['g_val'] + num_moves
 
