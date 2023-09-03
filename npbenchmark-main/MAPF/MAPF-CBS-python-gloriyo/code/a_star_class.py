@@ -341,7 +341,7 @@ class A_Star(object):
 
             reached_goal = [False for i in range(len(self.agents))]
 
-            for i, this_agent in enumerate(self.agents):
+            for i in range(len(self.agents)):
                 if not reached_goal[i] and child_loc[i] == self.goals[i]:
 
                     if current_node['time_step'] + 1 <= self.max_constraints:
@@ -479,7 +479,7 @@ class A_Star(object):
                 }
 
         # check if any agents are already at goal location
-        for i, this_agent in enumerate(self.agents):
+        for i in range(len(self.agents)):
             if root['location'][i] == self.goals[i]:
 
                 if root['time_step'] <= self.max_constraints:
