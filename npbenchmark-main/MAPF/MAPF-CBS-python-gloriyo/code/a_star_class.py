@@ -80,7 +80,7 @@ class A_Star(object):
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
         self.starts = [input_starts[a] for a in self.agents]
         # print("self.starts: ", self.starts)
-        self.heuristics = [input_heuristics[a] for a in self.agents]
+        self.heuristics = [input_heuristics[this_agent] for this_agent in self.agents]
         self.goals = [input_goals[a] for a in self.agents]
 
         self.constraint_table = []  # constraint table
@@ -481,7 +481,7 @@ class A_Star(object):
             print("self.max_constraints[i]:", self.max_constraints[0])
 
         # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
-        h_value = sum([self.heuristics[0][self.starts[0]]])
+        h_value = self.heuristics[0][self.starts[0]]
         # for i in range(len(self.agents)):
         #    print("i:", i)
         print("h_value:", h_value)

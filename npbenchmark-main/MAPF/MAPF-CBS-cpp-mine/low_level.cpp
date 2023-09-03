@@ -77,6 +77,7 @@ vector<Path> LowLevel::low_level_search()
         }
     }
     cerr << "max_constraints: " << max_constraints << endl;
+    int h_value = heuristics[0];
 
 
     vector<Path> paths;
