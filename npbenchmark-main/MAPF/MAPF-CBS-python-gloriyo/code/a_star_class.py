@@ -74,7 +74,7 @@ class A_Star(object):
             for constraint in self.constraints:
                 constraint['meta_agent'] = {constraint['agent']}
 
-        print("input agents:", self.agents)
+        print("self.agents:", self.agents)
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
