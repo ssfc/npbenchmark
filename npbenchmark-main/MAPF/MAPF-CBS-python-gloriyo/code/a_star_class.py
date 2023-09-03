@@ -80,8 +80,8 @@ class A_Star(object):
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
         self.starts = [input_starts[self.agents[0]]]
         # print("self.starts: ", self.starts)
-        self.goals = [input_goals[this_agent] for this_agent in self.agents]
-        self.heuristics = [input_heuristics[this_agent] for this_agent in self.agents]
+        self.goals = [input_goals[self.agents[0]]]
+        self.heuristics = [input_heuristics[self.agents[0]]]
 
         self.constraint_table = []  # constraint table
         self.max_constraints = np.zeros((len(self.agents),), dtype=int)  # CBS的话是[0]
