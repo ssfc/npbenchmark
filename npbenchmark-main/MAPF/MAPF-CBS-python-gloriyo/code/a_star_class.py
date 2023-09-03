@@ -87,9 +87,6 @@ class A_Star(object):
     # @return (void).
     def push_node(self, node):
         f_value = node['g_val'] + node['h_val']
-        paths_left = node['reached_goal'].count(False)
-
-        # heapq.heappush(self.open_list, (f_value, node['g_val'], node['h_val'], paths_left, node['location'], self.num_generated, node))
         heapq.heappush(self.open_list, (f_value, node['h_val'], node['location'], self.num_generated, node))
         self.num_generated += 1
 
