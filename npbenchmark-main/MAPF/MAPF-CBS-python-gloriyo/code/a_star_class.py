@@ -281,7 +281,7 @@ class A_Star(object):
             invalid_move = False
             child_loc = []
             # move each agent for new time_step & check for (internal) conflicts with each other
-            for i, this_agent in enumerate(self.agents):
+            for i in range(len(self.agents)):
                 aloc = move_agent(current_node['location'][i], dirs[i])
                 # vertex collision; check for duplicates in child_loc
                 if aloc in child_loc:
@@ -293,9 +293,9 @@ class A_Star(object):
             if invalid_move:
                 continue
 
-            for i, this_agent in enumerate(self.agents):
+            for i in range(len(self.agents)):
                 # edge collision: check for matching locs in curr_loc and child_loc between two agents
-                for j, a in enumerate(self.agents):
+                for j in range(len(self.agents)):
                     if i != j:
                         # print(ai, aj)
                         if child_loc[i] == current_node['location'][j] and child_loc[j] == current_node['location'][i]:
@@ -305,7 +305,7 @@ class A_Star(object):
                 continue
 
             # check map constraints and external constraints
-            for i, this_agent in enumerate(self.agents):
+            for i in range(len(self.agents)):
                 next_loc = child_loc[i]
                 # agent out of map bounds
                 if next_loc[0] < 0 or next_loc[0] >= len(self.map) or next_loc[1] < 0 or next_loc[1] >= len(
