@@ -466,7 +466,7 @@ class A_Star(object):
 
         while len(self.open_list) > 0:
             curr = self.pop_node()
-            solution_found = all(curr['reached_goal'][i] for i in range(len(self.agents)))
+            solution_found = curr['reached_goal'][0]
             # print(curr['reached_goal'] )
 
             if solution_found:
