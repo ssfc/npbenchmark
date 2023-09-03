@@ -482,8 +482,8 @@ class A_Star(object):
 
         # h_value = sum([self.heuristics[i][self.starts[i]] for i in range(len(self.agents))])
         h_value = sum([self.heuristics[0][self.starts[0]]])
-        for i in range(len(self.agents)):
-            print("i:", i)
+        # for i in range(len(self.agents)):
+        #    print("i:", i)
         print("h_value:", h_value)
 
         # assert h_value == h_test
