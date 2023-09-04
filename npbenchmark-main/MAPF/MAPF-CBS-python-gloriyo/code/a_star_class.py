@@ -70,7 +70,7 @@ class A_Star(object):
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
         self.start = input_start
         # print("self.start: ", self.start)
-        self.goal = [input_goal]
+        self.goal = input_goal
         self.heuristics = [input_heuristics[self.agents[0]]]
 
         self.constraint_table = []  # constraint table
@@ -324,7 +324,7 @@ class A_Star(object):
             g_value = current_node['g_val'] + num_moves
 
             reached_goal = False
-            if not reached_goal and child_loc[0] == self.goal[0]:
+            if not reached_goal and child_loc[0] == self.goal:
 
                 if current_node['time_step'] + 1 <= self.max_constraints:
                     if not self.future_constraint_violated(child_loc[0], current_node['time_step'] + 1,
@@ -457,7 +457,7 @@ class A_Star(object):
                 }
 
         # check if any agents are already at goal location
-        if root['location'][0] == self.goal[0]:
+        if root['location'][0] == self.goal:
             if root['time_step'] <= self.max_constraints:
                 if not self.future_constraint_violated(root['location'][0], root['time_step'], self.max_constraints,
                                                        self.constraint_table[0], self.agents[0]):
