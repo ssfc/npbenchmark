@@ -486,7 +486,8 @@ class A_Star(object):
                     this_node = self.closed_list[(tuple(child['location']), child['time_step'])]
                     if ((child['g_val'] + child['h_val'] < this_node['g_val'] + this_node['h_val']) and
                         (child['g_val'] < this_node['g_val']) and
-                        (child['reached_goal'].count(False) <= this_node['reached_goal'].count(False))):
+                        (this_node['reached_goal'][0] is True or
+                         (child['reached_goal'][0] is False and this_node['reached_goal'][0] is False))):
                         print("child is better than this node in closed list")
                         self.closed_list[(tuple(child['location']), child['time_step'])] = child
                         self.push_node(child)
