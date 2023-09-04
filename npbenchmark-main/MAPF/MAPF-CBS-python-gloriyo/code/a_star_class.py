@@ -383,17 +383,17 @@ class A_Star(object):
 
         return node_1['g_val'] + node_1['h_val'] < node_2['g_val'] + node_2['h_val']
 
-    # Q: 页面中函数def trace_path(goal_node, meta_agent)的功能是什么？
+    # Q: 页面中函数def trace_path(goal_node)的功能是什么？
     # 从目标节点回溯到根节点，得到一组路径，每个路径对应一个代理。
     # 函数使用了一个循环，从目标节点开始，依次访问每个节点的父节点，把每个代理的位置添加到对应的路径列表中，直到到达根节点为止。然后，函数把每个路径列表反转，使其从起点到终点的顺序排列，并返回这些路径列表。
     # 函数还使用了一些断言语句，用于检查每个路径的有效性和完整性。
-    # Q: 页面中函数def trace_path(goal_node, meta_agent)输入参数的数据类型和含义分别是什么？
+    # Q: 页面中函数def trace_path(goal_node)输入参数的数据类型和含义分别是什么？
     # @param goal_node (tuple): 目标节点
     # @param meta_agent (list): 表示一组代理或者一个代理，列表中的每个元素是一个整数，表示一个代理的编号。
     # 例如，[0, 1]表示两个代理，编号分别为0和1。
-    # Q: 页面中函数def trace_path(goal_node, meta_agent)输出结果的数据类型和含义分别是什么？
+    # Q: 页面中函数def trace_path(goal_node)输出结果的数据类型和含义分别是什么？
     # return path (list): 表示一个路径，路径中的每个元素是一个元组，表示一个位置，元组中包含两个整数，分别是横坐标和纵坐标。
-    def trace_path(self, goal_node, meta_agent):
+    def trace_path(self, goal_node):
         path = []
         path.append([])
         curr = goal_node
@@ -472,7 +472,7 @@ class A_Star(object):
             # print(curr['reached_goal'] )
 
             if solution_found:
-                return self.trace_path(curr, self.agents)
+                return self.trace_path(curr)
 
             children = self.generate_child_nodes(curr)
 
