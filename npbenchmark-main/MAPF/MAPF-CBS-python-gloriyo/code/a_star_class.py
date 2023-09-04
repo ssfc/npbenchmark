@@ -315,7 +315,7 @@ class A_Star(object):
             h_test = self.heuristics[0][child_loc[0]]
 
             assert h_value == h_test
-            if current_node['reached_goal'][0] is False:
+            if current_node['reached_goal'] is False:
                 num_moves = 1
             else:
                 num_moves = 0
@@ -323,8 +323,8 @@ class A_Star(object):
 
             g_value = current_node['g_val'] + num_moves
 
-            reached_goal = [False]
-            if not reached_goal[0] and child_loc[0] == self.goals[0]:
+            reached_goal = False
+            if not reached_goal and child_loc[0] == self.goals[0]:
 
                 if current_node['time_step'] + 1 <= self.max_constraints:
                     if not self.future_constraint_violated(child_loc[0], current_node['time_step'] + 1,
@@ -332,10 +332,10 @@ class A_Star(object):
                                                            self.agents[0]):
                         # print("agent ", a, 'has found solution at time_step ', curr['time_step'] + 1)
                         # print ('MAX CONSTRIANT:', self.max_constraints)
-                        reached_goal[0] = True
+                        reached_goal = True
                         # self.max_constraints differs for each node
                 else:
-                    reached_goal[0] = True
+                    reached_goal = True
 
             child = {'location': child_loc,
                      'g_val': g_value,  # number of new locs (cost) added
@@ -453,7 +453,7 @@ class A_Star(object):
                 'h_val': h_value,
                 'parent': None,
                 'time_step': 0,
-                'reached_goal': [False]
+                'reached_goal': False
                 }
 
         # check if any agents are already at goal location
@@ -461,7 +461,7 @@ class A_Star(object):
             if root['time_step'] <= self.max_constraints:
                 if not self.future_constraint_violated(root['location'][0], root['time_step'], self.max_constraints,
                                                        self.constraint_table[0], self.agents[0]):
-                    root['reached_goal'][0] = True
+                    root['reached_goal'] = True
 
                     self.max_constraints = 0
 
@@ -470,7 +470,7 @@ class A_Star(object):
 
         while len(self.open_list) > 0:
             curr = self.pop_node()
-            solution_found = curr['reached_goal'][0]
+            solution_found = curr['reached_goal']
             # print(curr['reached_goal'] )
 
             if solution_found:
@@ -486,8 +486,8 @@ class A_Star(object):
                     this_node = self.closed_list[(tuple(child['location']), child['time_step'])]
                     if ((child['g_val'] + child['h_val'] < this_node['g_val'] + this_node['h_val']) and
                         (child['g_val'] < this_node['g_val']) and
-                        (this_node['reached_goal'][0] is True or
-                         (child['reached_goal'][0] is False and this_node['reached_goal'][0] is False))):
+                        (this_node['reached_goal'] is True or
+                         (child['reached_goal'] is False and this_node['reached_goal'] is False))):
                         print("child is better than this node in closed list")
                         self.closed_list[(tuple(child['location']), child['time_step'])] = child
                         self.push_node(child)
