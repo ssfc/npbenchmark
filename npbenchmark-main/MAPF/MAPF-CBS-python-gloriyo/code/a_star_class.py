@@ -315,7 +315,11 @@ class A_Star(object):
             h_test = self.heuristics[0][child_loc[0]]
 
             assert h_value == h_test
-            num_moves = current_node['reached_goal'].count(False)
+            if current_node['reached_goal'][0]==False:
+                num_moves = 1
+            else:
+                num_moves = 0
+
 
             g_value = current_node['g_val'] + num_moves
 
