@@ -395,27 +395,25 @@ class A_Star(object):
     # return path (list): 表示一个路径，路径中的每个元素是一个元组，表示一个位置，元组中包含两个整数，分别是横坐标和纵坐标。
     def trace_path(self, goal_node, meta_agent):
         path = []
-        for i in range(len(meta_agent)):
-            path.append([])
+        path.append([])
         curr = goal_node
         while curr is not None:
-            for i in range(len(meta_agent)):
-                path[i].append(curr['location'][i])
+            path[0].append(curr['location'][0])
             curr = curr['parent']
-        for i in range(len(meta_agent)):
-            path[i].reverse()
-            assert path[i] is not None
 
-            print(path[i])
+        path[0].reverse()
+        assert path[0] is not None
 
-            if len(path[i]) > 1:
-                # remove trailing duplicates
-                while path[i][-1] == path[i][-2]:
-                    path[i].pop()
-                    print(path[i])
-                    if len(path[i]) <= 1:
-                        break
-                # assert path[i][-1] != path[i][-2] # no repeats at the end!!
+        print(path[0])
+
+        if len(path[0]) > 1:
+            # remove trailing duplicates
+            while path[0][-1] == path[0][-2]:
+                path[0].pop()
+                print(path[0])
+                if len(path[0]) <= 1:
+                    break
+            # assert path[i][-1] != path[i][-2] # no repeats at the end!!
 
         assert path is not None
         return path
