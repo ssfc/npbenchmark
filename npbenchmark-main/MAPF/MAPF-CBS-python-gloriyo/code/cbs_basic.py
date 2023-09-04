@@ -429,7 +429,7 @@ class CBSSolver(object):
         iter_agent = 0
         for i in range(self.num_of_agents):  # Find initial path for each agent
             # print("iter_agent: ", iter_agent)
-            astar = a_star_method(self.map, self.starts[i], self.goals, self.heuristics, i, root['constraints'])
+            astar = a_star_method(self.map, self.starts[i], self.goals[i], self.heuristics, i, root['constraints'])
             paths = astar.low_level_search()
             print("agent", iter_agent, "find path:", paths)
 
@@ -514,7 +514,7 @@ class CBSSolver(object):
                     new_node['paths'].append(path)
 
                 ai = constraint['agent']
-                astar = a_star_method(self.map, self.starts[ai], self.goals, self.heuristics, ai, new_node['constraints'])
+                astar = a_star_method(self.map, self.starts[ai], self.goals[ai], self.heuristics, ai, new_node['constraints'])
                 # print("constraint:", q['constraints'])
                 path = astar.low_level_search()
 
@@ -525,7 +525,7 @@ class CBSSolver(object):
                     if constraint['positive']:
                         vol = self.paths_violate_constraint(constraint, new_node['paths'])
                         for v in vol:
-                            astar_v = a_star_method(self.map, self.starts[v], self.goals, self.heuristics, v, new_node['constraints'])
+                            astar_v = a_star_method(self.map, self.starts[v], self.goals[v], self.heuristics, v, new_node['constraints'])
                             path_v = astar_v.low_level_search()
                             if path_v is None:
                                 continue_flag = True

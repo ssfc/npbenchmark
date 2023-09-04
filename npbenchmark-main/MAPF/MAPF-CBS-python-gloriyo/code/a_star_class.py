@@ -70,7 +70,7 @@ class A_Star(object):
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
         self.start = input_start
         # print("self.start: ", self.start)
-        self.goals = [input_goal[self.agents[0]]]
+        self.goals = [input_goal]
         self.heuristics = [input_heuristics[self.agents[0]]]
 
         self.constraint_table = []  # constraint table
