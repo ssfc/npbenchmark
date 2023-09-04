@@ -68,7 +68,7 @@ class A_Star(object):
 
         # FILTER BY INDEX FOR STARTS AND GOALS AND HEURISTICS
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
-        self.start = [input_start]
+        self.start = input_start
         # print("self.start: ", self.start)
         self.goals = [input_goals[self.agents[0]]]
         self.heuristics = [input_heuristics[self.agents[0]]]
@@ -442,12 +442,12 @@ class A_Star(object):
             self.max_constraints = max(constraint_table_i.keys())
         print("self.max_constraints:", self.max_constraints)
 
-        h_value = self.heuristics[0][self.start[0]]
+        h_value = self.heuristics[0][self.start]
         print("h_value:", h_value)
 
         # assert h_value == h_test
 
-        root = {'location': [self.start[0]],
+        root = {'location': [self.start],
                 # 'F_val' : h_value, # only consider children with f_val == F_val
                 'g_val': 0,
                 'h_val': h_value,
