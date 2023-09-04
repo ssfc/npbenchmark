@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig host="1.15.63.146" id="8e9c8fb1-d904-4afb-9a0f-ab515a44bffd" keyPath="C:\Users\take_\Dropbox\backup\.ssh\id_rsa" port="6000" nameFormat="DESCRIPTIVE" username="ssfc" useOpenSSHConfig="true" />
-    </configs>
-  </component>
-</project>
