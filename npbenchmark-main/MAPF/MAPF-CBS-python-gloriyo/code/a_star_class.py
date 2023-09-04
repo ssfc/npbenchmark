@@ -315,7 +315,7 @@ class A_Star(object):
             h_test = self.heuristics[0][child_loc[0]]
 
             assert h_value == h_test
-            if current_node['reached_goal'][0]==False:
+            if current_node['reached_goal'][0] is False:
                 num_moves = 1
             else:
                 num_moves = 0
@@ -342,7 +342,7 @@ class A_Star(object):
                      'h_val': h_value,
                      'parent': current_node,
                      'time_step': current_node['time_step'] + 1,
-                     'reached_goal': copy.deepcopy(reached_goal)
+                     'reached_goal': reached_goal
                      }
 
             # print(child)
