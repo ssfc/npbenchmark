@@ -71,7 +71,7 @@ class A_Star(object):
         self.start = input_start
         # print("self.start: ", self.start)
         self.goal = input_goal
-        self.heuristics = [input_heuristics[self.agents[0]]]
+        self.heuristics = input_heuristics[self.agents[0]]
 
         self.constraint_table = []  # constraint table
         self.max_constraints = 0  # CBS的话是[0]
@@ -310,9 +310,9 @@ class A_Star(object):
 
             # find h_values for current moves
             h_value = 0
-            h_value += self.heuristics[0][child_loc[0]]
+            h_value += self.heuristics[child_loc[0]]
 
-            h_test = self.heuristics[0][child_loc[0]]
+            h_test = self.heuristics[child_loc[0]]
 
             assert h_value == h_test
             if current_node['reached_goal'] is False:
@@ -442,7 +442,7 @@ class A_Star(object):
             self.max_constraints = max(constraint_table_i.keys())
         print("self.max_constraints:", self.max_constraints)
 
-        h_value = self.heuristics[0][self.start]
+        h_value = self.heuristics[self.start]
         print("h_value:", h_value)
 
         # assert h_value == h_test
