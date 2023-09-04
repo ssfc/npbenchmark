@@ -20,13 +20,13 @@ def move_agent(current_location, chosen_direction):
 
 
 class A_Star(object):
-    # Q: 页面中函数__init__(self, input_map, input_start, input_goals, input_heuristics, agents, input_constraints)的功能是什么？
+    # Q: 页面中函数__init__(self, input_map, input_start, input_goal, input_heuristics, agents, input_constraints)的功能是什么？
     # 初始化一个CBS对象，即一个用于解决多智能体路径规划问题的冲突检测搜索对象。
-    # Q: 页面中函数__init__(self, input_map, input_start, input_goals, input_heuristics, agents, input_constraints)
+    # Q: 页面中函数__init__(self, input_map, input_start, input_goal, input_heuristics, agents, input_constraints)
     # 输入参数的数据类型和含义分别是什么？
     # @param input_map (2D list): 表示一个地图
-    # @param input_start (list of tuple): list of start locations for CBS
-    # @param input_goals (list of tuple): list of goal locations for CBS
+    # @param input_start (tuple): start location for this agent
+    # @param input_goal (tuple): goal location for this agent
     # @param input_heuristics (list of dict): [{(3, 0): 0, (4, 0): 1, (3, 1): 1, (2, 0): 1, (2, 1): 2, (1, 0): 2,
     # (4, 1): 2, (3, 2): 2,
     # (5, 0): 2, (1, 1): 3, (0, 0): 3, (4, 2): 3, (3, 3): 3, (5, 1): 3, (6, 0): 3, (0, 1): 4, (1, 2): 4, (4, 3): 4,
@@ -42,10 +42,10 @@ class A_Star(object):
     # {'agent': 1, 'location': [(3, 4), (3, 3)], 'time_step': 7, 'positive': False, 'meta_agent': {1}},
     # {'agent': 1, 'location': [(1, 1)], 'time_step: 11, 'positive': False, 'meta_agent': {1}},
     # {'agent': 0, 'location': [(1, 1), (1, 0)], 'time_step': 1, 'positive': False, 'meta_agent': {0}}]
-    # Q: 页面中函数__init__(self, input_map, input_start, input_goals, input_heuristics, agents, input_constraints)
+    # Q: 页面中函数__init__(self, input_map, input_start, input_goal, input_heuristics, agents, input_constraints)
     # 输出结果的数据类型和含义分别是什么？
     # @return (void)
-    def __init__(self, input_map, input_start, input_goals, input_heuristics, agents, input_constraints):
+    def __init__(self, input_map, input_start, input_goal, input_heuristics, agents, input_constraints):
         """my_map   - list of lists specifying obstacle positions
         starts      - [(x1, y1), (x2, y2), ...] list of start locations for CBS
         goals       - [(x1, y1), (x2, y2), ...] list of goal locations for CBS
@@ -70,7 +70,7 @@ class A_Star(object):
         # 因为是CBS, 所以下面这些都是只有1个成员的list.
         self.start = input_start
         # print("self.start: ", self.start)
-        self.goals = [input_goals[self.agents[0]]]
+        self.goals = [input_goal[self.agents[0]]]
         self.heuristics = [input_heuristics[self.agents[0]]]
 
         self.constraint_table = []  # constraint table
