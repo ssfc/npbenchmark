@@ -71,7 +71,7 @@ class A_Star(object):
         self.start = input_start
         # print("self.start: ", self.start)
         self.goal = input_goal
-        self.heuristics = input_heuristics[self.agents[0]]
+        self.heuristics = input_heuristics
 
         self.constraint_table = []  # constraint table
         self.max_constraints = 0  # CBS的话是[0]
