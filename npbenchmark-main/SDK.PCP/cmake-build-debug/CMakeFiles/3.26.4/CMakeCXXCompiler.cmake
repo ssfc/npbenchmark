@@ -1,7 +1,7 @@
-set(CMAKE_CXX_COMPILER "/usr/bin/g++.exe")
+set(CMAKE_CXX_COMPILER "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/g++.exe")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
-set(CMAKE_CXX_COMPILER_VERSION "11.3.0")
+set(CMAKE_CXX_COMPILER_VERSION "13.1.0")
 set(CMAKE_CXX_COMPILER_VERSION_INTERNAL "")
 set(CMAKE_CXX_COMPILER_WRAPPER "")
 set(CMAKE_CXX_STANDARD_COMPUTED_DEFAULT "17")
@@ -14,19 +14,19 @@ set(CMAKE_CXX17_COMPILE_FEATURES "cxx_std_17")
 set(CMAKE_CXX20_COMPILE_FEATURES "cxx_std_20")
 set(CMAKE_CXX23_COMPILE_FEATURES "cxx_std_23")
 
-set(CMAKE_CXX_PLATFORM_ID "Cygwin")
+set(CMAKE_CXX_PLATFORM_ID "MinGW")
 set(CMAKE_CXX_SIMULATE_ID "")
-set(CMAKE_CXX_COMPILER_FRONTEND_VARIANT "")
+set(CMAKE_CXX_COMPILER_FRONTEND_VARIANT "GNU")
 set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
 
-set(CMAKE_AR "/usr/bin/ar.exe")
-set(CMAKE_CXX_COMPILER_AR "/usr/bin/gcc-ar.exe")
-set(CMAKE_RANLIB "/usr/bin/ranlib.exe")
-set(CMAKE_CXX_COMPILER_RANLIB "/usr/bin/gcc-ranlib.exe")
-set(CMAKE_LINKER "/usr/bin/ld.exe")
+set(CMAKE_AR "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ar.exe")
+set(CMAKE_CXX_COMPILER_AR "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ar.exe")
+set(CMAKE_RANLIB "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ranlib.exe")
+set(CMAKE_CXX_COMPILER_RANLIB "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/gcc-ranlib.exe")
+set(CMAKE_LINKER "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/bin/ld.exe")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)
@@ -77,7 +77,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++;/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin;/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward;/usr/lib/gcc/x86_64-pc-cygwin/11/include;/usr/include;/usr/include/w32api")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;gcc_s;gcc;cygwin;advapi32;shell32;user32;kernel32;gcc_s;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-pc-cygwin/11;/usr/x86_64-pc-cygwin/lib;/usr/lib;/lib")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/include;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed;C:/Program Files/JetBrains/CLion 2022.2.3/bin/mingw/x86_64-w64-mingw32/include")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
