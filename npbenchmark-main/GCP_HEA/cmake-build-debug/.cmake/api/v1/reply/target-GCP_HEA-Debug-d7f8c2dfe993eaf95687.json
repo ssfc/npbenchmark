@@ -115,7 +115,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "GraphColoring.h",
+			"path" : "GraphColoring.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
@@ -126,7 +126,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "hea.h",
+			"path" : "hea.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

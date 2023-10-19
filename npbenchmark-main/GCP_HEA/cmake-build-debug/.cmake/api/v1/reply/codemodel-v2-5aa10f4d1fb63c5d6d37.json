@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "GCP_HEA::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-GCP_HEA-Debug-2d88197af0dec2fb85f6.json",
+					"jsonFile" : "target-GCP_HEA-Debug-d7f8c2dfe993eaf95687.json",
 					"name" : "GCP_HEA",
 					"projectIndex" : 0
 				}
@@ -55,6 +55,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 5
 	}
 }

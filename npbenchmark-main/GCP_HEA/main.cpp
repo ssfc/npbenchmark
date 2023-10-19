@@ -2,7 +2,7 @@
 #include <string>
 #include <chrono>
 
-#include "GraphColoring.h"
+#include "GraphColoring.hpp"
 
 
 using namespace std;
