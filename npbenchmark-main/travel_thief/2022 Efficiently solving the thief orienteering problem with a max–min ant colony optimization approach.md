@@ -16,7 +16,7 @@ Code: https://github.com/jonatasbcchagas/acoplusplus_thop
 
 我们研究了盗贼定向问题（Thief Orienteering Problem, ThOP），这是一个结合了背包问题和定向问题两个经典组合优化问题的学术多组分问题。在ThOP中，盗贼有一个时间限制，要从一组城市中偷取物品。盗贼在旅途中将物品放入背包，这会降低他的行走速度。盗贼的目标是最大化偷取物品的总利润。在本文中，我们提出了一种将群智能和随机装箱启发式相结合的方法。我们的解决方案在几乎所有的432个基准实例上都优于现有的工作，有显著的改进。
 
-Keywords: ACO++ => 盗贼定向问题（Thief Orienteering Problem, ThOP）
+Keywords: ACO++ => (Thief Orienteering Problem, ThOP)
 
 ### Q: Thief Orienteering Problem是不是thief traveling problem? 如果不是有什么区别？
 
@@ -74,4 +74,4 @@ Irace软件包是一个用于自动配置优化算法的工具，它可以根据
 
 本文提出了一种基于蚁群优化和随机装箱启发式的方法，来解决盗贼定向问题（ThOP）。ThOP是一种学术性的多组件问题，它结合了两个经典的组合优化问题，即背包问题（KP）和定向问题（OP）。在ThOP中，一个盗贼有一个时间限制，要从一组城市中偷取物品。在旅行过程中，盗贼将物品存放在背包中，这反过来降低了旅行速度。盗贼的目标是最大化偷取物品的总利润。本文的方法在432个基准实例中几乎都优于现有的方法，并且有显著的改进。
 
-Keywords: ACO++ => 盗贼定向问题（Thief Orienteering Problem, ThOP）
+Keywords: ACO++ => (Thief Orienteering Problem, ThOP)
