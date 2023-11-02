@@ -1,4 +1,4 @@
-# Install script for directory: C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP
+# Install script for directory: C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/wamp64/www/npbenchmark/npbenchmark-main/SDK.PCP/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 find_package(Boost REQUIRED)
 include_directories(C:/boost_1_81_0)
 
-add_executable(SDK_PCP
-        Main.cpp
-        PCenter.cpp
-        PCenter.h pcp_greedy.h pcp_greedy.cpp pcp_vector.h pcp_vector.cpp)
+add_executable(SDK_PCP Main.cpp
+        PCenter.cpp PCenter.h
+        pcp_greedy.hpp pcp_greedy.cpp
+        pcp_vector.h pcp_vector.cpp)

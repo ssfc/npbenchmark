@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\SDK_PCP.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\ar.exe qc CMakeFiles\SDK_PCP.dir/objects.a @CMakeFiles\SDK_PCP.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.3\bin\mingw\bin\G__~1.EXE  -O3 -g -static-libgcc -static-libstdc++ -Wl,--whole-archive CMakeFiles\SDK_PCP.dir/objects.a -Wl,--no-whole-archive -o SDK_PCP.exe -Wl,--out-implib,libSDK_PCP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\SDK_PCP.dir\linkLibs.rsp
