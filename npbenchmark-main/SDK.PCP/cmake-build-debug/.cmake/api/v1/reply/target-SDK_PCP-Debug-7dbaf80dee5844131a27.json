@@ -138,7 +138,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "PCenter.h",
+			"path" : "PCenter.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -90,7 +90,7 @@
 		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/PCenter.cpp">
 			<Option target="SDK_PCP"/>
 		</Unit>
-		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/PCenter.h">
+		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/PCenter.hpp">
 			<Option target="SDK_PCP"/>
 		</Unit>
 		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.cpp">
