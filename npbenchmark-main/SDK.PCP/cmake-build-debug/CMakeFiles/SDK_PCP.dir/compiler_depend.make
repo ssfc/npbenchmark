@@ -208,7 +208,7 @@ CMakeFiles/SDK_PCP.dir/PCenter.cpp.obj: C:/gitcloud/npbenchmark/npbenchmark-main
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/uses_allocator.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/typeinfo \
-  C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.h \
+  C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.hpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algo.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/algorithmfwd.h \
@@ -486,7 +486,7 @@ CMakeFiles/SDK_PCP.dir/PCenter.cpp.obj: C:/gitcloud/npbenchmark/npbenchmark-main
   C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_vector.h
 
 CMakeFiles/SDK_PCP.dir/pcp_greedy.cpp.obj: C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.cpp \
-  C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.h \
+  C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.hpp \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algobase.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -1140,6 +1140,8 @@ CMakeFiles/SDK_PCP.dir/pcp_vector.cpp.obj: C:/gitcloud/npbenchmark/npbenchmark-m
   C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/std_function.h
 
 
+C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.hpp:
+
 C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h:
 
 C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/Main.cpp:
@@ -1547,8 +1549,6 @@ C:/Program\ Files/JetBrains/CLion\ 2022.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32
 C:/boost_1_81_0/boost/type_traits/is_lvalue_reference.hpp:
 
 C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/PCenter.cpp:
-
-C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_greedy.h:
 
 C:/boost_1_81_0/boost/config.hpp:
 

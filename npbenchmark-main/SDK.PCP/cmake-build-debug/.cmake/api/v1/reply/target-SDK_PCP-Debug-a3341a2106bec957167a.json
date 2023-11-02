@@ -154,7 +154,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "pcp_vector.h",
+			"path" : "pcp_vector.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -1,6 +1,6 @@
 # include "PCenter.h"
 # include "pcp_greedy.hpp"
-# include "pcp_vector.h"
+# include "pcp_vector.hpp"
 
 # include <algorithm>
 # include <ctime>

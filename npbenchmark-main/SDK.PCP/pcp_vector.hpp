@@ -2,8 +2,8 @@
 // Created by take_ on 2022/12/13.
 //
 
-#ifndef SDK_PCP_PCP_VECTOR_H
-#define SDK_PCP_PCP_VECTOR_H
+#ifndef SDK_PCP_PCP_VECTOR_HPP
+#define SDK_PCP_PCP_VECTOR_HPP
 
 #include <algorithm>
 #include <climits>
@@ -99,4 +99,4 @@ public: // member functions.
     unsigned compute_sum_uncovered_weight();
 };
 
-#endif //SDK_PCP_PCP_VECTOR_H
+#endif //SDK_PCP_PCP_VECTOR_HPP

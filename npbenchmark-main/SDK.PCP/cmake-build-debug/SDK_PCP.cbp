@@ -102,7 +102,7 @@
 		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_vector.cpp">
 			<Option target="SDK_PCP"/>
 		</Unit>
-		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_vector.h">
+		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/pcp_vector.hpp">
 			<Option target="SDK_PCP"/>
 		</Unit>
 		<Unit filename="C:/gitcloud/npbenchmark/npbenchmark-main/SDK.PCP/CMakeLists.txt">
