@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.23"
+						"string" : "3.22"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SDK_PCP::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SDK_PCP-Debug-7dbaf80dee5844131a27.json",
+					"jsonFile" : "target-SDK_PCP-Debug-23cd9bb2eee2935bd91a.json",
 					"name" : "SDK_PCP",
 					"projectIndex" : 0
 				}

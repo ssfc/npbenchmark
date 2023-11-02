@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/functional/hash.hpp>
 
 using NodeId = int;
 
